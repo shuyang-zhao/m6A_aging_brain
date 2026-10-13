@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aging Brain Gene Browser</title>
+<meta name="description" content="Age effects of every gene in 90 analysis units of 30 public brain aging datasets: mouse and human, protein and mRNA, with m⁶A sites and m⁶A reader binding.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<script>
+  // language and theme before the first paint: the saved choice, else the browser language and the system theme
+  (() => {
+    const root = document.documentElement;
+    let lang = null, theme = null;
+    try { lang = localStorage.getItem("lang"); theme = localStorage.getItem("theme"); } catch (e) {}
+    lang = lang || ((navigator.language || "").toLowerCase().startsWith("zh") ? "zh" : "en");
+    root.dataset.lang = lang;
+    root.lang = lang === "zh" ? "zh-CN" : "en";
+    if (theme) root.dataset.theme = theme;
+  })();
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.getElementById('view-definitions'), {delimiters: [{left: '$$', right: '$$', display: true}, {left: '\\(', right: '\\)', display: false}]})"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">
+      <img class="logo" src="favicon.svg" alt="" width="36" height="36">
+      <div>
+        <h1><span class="i-en">Aging Brain Gene Browser</span><span class="i-zh">脑衰老基因浏览器</span></h1>
+        <p class="lede">
+          <span class="i-en">How every gene changes with age across <b>90 analysis units</b> of <b>30 public brain aging datasets</b>: mouse and human, protein and mRNA.</span>
+          <span class="i-zh">每个基因在 <b>30 个公开脑衰老数据集</b>的 <b>90 个分析单元</b>中随年龄的变化：小鼠与人，蛋白与 mRNA。</span>
+        </p>
+      </div>
+    </div>
+    <div class="masthead-side">
+      <div class="controls">
+        <div class="segmented small" id="lang" role="group" aria-label="Language">
+          <button data-v="en">EN</button><button data-v="zh">中文</button>
+        </div>
+        <button id="theme" class="icon-button" type="button" aria-label="Light or dark mode"></button>
+      </div>
+      <nav class="tabs" aria-label="Views">
+        <a href="#gene" data-view="gene"><span class="i-en">Gene</span><span class="i-zh">基因</span></a>
+        <a href="#landscape" data-view="landscape"><span class="i-en">Landscape</span><span class="i-zh">全景</span></a>
+        <a href="#cohorts" data-view="cohorts"><span class="i-en">Cohorts</span><span class="i-zh">队列</span></a>
+        <a href="#definitions" data-view="definitions"><span class="i-en">Definitions</span><span class="i-zh">计算标准</span></a>
+        <a href="#sources" data-view="sources"><span class="i-en">Data &amp; sources</span><span class="i-zh">数据与来源</span></a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section id="view-gene" class="view">
+    <div class="search">
+      <svg class="search-icon" viewBox="0 0 20 20" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5"/><path d="M13 13l4 4"/></svg>
+      <input id="query" type="search" autocomplete="off" spellcheck="false" aria-label="Gene">
+      <ul id="suggest" class="suggest" role="listbox" hidden></ul>
+    </div>
+    <p class="examples"><span class="i-en">Try</span><span class="i-zh">示例</span> <a href="#gene/YTHDF3">YTHDF3</a> <a href="#gene/FMR1">FMR1</a> <a href="#gene/C4B">C4B</a> <a href="#gene/GFAP">GFAP</a> <a href="#gene/IGF2BP2">IGF2BP2</a></p>
+    <div id="gene"></div>
+  </section>
+
+  <section id="view-landscape" class="view" hidden>
+    <div class="section-head">
+      <h2><span class="i-en">Landscape of gene aging</span><span class="i-zh">基因衰老全景</span></h2>
+      <p class="i-en">Every gene combined over the cohorts of each context with the rule of the paper's regulator screen: unit estimates averaged within a cohort, random-effects meta-analysis over cohorts, Benjamini–Hochberg within the context (<a href="#definitions/def-landscape">Definitions, section 11</a>). Click a context to open it.</p>
+      <p class="i-zh">每个基因在每个情境中跨队列合并，规则与论文中调控因子筛查相同：同一队列的单元估计值取平均，各队列做随机效应 meta 分析，在情境内做 Benjamini–Hochberg 校正（<a href="#definitions/def-landscape">计算标准第 11 节</a>）。点击一个情境即可打开。</p>
+    </div>
+    <div class="card pad">
+      <div class="card-head"><h3 id="ov-title"></h3><div class="legend" id="ov-legend"></div></div>
+      <div id="overview"></div>
+    </div>
+    <div class="card plot-card">
+      <div class="card-head">
+        <h3 id="volcano-title"></h3>
+        <div class="land-controls">
+          <select id="l-context" aria-label="Context"></select>
+          <div class="segmented small" id="l-color" role="group" aria-label="Color"></div>
+        </div>
+      </div>
+      <div class="legend" id="volcano-legend"></div>
+      <div id="volcano" class="volcano"></div>
+    </div>
+    <div class="card table-card">
+      <div class="table-head wrap-head">
+        <h3 id="rank-title"></h3>
+        <div class="land-controls">
+          <div class="segmented small" id="l-dir" role="group" aria-label="Direction"></div>
+          <label class="inline"><span id="l-min-label"></span><input id="l-min" type="number" min="0" step="5" value="0" aria-label="Minimum change">%</label>
+          <select id="l-sort" aria-label="Sort"></select>
+          <button id="l-csv" class="button ghost"></button>
+        </div>
+      </div>
+      <div class="scroll"><table id="rank-table" class="data"></table></div>
+      <div class="table-foot"><span id="rank-count" class="muted"></span><button id="l-more" class="button ghost"></button><a id="l-tsv" href="data/landscape/landscape.tsv.gz" download></a></div>
+    </div>
+  </section>
+
+  <section id="view-cohorts" class="view" hidden>
+    <div class="section-head">
+      <h2><span class="i-en">Cohorts and analysis units</span><span class="i-zh">队列与分析单元</span></h2>
+      <p class="i-en">An analysis unit is one tissue, region or cell class of one cohort with at least 8 donors; this is the interactive form of Fig. 1a and Table S1. Click a column name to sort.</p>
+      <p class="i-zh">分析单元是某一队列中的一个组织、脑区或细胞类别，且至少有 8 个供体；本页是图 1a 与补充表 S1 的交互版本。点击列名可排序。</p>
+    </div>
+    <div class="filters">
+      <div class="segmented" id="f-species" role="group" aria-label="Species">
+        <button data-v="" class="on"><span class="i-en">All</span><span class="i-zh">全部</span></button><button data-v="human"><span class="i-en">Human</span><span class="i-zh">人</span></button><button data-v="mouse"><span class="i-en">Mouse</span><span class="i-zh">小鼠</span></button>
+      </div>
+      <select id="f-layer" aria-label="Molecular layer"></select>
+      <select id="f-region" aria-label="Brain region"></select>
+      <input id="f-text" type="search" aria-label="Filter by name">
+    </div>
+    <div id="cohort-summary" class="summary"></div>
+    <div class="card table-card"><div class="scroll"><table id="cohort-table" class="data"></table></div></div>
+  </section>
+
+  <section id="view-definitions" class="view" hidden>
+    <div class="section-head">
+      <h2><span class="i-en">Definitions</span><span class="i-zh">计算标准</span></h2>
+      <p class="i-en">Every number on this site is computed with the definitions below, which are those of the paper (Methods); the code repository gives the full derivation of every quantity in <code>docs/definitions.md</code>. Notation: \(g\) gene, \(s\) sample (one donor or animal), \(u\) analysis unit, \(\ell\) molecular layer.</p>
+      <p class="i-zh">本站的每个数字都按下列定义计算，与论文方法部分一致；每个量的完整推导见代码仓库的 <code>docs/definitions.md</code>。记号：\(g\) 基因，\(s\) 样本（一个供体或一只动物），\(u\) 分析单元，\(\ell\) 分子层。</p>
+    </div>
+    <nav class="toc card pad">
+      <ol>
+        <li><a href="#definitions/def-unit"><span class="i-en">Analysis unit</span><span class="i-zh">分析单元</span></a></li>
+        <li><a href="#definitions/def-abundance"><span class="i-en">Abundance and layers</span><span class="i-zh">丰度与分子层</span></a></li>
+        <li><a href="#definitions/def-age"><span class="i-en">Young and old: age coding</span><span class="i-zh">年轻与衰老：年龄编码</span></a></li>
+        <li><a href="#definitions/def-model"><span class="i-en">Per-gene age model</span><span class="i-zh">逐基因年龄模型</span></a></li>
+        <li><a href="#definitions/def-test"><span class="i-en">Moderated t, P, CI and q</span><span class="i-zh">调节 t、P、置信区间与 q</span></a></li>
+        <li><a href="#definitions/def-pct"><span class="i-en">Percent change</span><span class="i-zh">百分比变化</span></a></li>
+        <li><a href="#definitions/def-adjusted"><span class="i-en">mRNA-adjusted protein</span><span class="i-zh">mRNA 校正蛋白</span></a></li>
+        <li><a href="#definitions/def-m6a">m<sup>6</sup>A <span class="i-en">sites and load</span><span class="i-zh">位点与载量</span></a></li>
+        <li><a href="#definitions/def-binding"><span class="i-en">Reader binding</span><span class="i-zh">阅读蛋白结合</span></a></li>
+        <li><a href="#definitions/def-genes"><span class="i-en">Genes across species</span><span class="i-zh">跨物种的基因对应</span></a></li>
+        <li><a href="#definitions/def-landscape"><span class="i-en">Landscape: combining cohorts</span><span class="i-zh">全景：跨队列合并</span></a></li>
+        <li><a href="#definitions/def-site"><span class="i-en">What the pages show</span><span class="i-zh">页面上的统计量</span></a></li>
+      </ol>
+    </nav>
+
+    <article class="card pad def" id="def-unit">
+      <h3>1 · <span class="i-en">Analysis unit and dataset</span><span class="i-zh">分析单元与数据集</span></h3>
+      <div class="formula">$$u=\bigl(c(u),\ \text{tissue, region or cell class},\ \sigma_u\bigr),\qquad \mathcal S_u=\{s\in c(u):\sigma_u(s)\},\qquad n_u=|\mathcal S_u|\ge 8$$</div>
+      <p class="i-en">A dataset (cohort) \(c\) is one published study; several units can belong to one cohort (for example the 13 GTEx regions), and units of one cohort share donors or protocols. A unit is one tissue, region or cell class of one cohort with at least 8 donors after the sample filter \(\sigma_u\): 90 units from 30 datasets, 55 human and 35 mouse. From case–control studies (Alzheimer's, Parkinson's and Huntington's disease, schizophrenia, alcohol use disorder, smoking) only control donors enter a unit, and human units keep donors aged 18 years or older. The one exception is the Huntington's disease allelic series of knock-in mice (Langfelder 2016), used with all seven genotypes and genotype as a covariate.</p>
+      <p class="i-zh">数据集（队列）\(c\) 是一项已发表的研究；一个队列可包含多个单元（例如 GTEx 的 13 个脑区），同一队列的单元共享供体或实验方案。单元是某一队列的一个组织、脑区或细胞类别，经样本筛选 \(\sigma_u\) 后至少有 8 个供体：共 30 个数据集、90 个单元，其中人 55 个、小鼠 35 个。病例–对照研究（阿尔茨海默病、帕金森病、亨廷顿病、精神分裂症、酒精使用障碍、吸烟）只使用对照供体；人类单元只保留 18 岁及以上的供体。唯一的例外是亨廷顿病敲入小鼠等位基因系列（Langfelder 2016）：七种基因型全部使用，基因型作为协变量。</p>
+      <div class="formula">$$C_{g,dk}=\sum_{i\in\mathcal N_{dk}}c_{gi}$$</div>
+      <p class="i-en">Single-nucleus data enter as pseudobulk: for donor \(d\) and cell class \(k\), the counts \(c_{gi}\) of its nuclei \(\mathcal N_{dk}\) are summed (profiles with at least 20 nuclei in Sloan 2026 and Zemke 2026, 10 in Handsaker 2025 and Mesecar 2026; Hahn 2023, Mätlik 2024 and Green 2025 deposited pseudobulk counts), so that the donor, not the nucleus, is the replicate. The neuronal classes of a dataset form its neuron unit.</p>
+      <p class="i-zh">单核数据以伪批量（pseudobulk）进入：对供体 \(d\) 与细胞类别 \(k\)，把其细胞核 \(\mathcal N_{dk}\) 的计数 \(c_{gi}\) 相加（Sloan 2026 与 Zemke 2026 要求每个谱至少 20 个细胞核，Handsaker 2025 与 Mesecar 2026 至少 10 个；Hahn 2023、Mätlik 2024 与 Green 2025 使用作者提供的伪批量计数），使供体而非细胞核成为重复单位。数据集的神经元类别合起来构成其神经元单元。</p>
+    </article>
+
+    <article class="card pad def" id="def-abundance">
+      <h3>2 · <span class="i-en">Abundance and molecular layers</span><span class="i-zh">丰度与分子层</span></h3>
+      <div class="formula">$$y_{gs}=\begin{cases}\log_2\ \text{protein abundance, median-normalized} &amp; \ell\in\{\mathrm P,\mathrm A\}\\[2pt] \log_2\ \text{counts per million (TMM)} &amp; \ell=\mathrm R\end{cases}$$</div>
+      <div class="formula">$$\delta_s=\operatorname*{median}_{p\in D}\Bigl(x_{ps}-\operatorname*{median}_{s'}x_{ps'}\Bigr),\qquad y_{ps}=x_{ps}-\delta_s$$</div>
+      <p class="i-en"><b>Protein.</b> Log2 intensities or ratios as processed by the original study, \(x_{ps}\); each sample is shifted by \(\delta_s\), computed on the proteins \(D\) detected in at least 70% of the samples, which removes loading differences without changing the age contrast. Each gene keeps at most one protein group.</p>
+      <p class="i-zh"><b>蛋白。</b>采用原研究处理后的 log2 强度或比值 \(x_{ps}\)；每个样本整体平移 \(\delta_s\)，\(\delta_s\) 在至少 70% 样本中检出的蛋白 \(D\) 上计算，从而消除上样量差异而不改变年龄对比。每个基因至多保留一个蛋白组。</p>
+      <div class="formula">$$y_{gs}=\log_2\frac{c_{gs}+\pi_s}{N^{\mathrm{eff}}_s+2\pi_s}\times10^{6},\qquad \pi_s=0.5\,\frac{N^{\mathrm{eff}}_s}{\overline{N^{\mathrm{eff}}}}$$</div>
+      <p class="i-en"><b>RNA.</b> Counts \(c_{gs}\) with the effective library sizes \(N^{\mathrm{eff}}_s\) of edgeR TMM normalization and a prior count \(\pi_s\) (edgeR <code>cpm(log = TRUE, prior.count = 0.5)</code>); bulk and pseudobulk counts follow the same rule. Three cohorts are used as deposited: Takasugi 2024 (normalized counts, scaled by library size only), the Luo 2024 RNA and the Ramasamy 2014 microarrays (log2 values).</p>
+      <p class="i-zh"><b>RNA。</b>计数 \(c_{gs}\) 使用 edgeR TMM 标准化的有效文库大小 \(N^{\mathrm{eff}}_s\) 与先验计数 \(\pi_s\)（即 edgeR 的 <code>cpm(log = TRUE, prior.count = 0.5)</code>）；批量与伪批量计数规则相同。三个队列直接使用原始数值：Takasugi 2024（已标准化计数，仅按文库大小缩放）、Luo 2024 的 RNA 与 Ramasamy 2014 的芯片（log2 值）。</p>
+      <p class="i-en"><b>Gene filter.</b> A gene is kept in a unit when it is observed in at least half of the samples of every layer of the unit (RNA: at least 1 count per million in half of the samples).</p>
+      <p class="i-zh"><b>基因过滤。</b>基因须在单元每一层中至少一半样本被观测到才保留（RNA 还要求至少一半样本的 CPM ≥ 1）。</p>
+      <p class="i-en"><b>Layers.</b> <span class="key P"></span>\(\mathrm P\), protein; <span class="key R"></span><span class="key S"></span>\(\mathrm R\), mRNA (bulk tissue, or single-nucleus pseudobulk); <span class="key A"></span>\(\mathrm A\), mRNA-adjusted protein (section 7). A unit layer is one unit in one layer.</p>
+      <p class="i-zh"><b>分子层。</b><span class="key P"></span>\(\mathrm P\)：蛋白；<span class="key R"></span><span class="key S"></span>\(\mathrm R\)：mRNA（组织 bulk 或单核伪批量）；<span class="key A"></span>\(\mathrm A\)：mRNA 校正蛋白（第 7 节）。一个单元层即一个单元的一个分子层。</p>
+    </article>
+
+    <article class="card pad def" id="def-age">
+      <h3>3 · <span class="i-en">Young and old: age coding</span><span class="i-zh">年轻与衰老：年龄编码</span></h3>
+      <h4><span class="i-en">Human units: per decade</span><span class="i-zh">人类单元：每十年</span></h4>
+      <div class="formula">$$a_s=\frac{\text{age}_s}{10}$$</div>
+      <p class="i-en">\(\text{age}_s\) is the age at death in years (GTEx: the midpoint of the 10-year age bracket). Age is continuous, so human units have no young or old group: the age effect is the change per 10 years across the adult ages of the unit (18 years or older; the age range of every unit is on the Cohorts page).</p>
+      <p class="i-zh">\(\text{age}_s\) 为死亡年龄（岁；GTEx 取 10 岁年龄段的中点）。年龄是连续变量，所以人类单元不划分年轻组与衰老组：年龄效应是在单元的成年年龄范围内（18 岁及以上；各单元年龄范围见队列页）每 10 岁的变化。</p>
+      <h4><span class="i-en">Mouse units: late against early age group</span><span class="i-zh">小鼠单元：晚期组对早期组</span></h4>
+      <div class="formula">$$a_s=\mathbf 1\bigl[\text{age}_s\in\mathcal L_u\bigr],\qquad \mathrm{mid}_{ks}=\mathbf 1\bigl[\text{age}_s=k\bigr]\ \ (k\in\mathcal M_u)$$</div>
+      <div class="formula">$$\beta=\frac{1}{|\mathcal L_u|}\sum_{k\in\mathcal L_u}\mu_k-\frac{1}{|\mathcal E_u|}\sum_{k\in\mathcal E_u}\mu_k$$</div>
+      <p class="i-en">Mouse cohorts sample a few discrete ages. <b>Young</b> is the early age group \(\mathcal E_u\) and <b>old</b> the late age group \(\mathcal L_u\) of the cohort (table below, in months); the age term \(a_s\) is 1 in the late group and 0 in the early group. Every middle age \(k\in\mathcal M_u\) has its own indicator, so its animals have a free mean and do not pull the contrast. When a side holds several ages (Lu 2025), orthonormal contrasts within the side absorb their differences, and the coefficient is the difference between the averages of the age-group means \(\mu_k\), each age weighted equally (given the covariates).</p>
+      <p class="i-zh">小鼠队列只采样少数离散年龄。<b>年轻</b>指队列的早期年龄组 \(\mathcal E_u\)，<b>衰老</b>指晚期年龄组 \(\mathcal L_u\)（见下表，单位为月）；年龄项 \(a_s\) 在晚期组为 1、早期组为 0。每个中间年龄 \(k\in\mathcal M_u\) 各有一个指示变量，其动物拥有自由均值，不牵动对比。当一侧包含多个年龄（Lu 2025）时，用侧内正交对比吸收这些年龄间的差异，系数等于两侧各年龄组均值 \(\mu_k\) 的平均之差（各年龄等权，给定协变量）。</p>
+      <div class="scroll"><table class="data compact">
+        <thead><tr><th><span class="i-en">Mouse cohort</span><span class="i-zh">小鼠队列</span></th><th class="num"><span class="i-en">Young (early, months)</span><span class="i-zh">年轻（早期，月）</span></th><th class="num"><span class="i-en">Old (late, months)</span><span class="i-zh">衰老（晚期，月）</span></th><th class="num"><span class="i-en">Middle ages (own indicator)</span><span class="i-zh">中间年龄（单独指示变量）</span></th></tr></thead>
+        <tbody>
+          <tr><td>Takasugi 2024</td><td class="num">6</td><td class="num">30</td><td class="num">15, 24</td></tr>
+          <tr><td>Langfelder 2016</td><td class="num">2</td><td class="num">10</td><td class="num">–</td></tr>
+          <tr><td>Lu 2025</td><td class="num">4, 7</td><td class="num">21, 24</td><td class="num">10, 13, 17</td></tr>
+          <tr><td>Tsumagari 2023</td><td class="num">3</td><td class="num">24</td><td class="num">15</td></tr>
+          <tr><td>Wang 2025</td><td class="num">4</td><td class="num">20</td><td class="num">8, 12</td></tr>
+          <tr><td>Keele 2025</td><td class="num">3</td><td class="num">20</td><td class="num">12</td></tr>
+          <tr><td>Marino 2025</td><td class="num">3.5</td><td class="num">33</td><td class="num">–</td></tr>
+          <tr><td>Hahn 2023 bulk</td><td class="num">3</td><td class="num">21</td><td class="num">12, 15, 18</td></tr>
+          <tr><td>Hahn 2023 nuclei</td><td class="num">3</td><td class="num">21</td><td class="num">–</td></tr>
+          <tr><td>Shavlakadze 2026</td><td class="num">6</td><td class="num">27</td><td class="num">12, 18, 21, 24</td></tr>
+        </tbody>
+      </table></div>
+      <p class="i-en note">Because the two species code age differently, human effects are per decade and mouse effects are late against early; they are on separate axes and are not directly comparable in size.</p>
+      <p class="i-zh note">两个物种的年龄编码不同：人类效应为每十年，小鼠效应为晚期对早期，因此画在不同坐标轴上，数值大小不能直接比较。</p>
+    </article>
+
+    <article class="card pad def" id="def-model">
+      <h3>4 · <span class="i-en">Per-gene age model</span><span class="i-zh">逐基因年龄模型</span></h3>
+      <div class="formula">$$y_{gs}=\mu_g+\sum_j\delta_{gj}\,\tilde z_{js}+\sum_j\theta_{gj}\,d_{js}+\tilde P_{gs}^{\top}\eta_g+\beta_g\,a_s+\varepsilon_{gs},\qquad \tilde z_{js}=\frac{z_{js}-\bar z_j}{\operatorname{sd}(z_j)}$$</div>
+      <p class="i-en">One ordinary least-squares regression per gene and unit layer, on the samples in which the gene was measured. The covariates are those of the original study (listed per unit on the Cohorts page): numeric ones z-scored (\(\tilde z\)), categorical ones as dummy columns (\(d\)). Where a unit lists them, cell-type indices (the mean z-score of the marker genes of neurons, astrocytes, oligodendrocytes and microglia) absorb differences in tissue composition. Hidden factors \(\tilde P\) (one in Langfelder 2016, two in Luo 2024) are the leading principal components of the residuals after the design, made orthogonal to age, so they cannot absorb the age effect. In Luo 2024 the TMT batch was removed first with a random-effect model that keeps age, the gene's mRNA and the covariates as fixed effects.</p>
+      <p class="i-zh">每个基因在每个单元层做一次普通最小二乘回归，只用测到该基因的样本。协变量沿用原研究（各单元的协变量见队列页）：数值协变量做 z 标准化（\(\tilde z\)），分类协变量用哑变量（\(d\)）。单元列有细胞类型指数（神经元、星形胶质细胞、少突胶质细胞与小胶质细胞标志基因 z 分数的平均）时，用它吸收组织构成的差异。隐藏因子 \(\tilde P\)（Langfelder 2016 为 1 个，Luo 2024 为 2 个）是去除设计矩阵后残差的前几个主成分，并与年龄正交，因此不能吸收年龄效应。Luo 2024 先用随机效应模型去除 TMT 批次，模型中年龄、该基因的 mRNA 与协变量为固定效应。</p>
+      <div class="formula">$$\hat\beta=(F_g^{\top}F_g)^{-1}F_g^{\top}y_g,\qquad d_g=n_g-\operatorname{rank}F_g,\qquad s_g^2=\frac{\lVert y_g-F_g\hat\beta\rVert^2}{d_g},\qquad u_g=\bigl[(F_g^{\top}F_g)^{-1}\bigr]_{a,a}$$</div>
+      <p class="i-en">\(F_g\) is the design of gene \(g\) with the age column \(a\) last; the age effect \(\hat\beta_g\) is the log2 change per age unit. A gene is not estimated when \(F_g\) is rank-deficient or fewer than 3 residual degrees of freedom remain.</p>
+      <p class="i-zh">\(F_g\) 为基因 \(g\) 的设计矩阵，年龄列 \(a\) 排在最后；年龄效应 \(\hat\beta_g\) 是每个年龄单位的 log2 变化。若 \(F_g\) 秩亏或残差自由度少于 3，则该基因不作估计。</p>
+    </article>
+
+    <article class="card pad def" id="def-test">
+      <h3>5 · <span class="i-en">Moderated t, P value, confidence interval and q value</span><span class="i-zh">调节 t、P 值、置信区间与 q 值</span></h3>
+      <div class="formula">$$\tilde s_g^2=\frac{d_{0g}\,s_0^2+d_g\,s_g^2}{d_{0g}+d_g},\qquad \widetilde{\mathrm{se}}_g=\sqrt{\tilde s_g^2\,u_g},\qquad \tilde t_g=\frac{\hat\beta_g}{\widetilde{\mathrm{se}}_g},\qquad \tilde d_g=\min\Bigl(d_g+d_{0g},\ \textstyle\sum_{g'}d_{g'}\Bigr)$$</div>
+      <p class="i-en">Residual variances are moderated with limma (<code>squeezeVar</code>, robust): the prior \((s_0^2,d_0)\) is estimated over all genes of the unit layer and each variance is pulled toward the typical one, which stabilizes the tests in units with few donors. Only the variance is moderated; the estimate \(\hat\beta_g\) is that of the per-gene fit.</p>
+      <p class="i-zh">残差方差用 limma（<code>squeezeVar</code>，稳健）调节：先验 \((s_0^2,d_0)\) 在该单元层的全部基因上估计，每个方差被拉向典型方差，使供体少的单元中的检验更稳定。只调节方差；估计值 \(\hat\beta_g\) 仍取逐基因拟合的结果。</p>
+      <div class="formula">$$p_g=2\Pr\bigl(T_{\tilde d_g}&gt;|\tilde t_g|\bigr),\qquad \mathrm{CI}_{95}=\hat\beta_g\pm t_{0.975,\,\tilde d_g}\,\widetilde{\mathrm{se}}_g$$</div>
+      <div class="formula">$$q_{(i)}=\min_{j\ge i}\ \min\Bigl(1,\ \frac{M\,p_{(j)}}{j}\Bigr)$$</div>
+      <p class="i-en">\(p_g\) tests \(\beta_g=0\) two-sided. \(q\) is the Benjamini–Hochberg value over the \(M\) genes of one unit layer, with \(p_{(1)}\le\dots\le p_{(M)}\); a gene with \(q&lt;0.05\) is a discovery in that unit (filled dot, bold value). Because \(M\) and the sample size differ between units, the same effect can be significant in a large unit and not in a small one.</p>
+      <p class="i-zh">\(p_g\) 对 \(\beta_g=0\) 做双侧检验。\(q\) 为 Benjamini–Hochberg 值，检验族是一个单元层中的 \(M\) 个基因，\(p_{(1)}\le\dots\le p_{(M)}\)；\(q&lt;0.05\) 的基因是该单元中的发现（实心点、加粗数值）。各单元的 \(M\) 与样本量不同，所以同样大小的效应在大单元中可能显著、在小单元中不显著。</p>
+    </article>
+
+    <article class="card pad def" id="def-pct">
+      <h3>6 · <span class="i-en">Percent change</span><span class="i-zh">百分比变化</span></h3>
+      <div class="formula">$$\mathrm{pct}(\beta)=100\,\bigl(2^{\beta}-1\bigr),\qquad \text{effect}=\mathrm{pct}(\hat\beta_g),\qquad \text{CI}=\bigl[\mathrm{pct}(\text{low}),\ \mathrm{pct}(\text{high})\bigr]$$</div>
+      <p class="i-en">Effects are estimated on the log2 scale and shown as the percent change of the abundance: \(\beta=1\) is +100%, \(\beta=-1\) is −50%. Confidence limits are the percent form of the log2 limits, so they are asymmetric around the estimate.</p>
+      <p class="i-zh">效应在 log2 尺度上估计，显示为丰度的百分比变化：\(\beta=1\) 为 +100%，\(\beta=-1\) 为 −50%。置信区间上下限是 log2 上下限的百分比形式，因此相对于估计值不对称。</p>
+    </article>
+
+    <article class="card pad def" id="def-adjusted">
+      <h3>7 · <span class="i-en">mRNA-adjusted protein</span><span class="i-zh">mRNA 校正蛋白</span></h3>
+      <div class="formula">$$y^{\mathrm P}_{gs}=\mu_g+x_s^{\top}\delta_g+\gamma_g\,m_{gs}+\beta^{\mathrm A}_g\,a_s+\tilde P_{gs}^{\top}\eta_g+\varepsilon_{gs}$$</div>
+      <p class="i-en">In the three units with protein and RNA from the same donors or animals (Takasugi 2024, Langfelder 2016, Luo 2024), the protein model also contains the gene's own log2 mRNA \(m_{gs}\) of the same sample. \(\beta^{\mathrm A}_g\) is the age change of the protein that is not accounted for by the age change of its mRNA, a post-transcriptional component; it is tested as in section 5.</p>
+      <p class="i-zh">在蛋白与 RNA 来自同一供体或同一动物的三个单元（Takasugi 2024、Langfelder 2016、Luo 2024）中，蛋白模型还加入同一样本中该基因自身的 log2 mRNA \(m_{gs}\)。\(\beta^{\mathrm A}_g\) 是蛋白年龄变化中不能由其 mRNA 年龄变化解释的部分，即转录后成分；检验方法同第 5 节。</p>
+    </article>
+
+    <article class="card pad def" id="def-m6a">
+      <h3>8 · m<sup>6</sup>A <span class="i-en">sites and load</span><span class="i-zh">位点与载量</span></h3>
+      <div class="formula">$$n_g=\#\bigl\{\text{distinct }\mathrm{m^6A}\text{ sites on the canonical transcript of }g\bigr\},\qquad L_g=\ln(1+n_g)$$</div>
+      <p class="i-en"><b>Mouse.</b> Single-nucleotide m<sup>6</sup>A sites of four mouse brain maps: GLORI 3.0 of the hippocampus (cytoplasmic and synaptosome fractions) and DART-seq of the cortex and of neuronal nuclei. A site found in several maps is counted once; it must lie in an exon of the gene's canonical transcript (one per protein-coding gene: Ensembl canonical, then APPRIS, then CDS and transcript length), with the reference base A.</p>
+      <p class="i-zh"><b>小鼠。</b>四张小鼠脑图谱的单核苷酸 m<sup>6</sup>A 位点：海马 GLORI 3.0（胞质与突触体组分）以及皮层与神经元细胞核的 DART-seq。多张图谱中出现的同一位点只计一次；位点须位于该基因规范转录本的外显子上（每个蛋白编码基因一条：Ensembl canonical 优先，其次 APPRIS、CDS 与转录本长度），且参考碱基为 A。</p>
+      <p class="i-en"><b>Human.</b> No single-nucleotide map of the human brain exists, so \(n_g\) counts the m<sup>6</sup>A-seq peaks of five human brain regions (BA9, BA24, caudate, hippocampus and thalamus of 25 donors; Shafik 2026) whose center lies in an exon of the canonical transcript (MANE Select first). Peaks are intervals, so this is a proxy of the number of marked places, not a site count.</p>
+      <p class="i-zh"><b>人。</b>目前没有人脑的单核苷酸图谱，因此 \(n_g\) 计数的是五个人脑区（25 位供体的 BA9、BA24、尾状核、海马与丘脑；Shafik 2026）m<sup>6</sup>A-seq 峰中，峰中心落在规范转录本（MANE Select 优先）外显子上的峰数。峰是区间，所以它是标记位置数的代理，而不是位点数。</p>
+      <p class="i-en">Gene pages show \(n_g\); the regressions of the paper use the load \(L_g\), so that going from no site to one counts more than going from 20 to 21.</p>
+      <p class="i-zh">基因页显示 \(n_g\)；论文中的回归使用载量 \(L_g\)，使从 0 个到 1 个位点的增加比从 20 到 21 影响更大。</p>
+    </article>
+
+    <article class="card pad def" id="def-binding">
+      <h3>9 · m<sup>6</sup>A <span class="i-en">reader binding</span><span class="i-zh">阅读蛋白结合</span></h3>
+      <div class="formula">$$\mathrm{near}_{50}(\text{site at }p)=\mathbf 1\Bigl[\exists\,(\mathrm{start},\mathrm{end})\in\mathcal B_r:\ \mathrm{start}-50\le p-1\le \mathrm{end}-1+50\Bigr]$$</div>
+      <p class="i-en">\(\mathcal B_r\) are the binding regions of reader \(r\) in its primary source, on the same chromosome and strand as the site (CLIP peaks called with nf-core/clipseq and PureCLIP from the IP libraries; 0-based start, exclusive end). A gene is <b>bound with m<sup>6</sup>A</b> when at least one of its m<sup>6</sup>A sites lies within 50 nt of a binding region, and <b>bound without m<sup>6</sup>A</b> when a binding region overlaps one of its exons but no site lies within 50 nt of it. For sources that are gene lists (no positions), a listed gene with at least one site is bound with m<sup>6</sup>A and a listed gene without sites is bound without m<sup>6</sup>A.</p>
+      <p class="i-zh">\(\mathcal B_r\) 是阅读蛋白 \(r\) 主来源中的结合区域，与位点位于同一染色体、同一条链（由 nf-core/clipseq 与 PureCLIP 从 IP 文库识别的 CLIP 峰；起点 0 起计、终点不含）。若基因至少有一个 m<sup>6</sup>A 位点距某个结合区域不超过 50 nt，则记为<b>有 m<sup>6</sup>A 的结合</b>；若有结合区域与其外显子重叠、但其 50 nt 内没有位点，则记为<b>无 m<sup>6</sup>A 的结合</b>。来源为基因列表（无位置信息）时，列表中至少有一个位点的基因记为有 m<sup>6</sup>A 的结合，没有位点的基因记为无 m<sup>6</sup>A 的结合。</p>
+      <p class="i-en"><b>Primary source.</b> For each reader and species, the best-ranked source: in vivo brain CLIP of the species; CLIP peaks of the species (peak sets binding fewer than 500 genes rank last); ENCODE eCLIP IDR peaks; gene lists of other cell types; peaks or lists mapped from the other species through one-to-one orthologs. The source of every reader is on the Data &amp; sources page.</p>
+      <p class="i-zh"><b>主来源。</b>每个阅读蛋白、每个物种取排序最优的来源：该物种的体内脑 CLIP；该物种的 CLIP 峰（结合基因少于 500 个的峰集排在最后）；ENCODE eCLIP IDR 峰；其他细胞类型的基因列表；通过一对一直系同源从另一物种映射的峰或列表。各阅读蛋白的来源见"数据与来源"页。</p>
+    </article>
+
+    <article class="card pad def" id="def-genes">
+      <h3>10 · <span class="i-en">Genes across species</span><span class="i-zh">跨物种的基因对应</span></h3>
+      <p class="i-en">Genes are identified by their Ensembl id (GENCODE v44 for human, vM25 for mouse). A mouse gene is shown on the page of its one-to-one human ortholog (MGI homology report). Mouse genes without one have their own page under the mouse symbol, and human genes without one have no mouse panel.</p>
+      <p class="i-zh">基因以 Ensembl 编号标识（人 GENCODE v44，小鼠 vM25）。小鼠基因显示在其一对一人类直系同源基因（MGI 同源报告）的页面上；没有一对一直系同源的小鼠基因以小鼠基因符号单独成页，没有一对一直系同源的人类基因则不显示小鼠面板。</p>
+    </article>
+
+    <article class="card pad def" id="def-landscape">
+      <h3>11 · <span class="i-en">Landscape: combining cohorts within a context</span><span class="i-zh">全景：情境内的跨队列合并</span></h3>
+      <div class="formula">$$\bar\beta_{gc}=\frac{1}{|U_{c\kappa}|}\sum_{u\in U_{c\kappa}}\hat\beta^{u}_{g},\qquad \bar{\mathrm{se}}_{gc}=\frac{1}{|U_{c\kappa}|}\sum_{u\in U_{c\kappa}}\widetilde{\mathrm{se}}^{u}_{g}$$</div>
+      <p class="i-en">A context \(\kappa\) is a fixed list of units that address one question (for example the human striatum: GTEx caudate, putamen and nucleus accumbens, BrainSeq III caudate, Markunas 2020 nucleus accumbens and the Ramasamy 2014 putamen). Units of one cohort share donors or protocols, so they are not treated as independent: their estimates and standard errors are averaged into one value per cohort \(c\), over the units \(U_{c\kappa}\) of the cohort in the context.</p>
+      <p class="i-zh">情境 \(\kappa\) 是回答同一问题的一组固定单元（例如人纹状体：GTEx 尾状核、壳核与伏隔核，BrainSeq III 尾状核，Markunas 2020 伏隔核，以及 Ramasamy 2014 壳核）。同一队列的单元共享供体或实验方案，不视为相互独立：它们的估计值与标准误先在该队列于情境内的单元 \(U_{c\kappa}\) 上取平均，每个队列 \(c\) 得到一个值。</p>
+      <div class="formula">$$w_c=\bar{\mathrm{se}}_{gc}^{-2},\qquad Q=\sum_c w_c\bigl(\bar\beta_{gc}-\bar\beta_{\mathrm{FE}}\bigr)^2,\qquad \tau^2=\max\Bigl(0,\ \frac{Q-(k-1)}{\sum_c w_c-\sum_c w_c^2/\sum_c w_c}\Bigr),\qquad I^2=\max\Bigl(0,\ 1-\frac{k-1}{Q}\Bigr)$$</div>
+      <div class="formula">$$\hat\beta_g=\frac{\sum_c w^{*}_c\,\bar\beta_{gc}}{\sum_c w^{*}_c},\quad w^{*}_c=\frac{1}{\bar{\mathrm{se}}_{gc}^2+\tau^2},\quad \mathrm{se}_g=\Bigl(\sum_c w^{*}_c\Bigr)^{-1/2},\quad p_g=2\,\Phi\bigl(-|\hat\beta_g/\mathrm{se}_g|\bigr),\quad \mathrm{CI}_{95}=\hat\beta_g\pm1.96\,\mathrm{se}_g$$</div>
+      <p class="i-en">The \(k\) cohorts of the context in which the gene was measured are combined by DerSimonian–Laird random-effects meta-analysis (\(\bar\beta_{\mathrm{FE}}\) is the inverse-variance mean), and \(q\) is the Benjamini–Hochberg value over the genes of the context and layer. A gene measured in one cohort keeps that cohort's mean (no \(\tau^2\) or \(I^2\)). <b>Same direction</b> is the number of cohorts whose mean has the sign of \(\hat\beta_g\). Effects are shown as \(\mathrm{pct}(\hat\beta_g)\) (section 6), per decade in human contexts and late against early in mouse contexts. The paper applies this rule to the RNA-modification regulators; this page applies it to every gene. The repeat of mouse protein on the cohorts reaching 20 months (a sensitivity analysis of the paper) is not shown, and 8 units belong to no context (GTEx amygdala, hypothalamus, spinal cord and substantia nigra; Ramasamy 2014 medulla, thalamus, white matter and substantia nigra).</p>
+      <p class="i-zh">对测到该基因的 \(k\) 个队列做 DerSimonian–Laird 随机效应 meta 分析（\(\bar\beta_{\mathrm{FE}}\) 为逆方差加权均值），\(q\) 为该情境与分子层全部基因上的 Benjamini–Hochberg 值。只在一个队列测到的基因直接取该队列的均值（无 \(\tau^2\) 与 \(I^2\)）。<b>同方向队列</b>指均值符号与 \(\hat\beta_g\) 相同的队列数。效应显示为 \(\mathrm{pct}(\hat\beta_g)\)（第 6 节）：人类情境为每十年，小鼠情境为晚期对早期。论文把这一规则用于 RNA 修饰调控因子，本页把它用于全部基因。论文中只含达到 20 个月队列的小鼠蛋白重复分析（敏感性分析）不在此显示；另有 8 个单元不属于任何情境（GTEx 杏仁核、下丘脑、脊髓与黑质；Ramasamy 2014 延髓、丘脑、白质与黑质）。</p>
+      <div class="scroll"><table class="data compact" id="context-table"></table></div>
+    </article>
+
+    <article class="card pad def" id="def-site">
+      <h3>12 · <span class="i-en">What the pages show</span><span class="i-zh">页面上的统计量</span></h3>
+      <p class="i-en"><b>Unit layers quantified</b>: the unit layers with an estimate for the gene, out of all unit layers of the species. <b>q &lt; 0.05 (down, up)</b>: those of them with \(q&lt;0.05\), split by the sign of \(\hat\beta_g\). <b>Forest plot</b>: the axis covers the bulk of the estimates; intervals that reach beyond it end in an arrow and estimates beyond it are drawn as a triangle at the edge, with the exact values in the tooltip and the table. <b>Brain regions</b> on the Cohorts page are a browsing aid assigned from the unit names; they are not used in any analysis.</p>
+      <p class="i-zh"><b>已定量的单元层</b>：该基因有估计值的单元层数，分母为该物种的全部单元层。<b>q &lt; 0.05（下降、上升）</b>：其中 \(q&lt;0.05\) 的单元层数，按 \(\hat\beta_g\) 的符号分开。<b>森林图</b>：坐标轴覆盖大多数估计值；超出坐标轴的区间以箭头结束，超出坐标轴的估计值画成边缘的三角形，确切数值见悬停提示与表格。队列页的<b>脑区</b>分组是根据单元名称划分的浏览辅助，不参与任何分析。</p>
+    </article>
+  </section>
+
+  <section id="view-sources" class="view" hidden>
+    <div class="section-head"><h2><span class="i-en">Data &amp; sources</span><span class="i-zh">数据与来源</span></h2></div>
+    <div class="grid-2">
+      <div class="card pad">
+        <h3><span class="i-en">Download</span><span class="i-zh">下载</span></h3>
+        <p class="i-en">The complete per-gene age effects of every unit and layer (Additional file 4) and all other results of the study (Additional file 3) are deposited at Zenodo with the figure source data.</p>
+        <p class="i-zh">每个单元与分子层的完整逐基因年龄效应（Additional file 4）及研究的其他全部结果（Additional file 3）与图的源数据一起存放于 Zenodo。</p>
+        <p><a id="zenodo" class="button" aria-disabled="true"><span class="i-en">Zenodo record available on publication</span><span class="i-zh">Zenodo 记录将于发表时提供</span></a></p>
+        <p class="muted"><span class="i-en">Each gene page also downloads its own table as CSV.</span><span class="i-zh">每个基因页也可将其表格下载为 CSV。</span> <span id="code-link"></span></p>
+      </div>
+      <div class="card pad">
+        <h3><span class="i-en">Citation</span><span class="i-zh">引用</span></h3>
+        <p id="citation">m<sup>6</sup>A load marks proteins that decline in the aging mammalian brain. <i>Genome Biology</i>, <span class="i-en">in preparation</span><span class="i-zh">准备中</span>.</p>
+        <p class="muted i-en">Please also cite the original study of every dataset you use; the references below are numbered as on the gene and cohort pages. The definitions of every quantity are on the Definitions page.</p>
+        <p class="muted i-zh">使用某个数据集时，请同时引用其原始研究；下列参考文献的编号与基因页和队列页一致。各个量的定义见"计算标准"页。</p>
+      </div>
+    </div>
+    <div id="source-tables"></div>
+    <div class="card pad">
+      <h3><span class="i-en">References</span><span class="i-zh">参考文献</span></h3>
+      <div id="references"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <span><span class="i-en">Static site; all data are precomputed from public datasets.</span><span class="i-zh">静态网站；全部数据均由公开数据集预先计算。</span></span>
+  <span id="foot-links"></span>
+</footer>
+<div id="tip" class="tip" hidden></div>
+<script src="app.js"></script>
+</body>
+</html>
