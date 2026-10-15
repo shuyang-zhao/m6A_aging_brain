@@ -1,10 +1,13 @@
-// Front end of the Aging Brain Gene Browser. Reads data/meta.json (units, m6A maps, reader binding sources and
-// references), data/genes.json (search index: key, human symbol, mouse symbol) and data/genes/<key>.json (one gene,
-// rows of [unit, layer, % change, CI low, CI high, P, q, samples]), all written by pipeline/62_website.py. Text of the
-// page is in English and Chinese: static text in index.html (.i-en, .i-zh), the text written here in TEXT
+// Front end of the Aging Brain Gene Browser. Reads data/meta.json (units, m6A maps, reader binding sources, references
+// and the landscape contexts), data/genes.json (search index: key, human symbol, mouse symbol, mouse Ensembl id of a
+// gene joined to its human ortholog), data/genes/<key>.json (one gene, rows of [unit, layer, % change, CI low, CI high,
+// P, q, samples]) and data/landscape/<context>.json (one context, rows of [key, symbol, % change, CI low, CI high, P, q,
+// cohorts, cohorts in the same direction, I2, m6A]; landscape.tsv.gz holds every column), all written by
+// pipeline/62_website.py. The key of a gene is its human gene id, or its mouse id without a one-to-one human ortholog.
+// Text of the page is in English and Chinese: static text in index.html (.i-en, .i-zh), the text written here in TEXT
 const CONFIG = {
   zenodo: "", // Zenodo record of the full tables (Additional files 3 and 4); the download stays inactive while empty
-  code: "", // repository of the analysis code
+  code: "https://github.com/shuyang-zhao/m6A_aging_brain", // repository of the analysis code
   paper: "", // the article
 };
 const DEFAULT_GENE = "YTHDF3";
@@ -38,8 +41,7 @@ const TEXT = {
     mouseOnly: "mouse only",
     noGene: (q) => `No gene named <b>${q}</b> was quantified in any unit. Search by the official human or mouse
       symbol, or by the Ensembl gene id.`,
-    notQuantified: (s) => s === "human" ? "Not quantified in any human unit."
-      : "Not quantified in any mouse unit, or without a one-to-one mouse ortholog.",
+    notQuantified: (s) => `Not quantified in any ${s} unit, or without a one-to-one ${s} ortholog.`,
     unitLayers: "unit layers quantified",
     sig: "q &lt; 0.05 (down, up)",
     load: { mouse: `${M6A} sites`, human: `${M6A} peaks` },
@@ -87,7 +89,7 @@ const TEXT = {
   },
   zh: {
     site: "脑衰老基因浏览器",
-    layer: { P: "蛋白", A: "mRNA 校正蛋白", R: "Bulk mRNA", S: "单核 mRNA" },
+    layer: { P: "蛋白", A: "mRNA 校正蛋白", R: "组织 mRNA", S: "单核 mRNA" },
     species: { human: "人", mouse: "小鼠" },
     axis: { human: "每十年的变化 (%)", mouse: "晚期组相对早期组的变化 (%)" },
     scale: { human: "每十年 %", mouse: "晚期对早期 %" },
@@ -108,7 +110,8 @@ const TEXT = {
     allRegions: "全部脑区",
     mouseOnly: "仅小鼠",
     noGene: (q) => `没有在任何单元中定量到名为 <b>${q}</b> 的基因。请使用人或小鼠的官方基因符号，或 Ensembl 基因编号。`,
-    notQuantified: (s) => s === "human" ? "未在任何人类单元中定量。" : "未在任何小鼠单元中定量，或没有一对一的小鼠直系同源基因。",
+    notQuantified: (s) => s === "human" ? "未在任何人类单元中定量，或没有一对一的人类直系同源基因。"
+      : "未在任何小鼠单元中定量，或没有一对一的小鼠直系同源基因。",
     unitLayers: "已定量的单元层",
     sig: "q &lt; 0.05（下降、上升）",
     load: { mouse: `${M6A} 位点`, human: `${M6A} 峰` },
@@ -136,7 +139,7 @@ const TEXT = {
     theme: { dark: "切换到日间模式", light: "切换到夜间模式" },
     ctx: { human_protein_P: "蛋白", human_protein_A: "mRNA 校正蛋白", human_cortex_R: "皮层 mRNA", human_striatum_R: "纹状体 mRNA",
       human_hippocampus_R: "海马 mRNA", human_cerebellum_R: "小脑 mRNA", human_neurons_R: "神经元 mRNA（单核）",
-      mouse_protein_P: "蛋白", mouse_protein_A: "mRNA 校正蛋白", mouse_mrna_R: "Bulk mRNA", mouse_neurons_R: "神经元 mRNA（单核）" },
+      mouse_protein_P: "蛋白", mouse_protein_A: "mRNA 校正蛋白", mouse_mrna_R: "组织 mRNA", mouse_neurons_R: "神经元 mRNA（单核）" },
     ovTitle: "各情境中 q &lt; 0.05 的基因数", down: "下降", up: "上升",
     nCohorts: (n) => `${n} 个队列`, nGenes: (n) => `${n} 个基因`,
     volcano: "每个基因的合并年龄效应", color: { dir: "方向", m6a: `${M6A} 位点` },
@@ -166,8 +169,9 @@ const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&l
 const rich = (s) => esc(s).replace(/m6A/g, M6A).replace(/\bN6-/g, "N<sup>6</sup>-"); // m6A and N6 as superscripts
 const plain = (s) => String(s).replace(/m6A/g, "m⁶A"); // the same in attributes, which take no markup
 const minus = (s) => String(s).replace("-", "−");
-const pct = (v) => (v > 0 ? "+" : "") + minus(v.toFixed(1));
+const pct = (v) => { const r = +v.toFixed(1); return (r > 0 ? "+" : "") + minus(r.toFixed(1)); }; // no sign on 0.0
 const num = (v) => v.toLocaleString("en-US");
+const quantileOf = (values, q) => [...values].sort((a, b) => a - b)[Math.floor((values.length - 1) * q)];
 const region = (r) => T().region[r] || r;
 const store = (key, value) => { try { localStorage.setItem(key, value); } catch (e) { /* private window */ } };
 const getJSON = (path) => fetch(path).then((r) => r.json());
@@ -264,20 +268,26 @@ function route() {
 }
 
 // ---------- search ----------
+// an index entry is [key, human symbol, mouse symbol, mouse id of a gene joined to its human ortholog]; a symbol typed in
+// its exact case comes before a case-insensitive match, so that a mouse gene (Acot1) is not taken for the human gene of
+// the same name up to case (ACOT1)
 function lookup(q) {
-  q = q.trim().toUpperCase();
-  return index.find((g) => g[1].toUpperCase() === q) || index.find((g) => g[2].toUpperCase() === q) ||
-    index.find((g) => g[0] === q);
+  q = q.trim();
+  const upper = q.toUpperCase();
+  return index.find((g) => g[0] === upper || g[3] === upper) || index.find((g) => g[1] === q || g[2] === q) ||
+    index.find((g) => g[1].toUpperCase() === upper) || index.find((g) => g[2].toUpperCase() === upper);
 }
 
 function matches(q) {
-  q = q.trim().toUpperCase();
+  q = q.trim();
   if (!q) return [];
+  const upper = q.toUpperCase();
   const score = (g) => {
-    const names = [g[1].toUpperCase(), g[2].toUpperCase()];
-    if (names.includes(q) || g[0] === q) return 0;
-    if (names.some((n) => n.startsWith(q)) || g[0].startsWith(q)) return 1;
-    return q.length > 2 && names.some((n) => n.includes(q)) ? 2 : 9;
+    const names = [g[1].toUpperCase(), g[2].toUpperCase()], ids = [g[0], g[3]];
+    if (g[1] === q || g[2] === q) return 0;
+    if (names.includes(upper) || ids.includes(upper)) return 1;
+    if (names.some((n) => n.startsWith(upper)) || ids.some((i) => i.startsWith(upper))) return 2;
+    return upper.length > 2 && names.some((n) => n.includes(upper)) ? 3 : 9;
   };
   return index.map((g) => [score(g), g]).filter(([s]) => s < 9)
     .sort((a, b) => a[0] - b[0] || (a[1][1] || a[1][2]).length - (b[1][1] || b[1][2]).length)
@@ -287,7 +297,7 @@ function matches(q) {
 function initSearch() {
   const input = $("#query"), list = $("#suggest");
   let items = [], active = 0;
-  const go = (g) => { list.hidden = true; location.hash = `gene/${g[1] || g[2]}`; input.blur(); };
+  const go = (g) => { list.hidden = true; location.hash = `gene/${g[0]}`; input.blur(); };
   const paint = () => {
     list.innerHTML = items.map((g, i) => `<li role="option" class="${i === active ? "on" : ""}" data-i="${i}">
       <b>${esc(g[1] || g[2])}</b><span class="alt">${g[1] && g[2] ? esc(g[2]) + " · " : ""}${g[1] ? "" : T().mouseOnly + " · "}${g[0]}</span></li>`).join("");
@@ -299,8 +309,7 @@ function initSearch() {
       active = (active + (e.key === "ArrowDown" ? 1 : items.length - 1)) % Math.max(items.length, 1);
       paint(); e.preventDefault();
     } else if (e.key === "Enter") {
-      const g = items[active] || lookup(input.value);
-      if (g) go(g); else { list.hidden = true; location.hash = `gene/${input.value.trim()}`; }
+      if (items[active]) go(items[active]); else { list.hidden = true; location.hash = `gene/${input.value.trim()}`; }
     } else if (e.key === "Escape") list.hidden = true;
   });
   list.addEventListener("mousedown", (e) => { const li = e.target.closest("li"); if (li) go(items[li.dataset.i]); });
@@ -391,10 +400,13 @@ function drawPlots() {
   });
 }
 
+function niceStep(raw) {
+  const p = 10 ** Math.floor(Math.log10(raw)), f = raw / p;
+  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
+}
+
 function niceTicks(lim) {
-  const raw = lim / 2, p = 10 ** Math.floor(Math.log10(raw)), f = raw / p;
-  const step = (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
-  const n = Math.ceil(lim / step - 1e-9);
+  const step = niceStep(lim / 2), n = Math.ceil(lim / step - 1e-9);
   return Array.from({ length: 2 * n + 1 }, (_, i) => +((i - n) * step).toPrecision(6));
 }
 
@@ -405,9 +417,8 @@ function forest(rows, species, width) {
   if (!width) return "";
   const L = width < 480 ? 116 : 172, R = 12, top = 26, rowH = 17, headH = 26, bottom = 46;
   const groups = LAYER_KEYS.map((k) => [k, rows.filter((r) => r.layer === k)]).filter(([, r]) => r.length);
-  const quantile = (v, q) => v.sort((a, b) => a - b)[Math.floor((v.length - 1) * q)];
-  const points = quantile(rows.map((r) => Math.abs(r.pct)), 0.9);
-  const ends = quantile(rows.flatMap((r) => [Math.abs(r.lo), Math.abs(r.hi)]), 0.75);
+  const points = quantileOf(rows.map((r) => Math.abs(r.pct)), 0.9);
+  const ends = quantileOf(rows.flatMap((r) => [Math.abs(r.lo), Math.abs(r.hi)]), 0.75);
   const ticks = niceTicks(Math.max(0.5, points * 1.4, Math.min(ends, points * 4)));
   const lim = ticks.at(-1), span = width - L - R;
   const x = (v) => (L + ((Math.max(-lim, Math.min(lim, v)) + lim) / (2 * lim)) * span).toFixed(1);
@@ -602,7 +613,6 @@ function renderSources() {
 // ---------- landscape ----------
 const land = { id: DEFAULT_CONTEXT, rows: null, color: "dir", dir: "", min: 0, sort: "q", n: 50 };
 const landCache = {};
-const quantileOf = (values, q) => [...values].sort((a, b) => a - b)[Math.floor((values.length - 1) * q)];
 const contextName = (id) => `${T().species[id.split("_")[0]]} · ${T().ctx[id]}`;
 
 function initLandscape() {
@@ -625,14 +635,14 @@ function initLandscape() {
   const canvasBox = $("#volcano");
   canvasBox.addEventListener("mousemove", (e) => hoverVolcano(e));
   canvasBox.addEventListener("mouseleave", () => { $("#tip").hidden = true; $("#v-ring")?.setAttribute("r", 0); });
-  canvasBox.addEventListener("click", (e) => { const r = hoverVolcano(e); if (r) location.hash = `gene/${r.symbol}`; });
+  canvasBox.addEventListener("click", (e) => { const r = hoverVolcano(e); if (r) location.hash = `gene/${r.key}`; });
 }
 
 async function openContext(id) {
   land.id = id;
   land.n = 50;
   landCache[id] ??= (await getJSON(`data/landscape/${id}.json`))
-    .map(([symbol, pct, lo, hi, p, q, k, same, i2, m6a]) => ({ symbol, pct, lo, hi, p, q, k, same, i2, m6a }));
+    .map(([key, symbol, pct, lo, hi, p, q, k, same, i2, m6a]) => ({ key, symbol, pct, lo, hi, p, q, k, same, i2, m6a }));
   if (land.id !== id) return;
   land.rows = landCache[id];
   renderLandscape();
@@ -760,11 +770,6 @@ function drawVolcano() {
     legend.map(([c, label]) => `<span><span class="dot ${c}"></span>${label}</span>`).join("") + `<em class="legend-text muted">${tx.beyond}</em>`;
 }
 
-function niceStep(raw) {
-  const p = 10 ** Math.floor(Math.log10(raw)), f = raw / p;
-  return (f <= 1 ? 1 : f <= 2 ? 2 : f <= 2.5 ? 2.5 : f <= 5 ? 5 : 10) * p;
-}
-
 function hoverVolcano(e) {
   const box = $("#volcano"), rect = box.getBoundingClientRect(), x = e.clientX - rect.left, y = e.clientY - rect.top;
   let best = null, dist = 64;
@@ -804,7 +809,7 @@ function renderRank() {
   const head = tx.rankCols.map((c, i) => `<th class="${i >= 2 ? "num" : ""}" ${i === 6 ? `title="${tx.sameTitle}"` : ""}>${c}</th>`).join("");
   const body = shownRows.map((r, i) => `<tr>
     <td class="muted">${i + 1}</td>
-    <td><a class="gene" href="#gene/${encodeURIComponent(r.symbol)}">${esc(r.symbol)}</a></td>
+    <td><a class="gene" href="#gene/${r.key}">${esc(r.symbol)}</a></td>
     <td class="num nowrap ${r.q < 0.05 ? "sig" : ""}">${pct(r.pct)}</td>
     <td class="num nowrap muted">${pct(r.lo)} ${tx.to} ${pct(r.hi)}</td>
     <td class="num nowrap">${fmtP(r.p)}</td>

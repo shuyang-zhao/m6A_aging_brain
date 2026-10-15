@@ -64,7 +64,7 @@
       <input id="query" type="search" autocomplete="off" spellcheck="false" aria-label="Gene">
       <ul id="suggest" class="suggest" role="listbox" hidden></ul>
     </div>
-    <p class="examples"><span class="i-en">Try</span><span class="i-zh">示例</span> <a href="#gene/YTHDF3">YTHDF3</a> <a href="#gene/FMR1">FMR1</a> <a href="#gene/C4B">C4B</a> <a href="#gene/GFAP">GFAP</a> <a href="#gene/IGF2BP2">IGF2BP2</a></p>
+    <p class="examples"><span class="i-en">Try</span><span class="i-zh">示例</span> <a href="#gene/YTHDF3">YTHDF3</a> <a href="#gene/FMR1">FMR1</a> <a href="#gene/ENSMUSG00000073418">C4b</a> <a href="#gene/GFAP">GFAP</a> <a href="#gene/IGF2BP2">IGF2BP2</a></p>
     <div id="gene"></div>
   </section>
 
@@ -125,8 +125,8 @@
   <section id="view-definitions" class="view" hidden>
     <div class="section-head">
       <h2><span class="i-en">Definitions</span><span class="i-zh">计算标准</span></h2>
-      <p class="i-en">Every number on this site is computed with the definitions below, which are those of the paper (Methods); the code repository gives the full derivation of every quantity in <code>docs/definitions.md</code>. Notation: \(g\) gene, \(s\) sample (one donor or animal), \(u\) analysis unit, \(\ell\) molecular layer.</p>
-      <p class="i-zh">本站的每个数字都按下列定义计算，与论文方法部分一致；每个量的完整推导见代码仓库的 <code>docs/definitions.md</code>。记号：\(g\) 基因，\(s\) 样本（一个供体或一只动物），\(u\) 分析单元，\(\ell\) 分子层。</p>
+      <p class="i-en">Every number on this site is computed with the definitions below, which are those of the paper (Methods). Notation: \(g\) gene, \(s\) sample (one donor or animal), \(u\) analysis unit, \(\ell\) molecular layer.</p>
+      <p class="i-zh">本站的每个数字都按下列定义计算，与论文方法部分一致。记号：\(g\) 基因，\(s\) 样本（一个供体或一只动物），\(u\) 分析单元，\(\ell\) 分子层。</p>
     </div>
     <nav class="toc card pad">
       <ol>
@@ -148,19 +148,19 @@
     <article class="card pad def" id="def-unit">
       <h3>1 · <span class="i-en">Analysis unit and dataset</span><span class="i-zh">分析单元与数据集</span></h3>
       <div class="formula">$$u=\bigl(c(u),\ \text{tissue, region or cell class},\ \sigma_u\bigr),\qquad \mathcal S_u=\{s\in c(u):\sigma_u(s)\},\qquad n_u=|\mathcal S_u|\ge 8$$</div>
-      <p class="i-en">A dataset (cohort) \(c\) is one published study; several units can belong to one cohort (for example the 13 GTEx regions), and units of one cohort share donors or protocols. A unit is one tissue, region or cell class of one cohort with at least 8 donors after the sample filter \(\sigma_u\): 90 units from 30 datasets, 55 human and 35 mouse. From case–control studies (Alzheimer's, Parkinson's and Huntington's disease, schizophrenia, alcohol use disorder, smoking) only control donors enter a unit, and human units keep donors aged 18 years or older. The one exception is the Huntington's disease allelic series of knock-in mice (Langfelder 2016), used with all seven genotypes and genotype as a covariate.</p>
-      <p class="i-zh">数据集（队列）\(c\) 是一项已发表的研究；一个队列可包含多个单元（例如 GTEx 的 13 个脑区），同一队列的单元共享供体或实验方案。单元是某一队列的一个组织、脑区或细胞类别，经样本筛选 \(\sigma_u\) 后至少有 8 个供体：共 30 个数据集、90 个单元，其中人 55 个、小鼠 35 个。病例–对照研究（阿尔茨海默病、帕金森病、亨廷顿病、精神分裂症、酒精使用障碍、吸烟）只使用对照供体；人类单元只保留 18 岁及以上的供体。唯一的例外是亨廷顿病敲入小鼠等位基因系列（Langfelder 2016）：七种基因型全部使用，基因型作为协变量。</p>
-      <div class="formula">$$C_{g,dk}=\sum_{i\in\mathcal N_{dk}}c_{gi}$$</div>
-      <p class="i-en">Single-nucleus data enter as pseudobulk: for donor \(d\) and cell class \(k\), the counts \(c_{gi}\) of its nuclei \(\mathcal N_{dk}\) are summed (profiles with at least 20 nuclei in Sloan 2026 and Zemke 2026, 10 in Handsaker 2025 and Mesecar 2026; Hahn 2023, Mätlik 2024 and Green 2025 deposited pseudobulk counts), so that the donor, not the nucleus, is the replicate. The neuronal classes of a dataset form its neuron unit.</p>
-      <p class="i-zh">单核数据以伪批量（pseudobulk）进入：对供体 \(d\) 与细胞类别 \(k\)，把其细胞核 \(\mathcal N_{dk}\) 的计数 \(c_{gi}\) 相加（Sloan 2026 与 Zemke 2026 要求每个谱至少 20 个细胞核，Handsaker 2025 与 Mesecar 2026 至少 10 个；Hahn 2023、Mätlik 2024 与 Green 2025 使用作者提供的伪批量计数），使供体而非细胞核成为重复单位。数据集的神经元类别合起来构成其神经元单元。</p>
+      <p class="i-en">A dataset (cohort) \(c\) is one published study; several units can belong to one cohort (for example the 13 GTEx regions), and units of one cohort share donors or protocols. A unit is one tissue, region or cell class of one cohort with at least 8 donors after the sample filter \(\sigma_u\): 90 units from 30 datasets, 55 human and 35 mouse. From case–control studies (Alzheimer's, Parkinson's and Huntington's disease, schizophrenia, alcohol use disorder, smoking) only control donors enter a unit. The one exception is the Huntington's disease allelic series of knock-in mice (Langfelder 2016), used with all seven genotypes and genotype as a covariate. The youngest human donor of any unit is 17.4 years old (Markunas 2020 nucleus accumbens); every other human unit starts at 18 years or later.</p>
+      <p class="i-zh">数据集（队列）\(c\) 是一项已发表的研究；一个队列可包含多个单元（例如 GTEx 的 13 个脑区），同一队列的单元共享供体或实验方案。单元是某一队列的一个组织、脑区或细胞类别，经样本筛选 \(\sigma_u\) 后至少有 8 个供体：共 30 个数据集、90 个单元，其中人 55 个、小鼠 35 个。病例–对照研究（阿尔茨海默病、帕金森病、亨廷顿病、精神分裂症、酒精使用障碍、吸烟）只使用对照供体。唯一的例外是亨廷顿病敲入小鼠等位基因系列（Langfelder 2016）：七种基因型全部使用，基因型作为协变量。人类单元中最年轻的供体为 17.4 岁（Markunas 2020 伏隔核），其余人类单元均从 18 岁或更晚开始。</p>
+      <div class="formula">$$C_{g,sk}=\sum_{i\in\mathcal N_{sk}}c_{gi}$$</div>
+      <p class="i-en">Single-nucleus data enter as pseudobulk: for donor \(s\) and cell class \(k\), the counts \(c_{gi}\) of its nuclei \(\mathcal N_{sk}\) are summed (profiles with at least 20 nuclei in Sloan 2026 and Zemke 2026, 10 in Handsaker 2025 and Mesecar 2026; Hahn 2023, Mätlik 2024 and Green 2025 deposited pseudobulk counts), so that the donor, not the nucleus, is the replicate. The neuronal classes of a dataset form its neuron unit.</p>
+      <p class="i-zh">单核数据以伪批量（pseudobulk）进入：对供体 \(s\) 与细胞类别 \(k\)，把其细胞核 \(\mathcal N_{sk}\) 的计数 \(c_{gi}\) 相加（Sloan 2026 与 Zemke 2026 要求每个谱至少 20 个细胞核，Handsaker 2025 与 Mesecar 2026 至少 10 个；Hahn 2023、Mätlik 2024 与 Green 2025 使用作者提供的伪批量计数），使供体而非细胞核成为重复单位。数据集的神经元类别合起来构成其神经元单元。</p>
     </article>
 
     <article class="card pad def" id="def-abundance">
       <h3>2 · <span class="i-en">Abundance and molecular layers</span><span class="i-zh">丰度与分子层</span></h3>
       <div class="formula">$$y_{gs}=\begin{cases}\log_2\ \text{protein abundance, median-normalized} &amp; \ell\in\{\mathrm P,\mathrm A\}\\[2pt] \log_2\ \text{counts per million (TMM)} &amp; \ell=\mathrm R\end{cases}$$</div>
-      <div class="formula">$$\delta_s=\operatorname*{median}_{p\in D}\Bigl(x_{ps}-\operatorname*{median}_{s'}x_{ps'}\Bigr),\qquad y_{ps}=x_{ps}-\delta_s$$</div>
-      <p class="i-en"><b>Protein.</b> Log2 intensities or ratios as processed by the original study, \(x_{ps}\); each sample is shifted by \(\delta_s\), computed on the proteins \(D\) detected in at least 70% of the samples, which removes loading differences without changing the age contrast. Each gene keeps at most one protein group.</p>
-      <p class="i-zh"><b>蛋白。</b>采用原研究处理后的 log2 强度或比值 \(x_{ps}\)；每个样本整体平移 \(\delta_s\)，\(\delta_s\) 在至少 70% 样本中检出的蛋白 \(D\) 上计算，从而消除上样量差异而不改变年龄对比。每个基因至多保留一个蛋白组。</p>
+      <div class="formula">$$\lambda_s=\operatorname*{median}_{p\in D}\Bigl(x_{ps}-\operatorname*{median}_{s'}x_{ps'}\Bigr),\qquad y_{ps}=x_{ps}-\lambda_s$$</div>
+      <p class="i-en"><b>Protein.</b> Log2 intensities or ratios as processed by the original study, \(x_{ps}\); each sample is shifted by \(\lambda_s\), computed on the proteins \(D\) detected in at least 70% of the samples, which removes loading differences without changing the age contrast. Each gene keeps at most one protein group.</p>
+      <p class="i-zh"><b>蛋白。</b>采用原研究处理后的 log2 强度或比值 \(x_{ps}\)；每个样本整体平移 \(\lambda_s\)，\(\lambda_s\) 在至少 70% 样本中检出的蛋白 \(D\) 上计算，从而消除上样量差异而不改变年龄对比。每个基因至多保留一个蛋白组。</p>
       <div class="formula">$$y_{gs}=\log_2\frac{c_{gs}+\pi_s}{N^{\mathrm{eff}}_s+2\pi_s}\times10^{6},\qquad \pi_s=0.5\,\frac{N^{\mathrm{eff}}_s}{\overline{N^{\mathrm{eff}}}}$$</div>
       <p class="i-en"><b>RNA.</b> Counts \(c_{gs}\) with the effective library sizes \(N^{\mathrm{eff}}_s\) of edgeR TMM normalization and a prior count \(\pi_s\) (edgeR <code>cpm(log = TRUE, prior.count = 0.5)</code>); bulk and pseudobulk counts follow the same rule. Three cohorts are used as deposited: Takasugi 2024 (normalized counts, scaled by library size only), the Luo 2024 RNA and the Ramasamy 2014 microarrays (log2 values).</p>
       <p class="i-zh"><b>RNA。</b>计数 \(c_{gs}\) 使用 edgeR TMM 标准化的有效文库大小 \(N^{\mathrm{eff}}_s\) 与先验计数 \(\pi_s\)（即 edgeR 的 <code>cpm(log = TRUE, prior.count = 0.5)</code>）；批量与伪批量计数规则相同。三个队列直接使用原始数值：Takasugi 2024（已标准化计数，仅按文库大小缩放）、Luo 2024 的 RNA 与 Ramasamy 2014 的芯片（log2 值）。</p>
@@ -174,8 +174,8 @@
       <h3>3 · <span class="i-en">Young and old: age coding</span><span class="i-zh">年轻与衰老：年龄编码</span></h3>
       <h4><span class="i-en">Human units: per decade</span><span class="i-zh">人类单元：每十年</span></h4>
       <div class="formula">$$a_s=\frac{\text{age}_s}{10}$$</div>
-      <p class="i-en">\(\text{age}_s\) is the age at death in years (GTEx: the midpoint of the 10-year age bracket). Age is continuous, so human units have no young or old group: the age effect is the change per 10 years across the adult ages of the unit (18 years or older; the age range of every unit is on the Cohorts page).</p>
-      <p class="i-zh">\(\text{age}_s\) 为死亡年龄（岁；GTEx 取 10 岁年龄段的中点）。年龄是连续变量，所以人类单元不划分年轻组与衰老组：年龄效应是在单元的成年年龄范围内（18 岁及以上；各单元年龄范围见队列页）每 10 岁的变化。</p>
+      <p class="i-en">\(\text{age}_s\) is the age at death in years (GTEx: the midpoint of the 10-year age bracket). Age is continuous, so human units have no young or old group: the age effect is the change per 10 years across the ages of the unit (the age range of every unit is on the Cohorts page).</p>
+      <p class="i-zh">\(\text{age}_s\) 为死亡年龄（岁；GTEx 取 10 岁年龄段的中点）。年龄是连续变量，所以人类单元不划分年轻组与衰老组：年龄效应是在单元的年龄范围内（各单元年龄范围见队列页）每 10 岁的变化。</p>
       <h4><span class="i-en">Mouse units: late against early age group</span><span class="i-zh">小鼠单元：晚期组对早期组</span></h4>
       <div class="formula">$$a_s=\mathbf 1\bigl[\text{age}_s\in\mathcal L_u\bigr],\qquad \mathrm{mid}_{ks}=\mathbf 1\bigl[\text{age}_s=k\bigr]\ \ (k\in\mathcal M_u)$$</div>
       <div class="formula">$$\beta=\frac{1}{|\mathcal L_u|}\sum_{k\in\mathcal L_u}\mu_k-\frac{1}{|\mathcal E_u|}\sum_{k\in\mathcal E_u}\mu_k$$</div>
@@ -202,17 +202,17 @@
 
     <article class="card pad def" id="def-model">
       <h3>4 · <span class="i-en">Per-gene age model</span><span class="i-zh">逐基因年龄模型</span></h3>
-      <div class="formula">$$y_{gs}=\mu_g+\sum_j\delta_{gj}\,\tilde z_{js}+\sum_j\theta_{gj}\,d_{js}+\tilde P_{gs}^{\top}\eta_g+\beta_g\,a_s+\varepsilon_{gs},\qquad \tilde z_{js}=\frac{z_{js}-\bar z_j}{\operatorname{sd}(z_j)}$$</div>
-      <p class="i-en">One ordinary least-squares regression per gene and unit layer, on the samples in which the gene was measured. The covariates are those of the original study (listed per unit on the Cohorts page): numeric ones z-scored (\(\tilde z\)), categorical ones as dummy columns (\(d\)). Where a unit lists them, cell-type indices (the mean z-score of the marker genes of neurons, astrocytes, oligodendrocytes and microglia) absorb differences in tissue composition. Hidden factors \(\tilde P\) (one in Langfelder 2016, two in Luo 2024) are the leading principal components of the residuals after the design, made orthogonal to age, so they cannot absorb the age effect. In Luo 2024 the TMT batch was removed first with a random-effect model that keeps age, the gene's mRNA and the covariates as fixed effects.</p>
-      <p class="i-zh">每个基因在每个单元层做一次普通最小二乘回归，只用测到该基因的样本。协变量沿用原研究（各单元的协变量见队列页）：数值协变量做 z 标准化（\(\tilde z\)），分类协变量用哑变量（\(d\)）。单元列有细胞类型指数（神经元、星形胶质细胞、少突胶质细胞与小胶质细胞标志基因 z 分数的平均）时，用它吸收组织构成的差异。隐藏因子 \(\tilde P\)（Langfelder 2016 为 1 个，Luo 2024 为 2 个）是去除设计矩阵后残差的前几个主成分，并与年龄正交，因此不能吸收年龄效应。Luo 2024 先用随机效应模型去除 TMT 批次，模型中年龄、该基因的 mRNA 与协变量为固定效应。</p>
-      <div class="formula">$$\hat\beta=(F_g^{\top}F_g)^{-1}F_g^{\top}y_g,\qquad d_g=n_g-\operatorname{rank}F_g,\qquad s_g^2=\frac{\lVert y_g-F_g\hat\beta\rVert^2}{d_g},\qquad u_g=\bigl[(F_g^{\top}F_g)^{-1}\bigr]_{a,a}$$</div>
+      <div class="formula">$$y_{gs}=\alpha_g+\sum_j\delta_{gj}\,\tilde z_{js}+\sum_j\theta_{gj}\,b_{js}+\tilde P_{gs}^{\top}\eta_g+\beta_g\,a_s+\varepsilon_{gs},\qquad \tilde z_{js}=\frac{z_{js}-\bar z_j}{\operatorname{sd}(z_j)}$$</div>
+      <p class="i-en">One ordinary least-squares regression per gene and unit layer, on the samples in which the gene was measured. The covariates are those of the original study (listed per unit on the Cohorts page): numeric ones z-scored (\(\tilde z\)), categorical ones as dummy columns (\(b\)). Where a unit lists them (<code>cell_*</code> on the Cohorts page), cell-type indices, each the mean z-score of the marker genes of one cell class (neurons, astrocytes, oligodendrocytes, microglia or vascular cells; the classes of a unit are those it lists), absorb differences in tissue composition. Hidden factors \(\tilde P\) (one in Langfelder 2016, two in Luo 2024) are the leading principal components of the mRNA residuals of the unit after its covariates and age, shared by its protein and mRNA layers; in each gene's fit they are made orthogonal to the gene's own design, so they cannot absorb the age effect. In Luo 2024 the TMT batch was removed first with a random-effect model that keeps age, the gene's mRNA and the covariates as fixed effects.</p>
+      <p class="i-zh">每个基因在每个单元层做一次普通最小二乘回归，只用测到该基因的样本。协变量沿用原研究（各单元的协变量见队列页）：数值协变量做 z 标准化（\(\tilde z\)），分类协变量用哑变量（\(b\)）。单元列有细胞类型指数（队列页中的 <code>cell_*</code>）时，用它吸收组织构成的差异；每个指数是一类细胞（神经元、星形胶质细胞、少突胶质细胞、小胶质细胞或血管细胞）标志基因 z 分数的平均，各单元使用的类别以其所列为准。隐藏因子 \(\tilde P\)（Langfelder 2016 为 1 个，Luo 2024 为 2 个）是该单元 mRNA 在去除协变量与年龄后的残差的前几个主成分，由其蛋白层与 mRNA 层共用；在每个基因的拟合中，它们与该基因自身的设计矩阵正交，因此不能吸收年龄效应。Luo 2024 先用随机效应模型去除 TMT 批次，模型中年龄、该基因的 mRNA 与协变量为固定效应。</p>
+      <div class="formula">$$\hat\beta=(F_g^{\top}F_g)^{-1}F_g^{\top}y_g,\qquad d_g=n_g-\operatorname{rank}F_g,\qquad s_g^2=\frac{\lVert y_g-F_g\hat\beta\rVert^2}{d_g},\qquad v_g=\bigl[(F_g^{\top}F_g)^{-1}\bigr]_{a,a}$$</div>
       <p class="i-en">\(F_g\) is the design of gene \(g\) with the age column \(a\) last; the age effect \(\hat\beta_g\) is the log2 change per age unit. A gene is not estimated when \(F_g\) is rank-deficient or fewer than 3 residual degrees of freedom remain.</p>
       <p class="i-zh">\(F_g\) 为基因 \(g\) 的设计矩阵，年龄列 \(a\) 排在最后；年龄效应 \(\hat\beta_g\) 是每个年龄单位的 log2 变化。若 \(F_g\) 秩亏或残差自由度少于 3，则该基因不作估计。</p>
     </article>
 
     <article class="card pad def" id="def-test">
       <h3>5 · <span class="i-en">Moderated t, P value, confidence interval and q value</span><span class="i-zh">调节 t、P 值、置信区间与 q 值</span></h3>
-      <div class="formula">$$\tilde s_g^2=\frac{d_{0g}\,s_0^2+d_g\,s_g^2}{d_{0g}+d_g},\qquad \widetilde{\mathrm{se}}_g=\sqrt{\tilde s_g^2\,u_g},\qquad \tilde t_g=\frac{\hat\beta_g}{\widetilde{\mathrm{se}}_g},\qquad \tilde d_g=\min\Bigl(d_g+d_{0g},\ \textstyle\sum_{g'}d_{g'}\Bigr)$$</div>
+      <div class="formula">$$\tilde s_g^2=\frac{d_{0g}\,s_0^2+d_g\,s_g^2}{d_{0g}+d_g},\qquad \widetilde{\mathrm{se}}_g=\sqrt{\tilde s_g^2\,v_g},\qquad \tilde t_g=\frac{\hat\beta_g}{\widetilde{\mathrm{se}}_g},\qquad \tilde d_g=\min\Bigl(d_g+d_{0g},\ \textstyle\sum_{g'}d_{g'}\Bigr)$$</div>
       <p class="i-en">Residual variances are moderated with limma (<code>squeezeVar</code>, robust): the prior \((s_0^2,d_0)\) is estimated over all genes of the unit layer and each variance is pulled toward the typical one, which stabilizes the tests in units with few donors. Only the variance is moderated; the estimate \(\hat\beta_g\) is that of the per-gene fit.</p>
       <p class="i-zh">残差方差用 limma（<code>squeezeVar</code>，稳健）调节：先验 \((s_0^2,d_0)\) 在该单元层的全部基因上估计，每个方差被拉向典型方差，使供体少的单元中的检验更稳定。只调节方差；估计值 \(\hat\beta_g\) 仍取逐基因拟合的结果。</p>
       <div class="formula">$$p_g=2\Pr\bigl(T_{\tilde d_g}&gt;|\tilde t_g|\bigr),\qquad \mathrm{CI}_{95}=\hat\beta_g\pm t_{0.975,\,\tilde d_g}\,\widetilde{\mathrm{se}}_g$$</div>
@@ -230,7 +230,7 @@
 
     <article class="card pad def" id="def-adjusted">
       <h3>7 · <span class="i-en">mRNA-adjusted protein</span><span class="i-zh">mRNA 校正蛋白</span></h3>
-      <div class="formula">$$y^{\mathrm P}_{gs}=\mu_g+x_s^{\top}\delta_g+\gamma_g\,m_{gs}+\beta^{\mathrm A}_g\,a_s+\tilde P_{gs}^{\top}\eta_g+\varepsilon_{gs}$$</div>
+      <div class="formula">$$y^{\mathrm P}_{gs}=\alpha_g+x_s^{\top}\delta_g+\gamma_g\,m_{gs}+\beta^{\mathrm A}_g\,a_s+\tilde P_{gs}^{\top}\eta_g+\varepsilon_{gs}$$</div>
       <p class="i-en">In the three units with protein and RNA from the same donors or animals (Takasugi 2024, Langfelder 2016, Luo 2024), the protein model also contains the gene's own log2 mRNA \(m_{gs}\) of the same sample. \(\beta^{\mathrm A}_g\) is the age change of the protein that is not accounted for by the age change of its mRNA, a post-transcriptional component; it is tested as in section 5.</p>
       <p class="i-zh">在蛋白与 RNA 来自同一供体或同一动物的三个单元（Takasugi 2024、Langfelder 2016、Luo 2024）中，蛋白模型还加入同一样本中该基因自身的 log2 mRNA \(m_{gs}\)。\(\beta^{\mathrm A}_g\) 是蛋白年龄变化中不能由其 mRNA 年龄变化解释的部分，即转录后成分；检验方法同第 5 节。</p>
     </article>
@@ -292,7 +292,7 @@
       </div>
       <div class="card pad">
         <h3><span class="i-en">Citation</span><span class="i-zh">引用</span></h3>
-        <p id="citation">m<sup>6</sup>A load marks proteins that decline in the aging mammalian brain. <i>Genome Biology</i>, <span class="i-en">in preparation</span><span class="i-zh">准备中</span>.</p>
+        <p>m<sup>6</sup>A load marks proteins that decline in the ageing mammalian brain. <i>Genome Biology</i>, <span class="i-en">in preparation</span><span class="i-zh">准备中</span>.</p>
         <p class="muted i-en">Please also cite the original study of every dataset you use; the references below are numbered as on the gene and cohort pages. The definitions of every quantity are on the Definitions page.</p>
         <p class="muted i-zh">使用某个数据集时，请同时引用其原始研究；下列参考文献的编号与基因页和队列页一致。各个量的定义见"计算标准"页。</p>
       </div>

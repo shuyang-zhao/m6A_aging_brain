@@ -122,8 +122,6 @@ main.wrap { padding-top: 28px; padding-bottom: 24px; }
 .stat .v { font-size: 22px; font-weight: 600; line-height: 1.2; }
 .stat .k { color: var(--ink-3); font-size: 12px; }
 .stat .of { color: var(--ink-3); font-size: 14px; font-weight: 400; }
-.down { color: var(--protein); }
-.up { color: var(--sn); }
 .row-label { color: var(--ink-3); font-size: 12px; margin: 10px 0 6px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip {
@@ -213,8 +211,6 @@ table.data td.unit { min-width: 150px; max-width: 220px; }
 .summary b { color: var(--ink); font-weight: 600; }
 
 /* sources */
-.prose p { max-width: 900px; color: var(--ink-2); }
-.prose b { color: var(--ink); font-weight: 600; }
 .key { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; }
 .key.P, .layer-key.P { background: var(--protein); }
 .key.A, .layer-key.A { background: var(--adjusted); }
