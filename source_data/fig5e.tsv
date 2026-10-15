@@ -1,0 +1,15 @@
+species	arm	regulator	pctile_signed	p_control_two_sided
+human	Output	YTHDF	47.62	0.5312
+human	Output	YTHDF3	63.77	0.7
+human	Translation	YTHDF	93.26	0.2
+human	Translation	YTHDF3	97.75	0.1111
+mouse	Output	YTHDF	95.18	0.07143
+mouse	Output	YTHDF3	96.39	0.05952
+mouse	Stability	YTHDF	98.89	0.02198
+mouse	Stability	YTHDF3	97.78	0.03297
+mouse	Translation	YTHDF	51.16	0.9425
+mouse	Translation	YTHDF3	46.51	0.8851
+human	Stability	YTHDF	35.56	0.5055
+human	Stability	YTHDF3	8.889	0.0989
+mouse	Stability, wild-type mice	YTHDF	100	0.01099
+mouse	Stability, wild-type mice	YTHDF3	100	0.02198

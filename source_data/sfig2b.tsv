@@ -1,0 +1,16 @@
+hippocampus cyto	hippocampus syn	cortex scDART	neuron DART	genes
+True	True	False	False	4835
+True	True	True	False	1759
+True	True	True	True	1336
+True	True	False	True	1021
+True	False	False	False	715
+False	True	False	False	405
+False	False	False	True	243
+False	False	True	False	192
+True	False	True	False	80
+True	False	False	True	78
+False	False	True	True	77
+False	True	True	False	55
+False	True	False	True	54
+False	True	True	True	37
+True	False	True	True	22

@@ -1,0 +1,41 @@
+row	modification	z	q
+Human striatum mRNA	m6A	-1.301	0.773
+Human striatum mRNA	Ψ	-0.1487	0.8818
+Human striatum mRNA	m5C	0.1771	0.8818
+Human striatum mRNA	m7G	0.4183	0.8818
+Human cortex mRNA	m6A	-1.126	0.5206
+Human cortex mRNA	Ψ	-0.3485	0.9699
+Human cortex mRNA	m5C	1.864	0.2492
+Human cortex mRNA	m7G	-0.0006088	0.9995
+Human hippocampus mRNA	m6A	-0.9232	0.3963
+Human hippocampus mRNA	Ψ	0.8483	0.3963
+Human hippocampus mRNA	m5C	1.557	0.3963
+Human hippocampus mRNA	m7G	1.206	0.3963
+Human cerebellum mRNA	m6A	0.6159	0.6617
+Human cerebellum mRNA	Ψ	-0.4376	0.6617
+Human cerebellum mRNA	m5C	3.187	0.005757
+Human cerebellum mRNA	m7G	-0.6422	0.6617
+Human neuronal mRNA	m6A	-3.377	0.002928
+Human neuronal mRNA	Ψ	-2.114	0.04599
+Human neuronal mRNA	m5C	-2.46	0.0278
+Human neuronal mRNA	m7G	-1.949	0.05132
+Human protein	m6A	0.5631	0.5733
+Human protein	Ψ	1.678	0.3734
+Human protein	m5C	0.9485	0.4572
+Human protein	m7G	1.12	0.4572
+Mouse mRNA	m6A	-1.837	0.2649
+Mouse mRNA	Ψ	1.397	0.3249
+Mouse mRNA	m5C	-0.1537	0.8778
+Mouse mRNA	m7G	-0.8023	0.5632
+Mouse neuronal mRNA	m6A	-1.591	0.1783
+Mouse neuronal mRNA	Ψ	-1.696	0.1783
+Mouse neuronal mRNA	m5C	-1.087	0.2769
+Mouse neuronal mRNA	m7G	-1.499	0.1783
+Mouse protein	m6A	-5.112	1.273e-06
+Mouse protein	Ψ	-0.9497	0.3422
+Mouse protein	m5C	-2.682	0.01465
+Mouse protein	m7G	-2.251	0.03247
+Mouse protein given mRNA	m6A	-2.411	0.06365
+Mouse protein given mRNA	Ψ	0.2599	0.7949
+Mouse protein given mRNA	m5C	-0.8565	0.6321
+Mouse protein given mRNA	m7G	-0.7158	0.6321

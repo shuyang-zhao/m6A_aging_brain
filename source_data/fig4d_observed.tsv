@@ -1,0 +1,5 @@
+panel	n_draws	effect_pct	p	p_permutation
+Human striatum mRNA	1000	-0.1698	7.48e-07	0.002997
+Human protein	1000	-0.2024	0.001444	0.01598
+Mouse protein	1000	-1.499	9.755e-11	0.000999
+Mouse protein given mRNA	1000	-0.8079	7.325e-12	0.000999

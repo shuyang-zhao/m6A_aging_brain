@@ -1,0 +1,33 @@
+unit	arm	regulator	fraction_pct	ci_low_pct	ci_high_pct
+Takasugi 2024	Translation	YTHDF	2.709	-853	490.4
+Takasugi 2024	Translation	YTHDF3	-0.2167	-287.4	812.2
+Langfelder 2016	Translation	YTHDF	2.319	-6.754	11.05
+Langfelder 2016	Translation	YTHDF3	5.143	-1.011	14.41
+Takasugi 2024	Output	YTHDF	0.08711	-296.6	216.4
+Takasugi 2024	Output	YTHDF3	-0.3717	-106.6	195.1
+Langfelder 2016	Output	YTHDF	0.1338	-4.493	4.904
+Langfelder 2016	Output	YTHDF3	2.2	-1.803	8.26
+Lu 2025 brainstem	Output	YTHDF	-18.89	-85.08	113.6
+Lu 2025 brainstem	Output	YTHDF3	-9.133	-135.3	136.7
+Lu 2025 cerebellum	Output	YTHDF	32.18	-16.47	116.2
+Lu 2025 cerebellum	Output	YTHDF3	60.1	-41.08	145.1
+Lu 2025 hippocampus	Output	YTHDF	16.8	-159.3	268.8
+Lu 2025 hippocampus	Output	YTHDF3	-6.351	-200.1	290.8
+Lu 2025 olfactory bulb	Output	YTHDF	31.65	-137.3	221.2
+Lu 2025 olfactory bulb	Output	YTHDF3	34.17	-121.8	278.6
+Tsumagari 2023 cortex	Output	YTHDF	12.02	-13.02	61.55
+Tsumagari 2023 cortex	Output	YTHDF3	30.08	-0.1504	86.3
+Tsumagari 2023 hippocampus	Output	YTHDF	68.64	-16.44	336.3
+Tsumagari 2023 hippocampus	Output	YTHDF3	102.6	-38.61	383.5
+Wang 2025 brain	Output	YTHDF	0.4145	-67.62	26.73
+Wang 2025 brain	Output	YTHDF3	1.957	-41.27	24.92
+Keele 2025 cortex	Output	YTHDF	69.64	-23.8	292.1
+Keele 2025 cortex	Output	YTHDF3	47.78	-216.1	668.2
+Keele 2025 hippocampus	Output	YTHDF	8.987	-82.81	120.1
+Keele 2025 hippocampus	Output	YTHDF3	11.03	-51.85	125.3
+Keele 2025 striatum	Output	YTHDF	-11.62	-75.35	170
+Keele 2025 striatum	Output	YTHDF3	-2.044	-45.82	94.17
+Marino 2025 whole brain	Output	YTHDF	11.56	-5.399	31.18
+Marino 2025 whole brain	Output	YTHDF3	17.75	-3.739	42.68
+Langfelder 2016 RNA	Stability	YTHDF	11.17	1.885	22.43
+Langfelder 2016 RNA	Stability	YTHDF3	16.49	7.888	27.51

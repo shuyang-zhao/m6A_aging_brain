@@ -1,0 +1,5 @@
+species	sites	n_units	effect	ci_low	ci_high
+human	0	22	0.563	0.04429	1.082
+human	1	22	-0.1431	-0.51	0.2238
+human	2-3	22	-0.3308	-0.8537	0.1922
+human	>=4	22	-0.7364	-1.473	-0.0001959

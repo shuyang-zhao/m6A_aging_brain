@@ -1,0 +1,9 @@
+target	sites	n	mean	ci_low	ci_high
+Mouse protein	1	981	-0.06582	-0.07072	-0.06093
+Mouse protein	2-3	1456	-0.1436	-0.1511	-0.136
+Mouse protein	4-7	1924	-0.2271	-0.2363	-0.218
+Mouse protein	>=8	4130	-0.4448	-0.4571	-0.4325
+Human protein	1	2988	-0.03342	-0.03464	-0.0322
+Human protein	2-3	2067	-0.06882	-0.07107	-0.06656
+Human protein	4-7	452	-0.1168	-0.1234	-0.1101
+Human protein	>=8	20	-0.1327	-0.1638	-0.1016

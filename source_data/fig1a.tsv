@@ -1,0 +1,34 @@
+group	layer	dataset	n_units	donors	age_min	age_max	age_unit
+Mouse protein	Protein	Takasugi 2024	1	16	6	30	months
+Mouse RNA	Bulk RNA	Takasugi 2024	1	16	6	30	months
+Mouse protein	Protein	Langfelder 2016	1	109	2	10	months
+Mouse RNA	Bulk RNA	Langfelder 2016	2	109	2	10	months
+Human protein	Protein	Luo 2024	1	193	20	90	years
+Human bulk RNA	Bulk RNA	Luo 2024	1	193	20	90	years
+Human bulk RNA	Bulk RNA	Benjamin 2022	1	231	18.05	89.91	years
+Human protein	Protein	Koopmans 2026	2	46	18	75	years
+Human protein	Protein	Eggers 2025	1	34	18	96	years
+Human protein	Protein	Anderton 2026	1	52	20	87	years
+Mouse protein	Protein	Lu 2025	4	27	4	24	months
+Mouse protein	Protein	Tsumagari 2023	2	18	3	24	months
+Mouse protein	Protein	Wang 2025	1	40	4	20	months
+Mouse protein	Protein	Keele 2025	3	18	3	20	months
+Mouse protein	Protein	Marino 2025	1	10	3.5	33	months
+Human bulk RNA	Bulk RNA	Collado-Torres 2019	2	238	18.04	84.16	years
+Human bulk RNA	Bulk RNA	GTEx	13	300	24.5	74.5	years
+Human bulk RNA	Bulk RNA	Markunas 2020	1	170	17.37	71.77	years
+Human single-nucleus RNA	Single-nucleus RNA	Sloan 2026	1	36	27	89	years
+Human single-nucleus RNA	Single-nucleus RNA	Zemke 2026	1	37	20	95	years
+Human single-nucleus RNA	Single-nucleus RNA	Handsaker 2025	1	53	27	90	years
+Human single-nucleus RNA	Single-nucleus RNA	Mätlik 2024	1	8	39	67	years
+Mouse RNA	Single-nucleus RNA	Hahn 2023 nuclei	2	8	3	21	months
+Human single-nucleus RNA	Single-nucleus RNA	Green 2025	1	81	24	82	years
+Human single-nucleus RNA	Single-nucleus RNA	Mesecar 2026	1	12	21.5	85.2	years
+Human protein	Protein	Lee 2023	1	74	66	104	years
+Human protein	Protein	Ping 2020	1	10	45	78	years
+Human protein	Protein	Teng 2023	6	16	32	69	years
+Human protein	Protein	Merrihew 2023	4	10	73	95	years
+Human protein	Protein	Blumenreich 2024	5	21	43	95	years
+Mouse RNA	Bulk RNA	Hahn 2023 bulk	15	51	3	21	months
+Mouse RNA	Bulk RNA	Shavlakadze 2026	4	104	6	27	months
+Human bulk RNA	Bulk RNA	Ramasamy 2014	10	128	20	102	years

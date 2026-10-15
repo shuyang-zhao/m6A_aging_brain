@@ -1,0 +1,13 @@
+species	arm	regulator	estimate	pctile_signed
+human	Output	YTHDF	-0.0219	47.62
+human	Output	YTHDF3	-0.02407	63.77
+human	Translation	YTHDF	0.8049	93.26
+human	Translation	YTHDF3	0.8837	97.75
+mouse	Output	YTHDF	0.08972	95.18
+mouse	Output	YTHDF3	0.1028	96.39
+mouse	Stability	YTHDF	0.4997	98.89
+mouse	Stability	YTHDF3	0.4063	97.78
+mouse	Translation	YTHDF	-0.001605	51.16
+mouse	Translation	YTHDF3	-0.005243	46.51
+human	Stability	YTHDF	-0.3344	35.56
+human	Stability	YTHDF3	-0.6389	8.889

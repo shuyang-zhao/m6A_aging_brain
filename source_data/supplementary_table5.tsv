@@ -1,0 +1,1011 @@
+context	layer	regulator	n_cohorts	effect_pct	effect_pct_ci_low	effect_pct_ci_high	p	q	cohorts
+human_cerebellum	mRNA	YBX2	1	0.9064	-1.249	3.109	0.4128	0.7375	ramasamy2014_gse46706
+human_cerebellum	mRNA	RPUSD1	2	2.284	0.8704	3.717	0.00147	0.03564	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN2	2	1.108	-0.3825	2.621	0.1459	0.5442	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL1	2	2.255	0.2466	4.303	0.02757	0.2038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YTHDC2	2	-0.4084	-2.251	1.469	0.6675	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YBX3	2	0.6803	-1.575	2.987	0.5575	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YBX1	2	-1.089	-2.741	0.5902	0.2023	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT11	2	0.006929	-2.221	2.286	0.9952	0.9952	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	THUMPD1	2	1.391	-0.8353	3.668	0.2226	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	BUD23	2	0.8989	-0.03612	1.843	0.05957	0.321	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	HSD17B10	2	0.2883	-0.7764	1.364	0.597	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	IGF2BP2	2	-0.9473	-3.28	1.441	0.4337	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YTHDC1	2	0.2705	-0.8952	1.45	0.6508	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL2A	2	-0.1439	-1.667	1.403	0.8543	0.8995	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT6	2	0.3079	-1.081	1.717	0.6657	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUS7	2	0.8157	-1.015	2.68	0.3849	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALKBH5	2	1.259	0.1365	2.395	0.02782	0.2038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	HNRNPC	1	-0.7476	-2.701	1.246	0.4595	0.7428	gtexv10_phs000424
+human_cerebellum	mRNA	TRMT2A	2	2.279	1.178	3.392	4.503e-05	0.002184	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALKBH1	2	0.122	-1.258	1.522	0.8633	0.8995	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PCIF1	2	1.956	-0.2687	4.231	0.08525	0.3938	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL4	2	0.5711	-1.053	2.222	0.493	0.7839	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RNMT	2	0.6808	-1.577	2.991	0.5577	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	FMR1	2	-0.8933	-2.392	0.6284	0.2484	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT1	2	0.9165	-0.3504	2.2	0.1569	0.5638	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	CBLL1	2	0.6374	-0.5336	1.822	0.2873	0.6636	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRDMT1	2	-0.18	-2.186	1.867	0.8619	0.8995	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	GAR1	2	1.118	-0.5064	2.77	0.1784	0.618	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUS3	2	0.4092	-1.258	2.105	0.6327	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NOP2	2	2.556	1.225	3.904	0.0001525	0.004931	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	FXR1	2	-1.037	-2.763	0.7185	0.2452	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN4	2	1.549	0.3068	2.806	0.01437	0.1618	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT1L	2	0.0255	-1.567	1.644	0.9752	0.9853	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT13	2	-0.8315	-2.763	1.138	0.4053	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	HNRNPA2B1	2	-0.8795	-2.28	0.5414	0.2238	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ZC3H13	2	0.3624	-1.109	1.856	0.6312	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL8	2	-1.25	-2.859	0.3848	0.1332	0.5168	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALKBH7	2	0.4442	-1.36	2.282	0.6317	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT5	2	0.805	-0.8667	2.505	0.3474	0.7169	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL16	2	1.862	0.647	3.091	0.00258	0.05005	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	FXR2	2	0.4556	-1.736	2.696	0.6863	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUS7L	2	0.1269	-1.834	2.127	0.9	0.919	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN5	2	1.398	-0.08605	2.905	0.06495	0.3316	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	DKC1	2	-0.4772	-1.569	0.6271	0.3955	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RRP8	2	0.09781	-1.082	1.292	0.8717	0.8995	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NAT10	2	1.102	-0.03693	2.253	0.05795	0.321	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	IGF2BP3	1	-0.5758	-2.388	1.27	0.5384	0.7925	ramasamy2014_gse46706
+human_cerebellum	mRNA	CMTR1	2	0.5394	-0.7852	1.882	0.4266	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALKBH8	2	0.289	-1.403	2.01	0.7396	0.8342	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL5	2	-0.7254	-2.139	0.7082	0.3196	0.7046	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	FTO	2	1.369	-0.1789	2.941	0.08328	0.3938	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT10A	2	-1.864	-3.464	-0.2367	0.02493	0.2038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL14	2	0.3466	-1.27	1.989	0.6762	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NHP2	2	-1.869	-4.634	0.9752	0.1956	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	WTAP	2	0.2046	-0.9158	1.338	0.7216	0.8235	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RBMX	2	-0.8754	-2.308	0.5781	0.2365	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YTHDF1	2	0.8328	-0.4267	2.108	0.1959	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT44	2	0.7637	-1.191	2.757	0.4464	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RPUSD3	2	-0.7342	-1.987	0.5346	0.2554	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	IGF2BP1	1	-0.3297	-2.921	2.33	0.8059	0.8783	ramasamy2014_gse46706
+human_cerebellum	mRNA	WDR4	2	0.7781	-0.6393	2.216	0.2835	0.6636	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RBM15	2	0.6702	-1.614	3.007	0.5683	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUS10	2	0.5547	-1.333	2.478	0.5672	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	VIRMA	2	0.2859	-1.024	1.613	0.6703	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL2B	2	-0.704	-2.502	1.127	0.4486	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT10B	2	0.5044	-0.7524	1.777	0.4332	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RPUSD4	2	1.253	-1.162	3.727	0.312	0.7038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL17	2	-1.148	-2.297	0.01364	0.05273	0.3197	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL3	2	-1.77	-3.88	0.3859	0.1069	0.4713	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRUB1	2	0.5752	-1.814	3.022	0.64	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RPUSD2	2	3.406	1.87	4.966	1.154e-05	0.00112	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT61A	2	1.467	0.2831	2.664	0.01501	0.1618	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALKBH3	2	-0.3962	-2.256	1.499	0.6797	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRUB2	2	0.4126	-1.21	2.062	0.6203	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ZCCHC4	2	-1.851	-3.645	-0.02398	0.04709	0.3045	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TET2	2	-2.028	-3.817	-0.2047	0.02941	0.2038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL15	2	0.3403	-1.221	1.927	0.6712	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RAMAC	2	1.004	-1.212	3.27	0.3774	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUSL1	2	1.056	-0.2738	2.404	0.1201	0.4986	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT61B	2	-1.152	-2.908	0.6351	0.205	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT112	2	2.562	0.6346	4.527	0.008963	0.1449	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT10C	2	-0.715	-3.16	1.791	0.5727	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PUS1	2	1.806	0.2453	3.391	0.02315	0.2038	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN3	2	-0.2478	-2.19	1.733	0.8047	0.8783	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN7	1	0.661	-0.9011	2.248	0.409	0.7375	ramasamy2014_gse46706
+human_cerebellum	mRNA	CMTR2	2	0.6617	-0.7055	2.048	0.3445	0.7169	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NOP10	2	0.1666	-1.79	2.163	0.8687	0.8995	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TYW2	2	-0.9005	-2.714	0.9467	0.337	0.7169	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	ALYREF	2	0.3733	-1.904	2.704	0.7503	0.8366	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YTHDF3	2	-0.4557	-2.043	1.158	0.5776	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT2B	2	3.777	0.7738	6.871	0.01335	0.1618	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	YTHDF2	2	0.7129	-0.846	2.296	0.3721	0.7375	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	PRRC2A	2	0.5693	-1.127	2.295	0.5132	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	METTL6	2	-1.037	-2.341	0.284	0.1234	0.4986	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	NSUN6	2	0.5147	-1.59	2.665	0.6345	0.7925	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	TRMT9B	2	-1.26	-3.376	0.9019	0.2511	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cerebellum	mRNA	RBM15B	2	0.6585	-0.4502	1.779	0.2454	0.6195	gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	YBX2	4	-3.098	-7.725	1.761	0.2075	0.4574	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	RPUSD1	3	-0.4966	-3.8	2.921	0.7726	0.8443	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN2	4	1.537	0.4306	2.655	0.006356	0.07583	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL1	3	-1.208	-2.742	0.3493	0.1277	0.3644	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	YTHDC2	4	0.207	-0.7182	1.141	0.6622	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	YBX3	4	-0.6016	-3.135	1.998	0.6469	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	YBX1	4	-1.237	-2.953	0.5092	0.1639	0.4076	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT11	4	1.761	-0.03772	3.591	0.05504	0.2225	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	THUMPD1	4	0.5178	-0.2704	1.312	0.1985	0.4574	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	BUD23	3	0.3839	-0.3981	1.172	0.3369	0.6388	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	HSD17B10	4	-0.3198	-1.256	0.625	0.5058	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	IGF2BP2	1	-1.622	-3.772	0.5759	0.1469	0.385	ramasamy2014_gse46706
+human_cortex	mRNA	YTHDC1	4	1.308	0.5472	2.075	0.0007295	0.01769	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL2A	3	-0.751	-1.614	0.1192	0.09056	0.3029	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT6	4	1.02	0.08628	1.963	0.03219	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PUS7	4	-0.2504	-1.368	0.8798	0.6628	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	ALKBH5	4	-0.1856	-0.841	0.4742	0.5805	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	HNRNPC	3	-1.106	-2.796	0.6129	0.2058	0.4574	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022
+human_cortex	mRNA	TRMT2A	4	1.377	-0.6185	3.414	0.1775	0.4258	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	ALKBH1	3	1.288	0.3884	2.196	0.00493	0.06831	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	PCIF1	4	1.605	-0.154	3.396	0.07393	0.2656	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL4	3	0.3178	-0.728	1.375	0.5529	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RNMT	4	-0.004177	-1.063	1.066	0.9939	0.9939	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	FMR1	4	-1.298	-3.077	0.514	0.1593	0.4066	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT1	4	0.2988	-1.944	2.592	0.7959	0.8534	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	CBLL1	4	-0.8082	-1.529	-0.08224	0.02917	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRDMT1	3	2.331	0.4049	4.294	0.01746	0.121	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	GAR1	3	0.6825	-0.5823	1.963	0.2916	0.5894	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	PUS3	4	-0.815	-3.098	1.522	0.491	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	NOP2	4	1.336	-0.1488	2.842	0.07804	0.2704	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	FXR1	4	-0.6841	-3.093	1.785	0.5838	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN4	4	0.3127	-0.3707	1.001	0.3707	0.6538	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT1L	3	0.4646	-0.5461	1.486	0.3689	0.6538	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT13	3	0.5407	-1.009	2.115	0.4964	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	HNRNPA2B1	4	0.2373	-0.9274	1.416	0.691	0.7991	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	ZC3H13	4	0.8803	-0.1594	1.931	0.09728	0.3056	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL8	3	-1.084	-2.241	0.08784	0.06971	0.2601	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	ALKBH7	3	-0.09724	-1.442	1.266	0.8881	0.9263	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT5	4	-0.04692	-1.453	1.379	0.9482	0.9785	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL16	4	1.044	0.234	1.861	0.01144	0.1009	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	FXR2	4	0.31	-0.4366	1.062	0.4167	0.7092	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PUS7L	3	1.798	-0.07193	3.703	0.05958	0.2312	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN5	3	0.4419	-0.8429	1.743	0.502	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	DKC1	4	1.614	0.919	2.314	4.811e-06	0.0001746	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	RRP8	3	0.9092	0.1042	1.721	0.02676	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	NAT10	4	1.604	0.9095	2.303	5.401e-06	0.0001746	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	IGF2BP3	1	-0.4636	-2.726	1.851	0.692	0.7991	ramasamy2014_gse46706
+human_cortex	mRNA	CMTR1	4	1.073	-0.2012	2.363	0.09918	0.3056	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	ALKBH8	3	0.8402	-0.9124	2.624	0.3496	0.6399	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	METTL5	3	0.7652	-0.1565	1.695	0.104	0.3056	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	FTO	4	0.385	-0.6275	1.408	0.4575	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT10A	3	-0.3846	-1.568	0.8135	0.5276	0.7638	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	METTL14	4	0.6975	-1.627	3.077	0.5597	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	NHP2	4	-1.593	-2.736	-0.4371	0.007036	0.07583	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	WTAP	4	-0.409	-1.178	0.3661	0.3001	0.5941	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	RBMX	4	0.249	-1.443	1.971	0.7746	0.8443	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	YTHDF1	4	-0.5092	-1.349	0.3375	0.2377	0.5124	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT44	3	-0.1295	-1.404	1.161	0.8433	0.8891	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RPUSD3	3	-0.9894	-1.877	-0.09361	0.03048	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	IGF2BP1	1	-0.5385	-3.569	2.587	0.7323	0.826	ramasamy2014_gse46706
+human_cortex	mRNA	WDR4	3	-0.1242	-1.083	0.8438	0.8006	0.8534	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RBM15	4	-0.3046	-0.9306	0.3253	0.3424	0.6388	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PUS10	3	0.3994	-0.7583	1.571	0.5005	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	VIRMA	4	0.4502	-0.6722	1.585	0.4333	0.7247	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL2B	3	-1.532	-2.794	-0.2538	0.01897	0.1227	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT10B	3	1.089	0.05888	2.13	0.03821	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RPUSD4	3	-0.04485	-2.097	2.05	0.9662	0.9799	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	METTL17	4	0.8661	0.05863	1.68	0.03547	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL3	4	0.2966	-1.006	1.616	0.657	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRUB1	4	-1.387	-2.493	-0.2676	0.01529	0.1141	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	RPUSD2	3	0.6787	-0.3118	1.679	0.18	0.4258	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT61A	3	-0.5322	-2.33	1.299	0.5664	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	ALKBH3	3	0.5792	-0.4619	1.631	0.2767	0.571	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRUB2	4	-0.1335	-0.9296	0.6689	0.7435	0.829	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	ZCCHC4	3	0.6922	-0.8607	2.269	0.3844	0.6658	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TET2	3	-1.419	-2.468	-0.358	0.008877	0.08611	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	METTL15	3	0.4596	-1.292	2.242	0.6094	0.7777	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RAMAC	4	0.05582	-2.792	2.987	0.9698	0.9799	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PUSL1	3	-0.8597	-3.364	1.71	0.5084	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT61B	4	-1.35	-3.108	0.4393	0.1383	0.373	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT112	4	1.341	0.07461	2.624	0.03787	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT10C	4	-1.002	-2.718	0.7457	0.2595	0.5471	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PUS1	4	1.084	-0.9908	3.203	0.3081	0.5978	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN3	3	0.9069	-0.1761	2.002	0.101	0.3056	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN7	1	-0.2942	-1.802	1.236	0.7046	0.8041	ramasamy2014_gse46706
+human_cortex	mRNA	CMTR2	3	0.3555	-0.7856	1.51	0.543	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	NOP10	3	-1.397	-2.678	-0.09966	0.0349	0.1611	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	TYW2	3	-1.617	-2.647	-0.5754	0.002411	0.03897	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	ALYREF	4	-1.142	-2.054	-0.2214	0.01516	0.1141	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	YTHDF3	4	-2.154	-3.013	-1.288	1.279e-06	0.000124	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT2B	3	0.576	-1.035	2.213	0.4856	0.7471	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	YTHDF2	4	0.2097	-0.6392	1.066	0.6294	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	PRRC2A	4	0.7739	-1.94	3.563	0.58	0.7652	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	METTL6	4	0.2023	-0.6238	1.035	0.6323	0.784	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	NSUN6	4	0.7036	-0.2261	1.642	0.1384	0.373	colladotorres2019_phs000979,gtexv10_phs000424,luo2024_syn32136022,ramasamy2014_gse46706
+human_cortex	mRNA	TRMT9B	3	-2.7	-4.386	-0.9832	0.002159	0.03897	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_cortex	mRNA	RBM15B	3	-0.3104	-1.488	0.8814	0.6081	0.7777	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YBX2	2	0.1982	-1.811	2.249	0.848	0.9986	gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RPUSD1	3	0.1681	-1.056	1.408	0.789	0.9939	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN2	3	1.31	-0.1127	2.754	0.07126	0.2418	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL1	3	-0.8453	-2.502	0.8399	0.3235	0.6345	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YTHDC2	3	-0.7291	-2.009	0.567	0.2689	0.5921	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YBX3	3	3.855	0.8167	6.985	0.01253	0.1105	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YBX1	3	0.0548	-1.562	1.698	0.9475	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT11	3	0.8088	-0.4997	2.135	0.2269	0.5368	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	THUMPD1	3	0.4432	-1.06	1.969	0.5653	0.8308	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	BUD23	3	0.2392	-0.7718	1.261	0.6441	0.8799	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	HSD17B10	3	-0.231	-1.355	0.9056	0.689	0.9283	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	IGF2BP2	3	-6.323	-12.74	0.5705	0.07139	0.2418	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YTHDC1	3	0.9098	-1.046	2.905	0.3645	0.6671	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL2A	3	-1.267	-3.33	0.8414	0.237	0.5473	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT6	3	0.674	-0.5739	1.938	0.2911	0.6139	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUS7	3	-0.06101	-2.138	2.06	0.9546	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALKBH5	3	-0.1209	-2.053	1.85	0.9034	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	HNRNPC	2	-1.873	-3.349	-0.3755	0.01442	0.1109	colladotorres2019_phs000979,gtexv10_phs000424
+human_hippocampus	mRNA	TRMT2A	3	1.363	-0.09586	2.844	0.0672	0.2418	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALKBH1	3	0.7289	-0.342	1.811	0.183	0.467	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PCIF1	3	1.716	-1.007	4.513	0.2191	0.5314	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL4	3	-1.348	-2.668	-0.01048	0.04824	0.234	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RNMT	3	-2.171	-3.368	-0.9593	0.0004741	0.009198	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	FMR1	3	-1.04	-2.997	0.9563	0.3048	0.6291	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT1	3	-0.001126	-1.219	1.232	0.9986	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	CBLL1	3	-1.725	-3.749	0.3408	0.1011	0.3164	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRDMT1	3	1.08	-0.8191	3.015	0.267	0.5921	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	GAR1	3	-0.6909	-2.164	0.8041	0.3631	0.6671	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUS3	3	-0.5759	-1.998	0.8668	0.432	0.7102	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NOP2	3	0.9296	-0.1799	2.051	0.1009	0.3164	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	FXR1	3	-0.5133	-1.761	0.7499	0.424	0.7091	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN4	3	-0.06217	-0.9792	0.8633	0.8948	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT1L	3	-0.2704	-2.466	1.975	0.8116	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT13	3	1.47	-0.3729	3.346	0.1187	0.3597	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	HNRNPA2B1	3	0.8482	-0.3527	2.064	0.167	0.45	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ZC3H13	3	1.091	-2.934	5.283	0.6007	0.8422	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL8	3	-2.863	-4.431	-1.269	0.0004692	0.009198	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALKBH7	3	0.08162	-3.017	3.279	0.9594	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT5	3	-0.3124	-2.209	1.621	0.7496	0.9694	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL16	3	0.9022	0.03327	1.779	0.04181	0.2233	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	FXR2	3	-1.594	-3.304	0.1455	0.07228	0.2418	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUS7L	3	-0.342	-2.741	2.116	0.7829	0.9939	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN5	3	0.03248	-3.112	3.279	0.9841	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	DKC1	3	1.2	0.2778	2.131	0.01066	0.1035	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RRP8	3	0.5084	-0.8164	1.851	0.4538	0.7337	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NAT10	3	0.8654	-0.01689	1.755	0.05457	0.2406	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	IGF2BP3	1	-2.338	-4.751	0.1348	0.06367	0.2418	ramasamy2014_gse46706
+human_hippocampus	mRNA	CMTR1	3	0.2584	-0.7043	1.231	0.6001	0.8422	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALKBH8	3	0.02648	-1.209	1.278	0.9667	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL5	3	-0.3516	-2.327	1.663	0.7302	0.9662	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	FTO	3	-0.3298	-1.314	0.6638	0.5139	0.7789	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT10A	3	0.8466	-0.9226	2.647	0.3505	0.6667	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL14	3	1.701	0.3147	3.106	0.016	0.1109	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NHP2	3	-3.302	-5.947	-0.5826	0.01765	0.1141	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	WTAP	3	-0.2875	-1.345	0.7814	0.5966	0.8422	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RBMX	3	-0.102	-1.607	1.426	0.8952	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YTHDF1	3	0.8851	-1.124	2.935	0.3905	0.6886	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT44	3	-0.1089	-1.496	1.298	0.8786	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RPUSD3	3	-1.598	-2.738	-0.444	0.006761	0.08197	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	IGF2BP1	1	-1.248	-4.521	2.137	0.4652	0.734	ramasamy2014_gse46706
+human_hippocampus	mRNA	WDR4	3	-0.638	-1.902	0.6421	0.3271	0.6345	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RBM15	3	1.61	-1.516	4.836	0.3164	0.6345	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUS10	3	-0.004286	-2.2	2.24	0.997	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	VIRMA	3	0.05034	-0.8387	0.9473	0.912	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL2B	3	-0.2632	-2.901	2.447	0.8472	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT10B	3	1.461	0.3375	2.597	0.01067	0.1035	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RPUSD4	3	-1.259	-2.995	0.5074	0.1613	0.4475	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL17	3	1.327	0.2552	2.411	0.01512	0.1109	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL3	3	0.829	-0.6536	2.334	0.2747	0.5921	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRUB1	3	-3.849	-5.387	-2.285	1.848e-06	0.0001793	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RPUSD2	3	-0.4305	-1.587	0.7394	0.4692	0.734	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT61A	3	-0.7729	-2.46	0.9437	0.3752	0.6741	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALKBH3	3	0.7524	-0.435	1.954	0.2152	0.5314	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRUB2	3	-1.437	-3.414	0.5804	0.1615	0.4475	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ZCCHC4	3	0.1295	-1.143	1.418	0.8428	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TET2	3	-1.029	-2.122	0.07735	0.06821	0.2418	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL15	3	2.209	-0.6438	5.143	0.1303	0.3831	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RAMAC	3	-0.8561	-2.812	1.139	0.3976	0.6886	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUSL1	3	-1.324	-2.501	-0.1329	0.02946	0.1786	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT61B	3	-1.773	-2.887	-0.6466	0.002105	0.03403	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT112	3	-0.1729	-2.381	2.086	0.8795	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT10C	3	-1.974	-3.855	-0.05598	0.04373	0.2233	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PUS1	3	0.9743	-0.01846	1.977	0.05443	0.2406	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN3	3	-2.061	-3.422	-0.6806	0.00354	0.04905	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN7	2	2.062	-0.07094	4.24	0.05821	0.2418	colladotorres2019_phs000979,ramasamy2014_gse46706
+human_hippocampus	mRNA	CMTR2	3	0.8081	-1.474	3.143	0.4909	0.7558	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NOP10	3	-3.578	-5.101	-2.031	7.252e-06	0.0003517	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TYW2	3	-3.291	-4.79	-1.768	2.697e-05	0.0008721	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	ALYREF	3	-0.1237	-2.168	1.964	0.9066	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YTHDF3	3	-1.397	-4.624	1.939	0.4071	0.6928	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT2B	3	-0.02741	-1.113	1.07	0.9607	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	YTHDF2	3	-0.009737	-1.088	1.08	0.986	0.9986	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	PRRC2A	3	-0.4211	-2.844	2.062	0.7371	0.9662	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	METTL6	3	-1.091	-2.078	-0.09367	0.03211	0.1832	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	NSUN6	3	0.855	-0.3758	2.101	0.1741	0.4565	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	TRMT9B	3	1.372	-3.182	6.141	0.5612	0.8308	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_hippocampus	mRNA	RBM15B	3	-0.3234	-1.549	0.9172	0.6078	0.8422	colladotorres2019_phs000979,gtexv10_phs000424,ramasamy2014_gse46706
+human_neurons	mRNA	RPUSD1	6	-5.081	-10.87	1.083	0.1043	0.2607	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN2	6	1.906	0.0531	3.793	0.04373	0.1385	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL1	5	-8.7	-13.56	-3.566	0.001111	0.008797	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,zemke2026_gse278576
+human_neurons	mRNA	YTHDC2	6	0.2887	-1.157	1.756	0.6972	0.8269	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YBX3	5	6.711	1.449	12.25	0.01182	0.06607	green2025_gse277313,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YBX1	6	-3.389	-5.592	-1.134	0.003402	0.02486	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT11	6	0.7343	-1.119	2.623	0.4401	0.6968	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	THUMPD1	6	-0.6134	-2.303	1.105	0.4818	0.7382	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	BUD23	6	-1.712	-5.116	1.813	0.3367	0.6332	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	HSD17B10	5	-5.072	-12.77	3.302	0.2275	0.4503	green2025_gse277313,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	IGF2BP2	6	-8.4	-16.41	0.3815	0.06032	0.174	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YTHDC1	6	0.5823	-1.183	2.38	0.5205	0.7726	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL2A	6	0.07792	-1.082	1.251	0.8958	0.925	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT6	6	0.3332	-1.636	2.341	0.7422	0.8302	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUS7	6	0.7029	-0.8734	2.304	0.3842	0.6616	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALKBH5	6	0.7057	-0.9768	2.417	0.4133	0.6664	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	HNRNPC	6	-0.3027	-1.573	0.9843	0.6432	0.804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT2A	6	-3.871	-7.432	-0.1741	0.04032	0.1368	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALKBH1	6	3.672	2.137	5.229	2.134e-06	6.758e-05	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PCIF1	6	-1.344	-4.306	1.71	0.3845	0.6616	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL4	6	1.149	-1.452	3.819	0.39	0.6616	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RNMT	6	-0.791	-2.181	0.6188	0.27	0.5234	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	FMR1	6	-0.3136	-1.951	1.352	0.7102	0.8269	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT1	6	-0.08661	-1.982	1.846	0.9294	0.9392	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	CBLL1	6	0.4693	-1.083	2.046	0.5555	0.7841	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRDMT1	6	0.2521	-2.562	3.147	0.8624	0.9205	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	GAR1	6	-3.724	-5.352	-2.067	1.297e-05	0.0002053	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUS3	6	-1.367	-4.57	1.944	0.4139	0.6664	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NOP2	6	-0.5098	-2.128	1.135	0.5412	0.7829	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	FXR1	6	1.696	-1.905	5.43	0.3605	0.6462	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN4	6	1.541	0.1918	2.909	0.02505	0.09914	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT1L	6	0.6751	-1.489	2.887	0.5439	0.7829	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT13	6	0.5047	-1.36	2.404	0.5982	0.8004	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	HNRNPA2B1	6	-0.3557	-2.455	1.788	0.7428	0.8302	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ZC3H13	6	-0.9967	-3.345	1.409	0.4134	0.6664	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL8	6	-0.5642	-3.079	2.016	0.6651	0.8144	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALKBH7	5	-5.666	-12.21	1.37	0.112	0.266	green2025_gse277313,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT5	6	-4.828	-6.517	-3.109	6.05e-08	4.85e-06	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL16	6	2.16	0.3354	4.017	0.02011	0.09099	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	FXR2	6	-1.261	-3.013	0.5236	0.165	0.3484	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUS7L	6	0.5889	-1.768	3.002	0.6274	0.804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN5	6	-2.199	-5.554	1.276	0.2119	0.4284	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	DKC1	6	-1.865	-3.819	0.1281	0.06647	0.1804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RRP8	6	-0.5904	-2.598	1.459	0.5695	0.7841	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NAT10	6	2.765	1.545	4	7.59e-06	0.0001442	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	IGF2BP3	6	-0.5174	-4.119	3.22	0.7828	0.8547	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	CMTR1	6	-0.2668	-1.37	0.8488	0.6378	0.804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALKBH8	6	1.313	-0.2889	2.94	0.1087	0.2648	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL5	6	-0.3364	-2.229	1.593	0.7305	0.8302	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	FTO	6	0.04864	-3.732	3.978	0.9803	0.9803	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT10A	6	-3.693	-6.204	-1.115	0.005236	0.03316	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL14	6	1.806	0.3026	3.333	0.01838	0.08728	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NHP2	6	-10.72	-16.46	-4.59	0.0008199	0.008236	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	WTAP	6	0.3068	-0.7911	1.417	0.5853	0.7944	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RBMX	6	0.8537	-0.2902	2.011	0.1441	0.3259	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YTHDF1	6	-0.2544	-1.602	1.112	0.7137	0.8269	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT44	6	0.7498	-0.8412	2.366	0.3577	0.6462	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RPUSD3	6	-3.751	-7.588	0.2447	0.06544	0.1804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	WDR4	6	-1.528	-3.584	0.572	0.1526	0.3372	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RBM15	6	-1.354	-2.728	0.03897	0.05671	0.1738	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUS10	6	0.5528	-1.543	2.693	0.608	0.8022	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	VIRMA	6	0.8123	-0.3096	1.947	0.1565	0.3379	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL2B	6	2.398	0.9939	3.821	0.000768	0.008236	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT10B	6	-1.216	-3.669	1.298	0.3399	0.6332	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RPUSD4	6	-0.2414	-3.469	3.094	0.8854	0.9244	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL17	6	-0.1737	-1.92	1.603	0.8469	0.9143	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL3	6	-1.076	-2.606	0.4788	0.174	0.3593	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRUB1	6	-1.932	-3.556	-0.2808	0.02201	0.09506	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RPUSD2	6	-1.334	-6.738	4.384	0.6404	0.804	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT61A	6	-2.268	-4.756	0.2858	0.08131	0.2088	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALKBH3	6	1.365	0.1811	2.562	0.0237	0.09788	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRUB2	6	0.5882	-2.077	3.326	0.6687	0.8144	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ZCCHC4	6	0.5928	-2.485	3.768	0.7093	0.8269	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TET2	6	0.8449	-1.707	3.463	0.5199	0.7726	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL15	6	2.149	0.4954	3.831	0.01067	0.06335	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RAMAC	5	1.009	-5.65	8.138	0.773	0.8539	green2025_gse277313,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUSL1	5	-5.235	-9.692	-0.5576	0.02871	0.1049	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT61B	6	1.236	-0.09521	2.586	0.06891	0.1819	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT112	6	-7.212	-12.61	-1.475	0.01447	0.07236	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT10C	6	-2.823	-6.35	0.8374	0.129	0.299	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PUS1	6	4.626	0.9207	8.468	0.01397	0.07236	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN3	6	2.041	0.1738	3.942	0.03201	0.1126	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN7	3	-9.948	-18.61	-0.3632	0.0423	0.1385	green2025_gse277313,matlik2024_gse227729,zemke2026_gse278576
+human_neurons	mRNA	CMTR2	6	-0.6237	-2.333	1.115	0.4796	0.7382	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NOP10	6	-10.73	-19.26	-1.284	0.02698	0.1025	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TYW2	6	-1.796	-3.636	0.0797	0.06046	0.174	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	ALYREF	4	-18.41	-24.3	-12.06	1.021e-07	4.85e-06	green2025_gse277313,matlik2024_gse227729,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YTHDF3	6	-2.485	-3.773	-1.179	0.0002084	0.002829	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT2B	6	5.972	3.361	8.648	5.185e-06	0.0001231	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	YTHDF2	6	-0.1641	-2.886	2.634	0.9073	0.9268	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	PRRC2A	6	-0.9395	-4.054	2.276	0.5625	0.7841	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	METTL6	6	2.302	0.9181	3.704	0.001055	0.008797	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	NSUN6	6	2.134	0.8728	3.412	0.0008669	0.008236	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	TRMT9B	6	0.153	-1.82	2.165	0.8802	0.9244	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_neurons	mRNA	RBM15B	6	-4.769	-7.937	-1.492	0.00464	0.03149	green2025_gse277313,handsaker2025_nemo_broadhdcaudate,matlik2024_gse227729,mesecar2026_zenodo7803697,sloan2026_snrna,zemke2026_gse278576
+human_protein	mRNA-adjusted protein	YBX2	1	-0.1314	-4.326	4.248	0.9521	0.9521	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NSUN2	1	1.458	-0.4617	3.415	0.1375	0.4125	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YTHDC2	1	0.8312	-2.624	4.409	0.6417	0.7701	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YBX3	1	-2.73	-6.807	1.525	0.2051	0.5537	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YBX1	1	-2.163	-6.381	2.245	0.3307	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT11	1	3.03	0.115	6.03	0.0415	0.2268	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	THUMPD1	1	2.502	0.1319	4.927	0.03841	0.2268	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	HSD17B10	1	1.339	-1.491	4.249	0.3574	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YTHDC1	1	0.2174	-2.122	2.612	0.857	0.9074	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT6	1	4.639	0.939	8.476	0.01356	0.1987	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	PUS7	1	2.84	0.1736	5.578	0.03667	0.2268	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	ALKBH5	1	5.022	0.8294	9.388	0.0184	0.1987	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	HNRNPC	1	-1.771	-6.613	3.322	0.4884	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT2A	1	1.814	-3.168	7.052	0.4825	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	PCIF1	1	2.352	-2.393	7.329	0.3371	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	RNMT	1	-1.134	-4.829	2.704	0.5573	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	FMR1	1	-0.5807	-1.668	0.5188	0.2993	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT1	1	1.967	-0.1472	4.126	0.06842	0.3296	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	CBLL1	1	-0.3397	-2	1.349	0.6915	0.7779	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	PUS3	1	4.423	-0.6025	9.702	0.08546	0.3296	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NOP2	1	2.975	-1.729	7.904	0.2191	0.5635	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	FXR1	1	-1.203	-2.988	0.6155	0.1934	0.5497	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NSUN4	1	4.058	0.7217	7.504	0.01673	0.1987	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	HNRNPA2B1	1	-2.928	-8.803	3.326	0.3509	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	ZC3H13	1	0.8589	-2.976	4.846	0.6654	0.7779	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT5	1	1.085	-2.549	4.855	0.5635	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	METTL16	1	1.233	-2.49	5.098	0.5214	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	FXR2	1	-0.2115	-1.209	0.796	0.6796	0.7779	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	DKC1	1	1.873	0.56	3.204	0.005052	0.1364	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NAT10	1	-0.8734	-2.895	1.19	0.404	0.7272	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	CMTR1	1	0.2572	-1.141	1.675	0.7199	0.7933	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	FTO	1	-0.9552	-4.725	2.963	0.6278	0.7701	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	METTL14	1	1.436	-2.857	5.918	0.5182	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NHP2	1	2.308	-0.3128	4.998	0.08483	0.3296	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	WTAP	1	-1.908	-4.319	0.5645	0.1293	0.4125	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	RBMX	1	-3.001	-8.289	2.593	0.2868	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YTHDF1	1	2.678	-0.8324	6.313	0.1365	0.4125	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	RBM15	1	1.696	-0.3332	3.767	0.102	0.367	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	VIRMA	1	2.088	0.07479	4.142	0.04199	0.2268	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	METTL17	1	2.12	-5.457	10.3	0.5938	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	METTL3	1	0.9487	-2.444	4.459	0.5882	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRUB1	1	2.808	-2.73	8.66	0.327	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRUB2	1	2.252	-0.2814	4.851	0.08188	0.3296	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	RAMAC	1	0.1832	-2.437	2.873	0.8923	0.9266	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT61B	1	-0.4716	-5.347	4.654	0.8536	0.9074	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT112	1	3.878	1.539	6.272	0.001061	0.05727	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	TRMT10C	1	0.7276	-1.256	2.751	0.4749	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	PUS1	1	1.835	-1.952	5.769	0.3469	0.6654	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	ALYREF	1	0.1163	-2.2	2.487	0.9225	0.9399	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YTHDF3	1	1.02	-2.661	4.841	0.592	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	YTHDF2	1	0.5358	-1.383	2.492	0.5868	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	PRRC2A	1	0.9142	-2.522	4.472	0.6066	0.7618	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	METTL6	1	6.318	0.5437	12.42	0.03153	0.2268	luo2024_syn32136022
+human_protein	mRNA-adjusted protein	NSUN6	1	0.7526	-2.061	3.647	0.6039	0.7618	luo2024_syn32136022
+human_protein	Protein	YBX2	1	-0.1931	-4.373	4.17	0.9294	0.9871	luo2024_syn32136022
+human_protein	Protein	NSUN2	6	1.223	-0.4386	2.912	0.15	0.6801	eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	YTHDC2	2	-1.003	-5.315	3.506	0.6573	0.9364	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	YBX3	1	-2.697	-6.764	1.548	0.2096	0.6822	luo2024_syn32136022
+human_protein	Protein	YBX1	9	-1.345	-3.877	1.255	0.3076	0.8368	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	TRMT11	3	-1.05	-8.645	7.177	0.7957	0.9639	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	THUMPD1	6	-0.7969	-5.369	3.996	0.7396	0.9639	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	BUD23	1	-19.76	-57.44	51.28	0.4962	0.8862	merrihew2023_pxd034525
+human_protein	Protein	HSD17B10	9	0.8484	-0.6164	2.335	0.2578	0.7329	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	YTHDC1	3	0.1843	-1.995	2.412	0.8697	0.9853	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	TRMT6	2	4.429	0.9782	7.999	0.01148	0.3903	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	PUS7	2	-0.8327	-9.152	8.248	0.8516	0.9815	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	ALKBH5	3	2.4	-1.016	5.935	0.1707	0.6822	anderton2026_biorxiv714902,luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	HNRNPC	9	-0.6256	-2.568	1.355	0.5332	0.9001	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	TRMT2A	2	-1.868	-9.775	6.732	0.66	0.9364	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	PCIF1	3	3.574	-0.05361	7.334	0.05354	0.6099	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	RNMT	7	1.959	-3.295	7.498	0.4723	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	FMR1	8	-1.255	-4.031	1.601	0.3852	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	TRMT1	4	-2.769	-8.432	3.244	0.3591	0.8862	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	CBLL1	3	-0.6047	-2.18	0.9964	0.4569	0.8862	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	GAR1	3	3.487	-1.62	8.859	0.1844	0.6822	anderton2026_biorxiv714902,blumenreich2024_pxd047134,ping2020_pxd020296
+human_protein	Protein	PUS3	1	4.408	-0.5226	9.583	0.08051	0.6583	luo2024_syn32136022
+human_protein	Protein	NOP2	4	0.9435	-1.741	3.701	0.4947	0.8862	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	FXR1	8	-0.4942	-1.944	0.9767	0.5081	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	NSUN4	2	3.087	-1.502	7.889	0.1907	0.6822	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	TRMT1L	2	-5.598	-12.14	1.428	0.1157	0.6583	merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	HNRNPA2B1	9	0.9848	-1.831	3.882	0.4971	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	ZC3H13	2	1.14	-2.484	4.898	0.5427	0.9001	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	TRMT5	2	-0.9528	-6.675	5.121	0.7525	0.9639	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	METTL16	3	0.08926	-4.968	5.415	0.9731	0.9871	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	FXR2	9	-0.3253	-1.19	0.5471	0.4636	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	DKC1	6	3.071	0.04819	6.186	0.0464	0.6099	blumenreich2024_pxd047134,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	RRP8	1	1.268	-7.699	11.11	0.79	0.9639	ping2020_pxd020296
+human_protein	Protein	NAT10	4	1.027	-1.768	3.901	0.4753	0.8862	koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	CMTR1	3	4.977	-5.507	16.62	0.3655	0.8862	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	METTL5	1	-1.625	-7.644	4.786	0.6109	0.9364	ping2020_pxd020296
+human_protein	Protein	FTO	6	0.07173	-3.289	3.55	0.9672	0.9871	anderton2026_biorxiv714902,blumenreich2024_pxd047134,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	METTL14	2	0.5902	-3.279	4.614	0.7687	0.9639	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	NHP2	2	2.359	-0.1243	4.904	0.06279	0.6099	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	WTAP	3	-1.606	-3.872	0.7141	0.1734	0.6822	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	RBMX	9	-2.064	-4.548	0.4834	0.1114	0.6583	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,lee2023_pxd043880,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	YTHDF1	4	0.5054	-2.16	3.243	0.7131	0.9639	blumenreich2024_pxd047134,koopmans2026_pxd058441,luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	TRMT44	1	4.626	-67.65	238.4	0.9398	0.9871	merrihew2023_pxd034525
+human_protein	Protein	IGF2BP1	1	7.344	-2.195	17.81	0.1355	0.6583	ping2020_pxd020296
+human_protein	Protein	RBM15	4	1.144	-0.6845	3.006	0.2217	0.6852	koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	VIRMA	2	0.8113	-2.764	4.518	0.661	0.9364	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	METTL2B	1	-1.605	-13.23	11.57	0.8008	0.9639	ping2020_pxd020296
+human_protein	Protein	METTL17	3	-1.592	-6.001	3.024	0.4926	0.8862	luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	METTL3	2	-0.02358	-2.832	2.866	0.9871	0.9871	luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	TRUB1	5	2.208	-0.5895	5.084	0.123	0.6583	eggers2025_pxd051145,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	RPUSD2	1	-6.042	-11.87	0.1667	0.05627	0.6099	ping2020_pxd020296
+human_protein	Protein	TRMT61A	1	1.105	-4.476	7.012	0.7044	0.9639	teng2023_pxd040884
+human_protein	Protein	TRUB2	3	2.03	-0.4257	4.547	0.1059	0.6583	eggers2025_pxd051145,luo2024_syn32136022,merrihew2023_pxd034525
+human_protein	Protein	METTL15	1	-0.5675	-7.877	7.322	0.8838	0.9853	ping2020_pxd020296
+human_protein	Protein	RAMAC	3	-1.436	-5.231	2.51	0.4701	0.8862	blumenreich2024_pxd047134,luo2024_syn32136022,ping2020_pxd020296
+human_protein	Protein	PUSL1	1	-0.6149	-16.1	17.72	0.9431	0.9871	ping2020_pxd020296
+human_protein	Protein	TRMT61B	4	-2.827	-7.093	1.636	0.2107	0.6822	eggers2025_pxd051145,luo2024_syn32136022,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	TRMT112	6	1.613	-1.17	4.475	0.2587	0.7329	blumenreich2024_pxd047134,eggers2025_pxd051145,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	TRMT10C	8	-0.7915	-3.1	1.572	0.5082	0.8862	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	PUS1	6	0.3256	-2.27	2.99	0.808	0.9639	blumenreich2024_pxd047134,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	ALYREF	8	0.4654	-1.348	2.312	0.6173	0.9364	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	YTHDF3	7	-0.3966	-4.22	3.58	0.8423	0.9815	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	TRMT2B	1	-15.27	-31.73	5.158	0.1327	0.6583	eggers2025_pxd051145
+human_protein	Protein	YTHDF2	6	0.04564	-1.662	1.783	0.9586	0.9871	blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296
+human_protein	Protein	PRRC2A	8	-1.221	-5.971	3.77	0.6253	0.9364	anderton2026_biorxiv714902,blumenreich2024_pxd047134,eggers2025_pxd051145,koopmans2026_pxd058441,luo2024_syn32136022,merrihew2023_pxd034525,ping2020_pxd020296,teng2023_pxd040884
+human_protein	Protein	METTL6	1	5.487	-0.2174	11.52	0.05967	0.6099	luo2024_syn32136022
+human_protein	Protein	NSUN6	1	0.7346	-2.099	3.65	0.6151	0.9364	luo2024_syn32136022
+human_protein	Protein	RBM15B	1	-5.459	-9.41	-1.336	0.009955	0.3903	ping2020_pxd020296
+human_striatum	mRNA	YBX2	1	-0.1873	-2.527	2.208	0.8769	0.9666	ramasamy2014_gse46706
+human_striatum	mRNA	RPUSD1	4	-1.561	-2.741	-0.3665	0.01056	0.05123	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN2	4	1.552	0.6448	2.468	0.0007705	0.01068	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL1	4	-1.889	-3.079	-0.6837	0.002204	0.02375	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YTHDC2	4	-0.1947	-0.9705	0.5871	0.6244	0.8652	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YBX3	4	0.8371	-1.451	3.179	0.4766	0.7456	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YBX1	4	-1.907	-3.322	-0.4701	0.009448	0.04824	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT11	4	1.493	0.4356	2.561	0.005544	0.03792	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	THUMPD1	4	0.6363	-0.03474	1.312	0.06314	0.2268	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	BUD23	4	0.3953	-0.2246	1.019	0.2119	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	HSD17B10	4	-0.3936	-1.199	0.4188	0.3413	0.5912	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	IGF2BP2	4	-9.293	-14.08	-4.238	0.0004229	0.006837	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YTHDC1	4	0.447	-0.2505	1.149	0.2096	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL2A	4	-1.162	-2.006	-0.3115	0.007508	0.04046	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT6	4	1.056	0.1339	1.987	0.0247	0.1089	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUS7	4	-0.5372	-1.35	0.2822	0.1982	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALKBH5	4	0.61	-0.0008168	1.225	0.0503	0.1877	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	HNRNPC	3	-0.6552	-1.357	0.05149	0.06912	0.2394	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936
+human_striatum	mRNA	TRMT2A	4	0.7107	-0.4487	1.884	0.2306	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALKBH1	4	1.846	1.05	2.649	4.93e-06	0.0004782	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PCIF1	4	1.152	0.1161	2.2	0.0292	0.1232	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL4	4	-0.7364	-1.557	0.09066	0.08082	0.2529	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RNMT	4	0.1111	-0.6564	0.8845	0.7774	0.9475	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	FMR1	4	-1.225	-1.896	-0.5492	0.0003955	0.006837	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT1	4	0.09414	-1.208	1.413	0.888	0.9678	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	CBLL1	4	-0.1484	-0.8634	0.5718	0.6855	0.9108	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRDMT1	4	-0.6592	-1.7	0.3927	0.2184	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	GAR1	4	-0.5845	-2.622	1.495	0.5789	0.8138	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUS3	4	1.523	0.4174	2.64	0.006815	0.04046	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NOP2	4	0.8082	-0.4777	2.111	0.2191	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	FXR1	4	0.05518	-1.098	1.222	0.9257	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN4	4	0.07682	-0.5728	0.7307	0.8172	0.9513	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT1L	4	-0.2614	-1.06	0.5436	0.5233	0.7691	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT13	4	0.317	-0.7959	1.442	0.5782	0.8138	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	HNRNPA2B1	4	-0.1764	-1.211	0.8688	0.7397	0.9318	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ZC3H13	4	-0.1383	-0.91	0.6394	0.7266	0.9318	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL8	4	-1.838	-2.692	-0.9772	3.134e-05	0.00152	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALKBH7	4	0.3975	-0.8993	1.711	0.5498	0.7959	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT5	4	-0.3286	-1.102	0.4504	0.4073	0.6615	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL16	4	0.8094	0.2165	1.406	0.007395	0.04046	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	FXR2	4	0.6129	-0.1259	1.357	0.1042	0.2985	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUS7L	4	1.186	0.05884	2.326	0.03912	0.1518	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN5	4	-0.1528	-1.732	1.452	0.8509	0.958	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	DKC1	4	0.4939	-0.1435	1.135	0.1291	0.3473	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RRP8	4	-0.1046	-1.206	1.009	0.8533	0.958	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NAT10	4	2.033	1.047	3.028	4.815e-05	0.001557	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	IGF2BP3	1	0.6666	-1.354	2.729	0.5208	0.7691	ramasamy2014_gse46706
+human_striatum	mRNA	CMTR1	4	1.053	0.4743	1.635	0.00035	0.006837	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALKBH8	4	-0.1746	-1.194	0.8553	0.7387	0.9318	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL5	4	-0.3877	-1.302	0.5354	0.4092	0.6615	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	FTO	4	-0.1996	-1.279	0.8912	0.7187	0.9318	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT10A	4	-0.7629	-2.809	1.326	0.4711	0.7456	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL14	4	0.7482	0.1252	1.375	0.0185	0.08543	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NHP2	4	-1.012	-2.663	0.6668	0.2358	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	WTAP	4	0.144	-0.5483	0.8412	0.6843	0.9108	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RBMX	4	0.3882	-0.172	0.9516	0.1747	0.4237	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YTHDF1	4	-0.007243	-0.7183	0.7089	0.9841	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT44	4	1.496	-0.4265	3.456	0.128	0.3473	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RPUSD3	4	0.3659	-0.3857	1.123	0.3409	0.5912	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	IGF2BP1	1	1.787	-1.463	5.145	0.2847	0.5416	ramasamy2014_gse46706
+human_striatum	mRNA	WDR4	4	0.05399	-0.8292	0.9451	0.905	0.9754	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RBM15	4	0.6037	-0.125	1.338	0.1046	0.2985	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUS10	4	0.5146	-0.516	1.556	0.329	0.591	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	VIRMA	4	0.0799	-0.4801	0.6431	0.7803	0.9475	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL2B	4	-1.583	-2.69	-0.4635	0.00569	0.03792	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT10B	4	0.006929	-0.7764	0.7965	0.9862	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RPUSD4	4	1.112	0.1032	2.131	0.03064	0.1239	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL17	4	0.709	-0.6365	2.073	0.3033	0.5657	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL3	4	-0.06043	-0.5908	0.4728	0.8238	0.9513	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRUB1	4	-0.705	-2.167	0.7791	0.3499	0.5955	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RPUSD2	4	0.2066	-0.7063	1.128	0.6585	0.8996	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT61A	4	-1.51	-2.571	-0.4383	0.005863	0.03792	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALKBH3	4	0.0582	-1.372	1.509	0.9369	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRUB2	4	-0.4622	-1.369	0.453	0.3212	0.5878	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ZCCHC4	4	-0.3464	-1.157	0.4709	0.4051	0.6615	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TET2	4	-0.02342	-1.345	1.315	0.9725	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL15	4	0.0256	-0.7533	0.8106	0.9488	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RAMAC	4	-0.2381	-1.983	1.538	0.7912	0.9475	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUSL1	4	-0.7619	-2.116	0.6112	0.2753	0.5341	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT61B	4	-0.4655	-1.219	0.2934	0.2286	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT112	4	1.103	-0.3562	2.584	0.1391	0.3473	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT10C	4	-0.9325	-1.946	0.09119	0.07406	0.2477	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PUS1	4	2.532	0.8669	4.225	0.002761	0.02678	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN3	4	1.284	0.5122	2.063	0.001082	0.01312	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN7	2	-0.2885	-2.32	1.785	0.7832	0.9475	gtexv10_phs000424,ramasamy2014_gse46706
+human_striatum	mRNA	CMTR2	4	-0.09685	-1.161	0.979	0.8593	0.958	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NOP10	4	-0.8909	-2.338	0.5781	0.2332	0.4668	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TYW2	4	-1.115	-1.875	-0.3496	0.004372	0.03792	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	ALYREF	4	-0.815	-1.73	0.1087	0.08359	0.2534	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YTHDF3	4	-1.444	-2.443	-0.4356	0.005106	0.03792	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT2B	4	0.02149	-1.029	1.083	0.9682	0.9862	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	YTHDF2	4	-0.2506	-0.9664	0.4703	0.4946	0.7496	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	PRRC2A	4	-0.09609	-0.856	0.6697	0.8051	0.9513	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	METTL6	4	-0.5555	-1.169	0.06219	0.07787	0.2518	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	NSUN6	4	0.697	-0.2268	1.629	0.1396	0.3473	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	TRMT9B	4	1.057	-0.3419	2.475	0.1393	0.3473	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+human_striatum	mRNA	RBM15B	4	0.2065	-0.3816	0.7981	0.4921	0.7496	benjamin2022_brainseq3_caudate,gtexv10_phs000424,markunas2020_gse171936,ramasamy2014_gse46706
+mouse_mrna	mRNA	FMR1	4	2.05	-3.372	7.775	0.4663	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	NSUN5	3	-10.41	-29.09	13.19	0.3567	0.8823	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NHP2	3	-11.33	-35.49	21.87	0.4585	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT1	3	-1.266	-10.79	9.278	0.8056	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	ALKBH7	3	-9.938	-26.17	9.866	0.302	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT10A	3	-2.86	-11.25	6.319	0.5287	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL17	3	-1	-5.593	3.817	0.6784	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	HNRNPA2B1	4	-2.203	-8.625	4.671	0.5204	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	BUD23	3	-5.912	-16.22	5.659	0.3031	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL1	3	6.611	-5.817	20.68	0.3114	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	RNMT	4	1.791	-4.194	8.149	0.5658	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	METTL16	4	-1.368	-10.11	8.223	0.7711	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	YBX2	2	-20.96	-43.39	10.34	0.167	0.6884	langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	FXR2	4	-1.48	-6.32	3.611	0.5619	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	TRMT11	3	3.078	-2.068	8.496	0.2459	0.7972	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PUS10	3	0.5505	-8.964	11.06	0.9138	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	CBLL1	4	1.067	-5.444	8.026	0.7548	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	METTL2A	3	4.561	-14.69	28.16	0.6675	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NSUN2	4	-1.779	-6.621	3.314	0.4865	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	METTL6	3	-2.523	-5.68	0.7391	0.1281	0.6021	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	ZC3H13	3	-1.968	-10.03	6.82	0.6499	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL3	3	0.8548	-6.617	8.924	0.8284	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT2A	3	-3.689	-13.18	6.839	0.4776	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	CMTR1	4	4.325	2.308	6.382	2.123e-05	0.0003327	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	WDR4	3	-0.5429	-9.412	9.194	0.9091	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PRRC2A	4	1.382	-3.777	6.817	0.6065	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	TRUB1	3	-0.7433	-10.76	10.4	0.8907	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	ALYREF	4	-1.057	-8.469	6.955	0.7891	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	HSD17B10	4	-5.719	-14.84	4.377	0.2565	0.8038	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	ALKBH8	3	9.594	-23.73	57.47	0.6203	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NSUN6	3	5.331	-4.855	16.61	0.3169	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRDMT1	3	1.181	-20.02	28	0.922	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NOP10	3	-5.855	-18.64	8.938	0.4178	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NAT10	4	6.349	3.915	8.84	1.88e-07	5.89e-06	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RPUSD2	3	0.8493	-9.37	12.22	0.8767	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	FXR1	4	4.163	-7.37	17.13	0.4957	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	GAR1	3	-3.912	-25.83	24.48	0.7626	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL14	4	-0.1043	-2.796	2.662	0.9403	0.9745	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	YBX1	4	-7.943	-18.52	4.007	0.1838	0.6884	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	NSUN4	3	3.435	0.4603	6.498	0.0233	0.1825	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT44	3	5.267	0.001421	10.81	0.04993	0.3353	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	ZCCHC4	3	-7.533	-10.72	-4.227	1.24e-05	0.000233	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	NSUN7	3	-0.5465	-21.7	26.32	0.9642	0.9745	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PUS1	3	10.12	4.451	16.09	0.0003501	0.004114	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	IGF2BP3	1	0.08912	-12.28	14.2	0.9894	0.9894	hahn2023_gse212336
+mouse_mrna	mRNA	YBX3	4	-1.015	-16.95	17.98	0.9094	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RRP8	3	4.142	-0.3143	8.798	0.06892	0.4319	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	THUMPD1	4	-2.272	-6.897	2.583	0.3529	0.8823	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RBMX	4	1.64	-2.313	5.753	0.4215	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	DKC1	4	-0.5884	-6.938	6.194	0.8609	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RPUSD4	3	-1.794	-5.232	1.769	0.3195	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PUS3	3	3.418	-0.9115	7.937	0.1235	0.6021	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PUS7L	3	-15.82	-20.43	-10.93	2.168e-09	1.019e-07	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT13	3	0.7267	-3.84	5.511	0.7597	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	IGF2BP2	2	-50.38	-55.17	-45.07	1.334e-41	1.254e-39	hahn2023_gse212336,langfelder2016_pxd006302
+mouse_mrna	mRNA	TRMT5	4	0.309	-9.73	11.46	0.9543	0.9745	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	YTHDC2	4	3.538	-7.292	15.63	0.5374	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	TRMT10B	3	1.853	-0.9053	4.687	0.19	0.6884	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	YTHDC1	4	4.447	-1.138	10.35	0.1207	0.6021	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	TYW2	3	-6.617	-9.731	-3.395	7.615e-05	0.001023	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT6	4	-0.3947	-7.366	7.101	0.9149	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	NOP2	4	-1.853	-6.849	3.412	0.483	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RAMAC	3	-3.432	-9.723	3.297	0.3096	0.8341	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT112	4	-5.885	-21.42	12.72	0.5099	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	YTHDF1	4	1.574	-0.684	3.883	0.1733	0.6884	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	TRMT9B	3	-0.8876	-5.468	3.914	0.7118	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRUB2	3	0.4483	-5.663	6.956	0.8889	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PCIF1	4	-0.4933	-6.432	5.822	0.8748	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	YTHDF2	4	-2.507	-5.259	0.3255	0.08228	0.4834	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	ALKBH3	3	0.2859	-8.57	9.999	0.9517	0.9745	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	VIRMA	3	2.039	-7.854	12.99	0.6981	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TET2	3	3.24	-11.09	19.88	0.6758	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	RPUSD1	3	-6.391	-24.4	15.91	0.5447	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL8	3	-6.631	-9.367	-3.812	6.149e-06	0.0001445	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	ALKBH5	3	2.313	-3.351	8.308	0.4314	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT10C	4	1.224	-4.147	6.896	0.6619	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	CMTR2	3	-0.6462	-4.717	3.599	0.7613	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	YTHDF3	4	-1.653	-9.922	7.376	0.71	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	RBM15	4	7.809	-3.667	20.65	0.1904	0.6884	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	NSUN3	3	8.493	0.5399	17.08	0.03585	0.2592	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	RPUSD3	3	-4.026	-15.17	8.577	0.5139	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	PUSL1	3	-4.592	-18.23	11.32	0.5502	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL5	3	5.951	-0.9701	13.36	0.09351	0.517	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT1L	3	-1.247	-8.209	6.243	0.7365	0.9664	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	METTL4	3	2.633	-8.793	15.49	0.666	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	FTO	4	6.517	1.333	11.97	0.01313	0.1122	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	METTL15	4	6.575	1.637	11.75	0.008518	0.08007	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	PUS7	3	1.625	-4.763	8.441	0.6265	0.9662	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	HNRNPC	4	-7.984	-12.38	-3.367	0.0008654	0.009038	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	WTAP	3	-1.192	-3.081	0.7333	0.2232	0.7494	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT61A	3	-8.157	-26.55	14.84	0.4555	0.9331	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	TRMT2B	3	17.11	-6.457	46.61	0.1683	0.6884	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_mrna	mRNA	RBM15B	4	-15.97	-35.89	10.15	0.2077	0.7232	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817,takasugi2024_pxd040722
+mouse_mrna	mRNA	ALKBH1	3	-0.1789	-2.86	2.577	0.8975	0.9738	hahn2023_gse212336,langfelder2016_pxd006302,shavlakadze2026_gse314817
+mouse_neurons	mRNA	FMR1	1	-0.9697	-11.21	10.45	0.8611	0.8902	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN5	1	-16.53	-25.29	-6.734	0.001413	0.01182	hahn2023_gse212576
+mouse_neurons	mRNA	NHP2	1	6.337	-6.574	21.03	0.3522	0.5226	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT1	1	-0.07936	-9.319	10.1	0.9872	0.9872	hahn2023_gse212576
+mouse_neurons	mRNA	ALKBH7	1	17.92	-10.27	54.95	0.237	0.4113	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT10A	1	-19.24	-32.66	-3.148	0.02117	0.07491	hahn2023_gse212576
+mouse_neurons	mRNA	METTL17	1	-7.351	-18.24	4.993	0.2315	0.4096	hahn2023_gse212576
+mouse_neurons	mRNA	HNRNPA2B1	1	-17.55	-26.24	-7.833	0.0006864	0.00653	hahn2023_gse212576
+mouse_neurons	mRNA	BUD23	1	-21.4	-31.47	-9.855	0.0005736	0.00653	hahn2023_gse212576
+mouse_neurons	mRNA	METTL1	1	15	4.165	26.97	0.005638	0.0273	hahn2023_gse212576
+mouse_neurons	mRNA	RNMT	1	-24.77	-32.45	-16.21	2.239e-07	5.151e-06	hahn2023_gse212576
+mouse_neurons	mRNA	METTL16	1	5.754	-4.256	16.81	0.2701	0.436	hahn2023_gse212576
+mouse_neurons	mRNA	FXR2	1	-10.8	-20.61	0.2265	0.05461	0.1478	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT11	1	-11.03	-19.16	-2.092	0.01672	0.06573	hahn2023_gse212576
+mouse_neurons	mRNA	PUS10	1	1.21	-8.33	11.74	0.8119	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	CBLL1	1	-6.342	-16.31	4.809	0.2536	0.4321	hahn2023_gse212576
+mouse_neurons	mRNA	METTL2A	1	-4.818	-15.43	7.123	0.4129	0.5523	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN2	1	-6.324	-16.47	5.051	0.2639	0.436	hahn2023_gse212576
+mouse_neurons	mRNA	METTL6	1	2.631	-7.342	13.68	0.6185	0.7488	hahn2023_gse212576
+mouse_neurons	mRNA	ZC3H13	1	-12.78	-21.89	-2.619	0.01503	0.06573	hahn2023_gse212576
+mouse_neurons	mRNA	METTL3	1	-23.34	-30.59	-15.34	1.57e-07	4.815e-06	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT2A	1	-27.44	-34.98	-19.01	1.04e-08	4.786e-07	hahn2023_gse212576
+mouse_neurons	mRNA	CMTR1	1	12.71	-4.216	32.64	0.1495	0.3275	hahn2023_gse212576
+mouse_neurons	mRNA	WDR4	1	4.561	-5.631	15.85	0.394	0.541	hahn2023_gse212576
+mouse_neurons	mRNA	PRRC2A	1	-24.64	-34.46	-13.35	7.142e-05	0.001095	hahn2023_gse212576
+mouse_neurons	mRNA	TRUB1	1	11.41	-1.802	26.41	0.09341	0.2387	hahn2023_gse212576
+mouse_neurons	mRNA	ALYREF	1	-9.904	-25.02	8.261	0.2657	0.436	hahn2023_gse212576
+mouse_neurons	mRNA	HSD17B10	1	8.739	-4.791	24.19	0.2165	0.3929	hahn2023_gse212576
+mouse_neurons	mRNA	ALKBH8	1	-11.05	-19.9	-1.209	0.02872	0.09438	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN6	1	-8.293	-19.94	5.053	0.2117	0.3929	hahn2023_gse212576
+mouse_neurons	mRNA	TRDMT1	1	12.5	-2.714	30.09	0.1121	0.2692	hahn2023_gse212576
+mouse_neurons	mRNA	NOP10	1	-16.22	-29.72	-0.1213	0.04843	0.135	hahn2023_gse212576
+mouse_neurons	mRNA	NAT10	1	1.688	-10.23	15.18	0.7923	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	FXR1	1	-14.85	-23.48	-5.249	0.003189	0.01834	hahn2023_gse212576
+mouse_neurons	mRNA	GAR1	1	-5.779	-16.41	6.203	0.3297	0.5056	hahn2023_gse212576
+mouse_neurons	mRNA	METTL14	1	2.181	-8.444	14.04	0.7001	0.8153	hahn2023_gse212576
+mouse_neurons	mRNA	YBX1	1	1.416	-9.183	13.25	0.8028	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN4	1	15.06	2.461	29.2	0.01774	0.06573	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT44	1	-5.358	-16.45	7.201	0.3864	0.541	hahn2023_gse212576
+mouse_neurons	mRNA	ZCCHC4	1	9.025	-3.42	23.07	0.1623	0.3473	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN7	1	17.88	0.4015	38.39	0.04454	0.1308	hahn2023_gse212576
+mouse_neurons	mRNA	PUS1	1	26.89	8.391	48.56	0.003057	0.01834	hahn2023_gse212576
+mouse_neurons	mRNA	IGF2BP3	1	-2.339	-20.03	19.26	0.8164	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	YBX3	1	-5.875	-16.91	6.628	0.3413	0.5148	hahn2023_gse212576
+mouse_neurons	mRNA	RRP8	1	-7.006	-23.13	12.51	0.4548	0.5894	hahn2023_gse212576
+mouse_neurons	mRNA	THUMPD1	1	-4.772	-16.48	8.573	0.4649	0.5941	hahn2023_gse212576
+mouse_neurons	mRNA	RBMX	1	-6.871	-15.9	3.125	0.1712	0.3579	hahn2023_gse212576
+mouse_neurons	mRNA	DKC1	1	6.826	-3.08	17.74	0.1835	0.3726	hahn2023_gse212576
+mouse_neurons	mRNA	RPUSD4	1	6.771	-3.118	17.67	0.1864	0.3726	hahn2023_gse212576
+mouse_neurons	mRNA	PUS3	1	-8.865	-18.85	2.353	0.117	0.2692	hahn2023_gse212576
+mouse_neurons	mRNA	PUS7L	1	6.681	-16.89	36.94	0.6117	0.7488	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT13	1	-4.922	-13.64	4.673	0.3035	0.4732	hahn2023_gse212576
+mouse_neurons	mRNA	IGF2BP2	1	-56.86	-66.76	-44.03	2.499e-10	2.299e-08	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT5	1	10.15	-3.045	25.13	0.1376	0.3087	hahn2023_gse212576
+mouse_neurons	mRNA	YTHDC2	1	-18.83	-28.07	-8.412	0.0007098	0.00653	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT10B	1	-4.095	-13.25	6.031	0.4142	0.5523	hahn2023_gse212576
+mouse_neurons	mRNA	YTHDC1	1	-4.036	-12.65	5.433	0.3909	0.541	hahn2023_gse212576
+mouse_neurons	mRNA	TYW2	1	-3.355	-20.22	17.07	0.7272	0.8363	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT6	1	1.249	-9.484	13.26	0.8281	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	NOP2	1	-17.93	-28.56	-5.723	0.005224	0.02719	hahn2023_gse212576
+mouse_neurons	mRNA	RAMAC	1	-25.11	-37.39	-10.41	0.001563	0.01183	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT112	1	-11.35	-21.22	-0.2416	0.04548	0.1308	hahn2023_gse212576
+mouse_neurons	mRNA	YTHDF1	1	-11.41	-19.25	-2.812	0.01036	0.04765	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT9B	1	11.37	-8.366	35.35	0.2793	0.443	hahn2023_gse212576
+mouse_neurons	mRNA	TRUB2	1	4.6	-6.655	17.21	0.4387	0.5766	hahn2023_gse212576
+mouse_neurons	mRNA	PCIF1	1	7.037	-3.723	19	0.2083	0.3929	hahn2023_gse212576
+mouse_neurons	mRNA	YTHDF2	1	2.913	-7.227	14.16	0.5875	0.7304	hahn2023_gse212576
+mouse_neurons	mRNA	ALKBH3	1	18.18	5.083	32.92	0.005319	0.02719	hahn2023_gse212576
+mouse_neurons	mRNA	VIRMA	1	-1.163	-11.13	9.923	0.8293	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	TET2	1	-0.5474	-11.47	11.73	0.9263	0.9469	hahn2023_gse212576
+mouse_neurons	mRNA	RPUSD1	1	-16.15	-24.87	-6.414	0.001672	0.01183	hahn2023_gse212576
+mouse_neurons	mRNA	METTL8	1	5.411	-5.889	18.07	0.3624	0.5292	hahn2023_gse212576
+mouse_neurons	mRNA	ALKBH5	1	9.098	-5.011	25.3	0.2178	0.3929	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT10C	1	-11.37	-26.01	6.176	0.1903	0.3726	hahn2023_gse212576
+mouse_neurons	mRNA	CMTR2	1	4.867	-15.57	30.24	0.6673	0.7871	hahn2023_gse212576
+mouse_neurons	mRNA	YTHDF3	1	-11.21	-20.38	-0.9952	0.03236	0.1027	hahn2023_gse212576
+mouse_neurons	mRNA	RBM15	1	-5.879	-21.53	12.9	0.5139	0.6476	hahn2023_gse212576
+mouse_neurons	mRNA	NSUN3	1	31.48	10.04	57.1	0.002582	0.01697	hahn2023_gse212576
+mouse_neurons	mRNA	RPUSD3	1	-1.443	-14.16	13.16	0.8367	0.8847	hahn2023_gse212576
+mouse_neurons	mRNA	PUSL1	1	-20.87	-34.8	-3.956	0.01786	0.06573	hahn2023_gse212576
+mouse_neurons	mRNA	METTL5	1	-5.42	-16.69	7.372	0.3892	0.541	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT1L	1	-7.637	-16.12	1.707	0.1062	0.264	hahn2023_gse212576
+mouse_neurons	mRNA	METTL4	1	-13.36	-23.75	-1.54	0.02795	0.09438	hahn2023_gse212576
+mouse_neurons	mRNA	FTO	1	18.38	0.3546	39.64	0.04528	0.1308	hahn2023_gse212576
+mouse_neurons	mRNA	METTL15	1	0.405	-9.122	10.93	0.9367	0.947	hahn2023_gse212576
+mouse_neurons	mRNA	PUS7	1	2.35	-7.734	13.54	0.6607	0.7871	hahn2023_gse212576
+mouse_neurons	mRNA	HNRNPC	1	-12.17	-21.09	-2.236	0.0176	0.06573	hahn2023_gse212576
+mouse_neurons	mRNA	WTAP	1	8.097	-0.8216	17.82	0.07636	0.2007	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT61A	1	-15.35	-31.2	4.169	0.1155	0.2692	hahn2023_gse212576
+mouse_neurons	mRNA	TRMT2B	1	39.25	21.41	59.7	2.192e-06	4.034e-05	hahn2023_gse212576
+mouse_neurons	mRNA	RBM15B	1	-29.49	-42.14	-14.08	0.0005322	0.00653	hahn2023_gse212576
+mouse_neurons	mRNA	ALKBH1	1	1.247	-11.11	15.33	0.852	0.8902	hahn2023_gse212576
+mouse_protein	mRNA-adjusted protein	FMR1	2	-10.83	-15.37	-6.043	1.74e-05	0.001113	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	NHP2	1	-5.427	-29.97	27.72	0.7158	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT1	1	-5.054	-16.96	8.554	0.4479	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	ALKBH7	1	0.2531	-22.36	29.45	0.9845	0.9845	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	HNRNPA2B1	2	-0.2496	-4.913	4.642	0.9185	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	METTL1	1	-26.45	-40.72	-8.747	0.005242	0.1094	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	RNMT	2	-3.208	-6.173	-0.1496	0.03995	0.3016	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	METTL16	2	-1.681	-15.1	13.86	0.8209	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	FXR2	2	-1.927	-5.748	2.049	0.3373	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	TRMT11	1	11.03	-4.438	29	0.1717	0.7685	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	CBLL1	2	-4.364	-13.05	5.186	0.3582	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	METTL2A	1	-7.075	-24.51	14.39	0.4889	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	NSUN2	2	-1.547	-5.442	2.509	0.4491	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	ZC3H13	1	5.59	-10.03	23.92	0.5054	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	METTL3	1	3.449	-8.088	16.43	0.5741	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT2A	1	17.04	-7.017	47.33	0.1801	0.7685	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	CMTR1	2	3.41	-1.129	8.158	0.1431	0.7046	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	WDR4	1	-4.993	-17.44	9.335	0.4748	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	PRRC2A	2	-2.474	-4.747	-0.148	0.03724	0.3016	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	TRUB1	1	-2.855	-17.85	14.87	0.7348	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	ALYREF	2	1.245	-5.975	9.019	0.7431	0.9248	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	HSD17B10	2	6.611	-1.419	15.3	0.1091	0.5819	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	ALKBH8	1	34.27	8.45	66.23	0.006839	0.1094	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	NSUN6	1	5.787	-12.85	28.41	0.5693	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	NOP10	1	12.5	-10.93	42.09	0.3231	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	NAT10	2	-4.325	-11.7	3.666	0.28	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	RPUSD2	1	-1.875	-13.78	11.67	0.7741	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	FXR1	2	-3.876	-10.93	3.739	0.3095	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	GAR1	1	5.69	-8.312	21.83	0.4453	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	METTL14	2	0.7206	-7.542	9.722	0.8694	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YBX1	2	-6.62	-11.38	-1.606	0.01026	0.1143	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	NSUN4	1	2.397	-22.24	34.84	0.8661	0.9515	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	PUS1	1	11.4	-13.91	44.15	0.4116	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	YBX3	2	0.7615	-14.01	18.07	0.9253	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	THUMPD1	2	1.861	-9.97	15.25	0.7697	0.9248	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	RBMX	2	-2.358	-15.49	12.82	0.7462	0.9248	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	DKC1	2	4.063	-3.574	12.3	0.3058	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	RPUSD4	1	-24.27	-57.13	33.75	0.3381	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT5	2	4.082	0.137	8.183	0.04241	0.3016	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YTHDC2	2	-5.95	-16.02	5.325	0.2883	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YTHDC1	2	1.959	-4.109	8.41	0.5355	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	TRMT6	2	13.24	3.998	23.3	0.004203	0.1094	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	NOP2	2	-0.9398	-9.681	8.648	0.8412	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	TRMT112	2	3.465	-8.177	16.58	0.576	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YTHDF1	2	1.958	-10.59	16.26	0.7722	0.9248	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	PCIF1	2	2.296	-4.497	9.573	0.5173	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YTHDF2	2	-3.56	-8.928	2.124	0.2148	0.7856	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	ALKBH3	1	4.273	-15.72	29	0.7	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	RPUSD1	1	26.9	-1.786	63.97	0.06843	0.438	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	ALKBH5	1	-0.7132	-16.78	18.46	0.9367	0.9515	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT10C	2	-4.941	-10.36	0.8106	0.0909	0.5289	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	YTHDF3	2	-4.042	-9.955	2.259	0.2035	0.7856	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	RBM15	2	-2.017	-6.816	3.029	0.4265	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	RPUSD3	1	-21.94	-35.46	-5.582	0.01071	0.1143	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	PUSL1	1	-12.02	-36.16	21.25	0.4338	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT1L	1	3.149	-14.09	23.84	0.7396	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	FTO	2	1.887	-2.474	6.443	0.4022	0.8572	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	METTL15	2	0.401	-6.553	7.872	0.913	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	PUS7	1	4.616	-10.47	22.24	0.57	0.8572	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	HNRNPC	2	-1.365	-6.911	4.512	0.6417	0.9248	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	WTAP	1	-1.786	-13.47	11.48	0.7803	0.9248	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	TRMT61A	1	12.81	-6.994	36.84	0.221	0.7856	langfelder2016_pxd006302
+mouse_protein	mRNA-adjusted protein	RBM15B	2	0.7986	-15.76	20.62	0.9308	0.9515	langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	mRNA-adjusted protein	ALKBH1	1	10.53	-20.31	53.31	0.5487	0.8572	langfelder2016_pxd006302
+mouse_protein	Protein	FMR1	7	-6.985	-10.52	-3.307	0.0002523	0.003936	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	NHP2	6	1.078	-4.446	6.92	0.7085	0.8374	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT1	6	4.173	-3.665	12.65	0.3057	0.5927	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	ALKBH7	3	-6.346	-14.55	2.647	0.1611	0.4296	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	METTL17	1	-3.443	-9.778	3.337	0.3116	0.5927	keele2025_pxd058160
+mouse_protein	Protein	HNRNPA2B1	7	-0.4747	-2.506	1.599	0.6511	0.7935	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL1	5	-11.44	-23.76	2.874	0.112	0.3494	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein	Protein	RNMT	7	-3.456	-5.146	-1.737	9.414e-05	0.001836	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL16	6	-3.17	-8.543	2.519	0.2687	0.5736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	FXR2	7	-3.9	-6.227	-1.514	0.001476	0.01645	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT11	4	1.694	-4.164	7.91	0.579	0.7654	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485
+mouse_protein	Protein	PUS10	1	8.148	-1.656	18.93	0.1062	0.3472	keele2025_pxd058160
+mouse_protein	Protein	CBLL1	3	-3.867	-11.88	4.875	0.3745	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	Protein	METTL2A	4	-3.861	-14.02	7.494	0.4894	0.6807	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein	Protein	NSUN2	7	-0.4175	-2.579	1.792	0.7086	0.8374	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL6	1	5.545	-11.34	25.65	0.5441	0.7317	keele2025_pxd058160
+mouse_protein	Protein	ZC3H13	5	2.393	-3.052	8.143	0.3963	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein	Protein	METTL3	5	-4.096	-10.68	2.967	0.2487	0.5736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT2A	4	0.2502	-5.108	5.91	0.9289	0.9534	keele2025_pxd058160,langfelder2016_pxd006302,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	CMTR1	7	5.696	1.614	9.943	0.005841	0.04142	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	WDR4	5	-4.683	-9.409	0.2888	0.06448	0.2515	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein	Protein	PRRC2A	7	-1.988	-3.63	-0.3179	0.01984	0.1058	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRUB1	3	-0.1654	-7.575	7.838	0.9664	0.9664	keele2025_pxd058160,langfelder2016_pxd006302,tsumagari2023_pxd041485
+mouse_protein	Protein	ALYREF	7	1.473	-1.753	4.805	0.375	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	HSD17B10	7	5.337	2.917	7.813	1.156e-05	0.0003007	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	ALKBH8	3	2.812	-3.989	10.09	0.4271	0.6532	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	NSUN6	5	13.05	8.75	17.52	5.704e-10	4.449e-08	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485
+mouse_protein	Protein	TRDMT1	1	66.68	-6.395	196.8	0.08265	0.293	lu2025_pxd053154
+mouse_protein	Protein	NOP10	4	0.792	-8.179	10.64	0.8683	0.9406	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,wang2025_pxd047296
+mouse_protein	Protein	NAT10	7	-0.8879	-4.448	2.805	0.6327	0.7834	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RPUSD2	5	1.215	-3.405	6.057	0.6123	0.7834	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	FXR1	7	-4.176	-6.649	-1.638	0.001385	0.01645	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	GAR1	6	-0.4191	-5.907	5.389	0.8845	0.9451	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL14	3	-0.6021	-5.371	4.407	0.8098	0.9142	keele2025_pxd058160,langfelder2016_pxd006302,takasugi2024_pxd040722
+mouse_protein	Protein	YBX1	7	-4.844	-7.975	-1.607	0.003621	0.02962	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	NSUN4	3	8.056	-2.098	19.26	0.1238	0.3578	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	TRMT44	1	0.9553	-7.886	10.64	0.8389	0.9216	keele2025_pxd058160
+mouse_protein	Protein	NSUN7	1	-7.652	-13.65	-1.238	0.02015	0.1058	keele2025_pxd058160
+mouse_protein	Protein	PUS1	4	4.226	-1.028	9.759	0.1168	0.3503	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein	Protein	YBX3	7	4.737	-2.714	12.76	0.219	0.551	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RRP8	1	-19.09	-44.15	17.23	0.2628	0.5736	keele2025_pxd058160
+mouse_protein	Protein	THUMPD1	7	1.946	-3.01	7.155	0.4484	0.6689	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RBMX	7	-1.609	-5.21	2.129	0.3939	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	DKC1	7	2.898	-0.04412	5.926	0.05358	0.2322	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RPUSD4	3	-2.988	-14.33	9.857	0.6325	0.7834	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	PUS7L	2	-9.437	-23.66	7.43	0.2553	0.5736	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein	Protein	IGF2BP2	1	-12.05	-26.65	5.44	0.1652	0.4296	keele2025_pxd058160
+mouse_protein	Protein	TRMT5	7	0.3582	-6.261	7.445	0.9182	0.9534	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	YTHDC2	6	-2.848	-7.414	1.944	0.2395	0.5736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein	Protein	YTHDC1	7	2.045	-3.467	7.872	0.475	0.6736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT6	7	11.79	3.917	20.25	0.002777	0.02707	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	NOP2	7	-2.077	-5.677	1.661	0.2721	0.5736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RAMAC	4	3.634	-4.349	12.28	0.3828	0.6339	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein	Protein	TRMT112	7	2.168	-2.298	6.837	0.347	0.6294	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	YTHDF1	7	0.9131	-2.618	4.572	0.6169	0.7834	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT9B	2	-10.99	-28.15	10.26	0.2865	0.582	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein	Protein	PCIF1	7	7.093	-0.5863	15.37	0.07106	0.2639	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	YTHDF2	6	-2.74	-5.97	0.6003	0.1068	0.3472	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein	Protein	ALKBH3	3	11.88	3.692	20.72	0.003797	0.02962	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	VIRMA	3	-0.2542	-7.455	7.508	0.9469	0.9592	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein	Protein	RPUSD1	2	8.721	-0.3528	18.62	0.06004	0.2465	keele2025_pxd058160,langfelder2016_pxd006302
+mouse_protein	Protein	ALKBH5	4	3.388	-5.256	12.82	0.4545	0.6689	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,wang2025_pxd047296
+mouse_protein	Protein	TRMT10C	7	-1.196	-4.401	2.116	0.4744	0.6736	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	YTHDF3	7	-7.043	-9.99	-3.999	8.904e-06	0.0003007	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RBM15	6	-0.4999	-4.713	3.9	0.8204	0.9142	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RPUSD3	6	-7.602	-13.38	-1.444	0.0163	0.1058	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	PUSL1	4	-4.464	-14.17	6.343	0.4036	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485
+mouse_protein	Protein	METTL5	1	0.6505	-9.93	12.47	0.9089	0.9534	keele2025_pxd058160
+mouse_protein	Protein	TRMT1L	5	5.024	-1.726	12.24	0.1481	0.4126	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL4	1	-13.89	-24.86	-1.317	0.0315	0.1536	keele2025_pxd058160
+mouse_protein	Protein	FTO	7	3.956	0.212	7.839	0.03816	0.1751	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	METTL15	4	-0.7586	-5.529	4.253	0.7619	0.874	keele2025_pxd058160,langfelder2016_pxd006302,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein	Protein	PUS7	3	-0.9959	-6.617	4.963	0.7371	0.8582	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154
+mouse_protein	Protein	HNRNPC	7	-3.804	-6.905	-0.6	0.02034	0.1058	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	WTAP	6	4.665	-3.829	13.91	0.291	0.582	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	TRMT61A	5	3.897	-5.068	13.71	0.4064	0.6339	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein	Protein	RBM15B	6	-1.962	-5.829	2.063	0.3344	0.621	keele2025_pxd058160,langfelder2016_pxd006302,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485
+mouse_protein	Protein	ALKBH1	1	12.02	-19.3	55.5	0.4974	0.6807	langfelder2016_pxd006302
+mouse_protein_aged	Protein	FMR1	6	-5.652	-9.091	-2.082	0.002137	0.02743	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	NHP2	5	0.6765	-5.499	7.255	0.8346	0.9361	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT1	5	6.815	-2.255	16.73	0.1453	0.3997	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	ALKBH7	2	-4.899	-14.29	5.525	0.3438	0.6458	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	METTL17	1	-3.443	-9.778	3.337	0.3116	0.6151	keele2025_pxd058160
+mouse_protein_aged	Protein	HNRNPA2B1	6	0.003852	-2.489	2.561	0.9976	0.9976	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL1	4	-9.555	-24.31	8.077	0.2691	0.5774	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein_aged	Protein	RNMT	6	-3.752	-5.626	-1.84	0.0001383	0.002662	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL16	5	-4.38	-9.574	1.114	0.1161	0.3575	keele2025_pxd058160,lu2025_pxd053154,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	FXR2	6	-4.176	-6.807	-1.47	0.002681	0.02949	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT11	3	0.7987	-5.546	7.569	0.8105	0.9314	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485
+mouse_protein_aged	Protein	PUS10	1	8.148	-1.656	18.93	0.1062	0.3407	keele2025_pxd058160
+mouse_protein_aged	Protein	CBLL1	2	-4.068	-12.31	4.944	0.3646	0.6536	keele2025_pxd058160,takasugi2024_pxd040722
+mouse_protein_aged	Protein	METTL2A	3	-2.126	-14.74	12.36	0.7602	0.9121	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein_aged	Protein	NSUN2	6	-0.169	-2.854	2.59	0.9032	0.9402	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL6	1	5.545	-11.34	25.65	0.5441	0.855	keele2025_pxd058160
+mouse_protein_aged	Protein	ZC3H13	4	2.341	-4.637	9.829	0.5208	0.8354	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL3	4	-6.066	-13.92	2.509	0.1603	0.4104	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT2A	3	-0.9533	-6.545	4.972	0.7466	0.9121	keele2025_pxd058160,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	CMTR1	6	6.297	0.9833	11.89	0.0196	0.1108	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	WDR4	4	-5.387	-10.5	0.01374	0.05057	0.2163	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein_aged	Protein	PRRC2A	6	-1.811	-3.741	0.1579	0.07119	0.261	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRUB1	2	2.928	-9.326	16.84	0.6555	0.8926	keele2025_pxd058160,tsumagari2023_pxd041485
+mouse_protein_aged	Protein	ALYREF	6	1.472	-2.05	5.12	0.4175	0.6872	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	HSD17B10	6	4.667	2.299	7.089	9.355e-05	0.002401	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	ALKBH8	2	1.043	-6.292	8.952	0.7872	0.9184	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	NSUN6	4	12.8	8.399	17.37	2.942e-09	2.265e-07	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485
+mouse_protein_aged	Protein	TRDMT1	1	66.68	-6.395	196.8	0.08265	0.2767	lu2025_pxd053154
+mouse_protein_aged	Protein	NOP10	3	-2.373	-12.05	8.37	0.652	0.8926	keele2025_pxd058160,lu2025_pxd053154,wang2025_pxd047296
+mouse_protein_aged	Protein	NAT10	6	-0.6793	-4.334	3.115	0.7216	0.9108	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RPUSD2	4	1.398	-3.57	6.623	0.588	0.8707	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	FXR1	6	-5.079	-7.677	-2.409	0.0002305	0.00355	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	GAR1	5	-1.407	-7.661	5.271	0.6718	0.8926	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL14	2	-1.536	-6.484	3.673	0.5561	0.8563	keele2025_pxd058160,takasugi2024_pxd040722
+mouse_protein_aged	Protein	YBX1	6	-4.679	-7.998	-1.239	0.00806	0.06895	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	NSUN4	2	9.996	-1.104	22.34	0.07919	0.2767	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	TRMT44	1	0.9553	-7.886	10.64	0.8389	0.9361	keele2025_pxd058160
+mouse_protein_aged	Protein	NSUN7	1	-7.652	-13.65	-1.238	0.02015	0.1108	keele2025_pxd058160
+mouse_protein_aged	Protein	PUS1	3	4.032	-1.345	9.702	0.1443	0.3997	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein_aged	Protein	YBX3	6	7.102	-0.2183	14.96	0.0575	0.2326	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RRP8	1	-19.09	-44.15	17.23	0.2628	0.5774	keele2025_pxd058160
+mouse_protein_aged	Protein	THUMPD1	6	2.977	-3.356	9.726	0.365	0.6536	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RBMX	6	-0.6972	-4.207	2.941	0.7031	0.9023	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	DKC1	6	1.47	-1.497	4.526	0.3352	0.6452	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RPUSD4	2	-1.984	-13.71	11.34	0.7579	0.9121	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	PUS7L	2	-9.437	-23.66	7.43	0.2553	0.5774	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	IGF2BP2	1	-12.05	-26.65	5.44	0.1652	0.4104	keele2025_pxd058160
+mouse_protein_aged	Protein	TRMT5	6	0.5209	-6.872	8.501	0.8939	0.9402	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	YTHDC2	5	-0.2893	-3.3	2.815	0.8531	0.9384	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein_aged	Protein	YTHDC1	6	1.46	-4.868	8.208	0.6591	0.8926	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT6	6	12.25	3.454	21.8	0.005516	0.05309	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	NOP2	6	-2.235	-6.083	1.771	0.2699	0.5774	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RAMAC	4	3.634	-4.349	12.28	0.3828	0.6699	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT112	6	2.105	-2.931	7.402	0.4195	0.6872	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	YTHDF1	6	-0.9003	-4.534	2.872	0.6351	0.8926	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT9B	2	-10.99	-28.15	10.26	0.2865	0.5818	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	PCIF1	6	9.342	-0.3905	20.03	0.06042	0.2326	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	YTHDF2	5	-2.605	-5.998	0.9101	0.1445	0.3997	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein_aged	Protein	ALKBH3	2	13.73	2.688	25.96	0.01355	0.09483	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	VIRMA	3	-0.2542	-7.455	7.508	0.9469	0.9594	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951
+mouse_protein_aged	Protein	RPUSD1	1	11.06	0.04852	23.28	0.04894	0.2163	keele2025_pxd058160
+mouse_protein_aged	Protein	ALKBH5	3	5.455	-7.077	19.68	0.4106	0.6872	keele2025_pxd058160,lu2025_pxd053154,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT10C	6	-0.8054	-4.456	2.985	0.6725	0.8926	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	YTHDF3	6	-7.883	-11.31	-4.323	2.195e-05	0.000845	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RBM15	5	0.3305	-4.848	5.791	0.9029	0.9402	keele2025_pxd058160,lu2025_pxd053154,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RPUSD3	5	-6.5	-11.22	-1.529	0.01099	0.08461	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	PUSL1	3	-0.5004	-9.331	9.19	0.9157	0.9402	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485
+mouse_protein_aged	Protein	METTL5	1	0.6505	-9.93	12.47	0.9089	0.9402	keele2025_pxd058160
+mouse_protein_aged	Protein	TRMT1L	4	4.61	-3.721	13.66	0.2871	0.5818	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL4	1	-13.89	-24.86	-1.317	0.0315	0.1605	keele2025_pxd058160
+mouse_protein_aged	Protein	FTO	6	4.743	0.3663	9.311	0.03335	0.1605	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	METTL15	3	-0.7356	-5.528	4.3	0.77	0.9121	keele2025_pxd058160,takasugi2024_pxd040722,wang2025_pxd047296
+mouse_protein_aged	Protein	PUS7	2	-1.76	-7.783	4.657	0.5823	0.8707	keele2025_pxd058160,lu2025_pxd053154
+mouse_protein_aged	Protein	HNRNPC	6	-4.448	-7.898	-0.8679	0.01533	0.09835	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	WTAP	5	6.269	-4.054	17.7	0.2435	0.5774	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	TRMT61A	4	2.786	-9.953	17.33	0.684	0.8926	keele2025_pxd058160,lu2025_pxd053154,tsumagari2023_pxd041485,wang2025_pxd047296
+mouse_protein_aged	Protein	RBM15B	5	-2.525	-5.902	0.9734	0.1552	0.4104	keele2025_pxd058160,lu2025_pxd053154,marino2025_pxd047951,takasugi2024_pxd040722,tsumagari2023_pxd041485

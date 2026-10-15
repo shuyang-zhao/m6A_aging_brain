@@ -1,0 +1,30 @@
+# Python environment of the pipeline; the versions are those the results were produced with
+#
+#   mamba env create -p env -f environment.yml
+#
+# R (4.6.1) and its packages are not part of this environment: the scripts call the Rscript found on PATH, and the
+# results used R 4.6.1 with the CRAN and Bioconductor packages listed in README.md.
+# The GPU steps run on a separate CUDA machine: the TabPFN step of script 50 (tabpfn 9.1.0, installed by
+# pipeline/extra/transcript_model.sbatch) and pipeline/extra/embed_transcripts.py (torch, transformers, RiboNN; the
+# stored products record torch 2.2.2+cu118).
+name: age_proteome
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12.14
+  - numpy=2.5.3
+  - scipy=1.18.1
+  - pandas=3.0.6
+  - pyarrow=25.0.0
+  - statsmodels=0.15.0
+  - joblib=1.6.0
+  - scikit-learn=1.9.1  # comparison models of script 50
+  - lightgbm=4.7.0
+  - anndata=0.13.4  # h5ad files of the single-nucleus data
+  - h5py=3.16.0  # 10x h5 files
+  - pysam=0.24.1  # genome FASTA
+  - pyliftover=0.4.1  # hg19 and GRCm39 coordinates
+  - xlrd=2.0.2  # .xls site-map supplements (script 04)
+  - openpyxl=3.1.5
+  - pyxlsb=1.0.10  # Takasugi supplement is .xlsb

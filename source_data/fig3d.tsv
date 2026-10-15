@@ -1,0 +1,13 @@
+context	layer	definition	n_cohorts	effect_pct	ci_low_pct	ci_high_pct
+human_striatum	mrna_only	brain peaks	4	-0.1698	-0.237	-0.1026
+human_striatum	mrna_only	cell line	4	-0.0753	-0.1026	-0.04798
+human_cortex	mrna_only	brain peaks	4	-0.01086	-0.2705	0.2494
+human_cortex	mrna_only	cell line	4	-0.04313	-0.08231	-0.003932
+human_hippocampus	mrna_only	brain peaks	3	-0.002405	-0.1368	0.1322
+human_hippocampus	mrna_only	cell line	3	-0.01662	-0.08785	0.05466
+human_cerebellum	mrna_only	brain peaks	2	0.2526	0.02317	0.4826
+human_cerebellum	mrna_only	cell line	2	0.03879	-0.005094	0.0827
+human_neurons	mrna_only	brain peaks	6	-0.02703	-0.2524	0.1988
+human_neurons	mrna_only	cell line	6	-0.1166	-0.2256	-0.007585
+human_protein	protein_only	brain peaks	9	-0.2024	-0.3268	-0.07794
+human_protein	protein_only	cell line	9	-0.034	-0.09521	0.02724

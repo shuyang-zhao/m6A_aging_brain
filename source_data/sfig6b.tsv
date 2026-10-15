@@ -1,0 +1,15 @@
+conway2016_H9_eCLIP	degrauwe2016_MGG8_PARCLIP	han2022_A172_eCLIP	preitner2016_E14brain_CLIP	genes
+False	True	False	False	3197
+False	True	True	False	556
+False	False	True	False	246
+False	False	False	True	186
+False	True	False	True	155
+True	True	False	False	105
+True	True	True	False	62
+False	True	True	True	32
+True	True	True	True	20
+True	True	False	True	19
+True	False	False	False	17
+False	False	True	True	3
+True	False	True	False	3
+True	False	False	True	3

@@ -1,0 +1,40 @@
+unit	context	layer	z	p
+Langfelder 2016	none	mRNA	0.1224	0.9026
+Langfelder 2016 RNA	mouse_mrna	mRNA	0.7506	0.4529
+Hahn 2023 bulk caudate putamen	mouse_mrna	mRNA	-1.75	0.08019
+Hahn 2023 bulk cerebellum	mouse_mrna	mRNA	-2.223	0.02619
+Hahn 2023 bulk choroid plexus	mouse_mrna	mRNA	-3.092	0.001986
+Hahn 2023 bulk corpus callosum	mouse_mrna	mRNA	-2.193	0.02834
+Hahn 2023 bulk entorhinal cortex	mouse_mrna	mRNA	-0.03451	0.9725
+Hahn 2023 bulk hippocampus anterior	mouse_mrna	mRNA	-1.606	0.1083
+Hahn 2023 bulk hippocampus posterior	mouse_mrna	mRNA	-1.248	0.2119
+Hahn 2023 bulk hypothalamus	mouse_mrna	mRNA	-2.064	0.039
+Hahn 2023 bulk medulla	mouse_mrna	mRNA	-1.129	0.2587
+Hahn 2023 bulk motor cortex	mouse_mrna	mRNA	-1.879	0.06025
+Hahn 2023 bulk olfactory bulb	mouse_mrna	mRNA	-0.6023	0.5469
+Hahn 2023 bulk pons	mouse_mrna	mRNA	-0.619	0.5359
+Hahn 2023 bulk subventricular zone	mouse_mrna	mRNA	-1.962	0.04977
+Hahn 2023 bulk thalamus	mouse_mrna	mRNA	-0.5543	0.5794
+Hahn 2023 bulk visual cortex	mouse_mrna	mRNA	-1.744	0.0812
+Hahn 2023 msn	mouse_neurons	mRNA	-1.683	0.09233
+Hahn 2023 neurons	mouse_neurons	mRNA	-1.499	0.1339
+Shavlakadze 2026 cerebellum	mouse_mrna	mRNA	-3.038	0.002379
+Shavlakadze 2026 cortex	mouse_mrna	mRNA	-2.382	0.01722
+Shavlakadze 2026 hippocampus	mouse_mrna	mRNA	-2.297	0.0216
+Shavlakadze 2026 hypothalamus	mouse_mrna	mRNA	0.03165	0.9748
+Takasugi 2024	mouse_mrna	mRNA	-2.073	0.03814
+Langfelder 2016	mouse_protein	Protein	-1.826	0.06791
+Keele 2025 cortex	mouse_protein	Protein	-1.475	0.1402
+Keele 2025 hippocampus	mouse_protein	Protein	-1.995	0.04607
+Keele 2025 striatum	mouse_protein	Protein	-1.361	0.1736
+Lu 2025 brainstem	mouse_protein	Protein	-4.035	5.471e-05
+Lu 2025 cerebellum	mouse_protein	Protein	-1.988	0.04676
+Lu 2025 hippocampus	mouse_protein	Protein	-0.8789	0.3794
+Lu 2025 olfactory bulb	mouse_protein	Protein	-2.095	0.03618
+Marino 2025 whole brain	mouse_protein	Protein	-2.816	0.004862
+Takasugi 2024	mouse_protein	Protein	-2.012	0.04423
+Tsumagari 2023 cortex	mouse_protein	Protein	-1.913	0.0558
+Tsumagari 2023 hippocampus	mouse_protein	Protein	-2.22	0.02643
+Wang 2025 brain	mouse_protein	Protein	-2.468	0.01358
+Langfelder 2016	mouse_protein	mRNA-adjusted protein	-1.847	0.06471
+Takasugi 2024	mouse_protein	mRNA-adjusted protein	-1.917	0.05521

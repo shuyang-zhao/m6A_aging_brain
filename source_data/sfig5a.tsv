@@ -1,0 +1,13 @@
+perturbation	regulator	tissue	readout	effect	ci_low	ci_high	q	agrees
+fmr1ko_cortex_rna_gse140565	FMR1	cortex	RNA	-0.1274	-0.1405	-0.1137	0.001768	1
+fmr1ko_cortex_rpf_gse140565	FMR1	cortex	Ribo-seq	0.001871	-0.00791	0.01165	0.7137	0
+fmr1ko_cortex_rna_gse143659	FMR1	cortex	RNA	0.08444	0.07263	0.09682	0.001768	0
+fmr1ko_cortex_ribo_gse143659	FMR1	cortex	Ribo-seq	-0.0611	-0.07414	-0.048	0.001768	1
+fmr1ko_cortex_te_gse143659	FMR1	cortex	translation efficiency	-0.1389	-0.1563	-0.1213	0.001768	1
+fmr1ko_cortex_rna_gse207145	FMR1	cortex	RNA	-0.1233	-0.1389	-0.108	0.001768	1
+fmr1ko_hippocampus_rna_gse207145	FMR1	hippocampus	RNA	-0.0385	-0.04814	-0.0286	0.001768	1
+fmr1ko_cerebellum_rna_gse207145	FMR1	cerebellum	RNA	-0.008127	-0.01692	0.0006506	0.07502	1
+fmr1ko_P_ribotag_gse325852	FMR1	cortex Pvalb neurons	RiboTag	-0.01958	-0.02771	-0.01134	0.001768	1
+fmr1ko_C_ribotag_gse325852	FMR1	cortex Camk2a neurons	RiboTag	-0.004428	-0.01916	0.009927	0.5649	1
+prrc2acko_nestin_rna_gse100491	PRRC2A	brain Nestin-Cre	RNA	-0.1158	-0.1704	-0.06246	0.001768	1
+prrc2acko_olig2_rna_gse100491	PRRC2A	brain Olig2-Cre	RNA	-0.04372	-0.05891	-0.02814	0.001768	1

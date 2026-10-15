@@ -1,0 +1,48 @@
+group	row	arm	value	m6A_specific	shared	binding_only
+Readers	FMR1	Output	0.1954	True	True	True
+Readers	FMR1	Stability	-1.395	True	False	False
+Readers	FMR1	Translation	0.8983	True	True	False
+Modules	FMRP family	Output	0.4498	True	True	True
+Modules	FMRP family	Stability	1.203	True	True	False
+Modules	FMRP family	Translation	0.5373	False	False	False
+Readers	FXR1	Output	0.1915	True	True	True
+Readers	FXR1	Stability	2.069	True	True	False
+Readers	FXR1	Translation	0.623	False	False	True
+Readers	FXR2	Output	0.1414	True	True	True
+Readers	FXR2	Stability	0.1312	False	False	False
+Readers	FXR2	Translation	0.03748	False	False	True
+Readers	HNRNPC	Output	0.2202	True	True	True
+Readers	HNRNPC	Stability	0.8065	False	False	False
+Readers	HNRNPC	Translation	0.3902	True	True	True
+Readers	IGF2BP2	Output	-0.3698	False	False	True
+Readers	IGF2BP2	Stability	-0.05225	False	False	False
+Readers	PRRC2A	Output	0.1145	True	True	True
+Readers	PRRC2A	Stability	1.089	True	True	False
+Readers	PRRC2A	Translation	0.761	False	False	False
+Readers	RBMX	Output	0.7388	True	True	True
+Readers	RBMX	Stability	0.2032	False	False	True
+Readers	RBMX	Translation	0.2956	True	True	False
+Readers	YTHDC1	Output	0.318	True	True	True
+Readers	YTHDC1	Stability	1.346	True	True	False
+Readers	YTHDC1	Translation	0.4239	False	False	False
+Readers	YTHDC2	Output	-0.4112	False	False	True
+Readers	YTHDC2	Stability	0.5281	False	False	False
+Readers	YTHDC2	Translation	0.69	False	False	False
+Modules	YTHDF module	Output	0.08665	False	False	True
+Modules	YTHDF module	Stability	1.003	False	False	False
+Modules	YTHDF module	Translation	0.3864	False	False	False
+Readers	YTHDF1	Output	-0.03719	False	False	True
+Readers	YTHDF1	Stability	-0.05145	False	False	False
+Readers	YTHDF1	Translation	-0.007519	False	False	False
+Readers	YTHDF2	Output	-0.01485	False	False	True
+Readers	YTHDF2	Stability	1.165	False	False	False
+Readers	YTHDF2	Translation	0.06663	False	False	True
+Readers	YTHDF3	Output	0.01944	False	False	True
+Readers	YTHDF3	Stability	-0.2715	False	False	False
+Readers	YTHDF3	Translation	-0.3347	False	False	False
+Writers, erasers	Erasers	Output	0.03777	False	False	False
+Writers, erasers	Erasers	Stability	0.9028	False	False	False
+Writers, erasers	Erasers	Translation	-0.1527	False	False	False
+Writers, erasers	Writer complex	Output	0.2156	False	False	False
+Writers, erasers	Writer complex	Stability	0.1644	False	False	False
+Writers, erasers	Writer complex	Translation	0.1469	False	False	False

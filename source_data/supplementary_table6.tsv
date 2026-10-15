@@ -1,0 +1,73 @@
+kind	reader	dataset	species	cell_type	method	readout	tissue_class	rank	n_genes	n_genes_with_m6A	n_genes_padj_below_0_05	accession	study	PMID	DOI	note
+binding	IGF2BP2	conway2016_H9_eCLIP	human	H9 hESC	eCLIP		neural-adjacent (pluripotent)		718	229		GSE78507	Conway 2016	27068461	10.1016/j.celrep.2016.03.052	peaks in both replicates, hg19 lifted to hg38
+binding	IGF2BP2	degrauwe2016_MGG8_PARCLIP	human	MGG8 glioma stem cells	PAR-CLIP		neural (glioma)		10336	4146		GSE73845	Degrauwe 2016	27184842	10.1016/j.celrep.2016.04.086	clusters in both replicates, hg19 lifted to hg38
+binding	IGF2BP2	han2022_A172_eCLIP	human	A172 glioma	eCLIP		neural (glioma)		2818	922		GSE192792	Han 2022	35992092	10.1016/j.isci.2022.104823	-log10 P >= 3 in both replicates
+binding	IGF2BP2	encode2020_K562_eCLIP_IDR	human	K562	eCLIP IDR		cell line		1371	371		ENCSR062NNB	Van Nostrand 2020	32728246	10.1038/s41586-020-2077-3	ENCODE IDR peaks
+binding	IGF2BP2	encode2020_K562_eCLIP_PureCLIP	human	K562	eCLIP PureCLIP		cell line		3992	1152		ENCSR062NNB	Van Nostrand 2020	32728246	10.1038/s41586-020-2077-3	PureCLIP sites of script 07
+binding	IGF2BP2	huang2018_HEK293T_RIPseq	human	HEK293T	RIP-seq		cell line		4800	2605		GSE90639	Huang 2018	29476152	10.1038/s41556-018-0045-z	deposited binding-gene list
+binding	IGF2BP2	preitner2016_E14brain_CLIP	mouse	E14 embryonic brain	CLIP		brain		759	432		GSE83822	Preitner 2016	27385015	10.1242/dev.128348	deposited RefSeq-mRNA clusters, mm9 lifted to mm10
+binding	IGF2BP2	gse133242_MEF_RIPseq	mouse	mouse embryonic fibroblasts	RIP-seq		fibroblast		409	283		GSE133242				IP against IgG, 3 vs 3
+binding	IGF2BP2	gse192705_adipocyte_RIPseq	mouse	cultured adipocytes	RIP-seq		adipocyte		1581	1313		GSE192705	Alvarez-Dominguez 2022	35036870	10.1016/j.isci.2021.103680	deposited list, >2-fold, padj < 0.05
+binding	YTHDF1	shi2026_striatum_CLIP	mouse	adult striatum (saline arm)	CLIP-seq (CLIPper)		brain in vivo	1	302	198		GSE326611	Shi 2026	41973927	10.1073/pnas.2518250123	genes with a peak in each of 3 replicates
+binding	YTHDF1	shi2018_hippocampus_CLIP	mouse	adult hippocampus	CLIP-seq (mutation-based)		brain in vivo	2	944	555		GSE106607	Shi 2018	30401835	10.1038/s41586-018-0666-1	deposited high-confidence peaks
+binding	YTHDF1	niu2022_retina_Ythdf1_RIP	mouse	neonatal retina (P0)	RIP-seq		neural primary tissue	3	2282	1998		GSE199962	Niu 2022	36039295	10.1016/j.isci.2022.104908	IP against input, 2 vs 2
+binding	YTHDF2	niu2022_retina_Ythdf2_RIP	mouse	neonatal retina (P0)	RIP-seq		neural primary tissue	3	533	479		GSE199962	Niu 2022	36039295	10.1016/j.isci.2022.104908	IP against input, 2 vs 2
+binding	YTHDF1	flamand2022_hippocampal_neurons_YTHDF1_RIP	mouse	cultured hippocampal neurons	RIP-seq		neural primary cells	3	2133	1845		GSE194207	Flamand 2022	35438793	10.1093/nar/gkac251	IP against input, 3 vs 3, deposited DESeq2
+binding	YTHDF2	flamand2022_hippocampal_neurons_YTHDF2_RIP	mouse	cultured hippocampal neurons	RIP-seq		neural primary cells	3	1577	1270		GSE194207	Flamand 2022	35438793	10.1093/nar/gkac251	IP against input, 3 vs 3, deposited DESeq2
+binding	YTHDF3	flamand2022_hippocampal_neurons_YTHDF3_RIP	mouse	cultured hippocampal neurons	RIP-seq		neural primary cells	3	2739	2370		GSE194207	Flamand 2022	35438793	10.1093/nar/gkac251	IP against input, 3 vs 3, deposited DESeq2
+binding	YTHDF1	yu2021_cerebellar_granule_YTHDF1_RIP	mouse	cerebellar granule cells (P8)	RIP-seq		neural primary tissue	3	379	306		GSE153689	Yu 2021	34643063	10.1002/advs.202101329	deposited RIP targets, IP/input log2FC > 1 and P < 0.05
+binding	YTHDF2	yu2021_cerebellar_granule_YTHDF2_RIP	mouse	cerebellar granule cells (P8)	RIP-seq		neural primary tissue	3	433	349		GSE153689	Yu 2021	34643063	10.1002/advs.202101329	deposited RIP targets, IP/input log2FC > 1 and P < 0.05
+binding	YTHDF2	gse266096_hippocampal_NSC_YTHDF2_RIP	mouse	hippocampal neural stem cells (P0.5)	RIP-seq		neural primary cells	3	1062	899		GSE266096	Zhang 2025	39476834	10.1016/j.stem.2024.10.002	IP against IgG, 3 vs 3
+binding	YTHDF2	dixit2020_387_iCLIP	human	glioblastoma stem cells (line 387)	iCLIP		neural cell line (glioma)	2	1768	553		GSE158742	Dixit 2021	33023892	10.1158/2159-8290.CD-20-0331	peaks in both libraries
+binding	YTHDF2	dixit2020_4121_iCLIP	human	glioblastoma stem cells (line 4121)	iCLIP		neural cell line (glioma)	2	1726	577		GSE158742	Dixit 2021	33023892	10.1158/2159-8290.CD-20-0331	peaks in both libraries
+binding	YTHDF2	dixit2020_HNP1_iCLIP	human	human neural progenitors (HNP1)	iCLIP		neural cell line	2	132	30		GSE158742	Dixit 2021	33023892	10.1158/2159-8290.CD-20-0331	peaks in both libraries
+binding	YTHDF1	lasman2020_mESC_eCLIP	mouse	mouse ESC	eCLIP (PureCLIP)		cell line	4	436	66		GSE148039	Lasman 2020	32943573	10.1101/gad.340695.120	single library
+binding	YTHDF1	zhang2024_HEK293T_CLIP	human	HEK293T	CLIP-seq		cell line	4	8379	3321		GSE264498	Zhang 2024	39543097	10.1038/s41467-024-54000-y	deposited WT peaks (replicates merged)
+binding	YTHDF1	wang2015_HeLa_PARCLIP	human	HeLa	PAR-CLIP		cell line	4	1507	726		GSE63591	Wang 2015	26046440	10.1016/j.cell.2015.05.014	clusters in both replicates, hg19 lifted to hg38
+binding	YTHDF2	wang2014_HeLa_PARCLIP	human	HeLa	PAR-CLIP		cell line	4	3209	2248		GSE49339	Wang 2014	24284625	10.1038/nature12730	published targets bound in all 3 replicates
+binding	YTHDF2	encore2026_K562_eCLIP	human	K562	eCLIP (PureCLIP)		cell line	4	1854	865		GSE315406	Her 2026	42025161	10.1016/j.cels.2026.101588	peaks in both replicates
+binding	YTHDF2	lasman2020_mESC_eCLIP	mouse	mouse ESC	eCLIP (PureCLIP)		cell line	4	1229	437		GSE148039	Lasman 2020	32943573	10.1101/gad.340695.120	single library
+binding	YTHDF2	ito2022_CD4Tcell_iCLIP	mouse	CD4 T cells	iCLIP (PureCLIP)		primary immune cells	4	3914	2342		GSE188846	Ito-Kureha 2022	35879451	10.1038/s41590-022-01268-1	peaks in both libraries
+binding	YTHDF2	gse230846_HEK293_iCLIP	human	HEK293	iCLIP		cell line	4	3071	1183		GSE230846	Nabeel-Shah 2024	39303720	10.1016/j.molcel.2024.08.037	peaks in both libraries
+binding	YTHDF3	shi2017_HeLa_PARCLIP	human	HeLa	PAR-CLIP		cell line	4	1411	762		GSE86214	Shi 2017	28106072	10.1038/cr.2017.15	peaks in at least 2 of 3 libraries
+binding	YTHDF3	lasman2020_mESC_eCLIP	mouse	mouse ESC	eCLIP (PureCLIP)		cell line	4	663	239		GSE148039	Lasman 2020	32943573	10.1101/gad.340695.120	single library
+perturbation	IGF2BP2	encode_hepg2_shRNA	human	HepG2	KD	RNA			14201		1049	ENCSR478FJK	Van Nostrand 2020	32728246	10.1038/s41586-020-2077-3	ENCODE DESeq2, 2 vs 2
+perturbation	IGF2BP2	encode_k562_shRNA	human	K562	KD	RNA			14596		457	ENCSR952RRH	Van Nostrand 2020	32728246	10.1038/s41586-020-2077-3	ENCODE DESeq2, 2 vs 2
+perturbation	IGF2BP2	degrauwe2016_IMP2s_KD	human	MGG4+MGG8 glioma stem cells	KD	RNA			10593		16	GSE73845	Degrauwe 2016	27184842	10.1016/j.celrep.2016.04.086	deposited
+perturbation	IGF2BP2	degrauwe2016_IMP2a_OE	human	MGG4+MGG8 glioma stem cells	OE	RNA			10956		347	GSE73845	Degrauwe 2016	27184842	10.1016/j.celrep.2016.04.086	deposited
+perturbation	IGF2BP2	degrauwe2016_brain_IMP2_KO	mouse	mouse brain (E15 + P21)	KO	RNA			11367		65	GSE73845	Degrauwe 2016	27184842	10.1016/j.celrep.2016.04.086	deposited
+perturbation	IGF2BP2	huang2018_hepg2_shIGF2BP2	human	HepG2	KD	RNA			9980		0	GSE90684	Huang 2018	29476152	10.1038/s41556-018-0045-z	average RPKM, RPKM >= 1 in control; no padj
+perturbation	IGF2BP2	gse146726_J82_siIGF2BP2	human	J82	KD	RNA			13123		4294	GSE146726	Okholm 2020	33287884	10.1186/s13073-020-00812-8	limma-trend on log2(x + 1) of the deposited normalised values
+perturbation	IGF2BP2	gse146726_UMUC3_siIGF2BP2	human	UMUC3	KD	RNA			12914		2299	GSE146726	Okholm 2020	33287884	10.1186/s13073-020-00812-8	limma-trend on log2(x + 1) of the deposited normalised values
+perturbation	IGF2BP2	gse292558_bmm_ko	mouse	bone-marrow macrophages	KO	RNA			15353		1310	GSE292558	Schymik 2026	41943844	10.7150/ijbs.122142	Igf2bp2 mRNA itself not reduced
+perturbation	IGF2BP2	regue2019_muscle_ko	mouse	adult skeletal muscle	KO	RNA			12228		0	GSE119801	Regué 2019	30692269	10.1128/MCB.00528-18	edgeR QL, 3 vs 3
+perturbation	YTHDF2	yu2021_cgc_shYthdf2	mouse	cerebellar granule cells (P8)	KD	RNA			13699		192	GSE153688	Yu 2021	34643063	10.1002/advs.202101329	edgeR QL, 3 vs 3
+perturbation	YTHDF1	yu2021_cgc_shYthdf1_proteome	mouse	cerebellar granule cells (P8)	KD	protein			336		0	Yu 2021 Table S3	Yu 2021	34643063	10.1002/advs.202101329	regulated proteins only (P < 0.05); no full table, no padj
+perturbation	YTHDF2	zhuang2023_dg_Ythdf2_cKO	mouse	hippocampal dentate gyrus granule cells (P40)	cKO	RNA			13896		511	GSE171790	Zhuang 2023	36670199	10.1038/s41380-023-01953-z	edgeR QL, 3 vs 3
+perturbation	YTHDF1	gse306850_acc_Ythdf1_KO	mouse	anterior cingulate cortex	KO	RNA			15561		2	GSE306850	Zhou 2026	42697900	10.1038/s41380-026-03840-9	edgeR QL, 3 vs 3
+perturbation	YTHDF1	shi2018_hippocampus_Ythdf1_KO	mouse	adult hippocampus	KO	RNA			12975		0	GSE106607	Shi 2018	30401835	10.1038/s41586-018-0666-1	limma-trend on log2(RPKM + 1) of the deposited RPKM, 3 vs 3
+perturbation	YTHDF2	li2018_nspc_Ythdf2_cKO	mouse	neural stem/progenitor cells (E14.5)	cKO	RNA			11827		1	GSE104867	Li 2018	29855337	10.1186/s13059-018-1436-y	edgeR QL, 3 vs 3
+perturbation	YTHDF2	gse266096_nsc_Ythdf2_cKO	mouse	hippocampal neural stem cells (P0.5)	cKO	RNA			10357		2086	GSE266096	Zhang 2025	39476834	10.1016/j.stem.2024.10.002	0 h of the actinomycin D series; Ythdf2 mRNA is higher in the cKO (exon-deleted transcript)
+perturbation	YTHDF1	zou2023_neuron_wt_YTHDF1inh	mouse	primary neurons (wild-type)	inhibitor	TE			12098		25	GSE214882	Zou 2023	37949069	10.1016/j.molcel.2023.10.028	SAC against DMSO; edgeR QL, 2 vs 2; assay x treatment interaction
+perturbation	YTHDF1	zou2023_neuron_wt_YTHDF1inh	mouse	primary neurons (wild-type)	inhibitor	RNA			12873		5709	GSE214882	Zou 2023	37949069	10.1016/j.molcel.2023.10.028	SAC against DMSO; edgeR QL, 2 vs 2; input RNA
+perturbation	YTHDF1	zou2023_neuron_ko_YTHDF1inh	mouse	primary neurons (Fmr1-KO)	inhibitor	TE			13099		33	GSE214882	Zou 2023	37949069	10.1016/j.molcel.2023.10.028	SAC against DMSO; edgeR QL, 2 vs 2; assay x treatment interaction
+perturbation	YTHDF1	zou2023_neuron_ko_YTHDF1inh	mouse	primary neurons (Fmr1-KO)	inhibitor	RNA			13419		6179	GSE214882	Zou 2023	37949069	10.1016/j.molcel.2023.10.028	SAC against DMSO; edgeR QL, 2 vs 2; input RNA
+perturbation	YTHDF1	lasman2020_mESC_Ythdf1_KO	mouse	mouse embryonic stem cells	KO	TE			9274		4	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2; assay x genotype interaction on log2(RPKM + 1) and log2(normalised counts + 1)
+perturbation	YTHDF1	lasman2020_mESC_Ythdf1_KO	mouse	mouse embryonic stem cells	KO	RNA			12045		335	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2
+perturbation	YTHDF2	lasman2020_mESC_Ythdf2_KO	mouse	mouse embryonic stem cells	KO	TE			9264		2	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2; assay x genotype interaction on log2(RPKM + 1) and log2(normalised counts + 1)
+perturbation	YTHDF2	lasman2020_mESC_Ythdf2_KO	mouse	mouse embryonic stem cells	KO	RNA			12032		308	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2
+perturbation	YTHDF3	lasman2020_mESC_Ythdf3_KO	mouse	mouse embryonic stem cells	KO	TE			9214		9	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2; assay x genotype interaction on log2(RPKM + 1) and log2(normalised counts + 1)
+perturbation	YTHDF3	lasman2020_mESC_Ythdf3_KO	mouse	mouse embryonic stem cells	KO	RNA			12034		422	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2
+perturbation	YTHDF1/2/3	lasman2020_mESC_Ythdf321_KO	mouse	mouse embryonic stem cells	triple KO	TE			9351		507	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2; assay x genotype interaction on log2(RPKM + 1) and log2(normalised counts + 1)
+perturbation	YTHDF1/2/3	lasman2020_mESC_Ythdf321_KO	mouse	mouse embryonic stem cells	triple KO	RNA			12072		3626	GSE148536/GSE147849	Lasman 2020	32943573	10.1101/gad.340695.120	limma-trend, 2 vs 2
+perturbation	YTHDF1	wang2015_HeLa_siYTHDF1	human	HeLa	KD	TE			8744		0	GSE63591	Wang 2015	26046440	10.1016/j.cell.2015.05.014	deposited mean of 2 replicates, no padj
+perturbation	YTHDF1	wang2015_HeLa_siYTHDF1	human	HeLa	KD	RNA			8744		0	GSE63591	Wang 2015	26046440	10.1016/j.cell.2015.05.014	deposited mean of 2 replicates, no padj
+perturbation	YTHDF3	shi2017_HeLa_siYTHDF3	human	HeLa	KD	TE			9154		0	GSE86214	Shi 2017	28106072	10.1038/cr.2017.15	mean of the 2 replicate log2 ratios, no padj
+perturbation	YTHDF3	shi2017_HeLa_siYTHDF3	human	HeLa	KD	RNA			9154		0	GSE86214	Shi 2017	28106072	10.1038/cr.2017.15	mean of the 2 replicate log2 ratios, no padj
+perturbation	YTHDF2	wang2014_HeLa_siYTHDF2	human	HeLa	KD	TE			8684		0	GSE49339	Wang 2014	24284625	10.1038/nature12730	deposited log2(siYTHDF2/siControl), no padj
+perturbation	YTHDF2	wang2014_HeLa_siYTHDF2	human	HeLa	KD	RNA			8684		0	GSE49339	Wang 2014	24284625	10.1038/nature12730	deposited log2(siYTHDF2/siControl), no padj
+perturbation	YTHDF1	zou2023_HeLa_siDF1	human	HeLa	KD	RNA			10455		0	GSE201070	Zou 2023	36694229	10.1186/s13059-023-02862-8	deposited log2FC, no padj
+perturbation	YTHDF2	zou2023_HeLa_siDF2	human	HeLa	KD	RNA			10431		0	GSE201070	Zou 2023	36694229	10.1186/s13059-023-02862-8	deposited log2FC, no padj
+perturbation	YTHDF3	zou2023_HeLa_siDF3	human	HeLa	KD	RNA			10465		0	GSE201070	Zou 2023	36694229	10.1186/s13059-023-02862-8	log2 of the replicate-mean deposited values (pseudocount 1e-4), no padj
+perturbation	YTHDF2	heck2020_iPSC_siYTHDF2	human	iPSC (neural-differentiation model)	KD	RNA			13310		2236	GSE133898	Heck 2020	32169943	10.1261/rna.073502.119	edgeR QL, 3 vs 4
+perturbation	YTHDF1	gse270417_SNU638_YTHDF1_OE	human	SNU638 gastric cancer cells	OE	RNA			13562		0	GSE270417	Jang 2025	39587835	10.1002/advs.202410806	edgeR QL, 2 vs 2; both arms IFN-gamma treated

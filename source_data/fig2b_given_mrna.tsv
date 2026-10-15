@@ -1,0 +1,9 @@
+species	unit	sites	n_genes	effect	ci_low	ci_high
+mouse	Langfelder 2016	0	982	2.757	1.796	3.728
+mouse	Langfelder 2016	1	714	1.788	0.8295	2.756
+mouse	Langfelder 2016	2-3	1130	1.037	0.2335	1.847
+mouse	Langfelder 2016	>=4	4772	-0.4119	-0.7566	-0.06608
+mouse	Takasugi 2024	0	640	3.031	2.113	3.957
+mouse	Takasugi 2024	1	499	2.221	1.089	3.365
+mouse	Takasugi 2024	2-3	807	1.238	0.5868	1.894
+mouse	Takasugi 2024	>=4	3583	-0.4353	-0.7204	-0.1495

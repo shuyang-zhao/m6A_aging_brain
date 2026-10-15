@@ -1,0 +1,30 @@
+map	modification	species	resolution	source	sites	genes
+m5c_brain_amort2017	m5C	Mus musculus	single_base	mouse brain (RNA-BisSeq, Amort 2017)	1749	424
+m5c_brain_yang2017	m5C	Mus musculus	single_base	mouse brain (RNA-BisSeq, Yang 2017)	4264	1338
+m5c_frontal_cortex_huang2019	m5C	Homo sapiens	single_base	human frontal cortex (RNA-BisSeq, Huang 2019)	512	380
+m5c_tac_union	m5C	Homo sapiens	single_base	HeLa + HEK293T (TAC-seq)	2771	1702
+m5c_ubs_union	m5C	Homo sapiens	single_base	human cell lines (UBS-seq)	2080	1306
+m5c_writer_NSUN2	m5C	Homo sapiens	single_base	HeLa + HEK293T (TAC-seq, NSUN2-dependent)	2097	1370
+m5c_writer_NSUN6	m5C	Homo sapiens	single_base	HeLa + HEK293T (TAC-seq, NSUN6-dependent)	410	321
+m6a_brain_shafik2026	m6A	Homo sapiens	interval	human brain, five regions (m6A-seq, Shafik 2026)	22461	8779
+m6a_cortex_scdart_tegowski2024	m6A	Mus musculus	single_base	mouse cortex, young (scDART-seq single-cell sites, GSE266876)	28412	3397
+m6a_hek293t_hela	m6A	Homo sapiens	single_base	HEK293T + HeLa (GLORI consensus)	74158	7085
+m6a_hippocampus_cyto	m6A	Mus musculus	single_base	mouse hippocampus, cytoplasmic fraction (GLORI 3.0)	91003	9621
+m6a_hippocampus_syn	m6A	Mus musculus	single_base	mouse hippocampus, synaptosome fraction (GLORI 3.0)	85359	9277
+m6a_neuron_dart_tegowski2024	m6A	Mus musculus	single_base	mouse neuronal nuclei (DART-seq, GSE267234)	17755	2751
+m7g_brain_miclip	m7G	Mus musculus	interval	mouse brain (m7G-miCLIP, m7GHub compilation)	7008	3108
+m7g_hela_hepg2	m7G	Homo sapiens	single_base	HeLa + HepG2 (base-resolution m7G)	801	619
+m7g_mesc_miclip	m7G	Mus musculus	interval	mouse ESC (m7G-miCLIP)	3324	1741
+m7g_mettl1_dependent	m7G	Homo sapiens	interval	human cell lines (METTL1-dependent regions)	4382	2086
+psi_bacs_hela	Ψ	Homo sapiens	single_base	HeLa (BACS)	1335	1019
+psi_bidseq_3cells	Ψ	Homo sapiens	single_base	HeLa, HEK293T, A549 (BID-seq)	1498	1171
+psi_cerebellum	Ψ	Mus musculus	single_base	mouse cerebellum (BID-seq, 12-tissue)	6516	2937
+psi_cortex	Ψ	Mus musculus	single_base	mouse cerebral cortex (BID-seq, 12-tissue)	503	377
+psi_hek293t	Ψ	Homo sapiens	single_base	HEK293T (PRAISE-seq)	4446	2582
+psi_mesc	Ψ	Mus musculus	single_base	mouse ESC (polyA Psi)	6047	2317
+psi_nsc_uliepic	Ψ	Mus musculus	single_base	mouse NSC (Uli-Epic BID-seq)	221	175
+psi_union	Ψ	Homo sapiens	single_base	human cell lines (union)	6756	3459
+psi_writer_DKC1	Ψ	Homo sapiens	single_base	human cell lines (union, DKC1-dependent subset)	421	356
+psi_writer_PUS1	Ψ	Homo sapiens	single_base	human cell lines (union, PUS1-dependent subset)	30	28
+psi_writer_PUS7	Ψ	Homo sapiens	single_base	human cell lines (union, PUS7-dependent subset)	136	125
+psi_writer_TRUB1	Ψ	Homo sapiens	single_base	human cell lines (union, TRUB1-dependent subset)	322	291

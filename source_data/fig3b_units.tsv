@@ -1,0 +1,49 @@
+context	unit	layer	effect	unit_id
+human_protein	Anderton 2026 hippocampus	Protein	-0.08279	anderton2026_hippocampus
+human_protein	Blumenreich 2024 cingulate gyrus	Protein	-0.2676	blumenreich2024_cingulate_gyrus
+human_protein	Blumenreich 2024 middle temporal gyrus	Protein	-0.08047	blumenreich2024_middle_temporal_gyrus
+human_protein	Blumenreich 2024 occipital cortex	Protein	0.05851	blumenreich2024_occipital_cortex
+human_protein	Blumenreich 2024 striatum	Protein	-0.9626	blumenreich2024_striatum
+human_protein	Blumenreich 2024 substantia nigra	Protein	-0.3683	blumenreich2024_substantia_nigra
+human_protein	Eggers 2025 substantia nigra	Protein	-0.151	eggers2025_substantia_nigra
+human_protein	Koopmans 2026 DPFC L1-3	Protein	-0.4903	koopmans2026_dpfc_l1_3
+human_protein	Koopmans 2026 DPFC L4-6	Protein	-0.2453	koopmans2026_dpfc_l4_6
+human_protein	Lee 2023 hippocampus CA1	Protein	-0.05306	lee2023_hippocampus_ca1
+human_protein	Luo 2024	Protein	-0.2077	luo2024_bankadj
+human_protein	Merrihew 2023 caudate	Protein	-1.905	merrihew2023_caudate
+human_protein	Merrihew 2023 hippocampus	Protein	-0.4536	merrihew2023_hippocampus
+human_protein	Merrihew 2023 IPL	Protein	-3.134	merrihew2023_ipl
+human_protein	Merrihew 2023 SMTG	Protein	-2.175	merrihew2023_smtg
+human_protein	Ping 2020 DLPFC	Protein	-0.4126	ping2020_dlpfc
+human_protein	Teng 2023 amygdala	Protein	-0.05563	teng2023_amygdala
+human_protein	Teng 2023 hippocampus	Protein	-0.07125	teng2023_hippocampus
+human_protein	Teng 2023 hypothalamus	Protein	-0.07545	teng2023_hypothalamus
+human_protein	Teng 2023 nucleus accumbens	Protein	0.1708	teng2023_nucleus_accumbens
+human_protein	Teng 2023 prefrontal cortex	Protein	0.099	teng2023_prefrontal_cortex
+human_protein	Teng 2023 ventral tegmental area	Protein	0.1796	teng2023_ventral_tegmental_area
+human_cortex	BrainSeq II DLPFC	mRNA	-0.4547	brainseq2_dlpfc
+human_hippocampus	BrainSeq II hippocampus	mRNA	0.1249	brainseq2_hippocampus
+human_striatum	BrainSeq III caudate	mRNA	-0.1957	brainseq3_caudate
+human_neurons	Green 2025 caudate neurons	mRNA	-0.1777	green2025_caudate_neurons
+human_cortex	GTEx anterior cingulate BA24	mRNA	0.326	gtex_anterior_cingulate_ba24
+human_striatum	GTEx caudate	mRNA	0.127	gtex_caudate
+human_cerebellum	GTEx cerebellar hemisphere	mRNA	0.3327	gtex_cerebellar_hemisphere
+human_cerebellum	GTEx cerebellum	mRNA	0.4145	gtex_cerebellum
+human_cortex	GTEx cortex	mRNA	0.1894	gtex_cortex
+human_cortex	GTEx frontal cortex BA9	mRNA	0.1721	gtex_frontal_cortex_ba9
+human_hippocampus	GTEx hippocampus	mRNA	-0.1614	gtex_hippocampus
+human_striatum	GTEx nucleus accumbens	mRNA	-0.312	gtex_nucleus_accumbens
+human_striatum	GTEx putamen	mRNA	0.06404	gtex_putamen
+human_neurons	Handsaker 2025 caudate neurons	mRNA	0.315	handsaker2025_caudate_neurons
+human_cortex	Luo 2024	mRNA	0.2008	luo2024_bankadj
+human_striatum	Markunas 2020 NAc	mRNA	-0.2202	markunas2020_nac
+human_neurons	Mätlik 2024 neurons	mRNA	-0.5522	matlik2024_neurons
+human_neurons	Mesecar 2026 putamen neurons	mRNA	0.2449	mesecar2026_putamen_neurons
+human_cerebellum	Ramasamy 2014 cerebellar cortex	mRNA	0.1391	ramasamy2014_cerebellar_cortex
+human_cortex	Ramasamy 2014 frontal cortex	mRNA	0.06782	ramasamy2014_frontal_cortex
+human_hippocampus	Ramasamy 2014 hippocampus	mRNA	0.01797	ramasamy2014_hippocampus
+human_cortex	Ramasamy 2014 occipital cortex	mRNA	-0.01324	ramasamy2014_occipital_cortex
+human_striatum	Ramasamy 2014 putamen	mRNA	-0.1986	ramasamy2014_putamen
+human_cortex	Ramasamy 2014 temporal cortex	mRNA	-0.08951	ramasamy2014_temporal_cortex
+human_neurons	Sloan 2026 DLPFC neurons	mRNA	-0.09991	sloan2026_dlpfc_neurons
+human_neurons	Zemke 2026 hippocampus neurons	mRNA	-0.01733	zemke2026_hippocampus_neurons

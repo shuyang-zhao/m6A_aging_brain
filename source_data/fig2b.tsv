@@ -1,0 +1,5 @@
+species	sites	n_units	effect	ci_low	ci_high
+mouse	0	13	5.103	2.748	7.457
+mouse	1	13	2.459	1.404	3.514
+mouse	2-3	13	1.11	0.5275	1.692
+mouse	>=4	13	-0.7955	-1.2	-0.3913

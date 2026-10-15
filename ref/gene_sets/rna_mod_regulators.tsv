@@ -1,0 +1,133 @@
+human_symbol	mouse_symbol	aliases	family	modification	role	substrate	tier	note
+METTL3	Mettl3		METTL	m6A	writer	mRNA	core	MTC catalytic subunit
+METTL14	Mettl14		METTL	m6A	writer	mRNA	core	MTC RNA-binding scaffold (heterodimer with METTL3)
+WTAP	Wtap		m6A_MTC	m6A	cofactor	mRNA	core	MACOM adaptor of MTC
+VIRMA	Virma	KIAA1429	m6A_MTC	m6A	cofactor	mRNA	core	MACOM; 3'UTR-biased deposition
+ZC3H13	Zc3h13		m6A_MTC	m6A	cofactor	mRNA	core	MACOM; nuclear anchoring of MTC
+RBM15	Rbm15		m6A_MTC	m6A	cofactor	mRNA	core	recruits MTC to U-rich sites / XIST
+RBM15B	Rbm15b		m6A_MTC	m6A	cofactor	mRNA	core	RBM15 paralog in MTC
+CBLL1	Cbll1	HAKAI	m6A_MTC	m6A	cofactor	mRNA	core	MACOM E3 ligase subunit, required for MTC stability
+METTL16	Mettl16		METTL	m6A	writer	U6 snRNA;MAT2A mRNA	core	SAM-sensing writer
+METTL5	Mettl5		METTL	m6A	writer	18S rRNA	core	18S m6A1832; requires TRMT112
+ZCCHC4	Zcchc4		other	m6A	writer	28S rRNA	core	28S m6A4220
+PCIF1	Pcif1	CAPAM	other	m6Am	writer	mRNA cap	core	cap-adjacent m6Am
+METTL4	Mettl4		METTL	m6Am	writer	U2 snRNA	core	U2 snRNA m6Am; DNA 6mA activity disputed
+FTO	Fto	ALKBH9	ALKBH	m6A;m6Am	eraser	mRNA;snRNA	core	prefers cap m6Am; also m1A in tRNA
+ALKBH5	Alkbh5		ALKBH	m6A	eraser	mRNA	core	nuclear m6A demethylase
+YTHDF1	Ythdf1		YTH	m6A	reader	mRNA	core	cytoplasmic reader
+YTHDF2	Ythdf2		YTH	m6A	reader	mRNA	core	cytoplasmic reader, mRNA decay
+YTHDF3	Ythdf3		YTH	m6A	reader	mRNA	core	cytoplasmic reader
+YTHDC1	Ythdc1		YTH	m6A	reader	nuclear RNA	core	nuclear reader (splicing, export, XIST)
+YTHDC2	Ythdc2		YTH	m6A	reader	mRNA	core	helicase-containing reader
+IGF2BP1	Igf2bp1	IMP1	IGF2BP	m6A	reader	mRNA	core	oncofetal; low in adult tissues
+IGF2BP2	Igf2bp2	IMP2	IGF2BP	m6A	reader	mRNA	core	oncofetal family; unlike IGF2BP1 and IGF2BP3 also expressed in adult tissues
+IGF2BP3	Igf2bp3	IMP3	IGF2BP	m6A	reader	mRNA	core	oncofetal; low in adult tissues
+FMR1	Fmr1	FMRP	FMRP	m6A	reader	mRNA	core	FMRP; m6A-dependent neuronal mRNA export/translation
+FXR1	Fxr1		FMRP	m6A	reader	mRNA	extended	FMRP paralog; m6A reading less established
+FXR2	Fxr2		FMRP	m6A	reader	mRNA	extended	FMRP paralog; m6A reading less established
+HNRNPC	Hnrnpc		hnRNP	m6A	reader	mRNA	core	m6A-switch reader
+HNRNPA2B1	Hnrnpa2b1		hnRNP	m6A	reader	pri-miRNA;mRNA	core	nuclear reader (direct binding debated)
+RBMX	Rbmx	HNRNPG	hnRNP	m6A	reader	mRNA	core	m6A-switch reader (hnRNPG)
+PRRC2A	Prrc2a		other	m6A	reader	mRNA	extended	reader in oligodendrocyte lineage
+YBX1	Ybx1		YBX	m5C	reader	mRNA	core	m5C reader (mRNA stability)
+YBX2	Ybx2		YBX	m5C	reader	mRNA	extended	YBX paralog (germ cell); m5C reading not established
+YBX3	Ybx3	CSDA	YBX	m5C	reader	mRNA	extended	YBX paralog; m5C reading not established
+TRMT6	Trmt6		TRMT	m1A	cofactor	tRNA;mRNA	core	RNA-binding subunit of TRMT6/61A (m1A58)
+TRMT61A	Trmt61a		TRMT	m1A	writer	tRNA;mRNA	core	catalytic subunit, tRNA m1A58
+TRMT61B	Trmt61b		TRMT	m1A	writer	mt-tRNA;mt-rRNA	core	mitochondrial m1A58 / 16S m1A947
+TRMT10C	Trmt10c	MRPP1	TRMT	m1A;m1G	writer	mt-tRNA	core	mt-tRNA position 9; mt RNase P subunit
+HSD17B10	Hsd17b10	MRPP2	other	m1A;m1G	cofactor	mt-tRNA	core	partner of TRMT10C
+RRP8	Rrp8	NML	other	m1A	writer	28S rRNA	core	28S m1A1322
+ALKBH1	Alkbh1		ALKBH	m1A;f5C	eraser	tRNA;mt-tRNA	core	tRNA m1A58 demethylase; forms f5C34 in mt-tRNAMet
+ALKBH3	Alkbh3		ALKBH	m1A;m3C	eraser	tRNA;mRNA	core	m1A/m3C demethylase (also ssDNA)
+ALKBH7	Alkbh7		ALKBH	m1A;m2,2G	eraser	mt-tRNA	core	mt-tRNA demethylase; evidence moderate
+METTL1	Mettl1		METTL	m7G	writer	tRNA;mRNA;miRNA	core	tRNA m7G46 (with WDR4)
+WDR4	Wdr4		other	m7G	cofactor	tRNA	core	METTL1 partner
+BUD23	Bud23	WBSCR22	other	m7G	writer	18S rRNA	core	18S m7G1639; requires TRMT112
+RNMT	Rnmt		other	m7G-cap	writer	mRNA cap	extended	cap guanine-N7 MTase
+RAMAC	Ramac	RAMMET;FAM103A1	other	m7G-cap	cofactor	mRNA cap	extended	RNMT activator
+CMTR1	Cmtr1		other	Nm-cap	writer	mRNA cap	extended	cap1 2'-O-methylation
+CMTR2	Cmtr2		other	Nm-cap	writer	mRNA cap	extended	cap2 2'-O-methylation
+METTL2A	Mettl2	METTL2	METTL	m3C	writer	tRNA	core	tRNA-Thr/Arg m3C32; mouse Mettl2 is the ortholog of METTL2A/2B
+METTL2B	Mettl2	METTL2	METTL	m3C	writer	tRNA	core	see METTL2A
+METTL6	Mettl6		METTL	m3C	writer	tRNA	core	tRNA-Ser m3C32
+METTL8	Mettl8		METTL	m3C	writer	mt-tRNA	core	mt-tRNA-Thr/Ser m3C32
+METTL15	Mettl15		METTL	m4C	writer	12S mt-rRNA	core	12S m4C839
+METTL17	Mettl17		METTL	other	cofactor	12S mt-rRNA	extended	mt-SSU assembly factor needed for 12S m4C/m5C
+TRMT1	Trmt1		TRMT	m2,2G	writer	tRNA	core	m2,2G26
+TRMT1L	Trmt1l		TRMT	m2,2G	writer	tRNA	core	tRNA-Tyr m2,2G27
+TRMT2A	Trmt2a		TRMT	m5U	writer	tRNA	core	m5U54
+TRMT2B	Trmt2b		TRMT	m5U	writer	mt-tRNA;12S mt-rRNA	core	mitochondrial m5U
+TRMT5	Trmt5		TRMT	m1G	writer	tRNA;mt-tRNA	core	m1G37
+TRMT9B	Trmt9b	KIAA1456	TRMT	mcm5U	writer	tRNA	core	putative Trm9 homolog
+TRMT10A	Trmt10a		TRMT	m1G	writer	tRNA	core	m1G9
+TRMT10B	Trmt10b		TRMT	m1A	writer	tRNA	core	tRNA-Asp m1A9
+TRMT11	Trmt11		TRMT	m2G	writer	tRNA	core	m2G10; requires TRMT112
+TYW2	Tyw2	TRMT12	TRMT	yW	writer	tRNA	core	wybutosine step (tRNA-Phe)
+TRMT13	Trmt13		TRMT	Nm	writer	tRNA	core	putative 2'-O-MTase (position 4)
+TRMT44	Trmt44		TRMT	Um	writer	tRNA	core	putative tRNA-Ser Um44
+TRMT112	Trmt112		TRMT	multiple	cofactor	tRNA;rRNA	core	activator of METTL5, BUD23, TRMT11, ALKBH8, THUMPD3
+ALKBH8	Alkbh8		ALKBH	mcm5U	writer	tRNA	core	tRNA U34 mcm5U/mchm5U methyltransferase (a writer, not an eraser)
+PUS1	Pus1		PUS	Psi	writer	tRNA;mRNA	core	
+PUS3	Pus3		PUS	Psi	writer	tRNA	core	Psi38/39
+PUS7	Pus7		PUS	Psi	writer	tRNA;mRNA	core	Psi13/35; mRNA
+PUS7L	Pus7l		PUS	Psi	writer	unknown	core	PUS7 paralog
+PUSL1	Pusl1		PUS	Psi	writer	mt-tRNA	core	putative mitochondrial
+PUS10	Pus10		PUS	Psi	writer	tRNA	core	Psi54/55
+RPUSD1	Rpusd1		PUS	Psi	writer	unknown	core	
+RPUSD2	Rpusd2		PUS	Psi	writer	mRNA	core	
+RPUSD3	Rpusd3		PUS	Psi	writer	mt-mRNA;mt-rRNA	core	
+RPUSD4	Rpusd4		PUS	Psi	writer	16S mt-rRNA;mt-tRNA	core	
+TRUB1	Trub1		PUS	Psi	writer	tRNA;mRNA	core	Psi55
+TRUB2	Trub2		PUS	Psi	writer	mt-mRNA;mt-rRNA	core	
+DKC1	Dkc1		DKC	Psi	writer	rRNA;snRNA;TERC	core	H/ACA snoRNP catalytic subunit
+NOP10	Nop10		DKC	Psi	cofactor	rRNA;snRNA	core	H/ACA snoRNP core
+NHP2	Nhp2		DKC	Psi	cofactor	rRNA;snRNA	core	H/ACA snoRNP core
+GAR1	Gar1		DKC	Psi	cofactor	rRNA;snRNA	core	H/ACA snoRNP core
+NOP2	Nop2	NSUN1	NSUN	m5C	writer	28S rRNA	extended	
+NSUN2	Nsun2		NSUN	m5C	writer	tRNA;mRNA	extended	main mRNA/tRNA m5C writer
+NSUN3	Nsun3		NSUN	m5C	writer	mt-tRNA	extended	mt-tRNAMet C34 (then ALKBH1 -> f5C)
+NSUN4	Nsun4		NSUN	m5C	writer	12S mt-rRNA	extended	
+NSUN5	Nsun5		NSUN	m5C	writer	28S rRNA	extended	
+NSUN6	Nsun6		NSUN	m5C	writer	tRNA;mRNA	extended	
+NSUN7	Nsun7		NSUN	m5C	writer	unknown	extended	
+TRDMT1	Trdmt1	DNMT2	other	m5C	writer	tRNA	extended	tRNA-Asp m5C38
+ALYREF	Alyref	ALY;THOC4	other	m5C	reader	mRNA	extended	m5C reader for nuclear export
+TET2	Tet2		other	m5C	eraser	mRNA	extended	hm5C oxidation in RNA; evidence limited
+NAT10	Nat10		other	ac4C	writer	mRNA;18S rRNA;tRNA	extended	
+THUMPD1	Thumpd1		other	ac4C	cofactor	tRNA	extended	NAT10 adaptor for tRNA-Ser/Leu
+ADAR	Adar	ADAR1	ADAR	I	writer	dsRNA	extended	A-to-I editing
+ADARB1	Adarb1	ADAR2	ADAR	I	writer	mRNA	extended	A-to-I editing (e.g. Gria2 Q/R)
+ADARB2	Adarb2	ADAR3	ADAR	I	regulator	mRNA	extended	brain-enriched, catalytically inactive
+IGFBP1	Igfbp1		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP2	Igfbp2		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP3	Igfbp3		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP4	Igfbp4		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP5	Igfbp5		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP6	Igfbp6		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+IGFBP7	Igfbp7		IGFBP	none	none	none	excluded	secreted IGF-binding protein, no RNA binding (IGF2BP intended)
+TMT1A	Tmt1a	METTL7A	METTL	none	none	small molecule	excluded	thiol methyltransferase
+TMT1B	Tmt1b	METTL7B	METTL	none	none	small molecule	excluded	thiol methyltransferase
+METTL9	Mettl9		METTL	none	none	protein	excluded	protein histidine (HxH) methyltransferase
+EEF1AKMT4	Eef1akmt4	METTL10	METTL	none	none	protein	excluded	eEF1A lysine methyltransferase
+NTMT1	Ntmt1	METTL11A	METTL	none	none	protein	excluded	protein N-terminal methyltransferase
+NTMT2	Ntmt2	METTL11B	METTL	none	none	protein	excluded	protein N-terminal methyltransferase
+METTL12	Mettl12	CSKMT	METTL	none	none	protein	excluded	citrate synthase lysine methyltransferase
+METTL13	Mettl13	EEF1AKNMT	METTL	none	none	protein	excluded	eEF1A N-terminus/lysine methyltransferase
+METTL18	Mettl18		METTL	none	none	protein	excluded	RPL3 histidine methyltransferase
+ETFBKMT	Etfbkmt	METTL20	METTL	none	none	protein	excluded	ETFB lysine methyltransferase
+METTL21A	Mettl21a		METTL	none	none	protein	excluded	HSP70 lysine methyltransferase
+EEF1AKMT3	Eef1akmt3	METTL21B	METTL	none	none	protein	excluded	eEF1A lysine methyltransferase
+METTL21C	Mettl21c		METTL	none	none	protein	excluded	VCP/HSPA8 lysine methyltransferase (muscle)
+VCPKMT	Vcpkmt	METTL21D	METTL	none	none	protein	excluded	VCP lysine methyltransferase
+METTL21EP	Mettl21e	METTL21E	METTL	none	none	protein	excluded	putative protein methyltransferase (human pseudogene)
+METTL22	Mettl22		METTL	none	none	protein	excluded	KIN17 lysine methyltransferase
+METTL23	Mettl23		METTL	none	none	protein	excluded	GABPA / H3R17 arginine methyltransferase
+METTL24	Mettl24		METTL	none	none	unknown	excluded	function unknown
+METTL25	Mettl25		METTL	none	none	unknown	excluded	function unknown
+METTL25B	Mettl25b	RRNAD1	METTL	none	none	unknown	excluded	putative; RNA substrate not shown
+METTL26	Mettl26		METTL	none	none	unknown	excluded	function unknown
+METTL27	Mettl27	WBSCR27	METTL	none	none	unknown	excluded	function unknown
+ALKBH2	Alkbh2		ALKBH	none	none	DNA	excluded	DNA alkylation repair
+ALKBH4	Alkbh4		ALKBH	none	none	protein	excluded	actin K84 demethylase
+ALKBH6	Alkbh6		ALKBH	none	none	unknown	excluded	function unknown

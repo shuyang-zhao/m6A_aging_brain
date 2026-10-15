@@ -1,0 +1,7 @@
+panel	check	n_cohorts	effect	ci_low	ci_high	p	i2
+Mouse protein	m6A load	7	-1.487	-1.927	-1.045	5.448e-11	90.26
+Mouse protein given mRNA	m6A load	2	-0.8079	-1.038	-0.5774	7.325e-12	0
+Mouse protein	GLORI sites	7	-1.506	-1.924	-1.086	2.709e-12	88.92
+Mouse protein	GLORI stoichiometry	7	-1.611	-2.021	-1.199	2.56e-14	84.31
+Mouse protein given mRNA	GLORI sites	2	-0.906	-1.125	-0.6867	7e-16	0
+Mouse protein given mRNA	GLORI stoichiometry	2	-1.098	-1.354	-0.8422	5.735e-17	0

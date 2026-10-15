@@ -1,0 +1,19 @@
+context	layer	definition	z	q
+human_striatum	mrna_only	brain peaks	-1.184	0.2363
+human_striatum	mrna_only	cell line	-1.301	0.2363
+human_striatum	mrna_only	union	-1.998	0.1373
+human_cortex	mrna_only	brain peaks	-0.6553	0.5123
+human_cortex	mrna_only	cell line	-1.126	0.5123
+human_cortex	mrna_only	union	-0.9058	0.5123
+human_hippocampus	mrna_only	brain peaks	-0.1383	0.89
+human_hippocampus	mrna_only	cell line	-0.9232	0.5793
+human_hippocampus	mrna_only	union	-0.8665	0.5793
+human_cerebellum	mrna_only	brain peaks	1.247	0.3751
+human_cerebellum	mrna_only	cell line	0.6159	0.538
+human_cerebellum	mrna_only	union	1.15	0.3751
+human_neurons	mrna_only	brain peaks	-0.01372	0.9891
+human_neurons	mrna_only	cell line	-3.377	0.002196
+human_neurons	mrna_only	union	-3.14	0.002535
+human_protein	protein_only	brain peaks	-1.462	0.4313
+human_protein	protein_only	cell line	0.5631	0.5733
+human_protein	protein_only	union	-0.9145	0.5407

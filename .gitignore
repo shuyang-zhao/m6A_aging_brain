@@ -1,0 +1,40 @@
+# Large or regenerable: data, outputs, environments, scratch
+/data/
+/env/
+/tmp/
+/logs/
+/output/
+/results/
+# figures/ holds plotting scripts; only the rendered images are ignored
+/figures/*.pdf
+/figures/*.png
+
+# Reference files: large downloads are ignored, hand-curated gene sets are tracked
+/ref/**
+!/ref/**/
+!/ref/gene_sets/**
+!/ref/**/*.py
+!/ref/**/*.R
+!/ref/**/*.sh
+
+# Third-party papers (copyright) and binary or bulky artefacts
+docs/papers/
+*.pdf
+*.xlsx
+*.parquet
+*.gz
+*.zip
+*.tbi
+*.h5ad
+*.rds
+
+# Tooling
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+.Rhistory
+.RData
+Rplots.pdf

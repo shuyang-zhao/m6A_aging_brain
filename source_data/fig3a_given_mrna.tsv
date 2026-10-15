@@ -1,0 +1,5 @@
+species	unit	sites	n_genes	effect	ci_low	ci_high
+human	Luo 2024	0	3278	0.1246	0.04401	0.2052
+human	Luo 2024	1	2451	0.09335	0.008047	0.1787
+human	Luo 2024	2-3	1723	0.02162	-0.07545	0.1188
+human	Luo 2024	>=4	407	-0.2513	-0.462	-0.04016
