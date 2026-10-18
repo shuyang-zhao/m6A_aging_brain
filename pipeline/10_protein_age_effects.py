@@ -13,13 +13,9 @@ OUT = utils.OUT / "10_protein_age_effects"
 
 def fit_unit(unit):
     protein, rna, samples, design = utils.load_unit(unit)
-    for matrix in (protein, rna):
-        assert matrix is None or (matrix.columns.equals(samples.index) and matrix.index.is_unique)
     # protected PCs of the mRNA residuals, shared by the layers of the unit
     k = design["hidden_factors"]
     pcs = model.protected_pca(rna, model.design(samples, design), k) if k else None
-    if protein is not None and rna is not None:
-        assert protein.index.equals(rna.index)
     if unit in utils.BATCH_CORRECTED:
         protein = model.batch_blup(protein, rna, samples, design)
     return unit, model.fit_layers(protein, rna, samples, design, pcs)

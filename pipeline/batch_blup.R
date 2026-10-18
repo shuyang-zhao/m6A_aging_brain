@@ -6,9 +6,6 @@
 #        <workdir>/design.tsv             Intercept, covariates and age, one row per sample
 #        <workdir>/samples.tsv            sample_id, batch
 # Writes <workdir>/corrected.tsv          batch-corrected protein, same layout as protein.tsv
-#        <workdir>/batch_audit.tsv        feature_id, status
-# status is "ok", "insufficient" (too few observations; the row is returned as NA) or the
-# message of an lme4 error.
 suppressPackageStartupMessages({
   library(lme4)
   library(parallel)
@@ -32,25 +29,19 @@ f <- as.formula(paste("protein ~", paste(c("age", "rna", names(C), "(1|batch)"),
 one <- function(i) {
   d <- cbind(base, protein = as.numeric(P[i, ]), rna = as.numeric(R[i, ]))
   ok <- complete.cases(d)
-  if (sum(ok) < ncol(C) + 5) return(list(y = rep(NA_real_, ncol(P)), status = "insufficient"))
-  fit <- tryCatch(
-    suppressMessages(suppressWarnings(
-      lmer(f, data = d[ok, ], REML = TRUE, control = lmerControl(check.conv.singular = "ignore"))
-    )),
-    error = function(e) e
-  )
-  if (inherits(fit, "error")) return(list(y = rep(NA_real_, ncol(P)), status = conditionMessage(fit)))
+  fit <- suppressMessages(suppressWarnings(
+    lmer(f, data = d[ok, ], REML = TRUE, control = lmerControl(check.conv.singular = "ignore"))
+  ))
   blup <- ranef(fit)$batch[, 1]
   names(blup) <- rownames(ranef(fit)$batch)
   y <- P[i, ]
   y[ok] <- y[ok] - blup[as.character(d$batch[ok])]
-  list(y = y, status = "ok")
+  y
 }
 
 res <- mclapply(seq_len(nrow(P)), one, mc.cores = cores)
-out <- do.call(rbind, lapply(res, `[[`, "y"))
+stopifnot(!vapply(res, inherits, NA, "try-error"))
+out <- do.call(rbind, res)
 dimnames(out) <- dimnames(P)
 write.table(data.frame(feature_id = rownames(out), out, check.names = FALSE),
             file.path(workdir, "corrected.tsv"), sep = "\t", quote = FALSE, row.names = FALSE)
-audit <- data.frame(feature_id = rownames(P), status = vapply(res, `[[`, "", "status"))
-write.table(audit, file.path(workdir, "batch_audit.tsv"), sep = "\t", quote = FALSE, row.names = FALSE)

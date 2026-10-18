@@ -1,13 +1,26 @@
-species	arm	regulator	estimate	pctile_signed
-human	Output	YTHDF	-0.0219	47.62
-human	Output	YTHDF3	-0.02407	63.77
-human	Translation	YTHDF	0.8049	93.26
-human	Translation	YTHDF3	0.8837	97.75
-mouse	Output	YTHDF	0.08972	95.18
-mouse	Output	YTHDF3	0.1028	96.39
-mouse	Stability	YTHDF	0.4997	98.89
-mouse	Stability	YTHDF3	0.4063	97.78
-mouse	Translation	YTHDF	-0.001605	51.16
-mouse	Translation	YTHDF3	-0.005243	46.51
-human	Stability	YTHDF	-0.3344	35.56
-human	Stability	YTHDF3	-0.6389	8.889
+set	species	cohort	n	r_model
+held-out	mouse	Keele 2025	18	0.9979
+held-out	mouse	Lu 2025	27	0.9994
+held-out	mouse	Marino 2025	10	1
+held-out	mouse	Takasugi 2024	16	1
+held-out	mouse	Tsumagari 2023	18	1
+held-out	mouse	Wang 2025	40	0.9994
+held-out	human	Blumenreich 2024	21	1
+held-out	human	Eggers 2025	34	0.9997
+held-out	human	Koopmans 2026	46	0.9995
+held-out	human	Lee 2023	74	0.9997
+held-out	human	Luo 2024	193	0.9998
+held-out	human	Merrihew 2023	11	1
+held-out	human	Ping 2020	10	0.9879
+held-out	human	Teng 2023	16	0.9912
+external	mouse	Chen 2025	188	0.9995
+external	mouse	Vignane 2026	12	0.993
+external	mouse	Gebru 2024	23	0.998
+external	mouse	Huang 2024	10	0.9879
+external	mouse	Jha 2026	9	1
+external	mouse	Keele 2023	20	1
+external	mouse	Marchionini 2025	40	0.9985
+external	mouse	Mohallem 2024	13	0.9945
+external	mouse	Scifo 2025	45	0.9988
+external	mouse	Yarbro 2025	39	0.9984
+external	mouse	Yu 2020	10	1

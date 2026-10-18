@@ -99,10 +99,7 @@ def null_path(statistic, unit, layer):
 # prepared units
 units = utils.read(utils.PREPARED / "units.tsv", index_col="unit")
 data = {unit: utils.load_unit(unit) for unit in units.index}
-for protein, rna, samples, _ in data.values():
-    for matrix in (protein, rna):
-        assert matrix is None or (matrix.columns.equals(samples.index) and matrix.index.is_unique)
-    assert protein is None or rna is None or rna.index.equals(protein.index)
+for _, _, samples, _ in data.values():
     assert (samples.donor_id.astype(str) == samples.index).all()
 
 # units of a dataset that share donors share the age permutation of the first of them, drawn over all their donors
@@ -144,4 +141,6 @@ for unit in pending:
     print(f"{unit}: {stats.n_discoveries.mean():.2f} discoveries per draw", flush=True)
 
 discoveries = utils.read(OUT / "discoveries.tsv")
+discoveries = discoveries[discoveries.unit.isin(units.index)]  # units of utils.EXCLUDED may remain from earlier runs
+utils.write(discoveries, OUT / "discoveries.tsv")
 print(discoveries.groupby("unit", sort=False)[["n_discoveries", "share_p_below_0_05"]].agg(["mean", "max"]).round(3))

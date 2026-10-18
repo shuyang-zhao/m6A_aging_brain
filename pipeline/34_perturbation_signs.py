@@ -130,7 +130,7 @@ def match(table, marked):
     m, u = table[marked], table[~marked]
     columns = ["level", "log_tx_len"]
     z = lambda x: (x - table[columns].mean()) / table[columns].std()
-    _, nearest = cKDTree(z(u[columns]).to_numpy()).query(z(m[columns]).to_numpy(), k=min(30, len(u)))
+    _, nearest = cKDTree(z(u[columns]).to_numpy()).query(z(m[columns]).to_numpy(), k=30)
     used, pairs = set(), []
     for i in rng.permutation(len(m)):
         for j in nearest[i]:
@@ -148,8 +148,6 @@ for name, regulator, mode, tissue, readout, table in perturbations:
     table = table.merge(features, left_on="gene", right_on="gene_id" if by_id else "symbol").drop_duplicates("gene_id")
     targets = reader_targets.get(regulator)
     marked = table.gene_id.isin(targets).to_numpy() if targets is not None else (table.n_sites_m6A >= 1).to_numpy()
-    if marked.sum() < 50:
-        continue
     target, control = match(table, marked)
     boot = (target - control)[rng.integers(0, len(target), (NBOOT, len(target)))].mean(axis=1)
     effect = (target - control).mean()

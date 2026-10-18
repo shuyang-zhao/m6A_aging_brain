@@ -25,9 +25,7 @@ def find_units():
     for dataset, spec in DATASETS.items():
         samples = utils.read(utils.PREPARED / dataset / "pseudobulk_samples.tsv", low_memory=False,
                              dtype={"sample_id": str})
-        if "arm" in samples:
-            samples = samples[samples.arm == "aging"]
-        samples = samples[samples.n_cells >= MIN_NUCLEI]
+        samples = samples[(samples.arm == "aging") & (samples.n_cells >= MIN_NUCLEI)]
         region = samples[spec["region"]].astype(str).str.split(" | ", regex=False).str[0]
         for (reg, population), rows in samples.groupby([region, samples[spec["population"]].astype(str)]):
             if rows.donor_id.nunique() >= MIN_DONORS and rows.donor_id.is_unique:
@@ -70,7 +68,7 @@ def load_unit(unit, controls):
                    if samples[c].notna().all() and 1 < samples[c].nunique() <= len(samples) / 5]
     X = model.design(samples, dict(numeric=numeric, categorical=categorical))
     level = logcpm.mean(axis=1)
-    genes = net.features["human"].drop(columns="level", errors="ignore").join(level.rename("level"), how="inner")
+    genes = net.features["human"].join(level.rename("level"), how="inner")
     genes = genes[genes[net.COVARIATES].notna().all(axis=1)]
     regulators, own = {}, {}
     for name in net.READERS + net.WRITERS + net.ERASERS + controls:

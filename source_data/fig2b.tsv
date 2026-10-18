@@ -1,5 +1,17 @@
-species	sites	n_units	effect	ci_low	ci_high
-mouse	0	13	5.103	2.748	7.457
-mouse	1	13	2.459	1.404	3.514
-mouse	2-3	13	1.11	0.5275	1.692
-mouse	>=4	13	-0.7955	-1.2	-0.3913
+target	block	delta_r2	null_low	null_high	p
+Mouse protein	m6A sites and binding	0.002659	-0.0005128	0.0003367	0.009901
+Mouse protein	m6A sites	0.002196			
+Mouse protein	m6A reader binding	0.0009555			
+Mouse protein	Transcript structure	0.0007664			
+Mouse protein	Expression and turnover	0.04265			
+Mouse protein	Cell-type origin	0.1224			
+Mouse protein	Functional program	0.0066			
+Mouse protein	Sequence representation	0.02539			
+Human protein	m6A sites and binding	0.0001625	-0.0008265	0.0005048	0.1881
+Human protein	m6A sites	0.0005413			
+Human protein	m6A reader binding	-0.0007293			
+Human protein	Transcript structure	0.001869			
+Human protein	Expression and turnover	0.0208			
+Human protein	Cell-type origin	0.02304			
+Human protein	Functional program	0.006187			
+Human protein	Sequence representation	0.0287			

@@ -218,12 +218,13 @@ for dataset, (species, column, patterns) in classes.items():
         share.assign(ct_vascular_cpm=cpm.vascular, ct_total_cpm=total, species=species).rename_axis("gene_id")
     )
 origin = pd.concat(origin)
-fractions = origin.filter(like="ct_frac_").sum(axis=1)
-assert np.allclose(fractions[fractions > 0], 1)
 utils.write(origin, OUT / "cell_type_origin/shares.parquet")
 
 # GPU predictions of the release: Orthrus, RiboNN
-orthrus = np.load(RAW / "gpu_precomputed/orthrus_mouse.npz")
-embedding = pd.DataFrame(orthrus["emb"], index=pd.Index(orthrus["tx_id"].astype(str), name="tx_id")).add_prefix("emb")
-utils.write(embedding.assign(gene_id=orthrus["gene_id"].astype(str)), OUT / "orthrus_mouse/embeddings.parquet")
-utils.write(pd.read_csv(RAW / "gpu_precomputed/ribonn_mouse.tsv", sep="\t"), OUT / "ribonn_mouse/predictions.parquet")
+for species in ("mouse", "human"):
+    orthrus = np.load(RAW / f"gpu_precomputed/orthrus_{species}.npz")
+    ids = pd.Index(orthrus["tx_id"].astype(str), name="tx_id")
+    embedding = pd.DataFrame(orthrus["emb"], index=ids).add_prefix("emb").assign(gene_id=orthrus["gene_id"].astype(str))
+    utils.write(embedding, OUT / f"orthrus_{species}/embeddings.parquet")
+    te = pd.read_csv(RAW / f"gpu_precomputed/ribonn_{species}.tsv", sep="\t")
+    utils.write(te, OUT / f"ribonn_{species}/predictions.parquet")

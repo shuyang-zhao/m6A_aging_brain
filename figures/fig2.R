@@ -1,96 +1,100 @@
-# Figure 2: m6A load marks mouse proteins that decline with age
-# reads source_data/fig2a-e and fig2c_load; writes output/figures/fig2.png and .pdf
+# Figure 2: gene-level model of the age effect from transcript features
+# reads source_data/fig2a, fig2b, fig2c, fig2c_permuted and fig2d; writes output/figures/fig2.png and .pdf
 source("figures/style.R")
 suppressPackageStartupMessages(library(ggbeeswarm))
 
-LAYERS <- c(Protein = "Protein", "mRNA-adjusted protein" = "Protein\ngiven mRNA", mRNA = "mRNA")
+# model series: TabPFN in the focal colour, the comparison models and the shuffled target in greys; the mouse protein
+# model applied to human genes (panel d) is drawn as TabPFN
+MODELS <- c("TabPFN", "LightGBM", "Elastic net", "Shuffled target", "Mouse protein model")
+MODEL_FILL <- c(FOCAL, "#8C8C8C", GREY, "white", FOCAL)
+MODEL_SHAPE <- c(21, 22, 24, 23, 21)
+MODEL_EDGE <- c(EDGE, EDGE, EDGE, "#8C8C8C", EDGE)
+model_scales <- function(levels) {
+  i <- match(levels, MODELS)
+  list(
+    scale_fill_manual(values = setNames(MODEL_FILL[i], levels), name = NULL),
+    scale_colour_manual(values = setNames(MODEL_EDGE[i], levels), name = NULL),
+    scale_shape_manual(values = setNames(MODEL_SHAPE[i], levels), name = NULL),
+    guides(fill = guide_legend(nrow = 1), colour = guide_legend(nrow = 1), shape = guide_legend(nrow = 1))
+  )
+}
+rho_panel <- function(d, levels, targets) {
+  n <- d[, .(n = n[1]), by = target]
+  d[, `:=`(target = factor(target, rev(targets)), model = factor(model, levels))]
+  labels <- n[, setNames(sprintf("%s\nn = %s", target, format(n, big.mark = ",", trim = TRUE)), target)]
+  dodge <- position_dodge(0.78, reverse = TRUE)
+  ggplot(d, aes(rho, target, group = model)) +
+    ZERO_X +
+    geom_linerange(aes(xmin = rho_ci_low, xmax = rho_ci_high), colour = CI, linewidth = 0.6, position = dodge) +
+    geom_point(aes(fill = model, colour = model, shape = model), size = 3.4, stroke = 0.6, position = dodge) +
+    model_scales(levels) +
+    scale_y_discrete(labels = labels) +
+    scale_x_continuous(labels = MINUS_LABELS) +
+    labs(x = "Held-out Spearman ρ", y = NULL) +
+    theme_rows() +
+    theme(legend.position = "bottom", legend.key.spacing.x = unit(3, "mm"),
+          axis.text.y = element_text(lineheight = 0.95))
+}
 
-# a: signature z of the m6A-marked genes in every mouse unit (cameraPR against unmodified genes), by layer (colour of
-# the layer; neurons, single-nucleus RNA); filled, P < 0.05; open, not significant; bar, median over units
-d <- read_panel("fig2a")
-d[, `:=`(key = fcase(context == "mouse_neurons", "Single-nucleus RNA", layer == "Protein", "Protein",
-                     layer == "mRNA-adjusted protein", "Protein given mRNA", default = "Bulk RNA"),
-         layer = factor(LAYERS[layer], LAYERS))]
-d[, c("edge", "inside") := p_colours(p, key)]
-a <- ggplot(d, aes(layer, z)) +
-  ZERO_Y +
-  stat_summary(aes(colour = layer), fun = median, geom = "crossbar", width = 0.6, linewidth = 0.7) +
-  geom_quasirandom(aes(colour = I(edge), fill = I(inside)), shape = 21, size = 3.6, stroke = 0.5, width = 0.28) +
-  scale_colour_manual(values = unname(LAYER[c("Protein", "Protein given mRNA", "Bulk RNA")]), guide = "none") +
-  scale_y_continuous(labels = MINUS_LABELS) +
-  labs(x = NULL, y = "m6A signature (cameraPR z)") +
-  theme_fig() +
-  theme(axis.ticks.x = element_blank())
+# a: held-out Spearman rho of the four models on the five targets (95% bootstrap CI), genes of the held-out chromosomes
+a <- rho_panel(read_panel("fig2a"), MODELS[1:4], TARGETS)
 
-# b: age effect of mouse genes by number of m6A sites: protein, mean over units with a 95% interval across units
-# (number, the load coefficient over cohorts as cited in the text); protein given mRNA, one line per unit with its 95%
-# CI
-b <- sites_panel("fig2b", "Mouse", axes = labs(x = "m6A sites per gene", y = "Age effect (%)"))
-
-# c: age effect of every protein by the number of m6A sites of its gene in the largest mouse cohort (Wang 2025, 40
-# brains); violins and boxes over genes, the central 98% of effects shown; number, the load coefficient of the unit
-genes <- read_panel("fig2c")
-genes[, sites := cut(n_sites_m6A, c(-Inf, 0, 1, 3, Inf), c("0", "1", "2–3", "≥4"))]
-counts <- genes[, .N, by = sites]
-unit_coef <- read_panel("fig2c_load")
-cc <- ggplot(genes, aes(sites, effect_pct)) +
-  ZERO_Y +
-  geom_violin(aes(fill = sites), colour = NA, scale = "width", width = 0.85, adjust = 1.2) +
-  geom_boxplot(width = 0.16, outliers = FALSE, fill = "white", colour = EDGE, linewidth = 0.6) +
-  geom_text(data = counts, aes(y = -Inf, label = format(N, big.mark = ",")), vjust = -0.5, size = PT, colour = INK) +
-  annotate("text", x = Inf, y = Inf, hjust = 1, vjust = 1.2, size = PT, colour = INK, lineheight = 0.95,
-           label = paste0(signed(unit_coef$effect), "% per log unit\n", fmt_p(unit_coef$p))) +
-  scale_fill_manual(values = c("#E3E3E3", "#D7E9EE", FOCAL_LIGHT, "#5EA8BC"), guide = "none") +
-  scale_y_continuous(labels = MINUS_LABELS) +
-  coord_cartesian(ylim = genes[, quantile(effect_pct, c(0.01, 0.99))]) +
-  labs(x = "m6A sites per gene", y = "Age effect, Wang 2025 (%)") +
-  theme_fig() +
-  theme(axis.ticks.x = element_blank())
-
-# d: age effect of the m6A load with the covariates added in turn (OLS with HC3 standard errors, cohorts combined by
-# random effects; 95% CI); filled, P < 0.05; number, the coefficient of the main model as a percentage of the
-# coefficient without covariates
-STEPS <- c(none = "No covariates", lengths = "+ Four lengths", expression = "+ Expression",
-           "neuron share" = "+ Neuron share", programmes = "+ Programmes (main model)",
-           "other loads" = "+ Ψ, m5C, m7G loads")
-d <- read_panel("fig2d")
-d[, `:=`(panel = factor(panel, CONTEXTS), step = factor(STEPS[step], rev(STEPS)))]
-d[, key := KEYS[as.character(panel)]]
-d[, c("edge", "inside") := p_colours(p, key)]
-main <- d[step == STEPS[["programmes"]]]
-dd <- ggplot(d, aes(effect, step)) +
+# b: loss of held-out R2 when a feature group is removed (bars), mouse and human protein; grey: 95% of the copies of the
+# tested group permuted across genes, with the permutation P; m6A groups on a tinted band
+b <- read_panel("fig2b")
+b[, target := factor(target, c("Mouse protein", "Human protein"))]
+order <- b[, .(m = mean(delta_r2)), by = block][order(m), block]
+b[, `:=`(row = factor(block, order), tested = !is.na(p))]
+bands <- data.table(block = order, i = seq_along(order))[grepl("m6A", block)]
+TARGET_COL <- c("Mouse protein" = FOCAL, "Human protein" = RED)
+dodge_b <- position_dodge(0.78, reverse = TRUE)
+bb <- ggplot(b, aes(delta_r2, row, group = target)) +
+  geom_rect(data = bands, aes(xmin = -Inf, xmax = Inf, ymin = i - 0.5, ymax = i + 0.5), fill = "#F1F1F1",
+            inherit.aes = FALSE) +
   ZERO_X +
-  geom_path(aes(group = panel, colour = I(LAYER_LIGHT[key])), linewidth = 0.9) +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(aes(colour = I(edge), fill = I(inside)), shape = 21, size = 3.8, stroke = 0.5) +
-  geom_text(data = main, aes(x = Inf, label = paste0(round(retained_pct), "%")), hjust = 1.15, size = PT,
-            colour = INK) +
-  facet_wrap(~panel, nrow = 1, scales = "free_x", labeller = label_wrap_gen(14)) +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = \(l) Filter(\(x) x <= 0, scales::breaks_pretty(3)(l)),
-                     expand = expansion(mult = c(0.06, 0.42))) +
-  labs(x = "Age effect of the m6A load per log unit (%)", y = NULL) +
+  geom_linerange(data = b[tested == TRUE], aes(xmin = null_low, xmax = null_high), colour = GREY, linewidth = 3.2,
+                 position = dodge_b) +
+  geom_col(aes(fill = target), position = dodge_b, width = 0.7, colour = EDGE, linewidth = 0.5) +
+  geom_text(data = b[tested == TRUE], aes(x = Inf, label = fmt_p(p)), hjust = 1.05, size = PT, position = dodge_b) +
+  scale_fill_manual(values = TARGET_COL, name = NULL) +
+  scale_y_discrete(limits = order) +
+  scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.1, 0.25))) +
+  labs(x = "Loss of held-out R² on removing the group", y = NULL) +
+  theme_rows() +
+  theme(legend.position = "bottom")
+
+# c: in silico deletion of the m6A sites: mean change of the prediction of the genes with sites (observed, diamond)
+# against 100 copies of the sites permuted across genes (dots, line: 95% of the copies), all sites and per region
+r <- read_panel("fig2c")
+perm <- read_panel("fig2c_permuted")
+REGIONS <- c("All sites", "5' UTR", "CDS", "3' UTR")
+REGION_LABEL <- c("All sites", "5′ UTR", "CDS", "3′ UTR")
+prep <- function(x) {
+  x[, `:=`(target = factor(target, names(TARGET_COL)), region = factor(region, rev(REGIONS), rev(REGION_LABEL)))]
+}
+prep(r)
+prep(perm)
+cc <- ggplot(r, aes(y = region)) +
+  ZERO_X +
+  geom_quasirandom(data = perm, aes(effect), orientation = "y", width = 0.3, size = 1.1, colour = "#8C8C8C",
+                   alpha = 0.7, stroke = 0) +
+  geom_linerange(aes(xmin = null_low, xmax = null_high), colour = INK, linewidth = 0.6) +
+  geom_point(aes(effect, fill = target), shape = 23, size = 5, colour = EDGE, stroke = 0.6) +
+  geom_text(aes(x = Inf, label = fmt_p(p)), hjust = 1.05, size = PT) +
+  facet_wrap(~target, nrow = 1, scales = "free_x") +
+  scale_fill_manual(values = TARGET_COL, guide = "none") +
+  scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.06, 0.5)),
+                     breaks = \(l) Filter(\(x) x <= 0.001, scales::breaks_pretty(4)(l))) +
+  labs(x = "Prediction with minus without sites (age z)", y = NULL) +
   theme_rows() +
   BOXED +
-  theme(panel.spacing = unit(5, "mm"), strip.text = element_text(lineheight = 0.95))
+  theme(panel.spacing = unit(6, "mm"))
 
-# e: average partial effect of the m6A load on the protein age effect among the long-lived proteins and among the other
-# proteins with a measured lifetime (causal forests, mouse protein; random effects over cohorts; 95% CI); q, of the
-# difference
-h <- read_panel("fig2e")
-inout <- h[quantity %in% c("in", "out")]
-inout[, row := factor(quantity, c("out", "in"), c("Other proteins\nwith a lifetime", "Long-lived\nproteins"))]
-e <- ggplot(inout, aes(effect, row, colour = quantity, fill = quantity)) +
-  ZERO_X +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(shape = 21, size = 4.4, stroke = 0.5) +
-  annotate("text", x = -Inf, y = 2.45, hjust = 0, size = PT, colour = INK,
-           label = fmt_p(h[quantity == "difference", q], "q")) +
-  scale_colour_manual(values = c("in" = EDGE, "out" = GREY), guide = "none") +
-  scale_fill_manual(values = c("in" = FOCAL, "out" = "white"), guide = "none") +
-  scale_x_continuous(labels = MINUS_LABELS) +
-  labs(x = "Age effect of the m6A load per log unit (%)", y = NULL) +
-  theme_rows()
+# d: mouse protein model applied to human genes (rho with the human targets, 95% bootstrap CI) against the shuffled target
+d <- rho_panel(read_panel("fig2d"), MODELS[c(5, 4)], c("Human protein", "Human mRNA"))
 
-fig <- panel_grid(list(a = a, b = b, c = cc, d = dd, e = e), design = "ABC\nDDE", widths = c(52, 76, 55),
-                  heights = c(86, 76))
-save_fig(fig, "fig2", 324)
+top <- max(112, 40 + 10.5 * length(order)) # panel b grows with the number of feature groups
+fig <- panel_grid(list(a = a, b = bb, c = cc, d = d),
+                  design = c(area(1, 1, 1, 180), area(1, 181, 1, 366), area(2, 1, 2, 250), area(2, 251, 2, 366)),
+                  heights = c(top, 84))
+save_fig(fig, "fig2", top + 84)

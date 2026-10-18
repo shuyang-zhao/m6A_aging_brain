@@ -163,36 +163,6 @@ for species, gtf_file, genome_file in (
 maps = {}  # map name -> table; the atlas list at the end gives each map its label
 
 
-def merge_ids(first, second):
-    # ids of two replicates joined by ";" where they differ
-    return [";".join(sorted({a, b} - {""})) for a, b in zip(first, second, strict=True)]
-
-
-# m6A in HEK293T and HeLa (GLORI, Liu 2023)
-# sites in both replicates, RefSeq mRNAs only
-files = sorted((RAW / "liu2023_gse210563").glob("*.csv.gz"))
-lines = []
-for pair in zip(files[0::2], files[1::2], strict=True):
-    reps = []
-    for file in pair:
-        calls = pd.read_csv(file, sep="\t", dtype={"Gene": str, "Transcript": str}, keep_default_na=False)
-        calls = calls[(calls.P_adjust <= 0.01) & (calls.AGcov >= 20) & (calls.NormeRatio >= 0.05)]
-        order = ["P_adjust", "AGcov", "NormeRatio", "Transcript"]
-        calls = calls.sort_values(order, ascending=[True, False, False, True], kind="stable")
-        reps.append(calls.drop_duplicates(["Chr", "Sites", "Strand"]).set_index(["Chr", "Sites", "Strand"]))
-    shared = reps[0].index.intersection(reps[1].index)
-    first, second = reps[0].loc[shared], reps[1].loc[shared]
-    merged = {
-        "transcript": merge_ids(first.Transcript, second.Transcript),
-        "gene": merge_ids(first.Gene, second.Gene),
-        "stoich": (first.NormeRatio + second.NormeRatio) / 2,
-    }
-    lines.append(pd.DataFrame(merged, index=shared).reset_index(names=KEY))
-# RefSeq mRNA (NM_) sites, one row per site
-sites = pd.concat(lines)
-sites = sites[sites.transcript.str.startswith("NM_")].groupby([*KEY, "gene"], as_index=False).stoich.mean()
-maps["m6a_hek293t_hela"] = site_table(sites.drop_duplicates(KEY))
-
 # m5C in HeLa and HEK293T (TAC-seq, Lu 2024, hg19)
 # plus the NSUN2 and NSUN6 dependent sites
 book = RAW / "lu2024_gse242724/1-s2.0-S1097276524005288-mmc5.xlsx"
@@ -435,9 +405,8 @@ def inside(sites, block):
     # inside: the running maximum end reaches the site
     position, mask = sites.pos.to_numpy(), np.zeros(len(sites), bool)
     for key, rows in sites.groupby(["chrom", "strand"]).indices.items():
-        if key in block:
-            at = np.searchsorted(block[key][0], position[rows], side="right") - 1
-            mask[rows] = (at >= 0) & (position[rows] <= block[key][1][at])
+        at = np.searchsorted(block[key][0], position[rows], side="right") - 1
+        mask[rows] = (at >= 0) & (position[rows] <= block[key][1][at])
     return mask
 
 
@@ -528,20 +497,6 @@ sites = mouse_sites(
 )
 maps["m5c_brain_amort2017"] = sites[inside(sites, exon_blocks)].reset_index(drop=True)
 
-# m6A in mouse brain (DART-seq, Tegowski 2024)
-# the site is the 5' neighbour of the edited C
-for name, path, columns in (
-    (
-        "m6a_cortex_scdart_tegowski2024",
-        "GSE266876_youngmousecortex_singlecellsites",
-        ["chrom", "s", "e", "n_cells", "gene", "id", "strand"],
-    ),
-    ("m6a_neuron_dart_tegowski2024", "GSE267234_NeuronNucleisites", ["chrom", "s", "e", "gene", "rate", "strand"]),
-):
-    bed = pd.read_csv(RAW / f"modmaps/tegowski2024/{path}.bed.gz", sep="\t", header=None, names=columns)
-    bed["site"] = bed.s + np.where(bed.strand == "+", 0, 2)
-    maps[name] = mouse_sites(bed, "chrom", "site", "strand")
-
 # m7G regions in mouse brain and stem cells (miCLIP, m7GHub)
 columns = ["seqnames", "start", "end", "strand", "source", "species", "assembly"]
 table = pd.read_csv(RAW / "modmaps/m7ghub2/m7G-miCLIP-seq.csv", usecols=columns)
@@ -561,7 +516,6 @@ maps["m6a_brain_shafik2026"] = site_table(peaks, start=peaks.start, end=peaks.en
 # reference base, gene, offset, region, codon, motif, writer class
 atlas = {
     "human": {
-        "m6a_hek293t_hela": "HEK293T + HeLa (GLORI consensus)",
         "m6a_brain_shafik2026": "human brain, five regions (m6A-seq, Shafik 2026)",
         "m5c_tac_union": "HeLa + HEK293T (TAC-seq)",
         "m5c_writer_NSUN2": "HeLa + HEK293T (TAC-seq, NSUN2-dependent)",
@@ -585,8 +539,6 @@ atlas = {
         "psi_nsc_uliepic": "mouse NSC (Uli-Epic BID-seq)",
         "m5c_brain_yang2017": "mouse brain (RNA-BisSeq, Yang 2017)",
         "m5c_brain_amort2017": "mouse brain (RNA-BisSeq, Amort 2017)",
-        "m6a_cortex_scdart_tegowski2024": "mouse cortex, young (scDART-seq single-cell sites, GSE266876)",
-        "m6a_neuron_dart_tegowski2024": "mouse neuronal nuclei (DART-seq, GSE267234)",
         "m7g_brain_miclip": "mouse brain (m7G-miCLIP, m7GHub compilation)",
         "m7g_mesc_miclip": "mouse ESC (m7G-miCLIP)",
     },
@@ -668,8 +620,7 @@ for species, entries in atlas.items():
         sites["source"] = tissue
         tables.append(sites[COLUMNS])
 sites = pd.concat(tables, ignore_index=True)
-# reference base as expected except in DART-seq maps
-# a gene found for most sites
-assert sites[~sites["map"].str.contains("dart")].groupby("map").ref_ok.mean().gt(0.99).all()
+# reference base as expected, a gene found for most sites
+assert sites.groupby("map").ref_ok.mean().gt(0.99).all()
 assert sites.gene_id.notna().groupby(sites["map"]).mean().gt(0.6).all()
 utils.write(sites, OUT / "site_atlas/sites.parquet")

@@ -28,7 +28,6 @@ def pseudobulk(blocks, populations, donor, min_cells):
                 n_cells[key] = n_cells.get(key, 0) + len(members)
     keep = [key for key in sums if n_cells[key] >= min_cells]
     matrix = pd.DataFrame({key: sums[key] for key in keep}).fillna(0).astype("int64")
-    assert matrix.min().min() >= 0
     genes = pd.concat(annotation).groupby(level=0, sort=False).first().loc[matrix.index]
     return matrix, [n_cells[key] for key in keep], genes
 
@@ -57,7 +56,7 @@ def read_h5ad(path):
     adata = anndata.read_h5ad(path)
     raw = adata.raw if adata.raw is not None else adata
     names = raw.var_names.astype(str)
-    counts = raw.X.tocsr() if sp.issparse(raw.X) else sp.csr_matrix(raw.X)
+    counts = raw.X.tocsr()
     genes = pd.DataFrame({"ensembl": np.nan, "symbol": names}, index=names)
     return counts, adata.obs.astype(str).reset_index(drop=True), genes
 

@@ -12,7 +12,7 @@ AGE_EFFECTS = utils.OUT / "10_protein_age_effects"
 PERMUTED = utils.OUT / "12_permutation_fdr"
 OUT = utils.OUT / "13_species_concordance"
 LAYERS = ["mrna_adjusted", "protein_only", "mrna_only"]
-MOUSE = ["chdi2016_expanded", "takasugi2024"]
+MOUSE = ["takasugi2024"]  # the only mouse unit with protein and mRNA left (chdi2016 is in utils.EXCLUDED)
 HUMAN = [*utils.HUMAN_PROTEIN_UNITS, "luo2024_bankadj"]
 
 
@@ -27,7 +27,7 @@ def to_mouse(frame):
     return frame.set_axis(frame.index.map(human_to_mouse))
 
 
-def compare(x, y, q=None, null=None):
+def compare(x, y, q, null):
     # rank correlation on shared genes, permutation p from null draws
     genes = x.index.intersection(y.index)
     x, y = x[genes], y[genes]
@@ -41,16 +41,12 @@ def compare(x, y, q=None, null=None):
         ci_high=np.tanh(np.arctanh(rho) + half_width),
         sign_agreement=same_sign.mean(),
     )
-    if q is not None:
-        hits = (q[genes] < utils.Q).to_numpy()
-        row |= dict(n_hits=hits.sum(), hits_same_sign=same_sign[hits].sum())
-    if null is not None:
-        draws, rhos = null.reindex(genes), []
-        for draw in draws:
-            ok = draws[draw].notna().to_numpy()
-            rhos.append(sps.spearmanr(x[ok], draws.loc[ok, draw])[0])
-        row |= dict(null_mean=np.mean(rhos), null_sd=np.std(rhos, ddof=1), p=utils.perm_pvalue(rho, rhos))
-        row["null_rho"] = pd.Series(rhos, index=draws.columns)
+    hits = (q[genes] < utils.Q).to_numpy()
+    row |= dict(n_hits=hits.sum(), hits_same_sign=same_sign[hits].sum())
+    draws = null.reindex(genes)
+    rhos = [sps.spearmanr(x, draws[draw])[0] for draw in draws]
+    row |= dict(null_mean=np.mean(rhos), null_sd=np.std(rhos, ddof=1), p=utils.perm_pvalue(rho, rhos))
+    row["null_rho"] = pd.Series(rhos, index=draws.columns)
     return row
 
 
@@ -66,13 +62,12 @@ mouse, null = {}, {}
 for unit in MOUSE:
     mouse[unit] = pd.concat(
         {layer: age_effects(unit, layer)[["estimate", "t", "q"]] for layer in LAYERS}, axis=1, join="inner"
-    ).dropna()
+    )
     for layer in LAYERS:
         estimated = age_effects(unit, layer)
         permuted = utils.read(PERMUTED / f"null_t_{unit}_{layer}.parquet")
         null[unit, layer] = permuted.loc[estimated.gene_id].set_axis(estimated.index)
         assert null[unit, layer].shape[1] == utils.N_PERMUTATIONS
-    assert mouse[unit].index.is_unique
 
 # human layers per unit
 human = {}

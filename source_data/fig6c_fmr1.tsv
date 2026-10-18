@@ -1,0 +1,63 @@
+list	species	layer	unit	mice	b_s	ci_low	ci_high	b_u	control_p95
+Darnell 2011	mouse	protein	Takasugi 2024	all	0.1213	0.06637	0.1762	0.0537	0.06543
+Maurin 2018	mouse	protein	Takasugi 2024	all	0.1045	0.04298	0.1661	0.02044	0.06543
+Darnell 2011	human	protein	Luo 2024	all	0.0364	-0.0009968	0.07379	0.03593	0.1205
+Maurin 2018	human	protein	Luo 2024	all	0.03528	-0.0067	0.07725	0.05234	0.1205
+Darnell 2011	human	protein	Koopmans 2026 DPFC L1-3	all	-0.06887	-0.1439	0.006169	0.02509	0.05969
+Maurin 2018	human	protein	Koopmans 2026 DPFC L1-3	all	-0.1763	-0.2637	-0.08893	0.01573	0.05969
+Darnell 2011	human	protein	Koopmans 2026 DPFC L4-6	all	-0.1749	-0.2716	-0.07822	0.000288	0.08127
+Maurin 2018	human	protein	Koopmans 2026 DPFC L4-6	all	-0.2021	-0.2848	-0.1194	0.02371	0.08127
+Darnell 2011	human	protein	Eggers 2025 substantia nigra	all	-0.1193	-0.1769	-0.06169	-0.068	0.0864
+Maurin 2018	human	protein	Eggers 2025 substantia nigra	all	-0.1361	-0.2176	-0.05462	-0.06558	0.0864
+Darnell 2011	mouse	protein	Lu 2025 brainstem	all	-0.09011	-0.1977	0.01749	-0.08245	0.3812
+Maurin 2018	mouse	protein	Lu 2025 brainstem	all	-0.02688	-0.1125	0.05877	-0.05548	0.3812
+Darnell 2011	mouse	protein	Lu 2025 cerebellum	all	0.08352	0.006952	0.1601	-0.02004	0.2502
+Maurin 2018	mouse	protein	Lu 2025 cerebellum	all	0.08878	-0.004096	0.1817	0.01456	0.2502
+Darnell 2011	mouse	protein	Lu 2025 hippocampus	all	0.08325	-0.004322	0.1708	-0.05316	0.2744
+Maurin 2018	mouse	protein	Lu 2025 hippocampus	all	0.006711	-0.04866	0.06209	0.02421	0.2744
+Darnell 2011	mouse	protein	Lu 2025 olfactory bulb	all	0.1661	0.08338	0.2487	0.08206	0.2335
+Maurin 2018	mouse	protein	Lu 2025 olfactory bulb	all	0.1431	0.0552	0.2309	-0.003021	0.2335
+Darnell 2011	mouse	protein	Tsumagari 2023 cortex	all	0.0602	0.004949	0.1154	0.02133	0.07117
+Maurin 2018	mouse	protein	Tsumagari 2023 cortex	all	0.03931	-0.006678	0.0853	-0.003099	0.07117
+Darnell 2011	mouse	protein	Tsumagari 2023 hippocampus	all	0.09281	0.01555	0.1701	0.0646	0.1573
+Maurin 2018	mouse	protein	Tsumagari 2023 hippocampus	all	0.08179	0.02688	0.1367	0.0301	0.1573
+Darnell 2011	mouse	protein	Wang 2025 brain	all	0.271	0.1957	0.3463	0.01875	0.1452
+Maurin 2018	mouse	protein	Wang 2025 brain	all	0.1023	0.04499	0.1596	0.04841	0.1452
+Darnell 2011	mouse	protein	Keele 2025 cortex	all	0.04002	0.004977	0.07506	0.05861	0.0798
+Maurin 2018	mouse	protein	Keele 2025 cortex	all	0.07043	0.02431	0.1165	0.008977	0.0798
+Darnell 2011	mouse	protein	Keele 2025 hippocampus	all	0.02363	-0.008226	0.05548	0.02396	0.06587
+Maurin 2018	mouse	protein	Keele 2025 hippocampus	all	0.03541	0.01377	0.05705	0.006985	0.06587
+Darnell 2011	mouse	protein	Keele 2025 striatum	all	0.01421	-0.04026	0.06869	-0.01576	0.04438
+Maurin 2018	mouse	protein	Keele 2025 striatum	all	0.006629	-0.04542	0.05867	0.0004872	0.04438
+Darnell 2011	mouse	protein	Marino 2025 whole brain	all	0.04696	0.003816	0.0901	-0.002841	0.02974
+Maurin 2018	mouse	protein	Marino 2025 whole brain	all	0.05859	-0.0006465	0.1178	0.003535	0.02974
+Darnell 2011	human	protein	Ping 2020 DLPFC	all	0.0407	-0.02378	0.1052	0.02353	0.04789
+Maurin 2018	human	protein	Ping 2020 DLPFC	all	0.04382	-0.01128	0.09891	0.0224	0.04789
+Darnell 2011	human	protein	Teng 2023 amygdala	all	0.005398	-0.05018	0.06098	0.01777	0.03648
+Maurin 2018	human	protein	Teng 2023 amygdala	all	0.001193	-0.07731	0.0797	0.001968	0.03648
+Darnell 2011	human	protein	Teng 2023 hippocampus	all	-0.07223	-0.1534	0.008985	-0.04774	0.04863
+Maurin 2018	human	protein	Teng 2023 hippocampus	all	-0.1295	-0.2409	-0.01807	-0.06902	0.04863
+Darnell 2011	human	protein	Teng 2023 hypothalamus	all	-0.021	-0.06424	0.02224	-0.04006	0.03884
+Maurin 2018	human	protein	Teng 2023 hypothalamus	all	-0.01159	-0.06625	0.04307	-0.03976	0.03884
+Darnell 2011	human	protein	Teng 2023 nucleus accumbens	all	-0.02021	-0.05878	0.01835	-0.02211	0.04919
+Maurin 2018	human	protein	Teng 2023 nucleus accumbens	all	-0.05344	-0.1363	0.02939	-0.02043	0.04919
+Darnell 2011	human	protein	Teng 2023 prefrontal cortex	all	-0.06327	-0.129	0.002454	-0.1096	0.07647
+Maurin 2018	human	protein	Teng 2023 prefrontal cortex	all	-0.1355	-0.2471	-0.02396	-0.09238	0.07647
+Darnell 2011	human	protein	Teng 2023 ventral tegmental area	all	-0.02446	-0.08009	0.03118	-0.02033	0.03536
+Maurin 2018	human	protein	Teng 2023 ventral tegmental area	all	-0.02712	-0.08108	0.02685	-0.04444	0.03536
+Darnell 2011	human	protein	Merrihew 2023 SMTG	all	0.03421	-0.002178	0.07059	0.03455	0.03799
+Maurin 2018	human	protein	Merrihew 2023 SMTG	all	0.02927	-0.006759	0.06529	0.03546	0.03799
+Darnell 2011	human	protein	Merrihew 2023 hippocampus	all	0.004769	-0.0572	0.06674	0.004435	0.04457
+Maurin 2018	human	protein	Merrihew 2023 hippocampus	all	-0.004971	-0.07029	0.06035	-0.02531	0.04457
+Darnell 2011	human	protein	Merrihew 2023 caudate	all	0.01613	-0.03103	0.06329	0.02321	0.03707
+Maurin 2018	human	protein	Merrihew 2023 caudate	all	0.01651	-0.01571	0.04873	-0.0118	0.03707
+Darnell 2011	human	protein	Merrihew 2023 IPL	all	-0.01101	-0.05832	0.0363	-0.01071	0.04574
+Maurin 2018	human	protein	Merrihew 2023 IPL	all	-0.04611	-0.1057	0.01345	0.0315	0.04574
+Darnell 2011	human	protein	Blumenreich 2024 cingulate gyrus	all	-0.01571	-0.09673	0.06531	-0.005759	0.04371
+Maurin 2018	human	protein	Blumenreich 2024 cingulate gyrus	all	-0.001906	-0.07103	0.06722	0.01457	0.04371
+Darnell 2011	human	protein	Blumenreich 2024 occipital cortex	all	0.003634	-0.05959	0.06686	-0.004695	0.04415
+Maurin 2018	human	protein	Blumenreich 2024 occipital cortex	all	0.0615	-0.01505	0.1381	0.02121	0.04415
+Darnell 2011	mouse	mRNA-adjusted protein	Takasugi 2024	all	0.07726	0.03328	0.1212	0.04879	0.06067
+Maurin 2018	mouse	mRNA-adjusted protein	Takasugi 2024	all	0.08555	0.02423	0.1469	0.02388	0.06067
+Darnell 2011	human	mRNA-adjusted protein	Luo 2024	all	0.005292	-0.02649	0.03707	-0.001638	0.1498
+Maurin 2018	human	mRNA-adjusted protein	Luo 2024	all	-0.01662	-0.05796	0.02473	-0.0037	0.1498

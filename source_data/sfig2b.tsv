@@ -1,16 +1,13 @@
-hippocampus cyto	hippocampus syn	cortex scDART	neuron DART	genes
-True	True	False	False	4835
-True	True	True	False	1759
-True	True	True	True	1336
-True	True	False	True	1021
-True	False	False	False	715
-False	True	False	False	405
-False	False	False	True	243
-False	False	True	False	192
-True	False	True	False	80
-True	False	False	True	78
-False	False	True	True	77
-False	True	True	False	55
-False	True	False	True	54
-False	True	True	True	37
-True	False	True	True	22
+context	layer	definition	effect_pct	ci_low_pct	ci_high_pct
+mouse_mrna	mrna_only	hippocampus cyto	-1.137	-1.566	-0.7071
+mouse_mrna	mrna_only	hippocampus syn	-0.8509	-1.033	-0.6684
+mouse_mrna	mrna_only	union	-1.103	-1.375	-0.8302
+mouse_neurons	mrna_only	hippocampus cyto	-0.1711	-0.5426	0.2017
+mouse_neurons	mrna_only	hippocampus syn	0.08304	-0.2797	0.4471
+mouse_neurons	mrna_only	union	0.02564	-0.3539	0.4066
+mouse_protein	protein_only	hippocampus cyto	-1.575	-2.01	-1.137
+mouse_protein	protein_only	hippocampus syn	-1.456	-1.923	-0.9869
+mouse_protein	protein_only	union	-1.601	-2.098	-1.101
+mouse_protein	mrna_adjusted	hippocampus cyto	-0.9849	-1.257	-0.712
+mouse_protein	mrna_adjusted	hippocampus syn	-0.8678	-1.141	-0.5939
+mouse_protein	mrna_adjusted	union	-0.9343	-1.218	-0.6496

@@ -1,5 +1,13 @@
-species	sites	n_units	effect	ci_low	ci_high
-human	0	22	0.563	0.04429	1.082
-human	1	22	-0.1431	-0.51	0.2238
-human	2-3	22	-0.3308	-0.8537	0.1922
-human	>=4	22	-0.7364	-1.473	-0.0001959
+panel	sites	n_cohorts	effect	ci_low	ci_high
+Mouse discovery	0	6	5.558	2.5	8.617
+Mouse discovery	1	6	1.991	0.7747	3.207
+Mouse discovery	2-3	6	0.773	0.09942	1.447
+Mouse discovery	≥4	6	-0.8918	-1.297	-0.4864
+Mouse external	0	11	2.827	1.94	3.715
+Mouse external	1	11	1.397	0.7011	2.094
+Mouse external	2-3	11	1.023	0.4553	1.591
+Mouse external	≥4	11	-0.2894	-0.7305	0.1516
+Human protein	0	8	0.4449	-0.08891	0.9787
+Human protein	1	8	-0.1027	-0.5218	0.3164
+Human protein	2-3	8	-0.3577	-0.8491	0.1337
+Human protein	≥4	8	-0.8183	-1.392	-0.2447

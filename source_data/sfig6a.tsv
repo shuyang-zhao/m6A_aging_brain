@@ -1,15 +1,37 @@
-panel	tier	comparison	estimate_pct	ci_low_pct	ci_high_pct
-GTEx	T1	unbound_m6A	0.1238	-0.4119	0.6623
-GTEx	T1	bound_unmarked	-0.04267	-0.3774	0.2932
-GTEx	T2	unbound_m6A	0.1977	-0.4839	0.884
-GTEx	T2	bound_unmarked	0.1622	-0.2828	0.6092
-GTEx	T3	unbound_m6A	0.04136	-0.5468	0.633
-GTEx	T3	bound_unmarked	-0.08737	-0.4234	0.2498
-GTEx	gene	-	-7.454	-10.81	-3.975
-Single nucleus	gene	-	-6.705	-13.37	0.4679
-Single nucleus	T1	bound_unmarked	-0.004391	-1.012	1.014
-Single nucleus	T1	unbound_m6A	-0.6917	-1.627	0.2526
-Single nucleus	T2	bound_unmarked	0.07285	-0.6334	0.7841
-Single nucleus	T2	unbound_m6A	0.2149	-0.9302	1.373
-Single nucleus	T3	bound_unmarked	-0.09109	-0.7087	0.5304
-Single nucleus	T3	unbound_m6A	-0.4379	-1.445	0.5799
+row	modification	z	q
+Human striatum mRNA	m6A	-1.164	0.8223
+Human striatum mRNA	Ψ	-0.2246	0.8223
+Human striatum mRNA	m5C	0.6716	0.8223
+Human striatum mRNA	m7G	0.2255	0.8223
+Human cortex mRNA	m6A	-1.292	0.3595
+Human cortex mRNA	Ψ	0.3722	0.7097
+Human cortex mRNA	m5C	1.404	0.3595
+Human cortex mRNA	m7G	1.104	0.3595
+Human hippocampus mRNA	m6A	-0.1196	0.9048
+Human hippocampus mRNA	Ψ	1.518	0.1721
+Human hippocampus mRNA	m5C	3.384	0.002855
+Human hippocampus mRNA	m7G	2.329	0.03971
+Human neuronal mRNA	m6A	-0.01372	0.9891
+Human neuronal mRNA	Ψ	-2.114	0.06842
+Human neuronal mRNA	m5C	-2.46	0.05561
+Human neuronal mRNA	m7G	-1.949	0.06842
+Human protein	m6A	-1.431	0.2965
+Human protein	Ψ	1.773	0.2965
+Human protein	m5C	1.006	0.3145
+Human protein	m7G	1.22	0.2965
+Mouse mRNA	m6A	-3.255	0.004534
+Mouse mRNA	Ψ	0.783	0.5782
+Mouse mRNA	m5C	0.872	0.5782
+Mouse mRNA	m7G	-0.04853	0.9613
+Mouse neuronal mRNA	m6A	-1.446	0.1975
+Mouse neuronal mRNA	Ψ	-1.696	0.1975
+Mouse neuronal mRNA	m5C	-1.087	0.2769
+Mouse neuronal mRNA	m7G	-1.499	0.1975
+Mouse protein	m6A	-5.601	8.541e-08
+Mouse protein	Ψ	-1.583	0.1133
+Mouse protein	m5C	-3.088	0.004028
+Mouse protein	m7G	-2.431	0.02007
+Mouse mRNA-adjusted protein	m6A	-2.527	0.04602
+Mouse mRNA-adjusted protein	Ψ	0.5232	0.7034
+Mouse mRNA-adjusted protein	m5C	-0.8904	0.7034
+Mouse mRNA-adjusted protein	m7G	-0.3807	0.7034

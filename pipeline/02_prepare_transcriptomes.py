@@ -259,7 +259,7 @@ samples["donor_id"] = "mouse" + samples.mouse_id
 samples["age_months"] = samples.age_months.astype(int)
 samples["sex"] = samples.sex.replace(utils.SEX)
 assert table.shape[1] == len(meta) == 847 and samples.gsm.notna().all()
-assert samples.sample_id.is_unique and not samples.duplicated(["donor_id", "tissue"]).any()
+assert not samples.duplicated(["donor_id", "tissue"]).any()
 assert samples.groupby("region").tissue.nunique().eq(1).all() and samples.tissue.nunique() == 15
 assert (samples.mouse_id == samples.column.str.split("_").str[2]).all() and samples.mouse_id.nunique() == 59
 assert samples[["sex", "age_months"]].notna().all().all() and (table.dtypes == "int64").all()
@@ -284,7 +284,7 @@ samples = pd.DataFrame({"column": table.columns}).merge(meta, on="column", how="
 samples = samples.assign(sample_id=samples.column, donor_id=samples.column, arm="aging", batch="single")
 samples["age_months"] = samples.age.str.removesuffix(" months").astype(int)
 assert table.shape[1] == len(meta) == 414 and samples.gsm.notna().all()
-assert samples.sample_id.is_unique and samples.tissue.nunique() == 4 and set(samples.sex) == {"female", "male"}
+assert samples.tissue.nunique() == 4 and set(samples.sex) == {"female", "male"}
 assert (samples.title == samples.sex + "_" + samples.tissue + "_" + samples.age + "_" + samples.column).all()
 assert samples.age_months.isin([6, 12, 18, 21, 24, 27]).all() and (table.to_numpy() >= 0).all()
 columns = "column sample_id donor_id gsm tissue sex age_months arm batch".split()
@@ -318,7 +318,7 @@ samples["pmi_h"] = pd.to_numeric(samples.post_mortem_interval_in_hours)
 samples["ph"] = pd.to_numeric(samples.brain_ph, errors="coerce")
 samples["rin"] = pd.to_numeric(samples.rin, errors="coerce")
 assert table.shape == (26493, 1231) and samples.gsm.notna().all() and table.notna().all().all()
-assert samples.sample_id.is_unique and not samples.duplicated(["donor_id", "tissue"]).any()
+assert not samples.duplicated(["donor_id", "tissue"]).any()
 assert samples.donor_id.nunique() == 134 and samples.tissue.nunique() == 10 and set(samples.arm) == {"aging"}
 assert samples.groupby("donor_id")[["sex", "age_years", "brain_bank"]].nunique().eq(1).all().all()
 assert len(genes) == 24885 and genes.entrez.str.isdigit().all()

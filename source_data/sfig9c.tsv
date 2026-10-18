@@ -1,0 +1,8 @@
+dataset	population	b_s	ci_low	ci_high	pctile_abs
+Green 2025	D1_MSN	-0.06379	-0.1386	0.01097	91.95
+Green 2025	D2_MSN	-0.07411	-0.151	0.002809	93.1
+Green 2025	MSN_unassigned	-0.1351	-0.2359	-0.03434	94.25
+Green 2025	OPC	-0.1233	-0.1825	-0.06411	97.7
+Handsaker 2025	D1_MSN	0.03658	-0.03075	0.1039	75.29
+Handsaker 2025	D2_MSN	0.05228	-0.0158	0.1204	85.88
+Handsaker 2025	OPC	0.03113	-0.02937	0.09163	88.51

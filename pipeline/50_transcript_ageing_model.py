@@ -43,7 +43,6 @@ TARGETS = {
     "mouse_mrna_adjusted": ("mouse", "mrna_adjusted", "mouse_protein"),
     "human_protein": ("human", "protein_only", "human_protein"),
 }
-CELL_LINES = "_cell_line_sites"  # human targets with the HEK293T and HeLa sites in place of the brain peaks
 regulators = utils.read(utils.ROOT / "ref/gene_sets/rna_mod_regulators.tsv")
 READERS = regulators[(regulators.role == "reader") & regulators.modification.str.contains("m6A")].human_symbol
 REGIONS = ["5UTR", "CDS", "3UTR"]
@@ -81,6 +80,7 @@ BLOCKS = {  # feature groups removed to measure their gain; the first block is a
     "m6A sites and binding": ["m6A sites", "m6A reader binding"],
     "m6A sites": ["m6A sites"],
     "m6A reader binding": ["m6A reader binding"],
+    **{group: [group] for group in GROUPS if not group.startswith("m6A")},  # every other group, one at a time
 }
 TESTED = "m6A sites and binding"
 # features of both species: no reader binding (CLIP of other readers in each species), no sequence representation
@@ -136,16 +136,14 @@ def features_of(table):
 
 
 def permuted_runs(name):
-    # R2 and deletion effects of the permuted copies of a table, None for the tables without copies
-    files = sorted(RUNS.glob(f"{name}_permuted_*.tsv"))
-    return pd.concat(utils.read(f) for f in files).sort_values("draw") if files else None
+    # R2 and deletion effects of the permuted copies of a table
+    return pd.concat(utils.read(f) for f in sorted(RUNS.glob(f"{name}_permuted_*.tsv"))).sort_values("draw")
 
 
 if sys.argv[1:] == ["inputs"]:
     # m6A sites on the canonical transcript by region, the stop-codon window of the atlas split at the CDS end: in mouse
-    # the sites of all maps counted once across maps (as in script 09), in human the brain m6A-seq peaks at their
-    # midpoints (the human load of script 21) and, for the sensitivity tables, the single-base sites of HEK293T and HeLa
-    # cells
+    # the GLORI sites of the two maps counted once across maps (as in script 09), in human the brain m6A-seq peaks at
+    # their midpoints (the human load of script 21)
     position = ["chrom", "start", "end", "strand"]
     columns = ["map", "modification", "species", *position, "gene_id", "region", "tx_offset", "ref_ok"]
     atlas = utils.read(utils.RESOURCES / "site_atlas" / "sites.parquet", columns=columns)
@@ -156,12 +154,7 @@ if sys.argv[1:] == ["inputs"]:
     stop = sites.region == "stop"
     sites.loc[stop, "region"] = np.where(sites.tx_offset[stop] < sites.gene_id[stop].map(cds_end), "CDS", "3UTR")
     sites = sites[sites.region.isin(REGIONS)]
-    brain = sites["map"] == utils.BRAIN_M6A
-    maps = {
-        "mouse": sites[sites.species == "Mus musculus"],
-        "human": sites[brain],
-        "human" + CELL_LINES: sites[(sites.species == "Homo sapiens") & ~brain],
-    }
+    maps = {"mouse": sites[sites.species == "Mus musculus"], "human": sites[sites.species == "Homo sapiens"]}
 
     # reader binding: 1 for the transcripts with an m6A site within 50 nt of the reader's CLIP peaks (the bound
     # transcripts of script 40), one column per reader with CLIP in the species
@@ -173,14 +166,12 @@ if sys.argv[1:] == ["inputs"]:
 
     # transcript features of script 09 with log(1 + m6A sites) and m6A reader binding
     features = {}
-    for name, rows in maps.items():
-        species = name.split("_")[0]
+    for species, rows in maps.items():
         table = utils.read(utils.OUT / "09_transcript_features" / f"{species}_features.tsv.gz").set_index("gene_id")
-        assert table.index.is_unique
         counts = rows.groupby(["gene_id", "region"]).size().unstack(fill_value=0).reindex(table.index, columns=REGIONS)
         counts = counts.fillna(0).set_axis(SITES[1:], axis=1)
         counts.insert(0, "m6A_all", counts.sum(axis=1))
-        features[name] = table.join(np.log1p(counts)).join(binding[species].reindex(table.index, fill_value=0))
+        features[species] = table.join(np.log1p(counts)).join(binding[species].reindex(table.index, fill_value=0))
 
     effects = {
         layer: utils.read(
@@ -213,7 +204,7 @@ if sys.argv[1:] == ["inputs"]:
         return pd.concat([z.rename("target"), expression], axis=1, join="inner")
 
     # one table per target: chromosome folds, the target shuffled within each fold and the gene order of each permuted
-    # copy of the m6A block; human targets also with the cell-line sites
+    # copy of the m6A block
     INPUTS.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(utils.SEED)
     for name, (species, layer, context) in TARGETS.items():
@@ -228,13 +219,9 @@ if sys.argv[1:] == ["inputs"]:
         orders = np.array([rng.permutation(len(table)) for _ in range(N_PERMUTED)], dtype=np.int32)
         np.save(INPUTS / f"permutations_{name}.npy", orders)
         columns = ["symbol", "chrom", "fold", "target", "shuffled", *features_of(table)]
-        tables = {name: table.assign(fold=fold, shuffled=shuffled)[columns]}
-        if species == "human":
-            other = features["human" + CELL_LINES][SITES].loc[table.index]
-            tables[name + CELL_LINES] = tables[name].assign(**other)
-        for key, frame in tables.items():
-            frame.to_parquet(INPUTS / f"{key}.parquet")
-            print(key, frame.shape, "genes with sites", (frame.m6A_all > 0).sum())
+        frame = table.assign(fold=fold, shuffled=shuffled)[columns]
+        frame.to_parquet(INPUTS / f"{name}.parquet")
+        print(name, frame.shape, "genes with sites", (frame.m6A_all > 0).sum())
 
     # the human genes with a one-to-one mouse ortholog in the mouse protein table, with the fold of that ortholog, for
     # the transfer
@@ -380,29 +367,23 @@ else:
     print(pd.DataFrame(ablation).round(4).to_string(index=False))
 
     # in silico deletion: mean of prediction minus prediction without the sites over the genes with sites, against
-    # the same mean in the permuted copies (two-sided); the cell-line tables have no permuted copies
+    # the same mean in the permuted copies (two-sided)
     deletion, permuted_effects, genes = [], [], []
-    for name in [*TARGETS, *(t + CELL_LINES for t in TARGETS if t.startswith("human"))]:
+    for name in TARGETS:
         table, runs = pd.read_parquet(INPUTS / f"{name}.parquet"), utils.read(RUNS / f"{name}.parquet")
         marked = table.m6A_all.to_numpy() > 0
         effects = pd.DataFrame({r: runs.tabpfn - runs[f"deleted_{r}"] for r in DELETED})
         permuted = permuted_runs(name)
-        sites = "cell lines" if name.endswith(CELL_LINES) else "main"
         for region in DELETED:
-            row = dict(target=name.removesuffix(CELL_LINES), sites=sites, region=region, n_genes=marked.sum())
-            row["effect"] = effects[region][marked].mean()
-            if permuted is not None:
-                null = permuted[f"delete_{region}"].to_numpy()
-                low, high = np.percentile(null, [2.5, 97.5])
-                row |= dict(
-                    null_mean=null.mean(), null_low=low, null_high=high, p=utils.perm_pvalue(row["effect"], null)
-                )
+            row = dict(target=name, region=region, n_genes=marked.sum(), effect=effects[region][marked].mean())
+            null = permuted[f"delete_{region}"].to_numpy()
+            low, high = np.percentile(null, [2.5, 97.5])
+            row |= dict(null_mean=null.mean(), null_low=low, null_high=high, p=utils.perm_pvalue(row["effect"], null))
             deletion.append(row)
-        if permuted is not None:
-            long = permuted.melt(["target", "draw"], [f"delete_{r}" for r in DELETED], "region", "effect")
-            permuted_effects.append(long.assign(region=long.region.str.removeprefix("delete_")))
-            gene_rows = table.loc[marked, ["symbol"]].assign(target=name, observed=runs.target, tabpfn=runs.tabpfn)
-            genes.append(gene_rows.join(effects[marked].add_prefix("effect_")))
+        long = permuted.melt(["target", "draw"], [f"delete_{r}" for r in DELETED], "region", "effect")
+        permuted_effects.append(long.assign(region=long.region.str.removeprefix("delete_")))
+        gene_rows = table.loc[marked, ["symbol"]].assign(target=name, observed=runs.target, tabpfn=runs.tabpfn)
+        genes.append(gene_rows.join(effects[marked].add_prefix("effect_")))
     utils.write(pd.DataFrame(deletion), OUT / "deletion.tsv")
     utils.write(pd.concat(permuted_effects), OUT / "deletion_permuted.tsv")
     utils.write(pd.concat(genes), OUT / "deletion_genes.tsv.gz")

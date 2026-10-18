@@ -1,72 +1,47 @@
-# Additional file 1 Fig. S5: FMRP family and PRRC2A, sign check against knockouts, the values of the network edges and
-# edges shared across units
-# reads source_data/sfig5a, sfig5b and sfig5c; writes output/figures/sfig5.png and .pdf
+# Additional file 1 Fig. S5: the clock in disease
+# a, clock score of every sample by region, cases and controls; b, coefficients of the m6A part of the score (model minus
+# the model without the m6A features) in disease
+# reads source_data/sfig5a and sfig5b (script 53); writes output/figures/sfig5.png and .pdf
 source("figures/style.R")
 
-# a: change of the m6A-marked target score after loss of FMR1 or PRRC2A in the knockout data; the edge in the proteome
-# predicts a fall (filled, the observed direction agrees with the prediction of the protein edge); * q < 0.05
+# a: cases (red) and controls (grey) of each region (box, median and quartiles); cases and controls of a region were
+# standardized together
 s <- read_panel("sfig5a")
-TISSUES <- c(cortex = "Cortex", hippocampus = "Hippocampus", cerebellum = "Cerebellum",
-             "cortex Pvalb neurons" = "Cortex Pvalb neurons", "cortex Camk2a neurons" = "Cortex Camk2a neurons",
-             "brain Nestin-Cre" = "Brain, Nestin-Cre", "brain Olig2-Cre" = "Brain, Olig2-Cre")
-s[, label := paste0(TISSUES[tissue], ", ", readout, " (", toupper(sub("^.*_", "", perturbation)), ")")]
-s[, `:=`(regulator = factor(paste(regulator, "loss"), c("FMR1 loss", "PRRC2A loss")),
-         agree = factor(fifelse(agrees == 1, "Agrees", "Disagrees"), c("Agrees", "Disagrees")))]
-s[, label := factor(label, rev(unique(label[order(regulator, -effect)])))]
-a <- ggplot(s, aes(effect, label, fill = agree)) +
+s[, `:=`(strip = paste0(study, "\n", vapply(region, function(r) paste(strwrap(r, 22), collapse = "\n"), "")),
+         group = factor(fifelse(group == "Case", disease, "Control"), c("Control", "AD", "PD", "ALS")))]
+s[, strip := factor(strip, unique(strip))]
+a <- ggplot(s, aes(group, score)) +
+  geom_boxplot(aes(colour = group), fill = NA, width = 0.5, linewidth = 0.6, outliers = FALSE, show.legend = FALSE) +
+  geom_point(aes(fill = group), colour = EDGE, shape = 21, size = 2.2, stroke = 0.4, alpha = 0.9,
+             position = position_jitter(width = 0.14, height = 0, seed = 1)) +
+  facet_wrap(~strip, nrow = 2, scales = "free_x") +
+  scale_fill_manual(values = c(Control = GREY, AD = RED, PD = RED, ALS = RED), guide = "none") +
+  scale_colour_manual(values = c(Control = EDGE, AD = EDGE, PD = EDGE, ALS = EDGE)) +
+  scale_y_continuous(labels = MINUS_LABELS) +
+  labs(x = NULL, y = "Clock score") +
+  theme_fig() +
+  BOXED
+
+b <- read_panel("sfig5b")
+STUDIES <- c("Ping 2020", "Merrihew 2023", "AD combined", "Blumenreich 2024", "Umoh 2018", "Langfelder 2016")
+b[, `:=`(key = fifelse(disease == "HD", FOCAL, RED), combined = study == "AD combined",
+         label = sprintf("%s (n = %d)", study, n),
+         disease = factor(disease, c("AD", "PD", "ALS", "HD"), c("AD", "PD", "ALS", "HD, per\n100 CAG")))]
+b[, label := factor(label, rev(label[match(STUDIES, study)]))]
+b <- ggplot(b, aes(est, label)) +
   ZERO_X +
-  geom_col(width = 0.66, colour = EDGE, linewidth = 0.5) +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), linewidth = 0.6, colour = EDGE) +
-  geom_text(data = s[q < 0.05],
-            aes(x = fifelse(effect < 0, ci_low, ci_high), label = "*", hjust = fifelse(effect < 0, 1.4, -0.4)),
-            size = PT, vjust = 0.75, colour = INK) +
-  facet_grid(regulator ~ ., scales = "free_y", space = "free_y") +
-  scale_fill_manual(values = c(Agrees = RED, Disagrees = "white"), name = NULL) +
-  scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = 0.15)) +
-  labs(x = "Change of m6A-marked target score", y = NULL) +
+  geom_linerange(aes(xmin = ci_low, xmax = ci_high), orientation = "y", colour = EDGE, linewidth = 0.6) +
+  geom_point(aes(fill = I(key), shape = combined, size = combined), colour = EDGE, stroke = 0.5) +
+  geom_text(aes(x = Inf, label = paste0("  ", fmt_p(p))), hjust = 0, size = PT, colour = INK) +
+  facet_grid(disease ~ ., scales = "free_y", space = "free_y", switch = "y") +
+  scale_shape_manual(values = c("FALSE" = 21, "TRUE" = 23), guide = "none") +
+  scale_size_manual(values = c("FALSE" = 3.6, "TRUE" = 4.6), guide = "none") +
+  scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = 0.08)) +
+  labs(x = "Disease coefficient of the m6A part of the score (SD of the score)", y = NULL) +
+  coord_cartesian(clip = "off") +
   theme_rows() +
   BOXED +
-  theme(legend.position = "bottom",
-        strip.text.y = element_text(angle = 0, hjust = 0, margin = margin(0, 0, 0, 2, "mm")))
+  theme(plot.margin = margin(4.4, 28, 3, 2, "mm"), strip.placement = "outside",
+        strip.text.y.left = element_text(angle = 0, hjust = 1, margin = margin(r = 2, unit = "mm")))
 
-# c: posterior mean of the edge in every Output unit after sharing across units (mashr); large dots, local false sign
-# rate below 0.05
-e <- read_panel("sfig5c")
-e[, label := paste0(unit, " (", c(mouse = "m", human = "h")[species], ")")]
-REGS <- c("FMR1", "FMRP family", "FXR1", "FXR2", "PRRC2A", "HNRNPC", "RBMX", "YTHDC1", "YTHDF1", "YTHDF2", "YTHDF3",
-          "YTHDF module", "Writer complex", "Erasers")
-e[, row := factor(regulator, rev(REGS))]
-e[, label := factor(label, unique(label[order(species == "human", label)]))]
-LIM <- 0.1
-mashr <- ggplot(e, aes(label, row)) +
-  geom_point(aes(fill = posterior_mean, size = lfsr < 0.05), shape = 21, colour = MATRIX_EDGE, stroke = 0.5) +
-  scale_fill_div(LIM, "Posterior mean edge, Output arm") +
-  scale_size_manual(values = c("FALSE" = 2.2, "TRUE" = 5.6),
-                    labels = c("FALSE" = "lfsr ≥ 0.05", "TRUE" = "lfsr < 0.05"), name = NULL,
-                    guide = guide_legend(order = 2, override.aes = list(fill = "#BDBDBD", colour = MATRIX_EDGE))) +
-  scale_x_discrete(position = "top") +
-  theme_matrix() +
-  theme(axis.text.x.top = element_text(angle = 90, hjust = 0, vjust = 0.5), legend.position = "bottom")
-
-# b: the edges of Fig. 5c as values: median edge over the units of the primary source in units of the 95th percentile
-# of the control RBPs; *, m6A-specific edge in at least one unit; **, also shared across units; the YTHDF load edge
-# counts as specific above the 95th percentile of the control RBPs
-m <- read_panel("sfig5b")
-ROWS <- c("YTHDF1", "YTHDF2", "YTHDF3", "YTHDC1", "YTHDC2", "FMR1", "FXR1", "FXR2", "PRRC2A", "HNRNPC", "RBMX",
-          "IGF2BP2", "YTHDF module", "FMRP family", "Writer complex", "Erasers",
-          "Module, mouse", "Module, human", "YTHDF3, mouse", "YTHDF3, human")
-m[, row := sub(" load,", ",", sub("^YTHDF module load", "Module", row))]
-m[, `:=`(row = factor(row, rev(ROWS)), arm = factor(arm, c("Output", "Translation", "Stability")),
-         group = factor(group, c("Readers", "Modules", "Writers, erasers", "YTHDF load edge")),
-         mark = fcase(shared, "**", m6A_specific, "*", default = ""))]
-edges <- ggplot(m, aes(arm, row, fill = value)) +
-  geom_tile(colour = "white", linewidth = 1.2) +
-  geom_text(aes(label = mark), size = PT, colour = INK, vjust = 0.75) +
-  facet_grid(group ~ ., scales = "free_y", space = "free_y", switch = "y", labeller = label_wrap_gen(9)) +
-  scale_fill_div(2, "Edge / control\n95th percentile") +
-  scale_x_discrete(position = "top", expand = c(0, 0)) +
-  theme_heat() +
-  theme(strip.placement = "outside", strip.text.y.left = element_text(angle = 0, hjust = 0), legend.position = "bottom")
-
-fig <- panel_grid(list(a = a, b = edges, c = mashr), design = "AB\nCC", widths = c(100, 83), heights = c(71, 95))
-save_fig(fig, "sfig5", 332)
+save_fig(panel_grid(list(a = a, b = b), ncol = 1, heights = c(95, 130)), "sfig5", 235)

@@ -1,4 +1,4 @@
-region	genes
-brain peaks only	4513
-both	4502
-cell line only	2869
+hippocampus cyto	hippocampus syn	genes
+True	True	8724
+True	False	897
+False	True	553

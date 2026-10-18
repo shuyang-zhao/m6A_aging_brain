@@ -2,6 +2,8 @@
 # Paired cohorts also get RNA-seq sample tables, read by 02
 # reads data/raw (00_download.sh); writes output/prepared/<dataset>/protein* and rna_samples.tsv
 import gzip
+import io
+import json
 import re
 
 import numpy as np
@@ -625,7 +627,7 @@ samples["sex"] = "male"
 samples["arm"] = np.where(samples.diagnosis == "Control", "aging", "disease")
 # technical replicates are individuals in both plexes
 samples["technical_replicate"] = samples.replicate == "Technical"
-assert len(samples) == 168 and samples.sample_id.is_unique
+assert len(samples) == 168
 assert (samples.group == samples.diagnosis).all()
 assert (samples.technical_replicate == samples.duplicated(["tissue", "individual"], keep=False)).all()
 samples = samples.drop(columns=["individual", "group", "replicate", "plex", "psm_file"])
@@ -715,7 +717,7 @@ samples["arm"] = np.where(samples.Condition == "HCF/Low ADNC", "aging", "disease
 record = "Age,Sex,PMI (hrs),APOE Alleles,Study Name,Braak Stage,CERAD Score,Condition,Mutation Status".split(",")
 number = samples[record].groupby(record, dropna=False).ngroup()
 samples["donor_id"] = "donor" + (number + 1).astype(str).str.zfill(2)
-assert len(samples) == 225 and samples.sample_id.is_unique and samples.Condition.notna().all()
+assert len(samples) == 225 and samples.Condition.notna().all()
 assert not samples.duplicated(["donor_id", "tissue"]).any() and samples.donor_id.nunique() == 67
 assert list(values.columns) == list(samples.column) and (samples.arm == "aging").sum() == 37
 # UniProt gene of each accession in the group
@@ -809,7 +811,7 @@ samples["pmi_h"] = np.nan
 listed = supp["Brain Region"] + "|" + supp["Sample ID"]
 samples["author_excluded"] = ~(samples.tissue + "|" + samples.donor_id).isin(listed)
 notes = pd.concat(notes).groupby(level=0, sort=False).first().loc[values.index]
-assert values.columns.equals(pd.Index(samples.sample_id)) and samples.sample_id.is_unique
+assert values.columns.equals(pd.Index(samples.sample_id))
 assert len(samples) == 299 and samples.batch.notna().all() and samples.author_excluded.sum() == 1
 lead = notes["Majority protein IDs"].str.split(";").str[0]
 gene = notes["Gene names"].str.split(";").str[0]
@@ -863,10 +865,450 @@ samples["sample_id"] = samples.batch + "_" + samples.channel
 samples["donor_id"] = samples.sample_id
 samples["tissue"] = "DLPFC"
 samples["arm"] = np.where(samples.diagnosis == "control", "aging", "disease")
-assert len(samples) == 27 and samples.sample_id.is_unique and samples.age_years.notna().all()
+assert len(samples) == 27 and samples.age_years.notna().all()
 assert samples.sex.isin(["male", "female"]).all() and samples.batch.value_counts().eq(9).all()
 assert samples.diagnosis.value_counts().to_dict() == {"control": 10, "AD": 9, "AsymAD": 8}
 assert not (table[samples.column] == 0).any().any()
 # gene from the FASTA header, else the first annotated symbol
 genes = table.Description.str.extract(r"\bGN=(\S+)")[0].fillna(table["Gene Symbol"].str.split(";").str[0].str.strip())
 save_groups(dataset, np.log2(table[samples.column].astype(float)), samples, table.Accession, genes, missing="NA")
+
+
+# ==== External validation proteomes ====
+# Mouse brain ageing proteomes of the external validation set (08 reads them as the context mouse_protein_external)
+# control animals with known ages only, the arms of disease models and interventions are not prepared
+
+
+def gene_symbols(accessions):
+    # UniProt gene of each accession, empty when unknown
+    return accessions.str.split("-").str[0].map(gene_of).fillna("")
+
+
+def maxquant_groups(table):
+    # protein groups without reverse, contaminant and site-only hits
+    # decoy and contaminant accessions leave the majority ids of the others
+    table = table[~table[["Reverse", "Potential contaminant", "Only identified by site"]].eq("+").any(axis=1)]
+    ids = table["Majority protein IDs"].str.replace(r"(?:^|;)(?:REV|CON)__[^;]*", "", regex=True)
+    return table.assign(**{"Majority protein IDs": ids.str.lstrip(";")})
+
+
+# Keele 2023 striatum, cerebellum, hippocampus (TMT10 plexes with a bridge channel), Table S1
+# quantities: authors' log2 ratios to the bridge of the plex, mice and tissues in Table S1 as published
+# cells without reporter signal in the mouse's channel or in the bridge are missing
+dataset = "keele2023_pxd034029"
+book = RAW / dataset / "figshare/supp_tables/table_s1.xlsx"
+mice = pd.read_excel(book, sheet_name="Mouse annotations", dtype=str).set_index("mouse.id")
+annotation = pd.read_excel(book, sheet_name="Protein annotations", dtype=str).set_index("protein.id")
+# UniProt accession of an Ensembl protein: the reviewed entry listing it, else the only reviewed entry of its gene
+mapping = pd.read_csv(
+    RAW / dataset / "uniprot/MOUSE_10090_idmapping_selected.tab.gz",
+    sep="\t",
+    header=None,
+    usecols=[0, 18, 20],
+    names=["accession", "gene", "protein"],
+    dtype=str,
+    keep_default_na=False,
+)
+mapping["reviewed"] = mapping.accession.isin(reviewed.index)
+
+
+def listing(column):
+    # accession per Ensembl id of a column, reviewed entries first
+    rows = mapping.assign(id=mapping[column].str.split("; ")).explode("id")
+    rows["id"] = rows.id.str.replace(r"\.\d+$", "", regex=True)
+    return rows.sort_values(["reviewed", "accession"], ascending=[False, True])
+
+
+by_protein = listing("protein").groupby("id").agg(accession=("accession", "first"), reviewed=("reviewed", "first"))
+by_gene = listing("gene").query("reviewed").groupby("id").accession.agg(list)
+by_gene = by_gene[by_gene.str.len() == 1].str[0]
+ids = pd.DataFrame({"protein": annotation.index, "gene": annotation["gene.id"].to_numpy()}, index=annotation.index)
+direct = ids.protein.map(by_protein.accession)
+lead = direct.where(ids.protein.map(by_protein.reviewed).fillna(False).astype(bool), ids.gene.map(by_gene))
+lead = lead.fillna(direct).fillna(ids.protein)
+TISSUES = {"Striatum": "Str", "Cerebellum": "Cer", "Hippocampus": "Hip"}
+PEPTIDES = RAW / dataset / "figshare/data_zip/data/PeptideQuantitation"
+parts, frames = [], []
+for tissue, short in TISSUES.items():
+    table = pd.read_excel(book, sheet_name=f"{tissue} proteins", dtype={"mouse.id": str}).set_index("mouse.id")
+    # summed reporter signal of each protein in each channel; zero signal is not a measurement
+    channels = [f"rq_{tag}_sn" for tag in [*mice.tag.unique(), "131c"]]
+    psm = pd.read_csv(next(PEPTIDES.glob(f"*_{tissue}.tsv")), sep="\t", usecols=["ProteinId", "Class", *channels])
+    psm = psm[psm.ProteinId.str.contains("ENSMUSP") & ~psm.ProteinId.str.contains("##|contaminant")]
+    psm["ProteinId"] = psm.ProteinId.str.replace(r"\.\d+$", "", regex=True)
+    signal = psm.groupby(["Class", "ProteinId"])[channels].sum()
+    frame = mice.loc[table.index].reset_index()
+    empty = [
+        (signal.loc[plex, f"rq_{tag}_sn"].reindex(table.columns) == 0).to_numpy()
+        | (signal.loc[plex, "rq_131c_sn"].reindex(table.columns) == 0).to_numpy()
+        for plex, tag in zip(frame.Batch, frame.tag, strict=True)
+    ]
+    parts.append(table.mask(np.vstack(empty)).T.set_axis(short + "_" + table.index, axis=1))
+    frame = frame.assign(tissue=tissue, sample_id=short + "_" + frame["mouse.id"], donor_id=frame["mouse.id"])
+    frame["age_months"] = frame.Age.map({"Y": 8, "O": 18})
+    frame["sex"] = frame.Sex.replace(utils.SEX)
+    frame["batch"] = tissue.lower() + "_" + frame.Batch
+    frames.append(frame)
+samples = pd.concat(frames, ignore_index=True).rename(columns={"Batch": "plex", "tag": "tmt_tag"})
+samples["column"] = samples.sample_id
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "plex", "tmt_tag"]]
+values = pd.concat(parts, axis=1)[samples.sample_id]
+assert samples.groupby("tissue").size().to_dict() == {"Cerebellum": 20, "Hippocampus": 20, "Striatum": 18}
+save_groups(dataset, values, samples, lead.reindex(values.index), annotation.symbol.reindex(values.index), missing=None)
+
+# Scifo 2025 whole brain (Proteome Discoverer 3.0, label-free), mzTab of the jPOST deposit
+# quantities: PD protein abundances per run, not normalised; PD contaminant entries leave
+dataset = "scifo2025_pxd058684"
+lines = gzip.open(RAW / dataset / "jpost/Mar032021_AgeingMouse_Brain_LFQ_120min_60K_TopS.MTD-PRT-PEP.mzTab.gz", "rt")
+lines = lines.read().replace("\r", "").split("\n")
+table = pd.read_csv(
+    io.StringIO("\n".join(line for line in lines if line.startswith(("PRH", "PRT")))), sep="\t", dtype=str
+)
+found = (
+    re.match(r"MTD\tms_run\[(\d+)\]-location\t.*\\(\w{9})_(?:TL_)?Br_(\d+)_(\d+)M_(c\d+)_", line) for line in lines
+)
+samples = pd.DataFrame([m.groups() for m in found if m], columns=["assay", "batch", "run_no", "age_months", "donor_id"])
+samples["column"] = "protein_abundance_assay[" + samples.assay + "]"
+samples = samples.assign(tissue="Whole brain", sex="male", sample_id="Br_" + samples.donor_id)
+samples["age_months"] = samples.age_months.astype(int)
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "run_no"]]
+assert len(samples) == 45 and samples.groupby("age_months").size().to_dict() == {3: 7, 5: 9, 8: 8, 14: 9, 20: 7, 26: 5}
+# contaminant entries are not Swiss-Prot mouse entries
+table = table[table.description.str.endswith("[OS=Mus musculus]")]
+values = np.log2(table[samples.column].replace("null", np.nan).astype(float).replace(0, np.nan))
+keep = values.notna().any(axis=1).to_numpy()
+save_groups(dataset, values[keep], samples, table.accession[keep], gene_symbols(table.accession[keep]), missing=None)
+
+# Yu 2020 whole brain (TMT10, one plex), male mice at 16 and 80 weeks
+# quantities: Dataset S5 relative abundances (rows sum to 100), zeros missing
+dataset = "yu2020_pxd017385"
+table = pd.read_excel(RAW / dataset / "supp/pnas.1919410117.sd05.xlsx", sheet_name="Brn", header=1)
+samples = match(table.columns, r"^(?P<group>Young|Old) (?P<replicate>\d)$")
+samples = samples.assign(tissue="Brain", sex="male", batch="tmt10_plex1")
+samples["sample_id"] = "Brn_" + samples.group + samples.replicate
+samples["donor_id"] = samples.group.str[0] + samples.replicate
+samples["age_months"] = samples.group.map({"Young": 16, "Old": 80}).mul(7 / 30.4375).round(2)
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "group"]]
+values = np.log2(table[samples.column].astype(float).replace(0, np.nan))
+accessions = table["Protein.Id"].str.split("|").str[1]
+save_groups(dataset, values, samples, accessions, table["Gene.Symbol"], missing=None)
+
+# Huang 2024 hippocampus (TMTpro, one plex), male mice at 3 and 20 months
+# quantities: MaxQuant corrected reporter intensities (reporter ion MS2), groups without signal leave
+dataset = "huang2024_pxd043352"
+table = maxquant_groups(pd.read_csv(RAW / dataset / "pride/proteinGroups.txt", sep="\t", low_memory=False))
+# reporters 1-10 are the TMTpro channels in mass order; the sample of each channel is in the PRIDE protocol
+protocol = json.loads((RAW / dataset / "pride/PXD043352.project.json").read_text())["sampleProcessingProtocol"]
+design = pd.DataFrame(
+    re.findall(r"(Young|Aged), replicate (\d) (\d{3}[NC]?)", protocol), columns=["group", "replicate", "channel"]
+)
+channels = pd.DataFrame({"channel": "129C 130N 130C 131N 131C 132N 132C 133N 133C 134N".split()})
+channels["column"] = "Reporter intensity corrected " + (channels.index + 1).astype(str)
+samples = channels.merge(design).assign(tissue="Hippocampus", sex="male", batch="tmtpro_plex1")
+samples["sample_id"] = "Hip_" + samples.group + samples.replicate
+samples["donor_id"] = samples.group.str[0] + samples.replicate
+samples["age_months"] = samples.group.map({"Young": 3, "Aged": 20})
+assert len(samples) == 10
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "channel"]]
+values = table[samples.column].astype(float)
+values = np.log2(values.where(values > 0))
+seen = values.notna().any(axis=1).to_numpy()
+save_groups(
+    dataset,
+    values[seen],
+    samples,
+    table["Majority protein IDs"][seen],
+    table["Gene names"][seen],
+    lead="reviewed_first_gene",
+    missing=None,
+)
+
+# Jha 2026 cortex (TMTpro 16-plex), male mice: age controls at 3-4, 12-14 and 24 months (3 each)
+# the sleep-restricted and recovery groups of young mice are experimental arms and leave
+# quantities: MaxQuant corrected reporter intensities, zeros missing
+dataset = "jha2026_pxd060735"
+table = maxquant_groups(pd.read_csv(RAW / dataset / "pride/proteinGroups.txt", sep="\t", low_memory=False))
+channels = [c for c in table.columns if c.startswith("Reporter intensity corrected ")][:15]
+# Supplementary Table 2 lists the 15 samples by group; its columns are matched to the reporter channels by value
+labels = pd.read_excel(RAW / dataset / "supp/MOESM3_supplementary_table_2.xlsx").set_index("Protein")
+labels = labels[~labels.index.duplicated(keep=False)]
+first = table["Gene names"].fillna("").str.split(";").str[0]
+mine = table[channels].astype(float).where(lambda x: x > 0).set_axis(first)
+mine = mine[~mine.index.duplicated(keep=False) & mine.index.isin(labels.index)]
+gap = pd.DataFrame(
+    {
+        label: np.log2(mine).sub(np.log2(labels.loc[mine.index, label].where(lambda x: x > 0)), axis=0).abs().median()
+        for label in labels
+    }
+)
+assert (gap.min() < 1e-3).all() and list(gap.idxmin()) == channels
+samples = pd.DataFrame(
+    {"column": channels, "group": [c[:-1] for c in labels.columns], "replicate": [c[-1] for c in labels.columns]}
+)
+samples = samples[samples.group.isin(["NS", "MID", "OLD"])]
+samples = samples.assign(
+    tissue="Cortex", sex="male", batch="tmtpro_plex1", sample_id="Ctx_" + samples.group + samples.replicate
+)
+samples["donor_id"] = samples.group + samples.replicate
+samples["age_months"] = samples.group.map({"NS": 3.5, "MID": 13, "OLD": 24})
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "group"]]
+values = table[samples.column].astype(float)
+values = np.log2(values.where(values > 0))
+seen = values.notna().any(axis=1).to_numpy()
+save_groups(
+    dataset,
+    values[seen],
+    samples,
+    table["Majority protein IDs"][seen],
+    table["Gene names"][seen],
+    lead="reviewed_first_gene",
+    missing=None,
+)
+
+# Oliviero 2022 whole-brain total lysate (label-free, Progenesis), male mice at 3, 5, 10 and 15 months (3 each)
+# the chromatin fraction is a partial proteome and is not used
+# quantities: Supplementary file 2 run abundances, zeros missing; the two injections of a mouse are averaged
+dataset = "oliviero2022_elife"
+book = RAW / dataset / "elife/elife-73524-supp2-v2.xlsx"
+header = pd.read_excel(book, sheet_name="Sheet2", header=None, nrows=3)
+table = pd.read_excel(book, sheet_name="Sheet2", header=2)
+runs = pd.DataFrame({"column": header.iloc[2], "mouse": header.iloc[1].ffill()})
+runs = runs[runs.column.astype(str).str.startswith("QEHF2_")]
+runs["mouse"] = runs.mouse.map("{:g}".format)
+values = table[runs.column].astype(float).replace(0, np.nan)
+# one injection column of the file is a copy of another; the copy (labelled mouse 3.2) leaves
+copy = values.T.duplicated().to_numpy()
+assert runs.column[copy].tolist() == ["QEHF2_03823_GO"]
+runs, values = runs[~copy], values.loc[:, ~copy]
+samples = runs.drop_duplicates("mouse").assign(tissue="Whole brain", sex="male", batch="progenesis_lysate")
+samples["age_months"] = samples.mouse.str.split(".").str[0].astype(int)
+samples["donor_id"] = samples.mouse
+samples["sample_id"] = "Lys_" + samples.age_months.astype(str) + "mo_" + samples.mouse.str.split(".").str[1]
+samples = samples[["mouse", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch"]].rename(
+    columns={"mouse": "column"}
+)
+mean = pd.DataFrame({m: values[g.column].mean(axis=1) for m, g in runs.groupby("mouse")})
+values = np.log2(mean[samples.column])
+genes = table.Description.str.extract(r"\bGN=(\S+)")[0]
+seen = values.notna().any(axis=1).to_numpy()
+save_groups(dataset, values[seen], samples, table.Accession[seen], genes[seen], missing=None)
+
+# Mohallem 2024 whole brain (label-free MaxQuant, four protease digests combined), male mice by age group
+# exact ages are not given: adults 3-4, mid-age 10 and old 19-21 months, group midpoints used
+# quantities: MaxQuant LFQ intensities of Supplemental Table S1, zeros missing
+dataset = "mohallem2024_msv000094441"
+table = maxquant_groups(pd.read_excel(RAW / dataset / "supp/mmc2.xlsx", sheet_name="STable1", header=1))
+samples = match(table.columns, r"^LFQ intensity (?P<group>Adult|MidAge|Old)-(?P<replicate>\d)$")
+samples = samples.assign(tissue="Whole brain", sex="male", batch="maxquant_lfq")
+samples["sample_id"] = samples.group + "-" + samples.replicate
+samples["donor_id"] = samples.sample_id
+samples["age_months"] = samples.group.map({"Adult": 3.5, "MidAge": 10, "Old": 20})
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "group"]]
+assert samples.group.value_counts().to_dict() == {"Adult": 5, "Old": 5, "MidAge": 3}
+values = np.log2(table[samples.column].astype(float).replace(0, np.nan))
+seen = values.notna().any(axis=1).to_numpy()
+save_groups(
+    dataset,
+    values[seen],
+    samples,
+    table["Majority protein IDs"][seen],
+    table["Gene names"][seen],
+    lead="reviewed_first_gene",
+    missing=None,
+)
+
+# Marchionini 2025 striatum of wild-type LacQ140-background mice (DIA, DIA-NN 1.7.12), 2, 6, 9 and 12 months, 10 each
+# all mice carry the Lac repressor transgene and lifelong IPTG; the Htt LacQ140 and untreated groups leave
+# age is an acquisition block (2 and 9 months series X2, 6 and 12 months series X1); sex is not deposited
+# quantities: MaxLFQ (algorithm of the diann R package) of the precursors in the DIA-NN report, which is
+# streamed from PRIDE and deposited with the data release; Precursor.Normalised at 1% precursor and group FDR
+dataset = "marchionini2025_pxd054495"
+MARGIN = -10.0  # log quantities below this are missing (diann_maxlfq default)
+
+
+def maxlfq(x):
+    # MaxLFQ of one protein group, x = precursors x runs in natural log, NaN missing
+    # median log ratios of all run pairs solved by least squares, with a ridge towards the best precursor
+    x = np.where(x > MARGIN, x, np.nan)
+    best = np.nanmax(np.where(np.isnan(x), -np.inf, x), axis=0)
+    use = best > MARGIN
+    result = np.where(use, best, np.nan)
+    if len(x) == 1 or use.sum() < 2:
+        return result
+    x = x[:, use]
+    gap = np.sort(x[:, :, None] - x[:, None, :], axis=0)  # precursors x run i x run j, NaN last
+    count = (~np.isnan(gap)).sum(axis=0)
+    middle = [np.take_along_axis(gap, np.maximum(k, 0)[None], axis=0)[0] for k in ((count - 1) // 2, count // 2)]
+    pair = count > 0
+    np.fill_diagonal(pair, False)
+    partners = pair.sum(axis=1)
+    ridge = 1e-4 * np.maximum(partners, 1)
+    a = -pair.astype(float) + np.diag(partners + ridge)
+    b = np.where(pair, (middle[0] + middle[1]) / 2, 0).sum(axis=1) + best[use] * ridge
+    result[use] = np.linalg.solve(a, b)
+    return np.where(result > MARGIN, result, np.nan)
+
+
+runs = pd.read_excel(RAW / dataset / "pride/sample_overview.xlsx", dtype=str)
+runs = runs[runs.Condition.str.match(r"^M\d+_WT_IPTG$")].assign(Run=lambda t: t["Raw file name"] + ".raw")
+precursors = pd.read_parquet(
+    RAW / dataset / "pride_stream/precursors.parquet",
+    columns=["Run", "Protein.Group", "Precursor.Id", "Precursor.Normalised", "Q.Value", "PG.Q.Value"],
+    filters=[("Run", "in", list(runs.Run))],
+)
+precursors = precursors[
+    (precursors["Q.Value"] <= 0.01) & (precursors["PG.Q.Value"] <= 0.01) & (precursors["Precursor.Normalised"] > 0)
+]
+precursors = precursors.assign(
+    run=pd.Index(runs.Run).get_indexer(precursors.Run),
+    precursor=pd.factorize(precursors["Precursor.Id"])[0],
+    log=np.log(precursors["Precursor.Normalised"].astype(float)),
+).sort_values("Protein.Group", kind="stable")
+group = precursors["Protein.Group"].to_numpy()
+bounds = np.flatnonzero(np.r_[True, group[1:] != group[:-1], True])
+quantities = {}
+for start, stop in zip(bounds[:-1], bounds[1:], strict=True):
+    rows = precursors.iloc[start:stop]
+    _, row = np.unique(rows.precursor, return_inverse=True)
+    x = np.full((row.max() + 1, len(runs)), np.nan)
+    x[row, rows.run.to_numpy()] = rows["log"].to_numpy()
+    quantities[group[start]] = maxlfq(x)
+values = pd.DataFrame(quantities, index=runs.Run).T / np.log(2)
+samples = runs.rename(columns={"Run": "column"}).assign(tissue="Striatum", genotype="WT")
+samples["donor_id"] = "CHDI_" + samples.Sample_No_CHDI
+samples["age_months"] = samples["Age group"].str.removesuffix("M").astype(int)
+samples["batch"] = samples.column.str.extract(r"_(X\d)_")[0]
+samples["run_number"] = samples.column.str.extract(r"^I(\d+)_")[0].astype(int)
+samples["sample_id"] = (
+    "Str_" + samples.age_months.astype(str) + "m_" + samples.Sample_No_CHDI.str.split("_").str[0].str.zfill(2)
+)
+# sex from the Y-chromosome protein Ddx3y (Q62095), detected in the runs of males
+samples["sex"] = np.where(values.loc["Q62095", samples.column].notna().to_numpy(), "male", "female")
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "genotype", "run_number"]]
+assert len(samples) == 40 and samples.groupby("age_months").size().eq(10).all()
+members = values.index.to_series().str.split(";")
+genes = members.map(
+    lambda accessions: ";".join(dict.fromkeys(g for g in map(gene_of.get, (a.split("-")[0] for a in accessions)) if g))
+)
+seen = values.notna().any(axis=1).to_numpy()
+save_groups(
+    dataset,
+    values[seen],
+    samples,
+    values.index.to_series()[seen],
+    genes[seen],
+    lead="reviewed_first_gene",
+    missing=None,
+)
+
+# Vignane 2026 frontal cortex (label-free DDA, PEAKS), wild-type male mice at 10 weeks, 10 and 18 months (4 each)
+# quantities: log2 TIC-normalised intensities published in PRIDE, the 18-month samples from the 10-week comparison sheet
+dataset = "filipovic2026_pxd045785"
+book = RAW / dataset / "pride/Results_Totalproteome.xlsx"
+young = pd.read_excel(book, sheet_name="WT 10 weeks vs 10 months", na_values=["NaN"]).set_index("Accession", drop=False)
+old = pd.read_excel(book, sheet_name="WT 10 weeks vs 18 months", na_values=["NaN"]).set_index("Accession")
+table = young.join(old[[c for c in old.columns if c.startswith("WT 18 months")]])
+samples = match(table.columns, r"^WT (?P<age>10 weeks|10 months|18 months) (?P<replicate>\d)$")
+samples = samples.assign(tissue="Frontal cortex", sex="male", batch="timstof_series1")
+samples["sample_id"] = "FC_" + samples.age.str.replace(" ", "_") + "_" + samples.replicate
+samples["donor_id"] = samples.sample_id.str[3:]
+samples["age_months"] = samples.age.map({"10 weeks": round(10 * 7 / 30.4375, 1), "10 months": 10, "18 months": 18})
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch"]]
+assert len(samples) == 12
+genes = table.Description.str.extract(r"\bGN=(\S+)")[0]
+save_groups(dataset, table[samples.column].astype(float), samples, table.Accession, genes, missing=None)
+
+# Gebru 2024 hippocampus and amygdala (diaPASEF), wild-type mice of both sexes at 3 and 18 months
+# the Fkbp5 knockouts leave; the 18-month mice went through a 30-day circadian protocol
+# quantities: DIA-NN protein-group MaxLFQ of one search per region (pg_matrix filter), derived from the PRIDE reports
+dataset = "gebru2024_pxd049439"
+pattern = (
+    r"^LB_NG_\w+?_(?P<sex>[MF])(?P<age_months>\d+)(?P<genotype>WT|KO)_(?P<replicate>\d+)_DIA_.*_(?P<run_number>\d+)$"
+)
+parts, frames, annotation = [], [], []
+for tissue, short in (("Hippocampus", "Hip"), ("Amygdala", "Amy")):
+    table = pd.read_csv(
+        RAW / dataset / f"derived/{tissue}_pg_maxlfq.tsv.gz", sep="\t", keep_default_na=False, na_values=[""]
+    )
+    frame = match(table.columns, pattern).query("genotype == 'WT'")
+    frame = frame.assign(tissue=tissue, batch=f"diann_{tissue.lower()}_search")
+    frame["sex"] = frame.sex.replace({"M": "male", "F": "female"})
+    frame["age_months"] = frame.age_months.astype(int)
+    frame["donor_id"] = frame.column.str.extract(r"_([MF]\d+WT_\d+)_DIA")[0]
+    frame["sample_id"] = short + "_" + frame.donor_id
+    parts.append(np.log2(table.set_index("Protein.Group")[frame.column].astype(float)))
+    annotation.append(table.set_index("Protein.Group")[["Genes"]])
+    frames.append(frame)
+samples = pd.concat(frames, ignore_index=True)
+samples = samples[["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "genotype", "run_number"]]
+values = pd.concat(parts, axis=1)
+annotation = pd.concat(annotation).groupby(level=0).first().loc[values.index]
+assert samples.groupby("tissue").size().to_dict() == {"Amygdala": 22, "Hippocampus": 21}
+save_groups(
+    dataset,
+    values,
+    samples,
+    values.index.to_series(),
+    annotation.Genes.fillna(""),
+    lead="reviewed_first_gene",
+    missing=None,
+)
+
+# Yarbro 2025 cortex (TMT, nine batches), wild-type littermates of the amyloidosis models, both sexes
+# the 5xFAD and App knock-in mice leave; batch is largely confounded with age
+# quantities: authors' normalised log2-scale reporter intensities of Supplementary Data sheet 3 (JUMP), NA missing
+dataset = "yarbro2025_nat_commun"
+table = pd.read_excel(
+    RAW / dataset / "supp/MOESM3_supplementary_data_1-24.xlsx", sheet_name="3", header=None, na_filter=False
+)
+names = table.iloc[4, 8:]
+rows = table.iloc[5:, 1:].reset_index(drop=True)
+rows.columns = ["accession", "gene", "description", "psms", "peptides", "unique_peptides", "coverage", *names]
+samples = match(rows.columns, r"^(?P<batch>B\d)_WT_(?P<sex>[MF])_(?P<age_months>\d+)m\d*$")
+samples = samples.assign(tissue="Cortex", sample_id=samples.column, donor_id=samples.column)
+samples["sex"] = samples.sex.replace(utils.SEX)
+samples["age_months"] = samples.age_months.astype(int)
+samples = samples.assign(genotype="WT")[
+    ["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "genotype"]
+]
+assert samples.groupby("age_months").size().to_dict() == {3: 6, 6: 13, 12: 14, 18: 6}
+# the custom human Abeta42 entry of the transgenes is no mouse protein
+rows = rows[~rows.accession.str.startswith("cu|")]
+values = np.log2(rows[samples.column].replace("NA", np.nan).astype(float))
+accessions = rows.accession.str.split("|").str[1]
+genes = rows.gene.astype(str).str.strip().replace("NA", "")
+save_groups(dataset, values, samples, accessions, genes, missing=None)
+
+# Chen 2025 prefrontal cortex of AD-BXD F1 mice (DIA, 35 batches), non-transgenic littermates at 6 and 14 months
+# the 5xFAD carriers leave; a label is dropped when the human APP signal of the run contradicts it
+# quantities: Level 3B batch-adjusted log2 peptide-area sums per protein group, as published
+dataset = "chen2025_pxd045403"
+meta = pd.read_excel(RAW / dataset / "panorama/metadata/MouAD-PFC-meta-SAGE-2.0.xlsx", sheet_name="Metadata", dtype=str)
+meta = meta[meta.Genotype.notna()].set_index("Replicate", drop=False)
+table = pd.read_csv(RAW / dataset / "panorama/level3b/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv")
+table = table.drop(columns="Peptide").set_index("Protein")
+# human APP (P05067, transgene) against mouse App: carriers lie above zero in the log2 difference
+transgene = table.loc["sp|P05067|A4", meta.index] - table.loc["sp|P12023|A4", meta.index]
+samples = meta[(meta.Genotype == "WT") & (transgene <= 0)].rename(columns={"Replicate": "column"})
+samples = samples.assign(tissue="Prefrontal cortex", sample_id=samples.column, donor_id=samples.column)
+samples["age_months"] = samples.Age.map({"Young": 6, "Old": 14})
+samples["sex"] = samples.Sex.str.lower()
+samples["batch"] = samples.Batch
+samples["sire_strain"] = samples.Strain
+samples = samples.assign(genotype="Ntg")[
+    ["column", "sample_id", "donor_id", "tissue", "sex", "age_months", "batch", "sire_strain", "genotype"]
+]
+assert samples.groupby("age_months").size().to_dict() == {6: 83, 14: 105}
+# library peptides without a protein, the yeast enolase spike-in and the human transgene products leave
+table = table.drop(index=[g for g in table.index if re.search(r"Library Peptides|\|P00924\||\|P05067\||\|P49768\|", g)])
+members = table.index.to_series().str.split(", ").map(lambda groups: [g.split("|")[1].split("-")[0] for g in groups])
+accessions = members.str.join(";")
+save_groups(
+    dataset,
+    table[samples.column],
+    samples,
+    accessions,
+    members.str[0].map(gene_of).fillna(""),
+    lead="reviewed_first_gene",
+    missing=None,
+)

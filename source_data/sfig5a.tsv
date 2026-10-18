@@ -1,13 +1,456 @@
-perturbation	regulator	tissue	readout	effect	ci_low	ci_high	q	agrees
-fmr1ko_cortex_rna_gse140565	FMR1	cortex	RNA	-0.1274	-0.1405	-0.1137	0.001768	1
-fmr1ko_cortex_rpf_gse140565	FMR1	cortex	Ribo-seq	0.001871	-0.00791	0.01165	0.7137	0
-fmr1ko_cortex_rna_gse143659	FMR1	cortex	RNA	0.08444	0.07263	0.09682	0.001768	0
-fmr1ko_cortex_ribo_gse143659	FMR1	cortex	Ribo-seq	-0.0611	-0.07414	-0.048	0.001768	1
-fmr1ko_cortex_te_gse143659	FMR1	cortex	translation efficiency	-0.1389	-0.1563	-0.1213	0.001768	1
-fmr1ko_cortex_rna_gse207145	FMR1	cortex	RNA	-0.1233	-0.1389	-0.108	0.001768	1
-fmr1ko_hippocampus_rna_gse207145	FMR1	hippocampus	RNA	-0.0385	-0.04814	-0.0286	0.001768	1
-fmr1ko_cerebellum_rna_gse207145	FMR1	cerebellum	RNA	-0.008127	-0.01692	0.0006506	0.07502	1
-fmr1ko_P_ribotag_gse325852	FMR1	cortex Pvalb neurons	RiboTag	-0.01958	-0.02771	-0.01134	0.001768	1
-fmr1ko_C_ribotag_gse325852	FMR1	cortex Camk2a neurons	RiboTag	-0.004428	-0.01916	0.009927	0.5649	1
-prrc2acko_nestin_rna_gse100491	PRRC2A	brain Nestin-Cre	RNA	-0.1158	-0.1704	-0.06246	0.001768	1
-prrc2acko_olig2_rna_gse100491	PRRC2A	brain Olig2-Cre	RNA	-0.04372	-0.05891	-0.02814	0.001768	1
+study	disease	region	donor_id	group	score
+Ping 2020	AD	DLPFC	b1_127C	Case	0.9987
+Ping 2020	AD	DLPFC	b1_128N	Case	-0.07475
+Ping 2020	AD	DLPFC	b1_129C	Control	-0.2864
+Ping 2020	AD	DLPFC	b1_130N	Case	0.3067
+Ping 2020	AD	DLPFC	b1_130C	Control	0.6677
+Ping 2020	AD	DLPFC	b1_131N	Control	-2.085
+Ping 2020	AD	DLPFC	b2_128N	Control	-1.354
+Ping 2020	AD	DLPFC	b2_128C	Case	1.332
+Ping 2020	AD	DLPFC	b2_129N	Control	-0.9631
+Ping 2020	AD	DLPFC	b2_129C	Case	-0.2898
+Ping 2020	AD	DLPFC	b2_130N	Case	0.3123
+Ping 2020	AD	DLPFC	b2_130C	Control	0.1179
+Ping 2020	AD	DLPFC	b3_127N	Control	-0.3438
+Ping 2020	AD	DLPFC	b3_127C	Control	0.2205
+Ping 2020	AD	DLPFC	b3_128N	Case	0.9043
+Ping 2020	AD	DLPFC	b3_129N	Case	-0.6774
+Ping 2020	AD	DLPFC	b3_130N	Control	-1.169
+Ping 2020	AD	DLPFC	b3_130C	Control	0.283
+Ping 2020	AD	DLPFC	b3_131N	Case	2.1
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor53	Case	-0.6853
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor21	Case	1.315
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor24	Case	1.074
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor31	Case	-1.025
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor48	Case	0.6549
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor55	Control	0.3991
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor47	Control	-1.148
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor39	Case	-0.2154
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor23	Case	1.61
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor42	Case	-0.3482
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor54	Case	-0.4125
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor62	Control	-0.8118
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor52	Control	0.7007
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor56	Case	-0.635
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor19	Case	1.612
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor38	Control	-1.209
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor64	Control	-0.6207
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor60	Case	-1.42
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor63	Case	-0.8476
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor40	Case	-0.1923
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor44	Case	1.511
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor36	Control	-0.5816
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor51	Case	0.5637
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor27	Case	2.047
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor67	Case	-0.2891
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor43	Control	-0.8603
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	donor46	Control	-0.1862
+Merrihew 2023	AD	Hippocampus	donor31	Case	1.087
+Merrihew 2023	AD	Hippocampus	donor38	Control	-0.5288
+Merrihew 2023	AD	Hippocampus	donor67	Case	0.8321
+Merrihew 2023	AD	Hippocampus	donor52	Control	-0.5246
+Merrihew 2023	AD	Hippocampus	donor23	Case	-0.4429
+Merrihew 2023	AD	Hippocampus	donor46	Control	-0.9482
+Merrihew 2023	AD	Hippocampus	donor47	Control	-1.65
+Merrihew 2023	AD	Hippocampus	donor51	Case	0.1773
+Merrihew 2023	AD	Hippocampus	donor24	Case	-0.2194
+Merrihew 2023	AD	Hippocampus	donor64	Control	-0.1775
+Merrihew 2023	AD	Hippocampus	donor19	Case	0.07289
+Merrihew 2023	AD	Hippocampus	donor55	Control	0.7719
+Merrihew 2023	AD	Hippocampus	donor60	Case	0.1731
+Merrihew 2023	AD	Hippocampus	donor44	Case	-0.3603
+Merrihew 2023	AD	Hippocampus	donor30	Case	0.1032
+Merrihew 2023	AD	Hippocampus	donor48	Case	0.906
+Merrihew 2023	AD	Hippocampus	donor39	Case	1.514
+Merrihew 2023	AD	Hippocampus	donor36	Control	-2.408
+Merrihew 2023	AD	Hippocampus	donor42	Case	-0.02749
+Merrihew 2023	AD	Hippocampus	donor63	Case	3.241
+Merrihew 2023	AD	Hippocampus	donor54	Case	-0.3357
+Merrihew 2023	AD	Hippocampus	donor32	Case	-0.4737
+Merrihew 2023	AD	Hippocampus	donor29	Control	0.6665
+Merrihew 2023	AD	Hippocampus	donor27	Case	0.3803
+Merrihew 2023	AD	Hippocampus	donor40	Case	-0.5813
+Merrihew 2023	AD	Hippocampus	donor53	Case	-0.432
+Merrihew 2023	AD	Hippocampus	donor62	Control	-0.693
+Merrihew 2023	AD	Hippocampus	donor56	Case	-0.5089
+Merrihew 2023	AD	Hippocampus	donor21	Case	-0.1119
+Merrihew 2023	AD	Hippocampus	donor43	Control	0.4984
+Merrihew 2023	AD	Caudate	donor63	Case	1.18
+Merrihew 2023	AD	Caudate	donor19	Case	0.4805
+Merrihew 2023	AD	Caudate	donor47	Control	-0.2517
+Merrihew 2023	AD	Caudate	donor32	Case	-0.3159
+Merrihew 2023	AD	Caudate	donor34	Control	-1.155
+Merrihew 2023	AD	Caudate	donor46	Control	-0.1654
+Merrihew 2023	AD	Caudate	donor52	Control	0.1571
+Merrihew 2023	AD	Caudate	donor56	Case	-1.05
+Merrihew 2023	AD	Caudate	donor54	Case	-0.3675
+Merrihew 2023	AD	Caudate	donor44	Case	0.3231
+Merrihew 2023	AD	Caudate	donor40	Case	2.715
+Merrihew 2023	AD	Caudate	donor42	Case	-0.7318
+Merrihew 2023	AD	Caudate	donor30	Case	-0.6453
+Merrihew 2023	AD	Caudate	donor64	Control	-0.8587
+Merrihew 2023	AD	Caudate	donor27	Case	0.9708
+Merrihew 2023	AD	Caudate	donor31	Case	2.407
+Merrihew 2023	AD	Caudate	donor51	Case	-0.04377
+Merrihew 2023	AD	Caudate	donor53	Case	-0.4531
+Merrihew 2023	AD	Caudate	donor43	Control	-0.5146
+Merrihew 2023	AD	Caudate	donor36	Control	-1.272
+Merrihew 2023	AD	Caudate	donor24	Case	1.624
+Merrihew 2023	AD	Caudate	donor29	Control	-0.4443
+Merrihew 2023	AD	Caudate	donor60	Case	0.004835
+Merrihew 2023	AD	Caudate	donor55	Control	0.1069
+Merrihew 2023	AD	Caudate	donor48	Case	-0.1496
+Merrihew 2023	AD	Caudate	donor39	Case	0.2052
+Merrihew 2023	AD	Caudate	donor21	Case	-1.146
+Merrihew 2023	AD	Caudate	donor38	Control	-0.6102
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor64	Control	-1.12
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor24	Case	1.684
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor44	Case	0.3324
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor31	Case	-1.477
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor23	Case	0.6558
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor21	Case	1.409
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor52	Control	-0.8684
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor27	Case	0.3527
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor54	Case	0.3437
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor19	Case	2.493
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor43	Control	-1.707
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor60	Case	0.03907
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor62	Control	0.2011
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor56	Case	0.2833
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor46	Control	0.01885
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor40	Case	-0.4404
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor67	Case	-0.523
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor38	Control	-1.129
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor30	Case	1.637
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor32	Case	-0.4855
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor42	Case	-0.2554
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor63	Case	-0.3235
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor47	Control	-0.9428
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor39	Case	0.2149
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor55	Control	-0.4383
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	donor51	Case	0.04601
+Blumenreich 2024	PD	Striatum	C1	Control	-0.8256
+Blumenreich 2024	PD	Striatum	C3	Control	-0.3949
+Blumenreich 2024	PD	Striatum	C4	Control	-1.047
+Blumenreich 2024	PD	Striatum	C5	Control	0.03924
+Blumenreich 2024	PD	Striatum	C6	Control	-1.055
+Blumenreich 2024	PD	Striatum	C7	Control	-0.06409
+Blumenreich 2024	PD	Striatum	C8	Control	0.08948
+Blumenreich 2024	PD	Striatum	C10	Control	-0.195
+Blumenreich 2024	PD	Striatum	C11	Control	-1.063
+Blumenreich 2024	PD	Striatum	C12	Control	-0.2847
+Blumenreich 2024	PD	Striatum	C13	Control	-0.1205
+Blumenreich 2024	PD	Striatum	C14	Control	-0.1119
+Blumenreich 2024	PD	Striatum	C15	Control	0.9694
+Blumenreich 2024	PD	Striatum	C16	Control	0.7947
+Blumenreich 2024	PD	Striatum	C17	Control	-0.02329
+Blumenreich 2024	PD	Striatum	C18	Control	-0.583
+Blumenreich 2024	PD	Striatum	C19	Control	-0.01739
+Blumenreich 2024	PD	Striatum	C20	Control	-0.8107
+Blumenreich 2024	PD	Striatum	C21	Control	0.3845
+Blumenreich 2024	PD	Striatum	PD1	Case	-0.9567
+Blumenreich 2024	PD	Striatum	PD2	Case	1.751
+Blumenreich 2024	PD	Striatum	PD3	Case	0.1582
+Blumenreich 2024	PD	Striatum	PD4	Case	0.5494
+Blumenreich 2024	PD	Striatum	PD5	Case	-0.5916
+Blumenreich 2024	PD	Striatum	PD6	Case	-0.5851
+Blumenreich 2024	PD	Striatum	PD7	Case	-0.5033
+Blumenreich 2024	PD	Striatum	PD8	Case	-0.9588
+Blumenreich 2024	PD	Striatum	PD9	Case	0.4151
+Blumenreich 2024	PD	Striatum	PD10	Case	0.4733
+Blumenreich 2024	PD	Striatum	PD11	Case	-0.4393
+Blumenreich 2024	PD	Striatum	PD12	Case	0.3609
+Blumenreich 2024	PD	Striatum	PD13	Case	0.6478
+Blumenreich 2024	PD	Striatum	PD14	Case	-0.4193
+Blumenreich 2024	PD	Striatum	PD15	Case	0.5676
+Blumenreich 2024	PD	Striatum	PD16	Case	-0.1962
+Blumenreich 2024	PD	Striatum	PD17	Case	4.26
+Blumenreich 2024	PD	Striatum	PD18	Case	-0.4578
+Blumenreich 2024	PD	Striatum	PD19	Case	-0.1217
+Blumenreich 2024	PD	Striatum	PD20	Case	-0.7783
+Blumenreich 2024	PD	Striatum	PD21	Case	-0.5533
+Blumenreich 2024	PD	Striatum	PG1	Case	0.5265
+Blumenreich 2024	PD	Striatum	PG2	Case	-0.8834
+Blumenreich 2024	PD	Striatum	PG3	Case	2.422
+Blumenreich 2024	PD	Striatum	PG4	Case	3.823
+Blumenreich 2024	PD	Striatum	PG5	Case	0.2904
+Blumenreich 2024	PD	Striatum	PG6	Case	0.05222
+Blumenreich 2024	PD	Striatum	PG7	Case	-0.45
+Blumenreich 2024	PD	Striatum	PG8	Case	0.8286
+Blumenreich 2024	PD	Striatum	PG9	Case	0.06552
+Blumenreich 2024	PD	Striatum	PG10	Case	-0.3445
+Blumenreich 2024	PD	Striatum	PG11	Case	-0.353
+Blumenreich 2024	PD	Striatum	PG12	Case	0.03645
+Blumenreich 2024	PD	Striatum	PG13	Case	-0.7329
+Blumenreich 2024	PD	Striatum	PG14	Case	0.1987
+Blumenreich 2024	PD	Striatum	PG15	Case	-0.6953
+Blumenreich 2024	PD	Striatum	PG16	Case	-0.6227
+Blumenreich 2024	PD	Striatum	PG17	Case	-0.8536
+Blumenreich 2024	PD	Striatum	PG18	Case	-0.3891
+Blumenreich 2024	PD	Striatum	PG19	Case	-0.1959
+Blumenreich 2024	PD	Striatum	PG20	Case	-0.2342
+Blumenreich 2024	PD	Striatum	PG21	Case	-0.7919
+Blumenreich 2024	PD	Substantia nigra	C1	Control	-0.6114
+Blumenreich 2024	PD	Substantia nigra	C2	Control	-0.2912
+Blumenreich 2024	PD	Substantia nigra	C3	Control	-0.8433
+Blumenreich 2024	PD	Substantia nigra	C5	Control	-0.3733
+Blumenreich 2024	PD	Substantia nigra	C6	Control	0.4252
+Blumenreich 2024	PD	Substantia nigra	C7	Control	-0.08149
+Blumenreich 2024	PD	Substantia nigra	C8	Control	0.5323
+Blumenreich 2024	PD	Substantia nigra	C9	Control	0.5789
+Blumenreich 2024	PD	Substantia nigra	C10	Control	-0.3076
+Blumenreich 2024	PD	Substantia nigra	C11	Control	-1.294
+Blumenreich 2024	PD	Substantia nigra	C12	Control	1.379
+Blumenreich 2024	PD	Substantia nigra	C13	Control	-0.1883
+Blumenreich 2024	PD	Substantia nigra	C14	Control	0.7599
+Blumenreich 2024	PD	Substantia nigra	C15	Control	-0.3488
+Blumenreich 2024	PD	Substantia nigra	C16	Control	-0.734
+Blumenreich 2024	PD	Substantia nigra	C17	Control	-1.482
+Blumenreich 2024	PD	Substantia nigra	C18	Control	1.715
+Blumenreich 2024	PD	Substantia nigra	C19	Control	0.2549
+Blumenreich 2024	PD	Substantia nigra	C20	Control	0.3236
+Blumenreich 2024	PD	Substantia nigra	C21	Control	1.304
+Blumenreich 2024	PD	Substantia nigra	PD1	Case	1.837
+Blumenreich 2024	PD	Substantia nigra	PD2	Case	1.015
+Blumenreich 2024	PD	Substantia nigra	PD3	Case	-0.2218
+Blumenreich 2024	PD	Substantia nigra	PD4	Case	-1.923
+Blumenreich 2024	PD	Substantia nigra	PD5	Case	0.318
+Blumenreich 2024	PD	Substantia nigra	PD6	Case	0.2519
+Blumenreich 2024	PD	Substantia nigra	PD7	Case	0.9067
+Blumenreich 2024	PD	Substantia nigra	PD8	Case	0.5617
+Blumenreich 2024	PD	Substantia nigra	PD9	Case	1.404
+Blumenreich 2024	PD	Substantia nigra	PD10	Case	0.2705
+Blumenreich 2024	PD	Substantia nigra	PD11	Case	1.072
+Blumenreich 2024	PD	Substantia nigra	PD12	Case	1.068
+Blumenreich 2024	PD	Substantia nigra	PD13	Case	-1.221
+Blumenreich 2024	PD	Substantia nigra	PD14	Case	1.482
+Blumenreich 2024	PD	Substantia nigra	PD15	Case	-0.7085
+Blumenreich 2024	PD	Substantia nigra	PD16	Case	-0.3585
+Blumenreich 2024	PD	Substantia nigra	PD17	Case	-0.2447
+Blumenreich 2024	PD	Substantia nigra	PD18	Case	0.5097
+Blumenreich 2024	PD	Substantia nigra	PD20	Case	-1.013
+Blumenreich 2024	PD	Substantia nigra	PD21	Case	1.13
+Blumenreich 2024	PD	Substantia nigra	PG1	Case	0.07
+Blumenreich 2024	PD	Substantia nigra	PG2	Case	0.5485
+Blumenreich 2024	PD	Substantia nigra	PG3	Case	0.3253
+Blumenreich 2024	PD	Substantia nigra	PG4	Case	-3.359
+Blumenreich 2024	PD	Substantia nigra	PG5	Case	1.653
+Blumenreich 2024	PD	Substantia nigra	PG7	Case	-0.05161
+Blumenreich 2024	PD	Substantia nigra	PG8	Case	0.4799
+Blumenreich 2024	PD	Substantia nigra	PG9	Case	0.1015
+Blumenreich 2024	PD	Substantia nigra	PG10	Case	-1.73
+Blumenreich 2024	PD	Substantia nigra	PG11	Case	-0.5364
+Blumenreich 2024	PD	Substantia nigra	PG12	Case	-0.5675
+Blumenreich 2024	PD	Substantia nigra	PG13	Case	-1.094
+Blumenreich 2024	PD	Substantia nigra	PG14	Case	-0.7141
+Blumenreich 2024	PD	Substantia nigra	PG15	Case	-0.3169
+Blumenreich 2024	PD	Substantia nigra	PG16	Case	-0.6379
+Blumenreich 2024	PD	Substantia nigra	PG17	Case	-0.9637
+Blumenreich 2024	PD	Substantia nigra	PG18	Case	-1.4
+Blumenreich 2024	PD	Substantia nigra	PG19	Case	0.2389
+Blumenreich 2024	PD	Substantia nigra	PG20	Case	0.2623
+Blumenreich 2024	PD	Substantia nigra	PG21	Case	0.8374
+Blumenreich 2024	PD	Cingulate gyrus	C2	Control	-0.06845
+Blumenreich 2024	PD	Cingulate gyrus	C4	Control	-0.9839
+Blumenreich 2024	PD	Cingulate gyrus	C5	Control	1.751
+Blumenreich 2024	PD	Cingulate gyrus	C7	Control	-0.2356
+Blumenreich 2024	PD	Cingulate gyrus	C8	Control	-0.6536
+Blumenreich 2024	PD	Cingulate gyrus	C9	Control	1.484
+Blumenreich 2024	PD	Cingulate gyrus	C11	Control	-0.8597
+Blumenreich 2024	PD	Cingulate gyrus	C14	Control	0.3394
+Blumenreich 2024	PD	Cingulate gyrus	C16	Control	-0.4596
+Blumenreich 2024	PD	Cingulate gyrus	C17	Control	0.58
+Blumenreich 2024	PD	Cingulate gyrus	C18	Control	0.1247
+Blumenreich 2024	PD	Cingulate gyrus	C19	Control	0.4539
+Blumenreich 2024	PD	Cingulate gyrus	C20	Control	-0.6613
+Blumenreich 2024	PD	Cingulate gyrus	C21	Control	0.4728
+Blumenreich 2024	PD	Cingulate gyrus	PD2	Case	-0.3782
+Blumenreich 2024	PD	Cingulate gyrus	PD3	Case	-1.185
+Blumenreich 2024	PD	Cingulate gyrus	PD4	Case	-0.9474
+Blumenreich 2024	PD	Cingulate gyrus	PD5	Case	-0.8657
+Blumenreich 2024	PD	Cingulate gyrus	PD8	Case	-1.103
+Blumenreich 2024	PD	Cingulate gyrus	PD9	Case	-0.8622
+Blumenreich 2024	PD	Cingulate gyrus	PD10	Case	-0.03722
+Blumenreich 2024	PD	Cingulate gyrus	PD11	Case	-1.137
+Blumenreich 2024	PD	Cingulate gyrus	PD12	Case	-0.7076
+Blumenreich 2024	PD	Cingulate gyrus	PD13	Case	0.1104
+Blumenreich 2024	PD	Cingulate gyrus	PD14	Case	0.04888
+Blumenreich 2024	PD	Cingulate gyrus	PD15	Case	0.3937
+Blumenreich 2024	PD	Cingulate gyrus	PD16	Case	3.246
+Blumenreich 2024	PD	Cingulate gyrus	PD17	Case	-0.4641
+Blumenreich 2024	PD	Cingulate gyrus	PD18	Case	-0.8504
+Blumenreich 2024	PD	Cingulate gyrus	PD19	Case	-0.8615
+Blumenreich 2024	PD	Cingulate gyrus	PD20	Case	-0.7917
+Blumenreich 2024	PD	Cingulate gyrus	PD21	Case	-0.1541
+Blumenreich 2024	PD	Cingulate gyrus	PG1	Case	-0.7651
+Blumenreich 2024	PD	Cingulate gyrus	PG2	Case	0.1704
+Blumenreich 2024	PD	Cingulate gyrus	PG3	Case	0.09034
+Blumenreich 2024	PD	Cingulate gyrus	PG4	Case	-0.09328
+Blumenreich 2024	PD	Cingulate gyrus	PG5	Case	-0.1975
+Blumenreich 2024	PD	Cingulate gyrus	PG6	Case	-0.7444
+Blumenreich 2024	PD	Cingulate gyrus	PG7	Case	-0.3396
+Blumenreich 2024	PD	Cingulate gyrus	PG9	Case	0.6351
+Blumenreich 2024	PD	Cingulate gyrus	PG10	Case	-1.092
+Blumenreich 2024	PD	Cingulate gyrus	PG11	Case	0.2259
+Blumenreich 2024	PD	Cingulate gyrus	PG12	Case	-0.4087
+Blumenreich 2024	PD	Cingulate gyrus	PG13	Case	1.293
+Blumenreich 2024	PD	Cingulate gyrus	PG14	Case	0.6802
+Blumenreich 2024	PD	Cingulate gyrus	PG15	Case	2.849
+Blumenreich 2024	PD	Cingulate gyrus	PG16	Case	0.7504
+Blumenreich 2024	PD	Cingulate gyrus	PG17	Case	2.55
+Blumenreich 2024	PD	Cingulate gyrus	PG18	Case	0.514
+Blumenreich 2024	PD	Cingulate gyrus	PG19	Case	-0.6349
+Blumenreich 2024	PD	Cingulate gyrus	PG20	Case	0.541
+Blumenreich 2024	PD	Cingulate gyrus	PG21	Case	-0.762
+Blumenreich 2024	PD	Middle temporal gyrus	C1	Control	0.8234
+Blumenreich 2024	PD	Middle temporal gyrus	C2	Control	4.827
+Blumenreich 2024	PD	Middle temporal gyrus	C3	Control	-0.3831
+Blumenreich 2024	PD	Middle temporal gyrus	C4	Control	-0.9526
+Blumenreich 2024	PD	Middle temporal gyrus	C5	Control	0.6294
+Blumenreich 2024	PD	Middle temporal gyrus	C6	Control	-1.525
+Blumenreich 2024	PD	Middle temporal gyrus	C7	Control	-0.08458
+Blumenreich 2024	PD	Middle temporal gyrus	C8	Control	-0.112
+Blumenreich 2024	PD	Middle temporal gyrus	C9	Control	0.4899
+Blumenreich 2024	PD	Middle temporal gyrus	C10	Control	-0.8409
+Blumenreich 2024	PD	Middle temporal gyrus	C11	Control	-1.737
+Blumenreich 2024	PD	Middle temporal gyrus	C12	Control	-0.4736
+Blumenreich 2024	PD	Middle temporal gyrus	C13	Control	-0.43
+Blumenreich 2024	PD	Middle temporal gyrus	C14	Control	3.076
+Blumenreich 2024	PD	Middle temporal gyrus	C15	Control	0.4322
+Blumenreich 2024	PD	Middle temporal gyrus	C16	Control	-0.1863
+Blumenreich 2024	PD	Middle temporal gyrus	C17	Control	0.7722
+Blumenreich 2024	PD	Middle temporal gyrus	C18	Control	-0.09817
+Blumenreich 2024	PD	Middle temporal gyrus	C19	Control	1.645
+Blumenreich 2024	PD	Middle temporal gyrus	C20	Control	-0.06076
+Blumenreich 2024	PD	Middle temporal gyrus	C21	Control	0.2691
+Blumenreich 2024	PD	Middle temporal gyrus	PD1	Case	-0.6941
+Blumenreich 2024	PD	Middle temporal gyrus	PD2	Case	0.06546
+Blumenreich 2024	PD	Middle temporal gyrus	PD3	Case	-0.3889
+Blumenreich 2024	PD	Middle temporal gyrus	PD4	Case	-1.143
+Blumenreich 2024	PD	Middle temporal gyrus	PD5	Case	-0.3804
+Blumenreich 2024	PD	Middle temporal gyrus	PD6	Case	-0.5232
+Blumenreich 2024	PD	Middle temporal gyrus	PD7	Case	-0.1556
+Blumenreich 2024	PD	Middle temporal gyrus	PD8	Case	1.888
+Blumenreich 2024	PD	Middle temporal gyrus	PD9	Case	0.3271
+Blumenreich 2024	PD	Middle temporal gyrus	PD10	Case	-0.2981
+Blumenreich 2024	PD	Middle temporal gyrus	PD11	Case	-0.9667
+Blumenreich 2024	PD	Middle temporal gyrus	PD12	Case	-0.05923
+Blumenreich 2024	PD	Middle temporal gyrus	PD13	Case	-0.1796
+Blumenreich 2024	PD	Middle temporal gyrus	PD14	Case	0.2218
+Blumenreich 2024	PD	Middle temporal gyrus	PD15	Case	-0.1437
+Blumenreich 2024	PD	Middle temporal gyrus	PD16	Case	0.5246
+Blumenreich 2024	PD	Middle temporal gyrus	PD17	Case	-0.1874
+Blumenreich 2024	PD	Middle temporal gyrus	PD18	Case	-1.068
+Blumenreich 2024	PD	Middle temporal gyrus	PD19	Case	-0.05195
+Blumenreich 2024	PD	Middle temporal gyrus	PD20	Case	-0.1571
+Blumenreich 2024	PD	Middle temporal gyrus	PD21	Case	0.01729
+Blumenreich 2024	PD	Middle temporal gyrus	PG1	Case	0.1746
+Blumenreich 2024	PD	Middle temporal gyrus	PG2	Case	-0.1758
+Blumenreich 2024	PD	Middle temporal gyrus	PG3	Case	-0.8951
+Blumenreich 2024	PD	Middle temporal gyrus	PG4	Case	-0.6265
+Blumenreich 2024	PD	Middle temporal gyrus	PG5	Case	1.459
+Blumenreich 2024	PD	Middle temporal gyrus	PG6	Case	0.05992
+Blumenreich 2024	PD	Middle temporal gyrus	PG7	Case	-0.8193
+Blumenreich 2024	PD	Middle temporal gyrus	PG8	Case	-0.4535
+Blumenreich 2024	PD	Middle temporal gyrus	PG9	Case	0.767
+Blumenreich 2024	PD	Middle temporal gyrus	PG10	Case	-0.5767
+Blumenreich 2024	PD	Middle temporal gyrus	PG12	Case	-0.9918
+Blumenreich 2024	PD	Middle temporal gyrus	PG13	Case	-0.5723
+Blumenreich 2024	PD	Middle temporal gyrus	PG14	Case	0.5035
+Blumenreich 2024	PD	Middle temporal gyrus	PG15	Case	0.07231
+Blumenreich 2024	PD	Middle temporal gyrus	PG16	Case	0.1807
+Blumenreich 2024	PD	Middle temporal gyrus	PG17	Case	0.1275
+Blumenreich 2024	PD	Middle temporal gyrus	PG18	Case	-0.1295
+Blumenreich 2024	PD	Middle temporal gyrus	PG19	Case	-0.271
+Blumenreich 2024	PD	Middle temporal gyrus	PG20	Case	-0.1036
+Blumenreich 2024	PD	Middle temporal gyrus	PG21	Case	-0.4562
+Blumenreich 2024	PD	Occipital cortex	C1	Control	-0.3354
+Blumenreich 2024	PD	Occipital cortex	C2	Control	0.22
+Blumenreich 2024	PD	Occipital cortex	C3	Control	2.305
+Blumenreich 2024	PD	Occipital cortex	C4	Control	-0.7117
+Blumenreich 2024	PD	Occipital cortex	C5	Control	1.768
+Blumenreich 2024	PD	Occipital cortex	C6	Control	-0.9049
+Blumenreich 2024	PD	Occipital cortex	C7	Control	-0.1628
+Blumenreich 2024	PD	Occipital cortex	C8	Control	0.2427
+Blumenreich 2024	PD	Occipital cortex	C9	Control	0.4695
+Blumenreich 2024	PD	Occipital cortex	C10	Control	-0.2347
+Blumenreich 2024	PD	Occipital cortex	C11	Control	-2.347
+Blumenreich 2024	PD	Occipital cortex	C12	Control	1.122
+Blumenreich 2024	PD	Occipital cortex	C13	Control	-1.226
+Blumenreich 2024	PD	Occipital cortex	C14	Control	0.01642
+Blumenreich 2024	PD	Occipital cortex	C15	Control	-0.498
+Blumenreich 2024	PD	Occipital cortex	C16	Control	-0.07486
+Blumenreich 2024	PD	Occipital cortex	C17	Control	0.964
+Blumenreich 2024	PD	Occipital cortex	C18	Control	-0.2978
+Blumenreich 2024	PD	Occipital cortex	C19	Control	-0.1707
+Blumenreich 2024	PD	Occipital cortex	C20	Control	0.8629
+Blumenreich 2024	PD	Occipital cortex	C21	Control	-1.172
+Blumenreich 2024	PD	Occipital cortex	PD1	Case	-0.1496
+Blumenreich 2024	PD	Occipital cortex	PD2	Case	1.35
+Blumenreich 2024	PD	Occipital cortex	PD3	Case	-0.5284
+Blumenreich 2024	PD	Occipital cortex	PD4	Case	-1.522
+Blumenreich 2024	PD	Occipital cortex	PD5	Case	-0.567
+Blumenreich 2024	PD	Occipital cortex	PD6	Case	-1.308
+Blumenreich 2024	PD	Occipital cortex	PD7	Case	0.1957
+Blumenreich 2024	PD	Occipital cortex	PD8	Case	0.3011
+Blumenreich 2024	PD	Occipital cortex	PD9	Case	0.1819
+Blumenreich 2024	PD	Occipital cortex	PD10	Case	0.4701
+Blumenreich 2024	PD	Occipital cortex	PD11	Case	-1.103
+Blumenreich 2024	PD	Occipital cortex	PD12	Case	1.502
+Blumenreich 2024	PD	Occipital cortex	PD13	Case	-0.0605
+Blumenreich 2024	PD	Occipital cortex	PD14	Case	-0.6509
+Blumenreich 2024	PD	Occipital cortex	PD15	Case	-0.2776
+Blumenreich 2024	PD	Occipital cortex	PD16	Case	0.8303
+Blumenreich 2024	PD	Occipital cortex	PD17	Case	-1.158
+Blumenreich 2024	PD	Occipital cortex	PD18	Case	-0.3077
+Blumenreich 2024	PD	Occipital cortex	PD19	Case	-0.9555
+Blumenreich 2024	PD	Occipital cortex	PD20	Case	-0.07755
+Blumenreich 2024	PD	Occipital cortex	PD21	Case	0.4557
+Blumenreich 2024	PD	Occipital cortex	PG1	Case	-0.3129
+Blumenreich 2024	PD	Occipital cortex	PG2	Case	-0.6604
+Blumenreich 2024	PD	Occipital cortex	PG3	Case	1.619
+Blumenreich 2024	PD	Occipital cortex	PG4	Case	0.1274
+Blumenreich 2024	PD	Occipital cortex	PG5	Case	1.495
+Blumenreich 2024	PD	Occipital cortex	PG6	Case	-0.444
+Blumenreich 2024	PD	Occipital cortex	PG7	Case	-0.5841
+Blumenreich 2024	PD	Occipital cortex	PG8	Case	0.1594
+Blumenreich 2024	PD	Occipital cortex	PG9	Case	0.3761
+Blumenreich 2024	PD	Occipital cortex	PG10	Case	-0.2867
+Blumenreich 2024	PD	Occipital cortex	PG11	Case	0.6009
+Blumenreich 2024	PD	Occipital cortex	PG12	Case	-0.977
+Blumenreich 2024	PD	Occipital cortex	PG13	Case	-1.219
+Blumenreich 2024	PD	Occipital cortex	PG14	Case	3.474
+Blumenreich 2024	PD	Occipital cortex	PG15	Case	-0.6373
+Blumenreich 2024	PD	Occipital cortex	PG16	Case	-0.7692
+Blumenreich 2024	PD	Occipital cortex	PG17	Case	0.2338
+Blumenreich 2024	PD	Occipital cortex	PG18	Case	-0.6418
+Blumenreich 2024	PD	Occipital cortex	PG19	Case	0.7899
+Blumenreich 2024	PD	Occipital cortex	PG20	Case	-0.4153
+Blumenreich 2024	PD	Occipital cortex	PG21	Case	1.617
+Umoh 2018	ALS	Frontal cortex	50	Control	-1.918
+Umoh 2018	ALS	Frontal cortex	37	Control	-0.5215
+Umoh 2018	ALS	Frontal cortex	45	Control	-0.3342
+Umoh 2018	ALS	Frontal cortex	39	Control	2.002
+Umoh 2018	ALS	Frontal cortex	16	Control	-0.3831
+Umoh 2018	ALS	Frontal cortex	2	Control	-1.135
+Umoh 2018	ALS	Frontal cortex	51	Control	-0.8617
+Umoh 2018	ALS	Frontal cortex	48	Control	0.4963
+Umoh 2018	ALS	Frontal cortex	25	Case	0.4955
+Umoh 2018	ALS	Frontal cortex	23	Case	-1.139
+Umoh 2018	ALS	Frontal cortex	27	Case	0.144
+Umoh 2018	ALS	Frontal cortex	46	Case	0.2653
+Umoh 2018	ALS	Frontal cortex	20	Case	-0.5091
+Umoh 2018	ALS	Frontal cortex	4	Case	-0.3313
+Umoh 2018	ALS	Frontal cortex	9	Case	0.8402
+Umoh 2018	ALS	Frontal cortex	11	Case	-0.5282
+Umoh 2018	ALS	Frontal cortex	28	Case	0.5856
+Umoh 2018	ALS	Frontal cortex	24	Case	-0.6959
+Umoh 2018	ALS	Frontal cortex	42	Case	-0.7716
+Umoh 2018	ALS	Frontal cortex	26	Case	0.7326
+Umoh 2018	ALS	Frontal cortex	31	Case	1.979
+Umoh 2018	ALS	Frontal cortex	8	Case	-0.9404
+Umoh 2018	ALS	Frontal cortex	52	Case	-0.4894
+Umoh 2018	ALS	Frontal cortex	36	Case	0.8724
+Umoh 2018	ALS	Frontal cortex	13	Case	2.099
+Umoh 2018	ALS	Frontal cortex	47	Case	-0.3942
+Umoh 2018	ALS	Frontal cortex	49	Case	0.4404

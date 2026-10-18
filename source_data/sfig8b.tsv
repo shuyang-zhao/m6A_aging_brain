@@ -1,0 +1,42 @@
+group	row	layer	value	m6A_specific	shared	binding_only
+Readers	FMR1	protein	0.302	True	True	True
+Readers	FMR1	mRNA-adjusted protein	0.6543	True	True	False
+Modules	FMRP family	protein	0.5096	True	True	True
+Modules	FMRP family	mRNA-adjusted protein	0.3681	False	False	False
+Readers	FXR1	protein	0.2019	True	True	True
+Readers	FXR1	mRNA-adjusted protein	0.4847	False	False	True
+Readers	FXR2	protein	0.214	True	True	True
+Readers	FXR2	mRNA-adjusted protein	0.1515	False	False	True
+Readers	HNRNPC	protein	0.196	True	True	True
+Readers	HNRNPC	mRNA-adjusted protein	0.1266	False	False	True
+Readers	IGF2BP2	protein	-0.3676	False	False	True
+Readers	PRRC2A	protein	0.07318	True	False	True
+Readers	PRRC2A	mRNA-adjusted protein	0.7113	False	False	False
+Readers	RBMX	protein	0.7388	True	True	True
+Readers	RBMX	mRNA-adjusted protein	0.2194	False	False	False
+Readers	YTHDC1	protein	0.3113	True	True	True
+Readers	YTHDC1	mRNA-adjusted protein	0.2864	False	False	False
+Readers	YTHDC2	protein	-0.4464	False	False	True
+Readers	YTHDC2	mRNA-adjusted protein	0.8287	False	False	False
+Modules	YTHDF module	protein	0.1053	False	False	True
+Modules	YTHDF module	mRNA-adjusted protein	-0.03317	False	False	False
+Readers	YTHDF1	protein	-0.04809	False	False	True
+Readers	YTHDF1	mRNA-adjusted protein	-0.03883	False	False	False
+Readers	YTHDF2	protein	-0.03787	False	False	True
+Readers	YTHDF2	mRNA-adjusted protein	0.09477	False	False	True
+Readers	YTHDF3	protein	0.02894	True	True	True
+Readers	YTHDF3	mRNA-adjusted protein	-0.4284	True	True	False
+Writers, erasers	Erasers	protein	0.1232	False	False	False
+Writers, erasers	Erasers	mRNA-adjusted protein	-0.03065	False	False	False
+Writers, erasers	Writer complex	protein	0.07154	False	False	False
+Writers, erasers	Writer complex	mRNA-adjusted protein	0.08359	False	False	False
+YTHDF load edge	YTHDF module load, human	protein	-0.2931	False	False	False
+YTHDF load edge	YTHDF3 load, human	protein	-0.2177	False	False	False
+YTHDF load edge	YTHDF module load, human	mRNA-adjusted protein	0.8213	False	False	False
+YTHDF load edge	YTHDF3 load, human	mRNA-adjusted protein	0.9018	True	False	False
+YTHDF load edge	YTHDF module load, mouse	protein	0.9088	False	False	False
+YTHDF load edge	YTHDF3 load, mouse	protein	1.13	True	False	False
+YTHDF load edge	YTHDF module load, mouse	mRNA-adjusted protein	-0.3723	False	False	False
+YTHDF load edge	YTHDF3 load, mouse	mRNA-adjusted protein	-0.2714	False	False	False
+YTHDF load edge	YTHDF module load, human	mRNA	-0.4478	False	False	False
+YTHDF load edge	YTHDF3 load, human	mRNA	-0.9277	False	False	False

@@ -1,13 +1,19 @@
-panel	check	n_cohorts	effect	ci_low	ci_high	p	i2
-Human striatum mRNA	m6A load	4	-0.1698	-0.237	-0.1026	7.48e-07	66.97
-Human protein	m6A load	9	-0.2024	-0.3268	-0.07794	0.001444	41.58
-Mouse protein	m6A load	7	-1.487	-1.927	-1.045	5.448e-11	90.26
-Mouse protein given mRNA	m6A load	2	-0.8079	-1.038	-0.5774	7.325e-12	0
-Human striatum mRNA	glia-enriched genes	4	-0.1778	-0.2575	-0.09796	1.277e-05	0
-Human striatum mRNA	ubiquitous genes	4	-0.03467	-0.1468	0.07755	0.5447	88.87
-Human protein	glia-enriched genes	9	-0.2831	-0.4776	-0.08824	0.004425	1.608
-Human protein	ubiquitous genes	9	-0.1785	-0.2805	-0.07634	0.0006177	5.623
-Mouse protein	glia-enriched genes	7	-1.944	-2.709	-1.173	8.984e-07	78.59
-Mouse protein	ubiquitous genes	7	-0.7502	-0.9803	-0.5195	2.063e-10	56.83
-Mouse protein given mRNA	glia-enriched genes	2	-0.9825	-1.678	-0.2819	0.006056	0
-Mouse protein given mRNA	ubiquitous genes	2	-0.705	-1.04	-0.3691	4.026e-05	39.06
+set	species	weights	rho	ci_low	ci_high	p	i2	k	p_random	diff	diff_ci_low	diff_ci_high	diff_p
+held-out	mouse	Model	0.8262	0.5894	0.9323	3.918e-06	84.94	6	0.000999				
+held-out	mouse	Length only	0.7175	0.3781	0.8869	0.0004564	85.26	6		0.2535	0.06367	0.4433	0.008858
+held-out	mouse	Linear m6A load	0.7394	0.4069	0.8989	0.0003225	85.98	6		0.2181	0.09521	0.341	0.0005042
+held-out	mouse	Observed z of other cohorts	0.863	0.6885	0.9431	2.684e-08	82.19	6		-0.1183	-0.2188	-0.01785	0.021
+held-out	mouse	MSigDB DEMAGALHAES_AGING	0.8809	0.7474	0.946	5.694e-11	77.8	6		-0.2135	-0.3818	-0.04517	0.01292
+held-out	mouse	MSigDB LU_AGING_BRAIN	0.7645	0.5561	0.8825	2.033e-07	73.7	6		0.1317	-0.05494	0.3184	0.1666
+held-out	human	Model	0.2908	0.107	0.4554	0.00224	58.81	8	0.000999				
+held-out	human	Length only	0.2292	0.1322	0.3219	5.243e-06	0	8		-0.0001511	-0.1182	0.1179	0.998
+held-out	human	Linear m6A load	0.2016	0.1036	0.2957	6.6e-05	0	8		0.02124	-0.1416	0.1841	0.7982
+held-out	human	Observed z of other cohorts	0.4613	0.2234	0.6474	0.0003202	80.11	8		-0.1573	-0.2233	-0.09138	2.936e-06
+held-out	human	MSigDB DEMAGALHAES_AGING	0.3717	0.2257	0.5013	1.915e-06	42.65	8		-0.08202	-0.2018	0.03774	0.1795
+held-out	human	MSigDB LU_AGING_BRAIN	0.3287	0.1793	0.4634	2.953e-05	42.37	8		-0.07183	-0.1575	0.01381	0.1002
+external	mouse	Model	0.6597	0.5301	0.7592	1.509e-14	61.82	11	0.000999				
+external	mouse	Length only	0.3886	0.267	0.498	3.895e-09	23.47	11		0.2826	0.1615	0.4036	4.76e-06
+external	mouse	Linear m6A load	0.2993	0.1629	0.4244	2.758e-05	29.23	11		0.3869	0.215	0.5587	1.022e-05
+external	mouse	Observed z of other cohorts	0.7519	0.6662	0.818	2.253e-28	48.22	11		-0.1863	-0.2474	-0.1252	2.302e-09
+external	mouse	MSigDB DEMAGALHAES_AGING	0.6681	0.5261	0.7738	1.157e-12	68.86	11		-0.002509	-0.2428	0.2378	0.9837
+external	mouse	MSigDB LU_AGING_BRAIN	0.5119	0.3785	0.6244	3.206e-11	44.45	11		0.1715	0.04108	0.3019	0.009952

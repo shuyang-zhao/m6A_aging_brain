@@ -1,0 +1,445 @@
+species	layer	regulator	edge
+human	protein	ABCF1	-0.02024
+human	protein	AKAP1	0.03429
+human	protein	APEX1	-0.04
+human	protein	AQR	0.008879
+human	protein	BCLAF1	0.001928
+human	protein	CPEB4	0.02576
+human	protein	CPSF6	-0.00562
+human	protein	CSTF2	0.003258
+human	protein	CSTF2T	0.02498
+human	protein	DDX1	-0.04234
+human	protein	DDX21	-0.07814
+human	protein	DDX3X	-0.02401
+human	protein	DDX42	-0.01561
+human	protein	DDX6	-0.006727
+human	protein	DHX30	0.01641
+human	protein	DKC1	-0.03827
+human	protein	EEF2	-0.0338
+human	protein	EFTUD2	-0.02685
+human	protein	EIF4E	-0.005126
+human	protein	EIF4G2	-0.02103
+human	protein	ELAC2	-0.0386
+human	protein	EWSR1	0.001174
+human	protein	FAM120A	0.01187
+human	protein	FKBP4	-0.02874
+human	protein	FUBP3	-0.04258
+human	protein	FUS	-0.01233
+human	protein	GEMIN5	-0.02246
+human	protein	GRSF1	-0.003581
+human	protein	GRWD1	-0.03047
+human	protein	GTF2F1	-0.04149
+human	protein	HNRNPA1	-0.04732
+human	protein	HNRNPK	-0.04409
+human	protein	HNRNPL	-0.03134
+human	protein	HNRNPM	-0.01463
+human	protein	HNRNPU	-0.03047
+human	protein	HNRNPUL1	-0.01739
+human	protein	ILF3	-0.01134
+human	protein	KHDRBS1	-0.02126
+human	protein	KHSRP	-0.03044
+human	protein	METAP2	-0.03159
+human	protein	NOLC1	0.01793
+human	protein	NONO	-0.04903
+human	protein	NPM1	-0.03102
+human	protein	NSUN2	-0.01921
+human	protein	PABPC4	-0.04387
+human	protein	PABPN1	-0.01987
+human	protein	PCBP1	-0.02921
+human	protein	PCBP2	-0.01984
+human	protein	PPIG	-0.02303
+human	protein	PPIL4	-0.02572
+human	protein	PRPF4	-0.01563
+human	protein	PRPF8	-0.04157
+human	protein	PTBP1	-0.04527
+human	protein	PUM1	0.02915
+human	protein	PUS1	0.007108
+human	protein	QKI	-0.06494
+human	protein	RBM5	0.01906
+human	protein	RPS10	-0.01006
+human	protein	RPS11	-0.02347
+human	protein	RPS3	-0.02833
+human	protein	RPS6	-0.01193
+human	protein	SAFB	0.003569
+human	protein	SAFB2	0.03035
+human	protein	SBDS	-0.06303
+human	protein	SERBP1	-0.0005821
+human	protein	SF3A3	-0.04244
+human	protein	SF3B1	-0.02177
+human	protein	SF3B4	-0.05073
+human	protein	SFPQ	-0.04316
+human	protein	SLTM	-0.01147
+human	protein	SRSF1	-0.01853
+human	protein	SRSF9	-0.0327
+human	protein	SSB	-0.05633
+human	protein	STAU2	0.02595
+human	protein	SUB1	0.009381
+human	protein	SUGP2	0.03461
+human	protein	SUPV3L1	-0.005256
+human	protein	TAF15	-0.005926
+human	protein	TARDBP	-0.01498
+human	protein	TIA1	-0.03536
+human	protein	TIAL1	-0.03745
+human	protein	TRA2A	-0.0165
+human	protein	U2AF1	-0.0414
+human	protein	U2AF2	-0.03512
+human	protein	UCHL5	-0.01186
+human	protein	UPF1	-0.001941
+human	protein	XRCC6	-0.05497
+human	protein	XRN2	-0.001884
+human	protein	YWHAG	-0.002228
+human	protein	ZRANB2	-0.01289
+human	mRNA	ABCF1	0.1205
+human	mRNA	AKAP1	0.1893
+human	mRNA	APEX1	-0.1043
+human	mRNA	AQR	-0.4382
+human	mRNA	BCLAF1	-0.5739
+human	mRNA	CPEB4	-0.1944
+human	mRNA	CPSF6	-0.4732
+human	mRNA	CSTF2	-0.006729
+human	mRNA	CSTF2T	-0.1851
+human	mRNA	DDX1	-0.475
+human	mRNA	DDX21	-0.2711
+human	mRNA	DDX3X	-0.3702
+human	mRNA	DDX42	-0.1446
+human	mRNA	DDX6	-0.4223
+human	mRNA	DHX30	0.3969
+human	mRNA	DKC1	-0.1632
+human	mRNA	EEF2	0.3082
+human	mRNA	EFTUD2	0.1062
+human	mRNA	EIF4E	-0.4067
+human	mRNA	EIF4G2	-0.1513
+human	mRNA	ELAC2	0.06419
+human	mRNA	EWSR1	0.01269
+human	mRNA	FAM120A	-0.05275
+human	mRNA	FKBP4	0.122
+human	mRNA	FUBP3	-0.1667
+human	mRNA	FUS	0.06746
+human	mRNA	GEMIN5	-0.1362
+human	mRNA	GRSF1	-0.4146
+human	mRNA	GRWD1	0.3676
+human	mRNA	GTF2F1	0.3085
+human	mRNA	HNRNPA1	-0.2936
+human	mRNA	HNRNPK	-0.495
+human	mRNA	HNRNPL	-0.009557
+human	mRNA	HNRNPM	-0.06978
+human	mRNA	HNRNPU	-0.2516
+human	mRNA	HNRNPUL1	0.3947
+human	mRNA	ILF3	0.342
+human	mRNA	KHDRBS1	-0.2948
+human	mRNA	KHSRP	0.4227
+human	mRNA	METAP2	-0.4775
+human	mRNA	NOLC1	-0.08804
+human	mRNA	NONO	-0.01517
+human	mRNA	NPM1	-0.5558
+human	mRNA	NSUN2	-0.09552
+human	mRNA	PABPC4	0.04253
+human	mRNA	PABPN1	0.1975
+human	mRNA	PCBP1	-0.0335
+human	mRNA	PCBP2	-0.2782
+human	mRNA	PPIG	-0.5212
+human	mRNA	PPIL4	-0.4124
+human	mRNA	PRPF4	-0.1287
+human	mRNA	PRPF8	0.2346
+human	mRNA	PTBP1	0.309
+human	mRNA	PUM1	-0.0263
+human	mRNA	PUS1	0.342
+human	mRNA	QKI	-0.2156
+human	mRNA	RBM5	-0.1593
+human	mRNA	RPS10	-0.09091
+human	mRNA	RPS11	-0.09103
+human	mRNA	RPS3	-0.2137
+human	mRNA	RPS6	-0.2278
+human	mRNA	SAFB	0.2467
+human	mRNA	SAFB2	0.392
+human	mRNA	SBDS	-0.3775
+human	mRNA	SERBP1	-0.4743
+human	mRNA	SF3A3	-0.2231
+human	mRNA	SF3B1	-0.4432
+human	mRNA	SF3B4	0.2232
+human	mRNA	SFPQ	-0.2686
+human	mRNA	SLTM	-0.1551
+human	mRNA	SRSF1	-0.4335
+human	mRNA	SRSF9	-0.2319
+human	mRNA	SSB	-0.4763
+human	mRNA	STAU2	-0.2443
+human	mRNA	SUB1	-0.5756
+human	mRNA	SUGP2	0.2948
+human	mRNA	SUPV3L1	-0.2202
+human	mRNA	TAF15	-0.1012
+human	mRNA	TARDBP	-0.2935
+human	mRNA	TIA1	-0.4253
+human	mRNA	TIAL1	-0.3495
+human	mRNA	TRA2A	-0.1532
+human	mRNA	U2AF1	-0.1307
+human	mRNA	U2AF2	0.4078
+human	mRNA	UCHL5	-0.5464
+human	mRNA	UPF1	0.504
+human	mRNA	XRCC6	-0.2357
+human	mRNA	XRN2	-0.4058
+human	mRNA	YWHAG	-0.1447
+human	mRNA	ZRANB2	-0.5708
+human	mRNA-adjusted protein	ABCF1	-0.4771
+human	mRNA-adjusted protein	AKAP1	-0.7244
+human	mRNA-adjusted protein	APEX1	-0.7035
+human	mRNA-adjusted protein	AQR	0.3656
+human	mRNA-adjusted protein	BCLAF1	0.4444
+human	mRNA-adjusted protein	CPEB4	-0.194
+human	mRNA-adjusted protein	CPSF6	0.6467
+human	mRNA-adjusted protein	CSTF2	-0.122
+human	mRNA-adjusted protein	CSTF2T	0.8295
+human	mRNA-adjusted protein	DDX1	-1.046
+human	mRNA-adjusted protein	DDX21	0.2465
+human	mRNA-adjusted protein	DDX3X	-0.4897
+human	mRNA-adjusted protein	DDX42	-0.06528
+human	mRNA-adjusted protein	DDX6	0.09522
+human	mRNA-adjusted protein	DHX30	0.7533
+human	mRNA-adjusted protein	DKC1	-0.1859
+human	mRNA-adjusted protein	EEF2	0.4868
+human	mRNA-adjusted protein	EFTUD2	-0.4627
+human	mRNA-adjusted protein	EIF4E	0.5807
+human	mRNA-adjusted protein	EIF4G2	-0.7392
+human	mRNA-adjusted protein	ELAC2	0.2431
+human	mRNA-adjusted protein	EWSR1	0.1009
+human	mRNA-adjusted protein	FAM120A	0.4942
+human	mRNA-adjusted protein	FKBP4	-0.7791
+human	mRNA-adjusted protein	FUBP3	-0.7072
+human	mRNA-adjusted protein	FUS	-0.7503
+human	mRNA-adjusted protein	GEMIN5	-0.4589
+human	mRNA-adjusted protein	GRSF1	0.08224
+human	mRNA-adjusted protein	GRWD1	0.02958
+human	mRNA-adjusted protein	GTF2F1	-0.3269
+human	mRNA-adjusted protein	HNRNPA1	-0.531
+human	mRNA-adjusted protein	HNRNPK	-1.028
+human	mRNA-adjusted protein	HNRNPL	-0.9164
+human	mRNA-adjusted protein	HNRNPM	-0.8827
+human	mRNA-adjusted protein	HNRNPU	-0.8631
+human	mRNA-adjusted protein	HNRNPUL1	0.798
+human	mRNA-adjusted protein	ILF3	0.9614
+human	mRNA-adjusted protein	KHDRBS1	-0.5694
+human	mRNA-adjusted protein	KHSRP	-0.6946
+human	mRNA-adjusted protein	METAP2	-0.7867
+human	mRNA-adjusted protein	NOLC1	-0.09616
+human	mRNA-adjusted protein	NONO	-0.8617
+human	mRNA-adjusted protein	NPM1	-0.9063
+human	mRNA-adjusted protein	NSUN2	0.1029
+human	mRNA-adjusted protein	PABPC4	-0.5551
+human	mRNA-adjusted protein	PABPN1	-0.07645
+human	mRNA-adjusted protein	PCBP1	-0.9924
+human	mRNA-adjusted protein	PCBP2	-0.6094
+human	mRNA-adjusted protein	PPIG	0.8759
+human	mRNA-adjusted protein	PPIL4	0.08141
+human	mRNA-adjusted protein	PRPF4	0.7735
+human	mRNA-adjusted protein	PRPF8	-0.3749
+human	mRNA-adjusted protein	PTBP1	-0.09518
+human	mRNA-adjusted protein	PUM1	0.7055
+human	mRNA-adjusted protein	PUS1	0.872
+human	mRNA-adjusted protein	QKI	-0.63
+human	mRNA-adjusted protein	RBM5	0.1381
+human	mRNA-adjusted protein	RPS10	-0.5953
+human	mRNA-adjusted protein	RPS11	-0.3777
+human	mRNA-adjusted protein	RPS3	0.6144
+human	mRNA-adjusted protein	RPS6	-0.3777
+human	mRNA-adjusted protein	SAFB	-0.4001
+human	mRNA-adjusted protein	SAFB2	0.429
+human	mRNA-adjusted protein	SBDS	-0.6545
+human	mRNA-adjusted protein	SERBP1	-0.7208
+human	mRNA-adjusted protein	SF3A3	-0.806
+human	mRNA-adjusted protein	SF3B1	-0.003255
+human	mRNA-adjusted protein	SF3B4	-0.4819
+human	mRNA-adjusted protein	SFPQ	-1.063
+human	mRNA-adjusted protein	SLTM	-0.5974
+human	mRNA-adjusted protein	SRSF1	0.1297
+human	mRNA-adjusted protein	SRSF9	-0.3637
+human	mRNA-adjusted protein	SSB	-0.5433
+human	mRNA-adjusted protein	STAU2	0.8383
+human	mRNA-adjusted protein	SUB1	-0.1821
+human	mRNA-adjusted protein	SUGP2	0.1545
+human	mRNA-adjusted protein	SUPV3L1	0.3975
+human	mRNA-adjusted protein	TARDBP	-0.213
+human	mRNA-adjusted protein	TIA1	-0.1133
+human	mRNA-adjusted protein	TIAL1	-0.3322
+human	mRNA-adjusted protein	TRA2A	0.5973
+human	mRNA-adjusted protein	U2AF1	-0.4466
+human	mRNA-adjusted protein	U2AF2	-0.5317
+human	mRNA-adjusted protein	UCHL5	0.02815
+human	mRNA-adjusted protein	UPF1	-0.3652
+human	mRNA-adjusted protein	XRCC6	-0.492
+human	mRNA-adjusted protein	XRN2	-0.7657
+human	mRNA-adjusted protein	YWHAG	-1.076
+human	mRNA-adjusted protein	ZRANB2	0.9354
+mouse	protein	ABCF1	0.009965
+mouse	protein	AKAP1	0.06672
+mouse	protein	APEX1	0.06567
+mouse	protein	AQR	-0.04792
+mouse	protein	BCLAF1	0.0628
+mouse	protein	CPEB4	0.1109
+mouse	protein	CPSF6	0.002421
+mouse	protein	CSTF2	-0.01424
+mouse	protein	CSTF2T	0.02421
+mouse	protein	DDX1	0.02044
+mouse	protein	DDX21	-0.02288
+mouse	protein	DDX3X	-0.05233
+mouse	protein	DDX42	0.03567
+mouse	protein	DDX6	0.009335
+mouse	protein	DHX30	0.03826
+mouse	protein	DKC1	-0.01759
+mouse	protein	EEF2	-0.01901
+mouse	protein	EFTUD2	-0.0668
+mouse	protein	EIF4E	0.04541
+mouse	protein	EIF4G2	0.08684
+mouse	protein	ELAC2	0.007568
+mouse	protein	EWSR1	4.555e-05
+mouse	protein	FKBP4	-0.08894
+mouse	protein	FUBP3	-0.0415
+mouse	protein	FUS	0.04707
+mouse	protein	GEMIN5	0.04459
+mouse	protein	GRSF1	-0.09256
+mouse	protein	GRWD1	0.04426
+mouse	protein	GTF2F1	0.05281
+mouse	protein	HNRNPA1	0.0002431
+mouse	protein	HNRNPK	-0.01098
+mouse	protein	HNRNPL	0.002404
+mouse	protein	HNRNPM	-0.006208
+mouse	protein	HNRNPU	-0.0169
+mouse	protein	HNRNPUL1	0.003217
+mouse	protein	ILF3	0.022
+mouse	protein	KHDRBS1	0.05282
+mouse	protein	KHSRP	0.04141
+mouse	protein	METAP2	-0.04842
+mouse	protein	NOLC1	0.06326
+mouse	protein	NONO	0.01342
+mouse	protein	NPM1	-0.003637
+mouse	protein	NSUN2	0.02227
+mouse	protein	PABPC4	0.01251
+mouse	protein	PABPN1	-0.003697
+mouse	protein	PCBP1	-0.02099
+mouse	protein	PCBP2	0.05173
+mouse	protein	PPIG	0.04264
+mouse	protein	PPIL4	0.05692
+mouse	protein	PRPF4	0.01805
+mouse	protein	PRPF8	-0.03912
+mouse	protein	PTBP1	-0.2146
+mouse	protein	PUM1	0.1483
+mouse	protein	PUS1	0.01697
+mouse	protein	QKI	-0.08179
+mouse	protein	RBM5	0.0423
+mouse	protein	RPS10	0.03448
+mouse	protein	RPS11	-0.01349
+mouse	protein	RPS3	-0.03359
+mouse	protein	RPS6	-0.02155
+mouse	protein	SAFB	0.0617
+mouse	protein	SAFB2	-0.03471
+mouse	protein	SBDS	-0.08635
+mouse	protein	SERBP1	0.0771
+mouse	protein	SF3A3	-0.01408
+mouse	protein	SF3B1	0.02514
+mouse	protein	SF3B4	0.0004008
+mouse	protein	SFPQ	0.02394
+mouse	protein	SLTM	0.07054
+mouse	protein	SRSF1	0.02817
+mouse	protein	SRSF9	-0.07054
+mouse	protein	SSB	-0.03857
+mouse	protein	STAU2	0.04547
+mouse	protein	SUB1	0.06108
+mouse	protein	SUGP2	0.1102
+mouse	protein	SUPV3L1	0.03335
+mouse	protein	TAF15	0.04687
+mouse	protein	TARDBP	-0.04072
+mouse	protein	TIA1	0.08756
+mouse	protein	TIAL1	0.005498
+mouse	protein	TRA2A	-0.01724
+mouse	protein	U2AF1	-0.00911
+mouse	protein	U2AF2	-0.0121
+mouse	protein	UCHL5	0.02038
+mouse	protein	UPF1	0.03823
+mouse	protein	XRCC6	-0.06758
+mouse	protein	XRN2	0.04384
+mouse	protein	YWHAG	0.04429
+mouse	protein	ZRANB2	0.01052
+mouse	mRNA-adjusted protein	ABCF1	-0.009452
+mouse	mRNA-adjusted protein	AKAP1	0.02307
+mouse	mRNA-adjusted protein	APEX1	0.05318
+mouse	mRNA-adjusted protein	AQR	-0.05542
+mouse	mRNA-adjusted protein	BCLAF1	-0.09283
+mouse	mRNA-adjusted protein	CPEB4	0.03245
+mouse	mRNA-adjusted protein	CPSF6	-0.05328
+mouse	mRNA-adjusted protein	CSTF2	-0.07295
+mouse	mRNA-adjusted protein	CSTF2T	0.01952
+mouse	mRNA-adjusted protein	DDX1	-0.01676
+mouse	mRNA-adjusted protein	DDX21	-0.08662
+mouse	mRNA-adjusted protein	DDX3X	0.0608
+mouse	mRNA-adjusted protein	DDX42	0.02738
+mouse	mRNA-adjusted protein	DDX6	-0.03135
+mouse	mRNA-adjusted protein	DHX30	0.000773
+mouse	mRNA-adjusted protein	DKC1	-0.07327
+mouse	mRNA-adjusted protein	EEF2	0.04014
+mouse	mRNA-adjusted protein	EFTUD2	0.009316
+mouse	mRNA-adjusted protein	EIF4E	0.002661
+mouse	mRNA-adjusted protein	EIF4G2	0.1013
+mouse	mRNA-adjusted protein	ELAC2	0.01807
+mouse	mRNA-adjusted protein	EWSR1	0.05966
+mouse	mRNA-adjusted protein	FKBP4	-0.0202
+mouse	mRNA-adjusted protein	FUBP3	-0.03278
+mouse	mRNA-adjusted protein	FUS	0.04087
+mouse	mRNA-adjusted protein	GEMIN5	0.03186
+mouse	mRNA-adjusted protein	GRSF1	-0.01751
+mouse	mRNA-adjusted protein	GTF2F1	0.03865
+mouse	mRNA-adjusted protein	HNRNPA1	-0.001218
+mouse	mRNA-adjusted protein	HNRNPK	0.005142
+mouse	mRNA-adjusted protein	HNRNPL	0.005502
+mouse	mRNA-adjusted protein	HNRNPM	-0.03836
+mouse	mRNA-adjusted protein	HNRNPU	-0.04527
+mouse	mRNA-adjusted protein	HNRNPUL1	0.004045
+mouse	mRNA-adjusted protein	ILF3	0.005837
+mouse	mRNA-adjusted protein	KHDRBS1	0.0563
+mouse	mRNA-adjusted protein	KHSRP	-0.01625
+mouse	mRNA-adjusted protein	METAP2	-0.06581
+mouse	mRNA-adjusted protein	NOLC1	0.001809
+mouse	mRNA-adjusted protein	NONO	-0.02722
+mouse	mRNA-adjusted protein	NPM1	0.02888
+mouse	mRNA-adjusted protein	NSUN2	0.05097
+mouse	mRNA-adjusted protein	PABPC4	0.05843
+mouse	mRNA-adjusted protein	PABPN1	0.01967
+mouse	mRNA-adjusted protein	PCBP1	0.01658
+mouse	mRNA-adjusted protein	PCBP2	0.1247
+mouse	mRNA-adjusted protein	PPIG	-0.0143
+mouse	mRNA-adjusted protein	PPIL4	0.1133
+mouse	mRNA-adjusted protein	PRPF4	-0.03288
+mouse	mRNA-adjusted protein	PRPF8	0.02582
+mouse	mRNA-adjusted protein	PTBP1	-0.04728
+mouse	mRNA-adjusted protein	PUM1	0.04712
+mouse	mRNA-adjusted protein	QKI	-0.09572
+mouse	mRNA-adjusted protein	RBM5	0.004009
+mouse	mRNA-adjusted protein	RPS10	0.09748
+mouse	mRNA-adjusted protein	RPS11	-0.0112
+mouse	mRNA-adjusted protein	RPS3	0.09205
+mouse	mRNA-adjusted protein	RPS6	-0.02763
+mouse	mRNA-adjusted protein	SAFB	-0.02469
+mouse	mRNA-adjusted protein	SAFB2	-0.04926
+mouse	mRNA-adjusted protein	SBDS	-0.0663
+mouse	mRNA-adjusted protein	SERBP1	-0.01299
+mouse	mRNA-adjusted protein	SF3A3	0.007201
+mouse	mRNA-adjusted protein	SF3B1	0.02131
+mouse	mRNA-adjusted protein	SF3B4	0.03941
+mouse	mRNA-adjusted protein	SFPQ	-0.03771
+mouse	mRNA-adjusted protein	SLTM	0.008877
+mouse	mRNA-adjusted protein	SRSF1	0.06208
+mouse	mRNA-adjusted protein	SRSF9	-0.001291
+mouse	mRNA-adjusted protein	SSB	-0.03259
+mouse	mRNA-adjusted protein	STAU2	0.06265
+mouse	mRNA-adjusted protein	SUB1	0.1232
+mouse	mRNA-adjusted protein	SUGP2	0.007403
+mouse	mRNA-adjusted protein	SUPV3L1	-0.00498
+mouse	mRNA-adjusted protein	TAF15	0.005039
+mouse	mRNA-adjusted protein	TARDBP	0.0008279
+mouse	mRNA-adjusted protein	TIAL1	0.07005
+mouse	mRNA-adjusted protein	TRA2A	-0.02964
+mouse	mRNA-adjusted protein	U2AF1	-0.03168
+mouse	mRNA-adjusted protein	U2AF2	0.006936
+mouse	mRNA-adjusted protein	UCHL5	0.07962
+mouse	mRNA-adjusted protein	UPF1	0.03955
+mouse	mRNA-adjusted protein	XRCC6	-0.05988
+mouse	mRNA-adjusted protein	XRN2	0.07701
+mouse	mRNA-adjusted protein	YWHAG	-0.002287
+mouse	mRNA-adjusted protein	ZRANB2	0.01518

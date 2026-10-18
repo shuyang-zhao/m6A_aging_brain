@@ -4,18 +4,18 @@
 # script 33 with their ENCODE IDR targets give the null (those with enough targets in the test or quantified in the
 # unit; n_controls in each row).
 # IGF2BP2 (igf2bp2_*; targets: genes bound with m6A in at least 2 of the 4 neural sources; T2, T3 as in script 37):
-#   striatum x age in GTEx donors (mixed model with a donor intercept); MSN and OPC against oligodendrocytes and
-#   microglia in Green 2025 and Handsaker 2025 (nuclei), and the neuron-versus-glia statistic on the same targets;
-#   coupling (script 33 model) and mediation in the MSN and OPC pseudobulks; age slope in striatal proteomes; targets
-#   after IGF2BP2 loss.
+#   striatum x age in GTEx donors (mixed model with a donor intercept; not run while GTEx is in utils.EXCLUDED); MSN and
+#   OPC against oligodendrocytes and microglia in Green 2025 and Handsaker 2025 (nuclei), and the neuron-versus-glia
+#   statistic on the same targets;
+#   coupling (script 33 model) in the MSN and OPC pseudobulks; age slope in striatal proteomes; targets after IGF2BP2
+#   loss.
 # YTHDF1-3 (yth_*; target_type bound_set: the preferred binding sets of script 37; m6A_load: the m6A load of every gene
 #   against the YTHDF level): age slope of the target scores in the Output, Translation and Stability arms, coupling,
-#   mediation of the age slope, targets after YTHDF loss or gain, and the human units where YTHDF3 mRNA falls (mode
-#   ythdf3_falls).
+#   targets after YTHDF loss or gain, and the human units where YTHDF3 mRNA falls (mode ythdf3_falls).
 # BH families: striatum x age and nuclei over the primary tiers and comparisons; proteomes within species; IGF2BP2 loss
-# over all tests; YTHDF target slopes within arm, coupling and mediation within target type and arm, YTHDF loss over
-# all tests (the units where YTHDF3 mRNA falls apart from the main units).
-# usage: 38_reader_bridges.py [igf2bp2|yth|wildtype]
+# over all tests; YTHDF target slopes within arm, coupling within target type and arm, YTHDF loss over all tests (the
+# units where YTHDF3 mRNA falls apart from the main units).
+# usage: 38_reader_bridges.py [igf2bp2|yth]
 # reads script 33 (unit data and control RBPs), the compendium of 37, the target sets of 40, the prepared units (08)
 # and the pseudobulks of 03 (single_nucleus.py); writes output/38_reader_bridges/, one table per test family
 import os
@@ -37,7 +37,7 @@ import network as nw
 import single_nucleus as sn
 import utils
 
-m33 = importlib.import_module("33_regulator_network")  # data of a unit, mediation and age-slope helpers
+m33 = importlib.import_module("33_regulator_network")  # data of a unit and the control RBPs
 
 OUT = utils.OUT / "38_reader_bridges"
 COMP = utils.OUT / "37_reader_compendium"
@@ -48,8 +48,9 @@ COMPARISONS = ["unbound_m6A", "bound_unmarked"]
 FOCUS = "IGF2BP2"
 NEURAL = ["conway2016_H9_eCLIP", "degrauwe2016_MGG8_PARCLIP", "han2022_A172_eCLIP", "preitner2016_E14brain_CLIP"]
 GTEX_FOCAL = ["gtex_caudate", "gtex_putamen", "gtex_nucleus_accumbens"]
-PROTEOMES = {"mouse": ["keele2025_striatum", "chdi2016_expanded"],
-             "human": ["blumenreich2024_striatum", "teng2023_nucleus_accumbens"]}
+PROTEOMES = {"mouse": ["keele2025_striatum"], "human": ["blumenreich2024_striatum", "teng2023_nucleus_accumbens"]}
+# striatal mRNA unit whose mean level matches the genes of the perturbation tests
+LEVEL_UNITS = {"human": "brainseq3_caudate", "mouse": "hahn2023_bulk_caudate_putamen"}
 POPULATIONS = {"green2025_gse277313": ["D1_MSN", "D2_MSN", "MSN_unassigned", "OPC"],
                "handsaker2025_nemo_broadhdcaudate": ["D1_MSN", "D2_MSN", "OPC"]}
 GLIA = ["Oligodendrocyte", "Microglia"]
@@ -168,7 +169,7 @@ def versus(table, ref_of, value="estimate"):
 
 def pool(table, keys, label="unit"):
     """Random-effects pooling of estimate and se over the rows of each group of keys."""
-    rows = [dict(zip(keys, key if isinstance(key, tuple) else (key,), strict=False))
+    rows = [dict(zip(keys, key, strict=True))
             | utils.random_effects(g.estimate, g.se) | dict(units=",".join(g[label]))
             for key, g in table.dropna(subset=["estimate", "se"]).query("se > 0").groupby(keys)]
     return pd.DataFrame(rows).rename(columns={"est": "estimate", "k": "n_units"})
@@ -264,8 +265,11 @@ def striatum_job(job):
 def striatum_age():
     """Age slope of the target scores in the striatal regions against the other regions of GTEx donors (mixed model,
     donor intercept)."""
+    units = [u for u in utils.read(utils.PREPARED / "units.tsv").unit if u.startswith("gtex_")]
+    if not units:  # GTEx is in utils.EXCLUDED
+        return
     gtex = {}
-    for unit in [u for u in utils.read(utils.PREPARED / "units.tsv").unit if u.startswith("gtex_")]:
+    for unit in units:
         _, rna, samples, design = utils.load_unit(unit)
         rna = rna[rna.notna().all(axis=1)]
         gtex[unit] = dict(rna=rna, samples=samples, genes=gene_table("human", rna.mean(axis=1)),
@@ -343,7 +347,7 @@ def igf2bp2_loss():
     the dataset itself."""
     pert = (utils.read(COMP / "perturbation.tsv", low_memory=False)
             .query("reader == @FOCUS and direction in ['KD', 'KO']"))
-    level = {"human": level_of("gtex_caudate"), "mouse": level_of("chdi2016_rna")}
+    level = {species: level_of(unit) for species, unit in LEVEL_UNITS.items()}
     rng = np.random.default_rng(utils.SEED)
     rows = []
     for dataset, d in pert.groupby("dataset"):
@@ -477,8 +481,7 @@ def neuron_glia_cohort(cohort):
 
 def neuron_glia():
     """Neuron-versus-glia age slope of the IGF2BP2 targets, against the control RBPs' targets built the same way."""
-    atlas = nw.atlas[(nw.atlas.species == "Homo sapiens")
-                     & (nw.atlas.resolution == "single_base")].reset_index(drop=True)
+    atlas = nw.site_map("human")["sites"]
     modified = set(atlas.gene_id)
     members = utils.read(utils.OUT / "40_target_sets" / "target_genes.tsv.gz").query(
         "species == 'human' and modification == 'm6A' and regulator == @FOCUS and window == @utils.PEAK_WINDOW")
@@ -514,50 +517,27 @@ def neuron_glia():
 
 
 def coupling_unit(unit):
-    """Coupling of IGF2BP2 mRNA with its primary T1 targets (script 33 model, against the control RBPs) and mediation
-    of the target score's age slope."""
+    """Coupling of IGF2BP2 mRNA with its primary T1 targets (script 33 model, against the control RBPs)."""
     rng = np.random.default_rng(utils.SEED)
     controls = list(G["ctrl"]["human"])
     data = sn.load_unit(unit, controls)
-    if FOCUS not in data["regulators"]:
-        return pd.DataFrame(), []
     items = [nw.Item(FOCUS, "primary_T1", True, G["s_focus"], G["u_focus"], [FOCUS], "reader")]
     items += [nw.Item(r, "ENCODE_IDR", True, G["idr"][r][0], G["idr"][r][1], [r], "control_rbp")
               for r in controls if r in data["regulators"]]
     load = np.log1p(data["load"].reindex(data["genes"].index)).rename("load")
     perm = nw.permutations(data["strata"], rng)
     edges = nw.run_edges(data, nw.Stage1(data), perm, items, nw.stage2_fits(data, items, load))
-    edges = edges.assign(population=unit["population"], dataset=unit["dataset"])
-    genes = data["genes"].assign(load=data["genes"][nw.LOAD["human"]].astype(float))
-    X0, age = data["X"][:, :-1], data["X"][:, -1]
-    R = nw.regulator_matrix(data, items[:1])
-    mediation = []
-    for tier in ("T1", "T2", "T3"):
-        for comparison in COMPARISONS:
-            w, nt, nc, _ = score_weights(genes, spec("primary", tier, "human"), comparison, own_of("human", FOCUS))
-            row = dict(unit=unit["unit"], dataset=unit["dataset"], population=unit["population"], tier=tier,
-                       comparison=comparison, n_targets=nt, n_comparison=nc, n=len(age))
-            if min(nt, nc) >= MIN_TARGETS:
-                y = w @ data["Y"]
-                without, with_r = m33.age_slopes(y, None, X0, age, R)
-                boot = np.array([1 - np.divide(*m33.age_slopes(y[i], None, X0[i], age[i], R[i])[::-1])
-                                 for i in nw.resamples(data["strata"], NBOOT, rng)])[:, 0]
-                row |= dict(slope_without_pct=utils.pct(without), slope_with_pct=utils.pct(with_r[0]),
-                            fraction=1 - with_r[0] / without, ci_low=np.percentile(boot, 2.5),
-                            ci_high=np.percentile(boot, 97.5))
-            mediation.append(row)
-    return edges, mediation
+    return edges.assign(population=unit["population"], dataset=unit["dataset"])
 
 
-def coupling_mediation():
+def igf2bp2_coupling():
     G["s_focus"], G["u_focus"] = s_u("human", spec("primary", "T1", "human"))
     load = nw.site_map("human")["load"]
     units = [dict(u, load=load) for u in sn.find_units()
              if u["dataset"] in POPULATIONS and u["population"] in POPULATIONS[u["dataset"]]]
     with mp.get_context("fork").Pool(min(WORKERS, len(units))) as pool_:
         res = pool_.map(coupling_unit, units, chunksize=1)
-    edges = pd.concat([e for e, _ in res if len(e)], ignore_index=True)
-    mediation = pd.DataFrame([r for _, m in res for r in m])
+    edges = pd.concat(res, ignore_index=True)
     ctl = edges[edges.family == "control_rbp"]
     coupling = edges[edges.regulator == FOCUS].reset_index(drop=True)
 
@@ -572,11 +552,8 @@ def coupling_mediation():
     coupling["ci_high"] = coupling.b_s + utils.Z95 * coupling.se_s
     utils.write(ctl, OUT / "igf2bp2_control_edges.tsv")
     utils.write(coupling, OUT / "igf2bp2_coupling.tsv")
-    utils.write(mediation, OUT / "igf2bp2_mediation.tsv")
     print(coupling[["unit", "n", "n_genes_s_pos", "b_s", "se_s", "p_s", "b_u", "n_controls", "z_control",
                     "pctile_signed"]].round(4).to_string(), flush=True)
-    print(mediation[["population", "dataset", "tier", "comparison", "n_targets", "slope_without_pct", "slope_with_pct",
-                     "fraction", "ci_low", "ci_high"]].round(4).to_string(), flush=True)
 
 
 # YTHDF1-3
@@ -590,16 +567,15 @@ def binding_sets():
 
 
 def yth_job(mode, unit, layer):
-    """Age slope of the target scores, coupling of YTHDF3 and the YTHDF module with the bound sets or with the m6A
-    load, and mediation of the age slope, in one unit and layer."""
+    """Age slope of the target scores, and coupling of YTHDF3 and the YTHDF module with the bound sets or with the m6A
+    load, in one unit and layer."""
     rng = np.random.default_rng(utils.SEED)
-    data = m33.load_data(unit, layer, wildtype=mode == "wildtype")
+    data = m33.load_data(unit, layer)
     species, genes = data["species"], data["genes"]
     arm = nw.ARMS[layer]
     gt = pd.DataFrame(dict(level=genes.level, log_gene_len=genes.log_gene_len,
                            load=genes[nw.LOAD[species]].astype(float)), index=genes.index)
     X, Y, M = data["X"], data["Y"], data["M"]
-    age, X0 = X[:, -1], X[:, :-1]
     named = [(r, source, sets, primary, "reader")
              for (sp, r, source), (sets, primary) in G["binding_sets"].items() if sp == species]
     named += [(r, "ENCODE_IDR", sets, True, "control") for r, sets in G["ctrl"][species].items()]
@@ -608,7 +584,8 @@ def yth_job(mode, unit, layer):
         for comparison in COMPARISONS:
             w, nt, nc, _ = score_weights(gt, sets, comparison, own_of(species, reader))
             row = dict(mode=mode, unit=unit, species=species, layer=layer, arm=arm, kind=kind, reader=reader,
-                       source=source, primary=primary, comparison=comparison, n_targets=nt, n_comparison=nc, n=len(age))
+                       source=source, primary=primary, comparison=comparison, n_targets=nt, n_comparison=nc,
+                       n=len(X))
             y1.append(row | (ols_slope(w @ Y, X, None if M is None else w @ M) if min(nt, nc) >= MIN_TARGETS else {}))
     # items of the coupling model: the YTHDF module and YTHDF3 against the m6A load and against the preferred bound
     # sets, the control RBPs in both
@@ -641,65 +618,14 @@ def yth_job(mode, unit, layer):
     perm = nw.permutations(data["strata"], rng)
     edges = nw.run_edges(data, nw.Stage1(data), perm, items, nw.stage2_fits(data, items, load))
     edges = pd.concat([edges.reset_index(drop=True), pd.DataFrame(meta)], axis=1).assign(mode=mode)
-    # mediation of the age slope of the m6A-load coefficient (m6A load) or of each target score (bound sets)
-    R = nw.regulator_matrix(data, items)
-    boots = nw.resamples(data["strata"], NBOOT, rng)
-    rows_all = np.arange(len(age))
-    D = nw.stage2_design(data, load, None, load, np.ones(len(genes), bool))
-    parts = [(np.linalg.pinv(D), D[:, :2])]
-    load_inverse = np.linalg.pinv(np.column_stack([np.ones(len(genes)), load.to_numpy(), data["covariates"]]))
-    y3 = []
-    for k, (item, mt) in enumerate(zip(items, meta, strict=True)):
-        if item.family == "control_rbp":
-            continue
-        base = dict(mode=mode, unit=unit, species=species, layer=layer, arm=arm, target_type=mt["target_type"],
-                    regulator=item.name,
-                    target_reader=mt["target_reader"], target_source=mt["target_source"])
-        if mt["target_type"] == "m6A_load":
-
-            def evaluate(rows, r):
-                return m33.mediate(Y[:, rows], None if M is None else M[:, rows], X0[rows], age[rows], r, parts,
-                                   load_inverse)
-
-            a0, a1 = evaluate(rows_all, R[:, [k]])
-            f0 = 1 - a1 / a0
-            boot = np.array([1 - np.divide(*evaluate(b, R[b][:, [k]])[::-1]) for b in boots])
-            null = np.array([1 - np.divide(*evaluate(rows_all, R[perm[:, p]][:, [k]])[::-1]) for p in range(nw.NPERM)])
-            y3.append(base | dict(comparison="m6A_load", n_targets=len(genes), slope_without_pct=utils.pct(a0),
-                                  slope_with_pct=utils.pct(a1), fraction=f0, ci_low=np.percentile(boot, 2.5),
-                                  ci_high=np.percentile(boot, 97.5), null_mean=null.mean(), null_sd=null.std(ddof=1),
-                                  p_perm=nw.twosided(f0 - null.mean(), null - null.mean())))
-            continue
-        sets = G["binding_sets"][species, mt["target_reader"], mt["target_source"]][0]
-        for comparison in COMPARISONS:
-            w, nt, nc, _ = score_weights(gt, sets, comparison, own_of(species, mt["target_reader"])
-                                         + [data["own"][m] for m in item.members])
-            if min(nt, nc) < MIN_TARGETS:
-                continue
-            y, m = w @ Y, None if M is None else w @ M
-            without, with_r = m33.age_slopes(y, m, X0, age, R[:, [k]])
-            f0 = 1 - with_r[0] / without
-
-            def fraction(rows, r, y=y, m=m):
-                a, b = m33.age_slopes(y[rows], None if m is None else m[rows], X0[rows], age[rows], r)
-                return 1 - b / a
-
-            boot = np.array([fraction(b, R[b][:, [k]])[0] for b in boots])
-            boot = boot[np.isfinite(boot)]
-            null = fraction(rows_all, R[perm, k])
-            y3.append(base | dict(comparison=comparison, n_targets=nt, n_comparison=nc,
-                                  slope_without_pct=utils.pct(without), slope_with_pct=utils.pct(with_r[0]),
-                                  fraction=f0, ci_low=np.percentile(boot, 2.5), ci_high=np.percentile(boot, 97.5),
-                                  null_mean=null.mean(), null_sd=null.std(ddof=1),
-                                  p_perm=nw.twosided(f0 - null.mean(), null - null.mean())))
     print(mode, unit, layer, "done", len(genes), "genes", flush=True)
-    return pd.DataFrame(y1), edges, pd.DataFrame(y3)
+    return pd.DataFrame(y1), edges
 
 
 def ythdf3_mrna():
     """Age slope of YTHDF3 mRNA in every human bulk unit with an mRNA layer (OLS, HC3, the unit's design); 'falls' =
     negative with BH q < 0.05 over the units."""
-    units = utils.read(utils.PREPARED / "units.tsv", index_col="unit")
+    units = utils.read(utils.PREPARED / "units.tsv", index_col="unit").drop(utils.EXTERNAL.split())
     gene = nw.symbols["human"]["YTHDF3"]
     rows = []
     for unit in units.index:
@@ -718,7 +644,7 @@ def ythdf3_mrna():
     return table
 
 
-def yth_summary(y1, edges, y3):
+def yth_summary(y1, edges):
     """Pool the units by species (random effects), compare with the control RBPs and apply BH within each test family of
     one set of units."""
     y1 = percent(y1)
@@ -756,14 +682,7 @@ def yth_summary(y1, edges, y3):
     p2 = p2.join(versus(p2, pooled_controls(c2, lambda c, r: (c.species == r.species) & (c.arm == r.arm)
                                             & (c.target_type == r.target_type))))
     p2["q"] = p2.groupby(["target_type", "arm"]).p.transform(utils.bh)
-    # mediation
-    y3 = y3.assign(q=y3.groupby(["target_type", "arm"]).p_perm.transform(utils.bh),
-                   ci_excludes_0=lambda t: (t.ci_low > 0) | (t.ci_high < 0))
-    p3 = y3.groupby(["species", "arm", "target_type", "regulator", "target_reader", "target_source", "comparison"]).agg(
-        n_units=("unit", "size"), mean_fraction=("fraction", "mean"), median_fraction=("fraction", "median"),
-        min_fraction=("fraction", "min"), max_fraction=("fraction", "max"), n_ci_excl0=("ci_excludes_0", "sum"),
-        min_q=("q", "min")).reset_index()
-    return y1, p1, edges, p2, y3, p3
+    return y1, p1, edges, p2
 
 
 def predicted_sign(readout, reader):
@@ -781,7 +700,7 @@ def yth_loss():
     loss = ["KD", "KO", "cKO", "inhibitor", "triple KO"]
     pert = (utils.read(COMP / "perturbation.tsv", low_memory=False)
             .query("reader in @READERS3 or reader == 'YTHDF1/2/3'"))
-    level = {"human": level_of("gtex_caudate"), "mouse": level_of("chdi2016_rna")}
+    level = {species: level_of(unit) for species, unit in LEVEL_UNITS.items()}
     rng = np.random.default_rng(utils.SEED)
     rows = []
     for (dataset, reader, species, direction, readout), d in pert.groupby(
@@ -833,7 +752,7 @@ def yth():
     G["binding_sets"] = binding_sets()
     falls = ythdf3_mrna()
     utils.write(falls, OUT / "yth_ythdf3_mrna.tsv")
-    units = utils.read(utils.PREPARED / "units.tsv", index_col="unit")
+    units = utils.read(utils.PREPARED / "units.tsv", index_col="unit").drop(utils.EXTERNAL.split())
     protein_units = [u for u in units.index if (utils.PREPARED / u / "protein.parquet").exists()]
     jobs = [("main", u, "mrna_adjusted") for u in protein_units if (utils.PREPARED / u / "rna.parquet").exists()]
     jobs += ([("main", u, "protein_only") for u in protein_units]
@@ -842,14 +761,13 @@ def yth():
     print(len(jobs), "jobs", flush=True)
     with mp.get_context("fork").Pool(WORKERS) as pool_:
         results = pool_.starmap(yth_job, jobs, chunksize=1)
-    tables = [[] for _ in range(6)]
+    tables = [[] for _ in range(4)]
     for mode in ("main", "ythdf3_falls"):
         parts = [pd.concat([r[i] for r, j in zip(results, jobs, strict=True) if j[0] == mode], ignore_index=True)
-                 for i in range(3)]
+                 for i in range(2)]
         for table, new in zip(tables, yth_summary(*parts), strict=True):
             table.append(new.assign(mode=mode))
-    names = ["target_slopes_units", "target_slopes_pooled", "coupling_edges", "coupling_pooled", "mediation_units",
-             "mediation_summary"]
+    names = ["target_slopes_units", "target_slopes_pooled", "coupling_edges", "coupling_pooled"]
     for name, table in zip(names, tables, strict=True):
         utils.write(pd.concat(table, ignore_index=True), OUT / f"yth_{name}.tsv")
     p1 = tables[1][0]
@@ -858,27 +776,13 @@ def yth():
     yth_loss()
 
 
-def wildtype():
-    # the striatal mRNA unit of the Huntington's disease allelic series refitted on its wild-type mice: coupling with
-    # the m6A load against the control RBPs of the unit, and the mediation of the age slope
-    G["binding_sets"] = binding_sets()
-    _, edges, y3 = yth_job("wildtype", m33.STABILITY_UNITS[0], "rna_only")
-    edges = edges[edges.target_type == "m6A_load"]
-    ctrl = edges[edges.family == "control_rbp"]
-    edges = edges[edges.family != "control_rbp"]
-    utils.write(edges.join(versus(edges, lambda r: ctrl.b_s, "b_s")), OUT / "yth_wildtype_coupling.tsv")
-    utils.write(y3[y3.target_type == "m6A_load"], OUT / "yth_wildtype_mediation.tsv")
-
-
 if __name__ == "__main__":
     part = sys.argv[1] if len(sys.argv) > 1 else "all"
     OUT.mkdir(parents=True, exist_ok=True)
     G["idr"], G["ctrl"] = control_sets()
     if part in ("all", "igf2bp2"):
         G["sets"] = igf2bp2_sets()
-        for step in (striatum_age, proteome_slopes, igf2bp2_loss, nuclei_age, neuron_glia, coupling_mediation):
+        for step in (striatum_age, proteome_slopes, igf2bp2_loss, nuclei_age, neuron_glia, igf2bp2_coupling):
             step()
     if part in ("all", "yth"):
         yth()
-    if part in ("all", "wildtype"):
-        wildtype()

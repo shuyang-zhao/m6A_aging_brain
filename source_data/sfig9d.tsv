@@ -1,0 +1,11 @@
+species	tier	comparison	estimate_pct	ci_low_pct	ci_high_pct
+human	T1	bound_unmarked	0.378	-0.2677	1.028
+human	T1	unbound_m6A	0.6725	0.06465	1.284
+human	T3	bound_unmarked	0.2055	-0.4665	0.8819
+human	T3	unbound_m6A	0.4469	-0.3003	1.2
+mouse	T1	bound_unmarked	-0.3141	-1.086	0.4638
+mouse	T1	unbound_m6A	1.123	0.2053	2.049
+mouse	T2	bound_unmarked	-0.5172	-1.696	0.6759
+mouse	T2	unbound_m6A	1.291	0.02148	2.576
+mouse	T3	bound_unmarked	-0.4622	-1.381	0.4654
+mouse	T3	unbound_m6A	1.043	0.1756	1.917

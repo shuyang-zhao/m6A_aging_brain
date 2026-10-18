@@ -1,9 +1,13 @@
 # Sensitivity of the m6A results to the site map that defines the marked genes: the matched cameraPR signature of
 # script 20 and the OLS/HC3 load effect of script 21 (model without protein lifetime) with the genes marked by one map
-# or the union; human: brain peaks vs cell-line (GLORI) sites, mouse: each of the four maps vs the union
-# reads scripts 10 and 09, the site atlas and the unit levels; writes output/28_map_sensitivity/
+# or the union of the mouse GLORI 3.0 hippocampus maps (cytoplasm, synaptosome); also the DRACH share of the m6A maps
+# (mouse: sites in a DRACH motif; human: brain peaks containing a DRACH)
+# reads scripts 10 and 09, the site atlas, the human genome and the unit levels; writes output/28_map_sensitivity/
+import re
+
 import numpy as np
 import pandas as pd
+import pysam
 from joblib import Parallel, delayed
 
 import model
@@ -12,35 +16,38 @@ import utils
 OUT = utils.OUT / "28_map_sensitivity"
 WORKERS = 16
 N_BINS, MATCH = 10, ["level", "log_tx_len"]
-CONTEXTS = ["human_striatum", "human_cortex", "human_hippocampus", "human_cerebellum", "human_neurons", "human_protein"]
-CONTEXTS += ["mouse_mrna", "mouse_neurons", "mouse_protein"]
-MAPS = {
-    "human": {"brain peaks": utils.BRAIN_M6A, "cell line": "m6a_hek293t_hela"},
-    "mouse": {
-        "hippocampus cyto": "m6a_hippocampus_cyto",
-        "hippocampus syn": "m6a_hippocampus_syn",
-        "cortex scDART": "m6a_cortex_scdart_tegowski2024",
-        "neuron DART": "m6a_neuron_dart_tegowski2024",
-    },
-}
+CONTEXTS = ["mouse_mrna", "mouse_neurons", "mouse_protein"]
+MAPS = {"hippocampus cyto": "m6a_hippocampus_cyto", "hippocampus syn": "m6a_hippocampus_syn"}
+DRACH = re.compile(r"[AGT][AG]AC[ACT]")
 
-features = {
-    species: utils.read(utils.OUT / "09_transcript_features" / f"{species}_features.tsv.gz").set_index("gene_id")
-    for species in ("mouse", "human")
-}
+features = utils.read(utils.OUT / "09_transcript_features" / "mouse_features.tsv.gz").set_index("gene_id")
 cohort_of = utils.read(utils.PREPARED / "units.tsv", index_col="unit").dataset
-sites = utils.read(utils.RESOURCES / "site_atlas" / "sites.parquet")
-sites = sites[(sites.modification == "m6A") & sites.gene_id.notna() & sites.tx_offset.notna() & sites.ref_ok]
-sites = sites.drop_duplicates(["map", "chrom", "start", "end", "strand"])
+atlas = utils.read(utils.RESOURCES / "site_atlas" / "sites.parquet")
+
+# DRACH share of the m6A maps: mouse, sites with a DRACH motif around the site; human, peaks that contain a DRACH
+genome = pysam.FastaFile(str(utils.RESOURCES / "gencode_human" / "genome.fa"))
+peaks = atlas[atlas["map"] == utils.BRAIN_M6A]
+has_drach = []
+for chrom, start, end, strand in zip(peaks.chrom, peaks.start, peaks.end, peaks.strand, strict=True):
+    text = genome.fetch(chrom, start - 1, end).upper()
+    has_drach.append(bool(DRACH.search(text.translate(str.maketrans("ACGT", "TGCA"))[::-1] if strand == "-" else text)))
+mouse = atlas[atlas["map"].isin(MAPS.values())]
+drach = [
+    dict(map=name, species="Mus musculus", n=len(rows), n_drach=(rows.motif_class == "DRACH").sum(), unit="sites")
+    for name, rows in mouse.groupby("map")
+]
+drach.append(dict(map=utils.BRAIN_M6A, species="Homo sapiens", n=len(peaks), n_drach=sum(has_drach), unit="peaks"))
+drach = pd.DataFrame(drach).assign(drach_fraction=lambda d: d.n_drach / d.n)
+utils.write(drach, OUT / "map_drach.tsv")
+print(drach.round(4).to_string(index=False))
+
+sites = atlas[(atlas.modification == "m6A") & atlas.gene_id.notna() & atlas.tx_offset.notna() & atlas.ref_ok]
+sites = sites[sites["map"].isin(MAPS.values())].drop_duplicates(["map", "chrom", "start", "end", "strand"])
 per_gene = sites.groupby(["map", "gene_id"]).size()
 
-# sites per gene and definition; the human union marks a gene carried by either map, the mouse union is the atlas count
-counts = {}
-for species, maps in MAPS.items():
-    counts[species] = {name: per_gene[key].reindex(features[species].index).fillna(0) for name, key in maps.items()}
-counts["human"]["union"] = ((counts["human"]["brain peaks"] > 0) | (counts["human"]["cell line"] > 0)).astype(int)
-counts["mouse"]["union"] = features["mouse"].n_sites_m6A
-LOAD_DEFINITIONS = {"human": ["brain peaks", "cell line"], "mouse": [*MAPS["mouse"], "union"]}
+# sites per gene and definition; the union is the atlas count of script 09
+counts = {name: per_gene[key].reindex(features.index).fillna(0) for name, key in MAPS.items()}
+counts["union"] = features.n_sites_m6A
 
 families = [(context, layer, units.split()) for context, layer, units in utils.CONTEXTS if context in CONTEXTS]
 jobs = sorted({(unit, layer) for _, layer, units in families for unit in units})
@@ -58,22 +65,20 @@ def unit_tests(unit, layer):
     )
     table = table[(table.unit == unit) & (table.status == "ok")].set_index("gene_id")
     protein, rna, samples, _ = utils.load_unit(unit)
-    species = "mouse" if table.index[0].startswith("ENSMUSG") else "human"
     # signature: mean level of the layer; load: mean protein level, otherwise mean mRNA level (as script 21)
     level = (rna if layer == "mrna_only" else protein).mean(axis=1)
     load_level = (protein if layer == "protein_only" else rna).mean(axis=1)
-    genes = table.join(features[species], how="inner").assign(level=level)
+    genes = table.join(features, how="inner").assign(level=level)
     signature, load = [], []
-    for name, count in counts[species].items():
+    for name, count in counts.items():
         data = genes.assign(count_sites=count.reindex(genes.index).to_numpy())
-        key = dict(unit=unit, layer=layer, species=species, definition=name, n_samples=len(samples))
+        key = dict(unit=unit, layer=layer, species="mouse", definition=name, n_samples=len(samples))
         signature.append(key | dict(n_marked=(data.count_sites > 0).sum()) | matched_test(data))
-        if name in LOAD_DEFINITIONS[species]:
-            data = data.assign(level=load_level.reindex(data.index))
-            data = data.dropna(subset=["estimate", *utils.LOAD_COVARIATES])
-            data = data.assign(load=np.log1p(data.count_sites))
-            fit = model.property_effect(data, "load", utils.LOAD_COVARIATES)
-            load.append(key | dict(n_marked=(data.load > 0).sum()) | fit)
+        data = data.assign(level=load_level.reindex(data.index))
+        data = data.dropna(subset=["estimate", *utils.LOAD_COVARIATES])
+        data = data.assign(load=np.log1p(data.count_sites))
+        fit = model.property_effect(data, "load", utils.LOAD_COVARIATES)
+        load.append(key | dict(n_marked=(data.load > 0).sum()) | fit)
     return signature, load
 
 

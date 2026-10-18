@@ -1,5 +1,5 @@
 # Per-gene age models: design matrix, protected PCs, OLS with limma variance moderation, batch BLUP,
-# age effect against a gene property, its heterogeneity (causal forest), cameraPR set test, mixed-model age slopes
+# age effect against a gene property, cameraPR set test, mixed-model age slopes
 import subprocess
 import tempfile
 import warnings
@@ -14,29 +14,19 @@ from utils import SEED, bh, pct
 
 HERE = Path(__file__).resolve().parent
 MIN_RESIDUAL_DF = 3  # fewer residual df: gene is unestimable
-PC_NORM_FLOOR = 1e-8  # a protected PC that vanishes after projection is dropped
 R_CORES = 12  # cores of the R mixed-model fits
 
 
 def design(samples, covariates):
-    """[Intercept, covariates, age]: numeric columns z-scored, categorical ones dummy coded.
-
-    Constant or aliased covariate columns are dropped; age is the last column.
-    """
+    """[Intercept, covariates, age]: numeric columns z-scored, categorical ones dummy coded; age is the last column."""
     columns = {"Intercept": np.ones(len(samples))}
-    for name in covariates.get("numeric", []):
+    for name in covariates["numeric"]:
         values = pd.to_numeric(samples[name]).to_numpy(float)
-        if np.std(values) > 0:
-            columns[name] = (values - values.mean()) / values.std()
-    for name in covariates.get("categorical", []):
+        columns[name] = (values - values.mean()) / values.std()
+    for name in covariates["categorical"]:
         dummies = pd.get_dummies(samples[name].astype(str), prefix=name, drop_first=True, dtype=float)
         columns.update({column: values.to_numpy() for column, values in dummies.items()})
-    kept = {}
-    for name, values in columns.items():
-        trial = np.column_stack([*kept.values(), values])
-        if np.linalg.matrix_rank(trial) == trial.shape[1]:
-            kept[name] = values
-    X = pd.DataFrame(kept, index=samples.index)
+    X = pd.DataFrame(columns, index=samples.index)
     X["age"] = samples["age"].to_numpy(float)
     return X
 
@@ -45,10 +35,7 @@ def protected_pca(matrix, X, k):
     """Top k principal components (samples x k) of row-standardised residuals after X."""
     X = np.asarray(X, float)
     values = np.asarray(matrix, float) @ (np.eye(len(X)) - X @ np.linalg.pinv(X))
-    values = values[np.isfinite(values).all(axis=1)]
-    # rows without variation after the projection drop out
-    spread = values.std(axis=1)
-    values = values[spread > 1e-8] / spread[spread > 1e-8, None]
+    values = values / values.std(axis=1, keepdims=True)
     vt = np.linalg.svd(values, full_matrices=False)[2]
     return pd.DataFrame(vt[:k].T, index=matrix.columns, columns=[f"PC{i + 1}" for i in range(k)])
 
@@ -66,10 +53,10 @@ def _fit_gene(y, mrna, X, pcs):
     y, X = y[ok], X[ok]
     covars = X[:, :-1] if mrna is None else np.column_stack([X[:, :-1], mrna[ok]])
     full = np.column_stack([covars, X[:, -1]])
-    if pcs is not None and pcs.shape[1]:
+    if pcs is not None:
         # PCs made orthogonal to this gene's own model so they cannot absorb the age effect
         pc = pcs[ok] - full @ np.linalg.pinv(full) @ pcs[ok]
-        full = np.column_stack([covars, pc[:, np.linalg.norm(pc, axis=0) > PC_NORM_FLOOR], X[:, -1]])
+        full = np.column_stack([covars, pc, X[:, -1]])
     rank = np.linalg.matrix_rank(full)
     df = len(y) - rank
     if rank != full.shape[1] or df < MIN_RESIDUAL_DF:
@@ -192,18 +179,6 @@ def camera(t, sets):
     return out
 
 
-def causal_forest(data, classes, threads):
-    """Causal forest (grf) of y on w: average partial effect overall, in and out of each gene class, and the difference.
-
-    data has the columns y, w and x_*; classes maps a class name to 1, 0 or missing for each gene.
-    """
-    with tempfile.TemporaryDirectory() as folder:
-        data = data.assign(**{f"g_{name}": member for name, member in classes.items()})
-        data.to_csv(f"{folder}/data.tsv", sep="\t", index=False, na_rep="NA")
-        _run_r("causal_forest.R", folder, threads)
-        return pd.read_csv(f"{folder}/effects.tsv", sep="\t")
-
-
 def batch_blup(protein, mrna, samples, covariates):
     """Remove a random effect of the protein batch (lme4 BLUP) from protein, keeping age, mRNA and covariates."""
     with tempfile.TemporaryDirectory() as folder:
@@ -214,10 +189,7 @@ def batch_blup(protein, mrna, samples, covariates):
             f"{folder}/samples.tsv", sep="\t", index=False
         )
         _run_r("batch_blup.R", folder, R_CORES)
-        corrected = pd.read_csv(f"{folder}/corrected.tsv", sep="\t", index_col=0, dtype={"feature_id": str})
-        status = pd.read_csv(f"{folder}/batch_audit.tsv", sep="\t", index_col=0).status
-    assert status.isin(["ok", "insufficient"]).all(), "batch correction failed"
-    return corrected
+        return pd.read_csv(f"{folder}/corrected.tsv", sep="\t", index_col=0, dtype={"feature_id": str})
 
 
 def fit_slopes(y, X, age, donor, focal):

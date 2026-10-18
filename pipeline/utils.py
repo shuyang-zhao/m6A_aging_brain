@@ -18,10 +18,19 @@ Q = 0.05  # BH q-value cutoff
 Z95 = 1.96  # rounded normal quantile of the 95% intervals computed here (limma and statsmodels give their own)
 
 MODIFICATIONS = ["m6A", "Psi", "m5C", "m7G"]
-PEAK_WINDOW = 50  # nt from a CLIP binding region to a single-base site of the reader's modification
-# m6A-seq peaks of five human brain regions give the m6A load of a human transcript (load models and coupling model),
-# not sites; the single-base m6A maps give the sites
+PEAK_WINDOW = 50  # nt from a CLIP binding region to a site or peak of the reader's modification
+# m6A maps: mouse, the two GLORI 3.0 hippocampus maps (single-nucleotide sites); human, the m6A-seq peaks of five brain
+# regions (the only human brain map, at peak resolution)
 BRAIN_M6A = "m6a_brain_shafik2026"
+# datasets left out for now (unit-name prefixes): 08 does not write their units, so no later script sees them, and they
+# leave the contexts below; their prepared dataset folders stay. Remove a line to include the dataset again and rerun
+# from script 08 on. Reasons are those of dev/refactor2/datasets.md; dev/refactor2/exclusion_impact.md lists the effects
+EXCLUDED = (
+    "anderton2026_",  # bioRxiv preprint, no journal article
+    "chdi2016_",  # Htt knock-in allelic series, not wild-type mice; the 2- and 10-month proteome is only in a preprint
+    "ramasamy2014_",  # UKBEC: exon microarray, not RNA-seq
+    "gtex_",  # GTEx v10: data release without an article of its own
+)
 SEX = {"M": "male", "F": "female", "MALE": "male", "FEMALE": "female", "Male": "male", "Female": "female"}
 HUMAN_PROTEIN_UNITS = [  # human units with a protein layer and no mRNA layer
     "koopmans2026_dpfc_l1_3",
@@ -46,6 +55,7 @@ HUMAN_PROTEIN_UNITS = [  # human units with a protein layer and no mRNA layer
     "blumenreich2024_middle_temporal_gyrus",
     "blumenreich2024_occipital_cortex",
 ]
+HUMAN_PROTEIN_UNITS = [unit for unit in HUMAN_PROTEIN_UNITS if not unit.startswith(EXCLUDED)]
 # context, layer, units; each context and layer is one family of tests
 # eight units fit no context and belong to none: GTEx amygdala, hypothalamus, spinal cord C1 and substantia nigra,
 # UKBEC medulla, substantia nigra, thalamus and white matter
@@ -90,16 +100,14 @@ CONTEXTS = [
         "keele2025_striatum marino2025_whole_brain",
     ),
     ("mouse_protein", "mrna_adjusted", "chdi2016_expanded takasugi2024"),
-    # sensitivity: the mouse proteomes of cohorts that reach 20 months or more (Langfelder 2016, 2-10 months, left out)
-    (
-        "mouse_protein_aged",
-        "protein_only",
-        "takasugi2024 lu2025_brainstem lu2025_cerebellum lu2025_hippocampus lu2025_olfactory_bulb tsumagari2023_cortex "
-        "tsumagari2023_hippocampus wang2025_brain keele2025_cortex keele2025_hippocampus keele2025_striatum "
-        "marino2025_whole_brain",
-    ),
 ]
-# covariates of the load models (scripts 21, 25 and 28) and of stage 2 of the coupling model: transcript, genomic,
+# excluded units leave every context; a context left without units is dropped (human_cerebellum: GTEx and UKBEC only)
+CONTEXTS = [
+    (context, layer, " ".join(kept))
+    for context, layer, units in CONTEXTS
+    if (kept := [unit for unit in units.split() if not unit.startswith(EXCLUDED)])
+]
+# covariates of the load models (scripts 21 and 28) and of stage 2 of the coupling model: transcript, genomic,
 # intronic and 3' UTR length, mean level in the layer (mRNA in the mRNA-adjusted layer), neuron share, programmes
 LOAD_COVARIATES = [
     "log_tx_len",
@@ -113,8 +121,13 @@ LOAD_COVARIATES = [
     "mitochondrion",
     "synapse",
 ]
-# repeats units of mouse_protein: a unit's context is its first one, and tests pooled over contexts leave it out
-SENSITIVITY = "mouse_protein_aged"
+# external validation set: mouse proteomes scored by the clock (script 52) and tested for the load (script 21), in no
+# context (Oliviero 2022 has fewer than 2,000 genes and is not a unit)
+EXTERNAL = (
+    "keele2023_striatum keele2023_cerebellum keele2023_hippocampus scifo2025_whole_brain yu2020_brain "
+    "huang2024_hippocampus jha2026_cortex mohallem2024_whole_brain marchionini2025_striatum vignane2026_frontal_cortex "
+    "gebru2024_hippocampus gebru2024_amygdala yarbro2025_cortex chen2025_prefrontal_cortex"
+)
 # single-nucleus cohorts: sample filter of the neuron unit, neuron and non-neuronal cell-type labels
 SINGLE_NUCLEUS = {
     "sloan2026_snrna": dict(keep="tissue == 'DLPFC'", neuron="neuron", other="Ast,Oli,Mic,OPC,End,Peri"),
@@ -229,7 +242,6 @@ def read_gtf(path, features):
 
 def lift(chain, chrom, pos, strand):
     """Lift 1-based positions with a pyliftover chain; unmapped or cross-chromosome sites are NaN."""
-    strand = np.broadcast_to(np.asarray(strand, dtype=object), len(pos))
     lifted = []
     for contig, position, sign in zip(chrom, pos, strand, strict=True):
         hit = chain.convert_coordinate(contig, int(position) - 1, sign)
@@ -239,13 +251,12 @@ def lift(chain, chrom, pos, strand):
 
 
 def bh(p):
-    """Benjamini-Hochberg q-values; NaN p-values stay NaN."""
-    values = np.asarray(p, float)
+    """Benjamini-Hochberg q-values of a Series; NaN p-values stay NaN."""
+    values = p.to_numpy(float)
     q = np.full(values.shape, np.nan)
     ok = np.isfinite(values)
-    if ok.any():
-        q[ok] = sps.false_discovery_control(values[ok])
-    return pd.Series(q, index=p.index, name=p.name) if isinstance(p, pd.Series) else q
+    q[ok] = sps.false_discovery_control(values[ok])
+    return pd.Series(q, index=p.index, name=p.name)
 
 
 def pct(log2fc):
@@ -286,22 +297,22 @@ def by_symbol(table):
 
 
 def near_peaks(sites, peaks, window):
-    """Sites (1-based atlas positions) within window nt of a peak on the same chromosome and strand."""
+    """Atlas sites or intervals (start, end; 1-based, closed) within window nt of a peak (BED, 0-based half-open) on the
+    same chromosome and strand."""
     near = pd.Series(False, index=sites.index)
     by_strand = dict(list(peaks.sort_values("start").groupby(["chrom", "strand"])))
     for key, group in sites.groupby(["chrom", "strand"]):
         if key not in by_strand:
             continue
-        peak, base = by_strand[key], group.pos.to_numpy() - 1
+        peak, first, last = by_strand[key], group.start.to_numpy() - 1, group.end.to_numpy() - 1
         reach = np.maximum.accumulate(peak.end.to_numpy() - 1 + window)  # last base within reach of the peaks so far
-        last = np.searchsorted(peak.start.to_numpy() - window, base, side="right") - 1
-        near[group.index] = (last >= 0) & (reach[np.maximum(last, 0)] >= base)
+        at = np.searchsorted(peak.start.to_numpy() - window, last, side="right") - 1
+        near[group.index] = (at >= 0) & (reach[np.maximum(at, 0)] >= first)
     return near
 
 
 def perm_pvalue(obs, null, alternative="two-sided"):
     """Permutation p-value, (1 + null draws at least as extreme) / (1 + draws); two-sided or greater."""
     null = np.asarray(null, float)
-    null = null[np.isfinite(null)]
     extreme = np.abs(null) >= abs(obs) if alternative == "two-sided" else null >= obs
     return (1 + extreme.sum()) / (1 + len(null))

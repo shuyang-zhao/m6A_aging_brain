@@ -38,7 +38,6 @@ CHECKS = {  # name: predictor, covariates added to the primary ones, genes kept;
     "unmarked DRACH as covariate": ("load_m6A", ["drach_unmarked"], None),
     "unmarked DRACH alone": ("drach_unmarked", [], None),
     "unmarked DRACH given load": ("drach_unmarked", ["load_m6A"], None),
-    "GLORI sites": ("glori_sites", [], None),
     "GLORI stoichiometry": ("glori_stoichiometry", [], None),
     "glia-enriched genes": ("load_m6A", [], lambda d: d.ct_frac_neuron < GLIA_SHARE),
     "ubiquitous genes": ("load_m6A", [], lambda d: d.filter(like="ct_frac_").min(axis=1) >= UBIQUITOUS),
@@ -87,9 +86,7 @@ def unit_fits(unit, layer, table):
     level = (protein if layer == "protein_only" else rna).mean(axis=1).rename("level")
     genes = table.set_index("gene_id")[["estimate"]].join(features[species]).join(level)
     key = dict(unit=unit, layer=layer, species=species, n_samples=len(samples))
-    counts = {mod: f"n_sites_{mod}" for mod in utils.MODIFICATIONS}
-    if species == "human":
-        counts["m6A"] = "n_peaks_m6A_brain"
+    counts = {mod: f"n_sites_{mod}" for mod in utils.MODIFICATIONS}  # human m6A: brain peaks (script 09)
     rows, classes, adjusted, ladder, checks = [], [], [], [], []
     for name, (covariates, required) in MODELS.items():
         if name != "without protein lifetime" and layer != "mrna_adjusted":
@@ -120,7 +117,6 @@ def unit_fits(unit, layer, table):
                 ladder.append(key | dict(step=step, rho_tx_len=rho) | fit)
             data = data.assign(drach=np.log1p(data.n_drach), drach_unmarked=np.log1p(data.n_drach_unmarked))
             if species == "mouse":
-                data = data.assign(glori_sites=np.log1p(data.n_sites_m6A_glori))
                 data = data.assign(glori_stoichiometry=np.log1p(data.stoich_m6A_glori))
             X = sm.add_constant(data[COVARIATES].astype(float))
             residual = {c: sm.OLS(data[c].astype(float), X).fit().resid for c in ("load_m6A", "drach_unmarked")}
@@ -144,15 +140,19 @@ jobs = [delayed(unit_fits)(unit, layer, table) for layer in LAYERS for unit, tab
 results = Parallel(n_jobs=WORKERS)(jobs)
 
 
+FAMILIES = [*utils.CONTEXTS, ("mouse_protein_external", "protein_only", utils.EXTERNAL)]
+
+
 def stack(i):
     return pd.DataFrame([row for result in results for row in result[i]]).assign(cohort=lambda d: d.unit.map(cohort_of))
 
 
 def combine(table, by, medians=()):
-    # contexts of utils.CONTEXTS: coefficients of the units of a cohort averaged, cohorts combined by random effects
-    # (the z of a unit does not carry the variation between cohorts), per group of the by columns
+    # contexts of utils.CONTEXTS and the external validation set: coefficients of the units of a cohort averaged,
+    # cohorts combined by random effects (the z of a unit does not carry the variation between cohorts), per group of
+    # the by columns
     rows = []
-    for context, layer, units in utils.CONTEXTS:
+    for context, layer, units in FAMILIES:
         family = table[(table.layer == layer) & table.unit.isin(units.split())]
         for key, group in family.groupby(by, sort=False):
             cohorts = group.groupby("cohort")[["estimate", "se"]].mean()
@@ -179,7 +179,7 @@ utils.write(combined.drop(columns="estimate"), OUT / "combined_load_effects.tsv"
 steps = combine(stack(3), ["step"], medians=["rho_tx_len"])
 steps["retained_pct"] = 100 * steps.estimate / steps.groupby(["context", "layer"]).estimate.transform("first")
 utils.write(steps.drop(columns="estimate"), OUT / "covariate_ladder.tsv")
-# is it m6A? the m6A load against DRACH motifs, hippocampal GLORI sites and gene subsets (CHECKS); partial_r: of load
+# is it m6A? the m6A load against DRACH motifs, GLORI stoichiometry and gene subsets (CHECKS); partial_r: of load
 # and unmarked motifs
 checks = combine(stack(4), ["check", "predictor"], medians=["partial_r"])
 utils.write(checks.drop(columns="estimate"), OUT / "load_checks.tsv")
@@ -195,7 +195,7 @@ def cohort_mean(cohorts, column, i):
 
 
 null_rows, null_draws = [], []
-for context, layer, units in utils.CONTEXTS:
+for context, layer, units in FAMILIES:
     cohorts = draws[(draws.layer == layer) & draws.unit.isin(units.split())].groupby("cohort")
     estimate, se = cohort_mean(cohorts, "observed", 0)[:, 0], cohort_mean(cohorts, "observed", 1)[:, 0]
     observed = utils.random_effects(estimate, se)
@@ -224,26 +224,3 @@ adjusted = pd.concat([table for result in results for table in result[2]]).assig
     effect_pct=lambda d: utils.pct(d.estimate)
 )
 utils.write(adjusted, OUT / "site_class_effects.tsv")
-
-# the Huntington's disease allelic series (chdi2016_expanded) in its wild-type mice alone (genotype leaves the design)
-protein, rna, samples, design = utils.load_unit("chdi2016_expanded")
-samples = samples[samples.genotype == "WT"]
-protein, rna = protein[samples.index], rna[samples.index]
-design["categorical"].remove("genotype")
-pcs = model.protected_pca(rna, model.design(samples, design), design["hidden_factors"])
-fits = {
-    "mrna_adjusted": model.fit_protein_age(protein, rna, samples, design, pcs),
-    "protein_only": model.fit_age(protein, samples, design, pca=pcs),
-}
-rows = []
-for layer, table in fits.items():
-    level = (protein if layer == "protein_only" else rna).mean(axis=1).rename("level")
-    genes = table.query("status == 'ok'")[["estimate"]].join(features["mouse"]).join(level)
-    genes = genes.dropna(subset=["estimate", *COVARIATES])
-    for mod in utils.MODIFICATIONS:
-        data = genes.assign(load=np.log1p(genes[f"n_sites_{mod}"]))
-        fit = model.property_effect(data, "load", COVARIATES)
-        rows.append(dict(layer=layer, modification=mod, n_mice=len(samples)) | fit)
-sensitivity = pd.DataFrame(rows)
-utils.write(sensitivity, OUT / "wildtype_sensitivity.tsv")
-print(sensitivity[["layer", "modification", "n_mice", "effect_pct", "effect_pct_ci_low", "p"]].round(4))

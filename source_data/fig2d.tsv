@@ -1,25 +1,5 @@
-panel	step	n_cohorts	effect	ci_low	ci_high	p	retained_pct
-Human striatum mRNA	none	4	-0.1304	-0.2155	-0.04532	0.002673	100
-Human striatum mRNA	lengths	4	-0.1716	-0.2295	-0.1137	6.501e-09	131.6
-Human striatum mRNA	expression	4	-0.1741	-0.2392	-0.109	1.62e-07	133.5
-Human striatum mRNA	neuron share	4	-0.1702	-0.2386	-0.1017	1.123e-06	130.5
-Human striatum mRNA	programmes	4	-0.1698	-0.237	-0.1026	7.48e-07	130.2
-Human striatum mRNA	other loads	4	-0.1745	-0.235	-0.1139	1.704e-08	133.8
-Human protein	none	9	-0.3979	-0.6747	-0.1204	0.004982	100
-Human protein	lengths	9	-0.2528	-0.4342	-0.07115	0.0064	63.5
-Human protein	expression	9	-0.2746	-0.4285	-0.1205	0.000482	68.97
-Human protein	neuron share	9	-0.2208	-0.3552	-0.08616	0.001313	55.43
-Human protein	programmes	9	-0.2024	-0.3268	-0.07794	0.001444	50.83
-Human protein	other loads	9	-0.1978	-0.3175	-0.07796	0.001222	49.66
-Mouse protein	none	7	-1.985	-2.529	-1.438	1.69e-12	100
-Mouse protein	lengths	7	-2.024	-2.636	-1.409	1.531e-10	102
-Mouse protein	expression	7	-1.973	-2.537	-1.406	1.301e-11	99.38
-Mouse protein	neuron share	7	-1.497	-1.946	-1.046	9.811e-11	75.24
-Mouse protein	programmes	7	-1.487	-1.927	-1.045	5.448e-11	74.73
-Mouse protein	other loads	7	-1.423	-1.829	-1.014	1.136e-11	71.46
-Mouse protein given mRNA	none	2	-1.321	-1.569	-1.073	3.15e-25	100
-Mouse protein given mRNA	lengths	2	-1.304	-1.531	-1.078	3.454e-29	98.74
-Mouse protein given mRNA	expression	2	-0.9795	-1.216	-0.742	8.077e-16	74.02
-Mouse protein given mRNA	neuron share	2	-0.8449	-1.076	-0.613	1.095e-12	63.8
-Mouse protein given mRNA	programmes	2	-0.8079	-1.038	-0.5774	7.325e-12	61
-Mouse protein given mRNA	other loads	2	-0.779	-1.011	-0.5467	5.599e-11	58.81
+target	model	n	rho	rho_ci_low	rho_ci_high	p
+Human protein	Mouse protein model	8301	0.258	0.2373	0.2802	2.588e-126
+Human protein	Shuffled target	8301	-0.0342	-0.05516	-0.01139	0.001832
+Human mRNA	Mouse protein model	9782	0.1858	0.1664	0.2053	9.874e-77
+Human mRNA	Shuffled target	9782	-0.03282	-0.05293	-0.0135	0.001169

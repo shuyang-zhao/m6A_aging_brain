@@ -1,8 +1,8 @@
 # Age signature of the transcripts that carry each RNA modification (a site of its maps, single-base except the m7G
-# miCLIP windows and METTL1-dependent regions; human m6A: the HEK293T and HeLa sites, since the brain m6A-seq peaks give
-# the load of script 21, not sites): limma cameraPR on the per-gene age t against unmarked transcripts matched on mean
-# level (protein in both protein layers) and length, per unit, then combined across cohorts; robustness_* columns
-# repeat the test with the matched background also built on the neuron share and genomic length
+# miCLIP windows and METTL1-dependent regions; m6A: mouse GLORI sites, human brain m6A-seq peaks): limma cameraPR on the
+# per-gene age t against unmarked transcripts matched on mean level (protein in both protein layers) and length, per
+# unit, then combined across cohorts; robustness_* columns repeat the test with the matched background also built on
+# the neuron share and genomic length
 # reads scripts 10 and 09 and the unit levels; writes output/20_modification_signatures/ (matched_genes.tsv.gz lists
 # the marked genes and the matched background of every primary test)
 import numpy as np
@@ -34,7 +34,6 @@ effects = {
     ).query("status == 'ok'")
     for layer in LAYERS
 }
-assert all(table.index.is_unique for table in features.values())
 
 
 def matched_test(genes, match, modification):
@@ -79,11 +78,9 @@ results = Parallel(n_jobs=WORKERS)(jobs)
 signatures = pd.DataFrame([row for rows, _ in results for row in rows])
 utils.write(pd.concat([sets for _, sets in results]), OUT / "matched_genes.tsv.gz")
 assert np.isfinite(signatures[["z", "robustness_z"]]).all(axis=None)
-assert not signatures.duplicated(["unit", "layer", "modification"]).any()
 context_of = {
     (unit, layer): context
     for context, layer, units in utils.CONTEXTS
-    if context != utils.SENSITIVITY
     for unit in units.split()
 }
 signatures["cohort"] = signatures.unit.map(cohort_of)

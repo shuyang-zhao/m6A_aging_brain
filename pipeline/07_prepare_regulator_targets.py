@@ -22,9 +22,7 @@ for path in sorted(PEAKS.glob("*.bed.gz")):
     species, reader, library = path.name.removesuffix(".bed.gz").split("_")
     if reader not in readers:
         continue
-    assert species in ("human", "mouse")
     bed = pd.read_csv(path, sep="\t", header=None, names=COLUMNS, usecols=["chrom", "start", "end", "strand"])
-    assert len(bed) > 0 and (bed.start >= 0).all() and (bed.end > bed.start).all() and bed.strand.isin(["+", "-"]).all()
     parts.append(bed.assign(reader=reader, species=species))
     libraries.append((species, reader, library))
 

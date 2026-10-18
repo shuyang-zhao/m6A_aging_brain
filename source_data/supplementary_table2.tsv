@@ -7,11 +7,8 @@ m5c_ubs_union	m5C	Homo sapiens	single_base	human cell lines (UBS-seq)	2080	1306
 m5c_writer_NSUN2	m5C	Homo sapiens	single_base	HeLa + HEK293T (TAC-seq, NSUN2-dependent)	2097	1370
 m5c_writer_NSUN6	m5C	Homo sapiens	single_base	HeLa + HEK293T (TAC-seq, NSUN6-dependent)	410	321
 m6a_brain_shafik2026	m6A	Homo sapiens	interval	human brain, five regions (m6A-seq, Shafik 2026)	22461	8779
-m6a_cortex_scdart_tegowski2024	m6A	Mus musculus	single_base	mouse cortex, young (scDART-seq single-cell sites, GSE266876)	28412	3397
-m6a_hek293t_hela	m6A	Homo sapiens	single_base	HEK293T + HeLa (GLORI consensus)	74158	7085
 m6a_hippocampus_cyto	m6A	Mus musculus	single_base	mouse hippocampus, cytoplasmic fraction (GLORI 3.0)	91003	9621
 m6a_hippocampus_syn	m6A	Mus musculus	single_base	mouse hippocampus, synaptosome fraction (GLORI 3.0)	85359	9277
-m6a_neuron_dart_tegowski2024	m6A	Mus musculus	single_base	mouse neuronal nuclei (DART-seq, GSE267234)	17755	2751
 m7g_brain_miclip	m7G	Mus musculus	interval	mouse brain (m7G-miCLIP, m7GHub compilation)	7008	3108
 m7g_hela_hepg2	m7G	Homo sapiens	single_base	HeLa + HepG2 (base-resolution m7G)	801	619
 m7g_mesc_miclip	m7G	Mus musculus	interval	mouse ESC (m7G-miCLIP)	3324	1741

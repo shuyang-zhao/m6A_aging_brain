@@ -4,16 +4,17 @@
 // P, q, samples]) and data/landscape/<context>.json (one context, rows of [key, symbol, % change, CI low, CI high, P, q,
 // cohorts, cohorts in the same direction, I2, m6A]; landscape.tsv.gz holds every column), all written by
 // pipeline/62_website.py. The key of a gene is its human gene id, or its mouse id without a one-to-one human ortholog.
+// The Clock page scores uploaded proteomes in the browser (clock.js, data/clock_<species>.json).
 // Text of the page is in English and Chinese: static text in index.html (.i-en, .i-zh), the text written here in TEXT
 const CONFIG = {
-  zenodo: "", // Zenodo record of the full tables (Additional files 3 and 4); the download stays inactive while empty
+  zenodo: "", // Zenodo record of the full tables (Additional files 2 to 5); the download stays inactive while empty
   code: "https://github.com/shuyang-zhao/m6A_aging_brain", // repository of the analysis code
   paper: "", // the article
 };
 const DEFAULT_GENE = "YTHDF3";
-const VIEWS = ["gene", "landscape", "cohorts", "definitions", "sources"];
+const VIEWS = ["gene", "landscape", "clock", "cohorts", "definitions", "sources"];
 const CONTEXTS = ["human_protein_P", "human_protein_A", "human_cortex_R", "human_striatum_R", "human_hippocampus_R",
-  "human_cerebellum_R", "human_neurons_R", "mouse_protein_P", "mouse_protein_A", "mouse_mrna_R", "mouse_neurons_R"];
+  "human_neurons_R", "mouse_protein_P", "mouse_protein_A", "mouse_mrna_R", "mouse_neurons_R"];
 const DEFAULT_CONTEXT = "mouse_protein_P";
 const LAYER_KEYS = ["P", "A", "R", "S"];
 const COLOR = { P: "var(--protein)", A: "var(--adjusted)", R: "var(--bulk)", S: "var(--sn)" };
@@ -70,7 +71,7 @@ const TEXT = {
     foot: ["Article", "Code", "Data"],
     theme: { dark: "Switch to light mode", light: "Switch to dark mode" },
     ctx: { human_protein_P: "Protein", human_protein_A: "mRNA-adjusted protein", human_cortex_R: "Cortex mRNA",
-      human_striatum_R: "Striatum mRNA", human_hippocampus_R: "Hippocampus mRNA", human_cerebellum_R: "Cerebellum mRNA",
+      human_striatum_R: "Striatum mRNA", human_hippocampus_R: "Hippocampus mRNA",
       human_neurons_R: "Neuronal mRNA (single-nucleus)", mouse_protein_P: "Protein", mouse_protein_A: "mRNA-adjusted protein",
       mouse_mrna_R: "Bulk mRNA", mouse_neurons_R: "Neuronal mRNA (single-nucleus)" },
     ovTitle: "Genes with q &lt; 0.05 in each context", down: "down", up: "up",
@@ -86,6 +87,18 @@ const TEXT = {
     sameTitle: "cohorts whose mean has the sign of the combined estimate, of the cohorts measuring the gene",
     tipCombined: "Combined effect", tipSame: "Same direction", tipCohorts: (a, k) => `${a} of ${k} cohorts`,
     contextCols: ["Context", "Cohorts", "Genes"],
+    clock: {
+      samples: "Samples", matched: "Genes matched to the weights", of: (n) => `of ${num(n)}`,
+      rho: (n) => `Spearman ρ, score vs age (n = ${n})`,
+      rows: (byId, rows, duplicates) => `The first column was read as ${byId ? "Ensembl gene ids" : "gene symbols"}: ${num(rows)} rows in the file${
+        duplicates ? `, ${num(duplicates)} repeated gene${duplicates > 1 ? "s" : ""} (first row kept)` : ""}.`,
+      plot: "Clock score against age", axisAge: "Age (as in your file)", axisScore: "Clock score (z)",
+      table: "Scores", cols: ["Sample", "Clock score", "Age", "Proteins quantified"], csv: "Download scores (CSV)",
+      tipScore: "Clock score", tipAge: "Age", tipProteins: "Proteins quantified",
+      fewSamples: (n) => `The file has ${n} sample column${n === 1 ? "" : "s"}; at least 3 are needed to standardise the proteins.`,
+      noMatch: (byId, rows, species) => `None of the ${num(rows)} rows matched the ${species} weights. The first column was read as ${
+        byId ? "Ensembl gene ids" : "gene symbols"}; check that it holds ${species} gene symbols or Ensembl gene ids and that the species above is right.`,
+    },
   },
   zh: {
     site: "脑衰老基因浏览器",
@@ -138,7 +151,7 @@ const TEXT = {
     foot: ["论文", "代码", "数据"],
     theme: { dark: "切换到日间模式", light: "切换到夜间模式" },
     ctx: { human_protein_P: "蛋白", human_protein_A: "mRNA 校正蛋白", human_cortex_R: "皮层 mRNA", human_striatum_R: "纹状体 mRNA",
-      human_hippocampus_R: "海马 mRNA", human_cerebellum_R: "小脑 mRNA", human_neurons_R: "神经元 mRNA（单核）",
+      human_hippocampus_R: "海马 mRNA", human_neurons_R: "神经元 mRNA（单核）",
       mouse_protein_P: "蛋白", mouse_protein_A: "mRNA 校正蛋白", mouse_mrna_R: "组织 mRNA", mouse_neurons_R: "神经元 mRNA（单核）" },
     ovTitle: "各情境中 q &lt; 0.05 的基因数", down: "下降", up: "上升",
     nCohorts: (n) => `${n} 个队列`, nGenes: (n) => `${n} 个基因`,
@@ -153,6 +166,18 @@ const TEXT = {
     sameTitle: "均值符号与合并估计相同的队列数 / 测到该基因的队列数",
     tipCombined: "合并效应", tipSame: "同方向队列", tipCohorts: (a, k) => `${k} 个队列中的 ${a} 个`,
     contextCols: ["情境", "队列", "基因数"],
+    clock: {
+      samples: "样本数", matched: "匹配到权重的基因", of: (n) => `/ ${num(n)}`,
+      rho: (n) => `Spearman ρ，得分与年龄（n = ${n}）`,
+      rows: (byId, rows, duplicates) => `第一列按${byId ? "Ensembl 基因编号" : "基因符号"}读取：文件共 ${num(rows)} 行${
+        duplicates ? `，${num(duplicates)} 个基因重复出现（保留第一行）` : ""}。`,
+      plot: "时钟得分与年龄", axisAge: "年龄（沿用文件中的单位）", axisScore: "时钟得分 (z)",
+      table: "得分", cols: ["样本", "时钟得分", "年龄", "定量蛋白数"], csv: "下载得分 (CSV)",
+      tipScore: "时钟得分", tipAge: "年龄", tipProteins: "定量蛋白数",
+      fewSamples: (n) => `文件只有 ${n} 个样本列；标准化蛋白至少需要 3 个样本。`,
+      noMatch: (byId, rows, species) => `文件的 ${num(rows)} 行中没有一行匹配${species}的权重。第一列按${
+        byId ? "Ensembl 基因编号" : "基因符号"}读取；请确认它是${species}的基因符号或 Ensembl 基因编号，并确认上方所选物种正确。`,
+    },
   },
 };
 
@@ -191,9 +216,10 @@ async function init() {
   initSearch();
   initCohorts();
   initLandscape();
+  initClock();
   $("#lang").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) setLang(b.dataset.v); });
   addEventListener("hashchange", route);
-  addEventListener("resize", () => { clearTimeout(init.timer); init.timer = setTimeout(() => { drawPlots(); drawVolcano(); }, 120); });
+  addEventListener("resize", () => { clearTimeout(init.timer); init.timer = setTimeout(() => { drawPlots(); drawVolcano(); drawClock(); }, 120); });
   setLang(document.documentElement.dataset.lang === "zh" ? "zh" : "en");
   route();
 }
@@ -217,6 +243,7 @@ function setLang(next) {
   renderSources();
   renderContextTable();
   renderLandscape();
+  renderClock();
   if (shown) renderGene();
   document.title = shown && !$("#view-gene").hidden ? `${shown.name} · ${T().site}` : T().site;
 }
@@ -259,6 +286,7 @@ function route() {
     const id = CONTEXTS.includes(arg) ? arg : land.id;
     if (id !== land.id || !land.rows) openContext(id); else drawVolcano();
   }
+  if (v === "clock") drawClock();
   const same = v === route.view;
   route.view = v;
   document.querySelectorAll(".hl").forEach((el) => el.classList.remove("hl"));
@@ -841,3 +869,109 @@ function renderContextTable() {
 }
 
 init();
+
+// ---------- clock ----------
+// the file is parsed and scored in the browser (clock.js); state: the parsed table, the species and the result
+const clockState = { species: "mouse", table: null, name: "", result: null };
+const clockWeights = {};
+
+function initClock() {
+  const drop = $("#c-drop");
+  $("#c-species").addEventListener("click", (e) => {
+    const b = e.target.closest("button");
+    if (!b) return;
+    clockState.species = b.dataset.v;
+    $("#c-species").querySelectorAll("button").forEach((x) => x.classList.toggle("on", x === b));
+    runClock();
+  });
+  const load = async (file) => {
+    if (!file) return;
+    Object.assign(clockState, { table: parseTable(await file.text()), name: file.name });
+    $("#c-name").textContent = file.name;
+    runClock();
+  };
+  $("#c-file").addEventListener("change", (e) => { load(e.target.files[0]); e.target.value = ""; });
+  drop.addEventListener("dragover", (e) => { e.preventDefault(); drop.classList.add("over"); });
+  drop.addEventListener("dragleave", () => drop.classList.remove("over"));
+  drop.addEventListener("drop", (e) => { e.preventDefault(); drop.classList.remove("over"); load(e.dataTransfer.files[0]); });
+}
+
+async function runClock() {
+  const { species, table } = clockState;
+  if (!table) return;
+  clockWeights[species] ??= await getJSON(`data/clock_${species}.json`);
+  const clock = clockWeights[species], rows = table.ids.length, n = table.samples.length;
+  const match = matchWeights(table.ids, clock);
+  clockState.result = { species, rows, n, ...match, total: clock.weight.length, age: table.age };
+  if (n >= 3 && match.matched) Object.assign(clockState.result, clockScores(table.matrix, match.weights));
+  if (clockState.result.scores && table.age) clockState.result.rho = spearman(table.age, clockState.result.scores);
+  renderClock();
+}
+
+function renderClock() {
+  const box = $("#clock-result"), r = clockState.result, tx = T().clock;
+  if (!r) return;
+  const species = lang === "zh" ? T().species[r.species] : r.species;
+  if (r.n < 3) { box.innerHTML = `<div class="card message">${tx.fewSamples(r.n)}</div>`; return; }
+  if (!r.matched) { box.innerHTML = `<div class="card message">${tx.noMatch(r.byId, r.rows, species)}</div>`; return; }
+  const stat = (v, k) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`;
+  const hasAge = r.rho !== undefined;
+  const summary = `<div class="card pad"><div class="stats">${stat(num(r.n), tx.samples)}
+    ${stat(`${num(r.matched)} <span class="of">${tx.of(r.total)}</span>`, tx.matched)}
+    ${hasAge ? stat(minus(r.rho.rho.toFixed(3)), tx.rho(r.rho.n)) : ""}</div>
+    <p class="muted">${tx.rows(r.byId, r.rows, r.duplicates)}</p></div>`;
+  const plot = hasAge ? `<div class="card plot-card"><div class="plot-head"><h3>${tx.plot}</h3></div><div id="clock-plot"></div></div>` : "";
+  const body = clockState.table.samples.map((name, i) => `<tr><td>${esc(name)}</td><td class="num">${minus(r.scores[i].toFixed(3))}</td>${
+    r.age ? `<td class="num">${Number.isNaN(r.age[i]) ? "" : +r.age[i].toPrecision(6)}</td>` : ""}<td class="num">${r.used[i]}</td></tr>`).join("");
+  const cols = tx.cols.filter((_, i) => r.age || i !== 2);
+  box.innerHTML = summary + plot + `<div class="card table-card"><div class="table-head"><h3>${tx.table}</h3>
+    <button id="c-csv" class="button ghost">${tx.csv}</button></div>
+    <div class="scroll"><table class="data"><thead><tr>${cols.map((c, i) => `<th class="${i ? "num" : ""}">${c}</th>`).join("")}</tr></thead>
+    <tbody>${body}</tbody></table></div></div>`;
+  $("#c-csv").addEventListener("click", downloadClock);
+  drawClock();
+}
+
+function linearTicks(lo, hi) {
+  const step = niceStep((hi - lo) / 5), first = Math.ceil(lo / step - 1e-9), last = Math.floor(hi / step + 1e-9);
+  return Array.from({ length: last - first + 1 }, (_, i) => +((first + i) * step).toPrecision(6));
+}
+
+// scatter of the score against age, one point per sample with an age
+function drawClock() {
+  const box = $("#clock-plot"), r = clockState.result;
+  if (!box || !r?.age || !box.clientWidth) return;
+  const tx = T().clock, W = box.clientWidth, H = Math.round(Math.min(420, Math.max(280, W * 0.42))), M = { l: 52, r: 16, t: 12, b: 46 };
+  const pts = r.age.map((a, i) => ({ a, s: r.scores[i], i })).filter((p) => !Number.isNaN(p.a));
+  const range = (v) => { const lo = Math.min(...v), hi = Math.max(...v), pad = (hi - lo || 1) * 0.06; return [lo - pad, hi + pad]; };
+  const [x0, x1] = range(pts.map((p) => p.a)), [y0, y1] = range(pts.map((p) => p.s));
+  const sx = (v) => M.l + ((v - x0) / (x1 - x0)) * (W - M.l - M.r), sy = (v) => M.t + (1 - (v - y0) / (y1 - y0)) * (H - M.t - M.b);
+  const out = [];
+  for (const t of linearTicks(x0, x1)) out.push(`<line class="grid" x1="${sx(t)}" x2="${sx(t)}" y1="${M.t}" y2="${H - M.b}"/>`,
+    `<text class="tick" x="${sx(t)}" y="${H - M.b + 16}" text-anchor="middle">${t}</text>`);
+  for (const t of linearTicks(y0, y1)) out.push(`<line class="${t === 0 ? "zero" : "grid"}" x1="${M.l}" x2="${W - M.r}" y1="${sy(t)}" y2="${sy(t)}"/>`,
+    `<text class="tick" x="${M.l - 8}" y="${sy(t) + 4}" text-anchor="end">${minus(t)}</text>`);
+  out.push(...pts.map((p) => `<circle data-i="${p.i}" cx="${sx(p.a).toFixed(1)}" cy="${sy(p.s).toFixed(1)}" r="4.4" class="pt"/>`),
+    `<text class="axis-title" x="${M.l + (W - M.l - M.r) / 2}" y="${H - 8}" text-anchor="middle">${tx.axisAge}</text>`,
+    `<text class="axis-title" transform="translate(13 ${M.t + (H - M.t - M.b) / 2}) rotate(-90)" text-anchor="middle">${tx.axisScore}</text>`);
+  box.innerHTML = `<svg class="scatter" viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="${esc(tx.plot)}">${out.join("")}</svg>`;
+  bindTips(box, (el) => {
+    const i = +el.dataset.i;
+    return `<b>${esc(clockState.table.samples[i])}</b>
+      <div class="line"><span>${tx.tipScore}</span><b>${minus(r.scores[i].toFixed(3))}</b></div>
+      <div class="line"><span>${tx.tipAge}</span><span>${+r.age[i].toPrecision(6)}</span></div>
+      <div class="line"><span>${tx.tipProteins}</span><span>${r.used[i]}</span></div>`;
+  });
+}
+
+function downloadClock() {
+  const r = clockState.result, cell = (v) => (/[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : v);
+  const head = ["sample", "clock_score", ...(r.age ? ["age"] : []), "proteins_quantified"];
+  const lines = clockState.table.samples.map((name, i) => [name, r.scores[i], ...(r.age ? [Number.isNaN(r.age[i]) ? "" : r.age[i]] : []), r.used[i]].map(cell).join(","));
+  const a = Object.assign(document.createElement("a"), {
+    href: URL.createObjectURL(new Blob([[head.join(","), ...lines].join("\n")], { type: "text/csv" })),
+    download: `${clockState.name.replace(/\.[^.]*$/, "")}_clock_${r.species}.csv`,
+  });
+  a.click();
+  URL.revokeObjectURL(a.href);
+}

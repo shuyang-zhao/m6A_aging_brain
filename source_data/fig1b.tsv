@@ -1,0 +1,40 @@
+set	group	layer	dataset	n_units	donors	age_min	age_max	age_unit
+discovery	Mouse protein	Protein	Takasugi 2024	1	16	6	30	months
+discovery	Mouse RNA	Bulk RNA	Takasugi 2024	1	16	6	30	months
+validation	Human protein	Protein	Luo 2024	1	193	20	90	years
+validation	Human bulk RNA	Bulk RNA	Luo 2024	1	193	20	90	years
+validation	Human bulk RNA	Bulk RNA	Benjamin 2022	1	231	18.05	89.91	years
+validation	Human protein	Protein	Koopmans 2026	2	46	18	75	years
+validation	Human protein	Protein	Eggers 2025	1	34	18	96	years
+discovery	Mouse protein	Protein	Lu 2025	4	27	4	24	months
+discovery	Mouse protein	Protein	Tsumagari 2023	2	18	3	24	months
+discovery	Mouse protein	Protein	Wang 2025	1	40	4	20	months
+discovery	Mouse protein	Protein	Keele 2025	3	18	3	20	months
+discovery	Mouse protein	Protein	Marino 2025	1	10	3.5	33	months
+external	Mouse protein	Protein	Keele 2023	3	20	8	18	months
+external	Mouse protein	Protein	Scifo 2025	1	45	3	26	months
+external	Mouse protein	Protein	Yu 2020	1	10	3.68	18.4	months
+external	Mouse protein	Protein	Huang 2024	1	10	3	20	months
+external	Mouse protein	Protein	Jha 2026	1	9	3.5	24	months
+external	Mouse protein	Protein	Mohallem 2024	1	13	3.5	20	months
+external	Mouse protein	Protein	Marchionini 2025	1	40	2	12	months
+external	Mouse protein	Protein	Vignane 2026	1	12	2.3	18	months
+external	Mouse protein	Protein	Gebru 2024	2	22	3	18	months
+external	Mouse protein	Protein	Yarbro 2025	1	39	3	18	months
+external	Mouse protein	Protein	Chen 2025	1	188	6	14	months
+validation	Human bulk RNA	Bulk RNA	Collado-Torres 2019	2	238	18.04	84.16	years
+validation	Human bulk RNA	Bulk RNA	Markunas 2020	1	170	17.37	71.77	years
+validation	Human single-nucleus RNA	Single-nucleus RNA	Sloan 2026	1	36	27	89	years
+validation	Human single-nucleus RNA	Single-nucleus RNA	Zemke 2026	1	37	20	95	years
+validation	Human single-nucleus RNA	Single-nucleus RNA	Handsaker 2025	1	53	27	90	years
+validation	Human single-nucleus RNA	Single-nucleus RNA	Mätlik 2024	1	8	39	67	years
+discovery	Mouse RNA	Single-nucleus RNA	Hahn 2023 nuclei	2	8	3	21	months
+validation	Human single-nucleus RNA	Single-nucleus RNA	Green 2025	1	81	24	82	years
+validation	Human single-nucleus RNA	Single-nucleus RNA	Mesecar 2026	1	12	21.5	85.2	years
+validation	Human protein	Protein	Lee 2023	1	74	66	104	years
+validation	Human protein	Protein	Ping 2020	1	10	45	78	years
+validation	Human protein	Protein	Teng 2023	6	16	32	69	years
+validation	Human protein	Protein	Merrihew 2023	4	10	73	95	years
+validation	Human protein	Protein	Blumenreich 2024	5	21	43	95	years
+discovery	Mouse RNA	Bulk RNA	Hahn 2023 bulk	15	51	3	21	months
+discovery	Mouse RNA	Bulk RNA	Shavlakadze 2026	4	104	6	27	months

@@ -13,6 +13,7 @@
 /ref/**
 !/ref/**/
 !/ref/gene_sets/**
+!/ref/datasets.tsv
 !/ref/**/*.py
 !/ref/**/*.R
 !/ref/**/*.sh

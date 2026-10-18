@@ -1,0 +1,12 @@
+panel	label	effect	ci_low	ci_high	q
+Mouse protein	Keele 2025	-6.752	-11.82	-1.398	
+Mouse protein	Lu 2025	-12.48	-29.22	8.22	
+Mouse protein	Marino 2025	-9.826	-16.96	-2.084	
+Mouse protein	Takasugi 2024	6.8	-22.25	46.7	
+Mouse protein	Tsumagari 2023	-10.08	-16.95	-2.649	
+Mouse protein	Wang 2025	-0.7736	-15.88	17.05	
+Human mRNA	cortex	-2.387	-3.665	-1.093	0.003759
+Human mRNA	hippocampus	-3.046	-4.335	-1.738	0.0001438
+Human mRNA	neurons	-2.485	-3.773	-1.179	0.002829
+Human mRNA	striatum	-1.997	-2.833	-1.155	8.992e-05
+Mouse protein	Combined	-7.883	-11.31	-4.323	0.000845

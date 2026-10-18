@@ -1,21 +1,4 @@
-context	layer	definition	effect_pct	ci_low_pct	ci_high_pct
-mouse_mrna	mrna_only	hippocampus cyto	-0.538	-1.656	0.5931
-mouse_mrna	mrna_only	hippocampus syn	-0.2819	-1.246	0.6915
-mouse_mrna	mrna_only	cortex scDART	0.5664	-0.1475	1.285
-mouse_mrna	mrna_only	neuron DART	0.09297	-0.963	1.16
-mouse_mrna	mrna_only	union	-0.3049	-1.608	1.016
-mouse_neurons	mrna_only	hippocampus cyto	-0.1711	-0.5426	0.2017
-mouse_neurons	mrna_only	hippocampus syn	0.08304	-0.2797	0.4471
-mouse_neurons	mrna_only	cortex scDART	0.3687	-0.07595	0.8153
-mouse_neurons	mrna_only	neuron DART	0.7929	0.01746	1.574
-mouse_neurons	mrna_only	union	0.1373	-0.254	0.53
-mouse_protein	protein_only	hippocampus cyto	-1.476	-1.853	-1.098
-mouse_protein	protein_only	hippocampus syn	-1.372	-1.764	-0.9786
-mouse_protein	protein_only	cortex scDART	-0.5287	-0.8092	-0.2474
-mouse_protein	protein_only	neuron DART	-0.6414	-1.08	-0.2009
-mouse_protein	protein_only	union	-1.487	-1.927	-1.045
-mouse_protein	mrna_adjusted	hippocampus cyto	-0.9202	-1.133	-0.7068
-mouse_protein	mrna_adjusted	hippocampus syn	-0.8188	-1.03	-0.6072
-mouse_protein	mrna_adjusted	cortex scDART	0.04155	-0.2983	0.3825
-mouse_protein	mrna_adjusted	neuron DART	0.005667	-0.4492	0.4626
-mouse_protein	mrna_adjusted	union	-0.8079	-1.038	-0.5774
+map	feature	sites	drach	placed	sites_per_gene
+hippocampus cyto	sites	91003	0.8728	0.9375	8.868
+hippocampus syn	sites	85359	0.873	0.939	8.64
+human brain peaks	peaks	22461	0.998	0.6844	1.751

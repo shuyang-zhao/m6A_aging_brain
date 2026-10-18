@@ -1,6 +1,6 @@
 # Coupling core of the m6A regulator network, shared by scripts 33 (bulk units), 37, 38 and single_nucleus.py: s and u
 # links of the regulators from binding and m6A maps, stage 1 (per-gene limma-moderated fits of age + one regulator),
-# stage 2 (moderated t regressed over genes on s, u, m6A load and covariates), the permutation and bootstrap schemes,
+# stage 2 (moderated t regressed over genes on s, u, m6A load and covariates), the permutation scheme,
 # BH q-values and the control-RBP comparison.
 # reads the CLIP peaks, site atlas and gene annotation (scripts 04, 06, 07, 09), data/raw/encode2020_eclip_idr and the
 # reader binding lists of ref/target_sets; writes nothing (imported)
@@ -36,7 +36,7 @@ MODULES = {
 }
 ARMS = {"protein_only": "Output", "mrna_adjusted": "Translation", "rna_only": "Stability"}
 MIN_BOUND_GENES = 500  # peak sets binding fewer genes rank last
-LOAD = {"mouse": "n_sites_m6A", "human": "n_peaks_m6A_brain"}
+LOAD = {"mouse": "n_sites_m6A", "human": "n_sites_m6A"}  # human: brain peaks (script 09)
 Item = namedtuple("Item", "name source primary s u members family")
 
 features = {
@@ -78,13 +78,9 @@ UNIQUE = ["species", "modification", "chrom", "start", "end", "strand"]
 
 
 def site_map(species):
-    """Sites and m6A load of every gene: all mouse maps, or the brain map of human with its peak count (script 09) as
-    the load."""
+    """Sites and m6A load of every gene: the two mouse GLORI maps, or the brain peaks of human (script 09 counts)."""
     sites = atlas.drop_duplicates(UNIQUE)
-    if species == "mouse":
-        sites = sites[sites.species == "Mus musculus"]
-    else:
-        sites = sites[(sites.species == "Homo sapiens") & (sites["map"] == utils.BRAIN_M6A)]
+    sites = sites[sites.species == {"mouse": "Mus musculus", "human": "Homo sapiens"}[species]]
     load = features[species][LOAD[species]].astype(float)
     return dict(sites=sites[SITE_COLUMNS].reset_index(drop=True), load=load)
 
@@ -375,12 +371,6 @@ def run_edges(data, stage1, perm, items, fits):
             row |= dict(b_s=np.nan, se_s=np.nan, p_s=np.nan)
         rows.append(row)
     return pd.DataFrame(rows)
-
-
-def resamples(strata, n, rng):
-    """Row indices of n bootstrap samples of individuals, drawn within strata."""
-    groups = [np.flatnonzero(strata == s) for s in np.unique(strata)]
-    return [np.concatenate([rng.choice(g, len(g)) for g in groups]) for _ in range(n)]
 
 
 def permutations(strata, rng):

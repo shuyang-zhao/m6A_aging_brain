@@ -1,0 +1,11 @@
+species	layer	regulator	estimate	pctile_signed
+human	protein	YTHDF	-0.0182	62.12
+human	protein	YTHDF3	-0.01881	69.01
+human	mRNA-adjusted protein	YTHDF	0.8049	93.26
+human	mRNA-adjusted protein	YTHDF3	0.8837	97.75
+mouse	protein	YTHDF	0.08379	93.98
+mouse	protein	YTHDF3	0.1042	96.39
+mouse	mRNA-adjusted protein	YTHDF	-0.03612	17.44
+mouse	mRNA-adjusted protein	YTHDF3	-0.02634	26.74
+human	mRNA	YTHDF	-0.2396	35.56
+human	mRNA	YTHDF3	-0.4964	6.667

@@ -1,0 +1,375 @@
+regulator	unit	species	posterior_mean	lfsr
+YTHDF1	Takasugi 2024	mouse	-0.002614	0.5149
+YTHDF2	Takasugi 2024	mouse	-0.001343	0.7834
+YTHDF3	Takasugi 2024	mouse	-0.0464	0.0007714
+YTHDC1	Takasugi 2024	mouse	0.01202	0.01144
+FMR1	Takasugi 2024	mouse	0.0621	4.448e-10
+FXR1	Takasugi 2024	mouse	0.0134	0.4164
+FXR2	Takasugi 2024	mouse	0.0006288	0.4602
+HNRNPC	Takasugi 2024	mouse	0.01505	0.01676
+RBMX	Takasugi 2024	mouse	0.02792	7.28e-05
+PRRC2A	Takasugi 2024	mouse	0.002025	0.8865
+FMRP family	Takasugi 2024	mouse	0.01545	0.004484
+YTHDF module	Takasugi 2024	mouse	-0.01771	0.113
+Writer complex	Takasugi 2024	mouse	-0.0014	0.463
+Erasers	Takasugi 2024	mouse	-0.03357	0.005493
+YTHDF1	Luo 2024	human	0.002473	0.7961
+YTHDF2	Luo 2024	human	-0.006851	0.6454
+YTHDF3	Luo 2024	human	0.05045	0.001011
+YTHDC1	Luo 2024	human	-0.001375	0.6338
+FMR1	Luo 2024	human	0.03741	0.01618
+FXR1	Luo 2024	human	0.0009434	0.9296
+FXR2	Luo 2024	human	0.03512	0.005416
+HNRNPC	Luo 2024	human	-0.02321	0.1607
+RBMX	Luo 2024	human	-0.01137	0.2774
+PRRC2A	Luo 2024	human	0.0003877	0.9885
+FMRP family	Luo 2024	human	0.02819	0.001923
+YTHDF module	Luo 2024	human	0.04624	0.001274
+Writer complex	Luo 2024	human	-0.1497	4.384e-08
+Erasers	Luo 2024	human	-0.09733	1.875e-05
+YTHDF1	Koopmans 2026 DPFC L1-3	human	4.974e-05	0.8134
+YTHDF2	Koopmans 2026 DPFC L1-3	human	-0.004665	0.7187
+YTHDF3	Koopmans 2026 DPFC L1-3	human	0.00999	0.2351
+FMR1	Koopmans 2026 DPFC L1-3	human	-0.07176	3.556e-05
+FXR1	Koopmans 2026 DPFC L1-3	human	-0.001808	0.9151
+FXR2	Koopmans 2026 DPFC L1-3	human	0.00407	0.03859
+HNRNPC	Koopmans 2026 DPFC L1-3	human	-0.001159	0.4792
+RBMX	Koopmans 2026 DPFC L1-3	human	0.03067	0.02406
+PRRC2A	Koopmans 2026 DPFC L1-3	human	-0.0001892	0.9889
+FMRP family	Koopmans 2026 DPFC L1-3	human	0.006648	0.000733
+YTHDF module	Koopmans 2026 DPFC L1-3	human	-0.0086	0.269
+YTHDF1	Koopmans 2026 DPFC L4-6	human	-0.0002972	0.8232
+YTHDF2	Koopmans 2026 DPFC L4-6	human	-0.004232	0.7214
+YTHDF3	Koopmans 2026 DPFC L4-6	human	-0.01676	0.1426
+FMR1	Koopmans 2026 DPFC L4-6	human	-0.0761	1.558e-05
+FXR1	Koopmans 2026 DPFC L4-6	human	-0.002127	0.9106
+FXR2	Koopmans 2026 DPFC L4-6	human	0.005617	0.0291
+HNRNPC	Koopmans 2026 DPFC L4-6	human	0.008978	0.2893
+RBMX	Koopmans 2026 DPFC L4-6	human	0.01643	0.1375
+PRRC2A	Koopmans 2026 DPFC L4-6	human	-0.0001388	0.9896
+FMRP family	Koopmans 2026 DPFC L4-6	human	0.007912	0.0005006
+YTHDF module	Koopmans 2026 DPFC L4-6	human	-0.0212	0.1409
+YTHDF2	Eggers 2025 substantia nigra	human	0.01128	0.6568
+YTHDF3	Eggers 2025 substantia nigra	human	0.01238	0.2091
+FMR1	Eggers 2025 substantia nigra	human	-0.0865	7.085e-06
+FXR1	Eggers 2025 substantia nigra	human	0.002777	0.9061
+FXR2	Eggers 2025 substantia nigra	human	0.01018	0.007875
+HNRNPC	Eggers 2025 substantia nigra	human	0.04058	0.00153
+RBMX	Eggers 2025 substantia nigra	human	0.05524	1.92e-05
+PRRC2A	Eggers 2025 substantia nigra	human	-5.492e-06	0.9931
+FMRP family	Eggers 2025 substantia nigra	human	0.01108	0.0002495
+YTHDF module	Eggers 2025 substantia nigra	human	0.01814	0.1718
+YTHDF1	Lu 2025 brainstem	mouse	-0.008918	0.4228
+YTHDF2	Lu 2025 brainstem	mouse	0.001276	0.7891
+YTHDF3	Lu 2025 brainstem	mouse	0.00721	0.3588
+YTHDC1	Lu 2025 brainstem	mouse	0.1216	0.00351
+FMR1	Lu 2025 brainstem	mouse	-0.04904	0.142
+FXR1	Lu 2025 brainstem	mouse	0.1113	0.02226
+FXR2	Lu 2025 brainstem	mouse	0.1191	0.02301
+HNRNPC	Lu 2025 brainstem	mouse	0.2347	8.841e-07
+RBMX	Lu 2025 brainstem	mouse	0.2136	0.001533
+PRRC2A	Lu 2025 brainstem	mouse	0.005763	0.8785
+FMRP family	Lu 2025 brainstem	mouse	0.2954	1.571e-10
+YTHDF module	Lu 2025 brainstem	mouse	0.02912	0.1859
+Writer complex	Lu 2025 brainstem	mouse	-0.2907	0.00101
+Erasers	Lu 2025 brainstem	mouse	-0.001211	0.4918
+YTHDF1	Lu 2025 cerebellum	mouse	0.00889	0.3852
+YTHDF2	Lu 2025 cerebellum	mouse	-0.001705	0.7799
+YTHDF3	Lu 2025 cerebellum	mouse	0.01177	0.159
+YTHDC1	Lu 2025 cerebellum	mouse	0.1391	0.000164
+FMR1	Lu 2025 cerebellum	mouse	0.1448	3.119e-07
+FXR1	Lu 2025 cerebellum	mouse	0.05478	0.06126
+FXR2	Lu 2025 cerebellum	mouse	0.1405	0.006258
+HNRNPC	Lu 2025 cerebellum	mouse	0.2743	1.413e-14
+RBMX	Lu 2025 cerebellum	mouse	0.2729	4.793e-09
+PRRC2A	Lu 2025 cerebellum	mouse	0.002737	0.9035
+FMRP family	Lu 2025 cerebellum	mouse	0.229	2.138e-10
+YTHDF module	Lu 2025 cerebellum	mouse	6.646e-05	0.4889
+Writer complex	Lu 2025 cerebellum	mouse	0.168	0.000634
+Erasers	Lu 2025 cerebellum	mouse	0.04093	0.1679
+YTHDF1	Lu 2025 hippocampus	mouse	0.01695	0.3272
+YTHDF2	Lu 2025 hippocampus	mouse	-0.0009562	0.795
+YTHDF3	Lu 2025 hippocampus	mouse	0.02794	0.05443
+YTHDC1	Lu 2025 hippocampus	mouse	0.136	0.0001529
+FMR1	Lu 2025 hippocampus	mouse	0.01624	0.2786
+FXR1	Lu 2025 hippocampus	mouse	0.1145	0.001579
+FXR2	Lu 2025 hippocampus	mouse	0.1554	0.005993
+HNRNPC	Lu 2025 hippocampus	mouse	0.2541	4.625e-14
+RBMX	Lu 2025 hippocampus	mouse	0.2648	1.562e-09
+PRRC2A	Lu 2025 hippocampus	mouse	0.002157	0.8962
+FMRP family	Lu 2025 hippocampus	mouse	0.2659	5.968e-12
+YTHDF module	Lu 2025 hippocampus	mouse	0.01842	0.2036
+Writer complex	Lu 2025 hippocampus	mouse	0.03948	0.2612
+Erasers	Lu 2025 hippocampus	mouse	0.07499	0.058
+YTHDF1	Lu 2025 olfactory bulb	mouse	-0.005416	0.5022
+YTHDF2	Lu 2025 olfactory bulb	mouse	-0.001406	0.7825
+YTHDF3	Lu 2025 olfactory bulb	mouse	0.01085	0.1639
+YTHDC1	Lu 2025 olfactory bulb	mouse	0.1284	8.627e-05
+FMR1	Lu 2025 olfactory bulb	mouse	0.1728	6.877e-09
+FXR1	Lu 2025 olfactory bulb	mouse	0.04006	0.06035
+FXR2	Lu 2025 olfactory bulb	mouse	0.112	0.00783
+HNRNPC	Lu 2025 olfactory bulb	mouse	0.2694	2.517e-17
+RBMX	Lu 2025 olfactory bulb	mouse	0.2434	2.124e-08
+PRRC2A	Lu 2025 olfactory bulb	mouse	0.0009018	0.9147
+FMRP family	Lu 2025 olfactory bulb	mouse	0.2129	6.066e-11
+YTHDF module	Lu 2025 olfactory bulb	mouse	-0.005568	0.4108
+Writer complex	Lu 2025 olfactory bulb	mouse	0.09049	0.02951
+Erasers	Lu 2025 olfactory bulb	mouse	-0.009763	0.4018
+YTHDF1	Tsumagari 2023 cortex	mouse	-0.01493	0.3412
+YTHDF2	Tsumagari 2023 cortex	mouse	-7.657e-05	0.8086
+YTHDF3	Tsumagari 2023 cortex	mouse	-0.002834	0.4206
+YTHDC1	Tsumagari 2023 cortex	mouse	0.01449	0.003156
+FMR1	Tsumagari 2023 cortex	mouse	0.05344	2.488e-07
+FXR1	Tsumagari 2023 cortex	mouse	0.01283	0.381
+FXR2	Tsumagari 2023 cortex	mouse	0.007741	0.1704
+HNRNPC	Tsumagari 2023 cortex	mouse	0.02428	0.0001174
+RBMX	Tsumagari 2023 cortex	mouse	0.03597	1.046e-06
+PRRC2A	Tsumagari 2023 cortex	mouse	0.002173	0.8749
+FMRP family	Tsumagari 2023 cortex	mouse	0.01997	0.00125
+YTHDF module	Tsumagari 2023 cortex	mouse	-0.00612	0.2929
+Writer complex	Tsumagari 2023 cortex	mouse	0.02176	0.0447
+Erasers	Tsumagari 2023 cortex	mouse	-0.02361	0.01635
+YTHDF1	Tsumagari 2023 hippocampus	mouse	-0.007584	0.4209
+YTHDF2	Tsumagari 2023 hippocampus	mouse	0.0162	0.5665
+YTHDF3	Tsumagari 2023 hippocampus	mouse	0.01316	0.1421
+YTHDC1	Tsumagari 2023 hippocampus	mouse	0.03396	0.03453
+FMR1	Tsumagari 2023 hippocampus	mouse	0.09944	3.042e-06
+FXR1	Tsumagari 2023 hippocampus	mouse	0.03602	0.008157
+FXR2	Tsumagari 2023 hippocampus	mouse	0.005168	0.3701
+HNRNPC	Tsumagari 2023 hippocampus	mouse	0.03688	0.01132
+RBMX	Tsumagari 2023 hippocampus	mouse	0.08695	0.001187
+PRRC2A	Tsumagari 2023 hippocampus	mouse	0.1834	0.0001393
+FMRP family	Tsumagari 2023 hippocampus	mouse	0.09134	1.483e-09
+YTHDF module	Tsumagari 2023 hippocampus	mouse	0.01788	0.1123
+Writer complex	Tsumagari 2023 hippocampus	mouse	-0.1751	7.83e-05
+Erasers	Tsumagari 2023 hippocampus	mouse	-0.1227	0.0005906
+YTHDF1	Wang 2025 brain	mouse	0.01979	0.3162
+YTHDF2	Wang 2025 brain	mouse	-0.00304	0.7473
+YTHDF3	Wang 2025 brain	mouse	-0.01506	0.1038
+YTHDC1	Wang 2025 brain	mouse	0.06162	0.00163
+FMR1	Wang 2025 brain	mouse	0.2161	3.146e-13
+FXR1	Wang 2025 brain	mouse	-0.007065	0.3665
+FXR2	Wang 2025 brain	mouse	0.01529	0.2715
+HNRNPC	Wang 2025 brain	mouse	0.1165	2.402e-08
+RBMX	Wang 2025 brain	mouse	0.1405	1.644e-08
+PRRC2A	Wang 2025 brain	mouse	0.009364	0.8728
+FMRP family	Wang 2025 brain	mouse	0.1147	5.541e-06
+YTHDF module	Wang 2025 brain	mouse	-0.0169	0.1345
+Writer complex	Wang 2025 brain	mouse	-0.09402	0.04974
+Erasers	Wang 2025 brain	mouse	-0.1597	0.0009701
+YTHDF1	Keele 2025 cortex	mouse	-0.009111	0.332
+YTHDF2	Keele 2025 cortex	mouse	-0.008191	0.6663
+YTHDF3	Keele 2025 cortex	mouse	-0.008314	0.2371
+YTHDC1	Keele 2025 cortex	mouse	0.0236	0.001326
+FMR1	Keele 2025 cortex	mouse	0.02375	0.001746
+FXR1	Keele 2025 cortex	mouse	0.05047	6.148e-05
+FXR2	Keele 2025 cortex	mouse	0.02514	0.007249
+HNRNPC	Keele 2025 cortex	mouse	0.03216	0.0002945
+RBMX	Keele 2025 cortex	mouse	0.05467	2.881e-09
+PRRC2A	Keele 2025 cortex	mouse	0.001703	0.8864
+FMRP family	Keele 2025 cortex	mouse	0.04494	1.102e-13
+YTHDF module	Keele 2025 cortex	mouse	0.01134	0.1748
+Writer complex	Keele 2025 cortex	mouse	0.01311	0.1284
+Erasers	Keele 2025 cortex	mouse	-0.001261	0.4326
+YTHDF1	Keele 2025 hippocampus	mouse	-0.006679	0.3717
+YTHDF2	Keele 2025 hippocampus	mouse	0.00152	0.7855
+YTHDF3	Keele 2025 hippocampus	mouse	-0.01439	0.1487
+YTHDC1	Keele 2025 hippocampus	mouse	0.007673	0.1656
+FMR1	Keele 2025 hippocampus	mouse	0.05421	2.047e-05
+FXR1	Keele 2025 hippocampus	mouse	4.37e-05	0.4918
+FXR2	Keele 2025 hippocampus	mouse	-0.002633	0.4128
+HNRNPC	Keele 2025 hippocampus	mouse	0.005298	0.3008
+RBMX	Keele 2025 hippocampus	mouse	0.03616	0.000465
+PRRC2A	Keele 2025 hippocampus	mouse	0.004108	0.8747
+FMRP family	Keele 2025 hippocampus	mouse	0.02249	0.000486
+YTHDF module	Keele 2025 hippocampus	mouse	-0.002957	0.455
+Writer complex	Keele 2025 hippocampus	mouse	-0.03357	0.03359
+Erasers	Keele 2025 hippocampus	mouse	-0.06128	0.0001118
+YTHDF1	Keele 2025 striatum	mouse	0.004746	0.4583
+YTHDF2	Keele 2025 striatum	mouse	-0.004911	0.7154
+YTHDF3	Keele 2025 striatum	mouse	0.007346	0.239
+YTHDC1	Keele 2025 striatum	mouse	0.01964	0.0002334
+FMR1	Keele 2025 striatum	mouse	0.00371	0.1916
+FXR1	Keele 2025 striatum	mouse	0.01613	0.1016
+FXR2	Keele 2025 striatum	mouse	0.02339	0.006099
+HNRNPC	Keele 2025 striatum	mouse	0.03697	5.01e-13
+RBMX	Keele 2025 striatum	mouse	0.03836	1.016e-08
+PRRC2A	Keele 2025 striatum	mouse	0.0002964	0.9276
+FMRP family	Keele 2025 striatum	mouse	0.03587	1.682e-10
+YTHDF module	Keele 2025 striatum	mouse	-0.01146	0.3219
+Writer complex	Keele 2025 striatum	mouse	0.019	0.01621
+Erasers	Keele 2025 striatum	mouse	0.01498	0.01809
+YTHDF1	Marino 2025 whole brain	mouse	-0.0006419	0.6345
+YTHDF2	Marino 2025 whole brain	mouse	-0.003151	0.7545
+YTHDF3	Marino 2025 whole brain	mouse	-0.002299	0.4092
+YTHDC1	Marino 2025 whole brain	mouse	0.003608	0.2165
+FMR1	Marino 2025 whole brain	mouse	0.04309	4.285e-07
+FXR1	Marino 2025 whole brain	mouse	-0.01189	0.1303
+FXR2	Marino 2025 whole brain	mouse	-0.007501	0.1518
+HNRNPC	Marino 2025 whole brain	mouse	0.005288	0.2045
+RBMX	Marino 2025 whole brain	mouse	0.01767	0.007072
+PRRC2A	Marino 2025 whole brain	mouse	0.003436	0.8749
+FMRP family	Marino 2025 whole brain	mouse	0.01221	0.00969
+YTHDF module	Marino 2025 whole brain	mouse	-0.009899	0.291
+Writer complex	Marino 2025 whole brain	mouse	-0.03894	0.004769
+Erasers	Marino 2025 whole brain	mouse	-0.05056	0.0001312
+FXR2	Lee 2023 hippocampus CA1	human	0.001213	0.02915
+HNRNPC	Lee 2023 hippocampus CA1	human	0.002084	0.4357
+RBMX	Lee 2023 hippocampus CA1	human	0.05779	0.0001401
+FMRP family	Lee 2023 hippocampus CA1	human	0.00123	0.001037
+YTHDF1	Ping 2020 DLPFC	human	0.0005754	0.813
+YTHDF2	Ping 2020 DLPFC	human	0.004917	0.7083
+YTHDF3	Ping 2020 DLPFC	human	-0.006118	0.2428
+YTHDC1	Ping 2020 DLPFC	human	0.01615	0.4299
+FMR1	Ping 2020 DLPFC	human	-0.007898	0.1924
+FXR1	Ping 2020 DLPFC	human	0.001334	0.9213
+FXR2	Ping 2020 DLPFC	human	0.0133	0.01328
+HNRNPC	Ping 2020 DLPFC	human	-0.01544	0.1127
+RBMX	Ping 2020 DLPFC	human	0.01657	0.04387
+PRRC2A	Ping 2020 DLPFC	human	-0.0001411	0.9894
+FMRP family	Ping 2020 DLPFC	human	0.01123	0.0004799
+YTHDF module	Ping 2020 DLPFC	human	0.01307	0.1227
+Writer complex	Ping 2020 DLPFC	human	-0.05764	0.0003045
+Erasers	Ping 2020 DLPFC	human	-0.006879	0.2568
+FMR1	Teng 2023 amygdala	human	-0.0008678	0.3811
+FXR1	Teng 2023 amygdala	human	0.0007917	0.9281
+FXR2	Teng 2023 amygdala	human	-0.002553	0.09735
+HNRNPC	Teng 2023 amygdala	human	7.229e-05	0.4889
+RBMX	Teng 2023 amygdala	human	-0.000159	0.4946
+FMRP family	Teng 2023 amygdala	human	-0.002303	0.00546
+Erasers	Teng 2023 amygdala	human	0.009046	2.502e-05
+YTHDF1	Teng 2023 hippocampus	human	-0.0001601	0.8187
+YTHDF3	Teng 2023 hippocampus	human	0.02634	0.02538
+FMR1	Teng 2023 hippocampus	human	-0.03836	0.0002105
+FXR1	Teng 2023 hippocampus	human	-0.0002916	0.9438
+FXR2	Teng 2023 hippocampus	human	0.003863	0.01583
+HNRNPC	Teng 2023 hippocampus	human	-0.01676	0.1386
+RBMX	Teng 2023 hippocampus	human	0.01483	0.1487
+FMRP family	Teng 2023 hippocampus	human	0.003541	0.0008638
+YTHDF module	Teng 2023 hippocampus	human	0.01252	0.1348
+Erasers	Teng 2023 hippocampus	human	0.02602	0.01554
+YTHDF1	Teng 2023 hypothalamus	human	-0.000371	0.8002
+YTHDF3	Teng 2023 hypothalamus	human	-0.002577	0.4404
+FMR1	Teng 2023 hypothalamus	human	-0.02063	8.877e-05
+FXR1	Teng 2023 hypothalamus	human	0.002218	0.9128
+FXR2	Teng 2023 hypothalamus	human	-0.001313	0.1827
+HNRNPC	Teng 2023 hypothalamus	human	-0.01243	0.2007
+RBMX	Teng 2023 hypothalamus	human	0.02995	0.02132
+PRRC2A	Teng 2023 hypothalamus	human	-0.0001271	0.9875
+FMRP family	Teng 2023 hypothalamus	human	-0.001136	0.1863
+YTHDF module	Teng 2023 hypothalamus	human	-0.0004753	0.4159
+Erasers	Teng 2023 hypothalamus	human	0.02469	6.219e-05
+YTHDF1	Teng 2023 nucleus accumbens	human	0.0003592	0.8115
+YTHDF2	Teng 2023 nucleus accumbens	human	0.005168	0.7081
+FMR1	Teng 2023 nucleus accumbens	human	-0.03605	4.798e-05
+FXR1	Teng 2023 nucleus accumbens	human	0.002544	0.9055
+FXR2	Teng 2023 nucleus accumbens	human	0.007183	0.008661
+HNRNPC	Teng 2023 nucleus accumbens	human	0.01985	0.133
+RBMX	Teng 2023 nucleus accumbens	human	0.04994	0.001005
+PRRC2A	Teng 2023 nucleus accumbens	human	-2.288e-05	0.9912
+FMRP family	Teng 2023 nucleus accumbens	human	0.00646	0.0001191
+YTHDF module	Teng 2023 nucleus accumbens	human	0.02179	0.08766
+Erasers	Teng 2023 nucleus accumbens	human	0.02497	0.007169
+YTHDF1	Teng 2023 prefrontal cortex	human	-0.001217	0.8165
+YTHDC1	Teng 2023 prefrontal cortex	human	0.001771	0.6147
+FMR1	Teng 2023 prefrontal cortex	human	-0.07655	2.959e-05
+FXR1	Teng 2023 prefrontal cortex	human	0.07209	0.03702
+FXR2	Teng 2023 prefrontal cortex	human	0.0194	0.009906
+HNRNPC	Teng 2023 prefrontal cortex	human	-0.02059	0.04728
+RBMX	Teng 2023 prefrontal cortex	human	0.07508	0.0003115
+PRRC2A	Teng 2023 prefrontal cortex	human	-3.963e-05	0.993
+FMRP family	Teng 2023 prefrontal cortex	human	0.01897	2.287e-05
+YTHDF module	Teng 2023 prefrontal cortex	human	-0.007466	0.3709
+Erasers	Teng 2023 prefrontal cortex	human	0.03869	0.04085
+YTHDF1	Teng 2023 ventral tegmental area	human	0.0004651	0.804
+FMR1	Teng 2023 ventral tegmental area	human	-0.02512	8.42e-05
+FXR1	Teng 2023 ventral tegmental area	human	0.001108	0.9274
+FXR2	Teng 2023 ventral tegmental area	human	0.004866	0.01646
+HNRNPC	Teng 2023 ventral tegmental area	human	-0.02263	0.1033
+RBMX	Teng 2023 ventral tegmental area	human	0.02448	0.04289
+PRRC2A	Teng 2023 ventral tegmental area	human	-5.934e-05	0.9908
+FMRP family	Teng 2023 ventral tegmental area	human	0.00445	0.0001528
+YTHDF module	Teng 2023 ventral tegmental area	human	0.01183	0.2169
+Erasers	Teng 2023 ventral tegmental area	human	0.006336	0.2054
+YTHDF2	Merrihew 2023 SMTG	human	-9.033e-06	0.8103
+YTHDF3	Merrihew 2023 SMTG	human	0.01474	0.04808
+YTHDC1	Merrihew 2023 SMTG	human	0.00745	0.5442
+FMR1	Merrihew 2023 SMTG	human	-0.005389	0.02667
+FXR1	Merrihew 2023 SMTG	human	-0.001112	0.9181
+FXR2	Merrihew 2023 SMTG	human	-0.00563	0.04215
+HNRNPC	Merrihew 2023 SMTG	human	-0.01173	0.1701
+RBMX	Merrihew 2023 SMTG	human	0.02092	0.002015
+FMRP family	Merrihew 2023 SMTG	human	-0.00503	0.0002684
+YTHDF module	Merrihew 2023 SMTG	human	0.009813	0.3592
+Writer complex	Merrihew 2023 SMTG	human	0.01528	0.003231
+Erasers	Merrihew 2023 SMTG	human	0.02026	2.485e-05
+FMR1	Merrihew 2023 hippocampus	human	-0.006041	0.009255
+FXR1	Merrihew 2023 hippocampus	human	6.731e-05	0.948
+FXR2	Merrihew 2023 hippocampus	human	-0.002671	0.0878
+HNRNPC	Merrihew 2023 hippocampus	human	-0.003762	0.4159
+RBMX	Merrihew 2023 hippocampus	human	0.01851	0.08493
+FMRP family	Merrihew 2023 hippocampus	human	-0.001838	0.08702
+YTHDF2	Merrihew 2023 caudate	human	-0.002647	0.7359
+YTHDF3	Merrihew 2023 caudate	human	-0.007856	0.3175
+FMR1	Merrihew 2023 caudate	human	-0.01157	0.0007367
+FXR1	Merrihew 2023 caudate	human	0.002519	0.908
+HNRNPC	Merrihew 2023 caudate	human	0.002802	0.3839
+RBMX	Merrihew 2023 caudate	human	0.006143	0.2912
+FMRP family	Merrihew 2023 caudate	human	0.002234	0.0005751
+YTHDF module	Merrihew 2023 caudate	human	-0.01152	0.15
+YTHDF2	Merrihew 2023 IPL	human	0.002075	0.7435
+YTHDF3	Merrihew 2023 IPL	human	0.00164	0.455
+YTHDC1	Merrihew 2023 IPL	human	0.004765	0.5768
+FMR1	Merrihew 2023 IPL	human	-0.02271	8.201e-05
+FXR1	Merrihew 2023 IPL	human	0.0003689	0.9384
+FXR2	Merrihew 2023 IPL	human	-0.009175	0.04895
+HNRNPC	Merrihew 2023 IPL	human	0.00839	0.2637
+RBMX	Merrihew 2023 IPL	human	0.02677	0.05233
+PRRC2A	Merrihew 2023 IPL	human	-0.0001331	0.9878
+FMRP family	Merrihew 2023 IPL	human	-0.006753	0.06397
+YTHDF module	Merrihew 2023 IPL	human	0.002175	0.4686
+Writer complex	Merrihew 2023 IPL	human	0.03282	0.005158
+Erasers	Merrihew 2023 IPL	human	0.02984	4.055e-05
+YTHDF1	Blumenreich 2024 striatum	human	0.0002167	0.8056
+FXR1	Blumenreich 2024 striatum	human	0.0005964	0.9359
+FXR2	Blumenreich 2024 striatum	human	0.0004977	0.06048
+HNRNPC	Blumenreich 2024 striatum	human	0.02991	0.03516
+RBMX	Blumenreich 2024 striatum	human	0.03799	0.02888
+FMRP family	Blumenreich 2024 striatum	human	0.001075	0.00189
+YTHDF module	Blumenreich 2024 striatum	human	0.008206	0.3687
+Erasers	Blumenreich 2024 striatum	human	0.003846	0.1913
+YTHDF1	Blumenreich 2024 substantia nigra	human	0.0006498	0.8088
+FXR1	Blumenreich 2024 substantia nigra	human	0.003167	0.9064
+FXR2	Blumenreich 2024 substantia nigra	human	0.01203	0.01531
+HNRNPC	Blumenreich 2024 substantia nigra	human	0.03337	0.007173
+RBMX	Blumenreich 2024 substantia nigra	human	0.06801	0.0007732
+FMRP family	Blumenreich 2024 substantia nigra	human	0.01155	5.595e-05
+YTHDF module	Blumenreich 2024 substantia nigra	human	0.005311	0.4054
+YTHDF2	Blumenreich 2024 cingulate gyrus	human	0.004478	0.7055
+YTHDF3	Blumenreich 2024 cingulate gyrus	human	-0.001456	0.4687
+FMR1	Blumenreich 2024 cingulate gyrus	human	0.002286	0.2285
+FXR1	Blumenreich 2024 cingulate gyrus	human	2.858e-05	0.9494
+FXR2	Blumenreich 2024 cingulate gyrus	human	-0.005048	0.04735
+HNRNPC	Blumenreich 2024 cingulate gyrus	human	0.01784	0.1939
+RBMX	Blumenreich 2024 cingulate gyrus	human	0.0003098	0.4891
+FMRP family	Blumenreich 2024 cingulate gyrus	human	-0.004431	1.141e-09
+YTHDF module	Blumenreich 2024 cingulate gyrus	human	-0.002296	0.3338
+Erasers	Blumenreich 2024 cingulate gyrus	human	0.007765	0.0001026
+YTHDF2	Blumenreich 2024 middle temporal gyrus	human	0.004339	0.7295
+YTHDF3	Blumenreich 2024 middle temporal gyrus	human	0.02618	0.06518
+FXR1	Blumenreich 2024 middle temporal gyrus	human	-0.0005426	0.9393
+FXR2	Blumenreich 2024 middle temporal gyrus	human	0.003481	0.01541
+HNRNPC	Blumenreich 2024 middle temporal gyrus	human	0.01258	0.1379
+RBMX	Blumenreich 2024 middle temporal gyrus	human	0.05761	0.0002294
+PRRC2A	Blumenreich 2024 middle temporal gyrus	human	-0.0001145	0.9878
+FMRP family	Blumenreich 2024 middle temporal gyrus	human	0.003175	0.0005632
+YTHDF module	Blumenreich 2024 middle temporal gyrus	human	0.01277	0.2917
+Erasers	Blumenreich 2024 middle temporal gyrus	human	0.02155	0.003591
+FMR1	Blumenreich 2024 occipital cortex	human	-0.01548	0.0001818
+FXR1	Blumenreich 2024 occipital cortex	human	0.000245	0.9444
+FXR2	Blumenreich 2024 occipital cortex	human	0.005725	0.01007
+HNRNPC	Blumenreich 2024 occipital cortex	human	0.006034	0.3477
+RBMX	Blumenreich 2024 occipital cortex	human	0.05694	0.0004346
+PRRC2A	Blumenreich 2024 occipital cortex	human	-0.0001676	0.9872
+FMRP family	Blumenreich 2024 occipital cortex	human	0.00393	0.0002545
+Erasers	Blumenreich 2024 occipital cortex	human	0.01815	0.0006511

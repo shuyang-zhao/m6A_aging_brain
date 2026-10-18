@@ -1,169 +1,169 @@
 rbp	selected	reason	cell_lines	n_units_quantified	n_units
-ABCF1	True		K562	34	35
-AKAP1	True		HepG2,K562	33	35
-APEX1	True		K562	35	35
-AQR	True		HepG2,K562	18	35
-BCLAF1	True		HepG2	31	35
-CPEB4	True		K562	25	35
-CPSF6	True		K562	33	35
-CSTF2	True		HepG2	21	35
-CSTF2T	True		HepG2,K562	19	35
-DDX1	True		K562	35	35
-DDX21	True		K562	19	35
-DDX3X	True		HepG2,K562	35	35
-DDX42	True		K562	30	35
-DDX6	True		HepG2,K562	35	35
-DHX30	True		HepG2,K562	34	35
-DKC1	True		HepG2	29	35
-EEF2	True		K562	35	35
-EFTUD2	True		HepG2,K562	34	35
-EIF4E	True		K562	33	35
-EIF4G2	True		K562	35	35
-ELAC2	True		K562	18	35
-EWSR1	True		K562	35	35
-FAM120A	True		HepG2,K562	21	35
-FKBP4	True		HepG2	35	35
-FUBP3	True		HepG2	29	35
-FUS	True		HepG2,K562	35	35
-GEMIN5	True		K562	28	35
-GRSF1	True		HepG2	34	35
-GRWD1	True		HepG2,K562	20	35
-GTF2F1	True		HepG2,K562	18	35
-HNRNPA1	True		HepG2,K562	18	35
-HNRNPK	True		HepG2,K562	35	35
-HNRNPL	True		HepG2,K562	35	35
-HNRNPM	True		HepG2,K562	35	35
-HNRNPU	True		HepG2,K562,adrenal gland	35	35
-HNRNPUL1	True		HepG2,K562	32	35
-ILF3	True		HepG2,K562	35	35
-KHDRBS1	True		K562	34	35
-KHSRP	True		HepG2,K562	35	35
-METAP2	True		K562	31	35
-NOLC1	True		HepG2,K562	28	35
-NONO	True		K562	35	35
-NPM1	True		K562	35	35
-NSUN2	True		HepG2,K562	27	35
-PABPC4	True		K562	28	35
-PABPN1	True		HepG2	23	35
-PCBP1	True		HepG2,K562	35	35
-PCBP2	True		HepG2	35	35
-PPIG	True		HepG2	18	35
-PPIL4	True		K562	21	35
-PRPF4	True		HepG2	20	35
-PRPF8	True		HepG2,K562	34	35
-PTBP1	True		HepG2,K562	34	35
-PUM1	True		K562	25	35
-PUS1	True		K562	20	35
-QKI	True		HepG2,K562	35	35
-RBM5	True		HepG2	19	35
-RPS10	True		K562	35	35
-RPS11	True		K562	35	35
-RPS3	True		HepG2,K562	35	35
-RPS6	True		K562	35	35
-SAFB	True		HepG2,K562	34	35
-SAFB2	True		K562	25	35
-SBDS	True		K562	35	35
-SERBP1	True		K562	34	35
-SF3A3	True		HepG2	33	35
-SF3B1	True		K562	34	35
-SF3B4	True		HepG2,K562	21	35
-SFPQ	True		HepG2	35	35
-SLTM	True		HepG2,K562	28	35
-SRSF1	True		HepG2,K562	35	35
-SRSF9	True		HepG2,K562	34	35
-SSB	True		HepG2,K562	35	35
-STAU2	True		HepG2	24	35
-SUB1	True		HepG2	35	35
-SUGP2	True		HepG2	32	35
-SUPV3L1	True		HepG2,K562	30	35
-TAF15	True		HepG2,K562	25	35
-TARDBP	True		HepG2,K562	35	35
-TIA1	True		HepG2,K562	19	35
-TIAL1	True		HepG2	29	35
-TRA2A	True		HepG2,K562	30	35
-U2AF1	True		HepG2,K562	22	35
-U2AF2	True		HepG2,K562	34	35
-UCHL5	True		HepG2,K562	34	35
-UPF1	True		HepG2,K562	35	35
-XRCC6	True		HepG2,K562	35	35
-XRN2	True		HepG2,K562	23	35
-YWHAG	True		K562	35	35
-ZRANB2	True		K562	27	35
-AARS	False	protein quantified in 0 of 35 proteome units	K562	0	35
-AATF	False	protein quantified in 9 of 35 proteome units	K562	9	35
-ADAT1	False	protein quantified in 6 of 35 proteome units	K562	6	35
-AGGF1	False	protein quantified in 3 of 35 proteome units	HepG2,K562	3	35
-AKAP8L	False	protein quantified in 17 of 35 proteome units	K562	17	35
-APOBEC3C	False	protein quantified in 0 of 35 proteome units	K562	0	35
-BCCIP	False	protein quantified in 10 of 35 proteome units	HepG2	10	35
-BUD13	False	protein quantified in 5 of 35 proteome units	HepG2,K562	5	35
-CDC40	False	protein quantified in 14 of 35 proteome units	HepG2	14	35
-DDX24	False	protein quantified in 16 of 35 proteome units	K562	16	35
-DDX43	False	protein quantified in 0 of 35 proteome units	K562	0	35
-DDX47	False	protein quantified in 12 of 35 proteome units	K562	12	35
-DDX51	False	protein quantified in 10 of 35 proteome units	K562	10	35
-DDX52	False	protein quantified in 7 of 35 proteome units	HepG2,K562	7	35
-DDX55	False	protein quantified in 4 of 35 proteome units	HepG2,K562	4	35
-DDX59	False	protein quantified in 4 of 35 proteome units	HepG2	4	35
-DGCR8	False	protein quantified in 4 of 35 proteome units	HepG2,K562,adrenal gland	4	35
-DROSHA	False	protein quantified in 4 of 35 proteome units	HepG2,K562	4	35
-EIF3D	False	EIF3 subunit	HepG2	34	35
-EIF3G	False	EIF3 subunit	K562	32	35
-EIF3H	False	EIF3 subunit	HepG2	33	35
-ELAVL1	False	ELAVL1	K562	35	35
-EXOSC10	False	protein quantified in 16 of 35 proteome units	K562	16	35
-EXOSC5	False	protein quantified in 9 of 35 proteome units	HepG2,K562	9	35
-FASTKD2	False	protein quantified in 17 of 35 proteome units	HepG2,K562	17	35
-FMR1	False	FMRP family	K562	31	35
-FTO	False	m6A writer or eraser of the network	HepG2,K562	28	35
-FXR1	False	FMRP family	K562	34	35
-FXR2	False	FMRP family	HepG2,K562	34	35
-G3BP1	False	G3BP	HepG2	32	35
-GARS	False	protein quantified in 0 of 35 proteome units	K562	0	35
-GNL3	False	protein quantified in 15 of 35 proteome units	K562	15	35
-GPKOW	False	protein quantified in 15 of 35 proteome units	K562	15	35
-HLTF	False	protein quantified in 10 of 35 proteome units	HepG2,K562	10	35
-HNRNPC	False	hnRNP C/G/A2B1	HepG2,K562	22	35
-IGF2BP1	False	IGF2BP	HepG2,K562	1	35
-IGF2BP2	False	IGF2BP	K562	3	35
-IGF2BP3	False	IGF2BP	HepG2	0	35
-LARP4	False	protein quantified in 16 of 35 proteome units	HepG2,K562	16	35
-LARP7	False	protein quantified in 2 of 35 proteome units	HepG2,K562	2	35
-LIN28B	False	protein quantified in 0 of 35 proteome units	HepG2,K562	0	35
-LSM11	False	protein quantified in 2 of 35 proteome units	HepG2,K562	2	35
-MATR3	False	protein quantified in 13 of 35 proteome units	HepG2,K562	13	35
-MBNL1	False	protein quantified in 11 of 35 proteome units	K562	11	35
-METTL1	False	protein quantified in 7 of 35 proteome units	K562	7	35
-MORC2	False	protein quantified in 2 of 35 proteome units	K562	2	35
-MTPAP	False	protein quantified in 17 of 35 proteome units	K562	17	35
-NCBP2	False	protein quantified in 3 of 35 proteome units	HepG2,K562	3	35
-NIP7	False	protein quantified in 5 of 35 proteome units	HepG2	5	35
-NIPBL	False	protein quantified in 17 of 35 proteome units	K562	17	35
-NKRF	False	protein quantified in 16 of 35 proteome units	HepG2	16	35
-NOL12	False	protein quantified in 2 of 35 proteome units	HepG2	2	35
-PHF6	False	protein quantified in 11 of 35 proteome units	K562	11	35
-POLR2G	False	protein quantified in 13 of 35 proteome units	HepG2	13	35
-PUM2	False	protein quantified in 16 of 35 proteome units	K562	16	35
-RBFOX2	False	protein quantified in 16 of 35 proteome units	HepG2,K562	16	35
-RBM15	False	m6A writer or eraser of the network	HepG2,K562	19	35
-RBM22	False	protein quantified in 16 of 35 proteome units	HepG2,K562	16	35
-RNF187	False	protein quantified in 4 of 35 proteome units	K562	4	35
-RYBP	False	protein quantified in 6 of 35 proteome units	K562	6	35
-SDAD1	False	protein quantified in 6 of 35 proteome units	HepG2,K562	6	35
-SLBP	False	protein quantified in 0 of 35 proteome units	K562	0	35
-SMNDC1	False	protein quantified in 13 of 35 proteome units	HepG2,K562	13	35
-SND1	False	SND1	HepG2,K562	35	35
-SRSF7	False	SRSF3/7/10	HepG2,K562	35	35
-TBRG4	False	protein quantified in 13 of 35 proteome units	HepG2,K562	13	35
-TROVE2	False	protein quantified in 0 of 35 proteome units	HepG2,K562	0	35
-UTP18	False	protein quantified in 13 of 35 proteome units	HepG2,K562	13	35
-UTP3	False	protein quantified in 4 of 35 proteome units	K562	4	35
-WDR3	False	protein quantified in 10 of 35 proteome units	K562	10	35
-WDR43	False	protein quantified in 11 of 35 proteome units	HepG2,K562	11	35
-WRN	False	protein quantified in 0 of 35 proteome units	K562	0	35
-XPO5	False	protein quantified in 15 of 35 proteome units	HepG2	15	35
-YBX3	False	protein quantified in 16 of 35 proteome units	HepG2,K562	16	35
-ZC3H11A	False	protein quantified in 5 of 35 proteome units	HepG2,K562	5	35
-ZC3H8	False	protein quantified in 1 of 35 proteome units	K562	1	35
-ZNF622	False	protein quantified in 1 of 35 proteome units	K562	1	35
-ZNF800	False	protein quantified in 2 of 35 proteome units	HepG2,K562	2	35
+ABCF1	True		K562	32	33
+AKAP1	True		HepG2,K562	31	33
+APEX1	True		K562	33	33
+AQR	True		HepG2,K562	17	33
+BCLAF1	True		HepG2	29	33
+CPEB4	True		K562	24	33
+CPSF6	True		K562	31	33
+CSTF2	True		HepG2	20	33
+CSTF2T	True		HepG2,K562	18	33
+DDX1	True		K562	33	33
+DDX21	True		K562	18	33
+DDX3X	True		HepG2,K562	33	33
+DDX42	True		K562	29	33
+DDX6	True		HepG2,K562	33	33
+DHX30	True		HepG2,K562	32	33
+DKC1	True		HepG2	27	33
+EEF2	True		K562	33	33
+EFTUD2	True		HepG2,K562	32	33
+EIF4E	True		K562	31	33
+EIF4G2	True		K562	33	33
+ELAC2	True		K562	17	33
+EWSR1	True		K562	33	33
+FAM120A	True		HepG2,K562	20	33
+FKBP4	True		HepG2	33	33
+FUBP3	True		HepG2	27	33
+FUS	True		HepG2,K562	33	33
+GEMIN5	True		K562	27	33
+GRSF1	True		HepG2	32	33
+GRWD1	True		HepG2,K562	19	33
+GTF2F1	True		HepG2,K562	17	33
+HNRNPA1	True		HepG2,K562	17	33
+HNRNPK	True		HepG2,K562	33	33
+HNRNPL	True		HepG2,K562	33	33
+HNRNPM	True		HepG2,K562	33	33
+HNRNPU	True		HepG2,K562,adrenal gland	33	33
+HNRNPUL1	True		HepG2,K562	31	33
+ILF3	True		HepG2,K562	33	33
+KHDRBS1	True		K562	32	33
+KHSRP	True		HepG2,K562	33	33
+METAP2	True		K562	29	33
+NOLC1	True		HepG2,K562	27	33
+NONO	True		K562	33	33
+NPM1	True		K562	33	33
+NSUN2	True		HepG2,K562	26	33
+PABPC4	True		K562	26	33
+PABPN1	True		HepG2	21	33
+PCBP1	True		HepG2,K562	33	33
+PCBP2	True		HepG2	33	33
+PPIG	True		HepG2	17	33
+PPIL4	True		K562	20	33
+PRPF4	True		HepG2	19	33
+PRPF8	True		HepG2,K562	32	33
+PTBP1	True		HepG2,K562	32	33
+PUM1	True		K562	23	33
+PUS1	True		K562	18	33
+QKI	True		HepG2,K562	33	33
+RBM5	True		HepG2	18	33
+RPS10	True		K562	33	33
+RPS11	True		K562	33	33
+RPS3	True		HepG2,K562	33	33
+RPS6	True		K562	33	33
+SAFB	True		HepG2,K562	32	33
+SAFB2	True		K562	24	33
+SBDS	True		K562	33	33
+SERBP1	True		K562	32	33
+SF3A3	True		HepG2	31	33
+SF3B1	True		K562	32	33
+SF3B4	True		HepG2,K562	20	33
+SFPQ	True		HepG2	33	33
+SLTM	True		HepG2,K562	27	33
+SRSF1	True		HepG2,K562	33	33
+SRSF9	True		HepG2,K562	32	33
+SSB	True		HepG2,K562	33	33
+STAU2	True		HepG2	23	33
+SUB1	True		HepG2	33	33
+SUGP2	True		HepG2	31	33
+SUPV3L1	True		HepG2,K562	28	33
+TAF15	True		HepG2,K562	24	33
+TARDBP	True		HepG2,K562	33	33
+TIA1	True		HepG2,K562	17	33
+TIAL1	True		HepG2	27	33
+TRA2A	True		HepG2,K562	29	33
+U2AF1	True		HepG2,K562	21	33
+U2AF2	True		HepG2,K562	32	33
+UCHL5	True		HepG2,K562	32	33
+UPF1	True		HepG2,K562	33	33
+XRCC6	True		HepG2,K562	33	33
+XRN2	True		HepG2,K562	22	33
+YWHAG	True		K562	33	33
+ZRANB2	True		K562	25	33
+AARS	False	protein quantified in 0 of 33 proteome units	K562	0	33
+AATF	False	protein quantified in 8 of 33 proteome units	K562	8	33
+ADAT1	False	protein quantified in 5 of 33 proteome units	K562	5	33
+AGGF1	False	protein quantified in 3 of 33 proteome units	HepG2,K562	3	33
+AKAP8L	False	protein quantified in 16 of 33 proteome units	K562	16	33
+APOBEC3C	False	protein quantified in 0 of 33 proteome units	K562	0	33
+BCCIP	False	protein quantified in 9 of 33 proteome units	HepG2	9	33
+BUD13	False	protein quantified in 5 of 33 proteome units	HepG2,K562	5	33
+CDC40	False	protein quantified in 13 of 33 proteome units	HepG2	13	33
+DDX24	False	protein quantified in 15 of 33 proteome units	K562	15	33
+DDX43	False	protein quantified in 0 of 33 proteome units	K562	0	33
+DDX47	False	protein quantified in 11 of 33 proteome units	K562	11	33
+DDX51	False	protein quantified in 9 of 33 proteome units	K562	9	33
+DDX52	False	protein quantified in 6 of 33 proteome units	HepG2,K562	6	33
+DDX55	False	protein quantified in 4 of 33 proteome units	HepG2,K562	4	33
+DDX59	False	protein quantified in 4 of 33 proteome units	HepG2	4	33
+DGCR8	False	protein quantified in 4 of 33 proteome units	HepG2,K562,adrenal gland	4	33
+DROSHA	False	protein quantified in 4 of 33 proteome units	HepG2,K562	4	33
+EIF3D	False	EIF3 subunit	HepG2	32	33
+EIF3G	False	EIF3 subunit	K562	30	33
+EIF3H	False	EIF3 subunit	HepG2	31	33
+ELAVL1	False	ELAVL1	K562	33	33
+EXOSC10	False	protein quantified in 15 of 33 proteome units	K562	15	33
+EXOSC5	False	protein quantified in 8 of 33 proteome units	HepG2,K562	8	33
+FASTKD2	False	protein quantified in 16 of 33 proteome units	HepG2,K562	16	33
+FMR1	False	FMRP family	K562	29	33
+FTO	False	m6A writer or eraser of the network	HepG2,K562	26	33
+FXR1	False	FMRP family	K562	32	33
+FXR2	False	FMRP family	HepG2,K562	32	33
+G3BP1	False	G3BP	HepG2	30	33
+GARS	False	protein quantified in 0 of 33 proteome units	K562	0	33
+GNL3	False	protein quantified in 14 of 33 proteome units	K562	14	33
+GPKOW	False	protein quantified in 14 of 33 proteome units	K562	14	33
+HLTF	False	protein quantified in 10 of 33 proteome units	HepG2,K562	10	33
+HNRNPC	False	hnRNP C/G/A2B1	HepG2,K562	21	33
+IGF2BP1	False	IGF2BP	HepG2,K562	1	33
+IGF2BP2	False	IGF2BP	K562	3	33
+IGF2BP3	False	IGF2BP	HepG2	0	33
+LARP4	False	protein quantified in 15 of 33 proteome units	HepG2,K562	15	33
+LARP7	False	protein quantified in 2 of 33 proteome units	HepG2,K562	2	33
+LIN28B	False	protein quantified in 0 of 33 proteome units	HepG2,K562	0	33
+LSM11	False	protein quantified in 2 of 33 proteome units	HepG2,K562	2	33
+MATR3	False	protein quantified in 12 of 33 proteome units	HepG2,K562	12	33
+MBNL1	False	protein quantified in 10 of 33 proteome units	K562	10	33
+METTL1	False	protein quantified in 6 of 33 proteome units	K562	6	33
+MORC2	False	protein quantified in 2 of 33 proteome units	K562	2	33
+MTPAP	False	protein quantified in 16 of 33 proteome units	K562	16	33
+NCBP2	False	protein quantified in 3 of 33 proteome units	HepG2,K562	3	33
+NIP7	False	protein quantified in 4 of 33 proteome units	HepG2	4	33
+NIPBL	False	protein quantified in 16 of 33 proteome units	K562	16	33
+NKRF	False	protein quantified in 16 of 33 proteome units	HepG2	16	33
+NOL12	False	protein quantified in 2 of 33 proteome units	HepG2	2	33
+PHF6	False	protein quantified in 10 of 33 proteome units	K562	10	33
+POLR2G	False	protein quantified in 12 of 33 proteome units	HepG2	12	33
+PUM2	False	protein quantified in 15 of 33 proteome units	K562	15	33
+RBFOX2	False	protein quantified in 15 of 33 proteome units	HepG2,K562	15	33
+RBM15	False	m6A writer or eraser of the network	HepG2,K562	18	33
+RBM22	False	protein quantified in 15 of 33 proteome units	HepG2,K562	15	33
+RNF187	False	protein quantified in 3 of 33 proteome units	K562	3	33
+RYBP	False	protein quantified in 5 of 33 proteome units	K562	5	33
+SDAD1	False	protein quantified in 6 of 33 proteome units	HepG2,K562	6	33
+SLBP	False	protein quantified in 0 of 33 proteome units	K562	0	33
+SMNDC1	False	protein quantified in 12 of 33 proteome units	HepG2,K562	12	33
+SND1	False	SND1	HepG2,K562	33	33
+SRSF7	False	SRSF3/7/10	HepG2,K562	33	33
+TBRG4	False	protein quantified in 12 of 33 proteome units	HepG2,K562	12	33
+TROVE2	False	protein quantified in 0 of 33 proteome units	HepG2,K562	0	33
+UTP18	False	protein quantified in 12 of 33 proteome units	HepG2,K562	12	33
+UTP3	False	protein quantified in 3 of 33 proteome units	K562	3	33
+WDR3	False	protein quantified in 9 of 33 proteome units	K562	9	33
+WDR43	False	protein quantified in 10 of 33 proteome units	HepG2,K562	10	33
+WRN	False	protein quantified in 0 of 33 proteome units	K562	0	33
+XPO5	False	protein quantified in 14 of 33 proteome units	HepG2	14	33
+YBX3	False	protein quantified in 15 of 33 proteome units	HepG2,K562	15	33
+ZC3H11A	False	protein quantified in 5 of 33 proteome units	HepG2,K562	5	33
+ZC3H8	False	protein quantified in 1 of 33 proteome units	K562	1	33
+ZNF622	False	protein quantified in 1 of 33 proteome units	K562	1	33
+ZNF800	False	protein quantified in 2 of 33 proteome units	HepG2,K562	2	33

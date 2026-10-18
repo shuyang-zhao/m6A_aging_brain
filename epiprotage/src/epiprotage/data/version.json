@@ -1,0 +1,14 @@
+{
+ "date": "2026-10-17",
+ "git_commit": "a558ea9f",
+ "mouse": {
+  "genes": 10606,
+  "weights_computed": "2026-10-17",
+  "sha256": "a0def2e762c9a070"
+ },
+ "human": {
+  "genes": 9990,
+  "weights_computed": "2026-10-17",
+  "sha256": "58204128f165b629"
+ }
+}

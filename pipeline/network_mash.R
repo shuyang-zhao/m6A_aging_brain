@@ -12,13 +12,8 @@ bhat <- read_matrix("bhat.tsv")
 shat <- read_matrix("shat.tsv")
 
 data <- mash_set_data(bhat, shat)
-covs <- cov_canonical(data)
 strong <- get_significant_results(mash_1by1(data), thresh = 0.05)
-if (length(strong) >= 5) {
-  strong_data <- mash_set_data(bhat[strong, , drop = FALSE], shat[strong, , drop = FALSE])
-  pca <- cov_pca(strong_data, min(5, ncol(bhat), length(strong)))
-  covs <- c(covs, pca)
-}
+covs <- c(cov_canonical(data), cov_pca(mash_set_data(bhat[strong, ], shat[strong, ]), 5))
 fit <- mash(data, covs, verbose = FALSE)
 
 long <- function(m, name)

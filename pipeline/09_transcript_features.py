@@ -1,7 +1,7 @@
 # Per-gene features of the canonical transcripts: length, exon structure, GC, K/R content, cell-type origin, half-life,
-# protein lifetime, GO programme, site counts per modification (human m6A: also the m6A-seq peaks of the brain map,
-# n_peaks_m6A_brain), DRACH motifs outside m6A sites; mouse also the
-# hippocampal GLORI sites with summed stoichiometry, RiboNN translation efficiency and Orthrus components
+# protein lifetime, GO programme, site counts per modification (m6A: mouse, the sites of the two GLORI hippocampus maps;
+# human, the peaks of the brain m6A-seq map, also as n_peaks_m6A_brain), DRACH motifs outside m6A sites; mouse also the
+# GLORI sites with summed stoichiometry, RiboNN translation efficiency and Orthrus components
 # reads the gene models and site atlas (04) and the per-gene resources (06);
 # writes output/09_transcript_features/{mouse,human}_features.tsv.gz
 import re
@@ -20,7 +20,10 @@ DE_CODONS = {"GAT", "GAC", "GAA", "GAG"}
 STOP_CODONS = {"TAA", "TAG", "TGA"}
 DRACH = re.compile(r"(?=[AGT][AG]AC[ACT])")  # overlapping motifs; the methylated A is the third base
 GLORI = ["m6a_hippocampus_cyto", "m6a_hippocampus_syn"]
-BRAIN_TE = "brain Cerebellum Forebrain hippocampal Striatal_cells Primary_cortical_neurons dentate_gyrus".split()
+BRAIN_TE = {  # RiboNN tissues and cell types of the brain
+    "mouse": "brain Cerebellum Forebrain hippocampal Striatal_cells Primary_cortical_neurons dentate_gyrus".split(),
+    "human": "normal_brain_tissue neurons".split(),
+}
 
 
 def gc_fraction(sequences):
@@ -30,10 +33,8 @@ def gc_fraction(sequences):
 def protein_features(cds):
     # K/R and D/E codons, stop codon removed
     codons = [cds[i : i + 3] for i in range(0, len(cds) - 2, 3)]
-    while codons and codons[-1] in STOP_CODONS:
+    while codons[-1] in STOP_CODONS:
         codons.pop()
-    if not codons:
-        return np.nan, np.nan, np.nan
     kr = np.array([codon in KR_CODONS for codon in codons], float)
     window = np.convolve(kr, np.ones(KR_WINDOW), "valid") if len(kr) >= KR_WINDOW else kr.sum()
     return np.max(window), kr.mean(), (kr.sum() - sum(codon in DE_CODONS for codon in codons)) / len(codons)
@@ -51,15 +52,12 @@ human_to_mouse = utils.orthologs().set_index("human").mouse
 half_life = utils.read(utils.RESOURCES / "saluki_halflife" / "half_life.parquet")
 programmes = utils.read(utils.RESOURCES / "go_release" / "programmes.parquet")
 sites = utils.read(utils.RESOURCES / "site_atlas" / "sites.parquet")
-# sites on the canonical transcript, reference base matched, counted once across maps; the human brain m6A-seq peaks
-# are counted apart (the m6A load of human genes)
+# sites on the canonical transcript, reference base matched, counted once across maps
 sites = sites[sites.gene_id.notna() & sites.tx_offset.notna() & sites.ref_ok]
 # GLORI sites of mouse hippocampus with the mean stoichiometry of the two maps
 glori = sites[sites["map"].isin(GLORI)].groupby(["gene_id", "tx_offset"]).stoich.mean().groupby("gene_id")
 sites = sites.drop_duplicates(["species", "modification", "chrom", "start", "end", "strand"])
 peaks = sites[sites["map"] == utils.BRAIN_M6A]
-brain_m6a = peaks.groupby("gene_id").size()
-sites = sites[sites["map"] != utils.BRAIN_M6A]
 
 for species, latin in SPECIES.items():
     folder = utils.RESOURCES / f"gencode_{species}"
@@ -128,23 +126,20 @@ for species, latin in SPECIES.items():
         drach.append(len(a))
         unmarked.append(int(free.sum()))
     features["n_drach"], features["n_drach_unmarked"] = drach, unmarked
-    if species == "human":
-        features["n_peaks_m6A_brain"] = features.gene_id.map(brain_m6a).fillna(0).astype(int)
-    else:
-        features["n_sites_m6A_glori"] = features.gene_id.map(glori.size()).fillna(0).astype(int)
+    if species == "mouse":
         features["stoich_m6A_glori"] = features.gene_id.map(glori.sum()).fillna(0)
-        # RiboNN translation efficiency, mean and brain tissues
-        te = utils.read(utils.RESOURCES / "ribonn_mouse" / "predictions.parquet").set_index("tx_id")
-        features["ribonn_te_mean"] = tx.tx_id.map(te.mean_predicted_TE).to_numpy()
-        brain = te[[f"predicted_TE_{tissue}" for tissue in BRAIN_TE]].mean(axis=1)
-        features["ribonn_te_brain"] = tx.tx_id.map(brain).to_numpy()
-        # leading principal components of the standardised Orthrus embeddings
-        orthrus = utils.read(utils.RESOURCES / "orthrus_mouse" / "embeddings.parquet")
-        assert set(orthrus.gene_id) <= set(features.gene_id)
-        scaled = orthrus.filter(like="emb")
-        scaled = ((scaled - scaled.mean()) / (scaled.std(ddof=0) + 1e-8)).to_numpy()
-        scores = scaled @ np.linalg.svd(scaled, full_matrices=False)[2][:N_ORTHRUS_PCS].T
-        columns = [f"orthrus_pc{i + 1}" for i in range(N_ORTHRUS_PCS)]
-        features = features.join(pd.DataFrame(scores, index=orthrus.gene_id, columns=columns), on="gene_id")
+    # RiboNN translation efficiency, mean and brain tissues
+    te = utils.read(utils.RESOURCES / f"ribonn_{species}" / "predictions.parquet").set_index("tx_id")
+    features["ribonn_te_mean"] = tx.tx_id.map(te.mean_predicted_TE).to_numpy()
+    brain = te[[f"predicted_TE_{tissue}" for tissue in BRAIN_TE[species]]].mean(axis=1)
+    features["ribonn_te_brain"] = tx.tx_id.map(brain).to_numpy()
+    # leading principal components of the standardised Orthrus embeddings
+    orthrus = utils.read(utils.RESOURCES / f"orthrus_{species}" / "embeddings.parquet")
+    assert set(orthrus.gene_id) <= set(features.gene_id)
+    scaled = orthrus.filter(like="emb")
+    scaled = ((scaled - scaled.mean()) / (scaled.std(ddof=0) + 1e-8)).to_numpy()
+    scores = scaled @ np.linalg.svd(scaled, full_matrices=False)[2][:N_ORTHRUS_PCS].T
+    columns = [f"orthrus_pc{i + 1}" for i in range(N_ORTHRUS_PCS)]
+    features = features.join(pd.DataFrame(scores, index=orthrus.gene_id, columns=columns), on="gene_id")
     utils.write(features, OUT / f"{species}_features.tsv.gz")
     print(f"{species}: {len(features)} genes, {features.shape[1] - 3} features")

@@ -1,6 +1,6 @@
 # Analysis units: samples, age coding, covariates, blocks, hidden factors
 # and gene-level matrices (protein median-normalised, RNA TMM log-CPM)
-# reads 01-03 and ref/ of 06; writes output/prepared/<unit>/ and units.tsv
+# reads 01-03 and ref/ of 06; writes output/prepared/<unit>/ and units.tsv; units of utils.EXCLUDED are not written
 import numpy as np
 import pandas as pd
 from scipy import stats
@@ -24,9 +24,10 @@ MARKERS = {  # marker genes of the cell-type indices
         "Oligo": "MBP PLP1 MOBP MOG MAG CNP CLDN11",
     },
 }
-MOUSE = ("takasugi", "langfelder", "lu2025", "tsumagari", "wang2025", "keele", "marino", "hahn", "shavlakadze")
+MOUSE = ("takasugi", "langfelder", "lu2025", "tsumagari", "wang2025", "keele", "marino", "hahn", "shavlakadze", "scifo",
+         "yu2020", "huang2024", "jha2026", "mohallem", "marchionini", "filipovic", "gebru", "yarbro", "chen2025")
 CELLS = "cell_neuron cell_astro cell_oligo cell_micro"
-PROTEIN_CELLS = ("protein", "Neuron Oligo Astro Micro", 3)
+PROTEIN_CELLS = ("protein", 3)
 ADULT = "age_years >= 18"
 AGE10 = dict(column="age_years", per=10)  # age per ten years
 
@@ -34,17 +35,17 @@ AGE10 = dict(column="age_years", per=10)  # age per ten years
 # age coding, covariates, permutation blocks, hidden factors
 # cols: name=[log1p:][layer.]source
 # pair: column=equal or a tolerance
-# cells: layer, wanted indices, minimum markers
+# cells: layer, minimum markers
 # fmt: off
 UNITS = {
     "takasugi2024": dict(
         data="takasugi2024_pxd040722", protein="tissue == 'Cerebrum'", rna="tissue == 'Cerebrum'",
-        value="norm_counts", pair="sex=equal age_months=12", min_side=2, cells=("rna", None, 2),
+        value="norm_counts", pair="sex=equal age_months=12", min_side=2, cells=("rna", 2),
         cols="sex=protein.sex age_months=protein.age_months protein_batch=protein.batch rna_batch=rna.batch",
         age=dict(column="age_months", early=[6], late=[30], middle=[15, 24]),
         numeric=f"middle_15 middle_24 {CELLS} cell_vascular", categorical="sex", blocks="sex"),
     "chdi2016_expanded": dict(
-        data="langfelder2016_pxd006302", hidden=1, min_side=2, cells=("rna", None, 2),
+        data="langfelder2016_pxd006302", hidden=1, min_side=2, cells=("rna", 2),
         protein="tissue == 'Striatum' and age_months in [2, 10]", rna="tissue == 'Striatum' and age_months in [2, 10]",
         pair="sex=equal age_months=equal genotype=equal", groups=("genotype", "age_months", 2),
         cols="sex=protein.sex age_months=protein.age_months protein_batch=protein.batch rna_batch=rna.batch "
@@ -52,12 +53,12 @@ UNITS = {
         age=dict(column="age_months", early=[2], late=[10]),
         numeric=CELLS, categorical="sex genotype", blocks="sex genotype"),
     "chdi2016_rna": dict(
-        data="langfelder2016_pxd006302", hidden=1, min_side=2, cells=("rna", None, 2), donors_of="chdi2016_expanded",
+        data="langfelder2016_pxd006302", hidden=1, min_side=2, cells=("rna", 2), donors_of="chdi2016_expanded",
         rna="tissue == 'Striatum' and age_months in [2, 10]",
         cols="sex age_months rna_batch=batch genotype arm", age=dict(column="age_months", early=[2], late=[10]),
         numeric=CELLS, categorical="sex genotype", blocks="sex genotype"),
     "luo2024_bankadj": dict(
-        data="luo2024_syn32136022", hidden=2, value="log2", cells=("rna", None, 2),
+        data="luo2024_syn32136022", hidden=2, value="log2", cells=("rna", 2),
         protein="tissue == 'Frontal cortex' and arm == 'aging'",
         rna=f"tissue == 'Frontal cortex' and arm == 'aging' and {ADULT}",
         pair="sex=equal age_years=0.5 brain_bank=equal",
@@ -66,7 +67,7 @@ UNITS = {
         age=AGE10, numeric=f"rin log_pmi {CELLS}", categorical="brain_bank sex rna_batch", blocks="sex protein_batch"),
     "brainseq3_caudate": dict(
         data="benjamin2022_brainseq3_caudate", rna=f"arm == 'aging' and {ADULT}", complete="rin log_pmi ph",
-        cells=("rna", None, 2), cols="sex age_years batch rin log_pmi=log1p:pmi_h ph", age=AGE10,
+        cells=("rna", 2), cols="sex age_years batch rin log_pmi=log1p:pmi_h ph", age=AGE10,
         numeric=f"rin log_pmi ph {CELLS}", categorical="sex batch", blocks="sex batch"),
 }
 for layers, name in (("L1-3", "l1_3"), ("L4-6", "l4_6")):
@@ -106,6 +107,45 @@ for tissue in ("Cortex", "Hippocampus", "Striatum"):
 UNITS["marino2025_whole_brain"] = dict(
     data="marino2025_pxd047951", protein="tissue == 'Whole brain'", cols="sex age_months",
     age=dict(column="age_months", early=[3.5], late=[33.0]))
+# external validation proteomes (utils.EXTERNAL): scored by the clock, never used to fit it
+for tissue in ("Striatum", "Cerebellum", "Hippocampus"):
+    UNITS[f"keele2023_{tissue.lower()}"] = dict(
+        data="keele2023_pxd034029", protein=f"tissue == '{tissue}'", cols="sex age_months batch",
+        age=dict(column="age_months", early=[8], late=[18]), categorical="sex batch", blocks="sex batch")
+UNITS["scifo2025_whole_brain"] = dict(
+    data="scifo2025_pxd058684", protein="tissue == 'Whole brain'", cols="age_months batch",
+    age=dict(column="age_months", early=[3, 5], late=[20, 26], middle=[8, 14]),
+    numeric="middle_8 middle_14 early_1 late_1", categorical="batch", blocks="batch")
+UNITS["yu2020_brain"] = dict(
+    data="yu2020_pxd017385", protein="tissue == 'Brain'", cols="age_months",
+    age=dict(column="age_months", early=[3.68], late=[18.4]))
+UNITS["huang2024_hippocampus"] = dict(
+    data="huang2024_pxd043352", protein="tissue == 'Hippocampus'", cols="age_months",
+    age=dict(column="age_months", early=[3], late=[20]))
+UNITS["jha2026_cortex"] = dict(
+    data="jha2026_pxd060735", protein="tissue == 'Cortex'", cols="age_months",
+    age=dict(column="age_months", early=[3.5], late=[24], middle=[13]), numeric="middle_13")
+UNITS["mohallem2024_whole_brain"] = dict(
+    data="mohallem2024_msv000094441", protein="tissue == 'Whole brain'", cols="age_months",
+    age=dict(column="age_months", early=[3.5], late=[20], middle=[10]), numeric="middle_10")
+UNITS["marchionini2025_striatum"] = dict(  # each age is its own acquisition block: no batch covariate possible
+    data="marchionini2025_pxd054495", protein="tissue == 'Striatum'", cols="sex age_months",
+    age=dict(column="age_months", early=[2], late=[12], middle=[6, 9]),
+    numeric="middle_6 middle_9", categorical="sex", blocks="sex")
+UNITS["vignane2026_frontal_cortex"] = dict(
+    data="filipovic2026_pxd045785", protein="tissue == 'Frontal cortex'", cols="age_months",
+    age=dict(column="age_months", early=[2.3], late=[18], middle=[10]), numeric="middle_10")
+for tissue in ("Hippocampus", "Amygdala"):
+    UNITS[f"gebru2024_{tissue.lower()}"] = dict(
+        data="gebru2024_pxd049439", protein=f"tissue == '{tissue}'", cols="sex age_months",
+        age=dict(column="age_months", early=[3], late=[18]), categorical="sex", blocks="sex")
+UNITS["yarbro2025_cortex"] = dict(
+    data="yarbro2025_nat_commun", protein="tissue == 'Cortex'", cols="sex age_months batch",
+    age=dict(column="age_months", early=[3], late=[18], middle=[6, 12]),
+    numeric="middle_6 middle_12", categorical="sex batch", blocks="batch")
+UNITS["chen2025_prefrontal_cortex"] = dict(
+    data="chen2025_pxd045403", protein="tissue == 'Prefrontal cortex'", cols="sex age_months batch",
+    age=dict(column="age_months", early=[6], late=[14]), categorical="sex batch", blocks="batch")
 for tissue in ("DLPFC", "Hippocampus"):
     UNITS[f"brainseq2_{tissue.lower()}"] = dict(
         data="colladotorres2019_phs000979", rna=f"tissue == '{tissue}' and arm == 'aging' and {ADULT}",
@@ -122,7 +162,7 @@ GTEX = {
 for region, tissue in GTEX.items():
     UNITS[f"gtex_{region}"] = dict(
         data="gtexv10_phs000424", rna=f"tissue == 'Brain - {tissue}'", complete="rin log_ischemic",
-        cells=("rna", None, 2), age=dict(AGE10, column="age_midpoint"),
+        cells=("rna", 2), age=dict(AGE10, column="age_midpoint"),
         cols="sex age_midpoint rin log_ischemic=log1p:ischemic_min dthhrdy center batch",
         numeric=f"rin log_ischemic {CELLS}", categorical="sex dthhrdy center", blocks="sex center")
 UNITS["markunas2020_nac"] = dict(
@@ -203,12 +243,12 @@ HAHN = {
 # the 26- and 28-month mice of the bulk series fall outside the age groups of the units (3 to 21 months)
 for region, tissue in HAHN.items():
     UNITS[f"hahn2023_bulk_{region}"] = dict(
-        data="hahn2023_gse212336", rna=f"tissue == '{tissue}' and age_months <= 21", cells=("rna", None, 2),
+        data="hahn2023_gse212336", rna=f"tissue == '{tissue}' and age_months <= 21", cells=("rna", 2),
         cols="sex age_months", age=dict(column="age_months", early=[3], late=[21], middle=[12, 15, 18]),
         numeric=f"middle_12 middle_15 middle_18 {CELLS} cell_vascular", categorical="sex", blocks="sex")
 for tissue in ("cortex", "hippocampus", "hypothalamus", "cerebellum"):
     UNITS[f"shavlakadze2026_{tissue}"] = dict(
-        data="shavlakadze2026_gse314817", rna=f"tissue == '{tissue}'", cells=("rna", None, 2),
+        data="shavlakadze2026_gse314817", rna=f"tissue == '{tissue}'", cells=("rna", 2),
         cols="sex age_months", age=dict(column="age_months", early=[6], late=[27], middle=[12, 18, 21, 24]),
         numeric=f"middle_12 middle_18 middle_21 middle_24 {CELLS} cell_vascular", categorical="sex", blocks="sex")
 UKBEC = (
@@ -219,10 +259,12 @@ for region in UKBEC:
     tissue = region.replace("_", " ")
     UNITS[f"ramasamy2014_{region}"] = dict(
         data="ramasamy2014_gse46706", rna=f"tissue == '{tissue}' and arm == 'aging' and {ADULT}", value="log2",
-        complete="rin log_pmi", cells=("rna", None, 2), age=AGE10,
+        complete="rin log_pmi", cells=("rna", 2), age=AGE10,
         cols="sex age_years brain_bank rin log_pmi=log1p:pmi_h",
         numeric=f"rin log_pmi {CELLS} cell_vascular", categorical="sex brain_bank", blocks="sex brain_bank")
 # fmt: on
+print("left out (utils.EXCLUDED):", ", ".join(unit for unit in UNITS if unit.startswith(utils.EXCLUDED)))
+UNITS = {unit: spec for unit, spec in UNITS.items() if not unit.startswith(utils.EXCLUDED)}
 
 
 def tmm_factor(values, column, ref, lib):
@@ -351,18 +393,13 @@ def code_age(samples, age):
             samples[f"{side}_{number}"] = values.map(dict(zip(age[side], basis, strict=True))).fillna(0.0)
 
 
-def add_cell_indices(samples, matrices, labels, source, wanted, minimum):
+def add_cell_indices(samples, matrices, labels, source, minimum):
     # cell index: mean z-score of its marker genes
     values, upper = matrices[source], labels[source].str.upper()
     for cell, markers in MARKERS[source].items():
-        if wanted and cell not in wanted.split():
-            continue
         rows = values.loc[upper.index[upper.isin(markers.split())].intersection(values.index)]
         if source == "protein":  # markers quantified in 80% of the samples
             rows = rows[rows.notna().mean(axis=1) >= 0.8]
-            rows = rows[rows.std(axis=1) > 1e-8]
-        else:
-            rows = rows.dropna(how="any")
         if len(rows) >= minimum:
             z_scores = rows.sub(rows.mean(axis=1), axis=0).div(rows.std(axis=1), axis=0)
             samples[f"cell_{cell}"] = z_scores.mean(axis=0).reindex(samples.index).to_numpy()

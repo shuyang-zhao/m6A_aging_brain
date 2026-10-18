@@ -1,4 +1,0 @@
-gene_class	quantity	n_cohorts	effect	ci_low	ci_high	p	q	i2
-long-lived	in	7	-0.9307	-1.316	-0.5437	2.596e-06		56.35
-long-lived	out	7	-0.4574	-0.7471	-0.1668	0.002051		46.59
-long-lived	difference	7	-0.464	-0.7867	-0.1403	0.004994	0.01498	0

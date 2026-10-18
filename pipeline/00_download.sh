@@ -79,6 +79,8 @@ get blumenreich2024_pxd047134/supp/41531_2024_645_MOESM4_ESM.xlsx "https://media
 # Ping 2020: Proteome Discoverer protein table and sample traits (PRIDE)
 get ping2020_pxd020296/pride/totalonly_multiconsensus__Proteins.txt "https://ftp.pride.ebi.ac.uk/pride/data/archive/2020/09/PXD020296/totalonly_multiconsensus__Proteins.txt"
 get ping2020_pxd020296/pride/sampletraits.xlsx "https://ftp.pride.ebi.ac.uk/pride/data/archive/2020/09/PXD020296/sampletraits.xlsx"
+# Umoh 2018 (ALS frontal cortex): Datasets EV1 (samples) and EV2 (log2 LFQ) of the EMBO Mol Med supplement
+# deposited with the data release: data/raw/umoh2018_emmm201708202/emmm201708202-sup-000{2,3}-DatasetEV{1,2}.xlsb (supplement of doi 10.15252/emmm.201708202)
 # Bulk RNA-seq ----
 # BrainSeq III caudate (Benjamin 2022): gene counts
 get benjamin2022_brainseq3_caudate/stage2/caudate_brainseq_phase3_hg38_rseGene_merged_n464.rda "https://caudate-eqtl.s3.us-west-2.amazonaws.com/caudate_brainseq_phase3_hg38_rseGene_merged_n464.rda"
@@ -133,11 +135,6 @@ get mesecar2026_zenodo7803697/stage2/aging.pegasus.leiden_085.subclustered.h5ad 
 # Hahn 2023 (GSE212576), Green 2025 (GSE277313) and the Allen mouse ageing atlas (Jin 2025; adult and aged pseudobulks, script 06 uses the adult animals): pseudobulk tables kept with the data release
 # deposited with the data release: data/raw/{hahn2023_gse212576,green2025_gse277313,jin2025_zengagingmouse10xv3}/pseudobulk/{matrix.parquet,samples.tsv,genes.tsv}
 # Modification site maps ----
-# Liu 2023: GLORI sites of HEK293T and HeLa (GEO)
-geo liu2023_gse210563 GSM6432590 GSM6432590_293T-mRNA-1_35bp_m2.totalm6A.FDR.csv.gz
-geo liu2023_gse210563 GSM6432591 GSM6432591_293T-mRNA-2_35bp_m2.totalm6A.FDR.csv.gz
-geo liu2023_gse210563 GSM6432595 GSM6432595_Hela-1_35bp_m2.totalm6A.FDR.csv.gz
-geo liu2023_gse210563 GSM6432596 GSM6432596_Hela-2_35bp_m2.totalm6A.FDR.csv.gz
 # Lu 2024: m5C-TAC-seq sites (supplementary table S4, hg19)
 get lu2024_gse242724/1-s2.0-S1097276524005288-mmc5.xlsx "https://ars.els-cdn.com/content/image/1-s2.0-S1097276524005288-mmc5.xlsx"
 # Dai 2024: UBS-seq m5C sites of HEK293T and HeLa (GEO)
@@ -175,9 +172,6 @@ geo modmaps/GSE277358 GSM8520917 GSM8520917_WT-NSC-Uli-epic-BIDSeq-rep2.xls.gz
 geo modmaps/GSE93749 GSE93749 GSE93749_Mouse_m5C_sites_information.xls.gz
 # Amort 2017: RNA-BisSeq m5C sites of mouse brain (GEO)
 geo modmaps/GSE83432 GSE83432 GSE83432_Brain_total.xlsx
-# Tegowski 2024: DART-seq m6A sites of mouse cortex and neuronal nuclei (GEO)
-geo modmaps/tegowski2024 GSE266876 GSE266876_youngmousecortex_singlecellsites.bed.gz
-geo modmaps/tegowski2024 GSE267234 GSE267234_NeuronNucleisites.bed.gz
 # Wang 2024: m7GHub miCLIP regions of mouse brain and embryonic stem cells
 get modmaps/m7ghub2/m7G-miCLIP-seq.csv "http://www.rnamd.org/m7GHub2/download/m7G-miCLIP-seq.csv"
 # Shafik 2026: m6A-seq peaks of five human brain regions (supplementary table, hg38)
@@ -283,3 +277,44 @@ d=data/raw/gse113793_mettl3_fto_cortex
 for kind in RNA-Seq Ribo-seq; do geo gse154992_mettl3_ribo GSE154992 GSE154992_${kind}_read_count.txt.gz; done
 # Mettl14 knockout of the striatum (Koranda 2018): ref/target_sets/stage2/koranda2018_mettl14.tsv, deposited with the data release
 # Curated RNA modification regulators: ref/gene_sets/rna_mod_regulators.tsv, tracked in the repository
+
+# External validation proteomes (mouse brain ageing, control animals; prepared by 01) ----
+# Keele 2023: Table S1 (supp_tables.zip), the peptide tables of striatum, cerebellum and hippocampus (data.zip, 399 MB) and the UniProt mouse ID-mapping table (release 2026_03, relnotes.txt saved with it)
+d=keele2023_pxd034029
+get $d/figshare/supp_tables.zip "https://ndownloader.figshare.com/files/41032439"
+get $d/figshare/data.zip "https://ndownloader.figshare.com/files/39688207"
+[[ -s data/raw/$d/figshare/supp_tables/table_s1.xlsx ]] || unzip -oq data/raw/$d/figshare/supp_tables.zip -d data/raw/$d/figshare
+[[ -d data/raw/$d/figshare/data_zip/data/PeptideQuantitation ]] || unzip -oq data/raw/$d/figshare/data.zip "data/PeptideQuantitation/*_Striatum.tsv" "data/PeptideQuantitation/*_Cerebellum.tsv" "data/PeptideQuantitation/*_Hippocampus.tsv" -d data/raw/$d/figshare/data_zip
+uniprot=https://ftp.uniprot.org/pub/databases/uniprot/current_release
+get $d/uniprot/MOUSE_10090_idmapping_selected.tab.gz "$uniprot/knowledgebase/idmapping/by_organism/MOUSE_10090_idmapping_selected.tab.gz"
+get $d/uniprot/relnotes.txt "$uniprot/relnotes.txt"
+# Scifo 2025: the first 48.5 MB of the brain mzTab (metadata, protein and peptide tables; the PSM section follows) from the jPOST FTP
+f=data/raw/scifo2025_pxd058684/jpost/Mar032021_AgeingMouse_Brain_LFQ_120min_60K_TopS.MTD-PRT-PEP.mzTab.gz
+[[ -s $f ]] || { mkdir -p "$(dirname "$f")"; curl -sS --range 0-48499999 "ftp://ftp.jpostdb.org/JPST003472/Mar032021_AgeingMouse_Brain_LFQ_120min_60K_TopS.mzTab" | gzip > "$f.part" && mv "$f.part" "$f"; }
+# Yu 2020: Dataset S5, member of the supplementary zip of Europe PMC
+d=yu2020_pxd017385
+get $d/supp/PMC7211924_supplementaryFiles.zip "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC7211924/supplementaryFiles"
+[[ -s data/raw/$d/supp/pnas.1919410117.sd05.xlsx ]] || unzip -oq data/raw/$d/supp/PMC7211924_supplementaryFiles.zip pnas.1919410117.sd05.xlsx -d data/raw/$d/supp
+# Huang 2024: MaxQuant protein groups and the PRIDE record (sample-to-channel scheme)
+pride=https://ftp.pride.ebi.ac.uk/pride/data/archive/2023/12/PXD043352
+get huang2024_pxd043352/pride/proteinGroups.txt "$pride/proteinGroups.txt"
+get huang2024_pxd043352/pride/PXD043352.project.json "https://www.ebi.ac.uk/pride/ws/archive/v3/projects/PXD043352"
+# Jha 2026: MaxQuant protein groups and Supplementary Table 2 (sample labels of the reporter channels)
+get jha2026_pxd060735/pride/proteinGroups.txt "https://ftp.pride.ebi.ac.uk/pride/data/archive/2025/12/PXD060735/proteinGroups.txt"
+get jha2026_pxd060735/supp/MOESM3_supplementary_table_2.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs44323-025-00066-w/MediaObjects/44323_2025_66_MOESM3_ESM.xlsx"
+# Oliviero 2022: Supplementary file 2 (whole-brain total lysate)
+get oliviero2022_elife/elife/elife-73524-supp2-v2.xlsx "https://cdn.elifesciences.org/articles/73524/elife-73524-supp2-v2.xlsx"
+# Mohallem 2024: Supplemental Table S1 (MaxQuant protein groups)
+get mohallem2024_msv000094441/supp/mmc2.xlsx "https://ars.els-cdn.com/content/image/1-s2.0-S1535947624001099-mmc2.xlsx"
+# Marchionini 2025: run overview (age, condition, sample number)
+get marchionini2025_pxd054495/pride/sample_overview.xlsx "https://ftp.pride.ebi.ac.uk/pride/data/archive/2025/04/PXD054495/sample_overview.xlsx"
+# deposited with the data release: data/raw/marchionini2025_pxd054495/pride_stream/precursors.parquet (precursor rows of the 9.5 GB DIA-NN report.tsv of PXD054495 with run, protein group, precursor, quantity and q-values, streamed from PRIDE)
+# Vignane 2026: published log2 intensities of the total proteome
+get filipovic2026_pxd045785/pride/Results_Totalproteome.xlsx "https://ftp.pride.ebi.ac.uk/pride/data/archive/2026/05/PXD045785/Results_Totalproteome.xlsx"
+# deposited with the data release: data/raw/gebru2024_pxd049439/derived/{Hippocampus,Amygdala}_pg_maxlfq.tsv.gz (PG.MaxLFQ of the protein groups passing the DIA-NN pg_matrix filter per run, streamed from DIANN_LB_Niat_Hippo_M_F_results_Rerun.tsv and Amyg_WTvKO_MvF_rerun.tsv of PXD049439, 3.5 and 3.7 GB)
+# Yarbro 2025: Supplementary Data 1-24
+get yarbro2025_nat_commun/supp/MOESM3_supplementary_data_1-24.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-025-56853-3/MediaObjects/41467_2025_56853_MOESM3_ESM.xlsx"
+# Chen 2025: Level 3B protein groups and run metadata (Panorama Public)
+panorama="https://panoramaweb.org/_webdav/Panorama%20Public/2024/MacCoss%20-%20AD-BXD%20Mouse%20PreFrontal%20Cortex%20Proteomics/%40files/Supplementary%20Files"
+get chen2025_pxd045403/panorama/level3b/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv "$panorama/Level%203B/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv"
+get chen2025_pxd045403/panorama/metadata/MouAD-PFC-meta-SAGE-2.0.xlsx "$panorama/Metadata/MouAD-PFC-meta-SAGE-2.0.xlsx"

@@ -1,0 +1,8 @@
+panel	tier	comparison	estimate_pct	ci_low_pct	ci_high_pct
+Single nucleus	gene	-	-6.705	-13.37	0.4679
+Single nucleus	T1	bound_unmarked	0.02035	-1.052	1.104
+Single nucleus	T1	unbound_m6A	-0.7454	-1.677	0.1947
+Single nucleus	T2	bound_unmarked	0.0948	-0.6244	0.8192
+Single nucleus	T2	unbound_m6A	0.2297	-0.9062	1.379
+Single nucleus	T3	bound_unmarked	-0.03902	-0.7122	0.6387
+Single nucleus	T3	unbound_m6A	-0.4777	-1.485	0.5396

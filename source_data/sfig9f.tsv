@@ -1,0 +1,15 @@
+set	comparison	pctile_z
+IGF2BP2 (CLIP within 50 nt)	all	24.39
+IGF2BP2 (CLIP within 50 nt)	matched	4.878
+IGF2BP2 primary T1 vs bound-unmarked	all	90.24
+IGF2BP2 primary T1 vs bound-unmarked	matched	78.05
+IGF2BP2 primary T1 vs unbound m6A	all	26.83
+IGF2BP2 primary T1 vs unbound m6A	matched	7.317
+IGF2BP2 primary T2 vs bound-unmarked	all	95.12
+IGF2BP2 primary T2 vs bound-unmarked	matched	85.37
+IGF2BP2 primary T2 vs unbound m6A	all	60.98
+IGF2BP2 primary T2 vs unbound m6A	matched	21.95
+IGF2BP2 primary T3 vs bound-unmarked	all	87.8
+IGF2BP2 primary T3 vs bound-unmarked	matched	73.17
+IGF2BP2 primary T3 vs unbound m6A	all	31.71
+IGF2BP2 primary T3 vs unbound m6A	matched	4.878

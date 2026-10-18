@@ -1,13 +1,15 @@
 # Query website of the per-gene age effects: the static site of website/ with the data cut into one small JSON per gene
 # (mouse genes join their one-to-one human ortholog), for GitHub Pages; every unit, m6A map and reader binding source
 # carries its reference
-# reads Table S1, Table S2, data_sources.tsv, the outputs of scripts 09 and 10, and the reader binding of script 33
-# (primary sources, rebuilt with network.binding_links)
+# reads the units of Table S1, Table S2, data_sources.tsv, the outputs of scripts 09 and 10, the reader binding of
+# script 33 (primary sources, rebuilt with network.binding_links) and the weights of the proteome clock of script 52
 # the landscape page combines every gene over the cohorts of each context with the rule of the regulator screen
 # (script 30)
 # writes output/62_website/: the site, data/meta.json, data/genes.json (search index: key, human symbol, mouse symbol,
 # mouse id of a gene joined to its human ortholog), data/genes/<key>.json and data/landscape/ (one JSON per context and
-# layer, and landscape.tsv.gz with every column); the key of a gene is its human gene id, or its mouse id without a
+# layer, and landscape.tsv.gz with every column) and data/clock_<species>.json (columns gene_id, symbol and weight:
+# the TabPFN-predicted age z of each gene from the model of all cohorts, to 7 significant digits, which the Clock page
+# turns into sample scores in the browser); the key of a gene is its human gene id, or its mouse id without a
 # one-to-one human ortholog
 import json
 import re
@@ -21,9 +23,8 @@ from network import LOAD, READERS, atlas, binding_links, features, site_map, sym
 
 OUT = utils.OUT / "62_website"
 LAYERS = {"protein_only": "P", "mrna_adjusted": "A", "mrna_only": "R"}  # single-nucleus mRNA becomes S below
-TISSUE = {"takasugi2024": "cerebrum", "chdi2016_expanded": "striatum", "chdi2016_rna": "striatum",
-          "luo2024_bankadj": "frontal cortex", "matlik2024_neurons": "striatum", "hahn2023_msn": "caudate putamen",
-          "hahn2023_neurons": "caudate putamen"}  # units whose name does not carry the tissue
+TISSUE = {"takasugi2024": "cerebrum", "luo2024_bankadj": "frontal cortex", "matlik2024_neurons": "striatum",
+          "hahn2023_msn": "caudate putamen", "hahn2023_neurons": "caudate putamen"}  # units whose name has no tissue
 REGIONS = [("Cerebellum", r"cerebell"), ("Striatum", r"caudate|putamen|nac|accumbens|striatum"),
            ("Hippocampus", r"hippocampus|ca1"), ("Amygdala", r"amygdala"), ("Thalamus and hypothalamus", r"thalamus"),
            ("Midbrain, brainstem and spinal cord", r"nigra|tegmental|brainstem|pons|medulla|spinal"),
@@ -31,8 +32,6 @@ REGIONS = [("Cerebellum", r"cerebell"), ("Striatum", r"caudate|putamen|nac|accum
            ("White matter and ventricles", r"white|callosum|choroid|subventricular"),
            ("Cortex", r"cortex|dlpfc|dpfc|ba9|ba24|cingulate|temporal|smtg|ipl")]
 MAP_SOURCE = {"m6a_hippocampus_cyto": "sun2025_gse270643", "m6a_hippocampus_syn": "sun2025_gse270643",
-              "m6a_cortex_scdart_tegowski2024": "tegowski2024_gse266876_gse267234",
-              "m6a_neuron_dart_tegowski2024": "tegowski2024_gse266876_gse267234",
               "m6a_brain_shafik2026": "shafik2026_natneurosci"}
 LISTS = {  # binding lists of the reader network (network.LISTS; ref/target_sets of the data release)
     "Darnell2011_brain": ("Darnell JC et al. FMRP stalls ribosomal translocation on mRNAs linked to synaptic "
@@ -78,7 +77,7 @@ first = sources_tsv.drop_duplicates("dataset").set_index("dataset")
 refs = {k: dict(text=r.citation, doi=r.doi, accession=r.accession) for k, r in first.iterrows()}
 refs |= {k: dict(text=text, doi=doi, accession="") for k, (text, doi) in LISTS.items()}
 
-units = utils.read(utils.ROOT / "source_data" / "supplementary_table1.tsv", keep_default_na=False)
+units = utils.read(utils.ROOT / "source_data" / "supplementary_table1_units.tsv", keep_default_na=False)
 units["region"] = [region(u) for u in units.itertuples()]
 units["ref"] = units.unit_id.map(utils.read(utils.PREPARED / "units.tsv", index_col="unit").dataset)
 genes_per_layer = effects.groupby(["unit", "layer"]).size()
@@ -129,8 +128,6 @@ def combine(group):
 
 landscape, contexts = [], []
 for context, layer, listed in utils.CONTEXTS:
-    if context == utils.SENSITIVITY:
-        continue
     rows = effects[effects.unit.isin(listed.split()) & effects.layer.isin(CODES[layer])]
     rows = rows.assign(cohort=rows.unit.map(cohort_of))
     cohorts = rows.groupby(["gene_id", "cohort"]).agg(symbol=("symbol", "first"), estimate=("estimate", "mean"),
@@ -183,4 +180,11 @@ columns = ["context", "layer", "gene_id", "symbol", "n_cohorts", "n_same_directi
            "ci_high", "effect_pct", "effect_pct_ci_low", "effect_pct_ci_high", "p", "q", "tau2", "i2", "m6a_sites"]
 utils.write(pd.concat(landscape).rename(columns=names)[columns], OUT / "data" / "landscape" / "landscape.tsv.gz")
 (OUT / "data" / "genes.json").write_text(json.dumps(search, separators=(",", ":")))
+
+# proteome clock: the weight of each gene is the prediction of the TabPFN model fitted on all cohorts (script 52)
+for s in ("mouse", "human"):
+    runs = pd.read_parquet(utils.OUT / "52_proteome_clock" / "runs" / f"{s}_protein__all.parquet")
+    weights = [float(f"{w:.7g}") for w in runs.model]
+    clock = dict(gene_id=runs.index.tolist(), symbol=runs.symbol.tolist(), weight=weights)
+    (OUT / "data" / f"clock_{s}.json").write_text(json.dumps(clock, separators=(",", ":"), allow_nan=False))
 print(f"{len(search)} genes, {len(effects)} age effects in {len(units)} units, {len(used)} references")

@@ -1,9 +1,41 @@
-target	sites	n	mean	ci_low	ci_high
-Mouse protein	1	981	-0.06582	-0.07072	-0.06093
-Mouse protein	2-3	1456	-0.1436	-0.1511	-0.136
-Mouse protein	4-7	1924	-0.2271	-0.2363	-0.218
-Mouse protein	>=8	4130	-0.4448	-0.4571	-0.4325
-Human protein	1	2988	-0.03342	-0.03464	-0.0322
-Human protein	2-3	2067	-0.06882	-0.07107	-0.06656
-Human protein	4-7	452	-0.1168	-0.1234	-0.1101
-Human protein	>=8	20	-0.1327	-0.1638	-0.1016
+target	block	delta_r2	null_low	null_high	p
+Mouse protein	m6A sites and binding	0.002659	-0.0005128	0.0003367	0.009901
+Mouse protein	m6A sites	0.002196			
+Mouse protein	m6A reader binding	0.0009555			
+Mouse protein	Transcript structure	0.0007664			
+Mouse protein	Expression and turnover	0.04265			
+Mouse protein	Cell-type origin	0.1224			
+Mouse protein	Functional program	0.0066			
+Mouse protein	Sequence representation	0.02539			
+Human mRNA	m6A sites and binding	0.0001207	-0.0007564	-7.31e-05	0.0198
+Human mRNA	m6A sites	-0.001163			
+Human mRNA	m6A reader binding	-0.0003542			
+Human mRNA	Transcript structure	0.01093			
+Human mRNA	Expression and turnover	0.0153			
+Human mRNA	Cell-type origin	0.03106			
+Human mRNA	Functional program	0.001231			
+Human mRNA	Sequence representation	0.01037			
+Human neuronal mRNA	m6A sites and binding	0.0002134	-0.001103	-0.0002457	0.009901
+Human neuronal mRNA	m6A sites	-0.0003277			
+Human neuronal mRNA	m6A reader binding	0.0003069			
+Human neuronal mRNA	Transcript structure	0.04221			
+Human neuronal mRNA	Expression and turnover	0.01757			
+Human neuronal mRNA	Cell-type origin	0.03471			
+Human neuronal mRNA	Functional program	0.001008			
+Human neuronal mRNA	Sequence representation	0.01181			
+Mouse mRNA-adjusted protein	m6A sites and binding	-0.001213	-0.002298	-0.001199	0.0495
+Mouse mRNA-adjusted protein	m6A sites	-0.0004471			
+Mouse mRNA-adjusted protein	m6A reader binding	-0.001343			
+Mouse mRNA-adjusted protein	Transcript structure	0.00374			
+Mouse mRNA-adjusted protein	Expression and turnover	0.001896			
+Mouse mRNA-adjusted protein	Cell-type origin	0.09658			
+Mouse mRNA-adjusted protein	Functional program	0.001657			
+Mouse mRNA-adjusted protein	Sequence representation	0.007634			
+Human protein	m6A sites and binding	0.0001625	-0.0008265	0.0005048	0.1881
+Human protein	m6A sites	0.0005413			
+Human protein	m6A reader binding	-0.0007293			
+Human protein	Transcript structure	0.001869			
+Human protein	Expression and turnover	0.0208			
+Human protein	Cell-type origin	0.02304			
+Human protein	Functional program	0.006187			
+Human protein	Sequence representation	0.0287			
