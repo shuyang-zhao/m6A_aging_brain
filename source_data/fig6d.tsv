@@ -1,0 +1,23 @@
+study	disease	contrast	partition	group	n_genes	weight_share	est	se	ci_low	ci_high	p	share_of_total	expected
+Langfelder 2016	HD	per 100 CAG repeats	total	all genes	7706	1	1.018	0.1645	0.6891	1.346	4.625e-08	1	1.018
+Langfelder 2016	HD	per 100 CAG repeats	cell source	astrocyte	709	0.1378	0.09706	0.02878	0.03957	0.1545	0.00126	0.09537	0.1402
+Langfelder 2016	HD	per 100 CAG repeats	cell source	microglia	638	0.1256	0.09316	0.02183	0.04956	0.1368	6.57e-05	0.09154	0.1279
+Langfelder 2016	HD	per 100 CAG repeats	cell source	neuron	1279	0.2316	0.5158	0.0491	0.4177	0.6138	1.215e-15	0.5068	0.2357
+Langfelder 2016	HD	per 100 CAG repeats	cell source	no cell-type data	17	0.001077	1.099e-05	0.0007167	-0.00142	0.001442	0.9878	1.08e-05	0.001096
+Langfelder 2016	HD	per 100 CAG repeats	cell source	oligodendrocyte	563	0.1277	0.2009	0.04664	0.1078	0.2941	5.696e-05	0.1974	0.13
+Langfelder 2016	HD	per 100 CAG repeats	cell source	ubiquitous	4500	0.3762	0.1108	0.05665	-0.002345	0.2239	0.0548	0.1089	0.3829
+Langfelder 2016	HD	per 100 CAG repeats	m6A sites	0	1342	0.1987	0.08202	0.03056	0.02098	0.1431	0.009229	0.08059	0.2022
+Langfelder 2016	HD	per 100 CAG repeats	m6A sites	1	811	0.106	0.1168	0.02097	0.0749	0.1586	5.248e-07	0.1147	0.1078
+Langfelder 2016	HD	per 100 CAG repeats	m6A sites	2-3	1261	0.1531	0.1047	0.02634	0.05204	0.1573	0.0001806	0.1028	0.1558
+Langfelder 2016	HD	per 100 CAG repeats	m6A sites	≥4	4292	0.5422	0.7143	0.0995	0.5156	0.913	8.376e-10	0.7018	0.5518
+AD combined	AD	disease vs control	total	all genes		1	0.7516	0.1832	0.3925	1.111	4.101e-05	1	0.7516
+AD combined	AD	disease vs control	cell source	astrocyte		0.1229	0.1201	0.02616	0.06887	0.1714	4.372e-06	0.1598	0.0924
+AD combined	AD	disease vs control	cell source	microglia		0.09241	0.07743	0.01845	0.04128	0.1136	2.699e-05	0.103	0.06946
+AD combined	AD	disease vs control	cell source	neuron		0.3227	0.3777	0.09306	0.1953	0.5601	4.928e-05	0.5025	0.2425
+AD combined	AD	disease vs control	cell source	no cell-type data		0.002915	0.0003691	0.0009785	-0.001549	0.002287	0.7061	0.000491	0.002191
+AD combined	AD	disease vs control	cell source	oligodendrocyte		0.06889	0.04305	0.0135	0.01659	0.06951	0.00143	0.05728	0.05178
+AD combined	AD	disease vs control	cell source	ubiquitous		0.3902	0.1329	0.04063	0.05327	0.2126	0.001072	0.1768	0.2933
+AD combined	AD	disease vs control	m6A sites	0		0.4356	0.3291	0.07614	0.1799	0.4783	1.544e-05	0.4379	0.3274
+AD combined	AD	disease vs control	m6A sites	1		0.2968	0.2132	0.05238	0.1105	0.3159	4.699e-05	0.2837	0.2231
+AD combined	AD	disease vs control	m6A sites	2-3		0.2116	0.1642	0.04292	0.08003	0.2483	0.0001309	0.2184	0.159
+AD combined	AD	disease vs control	m6A sites	≥4		0.05607	0.04516	0.01448	0.01678	0.07353	0.001814	0.06008	0.04214

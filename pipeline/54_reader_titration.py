@@ -1,6 +1,7 @@
 # Individual m6A load index and reader titration. The index of a sample is the OLS slope over genes of the standardised
 # protein abundance on the m6A load of script 21 with LOAD_COVARIATES (genes complete in the unit, as script 33).
-# (1) Spearman rho of the index with age in each cohort (donor mean of the unit-standardised index), pooled by species.
+# (1) Spearman rho of the index with age in each cohort (donor mean of the unit-standardised index), pooled by species,
+# and in the external mouse proteomes (utils.EXTERNAL; index only).
 # (2) Per unit, OLS of the index (reader genes left out) on the reader level, age and the unit's design; the reader
 # coefficient pooled over the cohorts of a species (random effects; BH over the four readers of a species) and ranked
 # among the control RBPs of script 33. Reader level: z of the protein in the unit (a module: mean of its members' z),
@@ -22,16 +23,17 @@ READERS = {
     "YTHDF module": ["YTHDF1", "YTHDF2", "YTHDF3"],
     "YTHDF3": ["YTHDF3"],
 }
-LOAD = {"mouse": "n_sites_m6A", "human": "n_sites_m6A"}  # human: brain peaks (script 09)
 CONTROLS = utils.read(utils.OUT / "33_regulator_network" / "control_rbps.tsv").query("selected").rbp.tolist()
 REGULATORS = READERS | {c: [c] for c in CONTROLS}
 UNITS = {
     species: next(u.split() for n, layer, u in utils.CONTEXTS if (n, layer) == (f"{species}_protein", "protein_only"))
-    for species in LOAD
+    for species in ("mouse", "human")
 }
+UNITS["external"] = utils.EXTERNAL.split()
 cohort_of = utils.read(utils.PREPARED / "units.tsv", index_col="unit").dataset
 features = {
-    s: utils.read(utils.OUT / "09_transcript_features" / f"{s}_features.tsv.gz").set_index("gene_id") for s in LOAD
+    s: utils.read(utils.OUT / "09_transcript_features" / f"{s}_features.tsv.gz").set_index("gene_id")
+    for s in ("mouse", "human")
 }
 gene_id = {
     s: pd.Series(f.index, index=f.symbol.str.upper()).pipe(lambda v: v[~v.index.duplicated(keep=False)])
@@ -44,17 +46,15 @@ def z(v):
     return (v - v.mean()) / v.std()
 
 
-def unit_fits(unit, species):
+def unit_fits(unit, group):
+    species = "human" if group == "human" else "mouse"
     protein, _, samples, covariates = utils.load_unit(unit)
-    complete = protein.index[protein.notna().all(axis=1)].intersection(features[species].index)
-    genes = features[species].loc[complete].join(protein.mean(axis=1).rename("level"))
-    genes = genes.dropna(subset=[LOAD[species], *utils.LOAD_COVARIATES])
-    Y = protein.loc[genes.index].apply(z, axis=1).to_numpy(float)
-    X = np.column_stack([np.ones(len(genes)), np.log1p(genes[LOAD[species]]), genes[utils.LOAD_COVARIATES]])
-    X = X.astype(float)
+    genes, X, Y = utils.load_design(protein, features[species])
     age = samples.age_months if species == "mouse" else samples.age_years
     slope = z(np.linalg.pinv(X)[1] @ Y)
     index = pd.DataFrame(dict(unit=unit, donor=samples.donor_id.astype(str), age=age, index=slope))
+    if group == "external":
+        return index, []
     D = model.design(samples, covariates)
     rows = []
     for name, members in REGULATORS.items():
@@ -71,13 +71,13 @@ def unit_fits(unit, species):
     return index, rows
 
 
-jobs = [delayed(unit_fits)(u, s) for s, units in UNITS.items() for u in units]
+jobs = [delayed(unit_fits)(u, g) for g, units in UNITS.items() for u in units]
 results = Parallel(n_jobs=16)(jobs)
-species_of = {u: s for s, units in UNITS.items() for u in units}
+group_of = {u: g for g, units in UNITS.items() for u in units}
 
 # (1) index against age
 index = pd.concat([r[0] for r in results]).assign(cohort=lambda d: d.unit.map(cohort_of))
-index["species"] = index.unit.map(species_of)
+index["species"] = index.unit.map(group_of)  # mouse, human or external (mouse)
 donors = index.groupby(["species", "cohort", "donor"])[["index", "age"]].mean().reset_index()
 cohorts = pd.DataFrame(
     [

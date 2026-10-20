@@ -1,5 +1,5 @@
 target	model	n	rho	rho_ci_low	rho_ci_high	p
 Human protein	Mouse protein model	8301	0.258	0.2373	0.2802	2.588e-126
 Human protein	Shuffled target	8301	-0.0342	-0.05516	-0.01139	0.001832
-Human mRNA	Mouse protein model	9782	0.1858	0.1664	0.2053	9.874e-77
-Human mRNA	Shuffled target	9782	-0.03282	-0.05293	-0.0135	0.001169
+Human mRNA	Mouse protein model	9996	0.1911	0.1731	0.21	7.909e-83
+Human mRNA	Shuffled target	9996	-0.03835	-0.0575	-0.01772	0.0001257

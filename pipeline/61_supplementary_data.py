@@ -2,7 +2,8 @@
 # additional_file_2_tables.xlsx: Supplementary Tables S1-S7 (source_data/supplementary_table*.tsv)
 # additional_file_3_age_effects.xlsx: the per-gene age effects of every unit in the three layers (script 10)
 # additional_file_4_clock_weights.xlsx: the clock weights of the mouse and human proteome models, with and without the
-# m6A features (script 52, models of all cohorts), and the gene-level model predictions (script 50)
+# m6A features (script 52, models of all cohorts), the weights of the unseen mouse genes (script 52) and the
+# gene-level model predictions (script 50)
 # additional_file_5_clock_scores.xlsx: the clock scores of every sample (scripts 52 and 53) and the individual m6A
 # index (script 54)
 # the README of each workbook comes from docs/supplementary_data_columns.tsv (one row per sheet, then one per column;
@@ -44,6 +45,8 @@ def weights(species):
 def read_table(file):
     if file.startswith("52_proteome_clock/runs/"):
         return weights(file.split("/")[-1].split("_")[0])
+    if file.endswith(".parquet"):  # a gene table indexed by gene_id
+        return utils.read(utils.OUT / file).reset_index()
     path = utils.ROOT / file if file.startswith("source_data/") else utils.OUT / file
     return utils.read(path, keep_default_na=False, na_values=[""], low_memory=False)  # only empty fields are missing
 

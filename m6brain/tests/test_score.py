@@ -7,7 +7,7 @@ import pandas as pd
 import pytest
 from scipy import stats
 
-import epiprotage
+import m6brain
 
 HERE = Path(__file__).resolve().parent
 EXAMPLE = HERE.parent / "examples" / "data" / "scifo2025_whole_brain.csv"
@@ -26,7 +26,7 @@ def reference(protein, weight):
 
 @pytest.fixture(scope="module")
 def mouse():
-    return epiprotage.weights("mouse").set_index("gene_id")
+    return m6brain.weights("mouse").set_index("gene_id")
 
 
 @pytest.fixture(scope="module")
@@ -42,7 +42,7 @@ def synthetic(mouse):
 
 
 def test_score_equals_reference(synthetic, mouse):
-    result = epiprotage.score(synthetic.reset_index(), "mouse")
+    result = m6brain.score(synthetic.reset_index(), "mouse")
     expected = reference(synthetic, mouse.weight)
     assert result["sample"].tolist() == list(synthetic.columns)
     np.testing.assert_allclose(result.score, expected, atol=1e-12)
@@ -51,11 +51,11 @@ def test_score_equals_reference(synthetic, mouse):
 
 def test_score_symbols_equal_ids(synthetic, mouse):
     by_symbol = synthetic.rename(index=mouse.symbol)
-    np.testing.assert_allclose(epiprotage.score(by_symbol, "mouse").score, epiprotage.score(synthetic, "mouse").score)
+    np.testing.assert_allclose(m6brain.score(by_symbol, "mouse").score, m6brain.score(synthetic, "mouse").score)
 
 
 def test_n_genes_matched(synthetic):
-    result = epiprotage.score(synthetic, "mouse")
+    result = m6brain.score(synthetic, "mouse")
     quantified = (
         synthetic.iloc[:400].drop(synthetic.index[[3, 4]]).notna().sum()
     )  # without the constant and the single-value protein
@@ -63,7 +63,7 @@ def test_n_genes_matched(synthetic):
 
 
 def test_example_equals_pipeline_rho():
-    result = epiprotage.score(EXAMPLE, "mouse")
+    result = m6brain.score(EXAMPLE, "mouse")
     assert result.attrs["spearman_rho"] == pytest.approx(stats.spearmanr(result.score, result.age).statistic)
     if not COHORTS.exists():
         pytest.skip("analysis outputs not available")
@@ -76,7 +76,7 @@ def test_example_equals_pipeline_rho():
 
 def test_age_argument(synthetic):
     age = pd.Series(np.arange(15.0), index=synthetic.columns)
-    rho = epiprotage.score(synthetic, "mouse", age=age).attrs["spearman_rho"]
-    assert epiprotage.score(synthetic, "mouse", age=age.tolist()).attrs["spearman_rho"] == rho
+    rho = m6brain.score(synthetic, "mouse", age=age).attrs["spearman_rho"]
+    assert m6brain.score(synthetic, "mouse", age=age.tolist()).attrs["spearman_rho"] == rho
     with_row = pd.concat([synthetic, age.rename("age").to_frame().T])
-    assert epiprotage.score(with_row, "mouse").attrs["spearman_rho"] == rho
+    assert m6brain.score(with_row, "mouse").attrs["spearman_rho"] == rho

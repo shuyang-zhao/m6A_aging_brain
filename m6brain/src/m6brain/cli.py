@@ -1,4 +1,4 @@
-"""Command line: epiprotage score FILE --species mouse|human [--out scores.csv]"""
+"""Command line: m6brain score FILE --species mouse|human [--out scores.csv]"""
 
 import argparse
 import sys
@@ -7,9 +7,12 @@ from . import __version__, score, weights_version
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="epiprotage", description="Zero-shot clock of brain proteome aging.")
+    parser = argparse.ArgumentParser(
+        prog="m6brain",
+        description="Zero-shot clock of brain proteome age from m6Brain, an m6A-aware model of brain proteome aging.",
+    )
     parser.add_argument(
-        "--version", action="version", version=f"epiprotage {__version__} (weights {weights_version()['date']})"
+        "--version", action="version", version=f"m6brain {__version__} (weights {weights_version()['date']})"
     )
     sub = parser.add_subparsers(dest="command", required=True)
     cmd = sub.add_parser("score", help="score the samples of a proteome table (genes x samples, log abundances)")

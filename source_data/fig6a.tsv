@@ -1,17 +1,51 @@
-species	cohort	kind	n	rho	ci_low	ci_high	p	i2	k	n_negative
-human	Blumenreich 2024	cohort	21	-0.502	-0.7674	-0.08969				
-human	Eggers 2025	cohort	34	-0.1448	-0.4604	0.2034				
-human	Koopmans 2026	cohort	46	-0.2811	-0.5283	0.01006				
-human	Lee 2023	cohort	74	0.09993	-0.1316	0.3211				
-human	Luo 2024	cohort	193	-0.206	-0.3374	-0.0667				
-human	Merrihew 2023	cohort	11	-0.5376	-0.8601	0.09195				
-human	Ping 2020	cohort	10	-0.6485	-0.9076	-0.03186				
-human	Teng 2023	cohort	16	0.3508	-0.1754	0.7211				
-mouse	Keele 2025	cohort	18	-0.8262	-0.9331	-0.585				
-mouse	Lu 2025	cohort	27	-0.484	-0.7298	-0.1274				
-mouse	Marino 2025	cohort	10	-0.8704	-0.969	-0.5327				
-mouse	Takasugi 2024	cohort	16	-0.7882	-0.9232	-0.4801				
-mouse	Tsumagari 2023	cohort	18	-0.682	-0.8714	-0.3156				
-mouse	Wang 2025	cohort	40	-0.3274	-0.5798	-0.01766				
-human	Pooled	pooled		-0.1924	-0.3661	-0.005692	0.04349	57.56	8	6
-mouse	Pooled	pooled		-0.6734	-0.8145	-0.457	7.378e-07	63.59	6	6
+study	donor_id	group	score
+Ping 2020	b1_127C	AD	0.9987
+Ping 2020	b1_128N	AD	-0.07475
+Ping 2020	b1_129C	Control	-0.2864
+Ping 2020	b1_130C	Control	0.6677
+Ping 2020	b1_130N	AD	0.3067
+Ping 2020	b1_131N	Control	-2.085
+Ping 2020	b2_128C	AD	1.332
+Ping 2020	b2_128N	Control	-1.354
+Ping 2020	b2_129C	AD	-0.2898
+Ping 2020	b2_129N	Control	-0.9631
+Ping 2020	b2_130C	Control	0.1179
+Ping 2020	b2_130N	AD	0.3123
+Ping 2020	b3_127C	Control	0.2205
+Ping 2020	b3_127N	Control	-0.3438
+Ping 2020	b3_128N	AD	0.9043
+Ping 2020	b3_129N	AD	-0.6774
+Ping 2020	b3_130C	Control	0.283
+Ping 2020	b3_130N	Control	-1.169
+Ping 2020	b3_131N	AD	2.1
+Merrihew 2023	donor19	AD	1.165
+Merrihew 2023	donor21	AD	0.3665
+Merrihew 2023	donor23	AD	0.6078
+Merrihew 2023	donor24	AD	1.041
+Merrihew 2023	donor27	AD	0.9378
+Merrihew 2023	donor29	Control	0.1111
+Merrihew 2023	donor30	AD	0.3648
+Merrihew 2023	donor31	AD	0.2482
+Merrihew 2023	donor32	AD	-0.425
+Merrihew 2023	donor34	Control	-1.155
+Merrihew 2023	donor36	Control	-1.421
+Merrihew 2023	donor38	Control	-0.8693
+Merrihew 2023	donor39	AD	0.4296
+Merrihew 2023	donor40	AD	0.3753
+Merrihew 2023	donor42	AD	-0.3407
+Merrihew 2023	donor43	Control	-0.6458
+Merrihew 2023	donor44	AD	0.4515
+Merrihew 2023	donor46	Control	-0.3202
+Merrihew 2023	donor47	Control	-0.9981
+Merrihew 2023	donor48	AD	0.4705
+Merrihew 2023	donor51	AD	0.1858
+Merrihew 2023	donor52	Control	-0.1338
+Merrihew 2023	donor53	AD	-0.5235
+Merrihew 2023	donor54	AD	-0.193
+Merrihew 2023	donor55	Control	0.2099
+Merrihew 2023	donor56	AD	-0.4776
+Merrihew 2023	donor60	AD	-0.3008
+Merrihew 2023	donor62	Control	-0.4346
+Merrihew 2023	donor63	AD	0.8126
+Merrihew 2023	donor64	Control	-0.6943
+Merrihew 2023	donor67	AD	0.006655

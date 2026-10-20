@@ -1,0 +1,100 @@
+study	disease	contrast	region	n	partition	group	n_genes	weight_share	est	se	ci_low	ci_high	p	share_of_total	expected
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	total	all genes	5265	1	0.3874	0.3431	-0.3307	1.106	0.2729	1	0.3874
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	astrocyte	567	0.1247	0.07392	0.04918	-0.02902	0.1769	0.1493	0.1908	0.04832
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	microglia	471	0.0903	0.06164	0.0376	-0.01707	0.1403	0.1176	0.1591	0.03499
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	neuron	1248	0.3422	0.1262	0.1828	-0.2564	0.5088	0.4983	0.3257	0.1326
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	no cell-type data	27	0.003252	0.003145	0.00148	4.594e-05	0.006243	0.04702	0.008117	0.00126
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	oligodendrocyte	424	0.0723	0.01598	0.02522	-0.03681	0.06877	0.5339	0.04125	0.02801
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	cell source	ubiquitous	2528	0.3673	0.1065	0.0637	-0.02679	0.2399	0.1108	0.275	0.1423
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	m6A sites	0	2501	0.4416	0.2046	0.1389	-0.08614	0.4953	0.1572	0.5281	0.1711
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	m6A sites	1	1562	0.2925	0.1236	0.0966	-0.07858	0.3258	0.2161	0.319	0.1133
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	m6A sites	2-3	999	0.2098	0.04703	0.08252	-0.1257	0.2197	0.5754	0.1214	0.0813
+Merrihew 2023	AD	disease vs control	Superior and middle temporal gyri (SMTG)	27	m6A sites	≥4	203	0.056	0.01222	0.03122	-0.05312	0.07755	0.6999	0.03153	0.0217
+Merrihew 2023	AD	disease vs control	Hippocampus	30	total	all genes	4526	1	0.7737	0.3641	0.02237	1.525	0.04405	1	0.7737
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	astrocyte	515	0.131	0.1112	0.04926	0.009534	0.2129	0.03335	0.1437	0.1013
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	microglia	415	0.08939	0.08058	0.03068	0.01725	0.1439	0.0148	0.1041	0.06916
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	neuron	1108	0.3536	0.3864	0.2011	-0.02869	0.8014	0.06666	0.4994	0.2736
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	no cell-type data	30	0.004213	-0.0006019	0.001593	-0.003889	0.002686	0.7089	-0.0007779	0.00326
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	oligodendrocyte	359	0.07143	0.0498	0.02468	-0.00114	0.1007	0.05493	0.06436	0.05527
+Merrihew 2023	AD	disease vs control	Hippocampus	30	cell source	ubiquitous	2099	0.3504	0.1464	0.07535	-0.009118	0.3019	0.06385	0.1892	0.2711
+Merrihew 2023	AD	disease vs control	Hippocampus	30	m6A sites	0	2235	0.4517	0.358	0.1534	0.04144	0.6745	0.02829	0.4626	0.3495
+Merrihew 2023	AD	disease vs control	Hippocampus	30	m6A sites	1	1306	0.2854	0.2063	0.1046	-0.009553	0.4221	0.06018	0.2666	0.2209
+Merrihew 2023	AD	disease vs control	Hippocampus	30	m6A sites	2-3	815	0.2052	0.1712	0.08253	0.0008587	0.3415	0.04894	0.2212	0.1588
+Merrihew 2023	AD	disease vs control	Hippocampus	30	m6A sites	≥4	170	0.05761	0.03833	0.03141	-0.0265	0.1032	0.2342	0.04954	0.04458
+Merrihew 2023	AD	disease vs control	Caudate	28	total	all genes	4131	1	0.7383	0.4231	-0.1415	1.618	0.09559	1	0.7383
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	astrocyte	472	0.1302	0.1176	0.06143	-0.01019	0.2453	0.06939	0.1592	0.09614
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	microglia	351	0.08224	0.05551	0.02996	-0.006804	0.1178	0.07806	0.07518	0.06072
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	neuron	1035	0.3669	0.4037	0.2398	-0.09487	0.9024	0.107	0.5469	0.2709
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	no cell-type data	25	0.003301	-0.0001599	0.001645	-0.003581	0.003261	0.9235	-0.0002165	0.002437
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	oligodendrocyte	326	0.06989	0.03148	0.03189	-0.03484	0.0978	0.3348	0.04264	0.0516
+Merrihew 2023	AD	disease vs control	Caudate	28	cell source	ubiquitous	1922	0.3474	0.1302	0.07313	-0.02191	0.2823	0.08955	0.1763	0.2565
+Merrihew 2023	AD	disease vs control	Caudate	28	m6A sites	0	2019	0.4431	0.3299	0.1692	-0.02194	0.6817	0.06466	0.4468	0.3272
+Merrihew 2023	AD	disease vs control	Caudate	28	m6A sites	1	1220	0.2952	0.1946	0.1195	-0.05396	0.4432	0.1184	0.2636	0.2179
+Merrihew 2023	AD	disease vs control	Caudate	28	m6A sites	2-3	739	0.2065	0.1629	0.1025	-0.05031	0.376	0.1271	0.2206	0.1524
+Merrihew 2023	AD	disease vs control	Caudate	28	m6A sites	≥4	153	0.05525	0.05095	0.03655	-0.02505	0.127	0.1778	0.06902	0.04079
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	total	all genes	5442	1	0.6641	0.3717	-0.114	1.442	0.09001	1	0.6641
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	astrocyte	603	0.129	0.1103	0.04837	0.009025	0.2115	0.03436	0.166	0.08563
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	microglia	494	0.09034	0.08711	0.03756	0.008499	0.1657	0.03167	0.1312	0.05999
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	neuron	1275	0.3346	0.266	0.2018	-0.1564	0.6885	0.2032	0.4006	0.2222
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	no cell-type data	28	0.003336	0.001193	0.001852	-0.002682	0.005068	0.5271	0.001797	0.002215
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	oligodendrocyte	427	0.07171	0.04022	0.02888	-0.02023	0.1007	0.1798	0.06057	0.04762
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	cell source	ubiquitous	2615	0.3711	0.1592	0.06758	0.01779	0.3007	0.02935	0.2398	0.2464
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	m6A sites	0	2566	0.4426	0.3048	0.1419	0.007775	0.6019	0.04484	0.4591	0.2939
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	m6A sites	1	1623	0.2946	0.1868	0.1062	-0.03539	0.4091	0.09455	0.2814	0.1957
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	m6A sites	2-3	1038	0.208	0.1354	0.09818	-0.07004	0.3409	0.1837	0.204	0.1381
+Merrihew 2023	AD	disease vs control	Inferior parietal lobule (IPL)	26	m6A sites	≥4	215	0.05478	0.03693	0.03079	-0.02751	0.1014	0.2451	0.05561	0.03638
+Blumenreich 2024	PD	disease vs control	Striatum	61	total	all genes	4612	1	0.5389	0.2805	-0.02332	1.101	0.05993	1	0.5389
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	astrocyte	493	0.1257	0.07005	0.03428	0.001353	0.1387	0.0458	0.13	0.06771
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	microglia	340	0.07219	0.05657	0.02364	0.009188	0.1039	0.02017	0.105	0.0389
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	neuron	1085	0.3516	0.3132	0.1602	-0.00774	0.6342	0.05559	0.5813	0.1894
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	no cell-type data	20	0.002751	-0.001297	0.001118	-0.003537	0.0009421	0.2506	-0.002408	0.001483
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	oligodendrocyte	350	0.07028	0.03558	0.01769	0.0001262	0.07103	0.04922	0.06603	0.03787
+Blumenreich 2024	PD	disease vs control	Striatum	61	cell source	ubiquitous	2324	0.3775	0.06471	0.05568	-0.04687	0.1763	0.2501	0.1201	0.2034
+Blumenreich 2024	PD	disease vs control	Striatum	61	m6A sites	0	2216	0.4362	0.2224	0.1164	-0.01076	0.4556	0.06115	0.4128	0.235
+Blumenreich 2024	PD	disease vs control	Striatum	61	m6A sites	1	1385	0.2946	0.1513	0.07962	-0.008239	0.3109	0.06261	0.2808	0.1588
+Blumenreich 2024	PD	disease vs control	Striatum	61	m6A sites	2-3	843	0.2142	0.129	0.06839	-0.008036	0.2661	0.06451	0.2394	0.1154
+Blumenreich 2024	PD	disease vs control	Striatum	61	m6A sites	≥4	168	0.05502	0.03608	0.01892	-0.001836	0.074	0.06175	0.06696	0.02965
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	total	all genes	4175	1	-0.1451	0.2953	-0.7378	0.4475	0.6252	1	-0.1451
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	astrocyte	455	0.1337	0.0293	0.04167	-0.05432	0.1129	0.4851	-0.2019	-0.0194
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	microglia	329	0.07961	0.05677	0.02275	0.01113	0.1024	0.01578	-0.3911	-0.01156
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	neuron	926	0.3263	-0.03244	0.1668	-0.3672	0.3023	0.8466	0.2235	-0.04736
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	no cell-type data	18	0.002861	-0.00106	0.001833	-0.004738	0.002619	0.5657	0.007302	-0.0004153
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	oligodendrocyte	342	0.0747	0.01421	0.02298	-0.03189	0.06032	0.5389	-0.09791	-0.01084
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	cell source	ubiquitous	2105	0.3828	-0.2119	0.06643	-0.3452	-0.07863	0.002411	1.46	-0.05557
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	m6A sites	0	2082	0.4588	-0.08746	0.1237	-0.3357	0.1608	0.4828	0.6026	-0.06659
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	m6A sites	1	1230	0.2916	-0.0647	0.09162	-0.2486	0.1192	0.4833	0.4457	-0.04233
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	m6A sites	2-3	728	0.1992	-0.01163	0.06481	-0.1417	0.1184	0.8583	0.08013	-0.02891
+Blumenreich 2024	PD	disease vs control	Substantia nigra	60	m6A sites	≥4	135	0.05046	0.01864	0.02349	-0.0285	0.06578	0.4311	-0.1284	-0.007324
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	total	all genes	4910	1	-0.02642	0.324	-0.6786	0.6258	0.9354	1	-0.02642
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	astrocyte	493	0.1184	-0.02553	0.03861	-0.1032	0.05219	0.5118	0.9662	-0.003129
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	microglia	361	0.07212	-0.006364	0.02616	-0.05903	0.0463	0.8089	0.2409	-0.001905
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	neuron	1178	0.3579	0.05011	0.1925	-0.3373	0.4376	0.7957	-1.897	-0.009456
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	no cell-type data	16	0.002161	0.001899	0.001166	-0.0004471	0.004245	0.1101	-0.07189	-5.709e-05
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	oligodendrocyte	381	0.07288	0.008493	0.02304	-0.03789	0.05487	0.7141	-0.3215	-0.001925
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	cell source	ubiquitous	2481	0.3765	-0.05504	0.05524	-0.1662	0.05616	0.3243	2.083	-0.009945
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	m6A sites	0	2321	0.432	-0.02758	0.1201	-0.2694	0.2143	0.8194	1.044	-0.01141
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	m6A sites	1	1459	0.288	-0.02769	0.09475	-0.2184	0.163	0.7714	1.048	-0.007609
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	m6A sites	2-3	935	0.2181	0.0168	0.08385	-0.152	0.1856	0.842	-0.6361	-0.005762
+Blumenreich 2024	PD	disease vs control	Cingulate gyrus	52	m6A sites	≥4	195	0.06193	0.01205	0.02927	-0.04686	0.07097	0.6823	-0.4563	-0.001636
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	total	all genes	4870	1	-0.3323	0.2645	-0.8621	0.1976	0.2142	1	-0.3323
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	astrocyte	494	0.1195	-0.01402	0.03837	-0.09089	0.06285	0.7163	0.04219	-0.03971
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	microglia	369	0.07384	0.002946	0.02275	-0.04262	0.04851	0.8974	-0.008865	-0.02453
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	neuron	1176	0.3629	-0.1676	0.1403	-0.4486	0.1134	0.2371	0.5045	-0.1206
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	no cell-type data	17	0.002209	-6.929e-05	0.001091	-0.002255	0.002117	0.9496	0.0002085	-0.0007341
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	oligodendrocyte	374	0.0713	-0.02678	0.01922	-0.06529	0.01174	0.1692	0.08059	-0.02369
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	cell source	ubiquitous	2440	0.3702	-0.1267	0.05709	-0.2411	-0.01236	0.0305	0.3814	-0.123
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	m6A sites	0	2295	0.4284	-0.1204	0.1009	-0.3226	0.08176	0.2378	0.3624	-0.1423
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	m6A sites	1	1457	0.2908	-0.1053	0.07234	-0.2502	0.03962	0.1511	0.3169	-0.09662
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	m6A sites	2-3	927	0.2198	-0.07886	0.07045	-0.22	0.06228	0.2678	0.2373	-0.07305
+Blumenreich 2024	PD	disease vs control	Middle temporal gyrus	62	m6A sites	≥4	191	0.06099	-0.02769	0.02536	-0.0785	0.02312	0.2797	0.08332	-0.02026
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	total	all genes	4220	1	0.03882	0.2632	-0.4884	0.566	0.8832	1	0.03882
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	astrocyte	433	0.1222	0.007342	0.03656	-0.0659	0.08058	0.8416	0.1891	0.004743
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	microglia	306	0.07073	0.02897	0.02255	-0.0162	0.07414	0.2041	0.7462	0.002746
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	neuron	998	0.3599	0.03992	0.1474	-0.2553	0.3352	0.7875	1.028	0.01397
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	no cell-type data	15	0.002362	0.001785	0.001193	-0.0006057	0.004175	0.1404	0.04597	9.169e-05
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	oligodendrocyte	319	0.06981	-0.007843	0.02059	-0.04908	0.0334	0.7047	-0.202	0.00271
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	cell source	ubiquitous	2149	0.375	-0.03135	0.05904	-0.1496	0.08691	0.5975	-0.8076	0.01456
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	m6A sites	0	2042	0.4356	0.04112	0.1046	-0.1685	0.2507	0.6958	1.059	0.01691
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	m6A sites	1	1252	0.2948	-0.002066	0.07763	-0.1576	0.1534	0.9789	-0.05322	0.01144
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	m6A sites	2-3	768	0.2099	0.00521	0.06588	-0.1268	0.1372	0.9373	0.1342	0.008151
+Blumenreich 2024	PD	disease vs control	Occipital cortex	63	m6A sites	≥4	158	0.05968	-0.005444	0.02406	-0.05365	0.04276	0.8218	-0.1402	0.002317

@@ -1,4 +1,4 @@
-"""Scoring of a proteome with the EpiProtAge weights (predicted age z per gene); see docs/method.md."""
+"""Scoring of a proteome with the m6Brain weights (predicted age z per gene); see docs/method.md."""
 
 from __future__ import annotations
 
@@ -20,13 +20,13 @@ MIN_MATCH = 0.5  # match rate below which the species / id type is questioned
 
 @cache
 def _table(species):
-    with (files("epiprotage") / "data" / f"{species}_weights.tsv").open() as f:
+    with (files("m6brain") / "data" / f"{species}_weights.tsv").open() as f:
         return pd.read_csv(f, sep="\t")
 
 
 def weights_version():
     """Date, git commit and size of the weight tables shipped with this package."""
-    return json.loads((files("epiprotage") / "data" / "version.json").read_text())
+    return json.loads((files("m6brain") / "data" / "version.json").read_text())
 
 
 def weights(species):

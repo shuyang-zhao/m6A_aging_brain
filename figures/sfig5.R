@@ -24,13 +24,13 @@ a <- ggplot(s, aes(group, score)) +
 
 b <- read_panel("sfig5b")
 STUDIES <- c("Ping 2020", "Merrihew 2023", "AD combined", "Blumenreich 2024", "Umoh 2018", "Langfelder 2016")
-b[, `:=`(key = fifelse(disease == "HD", FOCAL, RED), combined = study == "AD combined",
+b[, `:=`(key = fifelse(p < 0.05, RED, "white"), combined = study == "AD combined",
          label = sprintf("%s (n = %d)", study, n),
          disease = factor(disease, c("AD", "PD", "ALS", "HD"), c("AD", "PD", "ALS", "HD, per\n100 CAG")))]
 b[, label := factor(label, rev(label[match(STUDIES, study)]))]
 b <- ggplot(b, aes(est, label)) +
   ZERO_X +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), orientation = "y", colour = EDGE, linewidth = 0.6) +
+  geom_linerange(aes(xmin = ci_low, xmax = ci_high), orientation = "y", colour = CI, linewidth = 0.6) +
   geom_point(aes(fill = I(key), shape = combined, size = combined), colour = EDGE, stroke = 0.5) +
   geom_text(aes(x = Inf, label = paste0("  ", fmt_p(p))), hjust = 0, size = PT, colour = INK) +
   facet_grid(disease ~ ., scales = "free_y", space = "free_y", switch = "y") +

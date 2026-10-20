@@ -318,3 +318,19 @@ get yarbro2025_nat_commun/supp/MOESM3_supplementary_data_1-24.xlsx "https://stat
 panorama="https://panoramaweb.org/_webdav/Panorama%20Public/2024/MacCoss%20-%20AD-BXD%20Mouse%20PreFrontal%20Cortex%20Proteomics/%40files/Supplementary%20Files"
 get chen2025_pxd045403/panorama/level3b/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv "$panorama/Level%203B/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv"
 get chen2025_pxd045403/panorama/metadata/MouAD-PFC-meta-SAGE-2.0.xlsx "$panorama/Metadata/MouAD-PFC-meta-SAGE-2.0.xlsx"
+
+# Published proteomic ageing clocks: linear weights, benchmarks of the zero-shot clock (read by 06) ----
+# Lehallier 2019: Supplementary Tables (ST1 SomaScan annotation, ST7 LASSO coefficients of the plasma clock)
+get lehallier2019_clock/41591_2019_673_MOESM3_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41591-019-0673-2/MediaObjects/41591_2019_673_MOESM3_ESM.xlsx"
+# Oh 2023: Supplementary Tables (ST3 SomaScan annotation, ST7 coefficients of the bagged LASSO organ models)
+get oh2023_clock/41586_2023_6802_MOESM5_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41586-023-06802-1/MediaObjects/41586_2023_6802_MOESM5_ESM.xlsx"
+# Melendez 2024: Appendix S1 (elastic-net weights of the CSF clock), member of the supplementary zip of Europe PMC
+d=melendez2024_clock
+get $d/PMC11488306_supplementaryFiles.zip "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11488306/supplementaryFiles"
+[[ -s data/raw/$d/ACEL-23-e14230-s002.xlsx ]] || unzip -oq data/raw/$d/PMC11488306_supplementaryFiles.zip ACEL-23-e14230-s002.xlsx -d data/raw/$d
+# Oh 2025: Supplementary Tables (ST2 Olink assays, ST3 LASSO weights of the organ models)
+get oh2025_clock/41591_2025_3798_MOESM3_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41591-025-03798-1/MediaObjects/41591_2025_3798_MOESM3_ESM.xlsx"
+# Goeminne 2025: Table S1 (elastic-net coefficients of the organ models) and Table S3 (standard deviations of Olink NPX)
+for m in mmc2 mmc4; do
+  get goeminne2025_clock/1-s2.0-S1550413124004017-$m.xlsx "https://ars.els-cdn.com/content/image/1-s2.0-S1550413124004017-$m.xlsx"
+done

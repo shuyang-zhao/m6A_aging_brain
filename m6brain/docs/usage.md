@@ -3,9 +3,9 @@
 ## Python
 
 ```python
-import epiprotage as ep
+import m6brain as mb
 
-result = ep.score("proteome.csv", species="mouse")
+result = mb.score("proteome.csv", species="mouse")
 ```
 
 `score(table, species, ids="auto", age=None)`
@@ -24,11 +24,11 @@ Warnings: fewer than half of the ids match (wrong species or case; the message s
 ## Gene weights
 
 ```python
-ep.gene(
+mb.gene(
     "Trmt6", "mouse"
 )  # case-insensitive fallback for single lookups; Ensembl ids (with or without version) work too
-ep.weights("human")  # DataFrame: gene_id, symbol, weight, observed_z, m6A_sites
-ep.weights_version()  # {"date": ..., "git_commit": ..., "mouse": {...}, "human": {...}}
+mb.weights("human")  # DataFrame: gene_id, symbol, weight, observed_z, m6A_sites
+mb.weights_version()  # {"date": ..., "git_commit": ..., "mouse": {...}, "human": {...}}
 ```
 
 - `weight`: predicted age z of the gene (positive = predicted to increase with age). This is what `score` uses.
@@ -40,8 +40,8 @@ Genes without a row in the table (about 10,000 per species, the genes of the mod
 ## Command line
 
 ```bash
-epiprotage score FILE --species mouse|human [--ids auto|symbol|ensembl] [--out scores.csv]
-epiprotage --version
+m6brain score FILE --species mouse|human [--ids auto|symbol|ensembl] [--out scores.csv]
+m6brain --version
 ```
 
 The scores go to `--out` or stdout (CSV); the number of matched rows and, if the file has an `age` row, the Spearman correlation go to stderr.

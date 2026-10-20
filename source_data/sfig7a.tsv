@@ -5,8 +5,9 @@ Mouse protein	Marino 2025	-9.826	-16.96	-2.084
 Mouse protein	Takasugi 2024	6.8	-22.25	46.7	
 Mouse protein	Tsumagari 2023	-10.08	-16.95	-2.649	
 Mouse protein	Wang 2025	-0.7736	-15.88	17.05	
-Human mRNA	cortex	-2.387	-3.665	-1.093	0.003759
-Human mRNA	hippocampus	-3.046	-4.335	-1.738	0.0001438
+Human mRNA	cerebellum	-0.4557	-2.043	1.158	0.7925
+Human mRNA	cortex	-2.154	-3.013	-1.288	0.000124
+Human mRNA	hippocampus	-1.397	-4.624	1.939	0.6928
 Human mRNA	neurons	-2.485	-3.773	-1.179	0.002829
-Human mRNA	striatum	-1.997	-2.833	-1.155	8.992e-05
+Human mRNA	striatum	-1.444	-2.443	-0.4356	0.03792
 Mouse protein	Combined	-7.883	-11.31	-4.323	0.000845

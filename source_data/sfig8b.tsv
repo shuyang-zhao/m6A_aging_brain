@@ -38,5 +38,5 @@ YTHDF load edge	YTHDF module load, mouse	protein	0.9088	False	False	False
 YTHDF load edge	YTHDF3 load, mouse	protein	1.13	True	False	False
 YTHDF load edge	YTHDF module load, mouse	mRNA-adjusted protein	-0.3723	False	False	False
 YTHDF load edge	YTHDF3 load, mouse	mRNA-adjusted protein	-0.2714	False	False	False
-YTHDF load edge	YTHDF module load, human	mRNA	-0.4478	False	False	False
-YTHDF load edge	YTHDF3 load, human	mRNA	-0.9277	False	False	False
+YTHDF load edge	YTHDF module load, human	mRNA	-0.471	False	False	False
+YTHDF load edge	YTHDF3 load, human	mRNA	-0.9001	False	False	False

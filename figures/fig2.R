@@ -3,12 +3,6 @@
 source("figures/style.R")
 suppressPackageStartupMessages(library(ggbeeswarm))
 
-# model series: TabPFN in the focal colour, the comparison models and the shuffled target in greys; the mouse protein
-# model applied to human genes (panel d) is drawn as TabPFN
-MODELS <- c("TabPFN", "LightGBM", "Elastic net", "Shuffled target", "Mouse protein model")
-MODEL_FILL <- c(FOCAL, "#8C8C8C", GREY, "white", FOCAL)
-MODEL_SHAPE <- c(21, 22, 24, 23, 21)
-MODEL_EDGE <- c(EDGE, EDGE, EDGE, "#8C8C8C", EDGE)
 model_scales <- function(levels) {
   i <- match(levels, MODELS)
   list(
@@ -39,8 +33,9 @@ rho_panel <- function(d, levels, targets) {
 # a: held-out Spearman rho of the four models on the five targets (95% bootstrap CI), genes of the held-out chromosomes
 a <- rho_panel(read_panel("fig2a"), MODELS[1:4], TARGETS)
 
-# b: loss of held-out R2 when a feature group is removed (bars), mouse and human protein; grey: 95% of the copies of the
-# tested group permuted across genes, with the permutation P; m6A groups on a tinted band
+# b: loss of held-out R2 when a feature group is removed (bars), mouse and human protein; for the tested group the
+# permutation P against 100 models with its features permuted across genes (the 95% range of these models, below
+# 0.001, is not drawn); m6A groups on a grey band
 b <- read_panel("fig2b")
 b[, target := factor(target, c("Mouse protein", "Human protein"))]
 order <- b[, .(m = mean(delta_r2)), by = block][order(m), block]
@@ -52,10 +47,9 @@ bb <- ggplot(b, aes(delta_r2, row, group = target)) +
   geom_rect(data = bands, aes(xmin = -Inf, xmax = Inf, ymin = i - 0.5, ymax = i + 0.5), fill = "#F1F1F1",
             inherit.aes = FALSE) +
   ZERO_X +
-  geom_linerange(data = b[tested == TRUE], aes(xmin = null_low, xmax = null_high), colour = GREY, linewidth = 3.2,
-                 position = dodge_b) +
   geom_col(aes(fill = target), position = dodge_b, width = 0.7, colour = EDGE, linewidth = 0.5) +
-  geom_text(data = b[tested == TRUE], aes(x = Inf, label = fmt_p(p)), hjust = 1.05, size = PT, position = dodge_b) +
+  geom_text(data = b[tested == TRUE], aes(x = Inf, label = paste0(sub(" protein", "", target), ", ", fmt_p(p))),
+            hjust = 1.05, size = PT, position = dodge_b) +
   scale_fill_manual(values = TARGET_COL, name = NULL) +
   scale_y_discrete(limits = order) +
   scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.1, 0.25))) +

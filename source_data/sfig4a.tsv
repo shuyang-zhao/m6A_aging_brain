@@ -1,176 +1,421 @@
-set	species	cohort	weights	n	rho	p
-held-out	mouse	Keele 2025	Model	18	0.9312	2.042e-08
-held-out	mouse	Keele 2025	Length only	18	0.9312	2.042e-08
-held-out	mouse	Keele 2025	Without m6A features	18	0.9312	2.042e-08
-held-out	mouse	Keele 2025	Linear m6A load	18	0.9049	2.483e-07
-held-out	mouse	Keele 2025	Observed z of other cohorts	18	0.9443	3.927e-09
-held-out	mouse	Keele 2025	MSigDB DEMAGALHAES_AGING	18	0.918	7.9e-08
-held-out	mouse	Keele 2025	MSigDB LU_AGING_BRAIN	18	0.8525	7.03e-06
-held-out	mouse	Lu 2025	Model	27	0.5635	0.002207
-held-out	mouse	Lu 2025	Length only	27	0.3977	0.03996
-held-out	mouse	Lu 2025	Without m6A features	27	0.5635	0.002207
-held-out	mouse	Lu 2025	Linear m6A load	27	0.4692	0.01355
-held-out	mouse	Lu 2025	Observed z of other cohorts	27	0.7716	2.448e-06
-held-out	mouse	Lu 2025	MSigDB DEMAGALHAES_AGING	27	0.7349	1.266e-05
-held-out	mouse	Lu 2025	MSigDB LU_AGING_BRAIN	27	0.5728	0.001793
-held-out	mouse	Marino 2025	Model	10	0.8704	0.001053
-held-out	mouse	Marino 2025	Length only	10	0.8704	0.001053
-held-out	mouse	Marino 2025	Without m6A features	10	0.8704	0.001053
-held-out	mouse	Marino 2025	Linear m6A load	10	0.8704	0.001053
-held-out	mouse	Marino 2025	Observed z of other cohorts	10	0.8704	0.001053
-held-out	mouse	Marino 2025	MSigDB DEMAGALHAES_AGING	10	0.8704	0.001053
-held-out	mouse	Marino 2025	MSigDB LU_AGING_BRAIN	10	0.8704	0.001053
-held-out	mouse	Takasugi 2024	Model	16	0.9459	3.155e-08
-held-out	mouse	Takasugi 2024	Length only	16	0.8853	5.159e-06
-held-out	mouse	Takasugi 2024	Without m6A features	16	0.9459	3.155e-08
-held-out	mouse	Takasugi 2024	Linear m6A load	16	0.9095	1.046e-06
-held-out	mouse	Takasugi 2024	Observed z of other cohorts	16	0.958	5.517e-09
-held-out	mouse	Takasugi 2024	MSigDB DEMAGALHAES_AGING	16	0.9701	5.242e-10
-held-out	mouse	Takasugi 2024	MSigDB LU_AGING_BRAIN	16	0.8367	5.32e-05
-held-out	mouse	Tsumagari 2023	Model	18	0.8787	1.601e-06
-held-out	mouse	Tsumagari 2023	Length only	18	0.5115	0.03004
-held-out	mouse	Tsumagari 2023	Without m6A features	18	0.8787	1.601e-06
-held-out	mouse	Tsumagari 2023	Linear m6A load	18	0.7213	0.0007288
-held-out	mouse	Tsumagari 2023	Observed z of other cohorts	18	0.8787	1.601e-06
-held-out	mouse	Tsumagari 2023	MSigDB DEMAGALHAES_AGING	18	0.9312	2.042e-08
-held-out	mouse	Tsumagari 2023	MSigDB LU_AGING_BRAIN	18	0.8918	6.689e-07
-held-out	mouse	Wang 2025	Model	40	0.3971	0.01118
-held-out	mouse	Wang 2025	Length only	40	0.215	0.1827
-held-out	mouse	Wang 2025	Without m6A features	40	0.4126	0.00815
-held-out	mouse	Wang 2025	Linear m6A load	40	0.1065	0.5129
-held-out	mouse	Wang 2025	Observed z of other cohorts	40	0.5036	0.000923
-held-out	mouse	Wang 2025	MSigDB DEMAGALHAES_AGING	40	0.678	1.537e-06
-held-out	mouse	Wang 2025	MSigDB LU_AGING_BRAIN	40	0.3894	0.01302
-held-out	human	Blumenreich 2024	Model	21	0.2744	0.2287
-held-out	human	Blumenreich 2024	Length only	21	0.4226	0.0563
-held-out	human	Blumenreich 2024	Without m6A features	21	0.2744	0.2287
-held-out	human	Blumenreich 2024	Linear m6A load	21	0.3953	0.07611
-held-out	human	Blumenreich 2024	Observed z of other cohorts	21	0.4356	0.04839
-held-out	human	Blumenreich 2024	MSigDB DEMAGALHAES_AGING	21	0.4824	0.02676
-held-out	human	Blumenreich 2024	MSigDB LU_AGING_BRAIN	21	0.3069	0.176
-held-out	human	Eggers 2025	Model	34	0.3363	0.0518
-held-out	human	Eggers 2025	Length only	34	0.2564	0.1433
-held-out	human	Eggers 2025	Without m6A features	34	0.3334	0.05399
-held-out	human	Eggers 2025	Linear m6A load	34	0.3817	0.02591
-held-out	human	Eggers 2025	Observed z of other cohorts	34	0.5178	0.001711
-held-out	human	Eggers 2025	MSigDB DEMAGALHAES_AGING	34	0.5491	0.0007707
-held-out	human	Eggers 2025	MSigDB LU_AGING_BRAIN	34	0.4794	0.004121
-held-out	human	Koopmans 2026	Model	46	0.6276	3.044e-06
-held-out	human	Koopmans 2026	Length only	46	0.2775	0.06183
-held-out	human	Koopmans 2026	Without m6A features	46	0.6278	3.009e-06
-held-out	human	Koopmans 2026	Linear m6A load	46	0.2427	0.1041
-held-out	human	Koopmans 2026	Observed z of other cohorts	46	0.8348	5.585e-13
-held-out	human	Koopmans 2026	MSigDB DEMAGALHAES_AGING	46	0.4427	0.002065
-held-out	human	Koopmans 2026	MSigDB LU_AGING_BRAIN	46	0.5221	0.0001978
-held-out	human	Lee 2023	Model	74	0.1335	0.2568
-held-out	human	Lee 2023	Length only	74	0.2844	0.01405
-held-out	human	Lee 2023	Without m6A features	74	0.1319	0.2625
-held-out	human	Lee 2023	Linear m6A load	74	0.04964	0.6745
-held-out	human	Lee 2023	Observed z of other cohorts	74	0.2463	0.0344
-held-out	human	Lee 2023	MSigDB DEMAGALHAES_AGING	74	0.1579	0.179
-held-out	human	Lee 2023	MSigDB LU_AGING_BRAIN	74	0.3356	0.003461
-held-out	human	Luo 2024	Model	193	0.08192	0.2574
-held-out	human	Luo 2024	Length only	193	0.1505	0.03668
-held-out	human	Luo 2024	Without m6A features	193	0.08003	0.2686
-held-out	human	Luo 2024	Linear m6A load	193	0.1982	0.005735
-held-out	human	Luo 2024	Observed z of other cohorts	193	0.2386	0.0008309
-held-out	human	Luo 2024	MSigDB DEMAGALHAES_AGING	193	0.2137	0.002841
-held-out	human	Luo 2024	MSigDB LU_AGING_BRAIN	193	0.103	0.1539
-held-out	human	Merrihew 2023	Model	11	0.4009	0.2217
-held-out	human	Merrihew 2023	Length only	11	0.2916	0.3843
-held-out	human	Merrihew 2023	Without m6A features	11	0.4009	0.2217
-held-out	human	Merrihew 2023	Linear m6A load	11	0.6014	0.05034
-held-out	human	Merrihew 2023	Observed z of other cohorts	11	0.3462	0.2969
-held-out	human	Merrihew 2023	MSigDB DEMAGALHAES_AGING	11	0.3554	0.2835
-held-out	human	Merrihew 2023	MSigDB LU_AGING_BRAIN	11	0.3918	0.2334
-held-out	human	Ping 2020	Model	10	0.4303	0.2145
-held-out	human	Ping 2020	Length only	10	0.3697	0.2931
-held-out	human	Ping 2020	Without m6A features	10	0.4909	0.1497
-held-out	human	Ping 2020	Linear m6A load	10	0.0303	0.9338
-held-out	human	Ping 2020	Observed z of other cohorts	10	0.4788	0.1615
-held-out	human	Ping 2020	MSigDB DEMAGALHAES_AGING	10	0.5394	0.1076
-held-out	human	Ping 2020	MSigDB LU_AGING_BRAIN	10	0.3697	0.2931
-held-out	human	Teng 2023	Model	16	0.168	0.5339
-held-out	human	Teng 2023	Length only	16	0.4127	0.1122
-held-out	human	Teng 2023	Without m6A features	16	0.1238	0.6478
-held-out	human	Teng 2023	Linear m6A load	16	-0.01621	0.9525
-held-out	human	Teng 2023	Observed z of other cohorts	16	0.3184	0.2295
-held-out	human	Teng 2023	MSigDB DEMAGALHAES_AGING	16	0.675	0.004118
-held-out	human	Teng 2023	MSigDB LU_AGING_BRAIN	16	0.3169	0.2318
-external	mouse	Chen 2025	Model	188	0.598	1.301e-19
-external	mouse	Chen 2025	Length only	188	0.4549	5.466e-11
-external	mouse	Chen 2025	Without m6A features	188	0.6013	7.211e-20
-external	mouse	Chen 2025	Linear m6A load	188	0.3779	8.976e-08
-external	mouse	Chen 2025	Observed z of other cohorts	188	0.6935	2.744e-28
-external	mouse	Chen 2025	MSigDB DEMAGALHAES_AGING	188	0.3483	9.695e-07
-external	mouse	Chen 2025	MSigDB LU_AGING_BRAIN	188	0.3518	7.379e-07
-external	mouse	Vignane 2026	Model	12	0.68	0.01497
-external	mouse	Vignane 2026	Length only	12	0.5617	0.05733
-external	mouse	Vignane 2026	Without m6A features	12	0.7096	0.009745
-external	mouse	Vignane 2026	Linear m6A load	12	-0.3548	0.2578
-external	mouse	Vignane 2026	Observed z of other cohorts	12	0.8574	0.0003637
-external	mouse	Vignane 2026	MSigDB DEMAGALHAES_AGING	12	0.5322	0.0749
-external	mouse	Vignane 2026	MSigDB LU_AGING_BRAIN	12	0.2957	0.3508
-external	mouse	Gebru 2024	Model	23	0.5774	0.003918
-external	mouse	Gebru 2024	Length only	23	0.4986	0.01544
-external	mouse	Gebru 2024	Without m6A features	23	0.5774	0.003918
-external	mouse	Gebru 2024	Linear m6A load	23	0.4593	0.02749
-external	mouse	Gebru 2024	Observed z of other cohorts	23	0.7086	0.0001543
-external	mouse	Gebru 2024	MSigDB DEMAGALHAES_AGING	23	0.7611	2.478e-05
-external	mouse	Gebru 2024	MSigDB LU_AGING_BRAIN	23	0.5117	0.01256
-external	mouse	Huang 2024	Model	10	0.8704	0.001053
-external	mouse	Huang 2024	Length only	10	0.6615	0.03724
-external	mouse	Huang 2024	Without m6A features	10	0.8704	0.001053
-external	mouse	Huang 2024	Linear m6A load	10	0.3133	0.378
-external	mouse	Huang 2024	Observed z of other cohorts	10	0.8704	0.001053
-external	mouse	Huang 2024	MSigDB DEMAGALHAES_AGING	10	0.8704	0.001053
-external	mouse	Huang 2024	MSigDB LU_AGING_BRAIN	10	0.6615	0.03724
-external	mouse	Jha 2026	Model	9	0.9487	9.585e-05
-external	mouse	Jha 2026	Length only	9	0.7379	0.02324
-external	mouse	Jha 2026	Without m6A features	9	0.9487	9.585e-05
-external	mouse	Jha 2026	Linear m6A load	9	0.3689	0.3285
-external	mouse	Jha 2026	Observed z of other cohorts	9	0.9487	9.585e-05
-external	mouse	Jha 2026	MSigDB DEMAGALHAES_AGING	9	0.8433	0.00429
-external	mouse	Jha 2026	MSigDB LU_AGING_BRAIN	9	0.7379	0.02324
-external	mouse	Keele 2023	Model	20	0.3815	0.09694
-external	mouse	Keele 2023	Length only	20	-0.06937	0.7714
-external	mouse	Keele 2023	Without m6A features	20	0.3815	0.09694
-external	mouse	Keele 2023	Linear m6A load	20	0.01734	0.9421
-external	mouse	Keele 2023	Observed z of other cohorts	20	0.5896	0.006216
-external	mouse	Keele 2023	MSigDB DEMAGALHAES_AGING	20	0.6937	0.0006934
-external	mouse	Keele 2023	MSigDB LU_AGING_BRAIN	20	0.659	0.001577
-external	mouse	Marchionini 2025	Model	40	0.5482	0.0002503
-external	mouse	Marchionini 2025	Length only	40	0.1724	0.2874
-external	mouse	Marchionini 2025	Without m6A features	40	0.554	0.0002083
-external	mouse	Marchionini 2025	Linear m6A load	40	0.1608	0.3216
-external	mouse	Marchionini 2025	Observed z of other cohorts	40	0.7148	2.205e-07
-external	mouse	Marchionini 2025	MSigDB DEMAGALHAES_AGING	40	0.7845	2.097e-09
-external	mouse	Marchionini 2025	MSigDB LU_AGING_BRAIN	40	0.5036	0.000923
-external	mouse	Mohallem 2024	Model	13	0.9142	1.23e-05
-external	mouse	Mohallem 2024	Length only	13	0.6094	0.02702
-external	mouse	Mohallem 2024	Without m6A features	13	0.8907	4.43e-05
-external	mouse	Mohallem 2024	Linear m6A load	13	0.7501	0.003145
-external	mouse	Mohallem 2024	Observed z of other cohorts	13	0.9376	2.227e-06
-external	mouse	Mohallem 2024	MSigDB DEMAGALHAES_AGING	13	0.8204	0.0005912
-external	mouse	Mohallem 2024	MSigDB LU_AGING_BRAIN	13	0.8673	0.0001231
-external	mouse	Scifo 2025	Model	45	0.753	2.423e-09
-external	mouse	Scifo 2025	Length only	45	0.3392	0.02264
-external	mouse	Scifo 2025	Without m6A features	45	0.7554	2.005e-09
-external	mouse	Scifo 2025	Linear m6A load	45	0.2262	0.1351
-external	mouse	Scifo 2025	Observed z of other cohorts	45	0.776	3.789e-10
-external	mouse	Scifo 2025	MSigDB DEMAGALHAES_AGING	45	0.5839	2.551e-05
-external	mouse	Scifo 2025	MSigDB LU_AGING_BRAIN	45	0.6086	9.207e-06
-external	mouse	Yarbro 2025	Model	39	0.5131	0.0008371
-external	mouse	Yarbro 2025	Length only	39	0.4024	0.01109
-external	mouse	Yarbro 2025	Without m6A features	39	0.5111	0.0008845
-external	mouse	Yarbro 2025	Linear m6A load	39	0.4138	0.008829
-external	mouse	Yarbro 2025	Observed z of other cohorts	39	0.693	1.009e-06
-external	mouse	Yarbro 2025	MSigDB DEMAGALHAES_AGING	39	0.5929	6.973e-05
-external	mouse	Yarbro 2025	MSigDB LU_AGING_BRAIN	39	0.3679	0.02123
-external	mouse	Yu 2020	Model	10	0.03482	0.9239
-external	mouse	Yu 2020	Length only	10	-0.03482	0.9239
-external	mouse	Yu 2020	Without m6A features	10	0.03482	0.9239
-external	mouse	Yu 2020	Linear m6A load	10	0.03482	0.9239
-external	mouse	Yu 2020	Observed z of other cohorts	10	0.2437	0.4974
-external	mouse	Yu 2020	MSigDB DEMAGALHAES_AGING	10	0.4526	0.189
-external	mouse	Yu 2020	MSigDB LU_AGING_BRAIN	10	-0.03482	0.9239
+set	species	cohort	kind	group	weights	n	n_genes	rho	ci_low	ci_high	p
+held-out	mouse	Keele 2025	cohort	zero-shot	m6Brain	18	8342	0.9312			2.042e-08
+held-out	mouse	Keele 2025	cohort	zero-shot	Length only	18	8342	0.9312			2.042e-08
+held-out	mouse	Keele 2025	cohort	ablation	Without m6A features	18	8342	0.9312			2.042e-08
+held-out	mouse	Keele 2025	cohort	zero-shot	Linear m6A load	18	6767	0.9049			2.483e-07
+held-out	mouse	Keele 2025	cohort	supervised	Observed z of other cohorts	18	8342	0.9443			3.927e-09
+held-out	mouse	Keele 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	18	43	0.918			7.9e-08
+held-out	mouse	Keele 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	18	294	0.8525			7.03e-06
+held-out	mouse	Keele 2025	cohort	supervised	Goeminne 2025 brain, plasma	18	93	0.8656			3.486e-06
+held-out	mouse	Keele 2025	cohort	supervised	Lehallier 2019, plasma	18	151	0.5377			0.02136
+held-out	mouse	Keele 2025	cohort	supervised	Melendez 2024, CSF	18	495	0.7738			0.0001648
+held-out	mouse	Keele 2025	cohort	supervised	Oh 2023 brain, plasma	18	131	-0.8131			4.085e-05
+held-out	mouse	Keele 2025	cohort	supervised	Oh 2023 organismal, plasma	18	564	0.1443			0.5679
+held-out	mouse	Keele 2025	cohort	supervised	Oh 2025 brain, plasma	18	25	0.8525			7.03e-06
+held-out	mouse	Keele 2025	cohort	supervised	Oh 2025 organismal, plasma	18	84	0.8787			1.601e-06
+held-out	mouse	Keele 2025	cohort	zero-shot	Random weights		8342	-0.1311			
+held-out	mouse	Lu 2025	cohort	zero-shot	m6Brain	27	7656	0.5635			0.002207
+held-out	mouse	Lu 2025	cohort	zero-shot	Length only	27	7656	0.3977			0.03996
+held-out	mouse	Lu 2025	cohort	ablation	Without m6A features	27	7656	0.5635			0.002207
+held-out	mouse	Lu 2025	cohort	zero-shot	Linear m6A load	27	6166	0.4692			0.01355
+held-out	mouse	Lu 2025	cohort	supervised	Observed z of other cohorts	27	7656	0.7716			2.448e-06
+held-out	mouse	Lu 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	27	40	0.7349			1.266e-05
+held-out	mouse	Lu 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	27	270	0.5728			0.001793
+held-out	mouse	Lu 2025	cohort	supervised	Goeminne 2025 brain, plasma	27	91	-0.09742			0.6288
+held-out	mouse	Lu 2025	cohort	supervised	Lehallier 2019, plasma	27	139	-0.2346			0.2389
+held-out	mouse	Lu 2025	cohort	supervised	Melendez 2024, CSF	27	469	0.2334			0.2414
+held-out	mouse	Lu 2025	cohort	supervised	Oh 2023 brain, plasma	27	118	-0.00894			0.9647
+held-out	mouse	Lu 2025	cohort	supervised	Oh 2023 organismal, plasma	27	536	0.2509			0.2068
+held-out	mouse	Lu 2025	cohort	supervised	Oh 2025 brain, plasma	27	25	-0.1649			0.411
+held-out	mouse	Lu 2025	cohort	supervised	Oh 2025 organismal, plasma	27	79	0.1168			0.5617
+held-out	mouse	Lu 2025	cohort	zero-shot	Random weights		7656	0.01819			
+held-out	mouse	Marino 2025	cohort	zero-shot	m6Brain	10	6240	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	zero-shot	Length only	10	6240	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	ablation	Without m6A features	10	6240	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	zero-shot	Linear m6A load	10	5193	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	supervised	Observed z of other cohorts	10	6240	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	10	37	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	10	245	0.8704			0.001053
+held-out	mouse	Marino 2025	cohort	supervised	Goeminne 2025 brain, plasma	10	90	0.5222			0.1215
+held-out	mouse	Marino 2025	cohort	supervised	Lehallier 2019, plasma	10	110	0.1741			0.6305
+held-out	mouse	Marino 2025	cohort	supervised	Melendez 2024, CSF	10	379	0.7311			0.01628
+held-out	mouse	Marino 2025	cohort	supervised	Oh 2023 brain, plasma	10	117	-0.6615			0.03724
+held-out	mouse	Marino 2025	cohort	supervised	Oh 2023 organismal, plasma	10	436	-0.6615			0.03724
+held-out	mouse	Marino 2025	cohort	supervised	Oh 2025 brain, plasma	10	24	0.4526			0.189
+held-out	mouse	Marino 2025	cohort	supervised	Oh 2025 organismal, plasma	10	64	0.1741			0.6305
+held-out	mouse	Marino 2025	cohort	zero-shot	Random weights		6240	0.03482			
+held-out	mouse	Takasugi 2024	cohort	zero-shot	m6Brain	16	5510	0.9459			3.155e-08
+held-out	mouse	Takasugi 2024	cohort	zero-shot	Length only	16	5510	0.8853			5.159e-06
+held-out	mouse	Takasugi 2024	cohort	ablation	Without m6A features	16	5510	0.9459			3.155e-08
+held-out	mouse	Takasugi 2024	cohort	zero-shot	Linear m6A load	16	4660	0.9095			1.046e-06
+held-out	mouse	Takasugi 2024	cohort	supervised	Observed z of other cohorts	16	5510	0.958			5.517e-09
+held-out	mouse	Takasugi 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	16	31	0.9701			5.242e-10
+held-out	mouse	Takasugi 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	16	220	0.8367			5.32e-05
+held-out	mouse	Takasugi 2024	cohort	supervised	Goeminne 2025 brain, plasma	16	78	0.2304			0.3906
+held-out	mouse	Takasugi 2024	cohort	supervised	Lehallier 2019, plasma	16	91	0.2547			0.3412
+held-out	mouse	Takasugi 2024	cohort	supervised	Melendez 2024, CSF	16	322	0.2547			0.3412
+held-out	mouse	Takasugi 2024	cohort	supervised	Oh 2023 brain, plasma	16	108	-0.7397			0.001054
+held-out	mouse	Takasugi 2024	cohort	supervised	Oh 2023 organismal, plasma	16	366	0.291			0.2741
+held-out	mouse	Takasugi 2024	cohort	supervised	Oh 2025 brain, plasma	16	20	0.2547			0.3412
+held-out	mouse	Takasugi 2024	cohort	supervised	Oh 2025 organismal, plasma	16	51	0.5457			0.02877
+held-out	mouse	Takasugi 2024	cohort	zero-shot	Random weights		5510	0.03032			
+held-out	mouse	Tsumagari 2023	cohort	zero-shot	m6Brain	18	6271	0.8787			1.601e-06
+held-out	mouse	Tsumagari 2023	cohort	zero-shot	Length only	18	6271	0.5115			0.03004
+held-out	mouse	Tsumagari 2023	cohort	ablation	Without m6A features	18	6271	0.8787			1.601e-06
+held-out	mouse	Tsumagari 2023	cohort	zero-shot	Linear m6A load	18	5233	0.7213			0.0007288
+held-out	mouse	Tsumagari 2023	cohort	supervised	Observed z of other cohorts	18	6271	0.8787			1.601e-06
+held-out	mouse	Tsumagari 2023	cohort	supervised	MSigDB DEMAGALHAES_AGING	18	37	0.9312			2.042e-08
+held-out	mouse	Tsumagari 2023	cohort	supervised	MSigDB LU_AGING_BRAIN	18	255	0.8918			6.689e-07
+held-out	mouse	Tsumagari 2023	cohort	supervised	Goeminne 2025 brain, plasma	18	91	0.8656			3.486e-06
+held-out	mouse	Tsumagari 2023	cohort	supervised	Lehallier 2019, plasma	18	118	0.05246			0.8362
+held-out	mouse	Tsumagari 2023	cohort	supervised	Melendez 2024, CSF	18	372	0.8262			2.385e-05
+held-out	mouse	Tsumagari 2023	cohort	supervised	Oh 2023 brain, plasma	18	121	-0.3672			0.1339
+held-out	mouse	Tsumagari 2023	cohort	supervised	Oh 2023 organismal, plasma	18	430	-0.4721			0.04789
+held-out	mouse	Tsumagari 2023	cohort	supervised	Oh 2025 brain, plasma	18	23	0.9049			2.483e-07
+held-out	mouse	Tsumagari 2023	cohort	supervised	Oh 2025 organismal, plasma	18	63	0.6164			0.006445
+held-out	mouse	Tsumagari 2023	cohort	zero-shot	Random weights		6271	0			
+held-out	mouse	Wang 2025	cohort	zero-shot	m6Brain	40	6601	0.3971			0.01118
+held-out	mouse	Wang 2025	cohort	zero-shot	Length only	40	6601	0.215			0.1827
+held-out	mouse	Wang 2025	cohort	ablation	Without m6A features	40	6601	0.4126			0.00815
+held-out	mouse	Wang 2025	cohort	zero-shot	Linear m6A load	40	5498	0.1065			0.5129
+held-out	mouse	Wang 2025	cohort	supervised	Observed z of other cohorts	40	6601	0.5036			0.000923
+held-out	mouse	Wang 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	40	38	0.678			1.537e-06
+held-out	mouse	Wang 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	40	263	0.3894			0.01302
+held-out	mouse	Wang 2025	cohort	supervised	Goeminne 2025 brain, plasma	40	94	0.2557			0.1113
+held-out	mouse	Wang 2025	cohort	supervised	Lehallier 2019, plasma	40	115	0.06005			0.7128
+held-out	mouse	Wang 2025	cohort	supervised	Melendez 2024, CSF	40	390	0.2828			0.07702
+held-out	mouse	Wang 2025	cohort	supervised	Oh 2023 brain, plasma	40	122	-0.06199			0.704
+held-out	mouse	Wang 2025	cohort	supervised	Oh 2023 organismal, plasma	40	462	-0.1879			0.2456
+held-out	mouse	Wang 2025	cohort	supervised	Oh 2025 brain, plasma	40	25	0.2344			0.1455
+held-out	mouse	Wang 2025	cohort	supervised	Oh 2025 organismal, plasma	40	65	-0.02325			0.8868
+held-out	mouse	Wang 2025	cohort	zero-shot	Random weights		6601	-0.04843			
+held-out	mouse	Pooled	pooled	zero-shot	Random weights			-0.03112			
+held-out	mouse	Pooled	pooled	zero-shot	m6Brain			0.8262	0.5894	0.9323	3.918e-06
+held-out	mouse	Pooled	pooled	zero-shot	Length only			0.7175	0.3781	0.8869	0.0004564
+held-out	mouse	Pooled	pooled	ablation	Without m6A features			0.8271	0.5949	0.9319	2.872e-06
+held-out	mouse	Pooled	pooled	zero-shot	Linear m6A load			0.7394	0.4069	0.8989	0.0003225
+held-out	mouse	Pooled	pooled	supervised	Observed z of other cohorts			0.863	0.6885	0.9431	2.684e-08
+held-out	mouse	Pooled	pooled	supervised	MSigDB DEMAGALHAES_AGING			0.8809	0.7474	0.946	5.694e-11
+held-out	mouse	Pooled	pooled	supervised	MSigDB LU_AGING_BRAIN			0.7645	0.5561	0.8825	2.033e-07
+held-out	mouse	Pooled	pooled	supervised	Goeminne 2025 brain, plasma			0.5287	0.1009	0.7915	0.01791
+held-out	mouse	Pooled	pooled	supervised	Lehallier 2019, plasma			0.114	-0.1128	0.3295	0.3245
+held-out	mouse	Pooled	pooled	supervised	Melendez 2024, CSF			0.5507	0.2617	0.7491	0.000552
+held-out	mouse	Pooled	pooled	supervised	Oh 2023 brain, plasma			-0.4769	-0.725	-0.1191	0.01086
+held-out	mouse	Pooled	pooled	supervised	Oh 2023 organismal, plasma			-0.09133	-0.3767	0.2099	0.5557
+held-out	mouse	Pooled	pooled	supervised	Oh 2025 brain, plasma			0.5283	0.05667	0.8072	0.03005
+held-out	mouse	Pooled	pooled	supervised	Oh 2025 organismal, plasma			0.4513	0.05098	0.7267	0.02854
+held-out	human	Blumenreich 2024	cohort	zero-shot	m6Brain	21	5416	0.2744			0.2287
+held-out	human	Blumenreich 2024	cohort	zero-shot	Length only	21	5416	0.4226			0.0563
+held-out	human	Blumenreich 2024	cohort	ablation	Without m6A features	21	5416	0.2744			0.2287
+held-out	human	Blumenreich 2024	cohort	zero-shot	Linear m6A load	21	2877	0.3953			0.07611
+held-out	human	Blumenreich 2024	cohort	supervised	Observed z of other cohorts	21	5416	0.4356			0.04839
+held-out	human	Blumenreich 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	21	47	0.4824			0.02676
+held-out	human	Blumenreich 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	21	253	0.3069			0.176
+held-out	human	Blumenreich 2024	cohort	supervised	Goeminne 2025 brain, plasma	21	92	0.1847			0.423
+held-out	human	Blumenreich 2024	cohort	supervised	Lehallier 2019, plasma	21	115	-0.4395			0.04619
+held-out	human	Blumenreich 2024	cohort	supervised	Melendez 2024, CSF	21	376	0.4694			0.03179
+held-out	human	Blumenreich 2024	cohort	supervised	Oh 2023 brain, plasma	21	119	-0.4967			0.02198
+held-out	human	Blumenreich 2024	cohort	supervised	Oh 2023 organismal, plasma	21	425	-0.368			0.1007
+held-out	human	Blumenreich 2024	cohort	supervised	Oh 2025 brain, plasma	21	24	0.1079			0.6414
+held-out	human	Blumenreich 2024	cohort	supervised	Oh 2025 organismal, plasma	21	69	-0.1847			0.423
+held-out	human	Blumenreich 2024	cohort	zero-shot	Random weights		5416	-0.009103			
+held-out	human	Eggers 2025	cohort	zero-shot	m6Brain	34	4798	0.3363			0.0518
+held-out	human	Eggers 2025	cohort	zero-shot	Length only	34	4798	0.2564			0.1433
+held-out	human	Eggers 2025	cohort	ablation	Without m6A features	34	4798	0.3334			0.05399
+held-out	human	Eggers 2025	cohort	zero-shot	Linear m6A load	34	2471	0.3817			0.02591
+held-out	human	Eggers 2025	cohort	supervised	Observed z of other cohorts	34	4798	0.5178			0.001711
+held-out	human	Eggers 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	34	47	0.5491			0.0007707
+held-out	human	Eggers 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	34	226	0.4794			0.004121
+held-out	human	Eggers 2025	cohort	supervised	Goeminne 2025 brain, plasma	34	73	0.4638			0.00573
+held-out	human	Eggers 2025	cohort	supervised	Lehallier 2019, plasma	34	103	-0.197			0.264
+held-out	human	Eggers 2025	cohort	supervised	Melendez 2024, CSF	34	342	0.3481			0.04366
+held-out	human	Eggers 2025	cohort	supervised	Oh 2023 brain, plasma	34	95	-0.003516			0.9843
+held-out	human	Eggers 2025	cohort	supervised	Oh 2023 organismal, plasma	34	377	-0.1435			0.418
+held-out	human	Eggers 2025	cohort	supervised	Oh 2025 brain, plasma	34	23	0.4022			0.01837
+held-out	human	Eggers 2025	cohort	supervised	Oh 2025 organismal, plasma	34	60	0.3187			0.06617
+held-out	human	Eggers 2025	cohort	zero-shot	Random weights		4798	0.004204			
+held-out	human	Koopmans 2026	cohort	zero-shot	m6Brain	46	5227	0.6276			3.044e-06
+held-out	human	Koopmans 2026	cohort	zero-shot	Length only	46	5227	0.2775			0.06183
+held-out	human	Koopmans 2026	cohort	ablation	Without m6A features	46	5227	0.6278			3.009e-06
+held-out	human	Koopmans 2026	cohort	zero-shot	Linear m6A load	46	2885	0.2427			0.1041
+held-out	human	Koopmans 2026	cohort	supervised	Observed z of other cohorts	46	5227	0.8348			5.585e-13
+held-out	human	Koopmans 2026	cohort	supervised	MSigDB DEMAGALHAES_AGING	46	38	0.4427			0.002065
+held-out	human	Koopmans 2026	cohort	supervised	MSigDB LU_AGING_BRAIN	46	235	0.5221			0.0001978
+held-out	human	Koopmans 2026	cohort	supervised	Goeminne 2025 brain, plasma	46	85	0.4021			0.005601
+held-out	human	Koopmans 2026	cohort	supervised	Lehallier 2019, plasma	46	101	0.344			0.01925
+held-out	human	Koopmans 2026	cohort	supervised	Melendez 2024, CSF	46	336	0.2061			0.1695
+held-out	human	Koopmans 2026	cohort	supervised	Oh 2023 brain, plasma	46	116	-0.07698			0.6111
+held-out	human	Koopmans 2026	cohort	supervised	Oh 2023 organismal, plasma	46	382	-0.1426			0.3445
+held-out	human	Koopmans 2026	cohort	supervised	Oh 2025 brain, plasma	46	24	0.2435			0.1029
+held-out	human	Koopmans 2026	cohort	supervised	Oh 2025 organismal, plasma	46	58	-0.09618			0.5249
+held-out	human	Koopmans 2026	cohort	zero-shot	Random weights		5227	-0.04235			
+held-out	human	Lee 2023	cohort	zero-shot	m6Brain	74	2446	0.1335			0.2568
+held-out	human	Lee 2023	cohort	zero-shot	Length only	74	2446	0.2844			0.01405
+held-out	human	Lee 2023	cohort	ablation	Without m6A features	74	2446	0.1319			0.2625
+held-out	human	Lee 2023	cohort	zero-shot	Linear m6A load	74	1168	0.04964			0.6745
+held-out	human	Lee 2023	cohort	supervised	Observed z of other cohorts	74	2446	0.2463			0.0344
+held-out	human	Lee 2023	cohort	supervised	MSigDB DEMAGALHAES_AGING	74	27	0.1579			0.179
+held-out	human	Lee 2023	cohort	supervised	MSigDB LU_AGING_BRAIN	74	152	0.3356			0.003461
+held-out	human	Lee 2023	cohort	supervised	Goeminne 2025 brain, plasma	74	57	0.2249			0.05408
+held-out	human	Lee 2023	cohort	supervised	Lehallier 2019, plasma	74	54	0.06545			0.5796
+held-out	human	Lee 2023	cohort	supervised	Melendez 2024, CSF	74	197	0.31			0.007187
+held-out	human	Lee 2023	cohort	supervised	Oh 2023 brain, plasma	74	79	-0.03101			0.7931
+held-out	human	Lee 2023	cohort	supervised	Oh 2023 organismal, plasma	74	212	0.2351			0.04378
+held-out	human	Lee 2023	cohort	supervised	Oh 2025 brain, plasma	74	16	0.2332			0.04557
+held-out	human	Lee 2023	cohort	supervised	Oh 2025 organismal, plasma	74	26	-0.1753			0.1353
+held-out	human	Lee 2023	cohort	zero-shot	Random weights		2446	-0.001379			
+held-out	human	Luo 2024	cohort	zero-shot	m6Brain	193	7216	0.08192			0.2574
+held-out	human	Luo 2024	cohort	zero-shot	Length only	193	7216	0.1505			0.03668
+held-out	human	Luo 2024	cohort	ablation	Without m6A features	193	7216	0.08003			0.2686
+held-out	human	Luo 2024	cohort	zero-shot	Linear m6A load	193	4156	0.1982			0.005735
+held-out	human	Luo 2024	cohort	supervised	Observed z of other cohorts	193	7216	0.2386			0.0008309
+held-out	human	Luo 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	193	51	0.2137			0.002841
+held-out	human	Luo 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	193	295	0.103			0.1539
+held-out	human	Luo 2024	cohort	supervised	Goeminne 2025 brain, plasma	193	91	0.1653			0.02159
+held-out	human	Luo 2024	cohort	supervised	Lehallier 2019, plasma	193	132	-0.05844			0.4195
+held-out	human	Luo 2024	cohort	supervised	Melendez 2024, CSF	193	445	0.1598			0.0264
+held-out	human	Luo 2024	cohort	supervised	Oh 2023 brain, plasma	193	132	-0.1934			0.007034
+held-out	human	Luo 2024	cohort	supervised	Oh 2023 organismal, plasma	193	518	-0.2084			0.003632
+held-out	human	Luo 2024	cohort	supervised	Oh 2025 brain, plasma	193	24	0.15			0.03736
+held-out	human	Luo 2024	cohort	supervised	Oh 2025 organismal, plasma	193	73	0.03033			0.6754
+held-out	human	Luo 2024	cohort	zero-shot	Random weights		7216	0.00193			
+held-out	human	Merrihew 2023	cohort	zero-shot	m6Brain	11	6305	0.4009			0.2217
+held-out	human	Merrihew 2023	cohort	zero-shot	Length only	11	6305	0.2916			0.3843
+held-out	human	Merrihew 2023	cohort	ablation	Without m6A features	11	6305	0.4009			0.2217
+held-out	human	Merrihew 2023	cohort	zero-shot	Linear m6A load	11	3395	0.6014			0.05034
+held-out	human	Merrihew 2023	cohort	supervised	Observed z of other cohorts	11	6305	0.3462			0.2969
+held-out	human	Merrihew 2023	cohort	supervised	MSigDB DEMAGALHAES_AGING	11	54	0.3554			0.2835
+held-out	human	Merrihew 2023	cohort	supervised	MSigDB LU_AGING_BRAIN	11	277	0.3918			0.2334
+held-out	human	Merrihew 2023	cohort	supervised	Goeminne 2025 brain, plasma	11	90	0.4328			0.1836
+held-out	human	Merrihew 2023	cohort	supervised	Lehallier 2019, plasma	11	139	0.2551			0.449
+held-out	human	Merrihew 2023	cohort	supervised	Melendez 2024, CSF	11	425	0.6743			0.02288
+held-out	human	Merrihew 2023	cohort	supervised	Oh 2023 brain, plasma	11	117	-0.2369			0.4831
+held-out	human	Merrihew 2023	cohort	supervised	Oh 2023 organismal, plasma	11	498	-0.08656			0.8002
+held-out	human	Merrihew 2023	cohort	supervised	Oh 2025 brain, plasma	11	23	0.5968			0.05258
+held-out	human	Merrihew 2023	cohort	supervised	Oh 2025 organismal, plasma	11	76	0.4829			0.1324
+held-out	human	Merrihew 2023	cohort	zero-shot	Random weights		6305	-0.07289			
+held-out	human	Ping 2020	cohort	zero-shot	m6Brain	10	7943	0.4303			0.2145
+held-out	human	Ping 2020	cohort	zero-shot	Length only	10	7943	0.3697			0.2931
+held-out	human	Ping 2020	cohort	ablation	Without m6A features	10	7943	0.4909			0.1497
+held-out	human	Ping 2020	cohort	zero-shot	Linear m6A load	10	4499	0.0303			0.9338
+held-out	human	Ping 2020	cohort	supervised	Observed z of other cohorts	10	7943	0.4788			0.1615
+held-out	human	Ping 2020	cohort	supervised	MSigDB DEMAGALHAES_AGING	10	54	0.5394			0.1076
+held-out	human	Ping 2020	cohort	supervised	MSigDB LU_AGING_BRAIN	10	313	0.3697			0.2931
+held-out	human	Ping 2020	cohort	supervised	Goeminne 2025 brain, plasma	10	94	0.6485			0.04254
+held-out	human	Ping 2020	cohort	supervised	Lehallier 2019, plasma	10	148	0.06667			0.8548
+held-out	human	Ping 2020	cohort	supervised	Melendez 2024, CSF	10	497	0.1515			0.6761
+held-out	human	Ping 2020	cohort	supervised	Oh 2023 brain, plasma	10	133	-0.4909			0.1497
+held-out	human	Ping 2020	cohort	supervised	Oh 2023 organismal, plasma	10	581	0.503			0.1383
+held-out	human	Ping 2020	cohort	supervised	Oh 2025 brain, plasma	10	24	0.5515			0.0984
+held-out	human	Ping 2020	cohort	supervised	Oh 2025 organismal, plasma	10	85	0.3818			0.2763
+held-out	human	Ping 2020	cohort	zero-shot	Random weights		7943	0.07879			
+held-out	human	Teng 2023	cohort	zero-shot	m6Brain	16	6416	0.168			0.5339
+held-out	human	Teng 2023	cohort	zero-shot	Length only	16	6416	0.4127			0.1122
+held-out	human	Teng 2023	cohort	ablation	Without m6A features	16	6416	0.1238			0.6478
+held-out	human	Teng 2023	cohort	zero-shot	Linear m6A load	16	3508	-0.01621			0.9525
+held-out	human	Teng 2023	cohort	supervised	Observed z of other cohorts	16	6416	0.3184			0.2295
+held-out	human	Teng 2023	cohort	supervised	MSigDB DEMAGALHAES_AGING	16	46	0.675			0.004118
+held-out	human	Teng 2023	cohort	supervised	MSigDB LU_AGING_BRAIN	16	256	0.3169			0.2318
+held-out	human	Teng 2023	cohort	supervised	Goeminne 2025 brain, plasma	16	87	-0.1312			0.6282
+held-out	human	Teng 2023	cohort	supervised	Lehallier 2019, plasma	16	128	0.7281			0.001385
+held-out	human	Teng 2023	cohort	supervised	Melendez 2024, CSF	16	426	0.2889			0.2779
+held-out	human	Teng 2023	cohort	supervised	Oh 2023 brain, plasma	16	119	-0.4038			0.1208
+held-out	human	Teng 2023	cohort	supervised	Oh 2023 organismal, plasma	16	491	0.3154			0.2341
+held-out	human	Teng 2023	cohort	supervised	Oh 2025 brain, plasma	16	22	-0.1665			0.5376
+held-out	human	Teng 2023	cohort	supervised	Oh 2025 organismal, plasma	16	75	-0.168			0.5339
+held-out	human	Teng 2023	cohort	zero-shot	Random weights		6416	0.0007369			
+held-out	human	Pooled	pooled	zero-shot	Random weights			-0.009334			
+held-out	human	Pooled	pooled	zero-shot	m6Brain			0.2908	0.107	0.4554	0.00224
+held-out	human	Pooled	pooled	zero-shot	Length only			0.2292	0.1322	0.3219	5.243e-06
+held-out	human	Pooled	pooled	ablation	Without m6A features			0.291	0.1044	0.4577	0.002575
+held-out	human	Pooled	pooled	zero-shot	Linear m6A load			0.2016	0.1036	0.2957	6.6e-05
+held-out	human	Pooled	pooled	supervised	Observed z of other cohorts			0.4613	0.2234	0.6474	0.0003202
+held-out	human	Pooled	pooled	supervised	MSigDB DEMAGALHAES_AGING			0.3717	0.2257	0.5013	1.915e-06
+held-out	human	Pooled	pooled	supervised	MSigDB LU_AGING_BRAIN			0.3287	0.1793	0.4634	2.953e-05
+held-out	human	Pooled	pooled	supervised	Goeminne 2025 brain, plasma			0.2614	0.1371	0.3777	5.229e-05
+held-out	human	Pooled	pooled	supervised	Lehallier 2019, plasma			0.0841	-0.1385	0.2986	0.4601
+held-out	human	Pooled	pooled	supervised	Melendez 2024, CSF			0.2426	0.146	0.3345	1.361e-06
+held-out	human	Pooled	pooled	supervised	Oh 2023 brain, plasma			-0.1661	-0.264	-0.06473	0.001393
+held-out	human	Pooled	pooled	supervised	Oh 2023 organismal, plasma			-0.0325	-0.2234	0.1608	0.7434
+held-out	human	Pooled	pooled	supervised	Oh 2025 brain, plasma			0.2086	0.1051	0.3076	9.278e-05
+held-out	human	Pooled	pooled	supervised	Oh 2025 organismal, plasma			0.00883	-0.137	0.1543	0.9061
+external	mouse	Chen 2025	cohort	zero-shot	m6Brain	188	8168	0.598			1.301e-19
+external	mouse	Chen 2025	cohort	zero-shot	Length only	188	8168	0.4549			5.466e-11
+external	mouse	Chen 2025	cohort	ablation	Without m6A features	188	8168	0.6013			7.211e-20
+external	mouse	Chen 2025	cohort	zero-shot	Linear m6A load	188	6539	0.3779			8.976e-08
+external	mouse	Chen 2025	cohort	supervised	Observed z of other cohorts	188	8168	0.6935			2.744e-28
+external	mouse	Chen 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	188	44	0.3483			9.695e-07
+external	mouse	Chen 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	188	287	0.3518			7.379e-07
+external	mouse	Chen 2025	cohort	supervised	Goeminne 2025 brain, plasma	188	97	0.2103			0.003769
+external	mouse	Chen 2025	cohort	supervised	Lehallier 2019, plasma	188	143	-0.03385			0.6447
+external	mouse	Chen 2025	cohort	supervised	Melendez 2024, CSF	188	485	0.1314			0.07236
+external	mouse	Chen 2025	cohort	supervised	Oh 2023 brain, plasma	188	132	-0.2806			9.617e-05
+external	mouse	Chen 2025	cohort	supervised	Oh 2023 organismal, plasma	188	548	-0.187			0.01017
+external	mouse	Chen 2025	cohort	supervised	Oh 2025 brain, plasma	188	26	0.1779			0.01456
+external	mouse	Chen 2025	cohort	supervised	Oh 2025 organismal, plasma	188	81	-0.07668			0.2956
+external	mouse	Chen 2025	cohort	zero-shot	Random weights		8168	0.0009869			
+external	mouse	Vignane 2026	cohort	zero-shot	m6Brain	12	4819	0.68			0.01497
+external	mouse	Vignane 2026	cohort	zero-shot	Length only	12	4819	0.5617			0.05733
+external	mouse	Vignane 2026	cohort	ablation	Without m6A features	12	4819	0.7096			0.009745
+external	mouse	Vignane 2026	cohort	zero-shot	Linear m6A load	12	3972	-0.3548			0.2578
+external	mouse	Vignane 2026	cohort	supervised	Observed z of other cohorts	12	4819	0.8574			0.0003637
+external	mouse	Vignane 2026	cohort	supervised	MSigDB DEMAGALHAES_AGING	12	30	0.5322			0.0749
+external	mouse	Vignane 2026	cohort	supervised	MSigDB LU_AGING_BRAIN	12	209	0.2957			0.3508
+external	mouse	Vignane 2026	cohort	supervised	Goeminne 2025 brain, plasma	12	79	0.5322			0.0749
+external	mouse	Vignane 2026	cohort	supervised	Lehallier 2019, plasma	12	85	0.2957			0.3508
+external	mouse	Vignane 2026	cohort	supervised	Melendez 2024, CSF	12	300	0.6209			0.0312
+external	mouse	Vignane 2026	cohort	supervised	Oh 2023 brain, plasma	12	96	-0.8278			0.0008853
+external	mouse	Vignane 2026	cohort	supervised	Oh 2023 organismal, plasma	12	359	0.2957			0.3508
+external	mouse	Vignane 2026	cohort	supervised	Oh 2025 brain, plasma	12	21	0.6209			0.0312
+external	mouse	Vignane 2026	cohort	supervised	Oh 2025 organismal, plasma	12	53	-0.2957			0.3508
+external	mouse	Vignane 2026	cohort	zero-shot	Random weights		4819	-0.02957			
+external	mouse	Gebru 2024	cohort	zero-shot	m6Brain	23	8383	0.5774			0.003918
+external	mouse	Gebru 2024	cohort	zero-shot	Length only	23	8383	0.4986			0.01544
+external	mouse	Gebru 2024	cohort	ablation	Without m6A features	23	8383	0.5774			0.003918
+external	mouse	Gebru 2024	cohort	zero-shot	Linear m6A load	23	6835	0.4593			0.02749
+external	mouse	Gebru 2024	cohort	supervised	Observed z of other cohorts	23	8383	0.7086			0.0001543
+external	mouse	Gebru 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	23	41	0.7611			2.478e-05
+external	mouse	Gebru 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	23	292	0.5117			0.01256
+external	mouse	Gebru 2024	cohort	supervised	Goeminne 2025 brain, plasma	23	101	0.2362			0.2779
+external	mouse	Gebru 2024	cohort	supervised	Lehallier 2019, plasma	23	148	0.3805			0.07325
+external	mouse	Gebru 2024	cohort	supervised	Melendez 2024, CSF	23	487	0.3805			0.07325
+external	mouse	Gebru 2024	cohort	supervised	Oh 2023 brain, plasma	23	134	-0.6561			0.0006754
+external	mouse	Gebru 2024	cohort	supervised	Oh 2023 organismal, plasma	23	562	0.4593			0.02749
+external	mouse	Gebru 2024	cohort	supervised	Oh 2025 brain, plasma	23	24	0.2756			0.2032
+external	mouse	Gebru 2024	cohort	supervised	Oh 2025 organismal, plasma	23	80	0.6298			0.001279
+external	mouse	Gebru 2024	cohort	zero-shot	Random weights		8383	0.01312			
+external	mouse	Huang 2024	cohort	zero-shot	m6Brain	10	5366	0.8704			0.001053
+external	mouse	Huang 2024	cohort	zero-shot	Length only	10	5366	0.6615			0.03724
+external	mouse	Huang 2024	cohort	ablation	Without m6A features	10	5366	0.8704			0.001053
+external	mouse	Huang 2024	cohort	zero-shot	Linear m6A load	10	4551	0.3133			0.378
+external	mouse	Huang 2024	cohort	supervised	Observed z of other cohorts	10	5366	0.8704			0.001053
+external	mouse	Huang 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	10	36	0.8704			0.001053
+external	mouse	Huang 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	10	227	0.6615			0.03724
+external	mouse	Huang 2024	cohort	supervised	Goeminne 2025 brain, plasma	10	82	0.4526			0.189
+external	mouse	Huang 2024	cohort	supervised	Lehallier 2019, plasma	10	101	0.7311			0.01628
+external	mouse	Huang 2024	cohort	supervised	Melendez 2024, CSF	10	325	0.6615			0.03724
+external	mouse	Huang 2024	cohort	supervised	Oh 2023 brain, plasma	10	106	-0.2437			0.4974
+external	mouse	Huang 2024	cohort	supervised	Oh 2023 organismal, plasma	10	383	0.5919			0.07146
+external	mouse	Huang 2024	cohort	supervised	Oh 2025 brain, plasma	10	20	0.383			0.2747
+external	mouse	Huang 2024	cohort	supervised	Oh 2025 organismal, plasma	10	55	0.8704			0.001053
+external	mouse	Huang 2024	cohort	zero-shot	Random weights		5366	-0.03482			
+external	mouse	Jha 2026	cohort	zero-shot	m6Brain	9	5328	0.9487			9.585e-05
+external	mouse	Jha 2026	cohort	zero-shot	Length only	9	5328	0.7379			0.02324
+external	mouse	Jha 2026	cohort	ablation	Without m6A features	9	5328	0.9487			9.585e-05
+external	mouse	Jha 2026	cohort	zero-shot	Linear m6A load	9	4509	0.3689			0.3285
+external	mouse	Jha 2026	cohort	supervised	Observed z of other cohorts	9	5328	0.9487			9.585e-05
+external	mouse	Jha 2026	cohort	supervised	MSigDB DEMAGALHAES_AGING	9	33	0.8433			0.00429
+external	mouse	Jha 2026	cohort	supervised	MSigDB LU_AGING_BRAIN	9	221	0.7379			0.02324
+external	mouse	Jha 2026	cohort	supervised	Goeminne 2025 brain, plasma	9	84	0.8433			0.00429
+external	mouse	Jha 2026	cohort	supervised	Lehallier 2019, plasma	9	89	0.6852			0.04167
+external	mouse	Jha 2026	cohort	supervised	Melendez 2024, CSF	9	326	0.2635			0.4933
+external	mouse	Jha 2026	cohort	supervised	Oh 2023 brain, plasma	9	111	0.6325			0.06758
+external	mouse	Jha 2026	cohort	supervised	Oh 2023 organismal, plasma	9	375	0.1054			0.7872
+external	mouse	Jha 2026	cohort	supervised	Oh 2025 brain, plasma	9	20	0.7379			0.02324
+external	mouse	Jha 2026	cohort	supervised	Oh 2025 organismal, plasma	9	58	0.2635			0.4933
+external	mouse	Jha 2026	cohort	zero-shot	Random weights		5328	0			
+external	mouse	Keele 2023	cohort	zero-shot	m6Brain	20	5702	0.3815			0.09694
+external	mouse	Keele 2023	cohort	zero-shot	Length only	20	5702	-0.06937			0.7714
+external	mouse	Keele 2023	cohort	ablation	Without m6A features	20	5702	0.3815			0.09694
+external	mouse	Keele 2023	cohort	zero-shot	Linear m6A load	20	4665	0.01734			0.9421
+external	mouse	Keele 2023	cohort	supervised	Observed z of other cohorts	20	5702	0.5896			0.006216
+external	mouse	Keele 2023	cohort	supervised	MSigDB DEMAGALHAES_AGING	20	36	0.6937			0.0006934
+external	mouse	Keele 2023	cohort	supervised	MSigDB LU_AGING_BRAIN	20	235	0.659			0.001577
+external	mouse	Keele 2023	cohort	supervised	Goeminne 2025 brain, plasma	20	86	0.1214			0.6102
+external	mouse	Keele 2023	cohort	supervised	Lehallier 2019, plasma	20	103	-0.5203			0.01869
+external	mouse	Keele 2023	cohort	supervised	Melendez 2024, CSF	20	386	0.03468			0.8846
+external	mouse	Keele 2023	cohort	supervised	Oh 2023 brain, plasma	20	114	-0.05203			0.8276
+external	mouse	Keele 2023	cohort	supervised	Oh 2023 organismal, plasma	20	418	-0.03468			0.8846
+external	mouse	Keele 2023	cohort	supervised	Oh 2025 brain, plasma	20	22	-0.08671			0.7162
+external	mouse	Keele 2023	cohort	supervised	Oh 2025 organismal, plasma	20	67	0.5896			0.006216
+external	mouse	Keele 2023	cohort	zero-shot	Random weights		5702	-0.03468			
+external	mouse	Marchionini 2025	cohort	zero-shot	m6Brain	40	7287	0.5482			0.0002503
+external	mouse	Marchionini 2025	cohort	zero-shot	Length only	40	7287	0.1724			0.2874
+external	mouse	Marchionini 2025	cohort	ablation	Without m6A features	40	7287	0.554			0.0002083
+external	mouse	Marchionini 2025	cohort	zero-shot	Linear m6A load	40	6007	0.1608			0.3216
+external	mouse	Marchionini 2025	cohort	supervised	Observed z of other cohorts	40	7287	0.7148			2.205e-07
+external	mouse	Marchionini 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	40	40	0.7845			2.097e-09
+external	mouse	Marchionini 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	40	262	0.5036			0.000923
+external	mouse	Marchionini 2025	cohort	supervised	Goeminne 2025 brain, plasma	40	92	0.5211			0.0005658
+external	mouse	Marchionini 2025	cohort	supervised	Lehallier 2019, plasma	40	123	-0.3835			0.01456
+external	mouse	Marchionini 2025	cohort	supervised	Melendez 2024, CSF	40	448	0.5017			0.000973
+external	mouse	Marchionini 2025	cohort	supervised	Oh 2023 brain, plasma	40	123	0.1375			0.3974
+external	mouse	Marchionini 2025	cohort	supervised	Oh 2023 organismal, plasma	40	490	-0.1956			0.2263
+external	mouse	Marchionini 2025	cohort	supervised	Oh 2025 brain, plasma	40	24	0.5637			0.0001521
+external	mouse	Marchionini 2025	cohort	supervised	Oh 2025 organismal, plasma	40	67	0.1569			0.3336
+external	mouse	Marchionini 2025	cohort	zero-shot	Random weights		7287	0.0155			
+external	mouse	Mohallem 2024	cohort	zero-shot	m6Brain	13	2700	0.9142			1.23e-05
+external	mouse	Mohallem 2024	cohort	zero-shot	Length only	13	2700	0.6094			0.02702
+external	mouse	Mohallem 2024	cohort	ablation	Without m6A features	13	2700	0.8907			4.43e-05
+external	mouse	Mohallem 2024	cohort	zero-shot	Linear m6A load	13	2265	0.7501			0.003145
+external	mouse	Mohallem 2024	cohort	supervised	Observed z of other cohorts	13	2700	0.9376			2.227e-06
+external	mouse	Mohallem 2024	cohort	supervised	MSigDB DEMAGALHAES_AGING	13	21	0.8204			0.0005912
+external	mouse	Mohallem 2024	cohort	supervised	MSigDB LU_AGING_BRAIN	13	146	0.8673			0.0001231
+external	mouse	Mohallem 2024	cohort	supervised	Goeminne 2025 brain, plasma	13	63	0.6329			0.02025
+external	mouse	Mohallem 2024	cohort	supervised	Lehallier 2019, plasma	13	49	-0.07032			0.8194
+external	mouse	Mohallem 2024	cohort	supervised	Melendez 2024, CSF	13	190	0.2813			0.3519
+external	mouse	Mohallem 2024	cohort	supervised	Oh 2023 brain, plasma	13	79	-0.1875			0.5396
+external	mouse	Mohallem 2024	cohort	supervised	Oh 2023 organismal, plasma	13	195	0.3516			0.2388
+external	mouse	Mohallem 2024	cohort	supervised	Oh 2025 brain, plasma	13	17	0.5157			0.07126
+external	mouse	Mohallem 2024	cohort	supervised	Oh 2025 organismal, plasma	13	23	-0.04688			0.8791
+external	mouse	Mohallem 2024	cohort	zero-shot	Random weights		2700	0.02344			
+external	mouse	Scifo 2025	cohort	zero-shot	m6Brain	45	4421	0.753			2.423e-09
+external	mouse	Scifo 2025	cohort	zero-shot	Length only	45	4421	0.3392			0.02264
+external	mouse	Scifo 2025	cohort	ablation	Without m6A features	45	4421	0.7554			2.005e-09
+external	mouse	Scifo 2025	cohort	zero-shot	Linear m6A load	45	3644	0.2262			0.1351
+external	mouse	Scifo 2025	cohort	supervised	Observed z of other cohorts	45	4421	0.776			3.789e-10
+external	mouse	Scifo 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	45	32	0.5839			2.551e-05
+external	mouse	Scifo 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	45	192	0.6086			9.207e-06
+external	mouse	Scifo 2025	cohort	supervised	Goeminne 2025 brain, plasma	45	79	0.2869			0.05604
+external	mouse	Scifo 2025	cohort	supervised	Lehallier 2019, plasma	45	74	-0.04201			0.7841
+external	mouse	Scifo 2025	cohort	supervised	Melendez 2024, CSF	45	284	-0.007224			0.9624
+external	mouse	Scifo 2025	cohort	supervised	Oh 2023 brain, plasma	45	98	-0.06722			0.6608
+external	mouse	Scifo 2025	cohort	supervised	Oh 2023 organismal, plasma	45	304	-0.2011			0.1852
+external	mouse	Scifo 2025	cohort	supervised	Oh 2025 brain, plasma	45	23	0.3433			0.02094
+external	mouse	Scifo 2025	cohort	supervised	Oh 2025 organismal, plasma	45	41	0.1292			0.3978
+external	mouse	Scifo 2025	cohort	zero-shot	Random weights		4421	-0.00592			
+external	mouse	Yarbro 2025	cohort	zero-shot	m6Brain	39	9218	0.5131			0.0008371
+external	mouse	Yarbro 2025	cohort	zero-shot	Length only	39	9218	0.4024			0.01109
+external	mouse	Yarbro 2025	cohort	ablation	Without m6A features	39	9218	0.5111			0.0008845
+external	mouse	Yarbro 2025	cohort	zero-shot	Linear m6A load	39	7349	0.4138			0.008829
+external	mouse	Yarbro 2025	cohort	supervised	Observed z of other cohorts	39	9218	0.693			1.009e-06
+external	mouse	Yarbro 2025	cohort	supervised	MSigDB DEMAGALHAES_AGING	39	45	0.5929			6.973e-05
+external	mouse	Yarbro 2025	cohort	supervised	MSigDB LU_AGING_BRAIN	39	308	0.3679			0.02123
+external	mouse	Yarbro 2025	cohort	supervised	Goeminne 2025 brain, plasma	39	97	0.4303			0.006246
+external	mouse	Yarbro 2025	cohort	supervised	Lehallier 2019, plasma	39	162	0.1119			0.4975
+external	mouse	Yarbro 2025	cohort	supervised	Melendez 2024, CSF	39	542	0.1449			0.3787
+external	mouse	Yarbro 2025	cohort	supervised	Oh 2023 brain, plasma	39	139	-0.02695			0.8706
+external	mouse	Yarbro 2025	cohort	supervised	Oh 2023 organismal, plasma	39	610	-0.5166			0.0007601
+external	mouse	Yarbro 2025	cohort	supervised	Oh 2025 brain, plasma	39	25	0.4221			0.007442
+external	mouse	Yarbro 2025	cohort	supervised	Oh 2025 organismal, plasma	39	92	0.2203			0.1778
+external	mouse	Yarbro 2025	cohort	zero-shot	Random weights		9218	0.01072			
+external	mouse	Yu 2020	cohort	zero-shot	m6Brain	10	6333	0.03482			0.9239
+external	mouse	Yu 2020	cohort	zero-shot	Length only	10	6333	-0.03482			0.9239
+external	mouse	Yu 2020	cohort	ablation	Without m6A features	10	6333	0.03482			0.9239
+external	mouse	Yu 2020	cohort	zero-shot	Linear m6A load	10	5199	0.03482			0.9239
+external	mouse	Yu 2020	cohort	supervised	Observed z of other cohorts	10	6333	0.2437			0.4974
+external	mouse	Yu 2020	cohort	supervised	MSigDB DEMAGALHAES_AGING	10	37	0.4526			0.189
+external	mouse	Yu 2020	cohort	supervised	MSigDB LU_AGING_BRAIN	10	248	-0.03482			0.9239
+external	mouse	Yu 2020	cohort	supervised	Goeminne 2025 brain, plasma	10	85	0.2437			0.4974
+external	mouse	Yu 2020	cohort	supervised	Lehallier 2019, plasma	10	112	0.3133			0.378
+external	mouse	Yu 2020	cohort	supervised	Melendez 2024, CSF	10	387	0.1741			0.6305
+external	mouse	Yu 2020	cohort	supervised	Oh 2023 brain, plasma	10	112	-0.1044			0.774
+external	mouse	Yu 2020	cohort	supervised	Oh 2023 organismal, plasma	10	445	0.1741			0.6305
+external	mouse	Yu 2020	cohort	supervised	Oh 2025 brain, plasma	10	21	0.1741			0.6305
+external	mouse	Yu 2020	cohort	supervised	Oh 2025 organismal, plasma	10	67	0.2437			0.4974
+external	mouse	Yu 2020	cohort	zero-shot	Random weights		6333	0.03482			
+external	mouse	Pooled	pooled	zero-shot	Random weights			-0.005916			
+external	mouse	Pooled	pooled	zero-shot	m6Brain			0.6597	0.5301	0.7592	1.509e-14
+external	mouse	Pooled	pooled	zero-shot	Length only			0.3886	0.267	0.498	3.895e-09
+external	mouse	Pooled	pooled	ablation	Without m6A features			0.6565	0.531	0.7539	2.828e-15
+external	mouse	Pooled	pooled	zero-shot	Linear m6A load			0.2993	0.1629	0.4244	2.758e-05
+external	mouse	Pooled	pooled	supervised	Observed z of other cohorts			0.7519	0.6662	0.818	2.253e-28
+external	mouse	Pooled	pooled	supervised	MSigDB DEMAGALHAES_AGING			0.6681	0.5261	0.7738	1.157e-12
+external	mouse	Pooled	pooled	supervised	MSigDB LU_AGING_BRAIN			0.5119	0.3785	0.6244	3.206e-11
+external	mouse	Pooled	pooled	supervised	Goeminne 2025 brain, plasma			0.3613	0.2321	0.478	1.751e-07
+external	mouse	Pooled	pooled	supervised	Lehallier 2019, plasma			0.06287	-0.1429	0.2634	0.5507
+external	mouse	Pooled	pooled	supervised	Melendez 2024, CSF			0.2377	0.1008	0.3658	0.0007701
+external	mouse	Pooled	pooled	supervised	Oh 2023 brain, plasma			-0.1904	-0.3835	0.01871	0.07401
+external	mouse	Pooled	pooled	supervised	Oh 2023 organismal, plasma			-0.01324	-0.2107	0.1853	0.8971
+external	mouse	Pooled	pooled	supervised	Oh 2025 brain, plasma			0.3492	0.2085	0.4757	2.963e-06
+external	mouse	Pooled	pooled	supervised	Oh 2025 organismal, plasma			0.2603	0.04091	0.4557	0.02057

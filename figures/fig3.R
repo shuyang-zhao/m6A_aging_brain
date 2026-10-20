@@ -29,7 +29,7 @@ pa <- ggplot(a, aes(sites, effect, group = panel)) +
 # b: load coefficient of every cohort (95% CI) and the random-effects estimate (diamond; I2 = heterogeneity); cohorts
 # ordered by effect and aligned at the random-effects row, filled where the 95% CI excludes zero; a CI beyond the axis is cut and ends in an arrow
 b <- read_panel("fig3b")
-XLIM <- list("Mouse discovery" = c(-3.6, 0.4), "Mouse external" = c(-3.8, 0.8), "Human protein" = c(-1.6, 0.9))
+XLIM <- list("Mouse discovery" = c(-3.6, 0.4), "Mouse external" = c(-3.8, 0.8), "Human protein" = c(-2.1, 0.9))
 M <- b[kind == "cohort", .N, by = panel][, max(N)] # rows of the longest forest
 forest <- function(pn) {
   lim <- XLIM[[pn]]
@@ -56,8 +56,7 @@ forest <- function(pn) {
                     expand = expansion(0)) +
     scale_x_continuous(labels = MINUS_LABELS, expand = expansion(0)) +
     coord_cartesian(xlim = lim, clip = "off") +
-    labs(x = paste0("Age effect per log unit\nof m6A load (", if (pn == "Human protein") "% per decade" else "%", ")"),
-         y = NULL) +
+    labs(x = paste0("Load coefficient\n(% per ", if (pn == "Human protein") "decade per " else "", "log unit)"), y = NULL) +
     theme_rows() +
     theme(plot.margin = margin(4.4, 6, 3, 2, "mm"), axis.title.x = element_text(lineheight = 0.95))
 }
@@ -68,7 +67,7 @@ pb <- wrap_plots(lapply(PANELS, forest), nrow = 1) + FLUSH
 # Human protein; 95% CI, random effects over cohorts
 CP <- c("Mouse discovery", "Human protein")
 STEP <- c(lengths = "+ Lengths", expression = "+ Expression", "neuron share" = "+ Neuron share",
-          programmes = "+ Programmes (all covariates)")
+          programmes = "+ Programs (all covariates)")
 CHECK <- c("DRACH as covariate" = "DRACH motifs as covariate", "ubiquitous genes" = "Ubiquitous genes only")
 ladder <- read_panel("fig3c_ladder")[, row := STEP[step]][, y := match(step, names(STEP))]
 checks <- read_panel("fig3c_checks")[check %in% names(CHECK)][, row := CHECK[check]][, y := 4.9 + match(check, names(CHECK))]

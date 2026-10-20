@@ -2,7 +2,7 @@
 # LightGBM, an elastic net and a shuffled target; m6A contribution as the held-out R2 gain from m6A sites and reader
 # binding and as the in silico deletion of the sites, both against 100 copies of the two groups permuted jointly across
 # genes; transfer of the mouse protein model to human genes
-#   50_transcript_ageing_model.py inputs        gene tables of the targets (CPU)
+#   50_transcript_ageing_model.py inputs        gene tables of the targets and the feature tables of all genes (CPU)
 #   50_transcript_ageing_model.py TABLE [A-B]   TabPFN on one gene table, or on its permuted copies A to B (one GPU)
 #   50_transcript_ageing_model.py               LightGBM and the elastic net, and the result tables (CPU)
 # reads scripts 09, 10 and 40, the prepared units and the site atlas; writes output/50_transcript_ageing_model/
@@ -206,6 +206,8 @@ if sys.argv[1:] == ["inputs"]:
     # one table per target: chromosome folds, the target shuffled within each fold and the gene order of each permuted
     # copy of the m6A block
     INPUTS.mkdir(parents=True, exist_ok=True)
+    for species, table in features.items():
+        table.to_parquet(INPUTS / f"features_{species}.parquet")  # every gene, with or without a target (script 52)
     rng = np.random.default_rng(utils.SEED)
     for name, (species, layer, context) in TARGETS.items():
         targets = target_table(species, layer, context)

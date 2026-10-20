@@ -7,9 +7,12 @@ COMP <- c(unbound_m6A = "vs unbound m6A genes", bound_unmarked = "vs bound unmar
 COMP_COL <- c("vs unbound m6A genes" = CONTRAST, "vs bound unmarked genes" = BLUE)
 MRNA_COL <- "#4D4D4D"
 
-# a: IGF2BP2 mRNA and the target scores of its primary tiers, expressing minus non-expressing populations of the
-# single-nucleus cohorts; % per decade, 95% CI
-d <- read_panel("sfig9a")
+# a: IGF2BP2 mRNA and the target scores of its primary tiers, difference in age slope (% per decade, 95% CI) between
+# the striatal and the other regions of GTEx and between the expressing and non-expressing populations of the
+# single-nucleus cohorts
+PANELS_A <- c(GTEx = "GTEx: striatum minus\nother regions",
+              "Single nucleus" = "Single nucleus: expressing minus\nnon-expressing populations")
+d <- read_panel("sfig9a")[, panel := factor(PANELS_A[panel], PANELS_A)]
 TIERS_A <- c(gene = "IGF2BP2 mRNA", T1 = "T1 neural binding", T2 = "T2 m6A-dependent", T3 = "T3 falls on knockdown")
 COMP_A <- c("-" = "mRNA", unbound_m6A = "vs unbound m6A genes", bound_unmarked = "vs bound unmarked genes")
 d[, `:=`(row = factor(TIERS_A[tier], rev(TIERS_A)), comp = factor(COMP_A[comparison], COMP_A))]
@@ -21,12 +24,12 @@ a <- ggplot(d, aes(estimate_pct, row, fill = comp, shape = comp)) +
   geom_point(size = 3.2, stroke = 0.5, colour = EDGE, position = dodge) +
   scale_fill_manual(values = c(setNames(MRNA_COL, COMP_A[1]), COMP_COL), name = NULL) +
   scale_shape_manual(values = setNames(c(23, 21, 24), COMP_A), name = NULL) +
+  facet_wrap(~panel) +
   scale_x_continuous(labels = MINUS_LABELS) +
-  labs(x = "Difference in age slope, expressing minus non-expressing\nsingle-nucleus populations (% per decade)",
-       y = NULL) +
+  labs(x = "Difference in age slope (% per decade)", y = NULL) +
   theme_rows() +
   BOXED +
-  theme(legend.position = "bottom")
+  theme(legend.position = "bottom", strip.text = element_text(lineheight = 0.95))
 
 # b: genes bound by IGF2BP2 with m6A in each combination of the four neural sources (UpSet); T1, at least two sources
 SOURCES <- c(conway2016_H9_eCLIP = "H9 stem cells eCLIP", degrauwe2016_MGG8_PARCLIP = "MGG8 glioma PAR-CLIP",

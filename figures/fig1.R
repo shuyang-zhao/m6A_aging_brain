@@ -35,17 +35,18 @@ canvas <- function(w, h) {
 WA <- 366
 HA <- 92
 feat <- rbind(
-  node(50, 63, 124, 78, BLUE_LIGHT, "Orthrus", "RNA foundation model"),
-  node(50, 44.5, 124, 59.5, BLUE_LIGHT, "RiboNN", "translation model"),
-  node(50, 26, 124, 41, FOCAL_LIGHT, "m6A", "sites and reader binding"),
-  node(50, 7.5, 124, 22.5, BLUE_LIGHT, "Structure", "transcript structure features")
+  node(50, 65.9, 124, 78, BLUE_LIGHT, "Orthrus", "RNA foundation model"),
+  node(50, 51.3, 124, 63.4, BLUE_LIGHT, "RiboNN", "translation model"),
+  node(50, 36.7, 124, 48.8, FOCAL_LIGHT, "m6A", "sites and reader binding"),
+  node(50, 22.1, 124, 34.2, BLUE_LIGHT, "Structure", "transcript structure features"),
+  node(50, 7.5, 124, 19.6, BLUE_LIGHT, "Context", "expression, cell type, programs")
 )
 steps <- rbind(
   node(4, 7.5, 38, 78, LIGHT, "Transcripts", "of each\ngene"),
   feat,
   node(136, 7.5, 180, 78, CONTRAST_LIGHT, "TabPFN", "tabular\nfoundation\nmodel"),
   node(192, 28, 238, 58, FOCAL_LIGHT, "Weights", "predicted\nage effect\nper gene"),
-  node(250, 28, 296, 58, FOCAL_LIGHT, "Sample score", "Σ weight ×\nstandardised\nprotein"),
+  node(250, 28, 296, 58, FOCAL_LIGHT, "Sample score", "Σ weight ×\nstandardized\nprotein"),
   node(308, 46, 362, 72, RED_LIGHT, "Age", "Spearman ρ with age\nin held-out and\nexternal cohorts"),
   node(308, 14, 362, 40, RED_LIGHT, "Disease", "AD, PD, ALS, HD")
 )

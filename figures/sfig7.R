@@ -6,7 +6,8 @@ stars <- function(q) as.character(cut(q, c(-Inf, 0.001, 0.01, 0.05, Inf), c("***
 
 # a: YTHDF3 age effect; mouse protein per cohort (late versus early age group) and combined (random effects over
 # cohorts), human mRNA combined per context (per decade); bars, estimate; whiskers, 95% CI; * q < 0.05
-HUMAN <- c(striatum = "Striatum", cortex = "Cortex", hippocampus = "Hippocampus", neurons = "Neurons")
+HUMAN <- c(striatum = "Striatum", cortex = "Cortex", hippocampus = "Hippocampus", cerebellum = "Cerebellum",
+           neurons = "Neurons")
 d <- read_panel("sfig7a")
 d[, `:=`(combined = label == "Combined" | panel == "Human mRNA",
          label = fifelse(panel == "Human mRNA", HUMAN[label], label))]
@@ -48,7 +49,7 @@ b <- ggplot(ctrl, aes(edge)) +
   facet_wrap(~panel, nrow = 2, scales = "free") +
   scale_colour_manual(values = c(Module = CONTRAST, YTHDF3 = FOCAL),
                       labels = c(Module = "YTHDF module", YTHDF3 = "YTHDF3"), name = NULL) +
-  scale_x_continuous(labels = MINUS_LABELS, n.breaks = 3, expand = expansion(mult = c(0.1, 0.1))) +
+  scale_x_continuous(labels = MINUS_LABELS, breaks = scales::breaks_pretty(3), expand = expansion(mult = c(0.1, 0.1))) +
   scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
   labs(x = "YTHDF load edge (b)", y = "Density of control RBPs") +
   theme_fig() +
@@ -60,7 +61,9 @@ b <- ggplot(ctrl, aes(edge)) +
 # c: change of the target score after loss of a YTHDF reader (m6A-marked targets of the preferred binding source, against
 # bound transcripts without m6A or unbound m6A genes); filled, the direction predicted from the reader's known function
 # (loss lowers the translation efficiency of YTHDF1/3 targets, raises the mRNA of YTHDF2 targets); open, the opposite
-# direction; the triple knockout has a row for each reader whose targets are scored
+# direction; the triple knockout has a row for each reader whose targets are scored; intervals beyond CUT are cut and
+# end in an arrow
+CUT <- 120
 x <- read_panel("sfig7c")
 x[, panel := factor(fifelse(readout == "RNA", "YTHDF2 loss: target mRNA", "YTHDF1/3 loss: translation efficiency"),
                     c("YTHDF1/3 loss: translation efficiency", "YTHDF2 loss: target mRNA"))]
@@ -89,17 +92,20 @@ x[reader != target_reader, label := paste0(label, " (", target_reader, " targets
 x[, label := factor(label, unique(label[order(panel, -effect_pct)]))]
 x[, `:=`(inside = fifelse(sign_matches, SERIES[as.character(comparison)], "white"),
          edge = fifelse(sign_matches, EDGE, GREY))]
-dodge <- position_dodge(0.6)
-cc <- ggplot(x, aes(effect_pct, label, shape = comparison, fill = I(inside), colour = I(edge))) +
+# rows numbered over both facets (each free y scale keeps its own labels), the two comparisons side by side in a row
+x[, y := -as.integer(label) + fifelse(comparison == "Unbound m6A genes", 0.15, -0.15)]
+cc <- ggplot(x, aes(effect_pct, y, shape = comparison, fill = I(inside), colour = I(edge))) +
   ZERO_X +
-  geom_linerange(aes(xmin = ci_low_pct, xmax = ci_high_pct), orientation = "y", linewidth = 0.6, colour = CI,
-                 position = dodge) +
-  geom_point(size = 2.8, stroke = 0.5, position = dodge) +
+  geom_segment(aes(x = ci_low_pct, xend = pmin(ci_high_pct, CUT), yend = y), linewidth = 0.6, colour = CI) +
+  geom_segment(data = x[ci_high_pct > CUT], aes(x = CUT - 10, xend = CUT, yend = y), colour = CI, linewidth = 0.6,
+               arrow = arrow(length = unit(1.8, "mm"), type = "closed")) +
+  geom_point(size = 2.8, stroke = 0.5) +
   facet_wrap(~panel, scales = "free") +
-  scale_shape_manual(values = c("Bound without m6A" = 21, "Unbound m6A genes" = 24), name = NULL,
+  scale_shape_manual(values = c("Bound without m6A" = 21, "Unbound m6A genes" = 24), name = "Marked targets against",
                      guide = guide_legend(override.aes = list(fill = SERIES, colour = EDGE))) +
   scale_x_continuous(labels = MINUS_LABELS) +
-  scale_y_discrete(limits = rev, labels = scales::label_wrap(36)) +
+  scale_y_continuous(breaks = -seq_len(nlevels(x$label)), labels = scales::label_wrap(36)(levels(x$label)),
+                     expand = expansion(add = 0.5)) +
   labs(x = "Change of target score after YTHDF loss (%)", y = NULL) +
   theme_rows() +
   BOXED +

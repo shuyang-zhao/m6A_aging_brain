@@ -1,4 +1,4 @@
-# ID maps, GO programmes, lifetimes, half-lives, cell-type origin, GPU predictions
+# ID maps, GO programmes, lifetimes, half-lives, cell-type origin, GPU predictions, weights of published clocks
 # reads data/raw (00_download.sh) and the pseudobulk of 03; writes output/prepared/ref and output/prepared/resources/*
 import gzip
 import io
@@ -228,3 +228,61 @@ for species in ("mouse", "human"):
     utils.write(embedding, OUT / f"orthrus_{species}/embeddings.parquet")
     te = pd.read_csv(RAW / f"gpu_precomputed/ribonn_{species}.tsv", sep="\t")
     utils.write(te, OUT / f"ribonn_{species}/predictions.parquet")
+
+# Weights of published linear proteomic ageing clocks (benchmarks of script 52): the coefficient of each protein on its
+# standardised level, summed over the assays of a gene; assays of several genes are dropped. Oh 2023: the mean over
+# the 500 bootstrap LASSO models with zeros (ST7 averages only the bootstraps where the protein is selected);
+# Goeminne 2025: the fold-1 coefficient on Olink NPX times the NPX standard deviation of training (Table S3), as the
+# authors apply the models to other platforms; Melendez 2024: the elastic-net weights on min-max scaled levels.
+# SomaScan symbols that are not current (old, ambiguous or mangled by Excel such as 3-Sep) go by their Entrez id
+approved = set(hgnc.symbol[hgnc.status == "Approved"])
+entrez = hgnc[(hgnc.entrez_id != "") & (hgnc.ensembl_gene_id != "")].drop_duplicates("entrez_id", keep=False)
+entrez = entrez.set_index("entrez_id").ensembl_gene_id
+
+
+def clock(label, source, fluid, assays, weights, entrez_ids=None):
+    rows = pd.DataFrame({"assay": np.asarray(assays, dtype=object), "weight": np.asarray(weights, dtype=float)})
+    rows["ensembl"] = np.nan if entrez_ids is None else pd.Series(np.asarray(entrez_ids, dtype=object)).map(entrez)
+    rows = rows[rows.weight.fillna(0) != 0].fillna({"assay": ""})
+    rows = rows[~rows.assay.str.contains(r"[ ,|._]")]
+    rows["symbol"] = utils.current_symbol(rows.assay.to_numpy(), "human", np.full(len(rows), np.nan))
+    by_entrez = utils.current_symbol(rows.assay.to_numpy(), "human", rows.ensembl.to_numpy())
+    rows["symbol"] = rows.symbol.where(rows.symbol.isin(approved), by_entrez)
+    rows = rows[rows.symbol.isin(approved)]
+    genes = rows.groupby(rows.symbol.str.upper()).weight.agg(weight="sum", n_assays="size").reset_index()
+    return genes.assign(clock=label, source=source, fluid=fluid)[["clock", "source", "fluid", *genes]]
+
+
+clocks = []
+st = RAW / "lehallier2019_clock/41591_2019_673_MOESM3_ESM.xlsx"
+annotation = pd.read_excel(st, sheet_name="ST1 Nomenclature 2,925 proteins", header=2, dtype=str).set_index("ID")
+lasso = pd.read_excel(st, sheet_name="ST7 Plasma proteomic clock", header=2)
+lasso = lasso[lasso.Variable.isin(annotation.index)]
+# symbols turned into dates by Excel (SEPT10) or left empty (APOE, EPHA10) are read from the assay name
+symbols = annotation.EntrezGeneSymbol.mask(annotation.EntrezGeneSymbol.str.contains(":", na=False))
+symbols = lasso.Variable.map(symbols).fillna(lasso.Variable.str.replace(r"(\.\d+){3}$", "", regex=True))
+entrez_ids = lasso.Variable.map(annotation.EntrezGeneID)
+clocks.append(clock("Lehallier 2019, plasma", "lehallier2019", "plasma", symbols, lasso.iloc[:, 1], entrez_ids))
+st = RAW / "oh2023_clock/41586_2023_6802_MOESM5_ESM.xlsx"
+annotation = pd.read_excel(st, sheet_name="ST3", dtype=str).set_index("Somamer")
+mean = pd.read_excel(st, sheet_name="ST7")
+for organ in ("Brain", "Organismal"):
+    rows = mean[mean.organ == organ]
+    symbols, entrez_ids = rows.Somamer.map(annotation.EntrezGeneSymbol), rows.Somamer.map(annotation.EntrezGeneID)
+    weight = rows.mean_coef * rows.percboot_nonzero / 100
+    clocks.append(clock(f"Oh 2023 {organ.lower()}, plasma", "oh2023", "plasma", symbols, weight, entrez_ids))
+st = RAW / "melendez2024_clock/ACEL-23-e14230-s002.xlsx"
+net = pd.read_excel(st, sheet_name="Full Model Protein Weights", dtype={"EntrezGeneID": str})
+symbols, entrez_ids = net.EntrezGeneSymbol, net.EntrezGeneID
+clocks.append(clock("Melendez 2024, CSF", "melendez2024", "CSF", symbols, net["Model Weight"], entrez_ids))
+st = RAW / "oh2025_clock/41591_2025_3798_MOESM3_ESM.xlsx"
+lasso = pd.read_excel(st, sheet_name="ST3", index_col="organ").drop(columns="intercept")
+assays = lasso.columns.map(pd.read_excel(st, sheet_name="ST2").set_index("prot").Assay)
+for organ in ("Brain", "Organismal"):
+    clocks.append(clock(f"Oh 2025 {organ.lower()}, plasma", "oh2025", "plasma", assays, lasso.loc[organ]))
+st = RAW / "goeminne2025_clock/1-s2.0-S1550413124004017-mmc"
+net = pd.read_excel(f"{st}2.xlsx", sheet_name="Table S1A").query("Model == 'Brain' and Fold == 1")
+net = net.drop(columns=["Model", "Fold", "Intercept"]).iloc[0]
+sd = pd.read_excel(f"{st}4.xlsx", sheet_name="Table S3", index_col="Type").loc["Full models"]
+clocks.append(clock("Goeminne 2025 brain, plasma", "goeminne2025", "plasma", net.index, net * sd.reindex(net.index)))
+utils.write(pd.concat(clocks, ignore_index=True), utils.PREPARED / "ref/published_clocks.tsv")

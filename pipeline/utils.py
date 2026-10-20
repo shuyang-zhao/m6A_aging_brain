@@ -28,8 +28,6 @@ BRAIN_M6A = "m6a_brain_shafik2026"
 EXCLUDED = (
     "anderton2026_",  # bioRxiv preprint, no journal article
     "chdi2016_",  # Htt knock-in allelic series, not wild-type mice; the 2- and 10-month proteome is only in a preprint
-    "ramasamy2014_",  # UKBEC: exon microarray, not RNA-seq
-    "gtex_",  # GTEx v10: data release without an article of its own
 )
 SEX = {"M": "male", "F": "female", "MALE": "male", "FEMALE": "female", "Male": "male", "Female": "female"}
 HUMAN_PROTEIN_UNITS = [  # human units with a protein layer and no mRNA layer
@@ -280,6 +278,19 @@ def random_effects(est, se):
     p = 2 * sps.norm.sf(abs(z))
     ci = dict(ci_low=pooled - Z95 * error, ci_high=pooled + Z95 * error)
     return dict(est=pooled, se=error, **ci, z=z, p=p, tau2=tau2, i2=i2, k=k)
+
+
+def load_design(protein, features):
+    """Genes quantified in every sample, the design of the m6A load model over them (intercept, log(1 + m6A sites),
+    LOAD_COVARIATES with level = mean abundance) and their abundances standardised across samples (genes x samples);
+    the slope of a sample's abundances on the load is its m6A index (scripts 53 and 54)."""
+    complete = protein.index[protein.notna().all(axis=1)].intersection(features.index)
+    genes = features.loc[complete].join(protein.mean(axis=1).rename("level"))
+    genes = genes.dropna(subset=["n_sites_m6A", *LOAD_COVARIATES])
+    y = protein.loc[genes.index]
+    y = y.sub(y.mean(axis=1), axis=0).div(y.std(axis=1), axis=0).to_numpy(float)
+    x = np.column_stack([np.ones(len(genes)), np.log1p(genes.n_sites_m6A), genes[LOAD_COVARIATES]]).astype(float)
+    return genes, x, y
 
 
 def stouffer(z, w):

@@ -8,25 +8,23 @@ SPECIES <- function(target) fifelse(grepl("^Mouse", target), FOCAL, RED)
 
 # a: held-out Spearman rho of each model (point, 95% CI); last rows, the mouse protein model applied to the human
 # genes
-MODELS <- c("TabPFN", "LightGBM", "Elastic net", "Shuffled target")
 a <- read_panel("sfig3a")
 ROW_LEVELS <- c(TARGETS, TRANSFER)
-a[, `:=`(row = match(target, rev(ROW_LEVELS)), model = factor(model, MODELS))]
+a[, `:=`(row = match(target, rev(ROW_LEVELS)), model = factor(model, MODELS[1:4]))]
 a[, y := row + c(0.27, 0.09, -0.09, -0.27)[as.integer(model)]]
 a <- ggplot(a, aes(rho, y)) +
   ZERO_X +
   geom_linerange(aes(xmin = rho_ci_low, xmax = rho_ci_high), orientation = "y", colour = CI, linewidth = 0.6) +
-  geom_point(aes(colour = model, fill = model), shape = 21, size = 3.4, stroke = 0.5) +
-  scale_colour_manual(values = c(TabPFN = EDGE, LightGBM = EDGE, "Elastic net" = EDGE, "Shuffled target" = GREY),
-                      name = NULL) +
-  scale_fill_manual(values = c(TabPFN = FOCAL, LightGBM = CONTRAST, "Elastic net" = BLUE, "Shuffled target" = "white"),
-                    name = NULL) +
+  geom_point(aes(colour = model, fill = model, shape = model), size = 3.4, stroke = 0.5) +
+  scale_colour_manual(values = setNames(MODEL_EDGE[1:4], MODELS[1:4]), name = NULL) +
+  scale_fill_manual(values = setNames(MODEL_FILL[1:4], MODELS[1:4]), name = NULL) +
+  scale_shape_manual(values = setNames(MODEL_SHAPE[1:4], MODELS[1:4]), name = NULL) +
   scale_y_continuous(breaks = rev(seq_along(ROW_LEVELS)), labels = ROW_LEVELS, expand = expansion(add = 0.5)) +
   scale_x_continuous(labels = MINUS_LABELS) +
   labs(x = "Held-out Spearman ρ", y = NULL) +
   theme_rows() +
   theme(legend.position = "bottom", legend.margin = margin(0, 0, 0, 0)) +
-  guides(colour = guide_legend(nrow = 1), fill = guide_legend(nrow = 1))
+  guides(colour = guide_legend(nrow = 1), fill = guide_legend(nrow = 1), shape = guide_legend(nrow = 1))
 
 # b: prediction with minus without the sites of a gene (negative: the sites make the predicted decline stronger), by
 # its number of m6A sites (mean, 95% CI)

@@ -1,29 +1,17 @@
-set	species	cohort	kind	n	rho	ci_low	ci_high	p	i2	k
-held-out	mouse	Keele 2025	cohort	18	0.9312	0.8213	0.9744	2.042e-08		
-held-out	mouse	Lu 2025	cohort	27	0.5635	0.2335	0.7771	0.002207		
-held-out	mouse	Marino 2025	cohort	10	0.8704	0.5327	0.969	0.001053		
-held-out	mouse	Takasugi 2024	cohort	16	0.9459	0.8476	0.9814	3.155e-08		
-held-out	mouse	Tsumagari 2023	cohort	18	0.8787	0.6983	0.9541	1.601e-06		
-held-out	mouse	Wang 2025	cohort	40	0.3971	0.09767	0.6306	0.01118		
-held-out	human	Blumenreich 2024	cohort	21	0.2744	-0.1784	0.6313	0.2287		
-held-out	human	Eggers 2025	cohort	34	0.3363	-0.002095	0.6056	0.0518		
-held-out	human	Koopmans 2026	cohort	46	0.6276	0.4124	0.7764	3.044e-06		
-held-out	human	Lee 2023	cohort	74	0.1335	-0.098	0.3513	0.2568		
-held-out	human	Luo 2024	cohort	193	0.08192	-0.06002	0.2206	0.2574		
-held-out	human	Merrihew 2023	cohort	11	0.4009	-0.262	0.8068	0.2217		
-held-out	human	Ping 2020	cohort	10	0.4303	-0.2734	0.834	0.2145		
-held-out	human	Teng 2023	cohort	16	0.168	-0.3575	0.6127	0.5339		
-external	mouse	Chen 2025	cohort	188	0.598	0.4974	0.6827	1.301e-19		
-external	mouse	Vignane 2026	cohort	12	0.68	0.174	0.9019	0.01497		
-external	mouse	Gebru 2024	cohort	23	0.5774	0.2167	0.7993	0.003918		
-external	mouse	Huang 2024	cohort	10	0.8704	0.5327	0.969	0.001053		
-external	mouse	Jha 2026	cohort	9	0.9487	0.7692	0.9894	9.585e-05		
-external	mouse	Keele 2023	cohort	20	0.3815	-0.07339	0.705	0.09694		
-external	mouse	Marchionini 2025	cohort	40	0.5482	0.2854	0.7343	0.0002503		
-external	mouse	Mohallem 2024	cohort	13	0.9142	0.7318	0.9744	1.23e-05		
-external	mouse	Scifo 2025	cohort	45	0.753	0.5898	0.8571	2.423e-09		
-external	mouse	Yarbro 2025	cohort	39	0.5131	0.2357	0.7132	0.0008371		
-external	mouse	Yu 2020	cohort	10	0.03482	-0.6082	0.6502	0.9239		
-held-out	mouse	Pooled	pooled		0.8262	0.5894	0.9323	3.918e-06	84.94	6
-held-out	human	Pooled	pooled		0.2908	0.107	0.4554	0.00224	58.81	8
-external	mouse	Pooled	pooled		0.6597	0.5301	0.7592	1.509e-14	61.82	11
+species	cohort	kind	n	rho	ci_low	ci_high	p	i2	k	n_negative
+human	Blumenreich 2024	cohort	21	-0.502	-0.7674	-0.08969				
+human	Eggers 2025	cohort	34	-0.1448	-0.4604	0.2034				
+human	Koopmans 2026	cohort	46	-0.2811	-0.5283	0.01006				
+human	Lee 2023	cohort	74	0.09993	-0.1316	0.3211				
+human	Luo 2024	cohort	193	-0.206	-0.3374	-0.0667				
+human	Merrihew 2023	cohort	11	-0.5376	-0.8601	0.09195				
+human	Ping 2020	cohort	10	-0.6485	-0.9076	-0.03186				
+human	Teng 2023	cohort	16	0.3508	-0.1754	0.7211				
+mouse	Keele 2025	cohort	18	-0.8262	-0.9331	-0.585				
+mouse	Lu 2025	cohort	27	-0.484	-0.7298	-0.1274				
+mouse	Marino 2025	cohort	10	-0.8704	-0.969	-0.5327				
+mouse	Takasugi 2024	cohort	16	-0.7882	-0.9232	-0.4801				
+mouse	Tsumagari 2023	cohort	18	-0.682	-0.8714	-0.3156				
+mouse	Wang 2025	cohort	40	-0.3274	-0.5798	-0.01766				
+human	Pooled	pooled		-0.1924	-0.3661	-0.005692	0.04349	57.56	8	6
+mouse	Pooled	pooled		-0.6734	-0.8145	-0.457	7.378e-07	63.59	6	6

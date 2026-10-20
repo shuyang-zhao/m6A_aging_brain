@@ -1,0 +1,4 @@
+cohort	kind	n	n_genes	rho	ci_low	ci_high	p	p_random	i2	k
+Chen 2025	cohort	188	721	0.3574	0.2258	0.4761	4.793e-07	0.000999		
+Gebru 2024	cohort	23	282	0.1837	-0.2472	0.554	0.4014	0.2637		
+Pooled	pooled		11160	0.3413	0.2152	0.4561	3.579e-07	0.002997	0	2

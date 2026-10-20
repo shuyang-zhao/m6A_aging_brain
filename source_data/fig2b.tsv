@@ -7,7 +7,7 @@ Mouse protein	Expression and turnover	0.04265
 Mouse protein	Cell-type origin	0.1224			
 Mouse protein	Functional program	0.0066			
 Mouse protein	Sequence representation	0.02539			
-Human protein	m6A sites and binding	0.0001625	-0.0008265	0.0005048	0.1881
+Human protein	m6A sites and binding	0.0001625	-0.0007057	0.0004128	0.08911
 Human protein	m6A sites	0.0005413			
 Human protein	m6A reader binding	-0.0007293			
 Human protein	Transcript structure	0.001869			

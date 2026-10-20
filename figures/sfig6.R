@@ -4,7 +4,8 @@ source("figures/style.R")
 
 MARKS <- c("m6A", "Ψ", "m5C", "m7G")
 ROWS <- c("Mouse protein", "Mouse mRNA-adjusted protein", "Mouse mRNA", "Mouse neuronal mRNA", "Human protein",
-          "Human striatum mRNA", "Human cortex mRNA", "Human hippocampus mRNA", "Human neuronal mRNA")
+          "Human striatum mRNA", "Human cortex mRNA", "Human hippocampus mRNA",
+          "Human cerebellum mRNA", "Human neuronal mRNA")
 
 # a: signature of the marked genes against unmarked genes (cameraPR z, combined over units; bold, q < 0.05)
 d <- read_panel("sfig6a")[, `:=`(row = factor(row, rev(ROWS)), mark = factor(modification, MARKS))]

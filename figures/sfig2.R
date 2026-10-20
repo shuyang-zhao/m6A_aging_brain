@@ -5,6 +5,7 @@ source("figures/style.R")
 ROWS <- c("mouse_protein|protein_only" = "Protein", "mouse_protein|mrna_adjusted" = "mRNA-adjusted protein",
           "mouse_mrna|mrna_only" = "mRNA", "mouse_neurons|mrna_only" = "Neuronal mRNA")
 MAPS <- c("hippocampus cyto", "hippocampus syn", "union")
+MAP_LABEL <- c("Hippocampus cyto", "Hippocampus syn", "Union")
 MAP_COL <- c("hippocampus cyto" = FOCAL, "hippocampus syn" = BLUE, union = GREY, "human brain peaks" = RED)
 by_map <- function(d) {
   d[, `:=`(row = factor(ROWS[paste(context, layer, sep = "|")], rev(ROWS)), map = factor(definition, MAPS))]
@@ -33,7 +34,7 @@ b <- ggplot(d, aes(effect_pct, row, fill = map)) +
   ZERO_X +
   geom_linerange(aes(xmin = ci_low_pct, xmax = ci_high_pct), colour = CI, linewidth = 0.6, position = dodge) +
   geom_point(colour = EDGE, shape = 21, size = 3.4, stroke = 0.5, position = dodge) +
-  scale_fill_manual(values = MAP_COL, name = NULL, breaks = MAPS) +
+  scale_fill_manual(values = MAP_COL, name = NULL, breaks = MAPS, labels = MAP_LABEL) +
   scale_x_continuous(labels = MINUS_LABELS) +
   scale_y_discrete(labels = scales::label_wrap(14)) +
   labs(x = "Age effect of the mouse m6A load (%)", y = NULL) +
@@ -46,7 +47,7 @@ cc <- ggplot(d, aes(map, row, fill = z)) +
   geom_tile(colour = "white", linewidth = 1.2) +
   geom_text(aes(label = cell_number(z), fontface = fifelse(q < 0.05, "bold", "plain")), size = PT, colour = INK) +
   scale_fill_div(5, "Mouse m6A signature (cameraPR z)") +
-  scale_x_discrete(position = "top", labels = scales::label_wrap(10), expand = c(0, 0)) +
+  scale_x_discrete(position = "top", labels = scales::label_wrap(10)(MAP_LABEL), expand = c(0, 0)) +
   scale_y_discrete(labels = scales::label_wrap(14), expand = c(0, 0)) +
   theme_heat() +
   theme(legend.position = "bottom")

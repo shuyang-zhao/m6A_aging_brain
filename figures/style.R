@@ -42,6 +42,12 @@ NA_FILL <- "#F0F0F0" # not quantified
 # the five targets of the gene-level models
 TARGETS <- c("Mouse protein", "Mouse mRNA-adjusted protein", "Human protein", "Human mRNA", "Human neuronal mRNA")
 SPECIES_COL <- c(mouse = FOCAL, human = RED)
+# the gene-level models (Fig. 2 and Fig. S3): TabPFN in the focal colour, the comparison models and the shuffled target
+# in greys; the mouse protein model applied to human genes is drawn as TabPFN
+MODELS <- c("TabPFN", "LightGBM", "Elastic net", "Shuffled target", "Mouse protein model")
+MODEL_FILL <- c(FOCAL, "#8C8C8C", GREY, "white", FOCAL)
+MODEL_SHAPE <- c(21, 22, 24, 23, 21)
+MODEL_EDGE <- c(EDGE, EDGE, EDGE, "#8C8C8C", EDGE)
 SPECIES_NAME <- c(mouse = "Mouse", human = "Human")
 
 theme_fig <- function() {

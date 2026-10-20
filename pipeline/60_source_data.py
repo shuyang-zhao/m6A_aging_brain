@@ -1,4 +1,4 @@
-# Source data of Figures 1-6 and Additional file 1 Figs S1-S9: one small table per panel with the plotted values and
+# Source data of Figures 1-6 and Additional file 1 Figs S1-S10: one small table per panel with the plotted values and
 # their statistics, and Tables S1-S7 (Additional file 2); per-gene values only for the units shown
 # reads the outputs of scripts 10, 13, 20, 21, 28, 30, 33, 34, 37, 38, 50, 52, 53 and 54, the prepared units, the site
 # atlas and the CLIP provenance
@@ -16,6 +16,7 @@ MODS = {"m6A": "m6A", "Psi": "Ψ", "m5C": "m5C", "m7G": "m7G"}
 LAYERS = {"protein_only": "Protein", "mrna_adjusted": "mRNA-adjusted protein", "mrna_only": "mRNA"}
 STUDIES = {"gtex": "GTEx", "brainseq2": "BrainSeq II", "brainseq3": "BrainSeq III"}
 STUDIES |= {"matlik2024": "Mätlik 2024", "colladotorres2019": "Collado-Torres 2019", "filipovic2026": "Vignane 2026"}
+STUDIES |= {"markunas2020": "Markunas 2021"}  # GEO series of 2020, article of 2021
 PERCENT = {"effect_pct": "effect", "effect_pct_ci_low": "ci_low", "effect_pct_ci_high": "ci_high"}
 ACRONYMS = dict(
     dlpfc="DLPFC", dpfc="DPFC", smtg="SMTG", ipl="IPL", ca1="CA1", ba9="BA9", ba24="BA24", c1="C1", nac="NAc", rna="RNA"
@@ -23,11 +24,12 @@ ACRONYMS = dict(
 TARGETS = {"mouse_protein": "Mouse protein", "human_mrna": "Human mRNA", "human_neurons": "Human neuronal mRNA"}
 TARGETS |= {"mouse_mrna_adjusted": "Mouse mRNA-adjusted protein", "human_protein": "Human protein"}
 PROTEIN = ["mouse_protein", "human_protein"]  # the targets of the main-figure panels
-WEIGHTS = {  # weight sets of the clock (script 52)
-    "model": "Model",
+WEIGHTS = {  # display names of the weight sets of the clock (script 52); the published clocks keep their label
+    "model": "m6Brain",
     "without_m6a": "Without m6A features",
     "length_only": "Length only",
     "m6a_load": "Linear m6A load",
+    "random": "Random weights",
     "DEMAGALHAES_AGING": "MSigDB DEMAGALHAES_AGING",
     "LU_AGING_BRAIN": "MSigDB LU_AGING_BRAIN",
     "observed": "Observed z of other cohorts",
@@ -259,87 +261,23 @@ save(
     observed[["panel", "n_draws", "effect", "null_pct_low", "null_pct_high", "p", "p_permutation"]],
 )
 
-# Figure 4: zero-shot clock (script 52): Spearman rho of the sample score with age; sets: held-out (cohorts scored with
-# weights fitted without them) and external (mouse, scored with the weights of all cohorts)
-cohorts, pooled = result("52_proteome_clock", "cohorts.tsv"), result("52_proteome_clock", "pooled.tsv")
-scored = rho_interval(cohorts.query("weights == 'model'")).assign(kind="cohort")
-scored["cohort"] = scored.cohort.map(cohort_name)
-total = pooled.query("weights == 'model'").assign(cohort="Pooled", kind="pooled")
-columns = ["set", "species", "cohort", "kind", "n", "rho", "ci_low", "ci_high", "p", "i2", "k"]
-save("fig4a", pd.concat([scored, total])[columns].astype({"n": "Int64", "k": "Int64"}))
-
-# b, score against age in four cohorts, with the rho of panel a
-SHOWN = ["scifo2025_pxd058684", "chen2025_pxd045403", "wang2025_pxd047296", "koopmans2026_pxd058441"]
-scores = result("52_proteome_clock", "scores.tsv.gz")
-scores = scores[scores.cohort.isin(SHOWN)].merge(cohorts.query("weights == 'model'")[["cohort", "n", "rho", "p"]])
-scores = scores.assign(age_unit=np.where(scores.species == "mouse", "months", "years"))
-scores = scores.assign(order=scores.cohort.map(SHOWN.index)).sort_values("order", kind="stable")
-scores = scores.assign(cohort=scores.cohort.map(cohort_name)).rename(columns={"model": "score"})
-save("fig4b", scores[["cohort", "set", "species", "donor", "age", "age_unit", "score", "n", "rho", "p"]])
-
-# c, pooled rho of the model and the control weights per set, the difference of each control from the model, and the
-# pooled rho of random weights (1,000 draws) as the null; Fig. S4c repeats the draws
-compared = result("52_proteome_clock", "compared.tsv").rename(
-    columns={
-        "control": "weights",
-        "difference": "diff",
-        "ci_low": "diff_ci_low",
-        "ci_high": "diff_ci_high",
-        "p": "diff_p",
-    }
-)
-fig4c = pooled[pooled.weights != "without_m6a"].merge(
-    compared[["set", "species", "weights", "diff", "diff_ci_low", "diff_ci_high", "diff_p"]], how="left"
-)
-columns = ["set", "species", "weights", "rho", "ci_low", "ci_high", "p", "i2", "k", "p_random"]
-save("fig4c", named(fig4c, weights=WEIGHTS)[[*columns, "diff", "diff_ci_low", "diff_ci_high", "diff_p"]])
-random_null = result("52_proteome_clock", "random_null.tsv")
-save("fig4c_null", random_null)
-
-# Figure 5: the clock in neurodegeneration (script 53): donor scores (the mean over the regions of a donor), and the
-# coefficients of the disease on the score (SD of the score; OLS with age, sex and batch; AD studies combined by random
-# effects); HD: per 100 CAG repeats
-disease = result("53_disease_clock", "scores.tsv.gz")
-disease["study"] = disease.study.map(label)
-save(
-    "fig5a",
-    disease.query("disease_name == 'AD'")
-    .query("study in ['Ping 2020', 'Merrihew 2023']")
-    .assign(group=lambda d: np.where(d.disease == 1, "AD", "Control"))
-    .rename(columns={"model": "score"})[["study", "donor_id", "group", "score"]],
-)
-hd = disease.query("disease_name == 'HD'")
-save("fig5b", hd.rename(columns={"disease": "cag", "model": "score"})[["donor_id", "cag", "age", "score"]])
-
-
-def disease_effects(outcome):
-    tests = result("53_disease_clock", "tests.tsv").query("outcome == @outcome")
-    tests = tests.assign(study=tests.study.map(lambda study: study if study == "AD combined" else label(study)))
-    per_cag = tests.disease == "HD"
-    scale = np.where(per_cag, 100, 1)
-    tests = tests.assign(contrast=np.where(per_cag, "per 100 CAG repeats", "disease vs control"))
-    return tests.assign(**{c: tests[c] * scale for c in ["est", "se", "ci_low", "ci_high"]})[
-        ["study", "disease", "contrast", "n", "est", "se", "ci_low", "ci_high", "p"]
-    ]
-
-
-save("fig5c", disease_effects("model"))
-
-# Figure 6: the reading layer (script 54); a, individual m6A load index against age (Spearman rho per cohort and pooled)
+# Figure 4: the reading layer (script 54); a, individual m6A index against age (Spearman rho per cohort and pooled),
+# mouse and human
 index = rho_interval(result("54_reader_titration", "index_cohorts.tsv")).assign(kind="cohort")
 index["cohort"] = index.cohort.map(cohort_name)
 index_total = result("54_reader_titration", "index_pooled.tsv").assign(cohort="Pooled", kind="pooled")
 columns = ["species", "cohort", "kind", "n", "rho", "ci_low", "ci_high", "p", "i2", "k", "n_negative"]
-save("fig6a", pd.concat([index, index_total])[columns].astype({"n": "Int64", "k": "Int64", "n_negative": "Int64"}))
+index = pd.concat([index, index_total]).query("species != 'external'")
+save("fig4a", index[columns].astype({"n": "Int64", "k": "Int64", "n_negative": "Int64"}))
 
 # b, coefficient of the index on the reader level pooled over the units of a species, against the control RBPs
 titration = result("54_reader_titration", "titration.tsv")
 save(
-    "fig6b",
+    "fig4b",
     titration[["species", "regulator", "n_units", "est", "ci_low", "ci_high", "p", "q", "control_pct", "n_controls"]],
 )
 controls = result("54_reader_titration", "titration_controls.tsv")
-save("fig6b_controls", controls[["species", "regulator", "n_units", "est", "ci_low", "ci_high", "p"]])
+save("fig4b_controls", controls[["species", "regulator", "n_units", "est", "ci_low", "ci_high", "p"]])
 
 screen = result("30_regulator_screen", "regulator_effects.tsv")
 net = result("33_regulator_network", "edges.tsv")
@@ -355,11 +293,122 @@ FMRP_LISTS = {"Darnell2011_brain": "Darnell 2011", "Maurin2018_brain": "Maurin 2
 FMRP_LISTS |= {f"{source}_mapped": name for source, name in FMRP_LISTS.items()}
 fmr1 = net[(net.regulator == "FMR1") & net.source.isin(FMRP_LISTS)].assign(mice="all")
 fmr1 = fmr1.assign(list=lambda d: d.source.map(FMRP_LISTS), unit=lambda d: d.unit.map(label))
-save("fig6c_fmr1", fmr1[["list", "species", "arm", "unit", "mice", "b_s", "ci_low", "ci_high", "b_u", "control_p95"]])
+save("fig4c_fmr1", fmr1[["list", "species", "arm", "unit", "mice", "b_s", "ci_low", "ci_high", "b_u", "control_p95"]])
 
 # percentile of the YTHDF module and YTHDF3 load edge among the load edges of the control RBPs (pooled over units)
 hits = bridge("yth_coupling_pooled.tsv").query("target_type == 'm6A_load' and regulator in ['YTHDF', 'YTHDF3']")
-save("fig6c_ythdf", hits[["species", "arm", "regulator", "pctile_signed", "p_control_two_sided"]])
+save("fig4c_ythdf", hits[["species", "arm", "regulator", "pctile_signed", "p_control_two_sided"]])
+
+# Figure 5: zero-shot clock (script 52): Spearman rho of the sample score with age; sets: held-out (cohorts scored with
+# weights fitted without them) and external (mouse, scored with the weights of all cohorts)
+cohorts, pooled = result("52_proteome_clock", "cohorts.tsv"), result("52_proteome_clock", "pooled.tsv")
+scored = rho_interval(cohorts.query("weights == 'model'")).assign(kind="cohort")
+scored["cohort"] = scored.cohort.map(cohort_name)
+total = pooled.query("weights == 'model'").assign(cohort="Pooled", kind="pooled")
+columns = ["set", "species", "cohort", "kind", "n", "rho", "ci_low", "ci_high", "p", "i2", "k"]
+save("fig5a", pd.concat([scored, total])[columns].astype({"n": "Int64", "k": "Int64"}))
+
+# b, score against age in four cohorts, with the rho of panel a
+SHOWN = ["scifo2025_pxd058684", "chen2025_pxd045403", "wang2025_pxd047296", "koopmans2026_pxd058441"]
+scores = result("52_proteome_clock", "scores.tsv.gz")
+scores = scores[scores.cohort.isin(SHOWN)].merge(cohorts.query("weights == 'model'")[["cohort", "n", "rho", "p"]])
+scores = scores.assign(age_unit=np.where(scores.species == "mouse", "months", "years"))
+scores = scores.assign(order=scores.cohort.map(SHOWN.index)).sort_values("order", kind="stable")
+scores = scores.assign(cohort=scores.cohort.map(cohort_name)).rename(columns={"model": "score"})
+save("fig5b", scores[["cohort", "set", "species", "donor", "age", "age_unit", "score", "n", "rho", "p"]])
+
+# c, benchmark: pooled rho of every weight set per set (random weights: the median of the 1,000 draws), supervised
+# (weights fitted to age) before zero-shot, with the median over the cohorts of the weighted genes quantified, the
+# difference of each control from the model and the P of the model against the random weights; the model without the
+# m6A features in Fig. S4a only
+compared = result("52_proteome_clock", "compared.tsv").rename(
+    columns={
+        "control": "weights",
+        "difference": "diff",
+        "ci_low": "diff_ci_low",
+        "ci_high": "diff_ci_high",
+        "p": "diff_p",
+    }
+)
+benchmark = result("52_proteome_clock", "benchmark.tsv")
+benchmark = benchmark.assign(label=benchmark.weights.replace(WEIGHTS))
+genes = benchmark[benchmark.cohort != "pooled"].groupby(["set", "species", "weights"]).n_genes.median()
+fig5c = benchmark.query("cohort == 'pooled' and group != 'ablation'").merge(
+    genes.round().astype("Int64").rename("n_genes_median").reset_index(), how="left"
+)
+fig5c = fig5c.merge(pooled[["set", "species", "weights", "p", "p_random"]], how="left")
+differences = compared[["set", "species", "weights", "diff", "diff_ci_low", "diff_ci_high", "diff_p"]]
+fig5c = fig5c.merge(differences, how="left")
+# per set (held-out mouse, held-out human, external mouse) the supervised rows, then the zero-shot rows, random last
+fig5c["order"] = fig5c.group.map({"supervised": 0, "zero-shot": 1}) + fig5c.weights.eq("random")
+fig5c = fig5c.sort_values(["set", "species", "order"], ascending=[False, False, True])
+columns = ["set", "species", "group", "weights", "label", "rho", "ci_low", "ci_high", "p", "n_genes_median"]
+save("fig5c", fig5c[[*columns, "diff", "diff_ci_low", "diff_ci_high", "diff_p", "p_random"]])
+
+# d, unseen proteins: the clock with only the weights of the mouse genes without a protein age effect in any discovery
+# cohort, in the external deep-DIA cohorts with at least 200 of them quantified (n_genes; pooled: all unseen genes),
+# rho with its Fisher interval and the P of the permuted weights, pooled by random effects; fig5d_null: pooled rho of
+# the 1,000 permutations of the weights among the unseen genes
+unseen = rho_interval(result("52_proteome_clock", "unseen_cohorts.tsv").dropna(subset=["rho"])).assign(kind="cohort")
+unseen["cohort"] = unseen.cohort.map(cohort_name)
+unseen_total = result("52_proteome_clock", "unseen_pooled.tsv").assign(cohort="Pooled", kind="pooled")
+columns = ["cohort", "kind", "n", "n_genes", "rho", "ci_low", "ci_high", "p", "p_random", "i2", "k"]
+save("fig5d", pd.concat([unseen, unseen_total])[columns].astype({"n": "Int64", "k": "Int64"}))
+save("fig5d_null", result("52_proteome_clock", "unseen_null.tsv"))
+
+# Figure 6: the clock in neurodegeneration (script 53): donor scores (the mean over the regions of a donor), and the
+# coefficients of the disease on the score (SD of the score; OLS with age, sex and batch; AD studies combined by random
+# effects); HD: per 100 CAG repeats
+disease = result("53_disease_clock", "scores.tsv.gz")
+disease["study"] = disease.study.map(label)
+save(
+    "fig6a",
+    disease.query("disease_name == 'AD'")
+    .query("study in ['Ping 2020', 'Merrihew 2023']")
+    .assign(group=lambda d: np.where(d.disease == 1, "AD", "Control"))
+    .rename(columns={"model": "score"})[["study", "donor_id", "group", "score"]],
+)
+hd = disease.query("disease_name == 'HD'")
+save("fig6b", hd.rename(columns={"disease": "cag", "model": "score"})[["donor_id", "cag", "age", "score"]])
+
+
+def per_100_cag(table):
+    # studies labelled, the contrast named and the HD coefficients per 100 CAG repeats
+    per_cag = table.disease == "HD"
+    return table.assign(
+        study=table.study.map(lambda study: study if study == "AD combined" else label(study)),
+        contrast=np.where(per_cag, "per 100 CAG repeats", "disease vs control"),
+        **{c: table[c] * np.where(per_cag, 100, 1) for c in ["est", "se", "ci_low", "ci_high"]},
+    )
+
+
+def disease_effects(outcome):
+    tests = per_100_cag(result("53_disease_clock", "tests.tsv").query("outcome == @outcome"))
+    return tests[["study", "disease", "contrast", "n", "est", "se", "ci_low", "ci_high", "p"]]
+
+
+save("fig6c", disease_effects("model"))
+
+
+def decomposition(name):
+    # the part of each gene group in the disease coefficient (HD: per 100 CAG repeats) and the part expected from its
+    # share of sum |w| (total x weight_share); m6A site classes as in Figure 3a
+    table = per_100_cag(result("53_disease_clock", name))
+    table["group"] = table.group.str.replace(">=4", "≥4")
+    keys = [table[key] for key in ("study", "region") if key in table]
+    total = table.est.where(table.partition == "total").groupby(keys).transform("first")
+    return table.assign(expected=total * table.weight_share).astype({"n_genes": "Int64"})
+
+
+# d, the coefficient of AD (studies combined) and HD split over the cell source and over the m6A sites of the genes,
+# with the total; e, coefficient of the disease on the individual m6A index
+PARTS = ["study", "disease", "contrast", "partition", "group", "n_genes", "weight_share", "est", "se", "ci_low"]
+PARTS += ["ci_high", "p", "share_of_total", "expected"]
+decomposed = decomposition("decomposition.tsv")
+main_partitions = decomposed.partition.isin(["total", "cell source", "m6A sites"])
+ad_hd = decomposed.study.isin(["AD combined", "Langfelder 2016"])
+save("fig6d", decomposed[main_partitions & ad_hd][PARTS])
+save("fig6e", disease_effects("m6a_index"))
 
 # Additional file 1 Fig. S1: resource and concordance. a, age t of the orthologs of one pair: Koopmans 2026 DPFC L1-3
 # protein, Takasugi 2024 mRNA-adjusted protein; b, human protein age effects against mouse age effects on each layer
@@ -460,11 +509,18 @@ for target in PROTEIN:
 save("sfig3b", pd.DataFrame(rows))
 save("sfig3c", named(ablation, target=TARGETS)[["target", "block", "delta_r2", "null_low", "null_high", "p"]])
 
-# Fig. S4: details of the clock; a, rho of every weight set in every cohort; b, correlation of the scores of the model
-# without the m6A features with the scores of the model; c, pooled rho of random weights per set against the model
+# Fig. S4: details of the clock; a, the benchmark: rho of every weight set, with the model without the m6A features,
+# in every cohort and pooled per set (random weights: the median of the 1,000 draws); b, correlation of the scores of
+# the model without the m6A features with the scores of the model; c, pooled rho of random weights per set against the
+# model
+tested = pd.concat([cohorts, pooled.assign(cohort="pooled")])[["set", "species", "cohort", "weights", "n", "p"]]
+full = benchmark.merge(tested, how="left").assign(kind=lambda d: np.where(d.cohort == "pooled", "pooled", "cohort"))
+full = full.assign(cohort=np.where(full.kind == "pooled", "Pooled", full.cohort.map(cohort_name)), weights=full.label)
+columns = ["set", "species", "cohort", "kind", "group", "weights", "n", "n_genes", "rho", "ci_low", "ci_high", "p"]
+save("sfig4a", full[columns].astype({"n": "Int64", "n_genes": "Int64"}))
 cohorts = cohorts.assign(cohort=cohorts.cohort.map(cohort_name))
-save("sfig4a", named(cohorts, weights=WEIGHTS)[["set", "species", "cohort", "weights", "n", "rho", "p"]])
 save("sfig4b", cohorts.query("weights == 'without_m6a'")[["set", "species", "cohort", "n", "r_model"]])
+random_null = result("52_proteome_clock", "random_null.tsv")
 observed = pooled.query("weights == 'model'")[["set", "species", "rho", "p_random"]].rename(
     columns={"rho": "model_rho"}
 )
@@ -632,6 +688,18 @@ loss = loss.assign(ci_low_pct=utils.pct(loss.ci_low), ci_high_pct=utils.pct(loss
 save("sfig9e", loss[["dataset", "tier", "comparison", "effect_pct", "ci_low_pct", "ci_high_pct", "q"]])
 neuron_glia = bridge("igf2bp2_neuron_glia_combined.tsv").query("not is_control")
 save("sfig9f", neuron_glia[["set", "comparison", "pctile_z"]])
+
+# Fig. S10: the disease coefficients split over gene groups (script 53), as Fig. 6d; a, every study by cell source and
+# by m6A sites; b, every region of Merrihew 2023 and Blumenreich 2024; c, cell source crossed with the m6A sites and
+# with the direction of the weight (declining: negative predicted age z), AD combined and HD
+save("sfig10a", decomposed[main_partitions][PARTS])
+by_region = decomposition("decomposition_regions.tsv")
+by_region = by_region[by_region.partition.isin(["total", "cell source", "m6A sites"])]
+save("sfig10b", by_region[[*PARTS[:3], "region", "n", *PARTS[3:]]])
+crosses = decomposed[ad_hd & decomposed.partition.str.startswith("cell source x")]
+pair = crosses.group.str.split(" | ", regex=False, expand=True)
+crosses = crosses.assign(cell_source=pair[0], subgroup=pair[1])
+save("sfig10c", crosses[[*PARTS[:4], "cell_source", "subgroup", *PARTS[5:]]])
 
 # Supplementary Table 2: modification site maps with their source, resolution and numbers of sites and genes
 columns = ["map", "modification", "species", "resolution", "source", "gene_id", "tx_offset", "ref_ok"]

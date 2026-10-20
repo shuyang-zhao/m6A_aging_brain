@@ -1,4 +1,4 @@
-"""EpiProtAge: zero-shot clock of brain proteome aging."""
+"""Zero-shot clock of brain proteome age from m6Brain, an m6A-aware model of brain proteome aging."""
 
 from .core import gene, score, weights, weights_version
 

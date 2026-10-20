@@ -1,13 +1,14 @@
-# Foundation models of the transcript reveal m6A-linked protein decline and a zero-shot clock of brain proteome aging
+# Transcript foundation models reveal m6A-linked protein decline and a zero-shot clock of brain proteome aging
 
-Analysis code of the article of the same title (Genome Biology, in preparation). The study combines 37 public brain
-datasets (78 analysis units of mouse and human proteomes and transcriptomes: mouse discovery cohorts, human validation
-cohorts and eleven external mouse proteomes) with transcriptome-wide m6A maps. A tabular foundation model (TabPFN)
-predicts the age effect of every gene from the features of its transcript; the m6A sites of a transcript mark the
-decline of its protein with age, and the predictions weight the proteins of a sample into EpiProtAge, a zero-shot
-clock of brain proteome aging that is applied to neurodegeneration, together with the m6A readers and their marked
-targets. All inputs are public; `data_sources.tsv` lists every dataset with its citation, DOI, accession and
-location, and `ref/datasets.tsv` (Table S1) every dataset considered, with its set or the reason it was not used.
+Analysis code of the article of the same title (Genome Biology, in preparation). The study combines 39 public brain
+datasets (101 analysis units of mouse and human proteomes and transcriptomes: mouse discovery cohorts, human validation
+cohorts and eleven external mouse proteomes) with transcriptome-wide m6A maps. In m6Brain, an m6A-aware model of brain
+proteome aging, a tabular foundation model (TabPFN) predicts the age effect of every gene from the features of its
+transcript; the m6A sites of a transcript mark the decline of its protein with age, and the predictions weight the
+proteins of a sample into a zero-shot clock that is applied to neurodegeneration. The m6A readers and their marked
+targets are tested alongside. All inputs are public; `data_sources.tsv` lists every dataset with its citation, DOI,
+accession and location, and `ref/datasets.tsv` (Table S1) every dataset considered, with its set or the reason it was
+not used.
 
 ## Contents
 
@@ -25,10 +26,10 @@ location, and `ref/datasets.tsv` (Table S1) every dataset considered, with its s
     coupling network, its sign check against knockouts, the compendium of reader binding and perturbation data, the
     reader tests and the reader CLIP targets
   - `50`: models of gene-level ageing from transcript features (TabPFN, with LightGBM and an elastic net)
-  - `52`: EpiProtAge, the zero-shot proteome clock: leave-one-cohort-out weights, scores of the held-out and external
+  - `52`: the zero-shot proteome clock of m6Brain: leave-one-cohort-out weights, scores of the held-out and external
     cohorts and the control weights
   - `53`: the clock in Alzheimer's, Parkinson's, Huntington's and amyotrophic lateral sclerosis cohorts
-  - `54`: the individual m6A load index and its titration against the reader levels
+  - `54`: the individual m6A index and its titration against the reader levels
   - `60`: source data of every figure panel and Tables S1-S7 (`source_data/`)
   - `61`: Additional files 2-5 as Excel workbooks (`output/61_supplementary_data/`): the Tables S1-S7, the per-gene age
     effects, the clock weights and gene-level model predictions, and the clock scores of every sample with the
@@ -38,33 +39,36 @@ location, and `ref/datasets.tsv` (Table S1) every dataset considered, with its s
     embeddings and the TabPFN steps of scripts 50 and 52 on a GPU; `select_clip_datasets.py` chose the CLIP libraries
     from the library catalogue of a separate project (clipflow), which is not part of this repository
   - `utils.py`, `model.py`, `network.py`, `single_nucleus.py` and the `.R` files: functions shared by the scripts
-- `figures/`: one R script per figure (`fig1.R`-`fig6.R`; Additional file 1: `sfig1.R`-`sfig9.R`) and their common
+- `figures/`: one R script per figure (`fig1.R`-`fig6.R`; Additional file 1: `sfig1.R`-`sfig10.R`) and their common
   style (`style.R`); the figures read only `source_data/`
-- `epiprotage/`: the EpiProtAge Python package (weights, command line, tests and a worked example)
+- `m6brain/`: the m6Brain Python package (weights, command line, tests and a worked example)
 - `website/`: the pages of the query website (static HTML, CSS and JavaScript; script 62 adds the data)
 - `source_data/`: the plotted values of every panel and Tables S1-S7, as written by script 60
 - `ref/datasets.tsv`: every dataset considered (Table S1); `ref/gene_sets/rna_mod_regulators.tsv`: the curated
   RNA-modification regulators
 - `docs/supplementary_data_columns.tsv`: meaning and unit of every column of the Additional file workbooks
 
-Datasets that were prepared but fail the inclusion criteria as aging cohorts (a preprint, a knock-in allelic series, a
-microarray cohort and a data release without an article of its own) are listed in `utils.EXCLUDED`: script 08 writes
-no units for them, so no later script sees them, and removing an entry and rerunning from script 08 includes the
-dataset again.
+Datasets that were prepared but fail the inclusion criteria as aging cohorts (a preprint and a knock-in allelic series)
+are listed in `utils.EXCLUDED`: script 08 writes no units for them, so no later script sees them, and removing an entry
+and rerunning from script 08 includes the dataset again.
 
-## EpiProtAge
+A new proteome cohort, such as an in-house aging cohort, enters as an external cohort: a block in
+`01_prepare_proteomes.py`, its units in `08_define_units.py` and their names in `utils.EXTERNAL`; then scripts 10, 12,
+21 and 52 score it with the clock of the training cohorts and test it for the m6A load, and nothing else uses it.
+
+## m6Brain
 
 ```bash
-pip install "git+https://github.com/shuyang-zhao/m6A_aging_brain#subdirectory=epiprotage"
+pip install "git+https://github.com/shuyang-zhao/m6A_aging_brain#subdirectory=m6brain"
 ```
 
 ```python
-import epiprotage as ep
+import m6brain as mb
 
-scores = ep.score("proteome.csv", species="mouse")
+scores = mb.score("proteome.csv", species="mouse")
 ```
 
-The weights, input format and a worked example are in `epiprotage/README.md`; `epiprotage/build_weights.py` rebuilds the
+The weights, input format and a worked example are in `m6brain/README.md`; `m6brain/build_weights.py` rebuilds the
 weight tables from the output of script 52.
 
 ## System requirements
@@ -102,7 +106,7 @@ Rscript -e 'BiocManager::install(c("limma", "edgeR", "SummarizedExperiment"))'
 for figure in figures/fig*.R figures/sfig*.R; do Rscript "$figure"; done
 ```
 
-This writes `output/figures/fig1-6` and `sfig1-9` (PDF and PNG), the figures of the article and of Additional file 1,
+This writes `output/figures/fig1-6` and `sfig1-10` (PDF and PNG), the figures of the article and of Additional file 1,
 in about 2 minutes on one core.
 
 ## Reproducing the analysis
@@ -145,10 +149,10 @@ mRNA-adjusted protein and mRNA), with its m6A sites and m6A reader binding; the 
 over the cohorts of each context with the rule of the regulator screen (script 30) and ranks the genes
 (`data/landscape/landscape.tsv.gz` holds every column); the cohort view is the interactive form of Fig. 1b and
 Table S1, and every dataset, m6A map and binding source carries its reference. The Clock page scores a proteome table
-with the EpiProtAge weights in the browser (nothing is uploaded; `website/clock.js`). Preview it with
+with the m6Brain weights in the browser (nothing is uploaded; `website/clock.js`). Preview it with
 `env/bin/python -m http.server -d output/62_website`. GitHub Pages serves the built site from the `gh-pages` branch of
 this repository.
 
 ## Licence
 
-MIT (`LICENSE`; `epiprotage/LICENSE` for the package).
+MIT (`LICENSE`; `m6brain/LICENSE` for the package).

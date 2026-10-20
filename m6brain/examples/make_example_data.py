@@ -1,6 +1,6 @@
 """Export the example proteome (Scifo et al. 2025, PXD058684, mouse whole brain, 45 samples) from the analysis pipeline.
 
-Run from the repository root:  env/bin/python epiprotage/examples/make_example_data.py
+Run from the repository root:  env/bin/python m6brain/examples/make_example_data.py
 """
 
 from pathlib import Path

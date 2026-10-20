@@ -7,15 +7,15 @@ Mouse protein	Expression and turnover	0.04265
 Mouse protein	Cell-type origin	0.1224			
 Mouse protein	Functional program	0.0066			
 Mouse protein	Sequence representation	0.02539			
-Human mRNA	m6A sites and binding	0.0001207	-0.0007564	-7.31e-05	0.0198
-Human mRNA	m6A sites	-0.001163			
-Human mRNA	m6A reader binding	-0.0003542			
-Human mRNA	Transcript structure	0.01093			
-Human mRNA	Expression and turnover	0.0153			
-Human mRNA	Cell-type origin	0.03106			
-Human mRNA	Functional program	0.001231			
-Human mRNA	Sequence representation	0.01037			
-Human neuronal mRNA	m6A sites and binding	0.0002134	-0.001103	-0.0002457	0.009901
+Human mRNA	m6A sites and binding	0.001522	0.0005463	0.001498	0.0297
+Human mRNA	m6A sites	-0.0007299			
+Human mRNA	m6A reader binding	0.0006795			
+Human mRNA	Transcript structure	0.01144			
+Human mRNA	Expression and turnover	0.01923			
+Human mRNA	Cell-type origin	0.03006			
+Human mRNA	Functional program	0.00131			
+Human mRNA	Sequence representation	0.01278			
+Human neuronal mRNA	m6A sites and binding	0.0002134	-0.001076	-0.0002221	0.009901
 Human neuronal mRNA	m6A sites	-0.0003277			
 Human neuronal mRNA	m6A reader binding	0.0003069			
 Human neuronal mRNA	Transcript structure	0.04221			
@@ -23,7 +23,7 @@ Human neuronal mRNA	Expression and turnover	0.01757
 Human neuronal mRNA	Cell-type origin	0.03471			
 Human neuronal mRNA	Functional program	0.001008			
 Human neuronal mRNA	Sequence representation	0.01181			
-Mouse mRNA-adjusted protein	m6A sites and binding	-0.001213	-0.002298	-0.001199	0.0495
+Mouse mRNA-adjusted protein	m6A sites and binding	-0.001213	-0.002376	-0.00139	0.0198
 Mouse mRNA-adjusted protein	m6A sites	-0.0004471			
 Mouse mRNA-adjusted protein	m6A reader binding	-0.001343			
 Mouse mRNA-adjusted protein	Transcript structure	0.00374			
@@ -31,7 +31,7 @@ Mouse mRNA-adjusted protein	Expression and turnover	0.001896
 Mouse mRNA-adjusted protein	Cell-type origin	0.09658			
 Mouse mRNA-adjusted protein	Functional program	0.001657			
 Mouse mRNA-adjusted protein	Sequence representation	0.007634			
-Human protein	m6A sites and binding	0.0001625	-0.0008265	0.0005048	0.1881
+Human protein	m6A sites and binding	0.0001625	-0.0007057	0.0004128	0.08911
 Human protein	m6A sites	0.0005413			
 Human protein	m6A reader binding	-0.0007293			
 Human protein	Transcript structure	0.001869			

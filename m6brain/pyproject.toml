@@ -3,9 +3,9 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "EpiProtAge"
+name = "m6brain"
 dynamic = ["version"]
-description = "Zero-shot clock of brain proteome aging from transcript-feature (m6A, Orthrus, RiboNN) predicted age effects"
+description = "Zero-shot clock of brain proteome age from m6Brain, an m6A-aware model of brain proteome aging"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
@@ -25,13 +25,13 @@ test = ["pytest"]
 Repository = "https://github.com/shuyang-zhao/m6A_aging_brain"
 
 [project.scripts]
-epiprotage = "epiprotage.cli:main"
+m6brain = "m6brain.cli:main"
 
 [tool.hatch.version]
-path = "src/epiprotage/__init__.py"
+path = "src/m6brain/__init__.py"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/epiprotage"]
+packages = ["src/m6brain"]
 
 [tool.hatch.build.targets.sdist]
 include = ["src", "tests", "docs", "examples", "build_weights.py", "README.md", "LICENSE"]

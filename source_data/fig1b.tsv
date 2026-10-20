@@ -23,7 +23,8 @@ external	Mouse protein	Protein	Gebru 2024	2	22	3	18	months
 external	Mouse protein	Protein	Yarbro 2025	1	39	3	18	months
 external	Mouse protein	Protein	Chen 2025	1	188	6	14	months
 validation	Human bulk RNA	Bulk RNA	Collado-Torres 2019	2	238	18.04	84.16	years
-validation	Human bulk RNA	Bulk RNA	Markunas 2020	1	170	17.37	71.77	years
+validation	Human bulk RNA	Bulk RNA	GTEx	13	300	24.5	74.5	years
+validation	Human bulk RNA	Bulk RNA	Markunas 2021	1	170	17.37	71.77	years
 validation	Human single-nucleus RNA	Single-nucleus RNA	Sloan 2026	1	36	27	89	years
 validation	Human single-nucleus RNA	Single-nucleus RNA	Zemke 2026	1	37	20	95	years
 validation	Human single-nucleus RNA	Single-nucleus RNA	Handsaker 2025	1	53	27	90	years
@@ -38,3 +39,4 @@ validation	Human protein	Protein	Merrihew 2023	4	10	73	95	years
 validation	Human protein	Protein	Blumenreich 2024	5	21	43	95	years
 discovery	Mouse RNA	Bulk RNA	Hahn 2023 bulk	15	51	3	21	months
 discovery	Mouse RNA	Bulk RNA	Shavlakadze 2026	4	104	6	27	months
+validation	Human bulk RNA	Bulk RNA	Ramasamy 2014	10	128	20	102	years

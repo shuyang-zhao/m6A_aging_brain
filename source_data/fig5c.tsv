@@ -1,7 +1,43 @@
-study	disease	contrast	n	est	se	ci_low	ci_high	p
-Ping 2020	AD	disease vs control	19	0.9494	0.3706	0.1487	1.75	0.02366
-Merrihew 2023	AD	disease vs control	31	0.6876	0.2108	0.2479	1.127	0.003904
-Blumenreich 2024	PD	disease vs control	63	0.1265	0.1387	-0.1514	0.4045	0.3655
-Langfelder 2016	HD	per 100 CAG repeats	71	1.018	0.1645	0.6891	1.346	4.625e-08
-Umoh 2018	ALS	disease vs control	27	0.6822	0.5531	-0.4621	1.826	0.2299
-AD combined	AD	disease vs control	50	0.7516	0.1832	0.3925	1.111	4.101e-05
+set	species	group	weights	label	rho	ci_low	ci_high	p	n_genes_median	diff	diff_ci_low	diff_ci_high	diff_p	p_random
+held-out	mouse	supervised	observed	Observed z of other cohorts	0.863	0.6885	0.9431	2.684e-08	6436	-0.1183	-0.2188	-0.01785	0.021	
+held-out	mouse	supervised	DEMAGALHAES_AGING	MSigDB DEMAGALHAES_AGING	0.8809	0.7474	0.946	5.694e-11	38	-0.2135	-0.3818	-0.04517	0.01292	
+held-out	mouse	supervised	LU_AGING_BRAIN	MSigDB LU_AGING_BRAIN	0.7645	0.5561	0.8825	2.033e-07	259	0.1317	-0.05494	0.3184	0.1666	
+held-out	mouse	supervised	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.5287	0.1009	0.7915	0.01791	91	0.5398	0.1393	0.9403	0.008256	
+held-out	mouse	supervised	Lehallier 2019, plasma	Lehallier 2019, plasma	0.114	-0.1128	0.3295	0.3245	116	0.9962	0.6336	1.359	7.238e-08	
+held-out	mouse	supervised	Melendez 2024, CSF	Melendez 2024, CSF	0.5507	0.2617	0.7491	0.000552	384	0.4643	0.1385	0.79	0.005212	
+held-out	mouse	supervised	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.4769	-0.725	-0.1191	0.01086	120	1.681	0.8203	2.541	0.0001287	
+held-out	mouse	supervised	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.09133	-0.3767	0.2099	0.5557	449	1.224	0.6711	1.777	1.432e-05	
+held-out	mouse	supervised	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.5283	0.05667	0.8072	0.03005	24	0.5432	0.1204	0.966	0.0118	
+held-out	mouse	supervised	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.4513	0.05098	0.7267	0.02854	64	0.6068	0.3492	0.8644	3.891e-06	
+held-out	mouse	zero-shot	model	m6Brain	0.8262	0.5894	0.9323	3.918e-06	6436					0.000999
+held-out	mouse	zero-shot	length_only	Length only	0.7175	0.3781	0.8869	0.0004564	6436	0.2535	0.06367	0.4433	0.008858	
+held-out	mouse	zero-shot	m6a_load	Linear m6A load	0.7394	0.4069	0.8989	0.0003225	5366	0.2181	0.09521	0.341	0.0005042	
+held-out	mouse	zero-shot	random	Random weights	-0.03112				6436					
+held-out	human	supervised	observed	Observed z of other cohorts	0.4613	0.2234	0.6474	0.0003202	5860	-0.1573	-0.2233	-0.09138	2.936e-06	
+held-out	human	supervised	DEMAGALHAES_AGING	MSigDB DEMAGALHAES_AGING	0.3717	0.2257	0.5013	1.915e-06	47	-0.08202	-0.2018	0.03774	0.1795	
+held-out	human	supervised	LU_AGING_BRAIN	MSigDB LU_AGING_BRAIN	0.3287	0.1793	0.4634	2.953e-05	254	-0.07183	-0.1575	0.01381	0.1002	
+held-out	human	supervised	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.2614	0.1371	0.3777	5.229e-05	88	-0.03826	-0.1539	0.07735	0.5166	
+held-out	human	supervised	Lehallier 2019, plasma	Lehallier 2019, plasma	0.0841	-0.1385	0.2986	0.4601	122	0.2167	-0.00427	0.4376	0.05459	
+held-out	human	supervised	Melendez 2024, CSF	Melendez 2024, CSF	0.2426	0.146	0.3345	1.361e-06	400	-0.003205	-0.2204	0.214	0.9769	
+held-out	human	supervised	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.1661	-0.264	-0.06473	0.001393	118	0.4103	0.2208	0.5998	2.201e-05	
+held-out	human	supervised	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.0325	-0.2234	0.1608	0.7434	458	0.3471	0.07073	0.6234	0.01383	
+held-out	human	supervised	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.2086	0.1051	0.3076	9.278e-05	24	0.01272	-0.1419	0.1673	0.8719	
+held-out	human	supervised	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.00883	-0.137	0.1543	0.9061	71	0.2442	0.02082	0.4676	0.03214	
+held-out	human	zero-shot	model	m6Brain	0.2908	0.107	0.4554	0.00224	5860					0.000999
+held-out	human	zero-shot	length_only	Length only	0.2292	0.1322	0.3219	5.243e-06	5860	-0.0001511	-0.1182	0.1179	0.998	
+held-out	human	zero-shot	m6a_load	Linear m6A load	0.2016	0.1036	0.2957	6.6e-05	3140	0.02124	-0.1416	0.1841	0.7982	
+held-out	human	zero-shot	random	Random weights	-0.009334				5860					
+external	mouse	supervised	observed	Observed z of other cohorts	0.7519	0.6662	0.818	2.253e-28	5702	-0.1863	-0.2474	-0.1252	2.302e-09	
+external	mouse	supervised	DEMAGALHAES_AGING	MSigDB DEMAGALHAES_AGING	0.6681	0.5261	0.7738	1.157e-12	36	-0.002509	-0.2428	0.2378	0.9837	
+external	mouse	supervised	LU_AGING_BRAIN	MSigDB LU_AGING_BRAIN	0.5119	0.3785	0.6244	3.206e-11	235	0.1715	0.04108	0.3019	0.009952	
+external	mouse	supervised	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.3613	0.2321	0.478	1.751e-07	85	0.3424	0.1801	0.5048	3.562e-05	
+external	mouse	supervised	Lehallier 2019, plasma	Lehallier 2019, plasma	0.06287	-0.1429	0.2634	0.5507	103	0.7498	0.5463	0.9533	5.151e-13	
+external	mouse	supervised	Melendez 2024, CSF	Melendez 2024, CSF	0.2377	0.1008	0.3658	0.0007701	386	0.4411	0.2075	0.6746	0.0002143	
+external	mouse	supervised	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.1904	-0.3835	0.01871	0.07401	112	0.9087	0.6166	1.201	1.077e-09	
+external	mouse	supervised	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.01324	-0.2107	0.1853	0.8971	418	0.8175	0.5943	1.041	7.079e-13	
+external	mouse	supervised	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.3492	0.2085	0.4757	2.963e-06	22	0.3635	0.1852	0.5418	6.444e-05	
+external	mouse	supervised	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.2603	0.04091	0.4557	0.02057	67	0.5135	0.2308	0.7962	0.0003705	
+external	mouse	zero-shot	model	m6Brain	0.6597	0.5301	0.7592	1.509e-14	5702					0.000999
+external	mouse	zero-shot	length_only	Length only	0.3886	0.267	0.498	3.895e-09	5702	0.2826	0.1615	0.4036	4.76e-06	
+external	mouse	zero-shot	m6a_load	Linear m6A load	0.2993	0.1629	0.4244	2.758e-05	4665	0.3869	0.215	0.5587	1.022e-05	
+external	mouse	zero-shot	random	Random weights	-0.005916				5702					

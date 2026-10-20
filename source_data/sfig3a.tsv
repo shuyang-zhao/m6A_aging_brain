@@ -3,23 +3,23 @@ Mouse protein	TabPFN	10606	0.501	0.484	0.5166
 Mouse protein	LightGBM	10606	0.4733	0.4554	0.4882
 Mouse protein	Elastic net	10606	0.4326	0.4149	0.4486
 Mouse protein	Shuffled target	10606	-0.01713	-0.03613	0.002365
-Human mRNA	TabPFN	16041	0.4897	0.4768	0.5023
-Human mRNA	LightGBM	16041	0.4644	0.4515	0.4765
-Human mRNA	Elastic net	16041	0.4121	0.3984	0.4257
-Human mRNA	Shuffled target	16041	-0.01766	-0.03242	-0.002962
+Human mRNA	TabPFN	18740	0.4868	0.4749	0.4994
+Human mRNA	LightGBM	18740	0.4596	0.4478	0.4724
+Human mRNA	Elastic net	18740	0.3993	0.3879	0.4127
+Human mRNA	Shuffled target	18740	-0.02279	-0.03761	-0.008749
 Human neuronal mRNA	TabPFN	15433	0.5946	0.5834	0.606
 Human neuronal mRNA	LightGBM	15433	0.5775	0.5665	0.5883
 Human neuronal mRNA	Elastic net	15433	0.5133	0.5019	0.5249
-Human neuronal mRNA	Shuffled target	15433	-0.03755	-0.05278	-0.02177
+Human neuronal mRNA	Shuffled target	15433	-0.02783	-0.04435	-0.01267
 Mouse mRNA-adjusted protein	TabPFN	5540	0.4588	0.4348	0.4809
 Mouse mRNA-adjusted protein	LightGBM	5540	0.4413	0.4181	0.4627
 Mouse mRNA-adjusted protein	Elastic net	5540	0.4183	0.3945	0.4415
-Mouse mRNA-adjusted protein	Shuffled target	5540	-0.02994	-0.05351	-0.002915
+Mouse mRNA-adjusted protein	Shuffled target	5540	0.03448	0.00753	0.06116
 Human protein	TabPFN	9990	0.3697	0.3511	0.3871
 Human protein	LightGBM	9990	0.3416	0.3237	0.3587
 Human protein	Elastic net	9990	0.3245	0.3053	0.3421
-Human protein	Shuffled target	9990	-0.03066	-0.05067	-0.01031
+Human protein	Shuffled target	9990	-0.02362	-0.04314	-0.005232
 Human protein (mouse model)	TabPFN	8301	0.258	0.2373	0.2802
 Human protein (mouse model)	Shuffled target	8301	-0.0342	-0.05516	-0.01139
-Human mRNA (mouse model)	TabPFN	9782	0.1858	0.1664	0.2053
-Human mRNA (mouse model)	Shuffled target	9782	-0.03282	-0.05293	-0.0135
+Human mRNA (mouse model)	TabPFN	9996	0.1911	0.1731	0.21
+Human mRNA (mouse model)	Shuffled target	9996	-0.03835	-0.0575	-0.01772

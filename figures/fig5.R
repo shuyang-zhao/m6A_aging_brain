@@ -1,67 +1,104 @@
-# Figure 5: the proteome clock in neurodegeneration
-# reads source_data/fig5a, fig5b and fig5c (script 53); writes output/figures/fig5.png and .pdf
+# Figure 5: the zero-shot proteome clock
+# reads source_data/fig5a, fig5b, fig5c, fig5d and fig5d_null (script 52); writes output/figures/fig5.png and .pdf
 source("figures/style.R")
 
-tests <- read_panel("fig5c")
-CLOCK_Y <- "Clock score"
+SETS <- c("held-out mouse" = FOCAL, "external mouse" = CONTRAST, "held-out human" = RED)
+SET_LABELS <- c("held-out mouse" = "Held-out mouse", "external mouse" = "External mouse",
+                "held-out human" = "Held-out human")
 
-# a: AD, donor scores of cases (red) and controls (grey) in two studies (box, median and quartiles); above, the
-# coefficient of AD on the score (SD; adjusted for age, sex and batch) with its P
+# a: Spearman rho of the clock score with age in every cohort (point; filled where P < 0.05) with its Fisher-z 95%
+# interval, and the random-effects estimate over the cohorts of the set (diamond; I2, the heterogeneity)
 a <- read_panel("fig5a")
-note <- tests[disease == "AD" & study %in% a$study, .(strip = factor(study, unique(a$study)),
-                                                      text = paste0(signed(est), " SD\n", fmt_p(p)))]
-a[, `:=`(group = factor(group, c("Control", "AD")), strip = factor(study, unique(study)))]
-a <- ggplot(a, aes(group, score)) +
-  geom_boxplot(aes(colour = group), fill = NA, width = 0.5, linewidth = 0.6, outliers = FALSE, show.legend = FALSE) +
-  geom_point(aes(fill = group), colour = EDGE, shape = 21, size = 2.8, stroke = 0.4, alpha = 0.9,
-             position = position_jitter(width = 0.14, height = 0, seed = 1)) +
-  geom_text(data = note, aes(x = -Inf, y = Inf, label = text), hjust = -0.08, vjust = 1.15, size = PT, lineheight = 0.95,
-            colour = INK, inherit.aes = FALSE) +
-  facet_wrap(~strip) +
-  scale_fill_manual(values = c(Control = GREY, AD = RED), guide = "none") +
-  scale_colour_manual(values = c(Control = EDGE, AD = EDGE)) +
-  scale_y_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.05, 0.3))) +
-  labs(x = NULL, y = CLOCK_Y) +
-  theme_fig() +
-  BOXED
-
-# b: HD allelic series at 6 months, score of each mouse against the CAG length of its genotype (red, expanded alleles;
-# grey, 7 and 20 repeats); line, least squares
-b <- read_panel("fig5b")
-b[, expanded := cag > 20]
-b <- ggplot(b, aes(cag, score)) +
-  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = EDGE, linewidth = 0.8) +
-  geom_point(aes(fill = expanded), colour = EDGE, shape = 21, size = 2.8, stroke = 0.4, alpha = 0.9,
-             position = position_jitter(width = 4, height = 0, seed = 1)) +
-  scale_fill_manual(values = c("TRUE" = RED, "FALSE" = GREY), guide = "none") +
-  scale_x_continuous(breaks = c(0, 100, 200), expand = expansion(add = 12)) +
-  scale_y_continuous(labels = MINUS_LABELS) +
-  labs(x = sprintf("CAG repeats of the genotype (%d-month-old mice)", b$age[1]), y = CLOCK_Y) +
-  theme_fig() +
-  BOXED
-
-# c: coefficient of the disease on the score (SD; point and 95% CI; red, P < 0.05) for each study, AD studies combined
-# (diamond), HD per 100 CAG repeats; P on the right
-c_rows <- c("Ping 2020", "Merrihew 2023", "AD combined", "Blumenreich 2024", "Umoh 2018", "Langfelder 2016")
-d <- copy(tests)
-d[, label := fifelse(study == "AD combined", "Combined", study)]
-d[, `:=`(row = factor(label, rev(label[match(c_rows, study)])), sig = p < 0.05,
-         disease = factor(disease, c("AD", "PD", "ALS", "HD"), c("AD", "PD", "ALS", "HD, per\n100 CAG")))]
-cc <- ggplot(d, aes(est, row)) +
+a[, `:=`(group = factor(paste(set, species), names(SETS)), pooled = kind == "pooled")]
+a[, label := fifelse(pooled, "Pooled", sprintf("%s, n = %d", cohort, n))]
+a[, label := factor(label, rev(unique(label)))]
+a[, `:=`(fill = fifelse(pooled | p < 0.05, SETS[as.character(group)], "white"),
+         edge = fifelse(pooled | p < 0.05, EDGE, GREY))]
+pooled_text <- a[pooled == TRUE, .(group, label, x = -0.86,
+                                   text = sprintf("ρ = %.2f, I² = %.0f%%", rho, i2))]
+a <- ggplot(a, aes(rho, label)) +
   ZERO_X +
   geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(data = ~ .x[study != "AD combined"], aes(fill = sig), colour = EDGE, shape = 21, size = 3.8, stroke = 0.5) +
-  geom_point(data = ~ .x[study == "AD combined"], aes(fill = sig), colour = EDGE, shape = 23, size = 5.2, stroke = 0.5) +
-  geom_text(aes(x = Inf, label = fmt_p(p)), hjust = -0.12, size = PT, colour = INK) +
-  facet_grid(disease ~ ., scales = "free_y", space = "free_y", switch = "y") +
-  scale_fill_manual(values = c("TRUE" = RED, "FALSE" = "white"), guide = "none") +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = scales::breaks_pretty(4)) +
-  coord_cartesian(clip = "off") +
-  labs(x = "Coefficient on the clock score (SD)", y = NULL) +
+  geom_point(data = ~ .x[pooled == FALSE], aes(fill = I(fill), colour = I(edge)), shape = 21, size = 3.6, stroke = 0.5) +
+  geom_point(data = ~ .x[pooled == TRUE], aes(fill = I(fill)), colour = EDGE, shape = 23, size = 5.2, stroke = 0.5) +
+  geom_label(data = pooled_text, aes(x, label, label = text), hjust = 0, size = PT, colour = INK, fill = "white",
+             border.colour = NA, label.padding = unit(0.6, "mm"), inherit.aes = FALSE) +
+  facet_grid(group ~ ., scales = "free_y", space = "free_y", labeller = labeller(group = function(x) SET_LABELS[x])) +
+  scale_x_continuous(labels = MINUS_LABELS, breaks = seq(-0.5, 1, 0.5), limits = c(-0.9, 1.02)) +
+  labs(x = "Spearman ρ of the score with age", y = NULL) +
   theme_rows() +
   BOXED +
-  theme(strip.placement = "outside", strip.text.y.left = element_text(angle = 0), panel.spacing.y = unit(3, "mm"),
-        plot.margin = margin(10.4, 28, 3, 2, "mm"))
+  theme(panel.spacing.y = unit(4, "mm"), strip.text.y = element_text(angle = -90))
 
-fig <- panel_grid(list(a = a, b = b, c = cc), nrow = 1, widths = c(100, 105, 161))
-save_fig(fig, "fig5", 100)
+# b: clock score against age (points; line, least squares) in four cohorts, as in the source data; Spearman rho and P
+b <- read_panel("fig5b")
+b[, `:=`(key = paste(set, species), cohort = factor(cohort, unique(cohort)))]
+cohort_scatter <- function(d, y_title) {
+  ages <- uniqueN(d$age)
+  d[, strip := sprintf("%s, %s", cohort, tolower(SET_LABELS[key]))]
+  # two-age cohorts: the text sits between the two groups of points, which is empty
+  note <- unique(d[, .(strip, text = paste0("ρ = ", sprintf("%.2f", rho), "\n", fmt_p(p)),
+                       x = if (ages == 2) mean(range(age)) else -Inf, hjust = if (ages == 2) 0.5 else -0.1)])
+  ggplot(d, aes(age, score)) +
+    geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = EDGE, linewidth = 0.8) +
+    geom_point(fill = SETS[d$key[1]], colour = EDGE, shape = 21, size = 2.6, stroke = 0.4, alpha = 0.9,
+               position = position_jitter(width = 0.04 * diff(range(d$age)), height = 0, seed = 1)) +
+    geom_text(data = note, aes(x = x, y = Inf, label = text, hjust = hjust), vjust = 1.15, size = PT,
+              lineheight = 0.95, colour = INK, inherit.aes = FALSE) +
+    facet_wrap(~strip) +
+    scale_x_continuous(breaks = if (ages < 8) sort(unique(d$age)) else scales::breaks_pretty(4)) +
+    scale_y_continuous(labels = MINUS_LABELS, breaks = scales::breaks_pretty(4), expand = expansion(mult = c(0.05, 0.4))) +
+    labs(x = paste0("Age (", d$age_unit[1], ")"), y = y_title) +
+    theme_fig() +
+    BOXED
+}
+scatters <- Map(cohort_scatter, split(b, b$cohort), y_title = list("Clock score", NULL))
+b <- wrap_plots(scatters, nrow = 2) + FLUSH
+
+# c: pooled rho of every weight set in each set of cohorts (bold, m6Brain); rows grouped by whether the weights were
+# derived from age effects of the genes (supervised: observed effects, aging gene sets, published proteome clocks) or
+# not (zero-shot); random weights, the median of 1,000 draws
+c_ <- read_panel("fig5c")
+c_[, `:=`(column = factor(SET_LABELS[paste(set, species)], SET_LABELS[names(SETS)]),
+          row = factor(label, rev(unique(label))),
+          group = factor(group, c("supervised", "zero-shot"), c("Supervised", "Zero-shot")))]
+cc <- ggplot(c_, aes(column, row, fill = rho)) +
+  geom_tile(colour = "white", linewidth = 1.2) +
+  geom_text(aes(label = MINUS(sprintf("%.2f", rho)), fontface = fifelse(weights == "model", "bold", "plain")),
+            size = PT, colour = INK) +
+  facet_grid(group ~ ., scales = "free_y", space = "free_y") +
+  scale_fill_div(0.9, "Pooled Spearman ρ of the score with age") +
+  scale_x_discrete(position = "top", expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  theme_heat() +
+  theme(legend.position = "bottom", panel.spacing.y = unit(4, "mm"),
+        strip.text.y = element_text(angle = -90, margin = margin(l = 2, unit = "mm")))
+
+# d: the clock from the weights of the unseen genes alone (no protein age effect in any discovery cohort) in the
+# external cohorts with at least 200 of them quantified (point and 95% interval; filled where P < 0.05), the
+# random-effects estimate (diamond) and the pooled rho of 1,000 permutations of the weights among the same genes
+# (violin) with the share of them that reach the observed pooled rho (P)
+u <- read_panel("fig5d")
+u[, pooled := kind == "pooled"]
+u[, label := fifelse(pooled, "Pooled", sprintf("%s, n = %d, %d genes", cohort, n, n_genes))]
+NULL_ROW <- "Permuted weights"
+u[, `:=`(row = factor(label, rev(c(label, NULL_ROW))), fill = fifelse(pooled | p < 0.05, CONTRAST, "white"),
+         edge = fifelse(pooled | p < 0.05, EDGE, GREY))]
+perm <- read_panel("fig5d_null")[, row := factor(NULL_ROW, levels(u$row))]
+notes <- u[pooled == TRUE, .(row = factor(c(label, NULL_ROW), levels(u$row)), x = c(-0.43, 0.9), hjust = c(0, 1),
+                             text = c(sprintf("ρ = %.2f, I² = %.0f%%", rho, i2), fmt_p(p_random)))]
+d <- ggplot(u, aes(rho, row)) +
+  ZERO_X +
+  geom_violin(data = perm, orientation = "y", fill = LIGHT, colour = GREY, linewidth = 0.5, width = 0.8) +
+  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
+  geom_point(data = ~ .x[pooled == FALSE], aes(fill = I(fill), colour = I(edge)), shape = 21, size = 3.6, stroke = 0.5) +
+  geom_point(data = ~ .x[pooled == TRUE], aes(fill = I(fill)), colour = EDGE, shape = 23, size = 5.2, stroke = 0.5) +
+  geom_label(data = notes, aes(x, row, label = text, hjust = hjust), size = PT, colour = INK, fill = "white",
+             border.colour = NA, label.padding = unit(0.6, "mm"), inherit.aes = FALSE) +
+  scale_x_continuous(labels = MINUS_LABELS, breaks = seq(-0.25, 0.75, 0.25), limits = c(-0.45, 0.9)) +
+  labs(x = "Spearman ρ of the unseen-gene score with age", y = NULL) +
+  theme_rows()
+
+fig <- panel_grid(list(a = a, b = b, c = cc, d = d), design = "AB\nAC\nDC", widths = c(156, 210),
+                  heights = c(125, 95, 70))
+save_fig(fig, "fig5", 290)

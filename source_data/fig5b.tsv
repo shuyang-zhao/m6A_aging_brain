@@ -1,72 +1,320 @@
-donor_id	cag	age	score
-Q111B0001.02	126.3	6	2.139
-Q111B0001.04	126.3	6	0.8244
-Q111B0001.06	126.3	6	1.512
-Q111B0001.08	126.3	6	-0.1434
-Q111B0005.02	126.3	6	0.7669
-Q111B0005.04	126.3	6	1.168
-Q111B0005.08	126.3	6	0.2947
-Q111B0005.10	126.3	6	0.08168
-Q140B0009.04	148.4	6	0.6419
-Q140B0009.06	148.4	6	-0.7085
-Q140B0009.08	148.4	6	1.244
-Q140B0009.10	148.4	6	0.4724
-Q140B0013.02	148.4	6	-0.1165
-Q140B0013.06	148.4	6	0.9417
-Q140B0013.08	148.4	6	1.315
-Q140B0013.10	148.4	6	0.1873
-Q175B0574.02	203	6	1.795
-Q175B0574.04	203	6	1.55
-Q175B0574.06	203	6	2.093
-Q175B0574.10	203	6	1.566
-Q175B0575.02	203	6	1.27
-Q175B0575.04	203	6	0.1966
-Q175B0575.08	203	6	0.5649
-Q175B0575.10	203	6	1.23
-Q175B0576.07	203	6	0.7577
-Q175B0576.09	203	6	0.2088
-Q175B0577.07	203	6	0.7859
-Q175B0577.09	203	6	1.226
-Q20B0001.01	7	6	-0.6414
-Q20B0001.03	7	6	-0.8156
-Q20B0001.04	20.07	6	-0.435
-Q20B0001.05	7	6	0.1859
-Q20B0001.06	20.07	6	-0.4718
-Q20B0001.07	7	6	-1.973
-Q20B0001.08	20.07	6	-0.3631
-Q20B0001.10	20.07	6	-0.06897
-Q20B0002.03	20.07	6	-0.1229
-Q20B0002.09	20.07	6	-0.511
-Q20B0005.02	20.07	6	-0.2649
-Q20B0005.03	7	6	-0.6506
-Q20B0005.05	7	6	-0.5653
-Q20B0005.06	20.07	6	-0.8855
-Q20B0005.07	7	6	1.069
-Q20B0005.08	20.07	6	-0.7757
-Q20B0005.09	7	6	0.2009
-Q20B0006.03	20.07	6	-1.026
-Q20B0006.05	20.07	6	-1.492
-Q50KI0081.04	50.41	6	-0.3269
-Q50KI0081.06	50.41	6	-0.3047
-Q50KI0081.08	50.41	6	-0.6428
-Q50KI0081.10	50.41	6	-1.326
-Q50KI0085.02	50.41	6	-1.02
-Q50KI0085.06	50.41	6	-0.08341
-Q50KI0085.08	50.41	6	-1.189
-Q50KI0085.10	50.41	6	-1.444
-Q80B0009.02	87.36	6	-1.005
-Q80B0009.06	87.36	6	-0.04209
-Q80B0009.08	87.36	6	-1.483
-Q80B0009.10	87.36	6	-0.9871
-Q80B0013.02	87.36	6	-0.5853
-Q80B0013.06	87.36	6	1.828
-Q80B0013.08	87.36	6	-0.4595
-Q80B0013.10	87.36	6	0.6255
-Q92B0009.02	102.5	6	-0.4304
-Q92B0009.04	102.5	6	-0.1909
-Q92B0009.08	102.5	6	-0.3363
-Q92B0009.10	102.5	6	-1.669
-Q92B0013.02	102.5	6	-0.1913
-Q92B0013.04	102.5	6	-0.5179
-Q92B0013.06	102.5	6	-2.235
-Q92B0013.08	102.5	6	-0.243
+cohort	set	species	donor	age	age_unit	score	n	rho	p
+Scifo 2025	external	mouse	c1030	3	months	-1.441	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1114	3	months	-0.3691	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1164	3	months	-0.7805	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1190	3	months	-1.341	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1300	20	months	0.4857	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1312	20	months	1.708	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1315	20	months	1.238	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1358	8	months	-0.3344	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1364	8	months	-0.4215	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1378	8	months	0.1828	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1383	8	months	1.293	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c1457	8	months	-0.7156	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2140	20	months	1.322	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2231	5	months	-0.3913	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2254	5	months	0.04339	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2275	5	months	-1.153	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2287	5	months	0.08857	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2293	26	months	1.81	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2295	8	months	-1.335	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2318	5	months	-0.9027	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2346	5	months	-1.79	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2349	5	months	-0.8761	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2600	14	months	1.069	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2626	14	months	-0.6359	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2634	14	months	0.9708	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c2908	3	months	-0.6857	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3054	20	months	0.5684	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3055	20	months	1.57	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3580	20	months	-0.4013	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3662	8	months	-0.1267	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3663	8	months	-1.113	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3667	26	months	0.2938	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3668	26	months	1.476	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3670	5	months	-1.048	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3671	5	months	-0.586	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3775	26	months	1.515	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3840	14	months	-0.3478	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c3841	14	months	-0.411	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c568	14	months	0.3758	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c620	26	months	0.5785	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c636	14	months	-0.3039	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c755	14	months	1.755	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c847	14	months	0.8018	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c940	3	months	-0.7144	45	0.753	2.423e-09
+Scifo 2025	external	mouse	c953	3	months	-0.9212	45	0.753	2.423e-09
+Chen 2025	external	mouse	JCM01	14	months	1.282	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM02	14	months	0.636	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM03	6	months	-0.05439	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM05	6	months	-1.649	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM09	14	months	-0.06866	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM101	6	months	-0.6238	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM102	14	months	-0.1582	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM108	14	months	0.8187	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM110	6	months	-0.7664	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM112	14	months	0.7994	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM113	14	months	0.9091	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM114	6	months	-0.9308	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM117	14	months	0.3902	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM118	14	months	1.792	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM12	6	months	-0.446	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM122	6	months	-0.4486	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM125	6	months	-0.638	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM132	14	months	-0.1741	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM134	6	months	-2.154	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM135	14	months	0.1842	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM136	14	months	-0.5154	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM138	14	months	1.058	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM139	14	months	0.6356	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM141	6	months	-0.9	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM142	14	months	1.422	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM145	14	months	-0.5761	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM146	6	months	0.4943	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM147	14	months	0.4229	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM148	14	months	0.2945	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM149	6	months	-2.071	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM151	6	months	-0.6912	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM155	6	months	1.053	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM160	14	months	0.5726	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM161	14	months	0.9153	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM163	14	months	0.7896	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM166	14	months	-0.1142	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM167	6	months	-0.8384	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM168	6	months	-1.431	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM169	14	months	-0.4019	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM17	14	months	0.2445	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM170	6	months	0.02152	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM171	14	months	1.1	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM176	6	months	-1.657	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM177	6	months	-0.8533	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM181	14	months	-0.06024	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM184	6	months	-1.267	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM187	14	months	-0.6925	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM188	6	months	-1.287	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM189	6	months	-0.3729	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM19	14	months	0.3847	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM191	14	months	0.6017	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM198	14	months	0.8234	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM199	6	months	-0.1964	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM20	14	months	0.9264	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM200	6	months	-1.563	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM204	14	months	-0.1639	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM207	14	months	-0.2827	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM209	6	months	1.853	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM210	14	months	0.03941	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM212	6	months	0.1836	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM215	14	months	0.3281	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM218	14	months	-0.4052	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM219	6	months	-1.222	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM22	6	months	0.3137	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM223	14	months	0.6137	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM226	14	months	0.3279	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM227	14	months	-0.1864	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM230	6	months	0.2625	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM232	6	months	-0.03794	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM233	14	months	0.8119	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM238	14	months	-0.7346	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM243	6	months	-0.1458	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM246	6	months	-0.6833	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM248	14	months	0.3391	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM249	6	months	-1.655	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM25	14	months	0.2477	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM250	14	months	0.3046	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM251	14	months	0.2118	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM253	6	months	0.1548	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM257	6	months	-0.857	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM26	6	months	-1.48	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM261	6	months	-1.095	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM263	14	months	0.5925	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM264	6	months	0.2923	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM266	14	months	0.5037	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM268	14	months	0.5688	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM271	14	months	0.8327	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM275	6	months	-1.889	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM276	14	months	-0.2731	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM277	14	months	0.6049	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM279	6	months	-1.068	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM28	14	months	1.481	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM281	14	months	0.1421	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM282	6	months	-2.717	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM284	14	months	0.7062	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM289	14	months	0.4122	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM290	14	months	1.575	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM293	6	months	0.385	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM295	14	months	0.3537	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM297	6	months	-0.811	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM299	6	months	-0.5495	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM302	6	months	-1.128	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM304	14	months	0.1828	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM305	6	months	-0.4366	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM306	14	months	0.8805	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM308	14	months	1.164	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM310	14	months	1.635	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM311	6	months	-1.06	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM313	14	months	0.7916	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM314	14	months	1.332	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM316	6	months	-0.05847	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM32	14	months	0.05065	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM321	14	months	-0.2002	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM322	14	months	-0.4511	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM325	14	months	1.113	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM330	6	months	-2.326	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM331	6	months	-0.3912	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM332	14	months	0.7143	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM334	14	months	0.525	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM335	14	months	0.36	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM336	6	months	0.7591	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM340	6	months	-0.6764	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM341	14	months	1.512	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM342	14	months	0.3963	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM343	6	months	-2.271	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM344	6	months	-0.2104	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM345	6	months	-1.222	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM35	14	months	1.955	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM351	14	months	0.3056	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM357	6	months	-1.381	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM358	14	months	1.418	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM360	6	months	0.6681	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM361	6	months	-0.09967	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM362	14	months	1.019	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM363	14	months	0.1398	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM367	14	months	0.3104	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM370	6	months	-1.009	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM373	14	months	0.1356	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM375	14	months	0.8773	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM376	14	months	-0.8727	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM379	14	months	1.373	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM38	6	months	-1.078	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM380	6	months	0.2167	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM381	6	months	-1.043	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM382	6	months	1.344	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM39	14	months	1.356	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM41	6	months	-1.022	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM42	14	months	0.916	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM48	14	months	0.5005	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM49	14	months	1.103	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM51	6	months	-0.6421	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM52	14	months	-0.1855	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM53	6	months	-0.1573	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM56	14	months	0.896	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM60	6	months	-0.5071	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM61	6	months	-2.478	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM65	14	months	-0.4895	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM66	14	months	0.2685	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM71	6	months	-3.035	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM72	14	months	1.464	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM77	14	months	0.5315	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM78	6	months	-1.096	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM79	6	months	-0.5241	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM81	6	months	-0.776	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM84	14	months	0.2462	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM87	6	months	-3.55	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM89	14	months	1.082	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM90	14	months	1.15	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM93	6	months	-1.701	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM94	14	months	1.456	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM97	14	months	0.9089	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM98	6	months	-0.7023	188	0.598	1.301e-19
+Chen 2025	external	mouse	JCM99	14	months	0.1823	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-06	6	months	0.853	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-08	6	months	0.5608	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-13	14	months	0.465	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-16	6	months	0.4333	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-18	14	months	0.994	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-31	6	months	-0.5746	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-33	14	months	0.8241	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-35	14	months	-1.363	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-43	6	months	-0.3664	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-55	14	months	0.8925	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-57	14	months	0.8716	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-61	6	months	1.144	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-64	6	months	-0.1737	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-72	14	months	0.9684	188	0.598	1.301e-19
+Chen 2025	external	mouse	PFC2-82	6	months	0.8575	188	0.598	1.301e-19
+Wang 2025	held-out	mouse	12F1	12	months	1.671	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12F2	12	months	-0.4763	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12F3	12	months	0.569	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12F4	12	months	0.3702	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12F5	12	months	1.293	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12M1	12	months	1.22	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12M2	12	months	-0.5732	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12M3	12	months	-0.0417	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12M4	12	months	-0.3646	40	0.3971	0.01118
+Wang 2025	held-out	mouse	12M5	12	months	0.02222	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20F1	20	months	-0.3632	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20F2	20	months	-0.5071	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20F3	20	months	0.3113	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20F4	20	months	2.313	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20F5	20	months	0.07427	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20M1	20	months	-0.6416	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20M2	20	months	0.3974	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20M3	20	months	1.552	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20M4	20	months	-0.1598	40	0.3971	0.01118
+Wang 2025	held-out	mouse	20M5	20	months	-0.5389	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4F1	4	months	-1.627	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4F2	4	months	-1.448	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4F3	4	months	-1.435	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4F4	4	months	-1.579	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4F5	4	months	-0.6411	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4M1	4	months	-1.288	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4M2	4	months	-0.1396	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4M3	4	months	0.08124	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4M4	4	months	-0.947	40	0.3971	0.01118
+Wang 2025	held-out	mouse	4M5	4	months	-0.8704	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8F1	8	months	1.28	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8F2	8	months	-1.119	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8F3	8	months	-1.053	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8F4	8	months	0.4036	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8F5	8	months	-0.423	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8M1	8	months	1.351	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8M2	8	months	0.6004	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8M3	8	months	0.6645	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8M4	8	months	1.587	40	0.3971	0.01118
+Wang 2025	held-out	mouse	8M5	8	months	0.477	40	0.3971	0.01118
+Koopmans 2026	held-out	human	case1	23	years	-0.7471	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case11	65	years	0.9837	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case14	39	years	0.8002	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case17	47	years	-0.1258	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case20	31	years	-0.4111	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case21	56	years	0.6104	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case24	67	years	2.034	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case25	23	years	-1.485	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case27	43	years	-0.2037	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case31	65	years	1.434	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case32	27	years	-1.593	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case33	58	years	0.1437	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case35	65	years	0.3027	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case38	49	years	-0.1683	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case4	57	years	0.24	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case40	75	years	1.094	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case43	58	years	-0.04822	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case44	72	years	0.1393	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case45	56	years	0.8275	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case46	36	years	-0.6847	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case5	55	years	0.7121	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case50	51	years	-0.1278	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case52	48	years	-1.506	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case53	56	years	1.536	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case55	47	years	-0.3329	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case59	31	years	-0.8569	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case60	65	years	0.7057	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case61	57	years	-0.1671	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case64	42	years	-1.23	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case66	37	years	-0.9702	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case69	53	years	1.279	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case70	46	years	-1.127	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case73	43	years	-0.4078	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case74	38	years	-1.314	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case79	46	years	0.8787	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case80	18	years	-1.736	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case82	56	years	1.138	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case84	61	years	-0.4729	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case86	50	years	0.7132	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case87	38	years	-1.243	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case89	50	years	0.9441	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case9	53	years	-0.4704	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case91	41	years	1.329	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case93	61	years	0.7923	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case94	51	years	-0.9839	46	0.6276	3.044e-06
+Koopmans 2026	held-out	human	case96	59	years	-0.2245	46	0.6276	3.044e-06

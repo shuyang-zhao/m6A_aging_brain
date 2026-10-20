@@ -7,14 +7,17 @@
 #SBATCH --array=1-16%2
 #SBATCH -J proteome_clock
 #SBATCH -o proteome_clock_%A_%a.log
-# The GPU step of script 52, one leave-one-cohort-out table per array task (UCR HPCC, RTX 6000 Ada). Run from a folder
-# holding pipeline/utils.py, pipeline/52_proteome_clock.py and the output of `52_proteome_clock.py inputs`, with
-# WEIGHTS the folder of the TabPFN-3.5 regressor weights; the environment is built in node-local scratch
+# The GPU step of script 52, one leave-one-cohort-out table per array task, or the branch given as argument
+# (`sbatch --array=1 proteome_clock.sbatch unseen`) (UCR HPCC, RTX 6000 Ada). Run from a folder holding
+# pipeline/utils.py, pipeline/52_proteome_clock.py and the output of `52_proteome_clock.py inputs`, with WEIGHTS the
+# folder of the TabPFN-3.5 regressor weights; the environment is built in node-local scratch
 set -uo pipefail
 cd "$SLURM_SUBMIT_DIR"
 TABLES=(output/52_proteome_clock/inputs/*.parquet)
-name=$(basename "${TABLES[$SLURM_ARRAY_TASK_ID - 1]}" .parquet)
-[ -e "output/52_proteome_clock/runs/$name.parquet" ] && { echo "done already: $name"; exit 0; }
+name=${1:-$(basename "${TABLES[$SLURM_ARRAY_TASK_ID - 1]}" .parquet)}
+out=output/52_proteome_clock/runs/$name.parquet
+[ "$name" = unseen ] && out=output/52_proteome_clock/unseen/predictions.parquet
+[ -e "$out" ] && { echo "done already: $name"; exit 0; }
 
 W=${TMPDIR:?}
 export TABPFN_MODEL_CACHE_DIR=$W/models TABPFN_NO_BROWSER=1 PIP_CACHE_DIR=$W/pip XDG_CACHE_HOME=$W/xdg PYTHONUNBUFFERED=1

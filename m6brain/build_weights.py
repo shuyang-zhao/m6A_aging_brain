@@ -1,6 +1,6 @@
-"""Build the weight tables of EpiProtAge (src/epiprotage/data/) from the clock run of the analysis pipeline.
+"""Build the weight tables of m6Brain (src/m6brain/data/) from the clock run of the analysis pipeline.
 
-Run from anywhere after pipeline/50 and 52 have been (re)run:  env/bin/python epiprotage/build_weights.py
+Run from anywhere after pipeline/50 and 52 have been (re)run:  env/bin/python m6brain/build_weights.py
 weight = TabPFN prediction of the age z of the gene (model of all cohorts, pipeline/52_proteome_clock.py),
 observed_z = combined age z of the gene over the cohorts (the target); m6A_sites = m6A sites of the gene (script 50).
 """
@@ -16,7 +16,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "output"
-DATA = Path(__file__).resolve().parent / "src" / "epiprotage" / "data"
+DATA = Path(__file__).resolve().parent / "src" / "m6brain" / "data"
 
 
 def git(*args):
