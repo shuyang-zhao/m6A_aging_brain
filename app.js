@@ -14,7 +14,7 @@ const CONFIG = {
 const DEFAULT_GENE = "YTHDF3";
 const VIEWS = ["gene", "landscape", "clock", "cohorts", "definitions", "sources"];
 const CONTEXTS = ["human_protein_P", "human_protein_A", "human_cortex_R", "human_striatum_R", "human_hippocampus_R",
-  "human_neurons_R", "mouse_protein_P", "mouse_protein_A", "mouse_mrna_R", "mouse_neurons_R"];
+  "human_cerebellum_R", "human_neurons_R", "mouse_protein_P", "mouse_protein_A", "mouse_mrna_R", "mouse_neurons_R"];
 const DEFAULT_CONTEXT = "mouse_protein_P";
 const LAYER_KEYS = ["P", "A", "R", "S"];
 const COLOR = { P: "var(--protein)", A: "var(--adjusted)", R: "var(--bulk)", S: "var(--sn)" };
@@ -71,7 +71,7 @@ const TEXT = {
     foot: ["Article", "Code", "Data"],
     theme: { dark: "Switch to light mode", light: "Switch to dark mode" },
     ctx: { human_protein_P: "Protein", human_protein_A: "mRNA-adjusted protein", human_cortex_R: "Cortex mRNA",
-      human_striatum_R: "Striatum mRNA", human_hippocampus_R: "Hippocampus mRNA",
+      human_striatum_R: "Striatum mRNA", human_hippocampus_R: "Hippocampus mRNA", human_cerebellum_R: "Cerebellum mRNA",
       human_neurons_R: "Neuronal mRNA (single-nucleus)", mouse_protein_P: "Protein", mouse_protein_A: "mRNA-adjusted protein",
       mouse_mrna_R: "Bulk mRNA", mouse_neurons_R: "Neuronal mRNA (single-nucleus)" },
     ovTitle: "Genes with q &lt; 0.05 in each context", down: "down", up: "up",
@@ -151,7 +151,7 @@ const TEXT = {
     foot: ["论文", "代码", "数据"],
     theme: { dark: "切换到日间模式", light: "切换到夜间模式" },
     ctx: { human_protein_P: "蛋白", human_protein_A: "mRNA 校正蛋白", human_cortex_R: "皮层 mRNA", human_striatum_R: "纹状体 mRNA",
-      human_hippocampus_R: "海马 mRNA", human_neurons_R: "神经元 mRNA（单核）",
+      human_hippocampus_R: "海马 mRNA", human_cerebellum_R: "小脑 mRNA", human_neurons_R: "神经元 mRNA（单核）",
       mouse_protein_P: "蛋白", mouse_protein_A: "mRNA 校正蛋白", mouse_mrna_R: "组织 mRNA", mouse_neurons_R: "神经元 mRNA（单核）" },
     ovTitle: "各情境中 q &lt; 0.05 的基因数", down: "下降", up: "上升",
     nCohorts: (n) => `${n} 个队列`, nGenes: (n) => `${n} 个基因`,
