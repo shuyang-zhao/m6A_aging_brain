@@ -37,7 +37,7 @@ b <- ggplot(d, aes(effect_pct, row, fill = map)) +
   scale_fill_manual(values = MAP_COL, name = NULL, breaks = MAPS, labels = MAP_LABEL) +
   scale_x_continuous(labels = MINUS_LABELS) +
   scale_y_discrete(labels = scales::label_wrap(14)) +
-  labs(x = "Age effect of the mouse m6A load (%)", y = NULL) +
+  labs(x = "Age effect of the mouse m6A load (% per SD)", y = NULL) +
   theme_rows() +
   theme(legend.position = "bottom")
 

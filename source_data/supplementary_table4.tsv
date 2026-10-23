@@ -1,73 +1,73 @@
 context	layer	model	modification	n_units	n_cohorts	n_negative	effect_pct	effect_pct_ci_low	effect_pct_ci_high	z	p	q
-human_striatum	mRNA	without protein lifetime	m6A	6	4	4	-0.1698	-0.237	-0.1026	-4.948	7.48e-07	2.992e-06
-human_striatum	mRNA	without protein lifetime	Ψ	6	4	3	-0.0643	-0.199	0.07061	-0.9345	0.35	0.4667
-human_striatum	mRNA	without protein lifetime	m5C	6	4	3	-0.06955	-0.2037	0.06475	-1.015	0.3099	0.4667
-human_striatum	mRNA	without protein lifetime	m7G	6	4	2	-0.02964	-0.2327	0.1738	-0.2858	0.7751	0.7751
-human_cortex	mRNA	without protein lifetime	m6A	8	4	2	-0.01086	-0.2705	0.2494	-0.08189	0.9347	0.9347
-human_cortex	mRNA	without protein lifetime	Ψ	8	4	3	-0.1223	-0.2841	0.03979	-1.479	0.1391	0.5564
-human_cortex	mRNA	without protein lifetime	m5C	8	4	1	0.1504	-0.2551	0.5575	0.726	0.4678	0.6237
-human_cortex	mRNA	without protein lifetime	m7G	8	4	2	-0.1216	-0.4379	0.1957	-0.752	0.4521	0.6237
-human_hippocampus	mRNA	without protein lifetime	m6A	3	3	1	-0.002405	-0.1368	0.1322	-0.03505	0.972	0.972
-human_hippocampus	mRNA	without protein lifetime	Ψ	3	3	2	0.02839	-0.2211	0.2785	0.2228	0.8237	0.972
-human_hippocampus	mRNA	without protein lifetime	m5C	3	3	1	0.1535	-0.5226	0.8342	0.4438	0.6572	0.972
-human_hippocampus	mRNA	without protein lifetime	m7G	3	3	2	0.05651	-0.3581	0.4729	0.2667	0.7897	0.972
-human_cerebellum	mRNA	without protein lifetime	m6A	3	2	0	0.2526	0.02317	0.4826	2.158	0.03092	0.04122
-human_cerebellum	mRNA	without protein lifetime	Ψ	3	2	2	-0.08532	-0.2504	0.07999	-1.012	0.3116	0.3116
-human_cerebellum	mRNA	without protein lifetime	m5C	3	2	0	0.3222	0.09237	0.5525	2.749	0.005976	0.01195
-human_cerebellum	mRNA	without protein lifetime	m7G	3	2	2	-0.1663	-0.2416	-0.09096	-4.325	1.527e-05	6.108e-05
-human_neurons	mRNA	without protein lifetime	m6A	6	6	4	-0.02703	-0.2524	0.1988	-0.2347	0.8144	0.8938
-human_neurons	mRNA	without protein lifetime	Ψ	6	6	5	-0.7024	-1.389	-0.01107	-1.991	0.04645	0.1608
-human_neurons	mRNA	without protein lifetime	m5C	6	6	5	-0.5884	-1.244	0.07149	-1.748	0.08041	0.1608
-human_neurons	mRNA	without protein lifetime	m7G	6	6	3	-0.05223	-0.816	0.7174	-0.1335	0.8938	0.8938
-human_protein	Protein	without protein lifetime	m6A	21	8	7	-0.2172	-0.3555	-0.07875	-3.073	0.002116	0.008463
-human_protein	Protein	without protein lifetime	Ψ	21	8	2	0.08588	-0.07905	0.2511	1.02	0.3076	0.4323
-human_protein	Protein	without protein lifetime	m5C	21	8	2	0.06399	-0.0632	0.1913	0.9857	0.3243	0.4323
-human_protein	Protein	without protein lifetime	m7G	21	8	4	-0.1192	-0.4231	0.1856	-0.7673	0.4429	0.4429
-human_protein	mRNA-adjusted protein	without protein lifetime	m6A	1	1	1	-0.05844	-0.1542	0.03746	-1.195	0.2323	0.7531
-human_protein	mRNA-adjusted protein	without protein lifetime	Ψ	1	1	1	-0.01	-0.1006	0.0807	-0.2163	0.8288	0.8288
-human_protein	mRNA-adjusted protein	without protein lifetime	m5C	1	1	1	-0.03708	-0.1632	0.08923	-0.5757	0.5648	0.7531
-human_protein	mRNA-adjusted protein	without protein lifetime	m7G	1	1	0	0.04416	-0.06732	0.1558	0.7761	0.4377	0.7531
-human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m6A	1	1	0	0.002335	-0.1624	0.1673	0.02776	0.9779	0.9779
-human_protein	mRNA-adjusted protein	lifetime genes without lifetime	Ψ	1	1	0	0.168	0.0291	0.307	2.371	0.01773	0.06876
-human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m5C	1	1	1	-0.2089	-0.402	-0.01537	-2.116	0.03438	0.06876
-human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m7G	1	1	0	0.1305	-0.04643	0.3078	1.445	0.1484	0.1978
-human_protein	mRNA-adjusted protein	with protein lifetime	m6A	1	1	1	-0.004159	-0.1633	0.1552	-0.05119	0.9592	0.9592
-human_protein	mRNA-adjusted protein	with protein lifetime	Ψ	1	1	0	0.1026	-0.03276	0.2381	1.485	0.1375	0.2749
-human_protein	mRNA-adjusted protein	with protein lifetime	m5C	1	1	1	-0.2183	-0.4028	-0.03349	-2.315	0.02063	0.08251
-human_protein	mRNA-adjusted protein	with protein lifetime	m7G	1	1	0	0.005694	-0.167	0.1787	0.06457	0.9485	0.9592
-human_protein	mRNA-adjusted protein	genes without a lifetime	m6A	1	1	1	-0.1742	-0.2873	-0.06104	-3.016	0.00256	0.01024
-human_protein	mRNA-adjusted protein	genes without a lifetime	Ψ	1	1	1	-0.02289	-0.1394	0.09377	-0.3848	0.7004	0.7004
-human_protein	mRNA-adjusted protein	genes without a lifetime	m5C	1	1	0	0.12	-0.03871	0.2789	1.482	0.1385	0.2769
-human_protein	mRNA-adjusted protein	genes without a lifetime	m7G	1	1	0	0.08924	-0.051	0.2297	1.247	0.2124	0.2833
-mouse_mrna	mRNA	without protein lifetime	m6A	20	3	3	-1.103	-1.375	-0.8302	-7.893	2.96e-15	1.184e-14
-mouse_mrna	mRNA	without protein lifetime	Ψ	20	3	1	0.1019	-0.251	0.4561	0.5655	0.5718	0.9838
-mouse_mrna	mRNA	without protein lifetime	m5C	20	3	2	-0.0334	-1.176	1.122	-0.05697	0.9546	0.9838
-mouse_mrna	mRNA	without protein lifetime	m7G	20	3	2	-0.01265	-1.227	1.216	-0.0203	0.9838	0.9838
-mouse_neurons	mRNA	without protein lifetime	m6A	2	1	0	0.02564	-0.3539	0.4066	0.1322	0.8948	0.8948
-mouse_neurons	mRNA	without protein lifetime	Ψ	2	1	0	0.07598	-0.3816	0.5357	0.3248	0.7453	0.8948
-mouse_neurons	mRNA	without protein lifetime	m5C	2	1	0	0.4766	-0.1789	1.136	1.424	0.1545	0.3091
-mouse_neurons	mRNA	without protein lifetime	m7G	2	1	0	0.4241	-0.1368	0.9881	1.481	0.1386	0.3091
-mouse_protein	Protein	without protein lifetime	m6A	12	6	6	-1.601	-2.098	-1.101	-6.248	4.159e-10	1.664e-09
-mouse_protein	Protein	without protein lifetime	Ψ	12	6	6	-0.766	-1.144	-0.3862	-3.945	7.977e-05	0.0001595
-mouse_protein	Protein	without protein lifetime	m5C	12	6	5	-0.4843	-0.9136	-0.05322	-2.201	0.02771	0.02771
-mouse_protein	Protein	without protein lifetime	m7G	12	6	6	-0.6992	-1.177	-0.2187	-2.849	0.004386	0.005848
-mouse_protein	mRNA-adjusted protein	without protein lifetime	m6A	1	1	1	-0.9343	-1.218	-0.6496	-6.412	1.438e-10	5.752e-10
-mouse_protein	mRNA-adjusted protein	without protein lifetime	Ψ	1	1	0	0.3128	-0.05336	0.6803	1.674	0.09415	0.1255
-mouse_protein	mRNA-adjusted protein	without protein lifetime	m5C	1	1	0	0.003138	-0.4666	0.4751	0.01306	0.9896	0.9896
-mouse_protein	mRNA-adjusted protein	without protein lifetime	m7G	1	1	0	0.8841	0.4705	1.299	4.2	2.673e-05	5.345e-05
-mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m6A	1	1	1	-0.2198	-0.5988	0.1607	-1.133	0.2572	0.3235
-mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	Ψ	1	1	1	-0.2758	-0.7027	0.153	-1.261	0.2071	0.3235
-mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m5C	1	1	1	-0.3072	-0.9142	0.3036	-0.9873	0.3235	0.3235
-mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m7G	1	1	0	0.3953	-0.06874	0.8614	1.669	0.0951	0.3235
-mouse_protein	mRNA-adjusted protein	with protein lifetime	m6A	1	1	1	-0.2316	-0.6099	0.1482	-1.196	0.2317	0.2647
-mouse_protein	mRNA-adjusted protein	with protein lifetime	Ψ	1	1	1	-0.2544	-0.6779	0.171	-1.173	0.2408	0.2647
-mouse_protein	mRNA-adjusted protein	with protein lifetime	m5C	1	1	1	-0.3429	-0.9426	0.2605	-1.115	0.2647	0.2647
-mouse_protein	mRNA-adjusted protein	with protein lifetime	m7G	1	1	0	0.3896	-0.07306	0.8543	1.65	0.09897	0.2647
-mouse_protein	mRNA-adjusted protein	genes without a lifetime	m6A	1	1	1	-1.235	-1.621	-0.8465	-6.209	5.335e-10	2.134e-09
-mouse_protein	mRNA-adjusted protein	genes without a lifetime	Ψ	1	1	0	0.8256	0.1802	1.475	2.51	0.01209	0.01612
-mouse_protein	mRNA-adjusted protein	genes without a lifetime	m5C	1	1	0	0.1966	-0.5158	0.9141	0.5394	0.5896	0.5896
-mouse_protein	mRNA-adjusted protein	genes without a lifetime	m7G	1	1	0	1.321	0.5775	2.071	3.491	0.0004806	0.0009611
-mouse_protein_external	Protein	without protein lifetime	m6A	14	11	10	-0.8439	-1.103	-0.5838	-6.341	2.287e-10	9.148e-10
-mouse_protein_external	Protein	without protein lifetime	Ψ	14	11	10	-0.714	-0.9907	-0.4364	-5.031	4.889e-07	9.777e-07
-mouse_protein_external	Protein	without protein lifetime	m5C	14	11	7	-0.1019	-0.3435	0.1402	-0.8258	0.4089	0.4089
-mouse_protein_external	Protein	without protein lifetime	m7G	14	11	8	-0.2693	-0.5243	-0.01368	-2.065	0.03895	0.05193
+human_striatum	mRNA	without protein lifetime	m6A	6	4	4	-0.09087	-0.1266	-0.05511	-4.98	6.375e-07	2.55e-06
+human_striatum	mRNA	without protein lifetime	Ψ	6	4	3	-0.03381	-0.1024	0.03478	-0.9664	0.3339	0.4451
+human_striatum	mRNA	without protein lifetime	m5C	6	4	3	-0.02197	-0.06438	0.02046	-1.015	0.31	0.4451
+human_striatum	mRNA	without protein lifetime	m7G	6	4	2	-0.01161	-0.07914	0.05597	-0.3368	0.7363	0.7363
+human_cortex	mRNA	without protein lifetime	m6A	8	4	2	-0.005355	-0.1451	0.1345	-0.07507	0.9402	0.9402
+human_cortex	mRNA	without protein lifetime	Ψ	8	4	3	-0.06435	-0.149	0.02033	-1.49	0.1363	0.5394
+human_cortex	mRNA	without protein lifetime	m5C	8	4	1	0.05792	-0.07795	0.194	0.8352	0.4036	0.5394
+human_cortex	mRNA	without protein lifetime	m7G	8	4	2	-0.04645	-0.1556	0.0628	-0.8336	0.4045	0.5394
+human_hippocampus	mRNA	without protein lifetime	m6A	3	3	1	-0.001295	-0.07334	0.0708	-0.03522	0.9719	0.9719
+human_hippocampus	mRNA	without protein lifetime	Ψ	3	3	2	0.01593	-0.1107	0.1427	0.2465	0.8053	0.9719
+human_hippocampus	mRNA	without protein lifetime	m5C	3	3	1	0.04981	-0.1724	0.2725	0.439	0.6606	0.9719
+human_hippocampus	mRNA	without protein lifetime	m7G	3	3	2	0.02179	-0.1173	0.161	0.3069	0.7589	0.9719
+human_cerebellum	mRNA	without protein lifetime	m6A	3	2	0	0.1351	0.01079	0.2596	2.13	0.03315	0.0442
+human_cerebellum	mRNA	without protein lifetime	Ψ	3	2	2	-0.04405	-0.1297	0.0417	-1.007	0.3139	0.3139
+human_cerebellum	mRNA	without protein lifetime	m5C	3	2	0	0.1021	0.03795	0.1662	3.12	0.001807	0.003613
+human_cerebellum	mRNA	without protein lifetime	m7G	3	2	2	-0.0554	-0.08574	-0.02506	-3.578	0.0003464	0.001385
+human_neurons	mRNA	without protein lifetime	m6A	6	6	4	-0.01448	-0.1362	0.1073	-0.2331	0.8157	0.883
+human_neurons	mRNA	without protein lifetime	Ψ	6	6	5	-0.3617	-0.7163	-0.005824	-1.992	0.04637	0.1622
+human_neurons	mRNA	without protein lifetime	m5C	6	6	5	-0.1935	-0.4105	0.02395	-1.744	0.0811	0.1622
+human_neurons	mRNA	without protein lifetime	m7G	6	6	3	-0.01983	-0.2835	0.2445	-0.1472	0.883	0.883
+human_protein	Protein	without protein lifetime	m6A	21	8	7	-0.1174	-0.1923	-0.04238	-3.067	0.002162	0.008648
+human_protein	Protein	without protein lifetime	Ψ	21	8	2	0.04931	-0.04667	0.1454	1.007	0.3141	0.4449
+human_protein	Protein	without protein lifetime	m5C	21	8	2	0.02339	-0.02567	0.07246	0.9343	0.3502	0.4449
+human_protein	Protein	without protein lifetime	m7G	21	8	4	-0.04678	-0.1667	0.07329	-0.7639	0.4449	0.4449
+human_protein	mRNA-adjusted protein	without protein lifetime	m6A	1	1	1	-0.03207	-0.08467	0.02056	-1.195	0.2323	0.7531
+human_protein	mRNA-adjusted protein	without protein lifetime	Ψ	1	1	1	-0.00559	-0.05624	0.04508	-0.2163	0.8288	0.8288
+human_protein	mRNA-adjusted protein	without protein lifetime	m5C	1	1	1	-0.01376	-0.06059	0.03309	-0.5757	0.5648	0.7531
+human_protein	mRNA-adjusted protein	without protein lifetime	m7G	1	1	0	0.01722	-0.02626	0.06071	0.7761	0.4377	0.7531
+human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m6A	1	1	0	0.001244	-0.08656	0.08912	0.02776	0.9779	0.9779
+human_protein	mRNA-adjusted protein	lifetime genes without lifetime	Ψ	1	1	0	0.1033	0.0179	0.1888	2.371	0.01773	0.06876
+human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m5C	1	1	1	-0.08575	-0.1651	-0.006308	-2.116	0.03438	0.06876
+human_protein	mRNA-adjusted protein	lifetime genes without lifetime	m7G	1	1	0	0.05791	-0.02061	0.1365	1.445	0.1484	0.1978
+human_protein	mRNA-adjusted protein	with protein lifetime	m6A	1	1	1	-0.002216	-0.08703	0.08267	-0.05119	0.9592	0.9592
+human_protein	mRNA-adjusted protein	with protein lifetime	Ψ	1	1	0	0.06308	-0.02015	0.1464	1.485	0.1375	0.2749
+human_protein	mRNA-adjusted protein	with protein lifetime	m5C	1	1	1	-0.08964	-0.1655	-0.01374	-2.315	0.02063	0.08251
+human_protein	mRNA-adjusted protein	with protein lifetime	m7G	1	1	0	0.002527	-0.07416	0.07927	0.06457	0.9485	0.9592
+human_protein	mRNA-adjusted protein	genes without a lifetime	m6A	1	1	1	-0.09635	-0.1589	-0.03375	-3.016	0.00256	0.01024
+human_protein	mRNA-adjusted protein	genes without a lifetime	Ψ	1	1	1	-0.01202	-0.07321	0.04921	-0.3848	0.7004	0.7004
+human_protein	mRNA-adjusted protein	genes without a lifetime	m5C	1	1	0	0.04224	-0.01364	0.09815	1.482	0.1385	0.2769
+human_protein	mRNA-adjusted protein	genes without a lifetime	m7G	1	1	0	0.03234	-0.01849	0.0832	1.247	0.2124	0.2833
+mouse_mrna	mRNA	without protein lifetime	m6A	20	3	3	-1.252	-1.561	-0.9418	-7.873	3.458e-15	1.383e-14
+mouse_mrna	mRNA	without protein lifetime	Ψ	20	3	1	0.06621	-0.1615	0.2944	0.5695	0.569	0.9275
+mouse_mrna	mRNA	without protein lifetime	m5C	20	3	2	-0.02708	-0.5181	0.4664	-0.1078	0.9142	0.9275
+mouse_mrna	mRNA	without protein lifetime	m7G	20	3	2	-0.03352	-0.7529	0.691	-0.09099	0.9275	0.9275
+mouse_neurons	mRNA	without protein lifetime	m6A	2	1	0	0.02953	-0.4072	0.4681	0.1323	0.8948	0.8948
+mouse_neurons	mRNA	without protein lifetime	Ψ	2	1	0	0.04812	-0.2423	0.3394	0.3243	0.7457	0.8948
+mouse_neurons	mRNA	without protein lifetime	m5C	2	1	0	0.2	-0.07522	0.4759	1.424	0.1545	0.3091
+mouse_neurons	mRNA	without protein lifetime	m7G	2	1	0	0.2425	-0.07833	0.5643	1.481	0.1387	0.3091
+mouse_protein	Protein	without protein lifetime	m6A	12	6	6	-1.757	-2.296	-1.214	-6.308	2.827e-10	1.131e-09
+mouse_protein	Protein	without protein lifetime	Ψ	12	6	6	-0.5496	-0.8238	-0.2745	-3.911	9.197e-05	0.0001839
+mouse_protein	Protein	without protein lifetime	m5C	12	6	5	-0.2215	-0.4177	-0.02484	-2.207	0.02729	0.02729
+mouse_protein	Protein	without protein lifetime	m7G	12	6	6	-0.4604	-0.7771	-0.1428	-2.839	0.004526	0.006035
+mouse_protein	mRNA-adjusted protein	without protein lifetime	m6A	1	1	1	-1.022	-1.333	-0.711	-6.412	1.438e-10	5.752e-10
+mouse_protein	mRNA-adjusted protein	without protein lifetime	Ψ	1	1	0	0.2284	-0.03898	0.4964	1.674	0.09415	0.1255
+mouse_protein	mRNA-adjusted protein	without protein lifetime	m5C	1	1	0	0.001455	-0.2166	0.22	0.01306	0.9896	0.9896
+mouse_protein	mRNA-adjusted protein	without protein lifetime	m7G	1	1	0	0.5947	0.3167	0.8734	4.2	2.673e-05	5.345e-05
+mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m6A	1	1	1	-0.23	-0.6267	0.1682	-1.133	0.2572	0.3235
+mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	Ψ	1	1	1	-0.2181	-0.5559	0.1209	-1.261	0.2071	0.3235
+mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m5C	1	1	1	-0.1528	-0.4553	0.1507	-0.9873	0.3235	0.3235
+mouse_protein	mRNA-adjusted protein	lifetime genes without lifetime	m7G	1	1	0	0.302	-0.05254	0.6578	1.669	0.0951	0.3235
+mouse_protein	mRNA-adjusted protein	with protein lifetime	m6A	1	1	1	-0.2424	-0.6383	0.1552	-1.196	0.2317	0.2647
+mouse_protein	mRNA-adjusted protein	with protein lifetime	Ψ	1	1	1	-0.2011	-0.5363	0.1352	-1.173	0.2408	0.2647
+mouse_protein	mRNA-adjusted protein	with protein lifetime	m5C	1	1	1	-0.1705	-0.4695	0.1294	-1.115	0.2647	0.2647
+mouse_protein	mRNA-adjusted protein	with protein lifetime	m7G	1	1	0	0.2976	-0.05585	0.6523	1.65	0.09897	0.2647
+mouse_protein	mRNA-adjusted protein	genes without a lifetime	m6A	1	1	1	-1.388	-1.822	-0.9517	-6.209	5.335e-10	2.134e-09
+mouse_protein	mRNA-adjusted protein	genes without a lifetime	Ψ	1	1	0	0.483	0.1056	0.8619	2.51	0.01209	0.01612
+mouse_protein	mRNA-adjusted protein	genes without a lifetime	m5C	1	1	0	0.08586	-0.2258	0.3985	0.5394	0.5896	0.5896
+mouse_protein	mRNA-adjusted protein	genes without a lifetime	m7G	1	1	0	0.7269	0.3182	1.137	3.491	0.0004806	0.0009611
+mouse_protein_external	Protein	without protein lifetime	m6A	14	11	10	-0.9314	-1.215	-0.6468	-6.392	1.632e-10	6.528e-10
+mouse_protein_external	Protein	without protein lifetime	Ψ	14	11	10	-0.5119	-0.7079	-0.3155	-5.101	3.388e-07	6.775e-07
+mouse_protein_external	Protein	without protein lifetime	m5C	14	11	7	-0.0469	-0.1556	0.06189	-0.8453	0.398	0.398
+mouse_protein_external	Protein	without protein lifetime	m7G	14	11	8	-0.1795	-0.3436	-0.01516	-2.141	0.0323	0.04307

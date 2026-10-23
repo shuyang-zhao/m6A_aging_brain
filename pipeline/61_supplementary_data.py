@@ -1,15 +1,15 @@
 # Additional files 2-5 of the article as Excel workbooks
 # additional_file_2_tables.xlsx: Supplementary Tables S1-S7 (source_data/supplementary_table*.tsv)
 # additional_file_3_age_effects.xlsx: the per-gene age effects of every unit in the three layers (script 10)
-# additional_file_4_clock_weights.xlsx: the clock weights of the mouse and human proteome models, with and without the
-# m6A features (script 52, models of all cohorts), the weights of the unseen mouse genes (script 52) and the
-# gene-level model predictions (script 50)
-# additional_file_5_clock_scores.xlsx: the clock scores of every sample (scripts 52 and 53) and the individual m6A
-# index (script 54)
+# additional_file_4_clock_weights.xlsx: the m6Brain clock weights of mouse and human (script 55, clocks of all cohorts)
+# beside the gene-level predictions with and without the m6A features (script 52, models of all cohorts), the
+# predictions of the unseen mouse genes (script 52) and the held-out gene-level predictions (script 50)
+# additional_file_5_clock_scores.xlsx: the predicted ages (script 55) and label-free scores (script 52) of every donor,
+# the disease samples (script 53) and the individual m6A index (script 54)
 # the README of each workbook comes from docs/supplementary_data_columns.tsv (one row per sheet, then one per column;
 # sheet "*" holds the columns shared by all sheets, "* tables" those of the tables); a column without a description, or
 # a description without its column, stops the script
-# reads output/10, 50, 52, 53 and 54, source_data/ and the column table; writes output/61_supplementary_data/
+# reads output/10, 50, 52, 53, 54 and 55, source_data/ and the column table; writes output/61_supplementary_data/
 import time
 
 import pandas as pd
@@ -37,13 +37,20 @@ columns_of = {sheet: rows.set_index("column")[["meaning", "unit"]] for sheet, ro
 
 
 def weights(species):
+    # the clock weight of every gene of the model table (0 outside the clock) and the intercept as the first row
     runs = utils.read(utils.OUT / "52_proteome_clock" / "runs" / f"{species}_protein__all.parquet")
-    runs = runs.rename(columns={"model": "weight", "without_m6a": "weight_without_m6a"})
-    return runs[["symbol", "weight", "weight_without_m6a"]].rename_axis("gene_id").reset_index()
+    clock = utils.read(utils.OUT / "55_m6brain_clock" / "weights" / f"{species}_protein__all__m6brain_clock.tsv")
+    clock = clock.set_index("gene_id").weight
+    table = runs[["symbol", "model", "without_m6a"]].rename(
+        columns={"model": "prediction", "without_m6a": "prediction_without_m6a"}
+    )
+    table.insert(1, "clock_weight", clock.reindex(table.index, fill_value=0))
+    intercept = pd.DataFrame({"clock_weight": clock["(intercept)"]}, index=["(intercept)"])
+    return pd.concat([intercept, table])[table.columns].rename_axis("gene_id").reset_index()
 
 
 def read_table(file):
-    if file.startswith("52_proteome_clock/runs/"):
+    if file.startswith("55_m6brain_clock/weights/"):
         return weights(file.split("/")[-1].split("_")[0])
     if file.endswith(".parquet"):  # a gene table indexed by gene_id
         return utils.read(utils.OUT / file).reset_index()

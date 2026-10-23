@@ -1,5 +1,5 @@
-# Additional file 1 Fig. S10: what drives the clock in disease, the disease coefficient split exactly over groups of
-# genes (the partial scores of the groups sum to the score)
+# Additional file 1 Fig. S10: what drives the clock in disease, the age acceleration split exactly over groups of
+# genes (the partial predictions of the groups sum to the prediction)
 # a, every study by cell source and by m6A sites; b, every region of Merrihew 2023 and Blumenreich 2024; c, cell source
 # crossed with m6A sites and with the sign of the weight, AD combined and HD
 # reads source_data/sfig10a-c (script 53); writes output/figures/sfig10.png and .pdf
@@ -9,10 +9,10 @@ SOURCES <- c(neuron = "Neuron", astrocyte = "Astrocyte", oligodendrocyte = "Olig
              ubiquitous = "Ubiquitous", "no cell-type data" = "No cell-type data")
 SITES <- c("0" = "0", "1" = "1", "2-3" = "2–3", "≥4" = "≥4")
 STUDIES <- c("Ping 2020", "Merrihew 2023", "AD combined", "Blumenreich 2024", "Umoh 2018", "Langfelder 2016")
-CONTRIBUTION <- "Contribution to the disease coefficient (SD of the clock score; HD per 100 CAG repeats)"
+CONTRIBUTION <- "Contribution to the acceleration (years; HD, months per 100 CAG repeats)"
 EXPECTED <- "Expected from the share of the weights"
 studies <- read_panel("sfig10a")
-total <- studies[partition == "total", setNames(signed(est), study)]
+total <- studies[partition == "total", setNames(MINUS(sprintf("%+.1f", est)), study)]
 study_strip <- function(study, disease, by = "") {
   s <- paste0(fifelse(study == "AD combined", study, paste0(study, ", ", disease)), by, "\ntotal ", total[study])
   factor(s, unique(s[order(match(study, STUDIES))]))
@@ -51,13 +51,13 @@ a <- contribution(a, CONTRIBUTION) + theme(legend.position = "bottom")
 REGIONS <- c("Superior and middle temporal gyri (SMTG)" = "SMTG", "Inferior parietal lobule (IPL)" = "IPL",
              "Middle temporal gyrus" = "Middle temporal\ngyrus")
 b <- read_panel("sfig10b")
-region_total <- b[partition == "total", setNames(signed(est), region)]
+region_total <- b[partition == "total", setNames(MINUS(sprintf("%+.1f", est)), region)]
 b <- groups(b)
 b[, strip := paste0(fifelse(region %in% names(REGIONS), REGIONS[region], region), "\ntotal ", region_total[region])]
 b[, strip := factor(strip, unique(strip))]
 by_study <- function(s, first) {
   d <- b[study == s]
-  contribution(d, sprintf("Contribution in %s, %s (SD of the clock score)", s, d$disease[1]), "free_y") +
+  contribution(d, sprintf("Contribution in %s, %s (years)", s, d$disease[1]), "free_y") +
     theme(legend.position = "none", panel.spacing.x = unit(7, "mm"),
           axis.text.y = if (first) element_text() else element_blank(),
           strip.text.y = if (first) element_blank() else element_text(angle = 270))

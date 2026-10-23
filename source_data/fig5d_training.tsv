@@ -1,0 +1,13 @@
+n_train	variant	mae_mean	mae_sd	n_nonzero	mae_vs_unguided	p_wilcoxon_unguided	mae_vs_shuffled	p_wilcoxon_shuffled	label
+25	elastic_net	9.237	0.05855	25.16					Unguided elastic net
+25	m6brain_clock	9.037	0.4284	17.46	-0.2001	0.5457	-0.5928	0.007976	m6Brain clock
+25	shuffled_prior	9.63	0.2485	13.18	0.3928	0.002787			Permuted predictions
+50	elastic_net	8.192	0.2331	50.78					Unguided elastic net
+50	m6brain_clock	7.619	0.4148	35.28	-0.5731	0.01619	-1.102	3.422e-05	m6Brain clock
+50	shuffled_prior	8.721	0.3259	31.34	0.5291	0.00676			Permuted predictions
+100	elastic_net	6.596	0.1475	81.58					Unguided elastic net
+100	m6brain_clock	6.183	0.1534	62.84	-0.4135	0.009278	-1.28	2.288e-08	m6Brain clock
+100	shuffled_prior	7.463	0.4284	61.66	0.8665	2.109e-08			Permuted predictions
+all	elastic_net	6.005	0.1381	119.4					Unguided elastic net
+all	m6brain_clock	5.047	0.08479	86.8	-0.9576	4.065e-06	-1.896	1.311e-12	m6Brain clock
+all	shuffled_prior	6.944	0.3728	92.22	0.9389	8.851e-07			Permuted predictions

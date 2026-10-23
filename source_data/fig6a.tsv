@@ -1,51 +1,51 @@
-study	donor_id	group	score
-Ping 2020	b1_127C	AD	0.9987
-Ping 2020	b1_128N	AD	-0.07475
-Ping 2020	b1_129C	Control	-0.2864
-Ping 2020	b1_130C	Control	0.6677
-Ping 2020	b1_130N	AD	0.3067
-Ping 2020	b1_131N	Control	-2.085
-Ping 2020	b2_128C	AD	1.332
-Ping 2020	b2_128N	Control	-1.354
-Ping 2020	b2_129C	AD	-0.2898
-Ping 2020	b2_129N	Control	-0.9631
-Ping 2020	b2_130C	Control	0.1179
-Ping 2020	b2_130N	AD	0.3123
-Ping 2020	b3_127C	Control	0.2205
-Ping 2020	b3_127N	Control	-0.3438
-Ping 2020	b3_128N	AD	0.9043
-Ping 2020	b3_129N	AD	-0.6774
-Ping 2020	b3_130C	Control	0.283
-Ping 2020	b3_130N	Control	-1.169
-Ping 2020	b3_131N	AD	2.1
-Merrihew 2023	donor19	AD	1.165
-Merrihew 2023	donor21	AD	0.3665
-Merrihew 2023	donor23	AD	0.6078
-Merrihew 2023	donor24	AD	1.041
-Merrihew 2023	donor27	AD	0.9378
-Merrihew 2023	donor29	Control	0.1111
-Merrihew 2023	donor30	AD	0.3648
-Merrihew 2023	donor31	AD	0.2482
-Merrihew 2023	donor32	AD	-0.425
-Merrihew 2023	donor34	Control	-1.155
-Merrihew 2023	donor36	Control	-1.421
-Merrihew 2023	donor38	Control	-0.8693
-Merrihew 2023	donor39	AD	0.4296
-Merrihew 2023	donor40	AD	0.3753
-Merrihew 2023	donor42	AD	-0.3407
-Merrihew 2023	donor43	Control	-0.6458
-Merrihew 2023	donor44	AD	0.4515
-Merrihew 2023	donor46	Control	-0.3202
-Merrihew 2023	donor47	Control	-0.9981
-Merrihew 2023	donor48	AD	0.4705
-Merrihew 2023	donor51	AD	0.1858
-Merrihew 2023	donor52	Control	-0.1338
-Merrihew 2023	donor53	AD	-0.5235
-Merrihew 2023	donor54	AD	-0.193
-Merrihew 2023	donor55	Control	0.2099
-Merrihew 2023	donor56	AD	-0.4776
-Merrihew 2023	donor60	AD	-0.3008
-Merrihew 2023	donor62	Control	-0.4346
-Merrihew 2023	donor63	AD	0.8126
-Merrihew 2023	donor64	Control	-0.6943
-Merrihew 2023	donor67	AD	0.006655
+study	donor_id	group	age	predicted_age	acceleration
+Ping 2020	b1_127C	AD	55	74.35	17.77
+Ping 2020	b1_128N	AD	67	70.4	4.595
+Ping 2020	b1_129C	Control	66	63.39	-1.642
+Ping 2020	b1_130C	Control	65	62.44	-1.829
+Ping 2020	b1_130N	AD	62	73.12	11.15
+Ping 2020	b1_131N	Control	52	42.48	-11.8
+Ping 2020	b2_128C	AD	72	83.5	13.85
+Ping 2020	b2_128N	Control	45	47.24	-1.656
+Ping 2020	b2_129C	AD	61	69.66	8.464
+Ping 2020	b2_129N	Control	60	70.05	9.629
+Ping 2020	b2_130C	Control	70	72.05	3.937
+Ping 2020	b2_130N	AD	65	80.09	15.83
+Ping 2020	b3_127C	Control	57	68.73	10.62
+Ping 2020	b3_127N	Control	78	68.9	-5.356
+Ping 2020	b3_128N	AD	78	85.76	11.5
+Ping 2020	b3_129N	AD	55	62.17	5.59
+Ping 2020	b3_130C	Control	75	72.91	0.9593
+Ping 2020	b3_130N	Control	69	64.48	-2.859
+Ping 2020	b3_131N	AD	72	88.02	18.37
+Merrihew 2023	donor19	AD	59	59.85	13.68
+Merrihew 2023	donor21	AD	61	59.33	11.96
+Merrihew 2023	donor23	AD	62	59.07	11.1
+Merrihew 2023	donor24	AD	63	70.2	21.64
+Merrihew 2023	donor27	AD	67	70.64	19.69
+Merrihew 2023	donor29	Control	73	54.91	0.3744
+Merrihew 2023	donor30	AD	76	66.41	10.08
+Merrihew 2023	donor31	AD	77	68	11.07
+Merrihew 2023	donor32	AD	78	57.15	-0.3719
+Merrihew 2023	donor34	Control	78	56	-1.524
+Merrihew 2023	donor36	Control	79	54.6	-3.523
+Merrihew 2023	donor38	Control	84	67.17	6.062
+Merrihew 2023	donor39	AD	85	73.08	11.37
+Merrihew 2023	donor40	AD	85	73.72	12.01
+Merrihew 2023	donor42	AD	86	71.05	8.748
+Merrihew 2023	donor43	Control	86	65.65	3.349
+Merrihew 2023	donor44	AD	87	81.93	19.02
+Merrihew 2023	donor46	Control	88	61.5	-1.995
+Merrihew 2023	donor47	Control	88	66.62	3.118
+Merrihew 2023	donor48	AD	88	81.07	17.57
+Merrihew 2023	donor51	AD	89	76.61	12.51
+Merrihew 2023	donor52	Control	89	59.32	-4.775
+Merrihew 2023	donor53	AD	90	63.59	-1.109
+Merrihew 2023	donor54	AD	91	80.29	15
+Merrihew 2023	donor55	Control	91	66.32	1.029
+Merrihew 2023	donor56	AD	91	73.96	8.671
+Merrihew 2023	donor60	AD	93	76.38	9.889
+Merrihew 2023	donor62	Control	94	60.98	-6.101
+Merrihew 2023	donor63	AD	94	72.11	5.022
+Merrihew 2023	donor64	Control	95	71.67	3.987
+Merrihew 2023	donor67	AD	100	73.4	2.735

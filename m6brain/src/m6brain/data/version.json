@@ -1,14 +1,20 @@
 {
- "date": "2026-10-17",
- "git_commit": "a558ea9f",
+ "date": "2026-10-23",
+ "git_commit": "ca8d256f",
  "mouse": {
   "genes": 10606,
-  "weights_computed": "2026-10-17",
-  "sha256": "a0def2e762c9a070"
+  "clock_genes": 279,
+  "intercept": 13.216479740883866,
+  "unit": "months",
+  "weights_computed": "2026-10-23",
+  "sha256": "8094707075d5d9f2"
  },
  "human": {
   "genes": 9990,
-  "weights_computed": "2026-10-17",
-  "sha256": "58204128f165b629"
+  "clock_genes": 421,
+  "intercept": 69.36827251358973,
+  "unit": "years",
+  "weights_computed": "2026-10-23",
+  "sha256": "3d888834481f2816"
  }
 }

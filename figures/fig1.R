@@ -1,4 +1,4 @@
-# Figure 1: framework, resource and design of the zero-shot clock
+# Figure 1: m6Brain, the cohorts and the design of the clock
 # a framework schematic, b cohorts (source_data/fig1b.tsv), c design diagram; writes output/figures/fig1.png and .pdf
 source("figures/style.R")
 
@@ -45,12 +45,12 @@ steps <- rbind(
   node(4, 7.5, 38, 78, LIGHT, "Transcripts", "of each\ngene"),
   feat,
   node(136, 7.5, 180, 78, CONTRAST_LIGHT, "TabPFN", "tabular\nfoundation\nmodel"),
-  node(192, 28, 238, 58, FOCAL_LIGHT, "Weights", "predicted\nage effect\nper gene"),
-  node(250, 28, 296, 58, FOCAL_LIGHT, "Sample score", "Σ weight ×\nstandardized\nprotein"),
-  node(308, 46, 362, 72, RED_LIGHT, "Age", "Spearman ρ with age\nin held-out and\nexternal cohorts"),
-  node(308, 14, 362, 40, RED_LIGHT, "Disease", "AD, PD, ALS, HD")
+  node(192, 28, 238, 58, FOCAL_LIGHT, "Prediction", "age effect\nof each gene"),
+  node(250, 28, 296, 58, FOCAL_LIGHT, "m6Brain clock", "elastic net\nof age, guided\nby the prediction"),
+  node(308, 46, 362, 72, RED_LIGHT, "Age", "r and MAE in\nheld-out and\nexternal cohorts"),
+  node(308, 14, 362, 40, RED_LIGHT, "Disease", "AD, PD, ALS, HD\nin years")
 )
-brackets <- data.table(x = c(50, 250), xend = c(238, 362), label = c("Gene-level model", "Sample-level clock"))
+brackets <- data.table(x = c(50, 250), xend = c(238, 362), label = c("m6Brain: gene-level model", "Sample-level clock"))
 a <- ggplot() +
   shapes(steps) +
   arrows(38, feat[, (y0 + y1) / 2], 50, feat[, (y0 + y1) / 2]) +
@@ -106,8 +106,8 @@ b <- wrap_plots(overview("Mouse"), plot_spacer(), overview("Human"), nrow = 1, w
                 guides = "collect") &
   theme(legend.position = "bottom")
 
-# c: design of the clock: leave-one-cohort-out weights and external cohorts scored with the all-cohort weights; the
-# gene-level model is fitted on held-out chromosomes
+# c: design of the clock: the gene-level model and the clock refitted without each cohort, and external cohorts scored
+# with the clock of all cohorts; the gene-level model is fitted on held-out chromosomes
 WC <- 126
 HC <- 170
 squares <- function(x0, x1, y0, y1, n, fill) {
@@ -125,11 +125,11 @@ chrom <- squares(14, 112, 99, 107, 11, c(rep(BLUE_LIGHT, 6), NA, rep(BLUE_LIGHT,
 design <- rbind(
   node(4, 84, 122, 120, LIGHT, "Held-out chromosomes", "a gene is predicted by a model that\nhas not seen its chromosome",
        head_y = 115.5, body_y = 91),
-  node(4, 56, 62, 76, FOCAL_LIGHT, "Weights", "without the held-out\ncohort"),
-  node(64, 56, 122, 76, FOCAL_LIGHT, "Weights", "from all cohorts"),
-  node(4, 24, 62, 50, FOCAL_LIGHT, "Score", "held-out cohort", head_y = 45.5, body_y = 40.5),
-  node(64, 24, 122, 50, CONTRAST_LIGHT, "Score", "external cohorts", head_y = 45.5, body_y = 40.5),
-  node(4, 2, 122, 14, RED_LIGHT, "Spearman ρ with age per cohort")
+  node(4, 56, 62, 76, FOCAL_LIGHT, "Clock", "refitted without\nthe held-out cohort"),
+  node(64, 56, 122, 76, FOCAL_LIGHT, "Clock", "of all cohorts"),
+  node(4, 24, 62, 50, FOCAL_LIGHT, "Predicted age", "held-out cohort", head_y = 45.5, body_y = 40.5),
+  node(64, 24, 122, 50, CONTRAST_LIGHT, "Predicted age", "external cohorts", head_y = 45.5, body_y = 40.5),
+  node(4, 2, 122, 14, RED_LIGHT, "Pearson r with age per cohort")
 )
 cc <- ggplot() +
   shapes(design) +

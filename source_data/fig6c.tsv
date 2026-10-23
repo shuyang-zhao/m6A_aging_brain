@@ -1,7 +1,11 @@
-study	disease	contrast	n	est	se	ci_low	ci_high	p
-Ping 2020	AD	disease vs control	19	0.9494	0.3706	0.1487	1.75	0.02366
-Merrihew 2023	AD	disease vs control	31	0.6876	0.2108	0.2479	1.127	0.003904
-Blumenreich 2024	PD	disease vs control	63	0.1265	0.1387	-0.1514	0.4045	0.3655
-Langfelder 2016	HD	per 100 CAG repeats	71	1.018	0.1645	0.6891	1.346	4.625e-08
-Umoh 2018	ALS	disease vs control	27	0.6822	0.5531	-0.4621	1.826	0.2299
-AD combined	AD	disease vs control	50	0.7516	0.1832	0.3925	1.111	4.101e-05
+study	disease	contrast	unit	n	est	se	ci_low	ci_high	p
+Ping 2020	AD	disease vs control	years	19	11.89	2.848	5.74	18.04	0.001087
+Merrihew 2023	AD	disease vs control	years	31	9.125	2.295	4.337	13.91	0.0007455
+Blumenreich 2024	PD	disease vs control	years	63	3.828	1.646	0.5299	7.126	0.02373
+Langfelder 2016	HD	per 100 CAG repeats	months	71	2.446	0.4932	1.461	3.431	5.37e-06
+Umoh 2018	ALS	disease vs control	years	27	2.55	1.907	-1.394	6.495	0.1942
+AD combined	AD	disease vs control	years	50	10.21	1.787	6.712	13.72	1.092e-08
+Ping 2020	AD	per Braak stage	years	19	2.435	0.6013	1.136	3.735	0.001376
+Ping 2020	AD	per CERAD score	years	19	3.964	0.9492	1.913	6.015	0.001087
+Merrihew 2023	AD	per Braak stage	years	31	5.726	1.505	2.587	8.864	0.001108
+Merrihew 2023	AD	per CERAD score	years	31	3.164	0.8343	1.424	4.904	0.001142

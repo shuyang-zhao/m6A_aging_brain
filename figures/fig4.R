@@ -7,7 +7,7 @@ source("figures/style.R")
 species_strip <- labeller(species = function(x) SPECIES_NAME[x])
 RIGHT_STRIP <- theme(panel.spacing.y = unit(4, "mm"), strip.text.y = element_text(angle = -90))
 
-# a: Spearman rho of the individual m6A index with age in every cohort (point; filled where the Fisher-z 95%
+# a: Pearson r of the individual m6A index with age in every cohort (point; filled where the Fisher-z 95%
 # interval excludes 0) and the random-effects estimate over the cohorts of the species (diamond; I2)
 a <- read_panel("fig4a")
 a[, `:=`(species = factor(species, names(SPECIES_COL)), pooled = kind == "pooled")]
@@ -16,8 +16,8 @@ a[, label := fifelse(pooled, "Pooled", sprintf("%s, n = %d", cohort, n))]
 a[, label := factor(label, rev(c(unique(label[!pooled]), "Pooled")))]
 a[, `:=`(sig = pooled | ci_low > 0 | ci_high < 0)]
 a[, `:=`(fill = fifelse(sig, SPECIES_COL[as.character(species)], "white"), edge = fifelse(sig, EDGE, GREY))]
-pooled_text <- a[pooled == TRUE, .(species, label, x = 0.15, text = MINUS(sprintf("ρ = %.2f, I² = %.0f%%", rho, i2)))]
-a <- ggplot(a, aes(rho, label)) +
+pooled_text <- a[pooled == TRUE, .(species, label, x = 0.15, text = MINUS(sprintf("r = %.2f, I² = %.0f%%", r, i2)))]
+a <- ggplot(a, aes(r, label)) +
   ZERO_X +
   geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
   geom_point(data = ~ .x[pooled == FALSE], aes(fill = I(fill), colour = I(edge)), shape = 21, size = 3.6, stroke = 0.5) +
@@ -26,7 +26,7 @@ a <- ggplot(a, aes(rho, label)) +
              border.colour = NA, label.padding = unit(0.6, "mm"), inherit.aes = FALSE) +
   facet_grid(species ~ ., scales = "free_y", space = "free_y", labeller = species_strip) +
   scale_x_continuous(labels = MINUS_LABELS, breaks = seq(-1, 1, 0.5), limits = c(-1, 1.25)) +
-  labs(x = "Spearman ρ of the m6A index with age", y = NULL) +
+  labs(x = "Pearson r of the m6A index with age", y = NULL) +
   theme_rows() +
   BOXED +
   RIGHT_STRIP

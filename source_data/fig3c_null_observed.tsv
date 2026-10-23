@@ -1,3 +1,3 @@
 panel	n_draws	effect	null_pct_low	null_pct_high	p	p_permutation
-Human protein	1000	-0.2172	-0.1953	0.1562	0.002116	0.01998
-Mouse discovery	1000	-1.615	-0.5554	0.5618	6.139e-10	0.000999
+Human protein	1000	-0.1174	-0.1052	0.08383	0.002162	0.01798
+Mouse discovery	1000	-1.773	-0.6119	0.6188	4.331e-10	0.000999

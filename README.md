@@ -1,12 +1,12 @@
-# Transcript foundation models reveal m6A-linked protein decline and a zero-shot clock of brain proteome aging
+# Transcript foundation models reveal m6A-linked protein decline and guide a proteomic clock of the aging brain
 
 Analysis code of the article of the same title (Genome Biology, in preparation). The study combines 39 public brain
 datasets (101 analysis units of mouse and human proteomes and transcriptomes: mouse discovery cohorts, human validation
 cohorts and eleven external mouse proteomes) with transcriptome-wide m6A maps. In m6Brain, an m6A-aware model of brain
 proteome aging, a tabular foundation model (TabPFN) predicts the age effect of every gene from the features of its
-transcript; the m6A sites of a transcript mark the decline of its protein with age, and the predictions weight the
-proteins of a sample into a zero-shot clock that is applied to neurodegeneration. The m6A readers and their marked
-targets are tested alongside. All inputs are public; `data_sources.tsv` lists every dataset with its citation, DOI,
+transcript; the m6A sites of a transcript mark the decline of its protein with age, and the predictions guide an
+elastic net of age on brain proteomes, the m6Brain clock, which reads neurodegeneration as years of aging. The m6A
+readers and their marked targets are tested alongside. All inputs are public; `data_sources.tsv` lists every dataset with its citation, DOI,
 accession and location, and `ref/datasets.tsv` (Table S1) every dataset considered, with its set or the reason it was
 not used.
 
@@ -26,22 +26,24 @@ not used.
     coupling network, its sign check against knockouts, the compendium of reader binding and perturbation data, the
     reader tests and the reader CLIP targets
   - `50`: models of gene-level ageing from transcript features (TabPFN, with LightGBM and an elastic net)
-  - `52`: the zero-shot proteome clock of m6Brain: leave-one-cohort-out weights, scores of the held-out and external
+  - `52`: the label-free proteome score of m6Brain: leave-one-cohort-out weights, scores of the held-out and external
     cohorts and the control weights
-  - `53`: the clock in Alzheimer's, Parkinson's, Huntington's and amyotrophic lateral sclerosis cohorts
+  - `53`: the m6Brain clock in Alzheimer's, Parkinson's, Huntington's and amyotrophic lateral sclerosis cohorts
   - `54`: the individual m6A index and its titration against the reader levels
+  - `55`: the m6Brain clock (an elastic net of age guided by the m6Brain weights of script 52): leave-one-cohort-out
+    and all-cohort weights, the benchmark against 27 published clocks and the within-cohort errors; run after 52
   - `60`: source data of every figure panel and Tables S1-S7 (`source_data/`)
   - `61`: Additional files 2-5 as Excel workbooks (`output/61_supplementary_data/`): the Tables S1-S7, the per-gene age
     effects, the clock weights and gene-level model predictions, and the clock scores of every sample with the
     individual m6A index
-  - `62`: the query website of the per-gene age effects and the browser clock scorer (`output/62_website/`)
+  - `62`: the query website of the per-gene age effects and the browser m6Brain clock (`output/62_website/`)
   - `extra/`: steps run once on other hardware: CLIP peaks with nf-core/clipseq on a SLURM cluster, transcript
     embeddings and the TabPFN steps of scripts 50 and 52 on a GPU; `select_clip_datasets.py` chose the CLIP libraries
     from the library catalogue of a separate project (clipflow), which is not part of this repository
   - `utils.py`, `model.py`, `network.py`, `single_nucleus.py` and the `.R` files: functions shared by the scripts
 - `figures/`: one R script per figure (`fig1.R`-`fig6.R`; Additional file 1: `sfig1.R`-`sfig10.R`) and their common
   style (`style.R`); the figures read only `source_data/`
-- `m6brain/`: the m6Brain Python package (weights, command line, tests and a worked example)
+- `m6brain/`: the m6Brain clock Python package (weights, command line, tests and a worked example)
 - `website/`: the pages of the query website (static HTML, CSS and JavaScript; script 62 adds the data)
 - `source_data/`: the plotted values of every panel and Tables S1-S7, as written by script 60
 - `ref/datasets.tsv`: every dataset considered (Table S1); `ref/gene_sets/rna_mod_regulators.tsv`: the curated
@@ -54,9 +56,14 @@ and rerunning from script 08 includes the dataset again.
 
 A new proteome cohort, such as an in-house aging cohort, enters as an external cohort: a block in
 `01_prepare_proteomes.py`, its units in `08_define_units.py` and their names in `utils.EXTERNAL`; then scripts 10, 12,
-21 and 52 score it with the clock of the training cohorts and test it for the m6A load, and nothing else uses it.
+21, 52 and 55 score it with the clock of the training cohorts and test it for the m6A load, and nothing else uses it.
 
 ## m6Brain
+
+The m6Brain clock predicts the age of brain proteome samples (months in mouse, years in human) with an elastic net of
+age on the standardized abundances of 279 mouse and 421 human proteins, guided by the m6Brain weights of script 52.
+Pooled over the held-out cohorts the Pearson correlation of predicted and chronological age is 0.97 in mouse and 0.78 in
+human, and 0.94 in eleven external mouse brain proteomes. A label-free mode (`score`) uses the m6Brain weights alone.
 
 ```bash
 pip install "git+https://github.com/shuyang-zhao/m6A_aging_brain#subdirectory=m6brain"
@@ -65,11 +72,15 @@ pip install "git+https://github.com/shuyang-zhao/m6A_aging_brain#subdirectory=m6
 ```python
 import m6brain as mb
 
-scores = mb.score("proteome.csv", species="mouse")
+ages = mb.predict_age("proteome.csv", species="mouse")  # sample, predicted_age, n_genes_matched
 ```
 
-The weights, input format and a worked example are in `m6brain/README.md`; `m6brain/build_weights.py` rebuilds the
-weight tables from the output of script 52.
+```bash
+m6brain age proteome.csv --species mouse --out ages.csv
+```
+
+The weights, input format, the age acceleration fitted in control samples and a worked example are in
+`m6brain/README.md`; `m6brain/build_weights.py` rebuilds the weight tables from the output of scripts 52 and 55.
 
 ## System requirements
 
@@ -121,6 +132,7 @@ env/bin/python pipeline/50_transcript_ageing_model.py
 env/bin/python pipeline/52_proteome_clock.py inputs
 WEIGHTS=/path/to/tabpfn_3_5 sbatch pipeline/extra/proteome_clock.sbatch    # TabPFN, 16 GPU tasks of a few minutes
 env/bin/python pipeline/52_proteome_clock.py
+OMP_NUM_THREADS=1 PYTHONWARNINGS=ignore env/bin/python pipeline/55_m6brain_clock.py    # hours on the first run
 env/bin/python pipeline/53_disease_clock.py
 env/bin/python pipeline/54_reader_titration.py
 env/bin/python pipeline/60_source_data.py
@@ -148,10 +160,10 @@ genes, about 60 MB). Searching a gene shows its age effect in every unit, groupe
 mRNA-adjusted protein and mRNA), with its m6A sites and m6A reader binding; the landscape view combines every gene
 over the cohorts of each context with the rule of the regulator screen (script 30) and ranks the genes
 (`data/landscape/landscape.tsv.gz` holds every column); the cohort view is the interactive form of Fig. 1b and
-Table S1, and every dataset, m6A map and binding source carries its reference. The Clock page scores a proteome table
-with the m6Brain weights in the browser (nothing is uploaded; `website/clock.js`). Preview it with
-`env/bin/python -m http.server -d output/62_website`. GitHub Pages serves the built site from the `gh-pages` branch of
-this repository.
+Table S1, and every dataset, m6A map and binding source carries its reference. The Clock page predicts the age of the
+samples of a proteome table with the m6Brain clock in the browser (nothing is uploaded; `website/clock.js`). Preview it
+with `env/bin/python -m http.server -d output/62_website`. GitHub Pages serves the built site from the `gh-pages`
+branch of this repository.
 
 ## Licence
 

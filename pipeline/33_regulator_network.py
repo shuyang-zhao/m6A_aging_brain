@@ -57,7 +57,6 @@ from network import (
 OUT = utils.OUT / "33_regulator_network"
 HERE = Path(__file__).resolve().parent
 GSL_LIBRARIES = utils.ROOT / "env" / "lib"  # libgsl and libopenblas that mashr was built against here
-NBOOT = 500
 WORKERS = 24
 # families that are not controls; the m6A regulators of this network are controls of no one
 EXCLUDED = {"YTH reader": r"YTHD[CF]\d", "IGF2BP": r"IGF2BP\d", "FMRP family": r"FMR1|FXR[12]",

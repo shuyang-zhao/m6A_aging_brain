@@ -1,0 +1,29 @@
+set	cohort	kind	n	unit	est	ci_low	ci_high	p	i2	k	n_negative
+mouse	Keele 2025	cohort	18	months	-0.4102	-1.44	0.6198	0.4465			
+mouse	Lu 2025	cohort	27	months	-0.4577	-0.8238	-0.09155	0.02163			
+mouse	Marino 2025	cohort	10	months	0.2304	-0.5574	1.018	0.5823			
+mouse	Takasugi 2024	cohort	16	months	-0.07248	-0.8571	0.7122	0.8589			
+mouse	Tsumagari 2023	cohort	18	months	-1.127	-1.675	-0.5791	0.0009664			
+mouse	Wang 2025	cohort	40	months	-0.3634	-1.03	0.3027	0.2916			
+human	Blumenreich 2024	cohort	21	years	0.1362	-2.421	2.693	0.918			
+human	Eggers 2025	cohort	34	years	-1.165	-3	0.6708	0.2226			
+human	Koopmans 2026	cohort	46	years	0.9386	-0.3927	2.27	0.174			
+human	Lee 2023	cohort	74	years	1.397	0.1284	2.665	0.03423			
+human	Luo 2024	cohort	193	years	-4.261	-5.166	-3.356	5.294e-17			
+human	Merrihew 2023	cohort	11	years	1.64	-0.9786	4.258	0.2508			
+human	Ping 2020	cohort	10	years	-3.637	-7.409	0.1343	0.0954			
+human	Teng 2023	cohort	16	years	-0.2762	-1.604	1.052	0.6896			
+external	Chen 2025	cohort	188	months	-0.1428	-0.6127	0.3272	0.5523			
+external	Vignane 2026	cohort	12	months	1.217	0.5766	1.856	0.003936			
+external	Gebru 2024	cohort	23	months	-0.4823	-1.03	0.06516	0.0989			
+external	Huang 2024	cohort	10	months	0.1333	-0.5202	0.7869	0.6997			
+external	Jha 2026	cohort	9	months	-1.099	-2.672	0.4732	0.2129			
+external	Keele 2023	cohort	20	months	0.3035	-0.3205	0.9274	0.3531			
+external	Marchionini 2025	cohort	40	months	-1.934	-2.492	-1.377	4.531e-08			
+external	Mohallem 2024	cohort	13	months	-0.1753	-0.7127	0.3622	0.5357			
+external	Scifo 2025	cohort	45	months	0.4525	-0.191	1.096	0.1752			
+external	Yarbro 2025	cohort	39	months	-0.9013	-1.927	0.1243	0.09332			
+external	Yu 2020	cohort	10	months	-0.4293	-1.152	0.2929	0.2775			
+external	Pooled	pooled	409	months	-0.2383	-0.7507	0.274	0.3619	85.29	11	7
+human	Pooled	pooled	405	years	-0.603	-2.501	1.296	0.5336	91.14	8	4
+mouse	Pooled	pooled	129	months	-0.4261	-0.7923	-0.05995	0.02256	48.25	6	5

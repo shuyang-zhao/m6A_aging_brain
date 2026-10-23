@@ -1,0 +1,37 @@
+cohort	species	modality	weights	label	n	r	ci_low	ci_high	p	p_difference
+Takasugi 2024	mouse	protein	m6brain_clock	m6Brain clock	16	0.9843	0.9543	0.9947	5.928e-12	
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_Astrocyte_qNSC	Buckley 2023 SVZ, astrocytes and qNSCs	16	0.9802	0.9423	0.9933	3.056e-11	0.6724
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_Endothelial	Buckley 2023 SVZ, endothelial cells	16	0.7848	0.4731	0.9219	0.0003178	7.653e-06
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_Microglia	Buckley 2023 SVZ, microglia	16	0.5067	0.01462	0.8012	0.0452	9.765e-08
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_Neuroblast	Buckley 2023 SVZ, neuroblasts	16	0.09063	-0.4241	0.5611	0.7385	3.273e-09
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_Oligodendro	Buckley 2023 SVZ, oligodendrocytes	16	0.9841	0.9536	0.9946	6.6e-12	0.978
+Takasugi 2024	mouse	RNA	Buckley_SVZ_chrono_aNSC_NPC	Buckley 2023 SVZ, aNSCs and NPCs	16	0.09371	-0.4216	0.5633	0.73	3.201e-09
+Takasugi 2024	mouse	RNA	Pasta_human	Pasta, human	16	0.6297	0.1948	0.8577	0.008942	3.428e-07
+Takasugi 2024	mouse	RNA	RNAAgeCalc_alltissues_all	RNAAgeCalc, all tissues	16	0.347	-0.1796	0.719	0.188	2.918e-08
+Takasugi 2024	mouse	RNA	RNAAgeCalc_brain_DESeq2	RNAAgeCalc, brain (DESeq2)	16	0.004852	-0.492	0.4994	0.9858	9.206e-10
+Takasugi 2024	mouse	RNA	RNAAgeCalc_brain_Pearson	RNAAgeCalc, brain (Pearson)	16	0.3918	-0.1289	0.7432	0.1334	2.368e-08
+Takasugi 2024	mouse	RNA	RNAAgeCalc_brain_all	RNAAgeCalc, brain	16	0.2124	-0.3167	0.6407	0.4297	5.096e-09
+Takasugi 2024	mouse	RNA	tAge_chrono_mouse_multitissue	tAge chronological, mouse tissues	16	0.9736	0.9237	0.991	2.234e-10	0.3509
+Takasugi 2024	mouse	RNA	tAge_chrono_multispecies	tAge chronological, multispecies	16	0.9597	0.885	0.9862	4.169e-09	0.09027
+Takasugi 2024	mouse	RNA	tAge_chrono_rodent_brain	tAge chronological, rodent brain	16	0.9307	0.8074	0.9761	1.719e-07	0.008684
+Takasugi 2024	mouse	RNA	tAge_mortality_multispecies	tAge mortality, multispecies	16	0.9359	0.8211	0.9779	1.008e-07	0.01254
+Takasugi 2024	mouse	RNA	tAge_normage_mouse_multitissue	tAge normalized age, mouse tissues	16	0.9708	0.9158	0.9901	4.498e-10	0.2654
+Takasugi 2024	mouse	RNA	tAge_normage_multispecies	tAge normalized age, multispecies	16	0.8987	0.7267	0.9647	2.24e-06	0.0008063
+Luo 2024	human	protein	m6brain_clock	m6Brain clock	193	0.6767	0.592	0.7466	3.421e-27	
+Luo 2024	human	RNA	Buckley_SVZ_chrono_Astrocyte_qNSC	Buckley 2023 SVZ, astrocytes and qNSCs	193	0.321	0.1883	0.4422	5.316e-06	4.811e-07
+Luo 2024	human	RNA	Buckley_SVZ_chrono_Endothelial	Buckley 2023 SVZ, endothelial cells	193	0.1509	0.00985	0.286	0.03621	3.968e-11
+Luo 2024	human	RNA	Buckley_SVZ_chrono_Microglia	Buckley 2023 SVZ, microglia	193	0.1172	-0.02444	0.2542	0.1045	3.061e-12
+Luo 2024	human	RNA	Buckley_SVZ_chrono_Neuroblast	Buckley 2023 SVZ, neuroblasts	193	0.1276	-0.01391	0.2641	0.07704	9.566e-13
+Luo 2024	human	RNA	Buckley_SVZ_chrono_Oligodendro	Buckley 2023 SVZ, oligodendrocytes	193	0.02723	-0.1145	0.1678	0.707	1.018e-12
+Luo 2024	human	RNA	Buckley_SVZ_chrono_aNSC_NPC	Buckley 2023 SVZ, aNSCs and NPCs	193	-0.1351	-0.2712	0.006232	0.06097	5.159e-19
+Luo 2024	human	RNA	Pasta_human	Pasta, human	193	0.5377	0.4291	0.631	7.406e-16	0.009142
+Luo 2024	human	RNA	RNAAgeCalc_alltissues_all	RNAAgeCalc, all tissues	193	0.5387	0.4302	0.6319	6.397e-16	0.009252
+Luo 2024	human	RNA	RNAAgeCalc_brain_DESeq2	RNAAgeCalc, brain (DESeq2)	193	0.3451	0.2143	0.4637	8.911e-07	2.401e-07
+Luo 2024	human	RNA	RNAAgeCalc_brain_Pearson	RNAAgeCalc, brain (Pearson)	193	0.493	0.378	0.5929	3.272e-13	0.001978
+Luo 2024	human	RNA	RNAAgeCalc_brain_all	RNAAgeCalc, brain	193	0.3426	0.2116	0.4615	1.073e-06	9.353e-07
+Luo 2024	human	RNA	tAge_chrono_mouse_multitissue	tAge chronological, mouse tissues	193	0.4174	0.2934	0.5275	1.555e-09	1.225e-05
+Luo 2024	human	RNA	tAge_chrono_multispecies	tAge chronological, multispecies	193	0.712	0.6346	0.7753	3.74e-31	0.3895
+Luo 2024	human	RNA	tAge_chrono_rodent_brain	tAge chronological, rodent brain	193	0.3625	0.2332	0.4792	2.209e-07	4.119e-07
+Luo 2024	human	RNA	tAge_mortality_multispecies	tAge mortality, multispecies	193	0.7276	0.6535	0.7879	4.341e-33	0.2118
+Luo 2024	human	RNA	tAge_normage_mouse_multitissue	tAge normalized age, mouse tissues	193	0.3524	0.2222	0.4702	5.006e-07	2.413e-07
+Luo 2024	human	RNA	tAge_normage_multispecies	tAge normalized age, multispecies	193	0.7089	0.6309	0.7728	8.808e-31	0.4482

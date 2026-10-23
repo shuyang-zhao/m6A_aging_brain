@@ -2,12 +2,14 @@
 # reads data/raw (00_download.sh) and the pseudobulk of 03; writes output/prepared/ref and output/prepared/resources/*
 import gzip
 import io
+import pickle
 import re
 import zipfile
 from itertools import pairwise
 
 import numpy as np
 import pandas as pd
+from joblib.numpy_pickle import NumpyUnpickler
 
 import utils
 
@@ -240,7 +242,7 @@ entrez = hgnc[(hgnc.entrez_id != "") & (hgnc.ensembl_gene_id != "")].drop_duplic
 entrez = entrez.set_index("entrez_id").ensembl_gene_id
 
 
-def clock(label, source, fluid, assays, weights, entrez_ids=None):
+def clock(label, source, tissue, assays, weights, entrez_ids=None):
     rows = pd.DataFrame({"assay": np.asarray(assays, dtype=object), "weight": np.asarray(weights, dtype=float)})
     rows["ensembl"] = np.nan if entrez_ids is None else pd.Series(np.asarray(entrez_ids, dtype=object)).map(entrez)
     rows = rows[rows.weight.fillna(0) != 0].fillna({"assay": ""})
@@ -250,7 +252,9 @@ def clock(label, source, fluid, assays, weights, entrez_ids=None):
     rows["symbol"] = rows.symbol.where(rows.symbol.isin(approved), by_entrez)
     rows = rows[rows.symbol.isin(approved)]
     genes = rows.groupby(rows.symbol.str.upper()).weight.agg(weight="sum", n_assays="size").reset_index()
-    return genes.assign(clock=label, source=source, fluid=fluid)[["clock", "source", "fluid", *genes]]
+    return genes.assign(clock=label, source=source, species="human", tissue=tissue)[
+        ["clock", "source", "species", "tissue", *genes]
+    ]
 
 
 clocks = []
@@ -285,4 +289,120 @@ net = pd.read_excel(f"{st}2.xlsx", sheet_name="Table S1A").query("Model == 'Brai
 net = net.drop(columns=["Model", "Fold", "Intercept"]).iloc[0]
 sd = pd.read_excel(f"{st}4.xlsx", sheet_name="Table S3", index_col="Type").loc["Full models"]
 clocks.append(clock("Goeminne 2025 brain, plasma", "goeminne2025", "plasma", net.index, net * sd.reindex(net.index)))
-utils.write(pd.concat(clocks, ignore_index=True), utils.PREPARED / "ref/published_clocks.tsv")
+
+# Further published weights, symbols as published and one row per gene: transcriptomic clocks (tAge, RNAAgeCalc, Pasta,
+# the SVZ clocks of Buckley), the signed ageing genes of Palmer, the SenMayo senescence genes (+1) and the measured
+# protein half-lives of mouse cortex (log2 days, not an ageing clock). The tAge pickles and the Pasta torch archive
+# are downloads, unpickled with a list of the classes they need; torch itself is not required
+CLOCKS = RAW / "clocks"
+SKLEARN = {
+    ("sklearn.pipeline", "Pipeline"),
+    ("sklearn.impute._base", "SimpleImputer"),
+    ("sklearn.preprocessing._data", "StandardScaler"),
+    ("sklearn.feature_selection._univariate_selection", "SelectKBest"),
+    ("sklearn.feature_selection._univariate_selection", "r_regression"),
+    ("sklearn.feature_selection._univariate_selection", "f_regression"),
+    ("sklearn.linear_model._coordinate_descent", "ElasticNet"),
+    ("joblib.numpy_pickle", "NumpyArrayWrapper"),
+    ("numpy", "dtype"),
+    ("numpy", "ndarray"),
+    ("numpy.core.multiarray", "_reconstruct"),
+    ("numpy.core.multiarray", "scalar"),
+    ("_codecs", "encode"),
+}
+TORCH = {
+    "collections.OrderedDict": dict,
+    "__builtin__.set": set,
+    "torch.DoubleStorage": np.float64,
+    "torch._utils._rebuild_parameter": lambda data, *_: data,
+    "torch._utils._rebuild_tensor_v2": lambda store, offset, size, *_: store[offset:][: np.prod(size)].reshape(size),
+}
+
+
+class Sklearn(NumpyUnpickler):
+    def find_class(self, module, name):
+        if (module, name) not in SKLEARN:
+            raise pickle.UnpicklingError(f"{module}.{name}")
+        return super().find_class(module, name)
+
+
+class Node:
+    pass
+
+
+class Archive(pickle.Unpickler):
+    def __init__(self, archive, root):
+        super().__init__(archive.open(f"{root}/data.pkl"))
+        self.archive, self.root = archive, root
+
+    def find_class(self, module, name):
+        return Node if module.startswith(("pyaging", "torch.nn")) else TORCH[f"{module}.{name}"]
+
+    def persistent_load(self, pid):
+        return np.frombuffer(self.archive.read(f"{self.root}/data/{pid[2]}"), dtype=pid[1])
+
+
+def published(label, source, species, tissue, symbols, weights):
+    rows = pd.DataFrame({"symbol": np.asarray(symbols, dtype=object), "weight": np.asarray(weights, dtype=float)})
+    rows = rows[rows.symbol.notna() & (rows.weight != 0)]
+    rows = rows.assign(clock=label, source=source, species=species, tissue=tissue, n_assays=1)
+    return rows[["clock", "source", "species", "tissue", "symbol", "weight", "n_assays"]]
+
+
+# tAge: elastic nets on cohort-centred expression of mouse Entrez genes, other species through the ortholog table
+gene_table = {s: pd.read_csv(CLOCKS / f"tyshkovskiy2026/github_Gene_table_{s}.csv") for s in ("mouse", "human")}
+mouse_symbol = gene_table["mouse"].drop_duplicates("Entrez").set_index("Entrez")["Gene.Symbol"]
+multi = "multispecies (mouse symbols)"
+extra = []
+for label, file, species, tissue in [
+    ("tAge_chrono_rodent_brain", "Chronoage_Rodents_Brain", "mouse", "brain"),
+    ("tAge_chrono_mouse_multitissue", "Chronoage_Mouse_Multitissue", "mouse", "multi-tissue"),
+    ("tAge_chrono_multispecies", "Chronoage_Multispecies_Multitissue", multi, "multi-tissue"),
+    ("tAge_normage_multispecies", "NormalizedAge_Multispecies_Multitissue", multi, "multi-tissue"),
+    ("tAge_normage_mouse_multitissue", "NormalizedAge_Mouse_Multitissue", "mouse", "multi-tissue"),
+    ("tAge_mortality_multispecies", "Mortality_Multispecies_Multitissue", multi, "multi-tissue"),
+]:
+    with open(CLOCKS / f"tyshkovskiy2026/EN_{file}_scaleddiff.pkl", "rb") as f:
+        impute, _, select, net = (step for _, step in Sklearn(f.name, f, ensure_native_byte_order=True).load().steps)
+    symbols = pd.Series(impute.feature_names_in_[select.get_support()].astype(int)).map(mouse_symbol)
+    extra.append(published(label, "tyshkovskiy2026", species, tissue, symbols, net.coef_))
+# RNAAgeCalc: GTEx elastic nets on log2(FPKM + 1)
+for label, file, tissue in [
+    ("RNAAgeCalc_brain_all", "brain_all", "brain"),
+    ("RNAAgeCalc_brain_DESeq2", "brain_DESeq2", "brain"),
+    ("RNAAgeCalc_brain_Pearson", "brain_Pearson", "brain"),
+    ("RNAAgeCalc_alltissues_all", "all_tissues_all", "multi-tissue"),
+]:
+    net = pd.read_csv(CLOCKS / f"ren2020/racpy_all_coef_{file}.csv").query("geneid != 'Intercept'")
+    extra.append(published(label, "ren2020", "human", tissue, net.geneid, net.coef))
+# Pasta: ridge logistic coefficients on within-sample ranks, times the (negative) pyaging scale: older is positive
+archive = zipfile.ZipFile(CLOCKS / "salignon2026/pyaging_pasta.pt")
+pasta = Archive(archive, archive.namelist()[0].split("/")[0]).load()
+weight = pasta._modules["base_model"]._modules["linear"]._parameters["weight"][0] * pasta.postprocess_dependencies[0]
+human_symbol = gene_table["human"].drop_duplicates("Ensembl").set_index("Ensembl")["Gene.Symbol"]
+extra.append(
+    published(
+        "Pasta_human", "salignon2026", "human", "multi-tissue", pd.Series(pasta.features).map(human_symbol), weight
+    )
+)
+ensemble = pd.read_excel(CLOCKS / "buckley2023/43587_2022_335_MOESM5_ESM.xlsx", sheet_name="Chronological_Ensemble")
+for cell_type, coef in ensemble.set_index("Gene").items():
+    tissue = f"SVZ {cell_type} (single-cell clock)"
+    extra.append(published(f"Buckley_SVZ_chrono_{cell_type}", "buckley2023", "mouse", tissue, coef.index, coef))
+palmer = zipfile.ZipFile(CLOCKS / "palmer2021/signatures_supplement.zip").read("ageing_signatures.xlsx")
+up, down = pd.read_excel(io.BytesIO(palmer), sheet_name=["TableS3-Over.All", "TableS7-Under.All"], header=1).values()
+genes, signs = pd.concat([up.Gene, down.Gene]), [1] * len(up) + [-1] * len(down)
+extra.append(
+    published("Palmer2021_signature_all", "palmer2021", "human/mouse/rat meta-analysis", "multi-tissue", genes, signs)
+)
+senmayo = (CLOCKS / "saul2022/SAUL_SEN_MAYO.gmt").read_text().split("\n")[0].split("\t")[2:]
+extra.append(
+    published("SenMayo_Saul2022", "saul2022", "human", "multi-tissue (senescence)", senmayo, np.ones(len(senmayo)))
+)
+lifetime = pd.read_excel(CLOCKS / "fornasiero2018/41467_2018_6519_MOESM3_ESM.xlsx", sheet_name="Data")
+lifetime = lifetime[lifetime["Protein half-life in brain cortex homogenate control (days)"] > 0]
+symbols, days = lifetime["Gene name(s)"].str.split().str[0], lifetime.iloc[:, 4]
+extra.append(
+    published("Fornasiero2018_log2_halflife_cortex", "fornasiero2018", "mouse", "cortex", symbols, np.log2(days))
+)
+utils.write(pd.concat([*clocks, *extra], ignore_index=True), utils.PREPARED / "ref/published_clocks.tsv")

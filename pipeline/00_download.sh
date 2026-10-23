@@ -319,7 +319,7 @@ panorama="https://panoramaweb.org/_webdav/Panorama%20Public/2024/MacCoss%20-%20A
 get chen2025_pxd045403/panorama/level3b/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv "$panorama/Level%203B/MouAD_PFC_AXBDX_Protein-BatchAdj-v40125.csv"
 get chen2025_pxd045403/panorama/metadata/MouAD-PFC-meta-SAGE-2.0.xlsx "$panorama/Metadata/MouAD-PFC-meta-SAGE-2.0.xlsx"
 
-# Published proteomic ageing clocks: linear weights, benchmarks of the zero-shot clock (read by 06) ----
+# Published proteomic ageing clocks: linear weights, benchmarks of the m6Brain clock (read by 06) ----
 # Lehallier 2019: Supplementary Tables (ST1 SomaScan annotation, ST7 LASSO coefficients of the plasma clock)
 get lehallier2019_clock/41591_2019_673_MOESM3_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41591-019-0673-2/MediaObjects/41591_2019_673_MOESM3_ESM.xlsx"
 # Oh 2023: Supplementary Tables (ST3 SomaScan annotation, ST7 coefficients of the bagged LASSO organ models)
@@ -334,3 +334,35 @@ get oh2025_clock/41591_2025_3798_MOESM3_ESM.xlsx "https://static-content.springe
 for m in mmc2 mmc4; do
   get goeminne2025_clock/1-s2.0-S1550413124004017-$m.xlsx "https://ars.els-cdn.com/content/image/1-s2.0-S1550413124004017-$m.xlsx"
 done
+# Further published weights (read by 06): transcriptomic clocks, signed ageing gene lists, SenMayo and mouse cortex protein half-lives (data/raw/clocks/<first author, year>)
+# Tyshkovskiy 2026 tAge: elastic-net pickles (Zenodo 10.5281/zenodo.18763485) and the gene tables of the package (GitHub, pinned commit)
+for f in Chronoage_Rodents_Brain Chronoage_Mouse_Multitissue Chronoage_Multispecies_Multitissue NormalizedAge_Multispecies_Multitissue NormalizedAge_Mouse_Multitissue Mortality_Multispecies_Multitissue; do
+  get clocks/tyshkovskiy2026/EN_${f}_scaleddiff.pkl "https://zenodo.org/records/18763485/files/EN_${f}_scaleddiff.pkl?download=1"
+done
+t=https://raw.githubusercontent.com/Gladyshev-Lab/tAge/d048ba6016a7e5a114f45195e0b11071e2b8c424
+for f in inst/extdata/metadata/Gene_table_mouse.csv inst/extdata/metadata/Gene_table_human.csv inst/extdata/metadata/Table_of_orthologs.csv inst/extdata/clocks_metadata.csv inst/python/tage_predict.py LICENSE; do
+  get clocks/tyshkovskiy2026/github_${f##*/} "$t/$f"
+done
+# Ren 2020 RNAAgeCalc: GTEx coefficients of the Python port (GitHub, pinned commit)
+r=https://raw.githubusercontent.com/reese3928/racpy/bde146e714aea12cececa9a9ad5a46e2a9a06318
+for s in brain_DESeq2 brain_Dev brain_GTExAge brain_GenAge brain_Pearson brain_Peters brain_all brain_deMagalhaes all_tissues_all; do
+  get clocks/ren2020/racpy_all_coef_$s.csv "$r/racpy/internal_data/all/coef_$s.csv"
+done
+get clocks/ren2020/racpy_LICENSE "$r/LICENSE"
+get clocks/ren2020/racpy_core.py "$r/racpy/core.py"
+# Salignon 2026 Pasta: pyaging conversion (Hugging Face, pinned commit) and the licence of the original repository
+p=https://huggingface.co/pyaging/pasta/resolve/d4aba6bbc39be2554c7e9f3cbdba95ff7b21f058
+get clocks/salignon2026/pyaging_pasta.pt "$p/pasta.pt"
+get clocks/salignon2026/pyaging_pasta_config.json "$p/config.json"
+get clocks/salignon2026/pyaging_pasta_README.md "$p/README.md"
+get clocks/salignon2026/github_LICENSE "https://raw.githubusercontent.com/jsalignon/pasta/58bcc7a69ee97f2dc9e3623ac86538c251ddd498/LICENSE"
+# Buckley 2023: Supplementary Tables 3 and 4 (clock performance and gene coefficients)
+for n in 4 5; do
+  get clocks/buckley2023/43587_2022_335_MOESM${n}_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs43587-022-00335-4/MediaObjects/43587_2022_335_MOESM${n}_ESM.xlsx"
+done
+# Fornasiero 2018: Supplementary Data 1 (protein half-lives)
+get clocks/fornasiero2018/41467_2018_6519_MOESM3_ESM.xlsx "https://static-content.springer.com/esm/art%3A10.1038%2Fs41467-018-06519-0/MediaObjects/41467_2018_6519_MOESM3_ESM.xlsx"
+# Palmer 2021: ageing signatures of all tissues; Saul 2022: SenMayo gene set (MSigDB)
+get clocks/palmer2021/signatures_supplement.zip "https://genomics.senescence.info/gene_expression/signatures_supplement.zip"
+get clocks/saul2022/SAUL_SEN_MAYO.gmt "https://www.gsea-msigdb.org/gsea/msigdb/human/download_geneset.jsp?geneSetName=SAUL_SEN_MAYO&fileType=gmt"
+# README.txt and SHA256SUMS of each data/raw/clocks folder: deposited with the data release

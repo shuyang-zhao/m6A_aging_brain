@@ -1,8 +1,8 @@
-// Proteome clock of the Clock page, computed in the browser (nothing is uploaded). Weights: data/clock_<species>.json
-// (columns gene_id, symbol, weight; pipeline/62_website.py, from script 52). Score of a sample: each protein is
-// standardised across the uploaded samples (mean 0, SD 1 over the quantified values, missing = 0), the score is the
-// weighted sum over the genes with a weight, then standardised across the samples. The same calculation as
-// donor_scores of pipeline/52_proteome_clock.py; also loaded by dev/verification/clock_check.js under node.
+// m6Brain clock of the Clock page, computed in the browser (nothing is uploaded). Weights: data/clock_<species>.json
+// (columns gene_id, symbol, weight and the intercept; pipeline/62_website.py, from script 55). Predicted age of a
+// sample: each protein is standardised across the uploaded samples (mean 0, SD 1 over the quantified values, missing
+// = 0); the age is the intercept plus the weighted sum over the clock proteins. Months in mouse, years in human.
+// The same calculation as predict_age of the m6brain package; also loaded by dev/verification/clock_check.js under node.
 
 // delimited text to rows of cells; quoted cells may hold the delimiter and doubled quotes
 function parseDelimited(text, delim) {
@@ -67,9 +67,9 @@ function matchWeights(ids, clock) {
   return { weights: w, byId, matched: seen.size, duplicates };
 }
 
-// score of every sample and the number of weighted proteins quantified in it
-function clockScores(matrix, weights) {
-  const n = matrix[0].length, raw = new Float64Array(n), used = new Int32Array(n);
+// predicted age of every sample and the number of clock proteins quantified in it
+function clockAges(matrix, weights, intercept) {
+  const n = matrix[0].length, predicted = new Float64Array(n).fill(intercept), used = new Int32Array(n);
   matrix.forEach((x, g) => {
     if (Number.isNaN(weights[g])) return;
     let k = 0, sum = 0;
@@ -80,32 +80,27 @@ function clockScores(matrix, weights) {
     for (const v of x) if (!Number.isNaN(v)) ss += (v - mean) ** 2;
     const sd = Math.sqrt(ss / (k - 1));
     if (!(sd > 0)) return;
-    for (let j = 0; j < n; j++) if (!Number.isNaN(x[j])) { raw[j] += (weights[g] * (x[j] - mean)) / sd; used[j]++; }
+    for (let j = 0; j < n; j++) if (!Number.isNaN(x[j])) { predicted[j] += (weights[g] * (x[j] - mean)) / sd; used[j]++; }
   });
-  const mean = raw.reduce((a, b) => a + b, 0) / n;
-  const sd = Math.sqrt(raw.reduce((a, b) => a + (b - mean) ** 2, 0) / (n - 1));
-  return { scores: Array.from(raw, (v) => (v - mean) / sd), used: Array.from(used) };
+  return { predicted: Array.from(predicted), used: Array.from(used) };
 }
 
-function ranks(x) {
-  const order = x.map((v, i) => [v, i]).sort((a, b) => a[0] - b[0]), r = new Array(x.length);
-  for (let i = 0; i < order.length;) {
-    let j = i;
-    while (j + 1 < order.length && order[j + 1][0] === order[i][0]) j++;
-    for (let k = i; k <= j; k++) r[order[k][1]] = (i + j) / 2 + 1; // ties share the mean rank
-    i = j + 1;
-  }
-  return r;
+// Pearson r over the samples with both values
+function pearson(x, y) {
+  const keep = x.map((_, i) => i).filter((i) => !Number.isNaN(x[i]) && !Number.isNaN(y[i])), n = keep.length;
+  const mx = keep.reduce((s, i) => s + x[i], 0) / n, my = keep.reduce((s, i) => s + y[i], 0) / n;
+  let xy = 0, xx = 0, yy = 0;
+  for (const i of keep) { xy += (x[i] - mx) * (y[i] - my); xx += (x[i] - mx) ** 2; yy += (y[i] - my) ** 2; }
+  return { r: xy / Math.sqrt(xx * yy), n };
 }
 
-// Spearman rho over the samples with both values
-function spearman(x, y) {
-  const keep = x.map((_, i) => i).filter((i) => !Number.isNaN(x[i]) && !Number.isNaN(y[i]));
-  const a = ranks(keep.map((i) => x[i])), b = ranks(keep.map((i) => y[i])), n = keep.length;
-  const ma = a.reduce((s, v) => s + v, 0) / n, mb = b.reduce((s, v) => s + v, 0) / n;
-  let ab = 0, aa = 0, bb = 0;
-  for (let i = 0; i < n; i++) { ab += (a[i] - ma) * (b[i] - mb); aa += (a[i] - ma) ** 2; bb += (b[i] - mb) ** 2; }
-  return { rho: ab / Math.sqrt(aa * bb), n };
+// age acceleration: residual of the predicted age on the age in a least-squares line over the samples with an age
+function acceleration(predicted, age) {
+  const keep = age.map((_, i) => i).filter((i) => !Number.isNaN(age[i])), n = keep.length;
+  const ma = keep.reduce((s, i) => s + age[i], 0) / n, mp = keep.reduce((s, i) => s + predicted[i], 0) / n;
+  let ap = 0, aa = 0;
+  for (const i of keep) { ap += (age[i] - ma) * (predicted[i] - mp); aa += (age[i] - ma) ** 2; }
+  return predicted.map((p, i) => p - (mp + (ap / aa) * (age[i] - ma))); // NaN where the age is missing
 }
 
-if (typeof module !== "undefined") module.exports = { parseTable, matchWeights, clockScores, spearman };
+if (typeof module !== "undefined") module.exports = { parseTable, matchWeights, clockAges, pearson, acceleration };

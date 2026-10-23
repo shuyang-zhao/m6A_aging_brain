@@ -1,26 +1,13 @@
-set	species	cohort	n	r_model
-held-out	mouse	Keele 2025	18	0.9979
-held-out	mouse	Lu 2025	27	0.9994
-held-out	mouse	Marino 2025	10	1
-held-out	mouse	Takasugi 2024	16	1
-held-out	mouse	Tsumagari 2023	18	1
-held-out	mouse	Wang 2025	40	0.9994
-held-out	human	Blumenreich 2024	21	1
-held-out	human	Eggers 2025	34	0.9997
-held-out	human	Koopmans 2026	46	0.9995
-held-out	human	Lee 2023	74	0.9997
-held-out	human	Luo 2024	193	0.9998
-held-out	human	Merrihew 2023	11	1
-held-out	human	Ping 2020	10	0.9879
-held-out	human	Teng 2023	16	0.9912
-external	mouse	Chen 2025	188	0.9995
-external	mouse	Vignane 2026	12	0.993
-external	mouse	Gebru 2024	23	0.998
-external	mouse	Huang 2024	10	0.9879
-external	mouse	Jha 2026	9	1
-external	mouse	Keele 2023	20	1
-external	mouse	Marchionini 2025	40	0.9985
-external	mouse	Mohallem 2024	13	0.9945
-external	mouse	Scifo 2025	45	0.9988
-external	mouse	Yarbro 2025	39	0.9984
-external	mouse	Yu 2020	10	1
+set	species	weights	label	r	ci_low	ci_high	p	p_random	k
+held-out	mouse	model	m6Brain label-free	0.8516	0.6076	0.9487	8.934e-06	0.000999	6
+held-out	mouse	length_only	Length only	0.6967	0.3488	0.8759	0.0006836		6
+held-out	mouse	without_m6a	Label-free without m6A features	0.8537	0.611	0.9497	8.576e-06		6
+held-out	mouse	m6a_load	Linear m6A load	0.751	0.4056	0.9087	0.0004507		6
+held-out	human	model	m6Brain label-free	0.3429	0.1347	0.5222	0.001596	0.000999	8
+held-out	human	length_only	Length only	0.2462	0.1498	0.3379	9.295e-07		8
+held-out	human	without_m6a	Label-free without m6A features	0.3415	0.1332	0.5209	0.001665		8
+held-out	human	m6a_load	Linear m6A load	0.2224	0.1115	0.3278	0.0001039		8
+external	mouse	model	m6Brain label-free	0.6308	0.5166	0.7229	1.693e-17	0.000999	11
+external	mouse	length_only	Length only	0.3713	0.2349	0.4933	3.826e-07		11
+external	mouse	without_m6a	Label-free without m6A features	0.6326	0.5203	0.7233	4.94e-18		11
+external	mouse	m6a_load	Linear m6A load	0.3204	0.1988	0.4322	6.21e-07		11

@@ -1,17 +1,17 @@
-species	cohort	kind	n	rho	ci_low	ci_high	p	i2	k	n_negative
-human	Blumenreich 2024	cohort	21	-0.502	-0.7674	-0.08969				
-human	Eggers 2025	cohort	34	-0.1448	-0.4604	0.2034				
-human	Koopmans 2026	cohort	46	-0.2811	-0.5283	0.01006				
-human	Lee 2023	cohort	74	0.09993	-0.1316	0.3211				
-human	Luo 2024	cohort	193	-0.206	-0.3374	-0.0667				
-human	Merrihew 2023	cohort	11	-0.5376	-0.8601	0.09195				
-human	Ping 2020	cohort	10	-0.6485	-0.9076	-0.03186				
-human	Teng 2023	cohort	16	0.3508	-0.1754	0.7211				
-mouse	Keele 2025	cohort	18	-0.8262	-0.9331	-0.585				
-mouse	Lu 2025	cohort	27	-0.484	-0.7298	-0.1274				
-mouse	Marino 2025	cohort	10	-0.8704	-0.969	-0.5327				
-mouse	Takasugi 2024	cohort	16	-0.7882	-0.9232	-0.4801				
-mouse	Tsumagari 2023	cohort	18	-0.682	-0.8714	-0.3156				
-mouse	Wang 2025	cohort	40	-0.3274	-0.5798	-0.01766				
-human	Pooled	pooled		-0.1924	-0.3661	-0.005692	0.04349	57.56	8	6
-mouse	Pooled	pooled		-0.6734	-0.8145	-0.457	7.378e-07	63.59	6	6
+species	cohort	kind	n	r	ci_low	ci_high	p	i2	k	n_negative
+human	Blumenreich 2024	cohort	21	-0.6234	-0.8314	-0.2623				
+human	Eggers 2025	cohort	34	-0.1888	-0.4954	0.1595				
+human	Koopmans 2026	cohort	46	-0.2959	-0.5398	-0.006096				
+human	Lee 2023	cohort	74	0.106	-0.1255	0.3266				
+human	Luo 2024	cohort	193	-0.189	-0.3216	-0.04903				
+human	Merrihew 2023	cohort	11	-0.3458	-0.7832	0.3206				
+human	Ping 2020	cohort	10	-0.5138	-0.864	0.1712				
+human	Teng 2023	cohort	16	0.3191	-0.2098	0.7035				
+mouse	Keele 2025	cohort	18	-0.7922	-0.9191	-0.5162				
+mouse	Lu 2025	cohort	27	-0.5011	-0.7402	-0.1496				
+mouse	Marino 2025	cohort	10	-0.9212	-0.9815	-0.6943				
+mouse	Takasugi 2024	cohort	16	-0.762	-0.9129	-0.428				
+mouse	Tsumagari 2023	cohort	18	-0.6867	-0.8735	-0.3235				
+mouse	Wang 2025	cohort	40	-0.2724	-0.5382	0.04279				
+human	Pooled	pooled		-0.1927	-0.3671	-0.005334	0.0439	57.87	8	6
+mouse	Pooled	pooled		-0.6773	-0.8263	-0.4396	4.534e-06	69.35	6	6

@@ -76,7 +76,7 @@ def unit_tests(unit, layer):
         signature.append(key | dict(n_marked=(data.count_sites > 0).sum()) | matched_test(data))
         data = data.assign(level=load_level.reindex(data.index))
         data = data.dropna(subset=["estimate", *utils.LOAD_COVARIATES])
-        data = data.assign(load=np.log1p(data.count_sites))
+        data = data.assign(load=np.log1p(data.count_sites)).assign(load=lambda d: d.load / d.load.std())  # per SD
         fit = model.property_effect(data, "load", utils.LOAD_COVARIATES)
         load.append(key | dict(n_marked=(data.load > 0).sum()) | fit)
     return signature, load

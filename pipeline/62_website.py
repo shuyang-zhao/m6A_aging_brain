@@ -2,15 +2,15 @@
 # (mouse genes join their one-to-one human ortholog), for GitHub Pages; every unit, m6A map and reader binding source
 # carries its reference
 # reads the units of Table S1, Table S2, data_sources.tsv, the outputs of scripts 09 and 10, the reader binding of
-# script 33 (primary sources, rebuilt with network.binding_links) and the weights of the proteome clock of script 52
+# script 33 (primary sources, rebuilt with network.binding_links) and the weights of the m6Brain clock of script 55
 # the landscape page combines every gene over the cohorts of each context with the rule of the regulator screen
 # (script 30)
 # writes output/62_website/: the site, data/meta.json, data/genes.json (search index: key, human symbol, mouse symbol,
 # mouse id of a gene joined to its human ortholog), data/genes/<key>.json and data/landscape/ (one JSON per context and
 # layer, and landscape.tsv.gz with every column) and data/clock_<species>.json (columns gene_id, symbol and weight:
-# the TabPFN-predicted age z of each gene from the model of all cohorts, to 7 significant digits, which the Clock page
-# turns into sample scores in the browser); the key of a gene is its human gene id, or its mouse id without a
-# one-to-one human ortholog
+# the non-zero weights of the m6Brain clock fitted on all cohorts, and its intercept, to 7 significant digits, which the
+# Clock page turns into predicted ages in the browser); the key of a gene is its human gene id, or its mouse id without
+# a one-to-one human ortholog
 import json
 import re
 import shutil
@@ -181,10 +181,13 @@ columns = ["context", "layer", "gene_id", "symbol", "n_cohorts", "n_same_directi
 utils.write(pd.concat(landscape).rename(columns=names)[columns], OUT / "data" / "landscape" / "landscape.tsv.gz")
 (OUT / "data" / "genes.json").write_text(json.dumps(search, separators=(",", ":")))
 
-# proteome clock: the weight of each gene is the prediction of the TabPFN model fitted on all cohorts (script 52)
+# m6Brain clock fitted on all cohorts (script 55: non-zero genes and the intercept); symbols from script 52
 for s in ("mouse", "human"):
-    runs = pd.read_parquet(utils.OUT / "52_proteome_clock" / "runs" / f"{s}_protein__all.parquet")
-    weights = [float(f"{w:.7g}") for w in runs.model]
-    clock = dict(gene_id=runs.index.tolist(), symbol=runs.symbol.tolist(), weight=weights)
+    file = utils.OUT / "55_m6brain_clock" / "weights" / f"{s}_protein__all__m6brain_clock.tsv"
+    clock = utils.read(file, index_col="gene_id").weight
+    intercept = clock.pop("(intercept)")
+    symbol = pd.read_parquet(utils.OUT / "52_proteome_clock" / "runs" / f"{s}_protein__all.parquet").symbol[clock.index]
+    clock = dict(gene_id=clock.index.tolist(), symbol=symbol.tolist(), weight=[float(f"{w:.7g}") for w in clock],
+                 intercept=float(f"{intercept:.7g}"))
     (OUT / "data" / f"clock_{s}.json").write_text(json.dumps(clock, separators=(",", ":"), allow_nan=False))
 print(f"{len(search)} genes, {len(effects)} age effects in {len(units)} units, {len(used)} references")

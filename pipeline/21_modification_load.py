@@ -1,5 +1,6 @@
 # Age effect of genes against the load of a modification (log of 1 + sites on the canonical transcript; human m6A: the
-# peaks of the human brain m6A-seq map): OLS with HC3 per unit and layer, contexts combined by random effects; in the
+# peaks of the human brain m6A-seq map), per SD of the load over the genes of the fit: OLS with HC3 per unit and layer,
+# contexts combined by random effects; in the
 # mRNA-adjusted layer also on the genes with a protein lifetime (with and without it as covariate) and on the others
 # reads scripts 09, 10 and 12 and the unit levels; writes output/21_modification_load/
 import numpy as np
@@ -58,6 +59,10 @@ effects = {
 cohort_of = utils.read(utils.PREPARED / "units.tsv", index_col="unit").dataset
 
 
+def per_sd(v):
+    return v / v.std()
+
+
 def draws_fit(data, covariates, Y):
     # OLS of every column of Y on the m6A load and the covariates: load coefficient and its HC3 standard error
     X = np.column_stack([np.ones(len(data)), data.load_m6A, data[covariates]]).astype(float)
@@ -96,7 +101,7 @@ def unit_fits(unit, layer, table):
             data = data[data[LIFETIME].isna()]
         for mod in utils.MODIFICATIONS:
             count = counts[mod]
-            data = data.assign(load=np.log1p(data[count]))
+            data = data.assign(load=per_sd(np.log1p(data[count])))
             fit = model.property_effect(data, "load", covariates)
             rows.append(key | dict(modification=mod, model=name, n_carriers=(data.load > 0).sum()) | fit)
             if name == "without protein lifetime":
@@ -110,14 +115,15 @@ def unit_fits(unit, layer, table):
                 effect["se"] = fit.bse[dummies.columns].to_numpy()
                 adjusted.append(effect.assign(**key, modification=mod))
         if name == "without protein lifetime":  # m6A load with the covariates added in turn, on the same genes
-            data = data.assign(**{f"load_{mod}": np.log1p(data[counts[mod]]) for mod in utils.MODIFICATIONS})
+            data = data.assign(**{f"load_{mod}": per_sd(np.log1p(data[counts[mod]])) for mod in utils.MODIFICATIONS})
             rho = data.load_m6A.corr(data.log_tx_len, method="spearman")
             for step, step_covariates in LADDER.items():
                 fit = model.property_effect(data, "load_m6A", step_covariates)
                 ladder.append(key | dict(step=step, rho_tx_len=rho) | fit)
-            data = data.assign(drach=np.log1p(data.n_drach), drach_unmarked=np.log1p(data.n_drach_unmarked))
+            drach = dict(drach=np.log1p(data.n_drach), drach_unmarked=np.log1p(data.n_drach_unmarked))
+            data = data.assign(**{k: per_sd(v) for k, v in drach.items()})
             if species == "mouse":
-                data = data.assign(glori_stoichiometry=np.log1p(data.stoich_m6A_glori))
+                data = data.assign(glori_stoichiometry=per_sd(np.log1p(data.stoich_m6A_glori)))
             X = sm.add_constant(data[COVARIATES].astype(float))
             residual = {c: sm.OLS(data[c].astype(float), X).fit().resid for c in ("load_m6A", "drach_unmarked")}
             partial = np.corrcoef(residual["load_m6A"], residual["drach_unmarked"])[0, 1]  # falls by construction
@@ -126,6 +132,10 @@ def unit_fits(unit, layer, table):
                     subset = data if keep is None else data[keep(data)]
                     fit = model.property_effect(subset, predictor, [*COVARIATES, *extra])
                     checks.append(key | dict(check=check, predictor=predictor, partial_r=partial) | fit)
+            # gene length per SD in the same model: the gene property known to mark age-related loss (Stoeger 2022)
+            others = ["load_m6A", *[c for c in COVARIATES if c != "log_gene_len"]]
+            fit = model.property_effect(data.assign(gene_length=per_sd(data.log_gene_len)), "gene_length", others)
+            checks.append(key | dict(check="gene length given load", predictor="gene_length", partial_r=partial) | fit)
             # the same coefficient in the age-permuted fits (genes with every draw)
             null = utils.read(utils.OUT / "12_permutation_fdr" / f"null_estimate_{unit}_{layer}.parquet")
             data = data.loc[data.index.intersection(null.index[null.notna().all(axis=1)])]
@@ -215,7 +225,7 @@ print(checks[["context", "layer", "check", "n_cohorts", "effect_pct", "p", "i2"]
 print(pd.DataFrame(null_rows).round(4).to_string(index=False))
 
 # mean age effect by site class with a normal 95% interval (site_count_effects), and the classes against genes without
-# sites adjusted for the covariates (site_class_effects), in percent
+# sites adjusted for the covariates (site_class_effects; combined_site_class_effects: pooled as the load), in percent
 classes = pd.concat([table for result in results for table in result[1]])
 for column, width in [("effect_pct", 0), ("effect_pct_ci_low", -utils.Z95), ("effect_pct_ci_high", utils.Z95)]:
     classes[column] = utils.pct(classes["mean"] + width * classes.se)
@@ -224,3 +234,6 @@ adjusted = pd.concat([table for result in results for table in result[2]]).assig
     effect_pct=lambda d: utils.pct(d.estimate)
 )
 utils.write(adjusted, OUT / "site_class_effects.tsv")
+combined_classes = combine(adjusted.assign(cohort=lambda d: d.unit.map(cohort_of)), ["modification", "sites"])
+utils.write(combined_classes.drop(columns="estimate"), OUT / "combined_site_class_effects.tsv")
+print(combined_classes.query("modification == 'm6A'").round(4).to_string(index=False))

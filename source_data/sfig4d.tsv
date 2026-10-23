@@ -1,0 +1,26 @@
+set	species	cohort	n	age_unit	mae	mae_null	age_offset	age_sd
+held-out	mouse	Keele 2025	18	months	3.147	6.207	-1.954	7.146
+held-out	mouse	Lu 2025	27	months	2.721	5.7	0.1506	6.748
+held-out	mouse	Marino 2025	10	months	6.185	14.75	5.234	15.55
+held-out	mouse	Takasugi 2024	16	months	5.895	9.322	5.895	9.391
+held-out	mouse	Tsumagari 2023	18	months	2.293	7.636	0.9089	8.852
+held-out	mouse	Wang 2025	40	months	2.861	5.809	-2.618	5.991
+held-out	human	Blumenreich 2024	21	years	10.37	14.96	9.156	14.19
+held-out	human	Eggers 2025	34	years	14.26	17.47	-5.985	21.65
+held-out	human	Koopmans 2026	46	years	23.57	23.67	-23.57	13.18
+held-out	human	Lee 2023	74	years	10.73	10.51	10.13	8.386
+held-out	human	Luo 2024	193	years	15.6	18.14	13.99	13.7
+held-out	human	Merrihew 2023	11	years	19.09	17.65	17.65	6.877
+held-out	human	Ping 2020	10	years	6.841	8.684	-5.76	10.29
+held-out	human	Teng 2023	16	years	22.8	22.86	-22.86	11.33
+external	mouse	Chen 2025	188	months	3.403	3.624	-2.748	3.983
+external	mouse	Vignane 2026	12	months	3.567	6.305	-3.116	6.695
+external	mouse	Gebru 2024	23	months	1.956	7.382	-2.39	7.661
+external	mouse	Huang 2024	10	months	1.801	8.5	-1.716	8.96
+external	mouse	Jha 2026	9	months	2.926	6.905	0.2835	8.885
+external	mouse	Keele 2023	20	months	1.895	5	-0.2165	5.13
+external	mouse	Marchionini 2025	40	months	5.966	5.966	-5.966	3.747
+external	mouse	Mohallem 2024	13	months	3.76	7.088	-1.87	7.57
+external	mouse	Scifo 2025	45	months	4.632	6.792	-1.528	7.681
+external	mouse	Yarbro 2025	39	months	4.06	5.15	-3.678	4.957
+external	mouse	Yu 2020	10	months	2.203	7.36	-2.176	7.758

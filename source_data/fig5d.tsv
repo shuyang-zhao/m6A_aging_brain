@@ -1,4 +1,9 @@
-cohort	kind	n	n_genes	rho	ci_low	ci_high	p	p_random	i2	k
-Chen 2025	cohort	188	721	0.3574	0.2258	0.4761	4.793e-07	0.000999		
-Gebru 2024	cohort	23	282	0.1837	-0.2472	0.554	0.4014	0.2637		
-Pooled	pooled		11160	0.3413	0.2152	0.4561	3.579e-07	0.002997	0	2
+cohort	age_unit	variant	label	n_donors	mae_mean	mae_sd	mae_vs_unguided	p_wilcoxon
+Luo 2024	years	elastic_net	Unguided elastic net	193	5.992	0.1431		
+Luo 2024	years	m6brain_clock	m6Brain clock	193	5.219	0.1835	-0.7732	1.58e-05
+Luo 2024	years	m6a_load_prior	m6A-load-guided net	193	5.819	0.1562	-0.1731	0.1133
+Lu 2025	months	elastic_net	Unguided elastic net	27	1.65	0.08434		
+Lu 2025	months	m6brain_clock	m6Brain clock	27	1.553	0.08355	-0.09664	0.3361
+Lu 2025	months	m6a_load_prior	m6A-load-guided net	27	1.759	0.07355	0.1085	0.2291
+Luo 2024	years	null	Training-mean null	193	9.997	0.01298		
+Lu 2025	months	null	Training-mean null	27	5.953	0.1251		

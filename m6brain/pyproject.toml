@@ -5,7 +5,7 @@ build-backend = "hatchling.build"
 [project]
 name = "m6brain"
 dynamic = ["version"]
-description = "Zero-shot clock of brain proteome age from m6Brain, an m6A-aware model of brain proteome aging"
+description = "m6Brain clock of brain proteome age (months in mouse, years in human), guided by an m6A-aware model of brain proteome aging"
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]

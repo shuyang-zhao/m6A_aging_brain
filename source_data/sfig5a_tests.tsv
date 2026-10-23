@@ -1,0 +1,12 @@
+study	disease	region	n	est	ci_low	ci_high	p
+Merrihew 2023	AD	Superior and middle temporal gyri (SMTG)	27	9.959	2.904	17.01	0.008136
+Merrihew 2023	AD	Hippocampus	30	11.06	4.649	17.48	0.001588
+Merrihew 2023	AD	Caudate	28	6.806	1.482	12.13	0.0147
+Merrihew 2023	AD	Inferior parietal lobule (IPL)	26	13.67	7.807	19.53	0.0001038
+Blumenreich 2024	PD	Striatum	61	7.133	3.46	10.81	0.0002707
+Blumenreich 2024	PD	Substantia nigra	60	-0.7222	-4.501	3.056	0.7029
+Blumenreich 2024	PD	Cingulate gyrus	52	3.051	-0.6645	6.767	0.1052
+Blumenreich 2024	PD	Middle temporal gyrus	62	6.754	2.01	11.5	0.006074
+Blumenreich 2024	PD	Occipital cortex	63	2.562	-1.534	6.658	0.2155
+Ping 2020	AD	DLPFC	19	11.89	5.74	18.04	0.001087
+Umoh 2018	ALS	Frontal cortex	27	2.55	-1.394	6.495	0.1942

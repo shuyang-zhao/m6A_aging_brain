@@ -156,18 +156,20 @@ workbook	sheet	file	column	meaning	unit
 3	mrna_only	10_protein_age_effects/mrna_only.tsv.gz	effect_pct_ci_high	upper limit of the 95% confidence interval, as effect_pct	% per decade (human), late vs early (mouse)
 3	mrna_only	10_protein_age_effects/mrna_only.tsv.gz	mrna_coef	coefficient of the gene's own mRNA in the model (mrna_adjusted layer only; empty otherwise)	log2 protein per log2 mRNA
 3	mrna_only	10_protein_age_effects/mrna_only.tsv.gz	status	ok = estimated; unestimable = fewer than 3 residual degrees of freedom or rank-deficient model	
-4	mouse clock weights	52_proteome_clock/runs/mouse_protein__all.parquet		Weights of the mouse proteome clock: the TabPFN-predicted age z of each gene from the model of all mouse proteome cohorts (the weights of m6Brain and of the clock scores of the external set), and from the model without the m6A site and reader-binding features	
-4	mouse clock weights	52_proteome_clock/runs/mouse_protein__all.parquet	weight	predicted age z of the gene from the model of all cohorts: the weight of the gene in the clock score	z of the age effect
-4	mouse clock weights	52_proteome_clock/runs/mouse_protein__all.parquet	weight_without_m6a	predicted age z of the gene from the model without the m6A site and reader-binding features	z of the age effect
-4	human clock weights	52_proteome_clock/runs/human_protein__all.parquet		Weights of the human proteome clock: the TabPFN-predicted age z of each gene from the model of all human proteome cohorts (the weights of m6Brain and of the clock scores of the external set), and from the model without the m6A site and reader-binding features	
-4	human clock weights	52_proteome_clock/runs/human_protein__all.parquet	weight	predicted age z of the gene from the model of all cohorts: the weight of the gene in the clock score	z of the age effect
-4	human clock weights	52_proteome_clock/runs/human_protein__all.parquet	weight_without_m6a	predicted age z of the gene from the model without the m6A site and reader-binding features	z of the age effect
-4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet		Weights of the unseen mouse genes (Fig. 5d): the TabPFN-predicted age z of the mouse genes with transcript features but no protein age effect in any discovery cohort, from the model of all mouse proteome cohorts without the expression feature (each chromosome group predicted by the model fitted on the other groups), and of the training genes of that model, held out in the same fits	
+4	mouse clock weights	55_m6brain_clock/weights/mouse_protein__all__m6brain_clock.tsv		Weights of the mouse m6Brain clock (script 55, fitted on all mouse proteome cohorts): predicted age = intercept (first row) + the sum over genes of the clock weight times the protein abundance standardized across the samples of a unit (missing = 0); and the m6Brain gene-level predictions that guide it (script 52, model of all cohorts), which are also the weights of the label-free mode	
+4	mouse clock weights	55_m6brain_clock/weights/mouse_protein__all__m6brain_clock.tsv	clock_weight	elastic-net coefficient of the gene in the m6Brain clock (0: gene not selected); first row, the intercept	months per SD of the protein; intercept in months
+4	mouse clock weights	55_m6brain_clock/weights/mouse_protein__all__m6brain_clock.tsv	prediction	m6Brain prediction of the age z of the gene from the model of all cohorts: the penalty guide of the clock and the weight of the gene in the label-free score	z of the age effect
+4	mouse clock weights	55_m6brain_clock/weights/mouse_protein__all__m6brain_clock.tsv	prediction_without_m6a	prediction of the age z of the gene by the model without the m6A site and reader-binding features	z of the age effect
+4	human clock weights	55_m6brain_clock/weights/human_protein__all__m6brain_clock.tsv		Weights of the human m6Brain clock (script 55, fitted on all human proteome cohorts): predicted age = intercept (first row) + the sum over genes of the clock weight times the protein abundance standardized across the samples of a unit (missing = 0); and the m6Brain gene-level predictions that guide it (script 52, model of all cohorts), which are also the weights of the label-free mode	
+4	human clock weights	55_m6brain_clock/weights/human_protein__all__m6brain_clock.tsv	clock_weight	elastic-net coefficient of the gene in the m6Brain clock (0: gene not selected); first row, the intercept	years per SD of the protein; intercept in years
+4	human clock weights	55_m6brain_clock/weights/human_protein__all__m6brain_clock.tsv	prediction	m6Brain prediction of the age z of the gene from the model of all cohorts: the penalty guide of the clock and the weight of the gene in the label-free score	z of the age effect
+4	human clock weights	55_m6brain_clock/weights/human_protein__all__m6brain_clock.tsv	prediction_without_m6a	prediction of the age z of the gene by the model without the m6A site and reader-binding features	z of the age effect
+4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet		Weights of the unseen mouse genes (Fig. S4c): the TabPFN-predicted age z of the mouse genes with transcript features but no protein age effect in any discovery cohort, from the model of all mouse proteome cohorts without the expression feature (each chromosome group predicted by the model fitted on the other groups), and of the training genes of that model, held out in the same fits	
 4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	chrom	chromosome of the gene	
 4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	fold	held-out fold of the gene (unseen genes: the fold of their chromosome in the mouse protein model)	
-4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	unseen	TRUE for an unseen gene (weighted in the clock of Fig. 5d), FALSE for a training gene	
+4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	unseen	TRUE for an unseen gene (weighted in the label-free score of Fig. S4c), FALSE for a training gene	
 4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	target	observed age z of the training gene (empty for the unseen genes)	z of the age effect
-4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	weight	predicted age z of the gene: the weight of an unseen gene in the clock score of Fig. 5d	z of the age effect
+4	unseen gene weights	52_proteome_clock/unseen/predictions.parquet	weight	predicted age z of the gene: the weight of an unseen gene in the label-free score of Fig. S4c	z of the age effect
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz		Held-out prediction of every gene by the models of every target	
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz	chrom	chromosome of the gene	
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz	target	gene-level ageing target: mouse_protein, human_mrna, human_neurons, mouse_mrna_adjusted (mouse mRNA-adjusted protein) or human_protein	
@@ -176,27 +178,29 @@ workbook	sheet	file	column	meaning	unit
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz	tabpfn	TabPFN prediction in context of the other folds	z of the target
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz	lightgbm	LightGBM prediction from the model that held the gene out	z of the target
 4	gene-level predictions	50_transcript_ageing_model/predictions.tsv.gz	elastic_net	elastic net prediction from the model that held the gene out	z of the target
-5	clock scores	52_proteome_clock/scores.tsv.gz		Clock score of every donor of every proteome cohort (script 52): the sum over genes of the weight times the standardized abundance of the protein, standardized in the unit and averaged over the units of a donor; held-out cohorts are scored with weights fitted without them, external cohorts with the weights of all cohorts of the species; the signatures and published clocks weigh the human genes (mouse genes through one-to-one orthologs; a gene outside a signature or clock weighs 0)	
-5	clock scores	52_proteome_clock/scores.tsv.gz	donor	donor (or animal) identifier within the cohort	
-5	clock scores	52_proteome_clock/scores.tsv.gz	age	age of the donor	months (mouse), years (human)
-5	clock scores	52_proteome_clock/scores.tsv.gz	model	score with the TabPFN weights (the clock)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	length_only	score with the weights of a model on transcript, genomic, intron, 5' UTR, CDS and 3' UTR lengths only	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	without_m6a	score with the weights of the model without the m6A site and reader-binding features	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	m6a_load	score with the m6A load of the gene scaled by its linear regression on the observed age z	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	observed	score with the observed age z of the genes in the other cohorts as weights	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	DEMAGALHAES_AGING	score with +1 for the genes of the up and -1 for those of the down signature of MSigDB DEMAGALHAES_AGING	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	LU_AGING_BRAIN	score with +1 for the genes of the up and -1 for those of the down signature of MSigDB LU_AGING_BRAIN	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Goeminne 2025 brain, plasma	score with the weights of the brain clock of Goeminne 2025 (plasma, Olink; coefficient times the SD of the protein in training)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Lehallier 2019, plasma	score with the weights of the plasma proteomic clock of Lehallier 2019 (SomaScan; weight per SD of the log10 level)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Melendez 2024, CSF	score with the weights of the CSF clock of Melendez 2024 (SomaScan; elastic-net weight per min-max scaled level)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Oh 2023 brain, plasma	score with the weights of the brain clock of Oh 2023 (plasma, SomaScan; mean coefficient over the bootstrap models, weight per SD)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Oh 2023 organismal, plasma	score with the weights of the organismal clock of Oh 2023 (plasma, SomaScan; mean coefficient over the bootstrap models, weight per SD)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Oh 2025 brain, plasma	score with the weights of the brain clock of Oh 2025 (plasma, Olink; weight per SD)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	Oh 2025 organismal, plasma	score with the weights of the organismal clock of Oh 2025 (plasma, Olink; weight per SD)	SD of the score
-5	clock scores	52_proteome_clock/scores.tsv.gz	set	held-out (weights fitted without the cohort) or external (weights of all cohorts)	
-5	clock scores	52_proteome_clock/scores.tsv.gz	species	species of the cohort	
-5	clock scores	52_proteome_clock/scores.tsv.gz	cohort	dataset of the donor (dataset_id of the S1 datasets sheet)	
-5	disease sample scores	53_disease_clock/sample_scores.tsv.gz		Clock score of every sample of the disease analysis (script 53), cases and controls of a region standardized together; Huntington's disease: the 6-month striatal proteome of the knock-in allelic series, one row per mouse	
+5	predicted ages	55_m6brain_clock/scores.tsv.gz		Predicted age of every donor of every proteome cohort (script 55): intercept + the clock weights times the proteins standardized in the unit, averaged over the units of a donor; held-out cohorts are scored with the clock fitted without them (gene-level predictions refitted without them too), external cohorts with the clock of all mouse cohorts; the mean prediction of a cohort is the mean age of the training samples, so absolute errors across cohorts carry this offset	
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	donor	donor (or animal) identifier within the cohort	
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	age	age of the donor	months (mouse), years (human)
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	elastic_net	predicted age by the unguided elastic net	months (mouse), years (human)
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	m6brain_clock	predicted age by the m6Brain clock	months (mouse), years (human)
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	m6a_load_prior	predicted age by the elastic net guided by the m6A load of the gene	months (mouse), years (human)
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	set	held-out (clock fitted without the cohort) or external (clock of all mouse cohorts)	
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	species	species of the cohort	
+5	predicted ages	55_m6brain_clock/scores.tsv.gz	cohort	dataset of the donor (dataset_id of the S1 datasets sheet)	
+5	label-free scores	52_proteome_clock/scores.tsv.gz		Label-free score of every donor of every proteome cohort (script 52): the sum over genes of the weight times the standardized abundance of the protein, standardized in the unit and averaged over the units of a donor; held-out cohorts are scored with weights fitted without them, external cohorts with the weights of all cohorts of the species; the gene sets weigh the human genes (mouse genes through one-to-one orthologs)	
+5	label-free scores	52_proteome_clock/scores.tsv.gz	donor	donor (or animal) identifier within the cohort	
+5	label-free scores	52_proteome_clock/scores.tsv.gz	age	age of the donor	months (mouse), years (human)
+5	label-free scores	52_proteome_clock/scores.tsv.gz	model	label-free score with the m6Brain predictions as weights	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	length_only	score with the weights of a model on transcript, genomic, intron, 5' UTR, CDS and 3' UTR lengths only	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	without_m6a	score with the weights of the model without the m6A site and reader-binding features	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	m6a_load	score with the m6A load of the gene scaled by its linear regression on the observed age z	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	observed	score with the observed age z of the genes in the other cohorts as weights	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	DEMAGALHAES_AGING	score with +1 for the genes of the up and -1 for those of the down signature of MSigDB DEMAGALHAES_AGING	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	LU_AGING_BRAIN	score with +1 for the genes of the up and -1 for those of the down signature of MSigDB LU_AGING_BRAIN	SD of the score
+5	label-free scores	52_proteome_clock/scores.tsv.gz	set	held-out (weights fitted without the cohort) or external (weights of all cohorts)	
+5	label-free scores	52_proteome_clock/scores.tsv.gz	species	species of the cohort	
+5	label-free scores	52_proteome_clock/scores.tsv.gz	cohort	dataset of the donor (dataset_id of the S1 datasets sheet)	
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz		Predicted age, age acceleration and label-free score of every sample of the disease analysis (script 53), the proteins of cases and controls of a region standardized together; Huntington's disease: the 6-month striatal proteome of the knock-in allelic series, one row per mouse	
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	sample_id	sample identifier	
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	donor_id	donor (or mouse) identifier	
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	sex	sex of the donor	
@@ -204,11 +208,16 @@ workbook	sheet	file	column	meaning	unit
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	age	age of the donor	years (human), months (mouse)
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	region	brain region (empty for Huntington's disease and the one region of Umoh 2018)	
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	batch	acquisition batch of the sample	
-5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	model	clock score with the TabPFN weights	SD of the score
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	model	label-free score with the m6Brain predictions as weights	SD of the score
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	without_m6a	clock score with the weights of the model without the m6A features	SD of the score
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	m6a_index	m6A index of the sample (as script 54: the slope over genes of the standardized protein abundance on the m6A load of the gene with the covariates of the load model), cases and controls of a region standardized together	SD of the index
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	study	study: ping2020, merrihew2023, blumenreich2024, umoh2018 or langfelder2016	
 5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	disease_name	disease: AD, PD, ALS or HD	
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	braak	Braak stage (AD cohorts; empty elsewhere)	stage
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	cerad	CERAD score (AD cohorts; empty elsewhere)	score
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	predicted_age	predicted age by the m6Brain clock of the study (the clock fitted without the study's cohort; Umoh 2018, without Ping 2020; Langfelder 2016, all mouse cohorts)	years (human), months (mouse)
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	clock	age acceleration: residual of the predicted on the chronological age fitted in the controls (Huntington's disease: deviation from the wild type)	years (human), months (mouse)
+5	disease sample scores	53_disease_clock/sample_scores.tsv.gz	neuron	neuronal marker index of the sample (mean z of SNAP25, SYT1, STMN2, NEFL, NEFM and SYN1)	z
 5	m6A index donors	54_reader_titration/index_donors.tsv.gz		m6A index of every donor of every proteome cohort (script 54): the slope over genes of the standardized protein abundance on the m6A load of the gene, with the covariates of the load model, standardized in the unit and averaged over the units of a donor	
 5	m6A index donors	54_reader_titration/index_donors.tsv.gz	species	species of the cohort	
 5	m6A index donors	54_reader_titration/index_donors.tsv.gz	cohort	dataset of the donor (dataset_id of the S1 datasets sheet)	

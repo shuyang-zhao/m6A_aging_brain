@@ -1,7 +1,7 @@
 panel	check	n_cohorts	effect	ci_low	ci_high	p	i2
-Human protein	m6A load	8	-0.2172	-0.3555	-0.07875	0.002116	46.98
-Mouse discovery	m6A load	6	-1.601	-2.098	-1.101	4.159e-10	90.35
-Human protein	DRACH as covariate	8	-0.206	-0.3367	-0.07512	0.002044	41.95
-Human protein	ubiquitous genes	8	-0.1927	-0.3066	-0.07867	0.0009305	10.15
-Mouse discovery	DRACH as covariate	6	-1.62	-2.126	-1.112	5.354e-10	90.64
-Mouse discovery	ubiquitous genes	6	-0.706	-0.9607	-0.4507	6.401e-08	58.66
+Human protein	m6A load	8	-0.1174	-0.1923	-0.04238	0.002162	47.51
+Mouse discovery	m6A load	6	-1.757	-2.296	-1.214	2.827e-10	90.13
+Human protein	DRACH as covariate	8	-0.1114	-0.1823	-0.04044	0.002092	42.54
+Human protein	ubiquitous genes	8	-0.1046	-0.1666	-0.04254	0.0009569	10.48
+Mouse discovery	DRACH as covariate	6	-1.778	-2.327	-1.225	3.644e-10	90.42
+Mouse discovery	ubiquitous genes	6	-0.7748	-1.053	-0.4962	5.402e-08	58.05

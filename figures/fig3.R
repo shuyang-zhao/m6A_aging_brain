@@ -56,7 +56,7 @@ forest <- function(pn) {
                     expand = expansion(0)) +
     scale_x_continuous(labels = MINUS_LABELS, expand = expansion(0)) +
     coord_cartesian(xlim = lim, clip = "off") +
-    labs(x = paste0("Load coefficient\n(% per ", if (pn == "Human protein") "decade per " else "", "log unit)"), y = NULL) +
+    labs(x = paste0("Load coefficient\n(% per ", if (pn == "Human protein") "decade per " else "", "SD of load)"), y = NULL) +
     theme_rows() +
     theme(plot.margin = margin(4.4, 6, 3, 2, "mm"), axis.title.x = element_text(lineheight = 0.95))
 }
@@ -86,7 +86,7 @@ cl <- ggplot(d, aes(effect, y)) +
   scale_y_reverse(breaks = ticks$y, labels = ticks$row, limits = c(7.4, -0.3), expand = expansion(0)) +
   scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.05, 0.38)),
                      breaks = \(l) Filter(\(x) x <= 0, scales::breaks_pretty(4)(l))) +
-  labs(x = paste0("Age effect per log unit of m6A load (", PER, ")"), y = NULL) +
+  labs(x = paste0("Age effect per SD of m6A load (", PER, ")"), y = NULL) +
   theme_rows() +
   BOXED +
   theme(panel.spacing = unit(5, "mm"))

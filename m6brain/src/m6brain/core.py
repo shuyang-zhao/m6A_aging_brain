@@ -1,4 +1,4 @@
-"""Scoring of a proteome with the m6Brain weights (predicted age z per gene); see docs/method.md."""
+"""Age prediction (m6Brain clock) and label-free scoring of a proteome with the m6Brain weights; see docs/method.md."""
 
 from __future__ import annotations
 
@@ -30,16 +30,16 @@ def weights_version():
 
 
 def weights(species):
-    """Weight table of a species: gene_id, symbol, weight (predicted age z), observed_z, m6A_sites."""
+    """Weight table of a species: gene_id, symbol, clock_weight, prediction, observed_z, m6A_sites."""
     return _table(species).copy()
 
 
 def gene(symbol_or_id, species):
-    """Row of one gene: weight (predicted age z), observed_z (combined age z of the cohorts) and m6A_sites."""
+    """Row of one gene: clock_weight, prediction (label-free weight, predicted age z), observed_z and m6A_sites."""
     table = _table(species)
     query = str(symbol_or_id).strip()
     hit = table[(table.symbol == query) | (table.gene_id == re.sub(r"\.\d+$", "", query).upper())]
-    if hit.empty:  # symbols are case-sensitive in score(); a single-gene lookup is forgiving
+    if hit.empty:  # symbols are case-sensitive in predict_age(); a single-gene lookup is forgiving
         hit = table[table.symbol.str.upper() == query.upper()]
     if hit.empty:
         raise KeyError(f"{query!r} has no weight in the {species} table")
@@ -87,16 +87,20 @@ def _check_species(ids, species, kind):
     warnings.warn(msg, stacklevel=3)
 
 
-def score(table, species, ids="auto", age=None):
-    """Clock score of every sample of a proteome (genes x samples, log abundances).
+def _by_sample(x, samples):
+    if isinstance(x, pd.Series):
+        x = x.set_axis(x.index.astype(str)).reindex(samples)
+    return np.asarray(x, float)
 
-    table: DataFrame (gene ids in the first column, or in a non-default index) or a CSV/TSV path (.tsv/.txt = tab);
-        a row whose id is "age" holds the ages of the samples.
-    species: "mouse" or "human". ids: "auto", "symbol" or "ensembl". age: per-sample ages (Series by sample name or a
-        list in column order); overrides an "age" row.
-    Returns a DataFrame (sample, score, n_genes_matched; age if given). With ages, result.attrs["spearman_rho"] and
-    ["spearman_p"] hold the Spearman correlation of score and age.
-    """
+
+def _pearson(x, y):
+    ok = ~(np.isnan(x) | np.isnan(y))
+    r = stats.pearsonr(x[ok], y[ok])
+    return {"pearson_r": float(r.statistic), "pearson_p": float(r.pvalue)}
+
+
+def _prepare(table, species, ids, age, column):
+    """Proteins of the weighted genes standardised across the samples (missing stays NaN), their weights, the ages."""
     gene_ids, values = _read(table)
     is_age = gene_ids.str.lower() == "age"
     if is_age.any() and age is None:
@@ -109,27 +113,72 @@ def score(table, species, ids="auto", age=None):
         ids = "ensembl" if gene_ids.str.match(ENSEMBL).mean() > 0.5 else "symbol"
     _check_species(gene_ids, species, ids)
     keys = _keys(gene_ids, ids)
-    weight = keys.map(_table(species).set_index("gene_id" if ids == "ensembl" else "symbol").weight)
+    weight = keys.map(_table(species).set_index("gene_id" if ids == "ensembl" else "symbol")[column]).replace(0, np.nan)
     keep = weight.notna() & ~keys.duplicated()  # a gene in several rows counts once (the first)
     if not keep.any():
-        raise ValueError(f"no {ids} id matches the {species} table")
+        raise ValueError(f"no {ids} id matches a weighted gene of the {species} table")
 
-    # each protein standardised across the samples (missing -> 0), weighted sum, score standardised across samples
-    x, w = values[keep], weight[keep]
+    x = values[keep]
     z = x.sub(x.mean(axis=1), axis=0).div(x.std(axis=1), axis=0)
-    raw = z.fillna(0).T @ w
+    attrs = {"species": species, "ids": ids, "genes_matched": int(keep.sum()), "genes_input": len(gene_ids)}
+    return z, weight[keep], values.columns, None if age is None else _by_sample(age, values.columns), attrs
+
+
+def predict_age(table, species, age=None, controls=None, ids="auto"):
+    """m6Brain clock: predicted age (months in mouse, years in human) of every sample of a proteome.
+
+    table: DataFrame (gene ids in the first column, or in a non-default index) or a CSV/TSV path (.tsv/.txt = tab) of
+        log abundances, genes x samples; a row whose id is "age" holds the ages of the samples.
+    species: "mouse" or "human". ids: "auto", "symbol" or "ensembl". age: per-sample ages (Series by sample name or a
+        list in column order); overrides an "age" row. controls: names of the samples on which the age
+        acceleration is fitted (default all samples).
+    Predicted age = intercept + sum of weight x protein, each protein standardised across the samples of the table
+    (missing = 0), so the mean over the samples is the training mean age (exactly without missing values):
+    differences between samples carry the information, the level of the table does not.
+    Returns a DataFrame (sample, predicted_age, n_genes_matched = clock proteins quantified in the sample; with ages
+    also age and age_acceleration = residual of predicted_age on age in a linear fit over the controls). With ages,
+    result.attrs["pearson_r"] and ["pearson_p"] hold the Pearson correlation of predicted_age and age.
+    """
+    z, w, samples, age, attrs = _prepare(table, species, ids, age, "clock_weight")
+    version = weights_version()[species]
     result = pd.DataFrame(
         {
-            "sample": values.columns,
+            "sample": samples,
+            "predicted_age": (z.fillna(0).T @ w).to_numpy() + version["intercept"],
+            "n_genes_matched": z.notna().sum().to_numpy(),
+        }
+    )
+    result.attrs |= attrs | {"clock_genes": version["clock_genes"], "unit": version["unit"]}
+    if age is not None:
+        result["age"] = age
+        result.attrs |= _pearson(result.predicted_age.to_numpy(), age)
+        fit = ~np.isnan(age)
+        if controls is not None:
+            fit &= samples.isin(controls)
+        slope, offset = np.polyfit(age[fit], result.predicted_age[fit], 1)
+        result["age_acceleration"] = result.predicted_age - (offset + slope * age)
+    return result
+
+
+def score(table, species, ids="auto", age=None):
+    """Label-free score of every sample of a proteome (genes x samples, log abundances).
+
+    The weights are the age z of each gene predicted from its transcript (column prediction), not fitted on any
+    proteome. Arguments as in predict_age.
+    Returns a DataFrame (sample, score, n_genes_matched; age if given). With ages, result.attrs["pearson_r"] and
+    ["pearson_p"] hold the Pearson correlation of score and age.
+    """
+    z, w, samples, age, attrs = _prepare(table, species, ids, age, "prediction")
+    raw = z.fillna(0).T @ w  # score standardised across the samples
+    result = pd.DataFrame(
+        {
+            "sample": samples,
             "score": ((raw - raw.mean()) / raw.std()).to_numpy(),
             "n_genes_matched": z.notna().sum().to_numpy(),
         }
     )
-    result.attrs |= {"species": species, "ids": ids, "genes_matched": int(keep.sum()), "genes_input": len(gene_ids)}
+    result.attrs |= attrs
     if age is not None:
-        if isinstance(age, pd.Series):
-            age = age.set_axis(age.index.astype(str)).reindex(values.columns)
-        result["age"] = np.asarray(age, float)
-        rho = stats.spearmanr(result.score, result.age, nan_policy="omit")
-        result.attrs |= {"spearman_rho": float(rho.statistic), "spearman_p": float(rho.pvalue)}
+        result["age"] = age
+        result.attrs |= _pearson(result.score.to_numpy(), age)
     return result

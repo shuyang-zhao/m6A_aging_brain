@@ -24,7 +24,7 @@ PEAK_WINDOW = 50  # nt from a CLIP binding region to a site or peak of the reade
 BRAIN_M6A = "m6a_brain_shafik2026"
 # datasets left out for now (unit-name prefixes): 08 does not write their units, so no later script sees them, and they
 # leave the contexts below; their prepared dataset folders stay. Remove a line to include the dataset again and rerun
-# from script 08 on. Reasons are those of dev/refactor2/datasets.md; dev/refactor2/exclusion_impact.md lists the effects
+# from script 08 on. The reasons are in ref/datasets.tsv (Table S1)
 EXCLUDED = (
     "anderton2026_",  # bioRxiv preprint, no journal article
     "chdi2016_",  # Htt knock-in allelic series, not wild-type mice; the 2- and 10-month proteome is only in a preprint
@@ -119,8 +119,8 @@ LOAD_COVARIATES = [
     "mitochondrion",
     "synapse",
 ]
-# external validation set: mouse proteomes scored by the clock (script 52) and tested for the load (script 21), in no
-# context (Oliviero 2022 has fewer than 2,000 genes and is not a unit)
+# external validation set: mouse proteomes scored by the clocks (scripts 52 and 55) and tested for the load (script 21),
+# in no context (Oliviero 2022 has fewer than 2,000 genes and is not a unit)
 EXTERNAL = (
     "keele2023_striatum keele2023_cerebellum keele2023_hippocampus scifo2025_whole_brain yu2020_brain "
     "huang2024_hippocampus jha2026_cortex mohallem2024_whole_brain marchionini2025_striatum vignane2026_frontal_cortex "
@@ -197,6 +197,79 @@ def ensg_to_symbol(species):
 def orthologs():
     """One-to-one mouse-human ortholog pairs (columns mouse, human; upper-case symbols)."""
     return read(PREPARED / "ref" / "orthologs.tsv")
+
+
+# input of the published clocks of a source (the others: the matrix standardised, the weights per SD):
+# tage = pyaging _prepare_tage, scaled_diff branch (Tyshkovskiy 2026): log expression, z-score of each sample across its
+# genes, per-gene median centring; the clock's scaler only centres, so the weights are per unit of that input;
+# centred = log expression minus the median of the gene: RNAAgeCalc weights apply to log2(FPKM + 1) as it is (racpy
+# core.py; the centring shifts every sample alike), Buckley's to log-normalised expression;
+# rank = pyaging Pasta.preprocess (Salignon 2026): features missing from the matrix take the median of the matrix (the
+# lower of the two middle values), then the average rank of each sample across the 8113 features
+CLOCK_INPUT = {"tyshkovskiy2026": "tage", "ren2020": "centred", "buckley2023": "centred", "salignon2026": "rank"}
+
+
+@cache
+def clock_weights():
+    """Published clocks (ref/published_clocks.tsv, script 06): {clock: (source, weights in human symbols (else mouse),
+    weight by upper-case symbol)}; the half-lives are centred, so the score contrasts long- with short-lived
+    proteins."""
+    clocks = read(PREPARED / "ref" / "published_clocks.tsv")
+    half = clocks.clock.str.contains("halflife")
+    clocks.loc[half, "weight"] -= clocks[half].weight.mean()
+    clocks = clocks.assign(symbol=clocks.symbol.str.upper())
+    return {
+        c: (
+            rows.source.iloc[0],
+            not rows.species.iloc[0].startswith(("mouse", "multispecies")),
+            rows.groupby("symbol").weight.mean(),
+        )
+        for c, rows in clocks.groupby("clock")
+    }
+
+
+def clock_names(species, genes):
+    """Symbol of every gene (ids as in load_unit) in the species of each published clock, for the scores of
+    clock_scores (mouse clocks reach human genes and human clocks mouse genes through the one-to-one orthologs):
+    DataFrame genes x clocks, NaN without ortholog."""
+    symbol = ensg_to_symbol(species).str.upper().reindex(genes)
+    other = orthologs().set_index(species)["mouse" if species == "human" else "human"]
+    names = {
+        c: symbol if human == (species == "human") else symbol.map(other)
+        for c, (_, human, _) in clock_weights().items()
+    }
+    return pd.DataFrame(names)
+
+
+def clock_scores(protein, species, rna=None, genes=None):
+    """Scores (samples x clocks) of every published clock on a genes x samples log-abundance matrix of one species
+    (gene ids as in load_unit): proteins standardised in the matrix, or the input of the clock's source (CLOCK_INPUT);
+    genes without weight count 0. rna (same samples) replaces the protein for the clocks of CLOCK_INPUT; genes
+    restricts the protein matrix to those gene ids."""
+    if genes is not None:
+        protein = protein.reindex(genes)
+    names = {"protein": clock_names(species, protein.index)}
+    if rna is not None:
+        names["rna"] = clock_names(species, rna.index)
+    scores = {}
+    for clock, (source, _, w) in clock_weights().items():
+        kind = "rna" if rna is not None and source in CLOCK_INPUT else "protein"
+        x, symbol = (rna if kind == "rna" else protein).T, names[kind][clock]
+        mode = CLOCK_INPUT.get(source, "z")
+        if mode == "rank":
+            ranked = x.set_axis(symbol, axis=1)
+            ranked = ranked.loc[:, ranked.columns.notna() & ~ranked.columns.duplicated()].reindex(columns=w.index)
+            seen = np.sort(ranked.to_numpy()[ranked.notna().to_numpy()])
+            ranked = ranked.fillna(seen[(len(seen) - 1) // 2]).rank(axis=1)
+            scores[clock] = ranked.to_numpy() @ w.to_numpy()
+            continue
+        if mode == "z":
+            x = (x - x.mean()) / x.std()
+        else:
+            x = x.sub(x.mean(axis=1), axis=0).div(x.std(axis=1), axis=0) if mode == "tage" else x
+            x = x - x.median()
+        scores[clock] = x.fillna(0).to_numpy() @ symbol.map(w).fillna(0).to_numpy()
+    return pd.DataFrame(scores, index=protein.columns)
 
 
 @cache
