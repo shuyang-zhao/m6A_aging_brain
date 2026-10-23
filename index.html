@@ -107,9 +107,9 @@
 
   <section id="view-clock" class="view" hidden>
     <div class="section-head">
-      <h2><span class="i-en">m6Brain proteome clock</span><span class="i-zh">m6Brain 蛋白质组时钟</span></h2>
-      <p class="i-en">Score the samples of your own brain proteome with the zero-shot clock of m6Brain, an m6A-aware model of brain proteome aging. The weight of a gene is the age effect on its protein predicted from the features of its transcript (TabPFN model fitted on all cohorts); the score of a sample is the weighted sum of the standardised protein abundances, and a higher score means older-looking. The same weights are in the <a href="https://github.com/shuyang-zhao/m6A_aging_brain/tree/main/m6brain">m6Brain</a> Python package.</p>
-      <p class="i-zh">用 m6Brain（纳入 m6A 信息的脑蛋白质组衰老模型）的零样本时钟为您自己的脑蛋白质组样本打分。基因的权重是由其转录本特征预测的该蛋白年龄效应（在全部队列上拟合的 TabPFN 模型）；样本得分是标准化蛋白丰度的加权和，得分越高表示越显老。相同的权重也包含在 Python 包 <a href="https://github.com/shuyang-zhao/m6A_aging_brain/tree/main/m6brain">m6Brain</a> 中。</p>
+      <h2><span class="i-en">m6Brain clock</span><span class="i-zh">m6Brain 时钟</span></h2>
+      <p class="i-en">Predict the age of the samples of your own brain proteome with the m6Brain clock: an elastic net of age on the standardised abundances of 279 mouse or 421 human proteins, fitted on public brain aging cohorts, in which the penalty of each protein is guided by m6Brain, an m6A-aware model of brain proteome aging. The predicted age is in months (mouse) or years (human). In leave-one-cohort-out tests the Pearson correlation of predicted and chronological age was 0.97 in six held-out mouse cohorts, 0.94 in eleven external mouse brain proteomes and 0.78 in eight held-out human cohorts. The same weights are in the <a href="https://github.com/shuyang-zhao/m6A_aging_brain/tree/main/m6brain">m6Brain</a> Python package. The clock was validated on brain tissue only.</p>
+      <p class="i-zh">用 m6Brain 时钟预测您自己的脑蛋白质组样本的年龄：以 279 个小鼠或 421 个人类蛋白的标准化丰度对年龄做弹性网络回归，在公开的脑衰老队列上拟合，各蛋白的惩罚由 m6Brain（纳入 m6A 信息的脑蛋白质组衰老模型）指导。预测年龄的单位为月（小鼠）或年（人）。在留一队列验证中，预测年龄与实际年龄的 Pearson 相关系数在 6 个留出的小鼠队列中为 0.97，在 11 个外部小鼠脑蛋白质组中为 0.94，在 8 个留出的人类队列中为 0.78。相同的权重也包含在 Python 包 <a href="https://github.com/shuyang-zhao/m6A_aging_brain/tree/main/m6brain">m6Brain</a> 中。该时钟仅在脑组织中验证。</p>
     </div>
     <div class="card pad" id="c-drop">
       <div class="clock-controls">
@@ -120,22 +120,22 @@
         <span id="c-name" class="muted"></span>
       </div>
       <p class="privacy"><b class="i-en">Your file never leaves your computer.</b><b class="i-zh">文件不会离开您的电脑。</b>
-        <span class="i-en">It is read and scored in this browser; nothing is uploaded to any server. You can also drop a file on this box.</span>
+        <span class="i-en">It is read and the ages are predicted in this browser; nothing is uploaded to any server. You can also drop a file on this box.</span>
         <span class="i-zh">文件在本浏览器中读取并计算，不会上传到任何服务器。也可以把文件拖放到此框中。</span></p>
       <div class="grid-2 clock-help">
         <div>
           <h4><span class="i-en">File format</span><span class="i-zh">文件格式</span></h4>
-          <p class="i-en">Comma- or tab-separated text. First row: sample names. First column: gene symbols or Ensembl gene ids of the chosen species (detected automatically; versions such as <code>.12</code> are ignored). Other columns: protein abundance on a log scale (for example log<sub>2</sub> intensity), missing values left empty. An optional row whose first cell is <code>age</code> gives the age of each sample, in any unit, and adds the comparison with age.</p>
-          <p class="i-zh">逗号或制表符分隔的文本。第一行为样本名；第一列为所选物种的基因符号或 Ensembl 基因编号（自动识别，<code>.12</code> 之类的版本号会被忽略）；其余各列为对数尺度的蛋白丰度（如 log<sub>2</sub> 强度），缺失值留空。可选的一行以 <code>age</code> 作为首个单元格，给出每个样本的年龄（单位不限），并加入与年龄的比较。</p>
+          <p class="i-en">Comma- or tab-separated text. First row: sample names. First column: gene symbols or Ensembl gene ids of the chosen species (detected automatically; versions such as <code>.12</code> are ignored). Other columns: protein abundance on a log scale (for example log<sub>2</sub> intensity), missing values left empty. An optional row whose first cell is <code>age</code> gives the age of each sample (months in mouse, years in human; the age acceleration is in the unit of the ages) and adds the correlation with age and the age acceleration.</p>
+          <p class="i-zh">逗号或制表符分隔的文本。第一行为样本名；第一列为所选物种的基因符号或 Ensembl 基因编号（自动识别，<code>.12</code> 之类的版本号会被忽略）；其余各列为对数尺度的蛋白丰度（如 log<sub>2</sub> 强度），缺失值留空。可选的一行以 <code>age</code> 作为首个单元格，给出每个样本的年龄（小鼠为月，人为年；年龄加速沿用年龄的单位），并加入与年龄的相关性和年龄加速。</p>
           <pre class="sample">gene,S1,S2,S3,S4
 age,3,3,24,24
 Gnai3,28.1,27.9,28.4,28.6
 Cdc45,22.0,,21.5,21.7</pre>
         </div>
         <div>
-          <h4><span class="i-en">How the score is computed</span><span class="i-zh">得分的计算</span></h4>
-          <p class="i-en">Each protein is standardised across your samples (mean 0, SD 1; missing values become 0). The score of a sample is the sum over the proteins with a weight of weight × standardised abundance, and the scores are then standardised across the samples. Scores are therefore relative to the uploaded set and need at least three samples. Spearman&nbsp;&rho; is computed between score and age. The same calculation as in the m6Brain Python package.</p>
-          <p class="i-zh">每个蛋白先在您的样本间标准化（均值 0，标准差 1，缺失值记为 0）；样本得分为有权重的蛋白“权重 × 标准化丰度”之和，再在样本间标准化。因此得分是相对于所上传样本集的，且至少需要三个样本。得分与年龄之间计算 Spearman&nbsp;&rho;。计算方式与 m6Brain Python 包相同。</p>
+          <h4><span class="i-en">How the age is predicted</span><span class="i-zh">年龄的预测</span></h4>
+          <p class="i-en">Each protein is standardised across your samples (mean 0, SD 1; missing values become 0). The predicted age of a sample is the intercept of the clock plus the sum over the clock proteins of weight × standardised abundance. Because the proteins are standardised within your file, the mean predicted age of the samples is the mean age of the training samples (13.2 months in mouse, 69.4 years in human; exactly when no value is missing): the differences between samples carry the information, the level of the whole set does not. At least three samples are needed. With an age row, Pearson&nbsp;<i>r</i> between predicted and chronological age and the age acceleration, the residual of the predicted age on the age in a linear fit over all samples, are shown. The same calculation as in the m6Brain Python package, which can also fit the acceleration in control samples only, as done for disease cohorts in the manuscript.</p>
+          <p class="i-zh">每个蛋白先在您的样本间标准化（均值 0，标准差 1，缺失值记为 0）。样本的预测年龄为时钟截距加上各时钟蛋白“权重 × 标准化丰度”之和。由于蛋白在您的文件内标准化，样本预测年龄的均值即训练样本的平均年龄（小鼠 13.2 月，人 69.4 年；无缺失值时严格相等）：样本之间的差异有信息，整套样本的水平则没有。至少需要三个样本。文件含年龄行时，显示预测年龄与实际年龄的 Pearson&nbsp;<i>r</i>，以及年龄加速，即预测年龄对年龄做线性拟合（用全部样本）的残差。计算方式与 m6Brain Python 包相同；该包还可只用对照样本拟合年龄加速，论文中的疾病队列即如此。</p>
         </div>
       </div>
     </div>
@@ -333,8 +333,8 @@ Cdc45,22.0,,21.5,21.7</pre>
     <div class="grid-2">
       <div class="card pad">
         <h3><span class="i-en">Download</span><span class="i-zh">下载</span></h3>
-        <p class="i-en">The complete per-gene age effects of every unit and layer (Additional file 3), the supplementary tables (Additional file 2), the clock weights and model predictions (Additional file 4) and the clock scores (Additional file 5) are deposited at Zenodo with the figure source data.</p>
-        <p class="i-zh">每个单元与分子层的完整逐基因年龄效应（Additional file 3）、补充表（Additional file 2）、时钟权重与模型预测（Additional file 4）以及时钟得分（Additional file 5）与图的源数据一起存放于 Zenodo。</p>
+        <p class="i-en">The complete per-gene age effects of every unit and layer (Additional file 3), the supplementary tables (Additional file 2), the m6Brain clock weights and gene-level predictions (Additional file 4) and the predicted ages and label-free scores (Additional file 5) are deposited at Zenodo with the figure source data.</p>
+        <p class="i-zh">每个单元与分子层的完整逐基因年龄效应（Additional file 3）、补充表（Additional file 2）、m6Brain 时钟权重与基因水平预测（Additional file 4）以及预测年龄与无标签得分（Additional file 5）与图的源数据一起存放于 Zenodo。</p>
         <p><a id="zenodo" class="button" aria-disabled="true"><span class="i-en">Zenodo record available on publication</span><span class="i-zh">Zenodo 记录将于发表时提供</span></a></p>
         <p class="muted"><span class="i-en">Each gene page also downloads its own table as CSV.</span><span class="i-zh">每个基因页也可将其表格下载为 CSV。</span> <span id="code-link"></span></p>
       </div>

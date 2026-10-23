@@ -4,7 +4,7 @@
 // P, q, samples]) and data/landscape/<context>.json (one context, rows of [key, symbol, % change, CI low, CI high, P, q,
 // cohorts, cohorts in the same direction, I2, m6A]; landscape.tsv.gz holds every column), all written by
 // pipeline/62_website.py. The key of a gene is its human gene id, or its mouse id without a one-to-one human ortholog.
-// The Clock page scores uploaded proteomes in the browser (clock.js, data/clock_<species>.json).
+// The Clock page predicts the age of uploaded proteomes in the browser (clock.js, data/clock_<species>.json).
 // Text of the page is in English and Chinese: static text in index.html (.i-en, .i-zh), the text written here in TEXT
 const CONFIG = {
   zenodo: "", // Zenodo record of the full tables (Additional files 2 to 5); the download stays inactive while empty
@@ -88,15 +88,15 @@ const TEXT = {
     tipCombined: "Combined effect", tipSame: "Same direction", tipCohorts: (a, k) => `${a} of ${k} cohorts`,
     contextCols: ["Context", "Cohorts", "Genes"],
     clock: {
-      samples: "Samples", matched: "Genes matched to the weights", of: (n) => `of ${num(n)}`,
-      rho: (n) => `Spearman ρ, score vs age (n = ${n})`,
+      samples: "Samples", matched: "Clock proteins in the file", of: (n) => `of ${num(n)}`,
+      r: (n) => `Pearson r, predicted vs chronological age (n = ${n})`,
       rows: (byId, rows, duplicates) => `The first column was read as ${byId ? "Ensembl gene ids" : "gene symbols"}: ${num(rows)} rows in the file${
         duplicates ? `, ${num(duplicates)} repeated gene${duplicates > 1 ? "s" : ""} (first row kept)` : ""}.`,
-      plot: "Clock score against age", axisAge: "Age (as in your file)", axisScore: "Clock score (z)",
-      table: "Scores", cols: ["Sample", "Clock score", "Age", "Proteins quantified"], csv: "Download scores (CSV)",
-      tipScore: "Clock score", tipAge: "Age", tipProteins: "Proteins quantified",
+      plot: "Predicted age against age", axisAge: "Age (as in your file)", axisPredicted: { mouse: "Predicted age (months)", human: "Predicted age (years)" },
+      table: "Predicted ages", cols: ["Sample", "Predicted age", "Age", "Age acceleration", "Clock proteins quantified"], csv: "Download predicted ages (CSV)",
+      tipPredicted: "Predicted age", tipAge: "Age", tipAccel: "Age acceleration", tipProteins: "Clock proteins quantified",
       fewSamples: (n) => `The file has ${n} sample column${n === 1 ? "" : "s"}; at least 3 are needed to standardise the proteins.`,
-      noMatch: (byId, rows, species) => `None of the ${num(rows)} rows matched the ${species} weights. The first column was read as ${
+      noMatch: (byId, rows, species) => `None of the ${num(rows)} rows matched a ${species} clock protein. The first column was read as ${
         byId ? "Ensembl gene ids" : "gene symbols"}; check that it holds ${species} gene symbols or Ensembl gene ids and that the species above is right.`,
     },
   },
@@ -167,15 +167,15 @@ const TEXT = {
     tipCombined: "合并效应", tipSame: "同方向队列", tipCohorts: (a, k) => `${k} 个队列中的 ${a} 个`,
     contextCols: ["情境", "队列", "基因数"],
     clock: {
-      samples: "样本数", matched: "匹配到权重的基因", of: (n) => `/ ${num(n)}`,
-      rho: (n) => `Spearman ρ，得分与年龄（n = ${n}）`,
+      samples: "样本数", matched: "文件中的时钟蛋白", of: (n) => `/ ${num(n)}`,
+      r: (n) => `Pearson r，预测年龄与实际年龄（n = ${n}）`,
       rows: (byId, rows, duplicates) => `第一列按${byId ? "Ensembl 基因编号" : "基因符号"}读取：文件共 ${num(rows)} 行${
         duplicates ? `，${num(duplicates)} 个基因重复出现（保留第一行）` : ""}。`,
-      plot: "时钟得分与年龄", axisAge: "年龄（沿用文件中的单位）", axisScore: "时钟得分 (z)",
-      table: "得分", cols: ["样本", "时钟得分", "年龄", "定量蛋白数"], csv: "下载得分 (CSV)",
-      tipScore: "时钟得分", tipAge: "年龄", tipProteins: "定量蛋白数",
+      plot: "预测年龄与年龄", axisAge: "年龄（沿用文件中的单位）", axisPredicted: { mouse: "预测年龄（月）", human: "预测年龄（年）" },
+      table: "预测年龄", cols: ["样本", "预测年龄", "年龄", "年龄加速", "定量时钟蛋白数"], csv: "下载预测年龄 (CSV)",
+      tipPredicted: "预测年龄", tipAge: "年龄", tipAccel: "年龄加速", tipProteins: "定量时钟蛋白数",
       fewSamples: (n) => `文件只有 ${n} 个样本列；标准化蛋白至少需要 3 个样本。`,
-      noMatch: (byId, rows, species) => `文件的 ${num(rows)} 行中没有一行匹配${species}的权重。第一列按${
+      noMatch: (byId, rows, species) => `文件的 ${num(rows)} 行中没有一行匹配${species}的时钟蛋白。第一列按${
         byId ? "Ensembl 基因编号" : "基因符号"}读取；请确认它是${species}的基因符号或 Ensembl 基因编号，并确认上方所选物种正确。`,
     },
   },
@@ -871,7 +871,7 @@ function renderContextTable() {
 init();
 
 // ---------- clock ----------
-// the file is parsed and scored in the browser (clock.js); state: the parsed table, the species and the result
+// the file is parsed and the ages are predicted in the browser (clock.js); state: the parsed table, the species and the result
 const clockState = { species: "mouse", table: null, name: "", result: null };
 const clockWeights = {};
 
@@ -903,8 +903,9 @@ async function runClock() {
   const clock = clockWeights[species], rows = table.ids.length, n = table.samples.length;
   const match = matchWeights(table.ids, clock);
   clockState.result = { species, rows, n, ...match, total: clock.weight.length, age: table.age };
-  if (n >= 3 && match.matched) Object.assign(clockState.result, clockScores(table.matrix, match.weights));
-  if (clockState.result.scores && table.age) clockState.result.rho = spearman(table.age, clockState.result.scores);
+  if (n >= 3 && match.matched) Object.assign(clockState.result, clockAges(table.matrix, match.weights, clock.intercept));
+  const { result } = clockState;
+  if (result.predicted && table.age) Object.assign(result, { cor: pearson(table.age, result.predicted), accel: acceleration(result.predicted, table.age) });
   renderClock();
 }
 
@@ -915,15 +916,16 @@ function renderClock() {
   if (r.n < 3) { box.innerHTML = `<div class="card message">${tx.fewSamples(r.n)}</div>`; return; }
   if (!r.matched) { box.innerHTML = `<div class="card message">${tx.noMatch(r.byId, r.rows, species)}</div>`; return; }
   const stat = (v, k) => `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`;
-  const hasAge = r.rho !== undefined;
+  const hasAge = r.cor !== undefined;
   const summary = `<div class="card pad"><div class="stats">${stat(num(r.n), tx.samples)}
     ${stat(`${num(r.matched)} <span class="of">${tx.of(r.total)}</span>`, tx.matched)}
-    ${hasAge ? stat(minus(r.rho.rho.toFixed(3)), tx.rho(r.rho.n)) : ""}</div>
+    ${hasAge ? stat(minus(r.cor.r.toFixed(3)), tx.r(r.cor.n)) : ""}</div>
     <p class="muted">${tx.rows(r.byId, r.rows, r.duplicates)}</p></div>`;
   const plot = hasAge ? `<div class="card plot-card"><div class="plot-head"><h3>${tx.plot}</h3></div><div id="clock-plot"></div></div>` : "";
-  const body = clockState.table.samples.map((name, i) => `<tr><td>${esc(name)}</td><td class="num">${minus(r.scores[i].toFixed(3))}</td>${
-    r.age ? `<td class="num">${Number.isNaN(r.age[i]) ? "" : +r.age[i].toPrecision(6)}</td>` : ""}<td class="num">${r.used[i]}</td></tr>`).join("");
-  const cols = tx.cols.filter((_, i) => r.age || i !== 2);
+  const body = clockState.table.samples.map((name, i) => `<tr><td>${esc(name)}</td><td class="num">${minus(r.predicted[i].toFixed(2))}</td>${
+    r.age ? `<td class="num">${Number.isNaN(r.age[i]) ? "" : +r.age[i].toPrecision(6)}</td><td class="num">${Number.isNaN(r.age[i]) ? "" : minus(r.accel[i].toFixed(2))}</td>` : ""
+  }<td class="num">${r.used[i]}</td></tr>`).join("");
+  const cols = tx.cols.filter((_, i) => r.age || (i !== 2 && i !== 3));
   box.innerHTML = summary + plot + `<div class="card table-card"><div class="table-head"><h3>${tx.table}</h3>
     <button id="c-csv" class="button ghost">${tx.csv}</button></div>
     <div class="scroll"><table class="data"><thead><tr>${cols.map((c, i) => `<th class="${i ? "num" : ""}">${c}</th>`).join("")}</tr></thead>
@@ -942,7 +944,7 @@ function drawClock() {
   const box = $("#clock-plot"), r = clockState.result;
   if (!box || !r?.age || !box.clientWidth) return;
   const tx = T().clock, W = box.clientWidth, H = Math.round(Math.min(420, Math.max(280, W * 0.42))), M = { l: 52, r: 16, t: 12, b: 46 };
-  const pts = r.age.map((a, i) => ({ a, s: r.scores[i], i })).filter((p) => !Number.isNaN(p.a));
+  const pts = r.age.map((a, i) => ({ a, s: r.predicted[i], i })).filter((p) => !Number.isNaN(p.a));
   const range = (v) => { const lo = Math.min(...v), hi = Math.max(...v), pad = (hi - lo || 1) * 0.06; return [lo - pad, hi + pad]; };
   const [x0, x1] = range(pts.map((p) => p.a)), [y0, y1] = range(pts.map((p) => p.s));
   const sx = (v) => M.l + ((v - x0) / (x1 - x0)) * (W - M.l - M.r), sy = (v) => M.t + (1 - (v - y0) / (y1 - y0)) * (H - M.t - M.b);
@@ -953,21 +955,22 @@ function drawClock() {
     `<text class="tick" x="${M.l - 8}" y="${sy(t) + 4}" text-anchor="end">${minus(t)}</text>`);
   out.push(...pts.map((p) => `<circle data-i="${p.i}" cx="${sx(p.a).toFixed(1)}" cy="${sy(p.s).toFixed(1)}" r="4.4" class="pt"/>`),
     `<text class="axis-title" x="${M.l + (W - M.l - M.r) / 2}" y="${H - 8}" text-anchor="middle">${tx.axisAge}</text>`,
-    `<text class="axis-title" transform="translate(13 ${M.t + (H - M.t - M.b) / 2}) rotate(-90)" text-anchor="middle">${tx.axisScore}</text>`);
+    `<text class="axis-title" transform="translate(13 ${M.t + (H - M.t - M.b) / 2}) rotate(-90)" text-anchor="middle">${tx.axisPredicted[r.species]}</text>`);
   box.innerHTML = `<svg class="scatter" viewBox="0 0 ${W} ${H}" height="${H}" role="img" aria-label="${esc(tx.plot)}">${out.join("")}</svg>`;
   bindTips(box, (el) => {
     const i = +el.dataset.i;
     return `<b>${esc(clockState.table.samples[i])}</b>
-      <div class="line"><span>${tx.tipScore}</span><b>${minus(r.scores[i].toFixed(3))}</b></div>
+      <div class="line"><span>${tx.tipPredicted}</span><b>${minus(r.predicted[i].toFixed(2))}</b></div>
       <div class="line"><span>${tx.tipAge}</span><span>${+r.age[i].toPrecision(6)}</span></div>
+      <div class="line"><span>${tx.tipAccel}</span><span>${minus(r.accel[i].toFixed(2))}</span></div>
       <div class="line"><span>${tx.tipProteins}</span><span>${r.used[i]}</span></div>`;
   });
 }
 
 function downloadClock() {
   const r = clockState.result, cell = (v) => (/[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : v);
-  const head = ["sample", "clock_score", ...(r.age ? ["age"] : []), "proteins_quantified"];
-  const lines = clockState.table.samples.map((name, i) => [name, r.scores[i], ...(r.age ? [Number.isNaN(r.age[i]) ? "" : r.age[i]] : []), r.used[i]].map(cell).join(","));
+  const head = ["sample", "predicted_age", ...(r.age ? ["age", "age_acceleration"] : []), "clock_proteins_quantified"];
+  const lines = clockState.table.samples.map((name, i) => [name, r.predicted[i], ...(r.age ? (Number.isNaN(r.age[i]) ? ["", ""] : [r.age[i], r.accel[i]]) : []), r.used[i]].map(cell).join(","));
   const a = Object.assign(document.createElement("a"), {
     href: URL.createObjectURL(new Blob([[head.join(","), ...lines].join("\n")], { type: "text/csv" })),
     download: `${clockState.name.replace(/\.[^.]*$/, "")}_clock_${r.species}.csv`,
