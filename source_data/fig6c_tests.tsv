@@ -1,0 +1,5 @@
+study	disease	contrast	unit	n	est	se	ci_low	ci_high	p
+Ping 2020	AD	per Braak stage	years	19	2.435	0.6013	1.136	3.735	0.001376
+Ping 2020	AD	per CERAD score	years	19	3.964	0.9492	1.913	6.015	0.001087
+Merrihew 2023	AD	per Braak stage	years	31	5.726	1.505	2.587	8.864	0.001108
+Merrihew 2023	AD	per CERAD score	years	31	3.164	0.8343	1.424	4.904	0.001142

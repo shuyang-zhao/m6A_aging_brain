@@ -1,58 +1,46 @@
-# Additional file 1 Fig. S1: resource and concordance, protein ageing beyond mRNA shared between species
+# Additional file 1 Fig. S1: protein aging beyond mRNA is shared between mouse and human
 # reads source_data/sfig1a and sfig1b; writes output/figures/sfig1.png and .pdf
 source("figures/style.R")
 
-# a: age t of human protein (Koopmans 2026 DPFC L1-3) against mouse mRNA-adjusted protein (Takasugi 2024) on
-# one-to-one orthologs, points coloured by their local density; the dashed line is the least-squares fit
-genes <- read_panel("sfig1a")
+# a: age t of one-to-one orthologs, human protein (Koopmans 2026 DPFC L1-3) against mouse mRNA-adjusted protein
+# (Takasugi 2024); points coloured by local density, dashed least-squares line
+genes <- by_density(read_panel("sfig1a"), "human_t", "mouse_t")
 rho <- read_panel("sfig1b")[human_unit == "Koopmans 2026 DPFC L1-3" & mouse_layer == "mRNA-adjusted protein"]
 XLIM <- c(-5.5, 5.5)
 YLIM <- c(-10, 10)
-note <- sprintf("ρ = %.2f (%.2f to %.2f)\n%s\nn = %s genes", rho$rho, rho$ci_low, rho$ci_high,
-                fmt_p(rho$p, "Permutation P"), format(nrow(genes), big.mark = ","))
-# density of each point among its neighbours (kernel estimate on a 200 x 200 grid), scaled to 1; the dense core is
-# drawn last
-point_density <- function(x, y) {
-  k <- MASS::kde2d(x, y, n = 200)
-  d <- k$z[cbind(findInterval(x, k$x, all.inside = TRUE), findInterval(y, k$y, all.inside = TRUE))]
-  d / max(d)
-}
-genes[, density := point_density(human_t, mouse_t)]
-setorder(genes, density)
 a <- ggplot(genes, aes(human_t, mouse_t)) +
-  ZERO_X + ZERO_Y +
-  geom_point(aes(colour = density), size = 0.8, stroke = 0) +
-  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = INK, linetype = "22", linewidth = 0.8, xseq = XLIM) +
-  annotate("text", x = XLIM[1], y = YLIM[2], label = note, hjust = 0, vjust = 1, size = PT, lineheight = 1) +
-  scale_colour_gradientn(colours = c(FOCAL_LIGHT, FOCAL, FOCAL_DARK), guide = "none") +
+  ref_line(xintercept = 0) +
+  ref_line(yintercept = 0) +
+  rasterise_pts(geom_point(aes(colour = .density), size = 0.5, stroke = 0)) +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = "black", linetype = "22", linewidth = lw(0.6),
+              fullrange = TRUE) +
+  note_corner(lab_stats(rho$rho, rho$p, nrow(genes), stat = "italic(rho)"), parse = TRUE) +
+  note_corner(sprintf("95%% CI of ρ %s to %s", number(rho$ci_low), number(rho$ci_high)), vjust = 2.9) +
+  scale_density(MOUSE) +
   scale_x_continuous(labels = MINUS_LABELS) +
   scale_y_continuous(labels = MINUS_LABELS) +
   coord_cartesian(xlim = XLIM, ylim = YLIM) +
-  labs(x = "Human protein age t\n(Koopmans 2026 DPFC L1-3)", y = "Mouse mRNA-adjusted protein\nage t (Takasugi 2024)") +
-  theme_fig()
+  labs(x = "Human protein age t\n(Koopmans 2026 DPFC L1-3)", y = "Mouse mRNA-adjusted protein age t\n(Takasugi 2024)") +
+  theme_pub()
 
-# b: Spearman rho of every human protein unit (columns) with the mouse age effects of three layers (rows) in the mouse
-# cohort; large dots, age permutation P < 0.05; units ordered by rho of the mRNA-adjusted layer
+# b: Spearman rho of every human protein unit with the age effects of the mouse cerebrum on three layers; dot size,
+# permutation P; units ordered by rho of the mRNA-adjusted layer
 d <- read_panel("sfig1b")
-d[, mouse_layer := factor(mouse_layer, c("Protein", "mRNA-adjusted protein", "mRNA"),
-                          c("Protein", "mRNA-adjusted\nprotein", "mRNA"))]
-d[, human_unit := factor(human_unit, d[mouse_layer == "mRNA-adjusted\nprotein"][order(-rho), human_unit])]
-b <- ggplot(d, aes(human_unit, mouse_layer)) +
-  geom_point(aes(fill = rho, size = p < 0.05), shape = 21, colour = MATRIX_EDGE, stroke = 0.5) +
-  scale_fill_div(0.3, "Spearman ρ") +
-  scale_size_manual(values = c("FALSE" = 2.2, "TRUE" = 5.4), labels = c("FALSE" = "P ≥ 0.05", "TRUE" = "P < 0.05"),
-                    name = NULL,
-                    guide = guide_legend(order = 2, override.aes = list(fill = "#BDBDBD", colour = MATRIX_EDGE))) +
-  scale_y_discrete(limits = rev) +
-  labs(x = "Human protein unit", y = "Mouse, Takasugi 2024") +
-  theme_matrix() +
-  BOXED +
-  theme(
-    axis.title = element_text(),
-    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, margin = margin(t = 2, unit = "mm")),
-    axis.text.y = element_text(lineheight = 0.95, margin = margin(r = 2, unit = "mm")),
-    legend.position = "bottom"
-  )
+d[, layer := factor(mouse_layer, c("Protein", "mRNA-adjusted protein", "mRNA"),
+                    c("Protein", "mRNA-adjusted\nprotein", "mRNA"))]
+d[, unit := factor(human_unit, rev(d[mouse_layer == "mRNA-adjusted protein"][order(-rho), human_unit]))]
+b <- ggplot(d, aes(layer, unit, fill = rho, size = -log10(p))) +
+  geom_point(shape = 21, colour = EDGE, stroke = st(0.4)) +
+  scale_fill_signed(0.3, "Spearman ρ") +
+  scale_size_area(max_size = 3.2, name = expression(Permutation~italic(P)), breaks = -log10(c(0.5, 0.05, 0.005)),
+                  labels = c("0.5", "0.05", "0.005"),
+                  guide = guide_legend(title.position = "top", title.hjust = 0.5, nrow = 1)) +
+  scale_x_discrete(position = "top") +
+  labs(x = "Mouse cerebrum (Takasugi 2024)", y = "Human protein unit") +
+  theme_tile() +
+  theme(axis.title = element_text(), axis.title.y = element_text(margin = margin(r = 2, unit = "mm")),
+        panel.grid.major = element_line(linewidth = lw(0.25), colour = LIGHT), legend.position = "bottom",
+        legend.box = "vertical", legend.key.spacing.x = unit(1.5, "mm"))
 
-fig <- panel_grid(list(a = a, b = b), design = "AB", widths = c(74, 109), heights = 78)
-save_fig(fig, "sfig1", 156)
+fig <- fig_compose(a, b, guide_area(), design = "AB\nCB", widths = c(98, 85), heights = c(84, 26), guides = "collect")
+save_fig(fig, "sfig1", 112)

@@ -1,9 +1,29 @@
-species	regulator	n_units	est	ci_low	ci_high	p	q	control_pct	n_controls
-human	FMR1	17	-0.1978	-0.5486	0.153	0.269	0.538	47.78	90
-human	FMRP family	21	-0.2307	-0.4216	-0.03974	0.01789	0.07155	42.22	90
-human	YTHDF module	17	-0.07655	-0.5227	0.3696	0.7367	0.7367	66.67	90
-human	YTHDF3	12	-0.1211	-0.5795	0.3373	0.6047	0.7367	57.78	90
-mouse	FMR1	12	0.44	0.2305	0.6494	3.828e-05	5.104e-05	100	88
-mouse	FMRP family	12	0.5209	0.3147	0.7271	7.378e-07	2.951e-06	100	88
-mouse	YTHDF module	12	0.4515	0.2493	0.6537	1.21e-05	2.42e-05	100	88
-mouse	YTHDF3	12	0.3158	0.08795	0.5436	0.006596	0.006596	97.73	88
+regulator	kind	cohort	effect	q
+FMR1	cohort	Keele 2025	-4.485	
+FMR1	cohort	Lu 2025	-7.311	
+FMR1	cohort	Marino 2025	0.2341	
+FMR1	cohort	Takasugi 2024	-13.15	
+FMR1	cohort	Tsumagari 2023	-7.452	
+FMR1	cohort	Wang 2025	-4.539	
+FXR2	cohort	Keele 2025	-2.395	
+FXR2	cohort	Lu 2025	-8.699	
+FXR2	cohort	Marino 2025	-5.124	
+FXR2	cohort	Takasugi 2024	-4.841	
+FXR2	cohort	Tsumagari 2023	-1.767	
+FXR2	cohort	Wang 2025	-13.39	
+FXR1	cohort	Keele 2025	-2.597	
+FXR1	cohort	Lu 2025	-5.691	
+FXR1	cohort	Marino 2025	0.38	
+FXR1	cohort	Takasugi 2024	-7.534	
+FXR1	cohort	Tsumagari 2023	-6.528	
+FXR1	cohort	Wang 2025	-8.51	
+YTHDF3	cohort	Keele 2025	-6.752	
+YTHDF3	cohort	Lu 2025	-12.48	
+YTHDF3	cohort	Marino 2025	-9.826	
+YTHDF3	cohort	Takasugi 2024	6.8	
+YTHDF3	cohort	Tsumagari 2023	-10.08	
+YTHDF3	cohort	Wang 2025	-0.7736	
+FMR1	combined	Combined	-5.652	0.02743
+FXR2	combined	Combined	-4.176	0.02949
+FXR1	combined	Combined	-5.079	0.00355
+YTHDF3	combined	Combined	-7.883	0.000845

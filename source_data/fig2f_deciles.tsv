@@ -1,0 +1,21 @@
+target	decile	n	observed	se
+Human mRNA	1	1000	-1.712	0.09789
+Human mRNA	2	1000	-1.339	0.09981
+Human mRNA	3	999	-0.5279	0.09943
+Human mRNA	4	1000	-0.4266	0.0936
+Human mRNA	5	999	-0.533	0.09193
+Human mRNA	6	1000	-0.374	0.0933
+Human mRNA	7	999	-0.4768	0.09274
+Human mRNA	8	1000	-0.1724	0.09447
+Human mRNA	9	999	0.1834	0.09407
+Human mRNA	10	1000	0.6032	0.09656
+Human protein	1	831	-0.9908	0.04412
+Human protein	2	830	-0.4076	0.04053
+Human protein	3	830	-0.1085	0.04252
+Human protein	4	830	0.06769	0.04025
+Human protein	5	830	0.1072	0.04016
+Human protein	6	830	0.1157	0.03995
+Human protein	7	830	0.1521	0.04073
+Human protein	8	830	0.1903	0.04024
+Human protein	9	830	0.2137	0.04192
+Human protein	10	830	0.493	0.04596

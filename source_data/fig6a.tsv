@@ -1,51 +1,141 @@
-study	donor_id	group	age	predicted_age	acceleration
-Ping 2020	b1_127C	AD	55	74.35	17.77
-Ping 2020	b1_128N	AD	67	70.4	4.595
-Ping 2020	b1_129C	Control	66	63.39	-1.642
-Ping 2020	b1_130C	Control	65	62.44	-1.829
-Ping 2020	b1_130N	AD	62	73.12	11.15
-Ping 2020	b1_131N	Control	52	42.48	-11.8
-Ping 2020	b2_128C	AD	72	83.5	13.85
-Ping 2020	b2_128N	Control	45	47.24	-1.656
-Ping 2020	b2_129C	AD	61	69.66	8.464
-Ping 2020	b2_129N	Control	60	70.05	9.629
-Ping 2020	b2_130C	Control	70	72.05	3.937
-Ping 2020	b2_130N	AD	65	80.09	15.83
-Ping 2020	b3_127C	Control	57	68.73	10.62
-Ping 2020	b3_127N	Control	78	68.9	-5.356
-Ping 2020	b3_128N	AD	78	85.76	11.5
-Ping 2020	b3_129N	AD	55	62.17	5.59
-Ping 2020	b3_130C	Control	75	72.91	0.9593
-Ping 2020	b3_130N	Control	69	64.48	-2.859
-Ping 2020	b3_131N	AD	72	88.02	18.37
-Merrihew 2023	donor19	AD	59	59.85	13.68
-Merrihew 2023	donor21	AD	61	59.33	11.96
-Merrihew 2023	donor23	AD	62	59.07	11.1
-Merrihew 2023	donor24	AD	63	70.2	21.64
-Merrihew 2023	donor27	AD	67	70.64	19.69
-Merrihew 2023	donor29	Control	73	54.91	0.3744
-Merrihew 2023	donor30	AD	76	66.41	10.08
-Merrihew 2023	donor31	AD	77	68	11.07
-Merrihew 2023	donor32	AD	78	57.15	-0.3719
-Merrihew 2023	donor34	Control	78	56	-1.524
-Merrihew 2023	donor36	Control	79	54.6	-3.523
-Merrihew 2023	donor38	Control	84	67.17	6.062
-Merrihew 2023	donor39	AD	85	73.08	11.37
-Merrihew 2023	donor40	AD	85	73.72	12.01
-Merrihew 2023	donor42	AD	86	71.05	8.748
-Merrihew 2023	donor43	Control	86	65.65	3.349
-Merrihew 2023	donor44	AD	87	81.93	19.02
-Merrihew 2023	donor46	Control	88	61.5	-1.995
-Merrihew 2023	donor47	Control	88	66.62	3.118
-Merrihew 2023	donor48	AD	88	81.07	17.57
-Merrihew 2023	donor51	AD	89	76.61	12.51
-Merrihew 2023	donor52	Control	89	59.32	-4.775
-Merrihew 2023	donor53	AD	90	63.59	-1.109
-Merrihew 2023	donor54	AD	91	80.29	15
-Merrihew 2023	donor55	Control	91	66.32	1.029
-Merrihew 2023	donor56	AD	91	73.96	8.671
-Merrihew 2023	donor60	AD	93	76.38	9.889
-Merrihew 2023	donor62	Control	94	60.98	-6.101
-Merrihew 2023	donor63	AD	94	72.11	5.022
-Merrihew 2023	donor64	Control	95	71.67	3.987
-Merrihew 2023	donor67	AD	100	73.4	2.735
+study	disease_name	donor_id	group	age	predicted_age	acceleration
+Ping 2020	AD	b1_127C	AD	55	74.35	17.77
+Ping 2020	AD	b1_128N	AD	67	70.4	4.595
+Ping 2020	AD	b1_129C	Control	66	63.39	-1.642
+Ping 2020	AD	b1_130C	Control	65	62.44	-1.829
+Ping 2020	AD	b1_130N	AD	62	73.12	11.15
+Ping 2020	AD	b1_131N	Control	52	42.48	-11.8
+Ping 2020	AD	b2_128C	AD	72	83.5	13.85
+Ping 2020	AD	b2_128N	Control	45	47.24	-1.656
+Ping 2020	AD	b2_129C	AD	61	69.66	8.464
+Ping 2020	AD	b2_129N	Control	60	70.05	9.629
+Ping 2020	AD	b2_130C	Control	70	72.05	3.937
+Ping 2020	AD	b2_130N	AD	65	80.09	15.83
+Ping 2020	AD	b3_127C	Control	57	68.73	10.62
+Ping 2020	AD	b3_127N	Control	78	68.9	-5.356
+Ping 2020	AD	b3_128N	AD	78	85.76	11.5
+Ping 2020	AD	b3_129N	AD	55	62.17	5.59
+Ping 2020	AD	b3_130C	Control	75	72.91	0.9593
+Ping 2020	AD	b3_130N	Control	69	64.48	-2.859
+Ping 2020	AD	b3_131N	AD	72	88.02	18.37
+Merrihew 2023	AD	donor19	AD	59	59.85	13.68
+Merrihew 2023	AD	donor21	AD	61	59.33	11.96
+Merrihew 2023	AD	donor23	AD	62	59.07	11.1
+Merrihew 2023	AD	donor24	AD	63	70.2	21.64
+Merrihew 2023	AD	donor27	AD	67	70.64	19.69
+Merrihew 2023	AD	donor29	Control	73	54.91	0.3744
+Merrihew 2023	AD	donor30	AD	76	66.41	10.08
+Merrihew 2023	AD	donor31	AD	77	68	11.07
+Merrihew 2023	AD	donor32	AD	78	57.15	-0.3719
+Merrihew 2023	AD	donor34	Control	78	56	-1.524
+Merrihew 2023	AD	donor36	Control	79	54.6	-3.523
+Merrihew 2023	AD	donor38	Control	84	67.17	6.062
+Merrihew 2023	AD	donor39	AD	85	73.08	11.37
+Merrihew 2023	AD	donor40	AD	85	73.72	12.01
+Merrihew 2023	AD	donor42	AD	86	71.05	8.748
+Merrihew 2023	AD	donor43	Control	86	65.65	3.349
+Merrihew 2023	AD	donor44	AD	87	81.93	19.02
+Merrihew 2023	AD	donor46	Control	88	61.5	-1.995
+Merrihew 2023	AD	donor47	Control	88	66.62	3.118
+Merrihew 2023	AD	donor48	AD	88	81.07	17.57
+Merrihew 2023	AD	donor51	AD	89	76.61	12.51
+Merrihew 2023	AD	donor52	Control	89	59.32	-4.775
+Merrihew 2023	AD	donor53	AD	90	63.59	-1.109
+Merrihew 2023	AD	donor54	AD	91	80.29	15
+Merrihew 2023	AD	donor55	Control	91	66.32	1.029
+Merrihew 2023	AD	donor56	AD	91	73.96	8.671
+Merrihew 2023	AD	donor60	AD	93	76.38	9.889
+Merrihew 2023	AD	donor62	Control	94	60.98	-6.101
+Merrihew 2023	AD	donor63	AD	94	72.11	5.022
+Merrihew 2023	AD	donor64	Control	95	71.67	3.987
+Merrihew 2023	AD	donor67	AD	100	73.4	2.735
+Blumenreich 2024	PD	C1	Control	81	65.36	-3.513
+Blumenreich 2024	PD	C10	Control	68	59.63	-0.3374
+Blumenreich 2024	PD	C11	Control	43	34.54	-8.316
+Blumenreich 2024	PD	C12	Control	71	70.01	7.987
+Blumenreich 2024	PD	C13	Control	87	63.42	-9.56
+Blumenreich 2024	PD	C14	Control	83	74.59	4.349
+Blumenreich 2024	PD	C15	Control	80	75.72	7.536
+Blumenreich 2024	PD	C16	Control	89	75.59	1.247
+Blumenreich 2024	PD	C17	Control	92	78.31	1.91
+Blumenreich 2024	PD	C18	Control	87	68.06	-4.921
+Blumenreich 2024	PD	C19	Control	78	69.14	2.326
+Blumenreich 2024	PD	C2	Control	95	75.55	-2.902
+Blumenreich 2024	PD	C20	Control	88	70.67	-2.989
+Blumenreich 2024	PD	C21	Control	84	76.07	5.141
+Blumenreich 2024	PD	C3	Control	87	73.3	0.3191
+Blumenreich 2024	PD	C4	Control	63	48.71	-7.837
+Blumenreich 2024	PD	C5	Control	64	70.09	12.86
+Blumenreich 2024	PD	C6	Control	53	45.01	-4.693
+Blumenreich 2024	PD	C7	Control	85	70.49	-1.117
+Blumenreich 2024	PD	C8	Control	56	58.3	6.551
+Blumenreich 2024	PD	C9	Control	86	68.25	-4.04
+Blumenreich 2024	PD	PD1	PD	55	54.86	3.794
+Blumenreich 2024	PD	PD10	PD	63	64.84	8.29
+Blumenreich 2024	PD	PD11	PD	59	68.7	14.9
+Blumenreich 2024	PD	PD12	PD	81	74.42	5.55
+Blumenreich 2024	PD	PD13	PD	81	76.82	7.947
+Blumenreich 2024	PD	PD14	PD	81	77.35	8.483
+Blumenreich 2024	PD	PD15	PD	92	77.94	1.538
+Blumenreich 2024	PD	PD16	PD	82	62.06	-7.5
+Blumenreich 2024	PD	PD17	PD	83	70.69	0.4513
+Blumenreich 2024	PD	PD18	PD	80	70.61	2.428
+Blumenreich 2024	PD	PD19	PD	79	72.51	5.011
+Blumenreich 2024	PD	PD2	PD	67	61.57	2.289
+Blumenreich 2024	PD	PD20	PD	73	64.08	0.6882
+Blumenreich 2024	PD	PD21	PD	83	72.84	2.6
+Blumenreich 2024	PD	PD3	PD	66	64.94	6.336
+Blumenreich 2024	PD	PD4	PD	61	69.07	13.89
+Blumenreich 2024	PD	PD5	PD	91	72.35	-3.371
+Blumenreich 2024	PD	PD6	PD	85	67.58	-4.026
+Blumenreich 2024	PD	PD7	PD	65	61.34	3.422
+Blumenreich 2024	PD	PD8	PD	68	62.32	2.349
+Blumenreich 2024	PD	PD9	PD	75	75.68	10.91
+Blumenreich 2024	PD	PG1	PD	62	66.57	10.71
+Blumenreich 2024	PD	PG10	PD	59	62.76	8.955
+Blumenreich 2024	PD	PG11	PD	57	56.07	3.628
+Blumenreich 2024	PD	PG12	PD	82	67.2	-2.358
+Blumenreich 2024	PD	PG13	PD	83	74.29	4.048
+Blumenreich 2024	PD	PG14	PD	85	75.23	3.624
+Blumenreich 2024	PD	PG15	PD	84	73.36	2.433
+Blumenreich 2024	PD	PG16	PD	83	70.38	0.1421
+Blumenreich 2024	PD	PG17	PD	81	72.56	3.686
+Blumenreich 2024	PD	PG18	PD	80	72.92	4.739
+Blumenreich 2024	PD	PG19	PD	79	79.92	12.42
+Blumenreich 2024	PD	PG2	PD	55	64.66	13.6
+Blumenreich 2024	PD	PG20	PD	78	77.35	10.53
+Blumenreich 2024	PD	PG21	PD	79	71.8	4.3
+Blumenreich 2024	PD	PG3	PD	67	50.51	-8.77
+Blumenreich 2024	PD	PG4	PD	91	70.19	-5.533
+Blumenreich 2024	PD	PG5	PD	85	71.89	0.2851
+Blumenreich 2024	PD	PG6	PD	65	64	6.087
+Blumenreich 2024	PD	PG7	PD	68	60.34	0.3747
+Blumenreich 2024	PD	PG8	PD	57	68.94	16.5
+Blumenreich 2024	PD	PG9	PD	64	65.73	8.494
+Umoh 2018	ALS	11	ALS	62	69.82	0.5908
+Umoh 2018	ALS	13	ALS	64	72.04	2.934
+Umoh 2018	ALS	16	Control	92	70.73	3.417
+Umoh 2018	ALS	2	Control	78	66.96	-1.248
+Umoh 2018	ALS	20	ALS	49	62.84	-7.23
+Umoh 2018	ALS	23	ALS	48	70.76	0.6279
+Umoh 2018	ALS	24	ALS	49	64.14	-5.921
+Umoh 2018	ALS	25	ALS	61	70.99	1.697
+Umoh 2018	ALS	26	ALS	55	71.78	2.099
+Umoh 2018	ALS	27	ALS	62	72.56	3.329
+Umoh 2018	ALS	28	ALS	57	66.44	-3.116
+Umoh 2018	ALS	31	ALS	69	69.98	1.192
+Umoh 2018	ALS	36	ALS	57	73.49	3.939
+Umoh 2018	ALS	37	Control	81	72.33	4.311
+Umoh 2018	ALS	39	Control	91	68.55	1.174
+Umoh 2018	ALS	4	ALS	67	73.71	4.8
+Umoh 2018	ALS	42	ALS	64	67.47	-1.64
+Umoh 2018	ALS	45	Control	76	65.11	-3.229
+Umoh 2018	ALS	46	ALS	68	76.44	7.587
+Umoh 2018	ALS	47	ALS	54	67.34	-2.402
+Umoh 2018	ALS	48	Control	53	70.47	0.6553
+Umoh 2018	ALS	49	ALS	67	73.89	4.979
+Umoh 2018	ALS	50	Control	94	62.46	-4.72
+Umoh 2018	ALS	51	Control	52	69.51	-0.3616
+Umoh 2018	ALS	52	ALS	57	67.17	-2.38
+Umoh 2018	ALS	8	ALS	65	69.06	0.02338
+Umoh 2018	ALS	9	ALS	46	69.36	-0.8972

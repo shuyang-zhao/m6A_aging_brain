@@ -41,8 +41,8 @@ not used.
     embeddings and the TabPFN steps of scripts 50 and 52 on a GPU; `select_clip_datasets.py` chose the CLIP libraries
     from the library catalogue of a separate project (clipflow), which is not part of this repository
   - `utils.py`, `model.py`, `network.py`, `single_nucleus.py` and the `.R` files: functions shared by the scripts
-- `figures/`: one R script per figure (`fig1.R`-`fig6.R`; Additional file 1: `sfig1.R`-`sfig10.R`) and their common
-  style (`style.R`); the figures read only `source_data/`
+- `figures/`: one R script per figure (`fig1.R`-`fig6.R`; Additional file 1: `sfig1.R`-`sfig10.R`), their common style
+  (`style.R`) and the panel library it loads (`pub/`); the figures read only `source_data/`
 - `m6brain/`: the m6Brain clock Python package (weights, command line, tests and a worked example)
 - `website/`: the pages of the query website (static HTML, CSS and JavaScript; script 62 adds the data)
 - `source_data/`: the plotted values of every panel and Tables S1-S7, as written by script 60
@@ -105,7 +105,7 @@ The weights, input format, the age acceleration fitted in control samples and a 
 ```bash
 mamba env create -p env -f environment.yml          # Python
 Rscript -e 'install.packages(c("lme4", "mashr", "data.table", "ggplot2", "patchwork", "ggrepel", "ggbeeswarm",
-  "ggforce", "png", "systemfonts", "BiocManager"))'
+  "ggforce", "ggh4x", "png", "systemfonts", "BiocManager"))'
 Rscript -e 'BiocManager::install(c("limma", "edgeR", "SummarizedExperiment"))'
 ```
 

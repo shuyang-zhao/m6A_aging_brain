@@ -1,91 +1,29 @@
-set	species	kind	weights	label	r	ci_low	ci_high	rank
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Oligodendro	Buckley 2023 SVZ, oligodendrocytes	0.7517	0.5592	0.8673	5
-external	mouse	Transcriptome clocks	tAge_normage_multispecies	tAge normalized age, multispecies	0.7436	0.5416	0.8645	6
-external	mouse	Transcriptome clocks	tAge_chrono_mouse_multitissue	tAge chronological, mouse tissues	0.7272	0.5289	0.8502	8
-external	mouse	Transcriptome clocks	tAge_mortality_multispecies	tAge mortality, multispecies	0.6934	0.4901	0.8252	10
-external	mouse	Transcriptome clocks	tAge_normage_mouse_multitissue	tAge normalized age, mouse tissues	0.6844	0.4696	0.8228	11
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Astrocyte_qNSC	Buckley 2023 SVZ, astrocytes and qNSCs	0.5571	0.2974	0.74	14
-external	mouse	Transcriptome clocks	tAge_chrono_rodent_brain	tAge chronological, rodent brain	0.5365	0.329	0.6946	15
-external	mouse	Transcriptome clocks	tAge_chrono_multispecies	tAge chronological, multispecies	0.5363	0.316	0.7018	16
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Endothelial	Buckley 2023 SVZ, endothelial cells	0.529	0.2558	0.7239	17
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Microglia	Buckley 2023 SVZ, microglia	0.3894	0.1552	0.5822	20
-external	mouse	Transcriptome clocks	Pasta_human	Pasta, human	0.3006	0.05284	0.5134	26
-external	mouse	Transcriptome clocks	RNAAgeCalc_alltissues_all	RNAAgeCalc, all tissues	0.1689	-0.1045	0.4186	28
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_aNSC_NPC	Buckley 2023 SVZ, aNSCs and NPCs	0.05183	-0.237	0.3322	30
-external	mouse	Transcriptome clocks	RNAAgeCalc_brain_DESeq2	RNAAgeCalc, brain (DESeq2)	0.02584	-0.1537	0.2038	32
-external	mouse	Transcriptome clocks	RNAAgeCalc_brain_all	RNAAgeCalc, brain	0.02196	-0.2012	0.2429	33
-external	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Neuroblast	Buckley 2023 SVZ, neuroblasts	-0.05009	-0.2026	0.1048	36
-external	mouse	Transcriptome clocks	RNAAgeCalc_brain_Pearson	RNAAgeCalc, brain (Pearson)	-0.07957	-0.2493	0.0949	37
-external	mouse	Signatures and half-lives	Fornasiero2018_log2_halflife_cortex	Fornasiero 2018 half-lives	0.5278	0.3773	0.6512	18
-external	mouse	m6Brain clock and references	m6brain_clock	m6Brain clock	0.9428	0.884	0.9722	1
-external	mouse	m6Brain clock and references	elastic_net	Unguided elastic net	0.9386	0.8804	0.9689	2
-external	mouse	m6Brain clock and references	m6a_load_prior	m6A-load-guided net	0.935	0.8737	0.9671	3
-external	mouse	Proteomic clocks	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.3705	0.2133	0.5091	22
-external	mouse	Proteomic clocks	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.3675	0.2282	0.4921	23
-external	mouse	Proteomic clocks	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.3024	0.06398	0.5082	25
-external	mouse	Proteomic clocks	Melendez 2024, CSF	Melendez 2024, CSF	0.2608	0.09983	0.4085	27
-external	mouse	Proteomic clocks	Lehallier 2019, plasma	Lehallier 2019, plasma	0.04694	-0.1713	0.2608	31
-external	mouse	Proteomic clocks	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.03098	-0.2224	0.1628	35
-external	mouse	Proteomic clocks	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.2076	-0.3877	-0.01228	38
-external	mouse	Signatures and half-lives	Palmer2021_signature_all	Palmer 2021 aging signature	0.709	0.5861	0.8001	9
-external	mouse	Signatures and half-lives	SenMayo_Saul2022	SenMayo (Saul 2022)	0.159	-0.02261	0.3305	29
-held-out	human	Transcriptome clocks	tAge_mortality_multispecies	tAge mortality, multispecies	0.4846	0.3202	0.6207	5
-held-out	human	Transcriptome clocks	tAge_chrono_multispecies	tAge chronological, multispecies	0.4804	0.2636	0.651	6
-held-out	human	Transcriptome clocks	tAge_normage_multispecies	tAge normalized age, multispecies	0.4701	0.2967	0.6134	7
-held-out	human	Transcriptome clocks	tAge_chrono_rodent_brain	tAge chronological, rodent brain	0.3211	0.2216	0.4139	15
-held-out	human	Transcriptome clocks	RNAAgeCalc_brain_DESeq2	RNAAgeCalc, brain (DESeq2)	0.2944	0.163	0.4155	16
-held-out	human	Transcriptome clocks	tAge_chrono_mouse_multitissue	tAge chronological, mouse tissues	0.2612	0.09385	0.4142	18
-held-out	human	Transcriptome clocks	RNAAgeCalc_alltissues_all	RNAAgeCalc, all tissues	0.2045	0.1066	0.2985	22
-held-out	human	Transcriptome clocks	tAge_normage_mouse_multitissue	tAge normalized age, mouse tissues	0.2008	0.03694	0.3542	23
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_Astrocyte_qNSC	Buckley 2023 SVZ, astrocytes and qNSCs	0.1821	0.02838	0.3273	24
-held-out	human	Transcriptome clocks	RNAAgeCalc_brain_all	RNAAgeCalc, brain	0.1639	0.06494	0.2598	25
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_Microglia	Buckley 2023 SVZ, microglia	0.1621	0.009482	0.3074	26
-held-out	human	Transcriptome clocks	Pasta_human	Pasta, human	0.1568	0.05551	0.2549	27
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_aNSC_NPC	Buckley 2023 SVZ, aNSCs and NPCs	0.1545	0.05528	0.2507	28
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_Oligodendro	Buckley 2023 SVZ, oligodendrocytes	0.1209	-0.06225	0.2962	29
-held-out	human	Transcriptome clocks	RNAAgeCalc_brain_Pearson	RNAAgeCalc, brain (Pearson)	0.1107	0.01071	0.2084	30
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_Endothelial	Buckley 2023 SVZ, endothelial cells	0.06448	-0.06727	0.194	33
-held-out	human	Transcriptome clocks	Buckley_SVZ_chrono_Neuroblast	Buckley 2023 SVZ, neuroblasts	-0.03158	-0.1343	0.07186	36
-held-out	human	Signatures and half-lives	Fornasiero2018_log2_halflife_cortex	Fornasiero 2018 half-lives	0.1089	-0.04291	0.2558	31
-held-out	human	m6Brain clock and references	m6a_load_prior	m6A-load-guided net	0.7918	0.669	0.8725	1
-held-out	human	m6Brain clock and references	elastic_net	Unguided elastic net	0.7896	0.6633	0.8722	2
-held-out	human	m6Brain clock and references	m6brain_clock	m6Brain clock	0.7836	0.6643	0.864	3
-held-out	human	Proteomic clocks	Melendez 2024, CSF	Melendez 2024, CSF	0.3834	0.2249	0.5222	10
-held-out	human	Proteomic clocks	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.3277	0.1977	0.4464	14
-held-out	human	Proteomic clocks	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.2829	0.1881	0.3724	17
-held-out	human	Proteomic clocks	Lehallier 2019, plasma	Lehallier 2019, plasma	0.09095	-0.1494	0.3212	32
-held-out	human	Proteomic clocks	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.04524	-0.1047	0.1931	34
-held-out	human	Proteomic clocks	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.1011	-0.2961	0.1019	37
-held-out	human	Proteomic clocks	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.1651	-0.2609	-0.06611	38
-held-out	human	Signatures and half-lives	Palmer2021_signature_all	Palmer 2021 aging signature	0.4259	0.2162	0.598	9
-held-out	human	Signatures and half-lives	SenMayo_Saul2022	SenMayo (Saul 2022)	0.2084	0.04142	0.364	21
-held-out	mouse	Transcriptome clocks	tAge_chrono_mouse_multitissue	tAge chronological, mouse tissues	0.9277	0.8365	0.9688	4
-held-out	mouse	Transcriptome clocks	tAge_mortality_multispecies	tAge mortality, multispecies	0.9216	0.7996	0.9705	5
-held-out	mouse	Transcriptome clocks	tAge_normage_multispecies	tAge normalized age, multispecies	0.9175	0.8144	0.9645	7
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Oligodendro	Buckley 2023 SVZ, oligodendrocytes	0.9153	0.8009	0.9652	8
-held-out	mouse	Transcriptome clocks	tAge_chrono_multispecies	tAge chronological, multispecies	0.8914	0.7571	0.9534	11
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Astrocyte_qNSC	Buckley 2023 SVZ, astrocytes and qNSCs	0.8879	0.745	0.9528	12
-held-out	mouse	Transcriptome clocks	tAge_chrono_rodent_brain	tAge chronological, rodent brain	0.883	0.7472	0.948	13
-held-out	mouse	Transcriptome clocks	tAge_normage_mouse_multitissue	tAge normalized age, mouse tissues	0.8734	0.764	0.934	14
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Microglia	Buckley 2023 SVZ, microglia	0.8365	0.5702	0.9437	17
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Endothelial	Buckley 2023 SVZ, endothelial cells	0.7865	0.6068	0.8897	18
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_aNSC_NPC	Buckley 2023 SVZ, aNSCs and NPCs	0.6942	0.3393	0.8761	22
-held-out	mouse	Transcriptome clocks	RNAAgeCalc_alltissues_all	RNAAgeCalc, all tissues	0.6185	0.3208	0.805	24
-held-out	mouse	Transcriptome clocks	Pasta_human	Pasta, human	0.4703	0.2573	0.6397	29
-held-out	mouse	Transcriptome clocks	RNAAgeCalc_brain_DESeq2	RNAAgeCalc, brain (DESeq2)	0.1898	-0.1224	0.4678	31
-held-out	mouse	Transcriptome clocks	RNAAgeCalc_brain_all	RNAAgeCalc, brain	0.08021	-0.2417	0.3862	33
-held-out	mouse	Transcriptome clocks	RNAAgeCalc_brain_Pearson	RNAAgeCalc, brain (Pearson)	-0.03374	-0.2163	0.1511	34
-held-out	mouse	Transcriptome clocks	Buckley_SVZ_chrono_Neuroblast	Buckley 2023 SVZ, neuroblasts	-0.07362	-0.3131	0.1747	36
-held-out	mouse	Signatures and half-lives	Fornasiero2018_log2_halflife_cortex	Fornasiero 2018 half-lives	0.5467	0.117	0.8039	27
-held-out	mouse	m6Brain clock and references	elastic_net	Unguided elastic net	0.9737	0.9511	0.986	1
-held-out	mouse	m6Brain clock and references	m6brain_clock	m6Brain clock	0.9726	0.9562	0.983	2
-held-out	mouse	m6Brain clock and references	m6a_load_prior	m6A-load-guided net	0.962	0.9305	0.9794	3
-held-out	mouse	Proteomic clocks	Goeminne 2025 brain, plasma	Goeminne 2025 brain, plasma	0.5695	0.1483	0.8159	25
-held-out	mouse	Proteomic clocks	Oh 2025 brain, plasma	Oh 2025 brain, plasma	0.5641	0.0851	0.8313	26
-held-out	mouse	Proteomic clocks	Melendez 2024, CSF	Melendez 2024, CSF	0.5204	0.2348	0.7233	28
-held-out	mouse	Proteomic clocks	Oh 2025 organismal, plasma	Oh 2025 organismal, plasma	0.4604	0.1021	0.713	30
-held-out	mouse	Proteomic clocks	Lehallier 2019, plasma	Lehallier 2019, plasma	0.1312	-0.08359	0.3344	32
-held-out	mouse	Proteomic clocks	Oh 2023 organismal, plasma	Oh 2023 organismal, plasma	-0.09439	-0.3653	0.1913	37
-held-out	mouse	Proteomic clocks	Oh 2023 brain, plasma	Oh 2023 brain, plasma	-0.4362	-0.6848	-0.0966	38
-held-out	mouse	Signatures and half-lives	Palmer2021_signature_all	Palmer 2021 aging signature	0.9191	0.8193	0.9649	6
-held-out	mouse	Signatures and half-lives	SenMayo_Saul2022	SenMayo (Saul 2022)	0.65	0.4547	0.7857	23
+set	species	cohort	kind	n	r	ci_low	ci_high	p	i2	k	best_clock	r_best
+held-out	mouse	Keele 2025	cohort	18	0.9769	0.9378	0.9916	3.754e-12			tAge chronological, mouse tissues	0.9575
+held-out	mouse	Lu 2025	cohort	27	0.9639	0.9214	0.9836	6.989e-16			Buckley 2023 SVZ, astrocytes and qNSCs	0.822
+held-out	mouse	Marino 2025	cohort	10	0.9927	0.9681	0.9983	1.265e-08			tAge mortality, multispecies	0.997
+held-out	mouse	Takasugi 2024	cohort	16	0.9843	0.9543	0.9947	5.928e-12			tAge chronological, mouse tissues	0.9796
+held-out	mouse	Tsumagari 2023	cohort	18	0.971	0.9222	0.9894	2.297e-11			Palmer 2021 aging signature	0.9191
+held-out	mouse	Wang 2025	cohort	40	0.9513	0.9092	0.9741	5.109e-21			tAge chronological, mouse tissues	0.8529
+held-out	human	Blumenreich 2024	cohort	21	0.8637	0.6889	0.9436	4.561e-07			Melendez 2024, CSF	0.6982
+held-out	human	Eggers 2025	cohort	34	0.7905	0.6174	0.8906	2.668e-08			tAge mortality, multispecies	0.7545
+held-out	human	Koopmans 2026	cohort	46	0.888	0.8053	0.9368	1.903e-16			tAge chronological, multispecies	0.7225
+held-out	human	Lee 2023	cohort	74	0.5008	0.3074	0.6544	5.523e-06			Melendez 2024, CSF	0.3559
+held-out	human	Luo 2024	cohort	193	0.6767	0.592	0.7466	3.421e-27			tAge mortality, multispecies	0.4211
+held-out	human	Merrihew 2023	cohort	11	0.726	0.2235	0.9236	0.01141			Melendez 2024, CSF	0.7232
+held-out	human	Ping 2020	cohort	10	0.7805	0.2966	0.9455	0.00772			Buckley 2023 SVZ, microglia	0.7161
+held-out	human	Teng 2023	cohort	16	0.9121	0.7601	0.9695	8.563e-07			tAge chronological, multispecies	0.7972
+external	mouse	Chen 2025	cohort	188	0.7265	0.6511	0.7877	3.959e-32			Palmer 2021 aging signature	0.4626
+external	mouse	Vignane 2026	cohort	12	0.9353	0.7801	0.9821	8.017e-06			Palmer 2021 aging signature	0.88
+external	mouse	Gebru 2024	cohort	23	0.9834	0.9606	0.9931	4.774e-17			tAge normalized age, mouse tissues	0.8858
+external	mouse	Huang 2024	cohort	10	0.9951	0.9784	0.9989	2.605e-09			tAge normalized age, multispecies	0.9906
+external	mouse	Jha 2026	cohort	9	0.9369	0.7219	0.9869	0.0001956			Palmer 2021 aging signature	0.8839
+external	mouse	Keele 2023	cohort	20	0.9254	0.8178	0.9705	5.164e-09			Buckley 2023 SVZ, oligodendrocytes	0.8866
+external	mouse	Marchionini 2025	cohort	40	0.9076	0.831	0.9504	6.712e-16			Buckley 2023 SVZ, oligodendrocytes	0.8673
+external	mouse	Mohallem 2024	cohort	13	0.9724	0.9078	0.9919	2.689e-08			tAge normalized age, multispecies	0.926
+external	mouse	Scifo 2025	cohort	45	0.8113	0.6796	0.8923	1.394e-11			Palmer 2021 aging signature	0.788
+external	mouse	Yarbro 2025	cohort	39	0.8655	0.7566	0.9277	1.163e-12			tAge normalized age, mouse tissues	0.8219
+external	mouse	Yu 2020	cohort	10	0.9888	0.9516	0.9974	6.793e-08			Pasta, human	0.7838
+held-out	mouse	Pooled	pooled		0.9726	0.9562	0.983	1.483e-68	34.75	6		
+held-out	human	Pooled	pooled		0.7836	0.6643	0.864	4.13e-16	77.01	8		
+external	mouse	Pooled	pooled		0.9428	0.884	0.9722	7.439e-21	89.61	11		

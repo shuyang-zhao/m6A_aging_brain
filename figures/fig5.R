@@ -1,155 +1,142 @@
 # Figure 5: the m6Brain clock
-# reads source_data/fig5a-e and fig5d_training (script 55); writes output/figures/fig5.png and .pdf
+# reads source_data/fig5a-g (scripts 52 and 55); writes output/figures/fig5
 source("figures/style.R")
 
-SETS <- c("held-out mouse" = FOCAL, "external mouse" = CONTRAST, "held-out human" = RED)
-SET_LABELS <- c("held-out mouse" = "Held-out mouse", "external mouse" = "External mouse",
-                "held-out human" = "Held-out human")
-set_of <- function(set, species) factor(paste(set, species), names(SETS))
+SETS <- c("held-out mouse" = "Held-out mouse", "external mouse" = "External mouse", "held-out human" = "Held-out human")
+set_of <- function(set, species) factor(SETS[paste(set, species)], SETS)
+METHOD <- c("m6Brain clock" = M6BRAIN, "Unguided elastic net" = GREY, "m6A-load-guided net" = LOAD)
 
-# a: Pearson r of the predicted with chronological age in every cohort (point, Fisher-z 95% CI; filled, P < 0.05),
-# cohorts ordered by r within the set, and the random-effects estimate over the cohorts of the set (diamond)
+# a: proteins chosen by each net of all cohorts by decile of the predicted |age z| that guides the clock
 a <- read_panel("fig5a")
-a[, `:=`(group = set_of(set, species), pooled = kind == "pooled")]
-setorder(a, group, pooled, -r)
-a[, x := factor(fifelse(pooled, paste0("Pooled ", group), cohort), unique(fifelse(pooled, paste0("Pooled ", group),
-                                                                               cohort)))]
-a[, `:=`(fill = fifelse(pooled | p < 0.05, SETS[as.character(group)], "white"))]
-pooled_text <- a[pooled == TRUE, .(group, x, text = sprintf("r = %.2f", r))]
-pa <- ggplot(a, aes(x, r)) +
-  geom_linerange(aes(ymin = ci_low, ymax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(data = ~ .x[pooled == FALSE], aes(fill = I(fill)), colour = EDGE, shape = 21, size = 3.4, stroke = 0.5) +
-  geom_point(data = ~ .x[pooled == TRUE], aes(fill = I(fill)), colour = EDGE, shape = 23, size = 5, stroke = 0.5) +
-  geom_text(data = pooled_text, aes(x, 0.36, label = text), hjust = 0, angle = 90, size = PT, colour = INK) +
-  facet_grid(. ~ group, scales = "free_x", space = "free_x", labeller = labeller(group = SET_LABELS)) +
-  scale_x_discrete(labels = function(x) sub("^Pooled .*", "Pooled", x)) +
-  scale_y_continuous(breaks = seq(0.4, 1, 0.2), limits = c(0.34, 1)) +
-  labs(x = NULL, y = "Pearson r of predicted\nwith chronological age") +
-  theme_fig() +
-  BOXED +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5), panel.spacing.x = unit(3, "mm"))
+a[, `:=`(species = factor(SPECIES_NAME[species], SPECIES_NAME), label = factor(label, names(METHOD)[1:2]))]
+key <- data.table(species = factor("Mouse", levels(a$species)), y = c(150, 130), text = c("m6Brain clock", "Unguided net"),
+                  label = factor(names(METHOD)[1:2], names(METHOD)[1:2]))
+a <- ggplot(a, aes(decile, chosen, fill = label)) +
+  geom_col(position = position_dodge(width = 0.82), width = 0.78) +
+  geom_point(data = key, aes(1, y, colour = label), shape = 15, size = 1.8, inherit.aes = FALSE) +
+  geom_text(data = key, aes(1.7, y, label = text), hjust = 0, size = pt_size(6), inherit.aes = FALSE) +
+  facet_wrap(~species) +
+  scale_fill_manual(values = METHOD, guide = "none") +
+  scale_colour_manual(values = METHOD, guide = "none") +
+  scale_x_continuous(breaks = c(1, 5, 10)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
+  labs(x = "Decile of the predicted |age z|", y = "Proteins in the clock") +
+  theme_box()
 
-# b: predicted against chronological age (donor means of the clock's raw prediction) in four cohorts; dashed line,
-# identity; r of the cohort
+# b: predicted against chronological age in four cohorts with many ages (donor means); dashed, identity
 b <- read_panel("fig5b")
-b[, `:=`(key = paste(set, species), cohort = factor(cohort, unique(cohort)))]
-cohort_scatter <- function(d, y_title) {
-  unit <- d$age_unit[1]
-  d[, strip := sprintf("%s, %s", cohort, tolower(SET_LABELS[key]))]
-  note <- unique(d[, .(strip, text = sprintf("r = %.2f\nn = %d", r, n))])
-  lim <- range(c(d$age, d$predicted_age))
-  ggplot(d, aes(age, predicted_age)) +
-    geom_abline(slope = 1, intercept = 0, colour = EDGE, linewidth = 0.6, linetype = "22") +
-    geom_point(fill = SETS[d$key[1]], colour = EDGE, shape = 21, size = 2.6, stroke = 0.4, alpha = 0.9,
-               position = position_jitter(width = 0.02 * diff(lim), height = 0, seed = 1)) +
-    geom_text(data = note, aes(x = -Inf, y = Inf, label = text), hjust = -0.08, vjust = 1.15, size = PT,
-              lineheight = 0.95, colour = INK, inherit.aes = FALSE) +
-    facet_wrap(~strip) +
-    scale_x_continuous(breaks = scales::breaks_pretty(4)) +
-    scale_y_continuous(breaks = scales::breaks_pretty(4), expand = expansion(mult = c(0.05, 0.3))) +
-    coord_cartesian(xlim = lim) +
-    labs(x = paste0("Age (", unit, ")"), y = y_title) +
-    theme_fig() +
-    BOXED
-}
-scatters <- Map(cohort_scatter, split(b, b$cohort), y_title = list("Predicted age", NULL, "Predicted age", NULL))
-pb <- wrap_plots(scatters, nrow = 2) + FLUSH
+b[, group := set_of(set, species)]
+b[, strip := factor(cohort, unique(cohort))]
+labels <- b[, .(text = lab_stats(r[1], n = n[1])), by = strip]
+b <- ggplot(b, aes(age, predicted_age)) +
+  geom_abline(slope = 1, linetype = "22", linewidth = lw(0.5), colour = "grey55") +
+  geom_point(aes(fill = group), shape = 21, colour = EDGE, stroke = st(0.25), size = 1, alpha = 0.9) +
+  geom_text(data = labels, aes(x = -Inf, y = Inf, label = text), parse = TRUE, hjust = -0.06, vjust = 1.3, size = pt_size(6)) +
+  facet_wrap(~strip, nrow = 1, scales = "free") +
+  scale_fill_manual(values = SET, guide = "none") +
+  scale_y_continuous(expand = expansion(mult = c(0.05, 0.2))) +
+  labs(x = "Chronological age (mouse, months; human, years)", y = "Predicted age") +
+  theme_box()
 
-# c: benchmark, pooled r (95% CI) of every clock per set; rows grouped (the m6Brain clock and the two reference nets,
-# then the published clocks by kind) and ordered by the mean r over the sets; dashed line, the m6Brain clock
-KINDS <- c("m6Brain clock and references", "Proteomic clocks", "Transcriptome clocks", "Signatures and half-lives")
-KIND_LABELS <- c("m6Brain\nand references", "Proteomic\nclocks", "Transcriptome\nclocks", "Signatures,\nhalf-lives")
-MINE <- c(m6brain_clock = FOCAL, elastic_net = GREY, m6a_load_prior = FOCAL_LIGHT)
-cc <- read_panel("fig5c")
-cc[, `:=`(group = set_of(set, species), kind = factor(kind, KINDS, KIND_LABELS))]
-cc[, mean_r := mean(r), by = weights]
-row_order <- unique(cc[order(kind, -(weights == "m6brain_clock"), -mean_r), label])
-cc[, `:=`(row = factor(label, rev(row_order)), fill = fifelse(weights %in% names(MINE), MINE[weights], "white"))]
-mine <- cc[weights == "m6brain_clock", .(group, r)]
-pc <- ggplot(cc, aes(r, row)) +
-  geom_vline(data = mine, aes(xintercept = r), colour = FOCAL, linewidth = 0.5, linetype = "22") +
-  ZERO_X +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.5) +
-  geom_point(aes(fill = I(fill), shape = weights == "m6brain_clock", size = weights == "m6brain_clock"),
-             colour = EDGE, stroke = 0.5) +
-  facet_grid(kind ~ group, scales = "free_y", space = "free_y", labeller = labeller(group = SET_LABELS)) +
-  scale_shape_manual(values = c("TRUE" = 23, "FALSE" = 21), guide = "none") +
-  scale_size_manual(values = c("TRUE" = 4.4, "FALSE" = 3), guide = "none") +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = c(-0.5, 0, 0.5, 1), limits = c(-0.75, 1)) +
-  labs(x = "Pooled Pearson r with age (95% CI)", y = NULL) +
-  theme_rows() +
-  BOXED +
-  theme(panel.spacing.y = unit(2.4, "mm"), panel.spacing.x = unit(3, "mm"),
-        strip.text.y = element_text(angle = 0, hjust = 0, margin = margin(l = 2, unit = "mm")))
+# c: Pearson r of the m6Brain clock against the best published clock of the same cohort; dashed, identity
+c_ <- read_panel("fig5c")[kind == "cohort"]
+c_[, group := set_of(set, species)]
+above <- c_[, sum(r > r_best)]
+c_ <- ggplot(c_, aes(r_best, r)) +
+  ref_line(slope = 1) +
+  geom_point(aes(fill = group), shape = 21, colour = EDGE, stroke = st(0.3), size = 1.5) +
+  note(0.03, 1, sprintf("%d of %d cohorts\nabove identity", above, nrow(c_)), hjust = 0, vjust = 1, lineheight = 0.95) +
+  key_rows(names(SET), SET, x = 0.3, y = 0.24, step = 0.09, width = 0.05, square = TRUE) +
+  scale_fill_manual(values = SET, guide = "none") +
+  scale_x_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0.5", "1")) +
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0.5", "1")) +
+  coord_equal(xlim = c(0, 1), ylim = c(0, 1)) +
+  labs(x = "Best published clock, r", y = "m6Brain clock, r") +
+  theme_pub()
 
-# d: within-cohort error, MAE of 10 x 10 nested cross-validation (mean ± SD over the seeds) of the three nets and of the
-# training-mean null, with the paired Wilcoxon P against the unguided net; right, MAE by number of training donors in
-# BrainGVEX (mean ± SD over 5 seeds) with the predictions intact, permuted across genes or not used (unguided)
-VARIANT_COL <- c(m6brain_clock = FOCAL, elastic_net = GREY, m6a_load_prior = FOCAL_LIGHT, null = "white",
-                 shuffled_prior = RED_LIGHT)
-w <- read_panel("fig5d")
-w[, `:=`(strip = sprintf("%s (%s)", cohort, age_unit), row = factor(variant, rev(names(VARIANT_COL)[1:4]),
-                                                                     rev(unique(label[order(match(variant,
-                                                                     names(VARIANT_COL)))]))))]
-w[, strip := factor(strip, unique(strip))]
-w[, note := fifelse(is.na(p_wilcoxon), "", fmt_p(p_wilcoxon))]
-pd1 <- ggplot(w, aes(mae_mean, row)) +
-  geom_col(aes(fill = I(VARIANT_COL[variant])), colour = EDGE, linewidth = 0.5, width = 0.66) +
-  geom_errorbar(aes(xmin = mae_mean - mae_sd, xmax = mae_mean + mae_sd), width = 0.3, colour = EDGE,
-                linewidth = 0.5, orientation = "y") +
-  geom_text(aes(x = mae_mean + mae_sd, label = note), hjust = -0.12, size = PT, colour = INK) +
-  facet_wrap(~strip, ncol = 1, scales = "free_x") +
-  scale_x_continuous(expand = expansion(mult = c(0, 0.75)), breaks = scales::breaks_pretty(3)) +
-  labs(x = "MAE", y = NULL) +
-  theme_rows() +
-  BOXED
-t <- read_panel("fig5d_training")
-t[, `:=`(x = factor(n_train, c("25", "50", "100", "all"), c("25", "50", "100", "All")),
-         variant = factor(variant, c("m6brain_clock", "elastic_net", "shuffled_prior")))]
-dodge <- position_dodge(0.4)
-pd2 <- ggplot(t, aes(x, mae_mean, group = variant)) +
-  geom_line(aes(colour = variant), linewidth = 0.8, position = dodge) +
-  geom_errorbar(aes(ymin = mae_mean - mae_sd, ymax = mae_mean + mae_sd), width = 0, colour = CI, linewidth = 0.5,
-                position = dodge) +
-  geom_point(aes(fill = variant), shape = 21, colour = EDGE, size = 3, stroke = 0.5, position = dodge) +
-  scale_colour_manual(values = c(m6brain_clock = FOCAL, elastic_net = "#8C8C8C", shuffled_prior = RED),
-                      guide = "none") +
-  scale_fill_manual(values = VARIANT_COL[levels(t$variant)], labels = c("m6Brain clock", "Unguided",
-                                                                         "Permuted"), name = NULL) +
-  facet_wrap(~"Luo 2024 (years)") +
-  scale_y_continuous(limits = c(3.4, NA), breaks = 5:10) +
-  labs(x = "Training donors", y = "MAE") +
-  theme_fig() +
-  BOXED +
-  theme(legend.position = "inside", legend.position.inside = c(0.02, 0.02), legend.justification = c(0, 0))
-pd <- (pd1 + pd2 + plot_layout(widths = c(1, 1))) + FLUSH
+# d: pooled Pearson r per set of the m6Brain clock, its reference nets and the 27 published clocks and signatures
+d <- read_panel("fig5d")
+KINDS <- c("m6Brain clock and references" = "m6Brain", "Proteomic clocks" = "Proteomic clocks",
+           "Transcriptome clocks" = "Transcriptome clocks", "Signatures and half-lives" = "Signatures")
+d[, `:=`(group = factor(sub(" ", "\n", SETS[paste(set, species)]), sub(" ", "\n", SETS)), block = factor(KINDS[kind], KINDS))]
+d[, mean_r := mean(r), by = label]
+rows <- unique(d[order(block, -(label == "m6Brain clock"), -mean_r), label])
+d[, row := factor(label, rev(rows))]
+d <- ggplot(d, aes(group, row, fill = r)) +
+  geom_tile(colour = "white", linewidth = lw(0.5)) +
+  geom_text(aes(label = number(r), fontface = fifelse(label == "m6Brain clock", "bold", "plain")), size = pt_size(6)) +
+  ggh4x::facet_grid2(block ~ ., scales = "free_y", space = "free_y", switch = "y") +
+  scale_fill_signed(1, "Pooled r with age", light = TRUE) +
+  scale_x_discrete(position = "top", expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  theme_tile() +
+  theme(legend.position = "bottom", legend.margin = margin(t = 1, unit = "mm"), panel.spacing = unit(1.2, "mm"),
+        strip.placement = "outside", strip.text.y.left = element_text(angle = 90, size = 6), strip.clip = "off",
+        strip.background = element_rect(fill = LIGHT, colour = LIGHT))
 
-# e: the same donors, r of the m6Brain clock on the protein and of the transcriptome clocks on the RNA (95% CI for the
-# m6Brain clock and the best transcriptome clock, with the P of their difference; open circles, the other clocks)
+# e: mean absolute error of 10 x 10 nested cross-validation within two cohorts (bar, mean; dots, seeds), with the
+# paired Wilcoxon P against the unguided net
 e <- read_panel("fig5e")
-e[, mine := weights == "m6brain_clock"]
-e[, rank := frank(-r, ties.method = "first"), by = .(cohort, mine)]
-e[, row := fifelse(mine, "m6Brain clock, protein", fifelse(rank == 1, paste0(label, ", RNA"), "Other RNA clocks"))]
-e[, strip := sprintf("%s, n = %d", cohort, n)]
-e[, row := factor(row, rev(unique(row[order(-mine, rank)])))]
-shown <- e[mine | rank == 1]
-pe <- ggplot(e, aes(r, row)) +
-  ZERO_X +
-  geom_point(data = e[!mine & rank > 1], shape = 21, fill = "white", colour = "#8C8C8C", size = 3, stroke = 0.5) +
-  geom_linerange(data = shown, aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(data = shown, aes(fill = mine, shape = mine, size = mine), colour = EDGE, stroke = 0.5) +
-  geom_text(data = shown[!is.na(p_difference)], aes(x = Inf, label = fmt_p(p_difference)), hjust = -0.1, size = PT) +
-  facet_wrap(~strip, ncol = 1, scales = "free_y") +
-  scale_fill_manual(values = c("TRUE" = FOCAL, "FALSE" = GREY), guide = "none") +
-  scale_shape_manual(values = c("TRUE" = 23, "FALSE" = 21), guide = "none") +
-  scale_size_manual(values = c("TRUE" = 4.4, "FALSE" = 3.4), guide = "none") +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = c(0, 0.5, 1), limits = c(-0.2, 1)) +
-  coord_cartesian(clip = "off") +
-  labs(x = "Pearson r with age on the same donors", y = NULL) +
-  theme_rows() +
-  BOXED +
-  theme(plot.margin = margin(4.4, 24, 3, 2, "mm"))
+seeds <- read_panel("fig5e_seeds")
+ROWS <- c("m6Brain clock" = "m6Brain\nclock", "Unguided elastic net" = "Unguided\nnet", "m6A-load-guided net" = "m6A load",
+          "Training-mean null" = "Training\nmean")
+FILL <- setNames(c(M6BRAIN, GREY, LOAD, "white"), ROWS)
+strips <- e[, sprintf("%s (%s)", cohort, age_unit)]
+e[, `:=`(y = factor(ROWS[label], rev(ROWS)), strip = factor(strips, unique(strips)))]
+seeds[, `:=`(y = factor(ROWS[label], rev(ROWS)), strip = factor(e$strip[match(cohort, e$cohort)], levels(e$strip)))]
+tested <- e[label == "m6Brain clock", .(strip, y, x = mae_mean + mae_sd * 2, text = fmt_p(p_wilcoxon, digits = 1))]
+e <- ggplot(e, aes(mae_mean, y)) +
+  geom_col(aes(fill = y), colour = EDGE, linewidth = lw(0.4), width = 0.72, orientation = "y") +
+  ggbeeswarm::geom_quasirandom(data = seeds, aes(x = mae), size = 0.55, stroke = 0, width = 0.2, colour = "black", orientation = "y") +
+  geom_text(data = tested, aes(x, y, label = text), parse = TRUE, hjust = -0.08, size = pt_size(6), inherit.aes = FALSE) +
+  facet_wrap(~strip, scales = "free_x") +
+  scale_fill_manual(values = FILL, guide = "none") +
+  scale_x_continuous(expand = expansion(mult = c(0, 0.62)), breaks = scales::breaks_pretty(3)) +
+  labs(x = "MAE", y = NULL) +
+  theme_box() +
+  theme(axis.ticks.y = element_blank())
 
-fig <- panel_grid(list(a = pa, b = pb, c = pc, d = pd, e = pe), design = "ABB\nCCD\nCCE",
-                  widths = c(150, 70, 146), heights = c(120, 105, 95))
-save_fig(fig, "fig5", 320)
+# f: error by number of training donors in Luo 2024 (mean and SD over 5 seeds), with the predictions, with the
+# predictions permuted across genes and without them
+f <- read_panel("fig5f")
+LINES <- c("Permuted predictions" = "#6E6E6E", "Unguided elastic net" = GREY, "m6Brain clock" = M6BRAIN)
+f[, `:=`(x = match(n_train, c("25", "50", "100", "all")), label = factor(label, names(LINES)))]
+f <- ggplot(f, aes(x, mae_mean, colour = label, fill = label)) +
+  geom_ribbon(aes(ymin = mae_mean - mae_sd, ymax = mae_mean + mae_sd), colour = NA, alpha = 0.2) +
+  geom_line(aes(linetype = label), linewidth = lw(0.9)) +
+  geom_point(size = 1) +
+  key_rows(c("Permuted", "Unguided", "m6Brain clock"), LINES, x = 2, y = 9.9, step = 0.55, width = 0.28) +
+  scale_colour_manual(values = LINES, guide = "none") +
+  scale_fill_manual(values = LINES, guide = "none") +
+  scale_linetype_manual(values = c("22", "solid", "solid"), guide = "none") +
+  scale_x_continuous(breaks = 1:4, labels = c("25", "50", "100", "All"), expand = expansion(add = 0.2)) +
+  labs(x = "Training donors, Luo 2024", y = "MAE (years)") +
+  theme_pub()
+
+# g: the same donors: r of the m6Brain clock on the protein and of each transcriptome clock on the RNA, sorted; P of the
+# difference from the best transcriptome clock
+g <- read_panel("fig5g")
+g[, `:=`(mine = weights == "m6brain_clock", strip = sprintf("%s, n = %d", cohort, n))]
+g[, strip := factor(strip, rev(unique(strip)))]
+setorder(g, strip, -r)
+g[, x := seq_len(.N), by = strip]
+best <- g[mine == FALSE, .SD[which.max(r)], by = strip]
+tested <- best[, .(strip, text = fmt_p(p_difference))]
+mine <- g[mine == TRUE]
+g <- ggplot(g, aes(x, r)) +
+  geom_hline(yintercept = 0, linewidth = lw(0.5)) +
+  geom_col(aes(fill = mine), width = 0.76) +
+  geom_text(data = best, aes(x = 3, y = -0.17, label = paste("Best RNA", number(r))), hjust = 0, size = pt_size(6)) +
+  geom_text(data = mine, aes(x = 3, y = -0.32, label = paste("m6Brain", number(r))), hjust = 0, size = pt_size(6)) +
+  geom_text(data = tested, aes(x = 3, y = -0.47, label = text), hjust = 0, parse = TRUE, size = pt_size(6), inherit.aes = FALSE) +
+  facet_wrap(~strip) +
+  scale_fill_manual(values = c("TRUE" = M6BRAIN, "FALSE" = GREY), guide = "none") +
+  scale_y_continuous(breaks = c(0, 0.5, 1), labels = c("0", "0.5", "1"), expand = expansion(mult = 0.02)) +
+  coord_cartesian(ylim = c(-0.55, 1)) +
+  labs(x = "Clocks, ranked", y = "r with age, same donors") +
+  theme_box() +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(), strip.text = element_text(size = 6))
+
+fig <- fig_panels(a, b, c_, d, e, f, g, design = "AAAAAAABBBBBBBBBBB\nCCCCCDDDDDDDEEEEEE\nFFFFFDDDDDDDGGGGGG",
+                  heights = c(46, 62, 56))
+save_fig(fig, "fig5", 170)

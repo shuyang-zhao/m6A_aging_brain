@@ -3,69 +3,72 @@
 # reads source_data/sfig3a-c; writes output/figures/sfig3.png and .pdf
 source("figures/style.R")
 
+MODELS <- c("TabPFN", "LightGBM", "Elastic net", "Shuffled target")
 TRANSFER <- c("Human protein (mouse model)", "Human mRNA (mouse model)")
-SPECIES <- function(target) fifelse(grepl("^Mouse", target), FOCAL, RED)
 
-# a: held-out Spearman rho of each model (point, 95% CI); last rows, the mouse protein model applied to the human
-# genes
+# a: held-out Spearman rho of each model on the five targets (95% bootstrap CI below); last rows, the mouse protein
+# model applied to the human genes
 a <- read_panel("sfig3a")
-ROW_LEVELS <- c(TARGETS, TRANSFER)
-a[, `:=`(row = match(target, rev(ROW_LEVELS)), model = factor(model, MODELS[1:4]))]
-a[, y := row + c(0.27, 0.09, -0.09, -0.27)[as.integer(model)]]
-a <- ggplot(a, aes(rho, y)) +
-  ZERO_X +
-  geom_linerange(aes(xmin = rho_ci_low, xmax = rho_ci_high), orientation = "y", colour = CI, linewidth = 0.6) +
-  geom_point(aes(colour = model, fill = model, shape = model), size = 3.4, stroke = 0.5) +
-  scale_colour_manual(values = setNames(MODEL_EDGE[1:4], MODELS[1:4]), name = NULL) +
-  scale_fill_manual(values = setNames(MODEL_FILL[1:4], MODELS[1:4]), name = NULL) +
-  scale_shape_manual(values = setNames(MODEL_SHAPE[1:4], MODELS[1:4]), name = NULL) +
-  scale_y_continuous(breaks = rev(seq_along(ROW_LEVELS)), labels = ROW_LEVELS, expand = expansion(add = 0.5)) +
-  scale_x_continuous(labels = MINUS_LABELS) +
-  labs(x = "Held-out Spearman ρ", y = NULL) +
-  theme_rows() +
-  theme(legend.position = "bottom", legend.margin = margin(0, 0, 0, 0)) +
-  guides(colour = guide_legend(nrow = 1), fill = guide_legend(nrow = 1), shape = guide_legend(nrow = 1))
+a[, `:=`(row = factor(target, rev(c(TARGETS, TRANSFER))), model = factor(model, MODELS),
+         part = factor(fifelse(target %in% TRANSFER, "transfer", "own"), c("own", "transfer")),
+         text = sprintf("%s\n(%s, %s)", number(rho), number(rho_ci_low), number(rho_ci_high)))]
+a <- ggplot(a, aes(model, row, fill = rho)) +
+  geom_tile(data = a[model != "Shuffled target"], colour = "white", linewidth = lw(0.6)) +
+  geom_tile(data = a[model == "Shuffled target"], fill = LIGHT, colour = "white", linewidth = lw(0.6)) +
+  geom_text(aes(label = text), size = pt_size(6), lineheight = 0.95) +
+  facet_grid(part ~ ., scales = "free_y", space = "free_y") +
+  scale_fill_gradientn(colours = c("#FFFFFF", tint(M6BRAIN, 0.7), tint(M6BRAIN, 0.35)), limits = c(0, 0.6),
+                       oob = scales::squish, guide = "none") +
+  scale_x_discrete(position = "top", expand = c(0, 0)) +
+  scale_y_discrete(expand = c(0, 0)) +
+  labs(x = "Held-out Spearman ρ (95% CI)") +
+  theme_tile() +
+  theme(axis.title.x = element_text(), strip.text = element_blank(), panel.spacing.y = unit(2, "mm"))
 
-# b: prediction with minus without the sites of a gene (negative: the sites make the predicted decline stronger), by
-# its number of m6A sites (mean, 95% CI)
+# b: prediction with minus without the sites of a gene (negative: the sites make the predicted decline stronger) by its
+# number of m6A sites (mean, 95% CI as the band)
 b <- read_panel("sfig3b")
-b[, `:=`(sites = factor(sites, c("1", "2-3", "4-7", "≥8"), c("1", "2–3", "4–7", "≥8")),
-         target = factor(target, c("Mouse protein", "Human protein")))]
-dodge <- position_dodge(0.3)
-b <- ggplot(b, aes(sites, mean, group = target)) +
-  ZERO_Y +
-  geom_linerange(aes(ymin = ci_low, ymax = ci_high), colour = CI, linewidth = 0.6, position = dodge) +
-  geom_line(aes(colour = target), linewidth = 1, position = dodge) +
-  geom_point(aes(fill = target), colour = EDGE, shape = 21, size = 3.4, stroke = 0.5, position = dodge) +
-  scale_colour_manual(values = c("Mouse protein" = FOCAL, "Human protein" = RED), name = NULL) +
-  scale_fill_manual(values = c("Mouse protein" = FOCAL, "Human protein" = RED), name = NULL) +
+LEVELS <- c("1", "2-3", "4-7", "≥8")
+b[, x := match(sites, LEVELS)]
+b <- ggplot(b, aes(x, mean, colour = target, fill = target)) +
+  ref_line(yintercept = 0) +
+  geom_ribbon(aes(ymin = ci_low, ymax = ci_high), colour = NA, alpha = 0.18) +
+  geom_line(linewidth = lw(0.9)) +
+  geom_point(shape = 21, colour = EDGE, stroke = st(0.4), size = 1.5) +
+  geom_text(data = b[x == 4], aes(label = target), colour = "black", hjust = 0, nudge_x = 0.12, size = pt_size(6)) +
+  scale_colour_manual(values = c("Mouse protein" = MOUSE, "Human protein" = HUMAN), guide = "none") +
+  scale_fill_manual(values = c("Mouse protein" = MOUSE, "Human protein" = HUMAN), guide = "none") +
+  scale_x_continuous(breaks = 1:4, labels = c("1", "2–3", "4–7", "≥8"), expand = expansion(mult = c(0.04, 0.45))) +
   scale_y_continuous(labels = MINUS_LABELS) +
-  labs(x = "m6A sites (human: brain peaks) in the gene", y = "Prediction with minus\nwithout sites (z)") +
-  theme_fig() +
-  theme(legend.position = "bottom")
+  labs(x = "m6A sites (human: brain peaks) in the gene", y = "Prediction with minus\nwithout sites (age z)") +
+  theme_pub()
 
-# c: held-out R2 lost when a feature group is removed (x 0.001), one panel per target (point; grey bar, 95% of the
-# permuted copies of the tested group "m6A sites and binding"; its P above the panel)
+# c: held-out R2 lost when a feature group is removed, for the five targets (dot area and shade, x 0.001; number
+# beside the dot); the m6A groups on a light band, and for the tested group the permutation P against 100 models with
+# its features permuted across genes
 d <- read_panel("sfig3c")
 M6A <- c("m6A sites and binding", "m6A sites", "m6A reader binding")
-others <- d[!block %in% M6A, .(m = mean(delta_r2)), by = block][order(-m), block]
-GROUPS <- c(M6A, others)
-strips <- d[!is.na(p), setNames(paste0(target, "\n", fmt_p(p, "m6A P")), target)]
-d[, `:=`(block = factor(block, GROUPS), delta_r2 = 1000 * delta_r2, null_low = 1000 * null_low,
-         null_high = 1000 * null_high, target = factor(target, TARGETS))]
-c_ <- ggplot(d, aes(delta_r2, block)) +
-  ZERO_X +
-  geom_linerange(data = d[!is.na(null_low)], aes(xmin = null_low, xmax = null_high), orientation = "y",
-                 linewidth = 4, colour = NS) +
-  geom_point(aes(fill = I(SPECIES(target))), shape = 21, colour = EDGE, size = 3.6, stroke = 0.5) +
-  facet_grid(. ~ target, scales = "free_x", labeller = labeller(target = strips)) +
-  scale_y_discrete(limits = rev(GROUPS), expand = expansion(add = 0.6)) +
-  scale_x_continuous(labels = MINUS_LABELS, n.breaks = 4, expand = expansion(mult = 0.1)) +
-  labs(x = "Held-out R² lost when the group is removed (× 0.001)", y = NULL) +
-  theme_rows() +
-  BOXED +
-  theme(strip.text = element_text(lineheight = 0.95))
+GROUPS <- c(M6A, d[!block %in% M6A, .(m = mean(delta_r2)), by = block][order(-m), block])
+d[, `:=`(row = factor(block, rev(GROUPS)), column = factor(target, TARGETS), value = 1000 * delta_r2)]
+d[, `:=`(text = number(value, 1), line = as.numeric(row) + fifelse(is.na(p), 0, 0.2))]
+band <- data.table(i = 1:3)
+c_ <- ggplot(d, aes(column, row)) +
+  geom_rect(data = band, aes(ymin = length(GROUPS) - i + 0.5, ymax = length(GROUPS) - i + 1.5), xmin = -Inf, xmax = Inf,
+            fill = LIGHT, alpha = 0.6, inherit.aes = FALSE) +
+  geom_point(aes(size = pmax(value, 0), fill = pmax(value, 0)), shape = 21, colour = EDGE, stroke = st(0.4)) +
+  geom_text(aes(x = as.numeric(column) + 0.2, y = line, label = text), hjust = 0, size = pt_size(6)) +
+  geom_text(data = d[!is.na(p)], aes(x = as.numeric(column) + 0.2, y = as.numeric(row) - 0.2, label = fmt_p(p)),
+            hjust = 0, size = pt_size(6), parse = TRUE) +
+  scale_size_area(max_size = 8, name = "Held-out R² lost (× 0.001)", breaks = c(2, 20, 100),
+                  guide = guide_legend(nrow = 1, title.position = "left")) +
+  scale_fill_gradientn(colours = c(tint(M6BRAIN, 0.8), tint(M6BRAIN, 0.4), M6BRAIN), trans = "sqrt", limits = c(0, 125),
+                       name = "Held-out R² lost (× 0.001)", breaks = c(2, 20, 100),
+                       guide = guide_legend(nrow = 1, title.position = "left")) +
+  scale_x_discrete(position = "top", labels = scales::label_wrap(14), expand = expansion(add = c(0.5, 1))) +
+  scale_y_discrete(labels = scales::label_wrap(24)) +
+  theme_tile() +
+  theme(panel.grid.major = element_line(linewidth = lw(0.25), colour = LIGHT), legend.position = "bottom",
+        legend.margin = margin(t = 1, unit = "mm"))
 
-h_c <- 24 + 6.5 * length(GROUPS)
-fig <- panel_grid(list(a = a, b = b, c = c_), design = "AB\nCC", widths = c(100, 83), heights = c(75, h_c))
-save_fig(fig, "sfig3", 2 * (75 + h_c))
+fig <- fig_compose(a, b, c_, design = "AAAAAABBBB\nCCCCCCCCCC", heights = c(56, 74))
+save_fig(fig, "sfig3", 134)

@@ -1,0 +1,7 @@
+panel	predictor	n_cohorts	n_negative	effect	ci_low	ci_high	p
+Human protein	m6A load	8	7	-0.1174	-0.1923	-0.04238	0.002162
+Mouse discovery	m6A load	6	6	-1.757	-2.296	-1.214	2.827e-10
+Mouse external	m6A load	11	10	-0.9314	-1.215	-0.6468	1.632e-10
+Human protein	Gene length	8	7	-0.2363	-0.3464	-0.1261	2.677e-05
+Mouse discovery	Gene length	6	6	-0.4603	-0.7484	-0.1715	0.001804
+Mouse external	Gene length	11	4	-0.02303	-0.3107	0.2655	0.8755

@@ -1,40 +1,57 @@
-# Additional file 1 Fig. S6: m6A against the other marks (Ψ, m5C, m7G)
-# reads source_data/sfig6a and sfig6b; writes output/figures/sfig6.png and .pdf
+# Fig. S6: m6A against the other marks (Ψ, m5C, m7G)
+# reads source_data/sfig6a and sfig6b; writes output/figures/sfig6
 source("figures/style.R")
 
 MARKS <- c("m6A", "Ψ", "m5C", "m7G")
+LIMIT <- 6
 ROWS <- c("Mouse protein", "Mouse mRNA-adjusted protein", "Mouse mRNA", "Mouse neuronal mRNA", "Human protein",
-          "Human striatum mRNA", "Human cortex mRNA", "Human hippocampus mRNA",
-          "Human cerebellum mRNA", "Human neuronal mRNA")
+          "Human striatum mRNA", "Human cortex mRNA", "Human hippocampus mRNA", "Human cerebellum mRNA",
+          "Human neuronal mRNA")
 
-# a: signature of the marked genes against unmarked genes (cameraPR z, combined over units; bold, q < 0.05)
-d <- read_panel("sfig6a")[, `:=`(row = factor(row, rev(ROWS)), mark = factor(modification, MARKS))]
-a <- ggplot(d, aes(mark, row, fill = z)) +
-  geom_tile(colour = "white", linewidth = 1.2) +
-  geom_text(aes(label = cell_number(z), fontface = fifelse(q < 0.05, "bold", "plain")), size = PT, colour = INK) +
-  scale_fill_div(4, "Signature of marked genes (cameraPR z)") +
+# the ten contexts of the two panels, species in the strip and the unit in the row (first row on top)
+NAMES <- sub("-adjusted ", "-adjusted\n", sub("^[A-Za-z]+ ", "", ROWS))
+NAMES <- setNames(fifelse(startsWith(NAMES, "mRNA"), NAMES, paste0(toupper(substr(NAMES, 1, 1)), substring(NAMES, 2))),
+                  ROWS)
+read_marks <- function(name) {
+  read_panel(name)[, `:=`(species = factor(sub(" .*", "", row), names(SPECIES)), mark = factor(modification, MARKS),
+                          context = factor(row, rev(ROWS)))]
+}
+facets <- function(strip) {
+  ggh4x::facet_grid2(species ~ ., scales = "free_y", space = "free_y", switch = "y",
+                     strip = ggh4x::strip_themed(background_y = ggh4x::elem_list_rect(fill = strip, colour = strip)))
+}
+STRIP <- tint(unname(SPECIES), 0.45)
+SPACING <- theme(panel.spacing.y = unit(1.4, "mm"), strip.placement = "outside", strip.switch.pad.grid = unit(1, "mm"))
+
+# a: signature of the genes marked by each modification against unmarked genes (cameraPR z, combined over units); bold,
+# q < 0.05
+a <- read_marks("sfig6a")
+a <- ggplot(a, aes(mark, context, fill = z)) +
+  geom_tile(colour = "white", linewidth = lw(0.6)) +
+  geom_text(aes(label = number(z, 1), fontface = fifelse(q < 0.05, "bold", "plain")), size = pt_size(6)) +
+  facets(STRIP) +
+  scale_fill_signed(LIMIT, "z", light = TRUE) +
   scale_x_discrete(position = "top", expand = c(0, 0)) +
-  scale_y_discrete(expand = c(0, 0)) +
-  theme_heat() +
-  theme(legend.position = "bottom")
+  scale_y_discrete(labels = NAMES, expand = c(0, 0)) +
+  theme_tile() +
+  SPACING +
+  theme(strip.text.y.left = element_text(angle = 90, size = 6))
 
-# b: age effect of the modification load per context (z of the random-effects coefficient over cohorts), one row per
-# mark; filled in the species colour where q < 0.05
-GROUP <- c("Mouse, q < 0.05", "Human, q < 0.05", "q ≥ 0.05")
-d <- read_panel("sfig6b")[, mark := factor(modification, MARKS)]
-d[, group := factor(fifelse(q >= 0.05, GROUP[3], fifelse(grepl("^Mouse", row), GROUP[1], GROUP[2])), GROUP)]
-b <- ggplot(d, aes(z, mark)) +
-  annotate("rect", xmin = -1.96, xmax = 1.96, ymin = -Inf, ymax = Inf, fill = "#F3F3F3") +
-  ZERO_X +
-  geom_point(aes(fill = group, colour = group), shape = 21, size = 4, stroke = 0.5,
-             position = position_jitter(height = 0.18, width = 0, seed = 1)) +
-  scale_fill_manual(values = setNames(c(FOCAL, RED, "white"), GROUP), name = NULL) +
-  scale_colour_manual(values = setNames(c(EDGE, EDGE, GREY), GROUP), name = NULL) +
-  scale_y_discrete(limits = rev) +
-  scale_x_continuous(labels = MINUS_LABELS) +
-  labs(x = "Modification load z across contexts (grey band, |z| < 1.96)", y = NULL) +
-  theme_rows() +
-  theme(legend.position = "bottom")
+# b: z of the age coefficient of each modification load per context (random effects over cohorts); size, -log10 q;
+# open grey circles, q >= 0.05
+b <- read_marks("sfig6b")
+b <- fig_dotmatrix(b, "mark", "context", "z", "q", limits = c(-LIMIT, LIMIT), fill_lab = "z",
+                   size_lab = expression(-log[10]~italic(q))) +
+  facets(NA) +
+  scale_fill_signed(LIMIT, "z", light = TRUE) +
+  scale_size_area(max_size = 3.6, breaks = c(2, 5, 10), name = expression(-log[10]~italic(q)),
+                  guide = guide_legend(nrow = 1, title.position = "top", override.aes = list(fill = "#F7F7F7"))) +
+  scale_x_discrete(position = "top", expand = expansion(add = 0.5)) +
+  scale_y_discrete(expand = expansion(add = 0.5)) +
+  SPACING +
+  theme(axis.text.x = element_text(angle = 0, hjust = 0.5, vjust = 0), axis.text.y = element_blank(),
+        strip.text.y.left = element_blank())
 
-fig <- panel_grid(list(a = a, b = b), design = "AB", widths = c(95, 88), heights = 80)
-save_fig(fig, "sfig6", 160)
+fig <- fig_compose(a, b, design = "AB", widths = c(1.25, 1), heights = 1, guides = "collect") &
+  theme(legend.position = "bottom", legend.box = "horizontal", legend.box.spacing = unit(2, "mm"))
+save_fig(fig, "sfig6", 84)

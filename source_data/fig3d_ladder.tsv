@@ -1,8 +1,10 @@
 panel	step	n_cohorts	effect	ci_low	ci_high	p	retained_pct
+Human protein	none	8	-0.2358	-0.4033	-0.0681	0.00587	100
 Human protein	lengths	8	-0.1412	-0.2513	-0.03108	0.01199	59.87
 Human protein	expression	8	-0.1602	-0.2526	-0.06774	0.0006866	67.9
 Human protein	neuron share	8	-0.1279	-0.209	-0.04669	0.002025	54.19
 Human protein	programmes	8	-0.1174	-0.1923	-0.04238	0.002162	49.74
+Mouse discovery	none	6	-2.339	-2.996	-1.678	6.268e-12	100
 Mouse discovery	lengths	6	-2.318	-3.002	-1.629	6.146e-11	99.08
 Mouse discovery	expression	6	-2.315	-2.988	-1.637	3.091e-11	98.94
 Mouse discovery	neuron share	6	-1.779	-2.32	-1.234	1.971e-10	75.82

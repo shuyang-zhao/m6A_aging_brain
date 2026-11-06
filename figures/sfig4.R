@@ -1,105 +1,144 @@
 # Additional file 1 Fig. S4: details of the clock; a, r of every weight set in every cohort and pooled per set; b, the
 # label-free mode; c, unseen proteins; d, the error across cohorts against the training-mean null
-# reads source_data/sfig4a-d, sfig4b_null and sfig4c_null (scripts 52 and 55); writes output/figures/sfig4.png and .pdf
+# reads source_data/sfig4a-d, sfig4b_null and sfig4c_null (scripts 52 and 55); writes output/figures/sfig4
 source("figures/style.R")
 
 SETS <- c("held-out|mouse" = "Held-out mouse", "external|mouse" = "External mouse", "held-out|human" = "Held-out human")
-SET_COL <- c("Held-out mouse" = FOCAL, "External mouse" = CONTRAST, "Held-out human" = RED)
-GROUPS <- c("m6Brain clock and references" = "m6Brain", "Proteomic clocks" = "Proteomic",
-            "Transcriptome clocks" = "Transcriptome", "Signatures and half-lives" = "Signatures",
-            "Label-free and gene sets" = "Label-free")
+GROUPS <- c("m6Brain clock and references" = "m6Brain clock\nand references",
+            "Proteomic clocks" = "Proteomic\nclocks", "Transcriptome clocks" = "Transcriptome\nclocks",
+            "Signatures and half-lives" = "Signatures and\nhalf-lives",
+            "Label-free and gene sets" = "Label-free and\ngene sets")
 tag_set <- function(d) d[, set := factor(SETS[paste(set, species, sep = "|")], SETS)]
+# row label as plotmath: m6A with its superscript, the m6Brain clock in bold
+math_label <- function(s, bold) {
+  parts <- strsplit(gsub(paste0("(", MARK, ")"), "\r\\1\r", s), "\r")[[1]]
+  pieces <- lapply(parts, function(p) {
+    if (grepl(paste0("^", MARK, "$"), p)) bquote(m^.(substr(p, 2, 2)) * .(as.name(substr(p, 3, 3)))) else p
+  })
+  # every row holds a superscript, seen or not, so that all rows sit on one baseline
+  label <- as.call(c(as.name("paste"), quote(phantom(""^6)), pieces))
+  if (bold) bquote(bold(.(label))) else label
+}
+# arrows dropping onto the axis of a histogram from the height `top`, each named left of its tail
+drop_arrows <- function(d) {
+  if (!"end" %in% names(d)) d <- copy(d)[, end := 0]
+  list(geom_segment(data = d, aes(x = x, xend = x, y = top, yend = end, colour = I(colour)), linewidth = lw(1),
+                    arrow = grid::arrow(length = unit(1.3, "mm"), type = "closed")),
+       geom_text(data = d, aes(x = x - 0.012, y = top, label = label, vjust = vjust), hjust = 1, size = pt_size(6),
+                 lineheight = 0.9))
+}
+# one break at zero and one at the leading digit of the largest count
+count_breaks <- function(room) function(limits) {
+  e <- 10^floor(log10(limits[2] / room))
+  c(0, e * floor(limits[2] / room / e))
+}
 
-# a: Pearson r of every weight set with age in every cohort (ordered by the m6Brain clock within the set) and pooled
-# over the cohorts of each set; rows grouped as in Fig. 5c, then the label-free weight sets (random weights, the median
-# of 1,000 draws), ordered by the mean pooled r
+# a: Pearson r of every weight set with age in every cohort (columns ordered by the m6Brain clock within the set) and
+# pooled over the cohorts of each set; rows grouped as in Fig. 5c, then the label-free weight sets, ordered by the
+# mean pooled r; bold, the m6Brain clock
 d <- tag_set(read_panel("sfig4a"))
 d[, pooled := kind == "pooled"]
 order_of <- d[weights == "m6brain_clock" & !pooled][order(set, -r), cohort]
 d[, mean_r := mean(r[pooled]), by = label]
-rows <- unique(d[order(match(group, names(GROUPS)), -(weights == "m6brain_clock"), -mean_r), label])
+rows <- unique(d[order(match(group, names(GROUPS)), -(weights == "m6brain_clock"), -mean_r),
+                 .(label, group, bold = weights == "m6brain_clock")])
+rows[, y := -(seq_len(.N) + 0.5 * (match(group, names(GROUPS)) - 1))]
+d <- rows[d[, !"group"], on = "label"]
 d[, `:=`(block = factor(fifelse(pooled, "Pooled", as.character(set)), c(SETS, "Pooled")),
-         column = factor(fifelse(pooled, as.character(set), cohort), c(unique(order_of), SETS)),
-         row = factor(label, rev(rows)), group = factor(GROUPS[group], GROUPS))]
-a <- ggplot(d, aes(column, row, fill = r)) +
-  geom_tile(colour = "white", linewidth = 1) +
-  geom_text(aes(label = cell_number(r), fontface = fifelse(weights == "m6brain_clock", "bold", "plain")),
-            size = PT, colour = INK) +
-  facet_grid(group ~ block, scales = "free", space = "free") +
-  scale_fill_div(1, "Pearson r of the score with age") +
+         column = factor(fifelse(pooled, as.character(set), cohort), c(unique(order_of), SETS)))]
+groups <- rows[, .(top = max(y) + 0.45, bottom = min(y) - 0.45, label = GROUPS[group[1]]), by = group]
+groups[, `:=`(middle = (top + bottom) / 2, block = factor("Pooled", c(SETS, "Pooled")))]
+rows <- rows[order(y)]
+strip_fill <- c(tint(unname(SET), 0.45), LIGHT)
+a <- ggplot(d, aes(column, y)) +
+  geom_tile(aes(fill = r), colour = "white", linewidth = lw(0.6)) +
+  geom_text(aes(label = sub("^(−?)0[.]", "\\1.", number(r)), fontface = fifelse(bold, "bold", "plain")),
+            size = pt_size(5)) +
+  geom_segment(data = groups, aes(x = 3.65, xend = 3.65, y = top, yend = bottom), linewidth = lw(0.5)) +
+  geom_text(data = groups, aes(x = 3.8, y = middle, label = label), hjust = 0, size = pt_size(6), lineheight = 0.9) +
+  ggh4x::facet_grid2(. ~ block, scales = "free_x", space = "free_x",
+                     strip = ggh4x::strip_themed(background_x = ggh4x::elem_list_rect(fill = strip_fill,
+                                                                                      colour = strip_fill))) +
+  scale_fill_signed(1, "Pearson r of the score with age", light = TRUE) +
   scale_x_discrete(position = "top", expand = c(0, 0)) +
-  scale_y_discrete(expand = c(0, 0)) +
-  theme_heat() +
-  theme(legend.position = "bottom", panel.spacing = unit(2.4, "mm"),
-        axis.text.x.top = element_text(angle = 90, hjust = 0, vjust = 0.5, margin = margin(b = 2, unit = "mm")),
-        strip.text.y = element_text(angle = -90, margin = margin(l = 2, unit = "mm")))
+  scale_y_continuous(breaks = rows$y, labels = as.expression(Map(math_label, rows$label, rows$bold)),
+                     expand = c(0, 0)) +
+  coord_cartesian(clip = "off") +
+  theme_tile() +
+  theme(legend.position = "inside", legend.position.inside = c(0, 1), legend.justification = c(1, 0),
+        legend.margin = margin(r = 3, unit = "mm"), strip.placement = "outside",
+        strip.text.x = element_text(size = 6), panel.spacing.x = unit(1, "mm"),
+        axis.text.x.top = element_text(angle = 90, hjust = 0, vjust = 0.5),
+        plot.margin = margin(1.5, 16, 1.5, 1.5, "mm"))
 
-# b: label-free mode, pooled r (95% CI) of the m6Brain predictions used as weights and of the comparison weights per
-# set; violin, the pooled r of 1,000 random weights, with the P of the m6Brain predictions against them
-NULL_ROW <- "Random weights"
+# b: label-free mode, pooled r of 1,000 random weights (histogram) and of the m6Brain predictions used as weights
+# (coloured arrow, with its P against the random weights) and of the three comparison weights (grey arrows) per set
+BW <- 0.03
+ROOM <- 4.3 # height of a facet in units of the tallest bar
 lf <- tag_set(read_panel("sfig4b"))
-lf[, row := factor(label, rev(c("m6Brain label-free", "Label-free without m6A features", "Linear m6A load",
-                                "Length only", NULL_ROW)))]
-random <- tag_set(read_panel("sfig4b_null"))[, row := factor(NULL_ROW, levels(lf$row))]
-note <- lf[weights == "model", .(set, row = factor(NULL_ROW, levels(lf$row)), text = fmt_p(p_random))]
-b <- ggplot(lf, aes(r, row)) +
-  ZERO_X +
-  geom_violin(data = random, orientation = "y", fill = LIGHT, colour = GREY, linewidth = 0.5, width = 0.8) +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(aes(fill = fifelse(weights == "model", SET_COL[as.character(set)], "white")), shape = 21, colour = EDGE,
-             size = 3.4, stroke = 0.5) +
-  geom_text(data = note, aes(x = -0.72, label = text), hjust = 0, vjust = 2.6, size = PT) +
-  facet_wrap(~set, nrow = 1) +
-  scale_fill_identity() +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = c(-0.5, 0, 0.5, 1), limits = c(-0.75, 1)) +
-  scale_y_discrete(expand = expansion(add = c(1.1, 0.6))) +
-  labs(x = "Pooled Pearson r with age", y = NULL) +
-  theme_rows() +
-  BOXED +
-  theme(panel.spacing.x = unit(3, "mm"))
+random <- tag_set(read_panel("sfig4b_null"))
+peak <- random[, .(peak = max(hist(r, breaks = seq(-1, 1, BW), plot = FALSE)$counts)), by = set]
+lf <- peak[lf, on = "set"][order(weights == "model")]
+lf[, `:=`(x = r, top = peak * (1.5 + 0.62 * (frank(r, ties.method = "first") - 1)), vjust = 0.5,
+          colour = fifelse(weights == "model", SET[as.character(set)], EDGE)), by = set]
+b <- ggplot(random, aes(r)) +
+  geom_histogram(binwidth = BW, boundary = 0, fill = GREY, colour = NA) +
+  geom_hline(yintercept = 0, linewidth = lw(0.5)) +
+  drop_arrows(lf) +
+  geom_text(data = lf[weights == "model"], aes(x = r + 0.03, y = top, label = fmt_p(signif(p_random, 2))), hjust = 0,
+            parse = TRUE, size = pt_size(6)) +
+  geom_text(data = peak, aes(x = -Inf, y = Inf, label = as.character(set)), hjust = -0.06, vjust = 1.4,
+            size = pt_size(6), inherit.aes = FALSE) +
+  geom_blank(data = peak, aes(y = ROOM * peak), inherit.aes = FALSE) +
+  facet_grid(set ~ ., scales = "free_y") +
+  scale_x_continuous(labels = MINUS_LABELS, breaks = c(-0.5, 0, 0.5, 1)) +
+  scale_y_continuous(breaks = count_breaks(ROOM), expand = expansion(mult = c(0, 0.02))) +
+  coord_cartesian(xlim = c(-0.7, 1.15)) +
+  labs(x = "Pooled Pearson r with age", y = "Random draws") +
+  theme_box() +
+  theme(strip.text = element_blank())
 
-# c: unseen proteins, the label-free score from the weights of the genes without a protein age effect in any discovery
-# cohort in the external deep-DIA cohorts (95% CI; filled, P < 0.05), the random-effects estimate (diamond) and the
-# pooled r of 1,000 permutations of the weights among the same genes (violin), with their P
+# c: unseen proteins, pooled r of 1,000 permutations of the weights among the same genes (histogram) and r of the
+# label-free score from the weights of the genes without a protein age effect in any discovery cohort, in the two
+# external deep-DIA cohorts and pooled (arrows, with the P of the pooled r against the permutations)
 u <- read_panel("sfig4c")
-u[, pooled := kind == "pooled"]
-u[, label := fifelse(pooled, "Pooled", sprintf("%s, n = %d,\n%d genes", cohort, n, n_genes))]
-PERMUTED <- "Permuted weights"
-u[, `:=`(row = factor(label, rev(c(label, PERMUTED))), fill = fifelse(pooled | p < 0.05, CONTRAST, "white"))]
-perm <- read_panel("sfig4c_null")[, row := factor(PERMUTED, levels(u$row))]
-notes <- u[pooled == TRUE, .(row = factor(PERMUTED, levels(u$row)), text = fmt_p(p_random))]
-cc <- ggplot(u, aes(r, row)) +
-  ZERO_X +
-  geom_violin(data = perm, orientation = "y", fill = LIGHT, colour = GREY, linewidth = 0.5, width = 0.8) +
-  geom_linerange(aes(xmin = ci_low, xmax = ci_high), colour = CI, linewidth = 0.6) +
-  geom_point(aes(fill = I(fill), shape = pooled, size = pooled), colour = EDGE, stroke = 0.5) +
-  geom_text(data = notes, aes(x = -0.28, label = text), hjust = 0, vjust = 2.6, size = PT) +
-  scale_shape_manual(values = c("TRUE" = 23, "FALSE" = 21), guide = "none") +
-  scale_size_manual(values = c("TRUE" = 4.6, "FALSE" = 3.4), guide = "none") +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = c(-0.2, 0, 0.2, 0.4, 0.6), limits = c(-0.3, 0.62)) +
-  scale_y_discrete(expand = expansion(add = c(1.1, 0.6))) +
-  labs(x = "r of the unseen-gene score", y = NULL) +
-  theme_rows()
+perm <- read_panel("sfig4c_null")
+peak <- max(hist(perm$r, breaks = seq(-1, 1, BW), plot = FALSE)$counts)
+u[, `:=`(x = r, top = peak * (1.5 + 0.95 * (frank(r, ties.method = "first") - 1)), pooled = kind == "pooled",
+         end = fifelse(cohort == "Chen 2025", peak * 0.5, 0))]
+u[, `:=`(colour = fifelse(pooled, EXTERNAL, EDGE), vjust = fifelse(pooled, 0, 0.5),
+         label = fifelse(pooled, sprintf("Pooled, %s genes", thousands(n_genes)),
+                         sprintf("%s, n = %d,\n%d genes", cohort, n, n_genes)))]
+cc <- ggplot(perm, aes(r)) +
+  geom_histogram(binwidth = BW, boundary = 0, fill = GREY, colour = NA) +
+  geom_hline(yintercept = 0, linewidth = lw(0.5)) +
+  drop_arrows(u) +
+  geom_text(data = u[pooled == TRUE], aes(x = r - 0.012, y = top, label = fmt_p(signif(p_random, 2))), hjust = 1,
+            vjust = 1.3, parse = TRUE, size = pt_size(6)) +
+  scale_x_continuous(labels = MINUS_LABELS, breaks = c(-0.2, 0, 0.2, 0.4)) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.04))) +
+  coord_cartesian(xlim = c(-0.42, 0.45)) +
+  labs(x = "r of the unseen-gene score", y = "Permutations") +
+  theme_pub()
 
-# d: MAE of the m6Brain clock in every cohort (filled) and of the training-mean null (open), against the offset of the
-# cohort's mean age from the mean age of its training samples; mouse in months, human in years
+# d: MAE of the m6Brain clock (arrow head) against the training-mean null (arrow tail), one column per cohort ordered by
+# the offset of its mean age from the mean age of its training samples (printed after the name)
 m <- tag_set(read_panel("sfig4d"))
-m[, panel := factor(fifelse(species == "mouse", "Mouse (months)", "Human (years)"), c("Mouse (months)",
-                                                                                      "Human (years)"))]
-dd <- ggplot(m, aes(age_offset)) +
-  geom_segment(aes(y = mae_null, yend = mae), colour = CI, linewidth = 0.5) +
-  geom_point(aes(y = mae_null, fill = "Training-mean null"), shape = 21, colour = EDGE, size = 2.8, stroke = 0.5) +
-  geom_point(aes(y = mae, fill = set), shape = 21, colour = EDGE, size = 3.2, stroke = 0.5) +
-  facet_wrap(~panel, scales = "free") +
-  scale_fill_manual(values = c(SET_COL, "Training-mean null" = "white"), breaks = c(unname(SETS), "Training-mean null"),
-                    name = NULL, guide = guide_legend(nrow = 2)) +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = scales::breaks_pretty(4)) +
-  scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05))) +
-  labs(x = "Cohort mean age − training mean age", y = "MAE") +
-  theme_fig() +
-  BOXED +
-  theme(legend.position = "bottom")
+PANELS <- c("Mouse (months)", "Human (years)")
+m[, panel := factor(PANELS[(species == "human") + 1], PANELS)]
+m <- m[order(panel, age_offset)]
+m[, column := factor(sprintf("%s (%s)", cohort, signed(age_offset, 1)), sprintf("%s (%s)", cohort, signed(age_offset, 1)))]
+dd <- ggplot(m, aes(column)) +
+  geom_segment(data = m[mae != mae_null], aes(xend = column, y = mae_null, yend = mae, colour = set), linewidth = lw(1),
+               arrow = grid::arrow(length = unit(1.1, "mm"), type = "closed")) +
+  geom_point(data = m[mae == mae_null], aes(y = mae, colour = set), size = 1) +
+  ggh4x::facet_grid2(. ~ panel, scales = "free", space = "free_x", independent = "y") +
+  scale_colour_manual(values = SET, guide = "none") +
+  scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.05)), breaks = scales::breaks_pretty(4)) +
+  labs(x = NULL, y = "MAE (null to clock)") +
+  theme_box() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 5), panel.spacing.x = unit(5, "mm"))
 
-fig <- panel_grid(list(a = a, b = b, c = cc, d = dd), design = "AAA\nBCD", widths = c(158, 98, 110),
-                  heights = c(258, 82))
-save_fig(fig, "sfig4", 340)
+# taller than a journal figure: this page of Additional file 1 holds a table of 38 rows
+fig <- fig_panels(a, b, cc, dd, design = "AAAAAAAAAAAAAAAAAA\nBBBBBBBCCCCDDDDDDD", heights = c(142, 73))
+save_fig(fig, "sfig4", 215)

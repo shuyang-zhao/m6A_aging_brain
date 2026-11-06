@@ -1,0 +1,7 @@
+study	disease	contrast	unit	n	est	se	ci_low	ci_high	p
+Ping 2020	AD	disease vs control	years	19	11.89	2.848	5.74	18.04	0.001087
+Merrihew 2023	AD	disease vs control	years	31	9.125	2.295	4.337	13.91	0.0007455
+Blumenreich 2024	PD	disease vs control	years	63	3.828	1.646	0.5299	7.126	0.02373
+Langfelder 2016	HD	per 100 CAG repeats	months	71	2.446	0.4932	1.461	3.431	5.37e-06
+Umoh 2018	ALS	disease vs control	years	27	2.55	1.907	-1.394	6.495	0.1942
+AD combined	AD	disease vs control	years	50	10.21	1.787	6.712	13.72	1.092e-08

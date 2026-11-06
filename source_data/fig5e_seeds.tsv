@@ -1,0 +1,61 @@
+cohort	label	seed	mae
+Luo 2024	Unguided elastic net	20261001	6.003
+Luo 2024	m6Brain clock	20261001	4.99
+Luo 2024	m6A-load-guided net	20261001	5.678
+Luo 2024	Unguided elastic net	20261002	6.035
+Luo 2024	m6Brain clock	20261002	5.365
+Luo 2024	m6A-load-guided net	20261002	5.861
+Luo 2024	Unguided elastic net	20261003	6.205
+Luo 2024	m6Brain clock	20261003	5.223
+Luo 2024	m6A-load-guided net	20261003	5.829
+Luo 2024	Unguided elastic net	20261004	6.274
+Luo 2024	m6Brain clock	20261004	5.181
+Luo 2024	m6A-load-guided net	20261004	6.057
+Luo 2024	Unguided elastic net	20261005	5.838
+Luo 2024	m6Brain clock	20261005	4.905
+Luo 2024	m6A-load-guided net	20261005	5.73
+Luo 2024	Unguided elastic net	20261006	5.908
+Luo 2024	m6Brain clock	20261006	5.063
+Luo 2024	m6A-load-guided net	20261006	5.611
+Luo 2024	Unguided elastic net	20261007	5.946
+Luo 2024	m6Brain clock	20261007	5.336
+Luo 2024	m6A-load-guided net	20261007	6.055
+Luo 2024	Unguided elastic net	20261008	5.886
+Luo 2024	m6Brain clock	20261008	5.393
+Luo 2024	m6A-load-guided net	20261008	5.936
+Luo 2024	Unguided elastic net	20261009	5.928
+Luo 2024	m6Brain clock	20261009	5.273
+Luo 2024	m6A-load-guided net	20261009	5.722
+Luo 2024	Unguided elastic net	20261010	5.897
+Luo 2024	m6Brain clock	20261010	5.46
+Luo 2024	m6A-load-guided net	20261010	5.71
+Lu 2025	Unguided elastic net	20261001	1.844
+Lu 2025	m6Brain clock	20261001	1.674
+Lu 2025	m6A-load-guided net	20261001	1.899
+Lu 2025	Unguided elastic net	20261002	1.673
+Lu 2025	m6Brain clock	20261002	1.504
+Lu 2025	m6A-load-guided net	20261002	1.764
+Lu 2025	Unguided elastic net	20261003	1.61
+Lu 2025	m6Brain clock	20261003	1.594
+Lu 2025	m6A-load-guided net	20261003	1.782
+Lu 2025	Unguided elastic net	20261004	1.576
+Lu 2025	m6Brain clock	20261004	1.572
+Lu 2025	m6A-load-guided net	20261004	1.828
+Lu 2025	Unguided elastic net	20261005	1.537
+Lu 2025	m6Brain clock	20261005	1.668
+Lu 2025	m6A-load-guided net	20261005	1.679
+Lu 2025	Unguided elastic net	20261006	1.694
+Lu 2025	m6Brain clock	20261006	1.512
+Lu 2025	m6A-load-guided net	20261006	1.766
+Lu 2025	Unguided elastic net	20261007	1.662
+Lu 2025	m6Brain clock	20261007	1.39
+Lu 2025	m6A-load-guided net	20261007	1.633
+Lu 2025	Unguided elastic net	20261008	1.677
+Lu 2025	m6Brain clock	20261008	1.532
+Lu 2025	m6A-load-guided net	20261008	1.768
+Lu 2025	Unguided elastic net	20261009	1.627
+Lu 2025	m6Brain clock	20261009	1.516
+Lu 2025	m6A-load-guided net	20261009	1.73
+Lu 2025	Unguided elastic net	20261010	1.601
+Lu 2025	m6Brain clock	20261010	1.574
+Lu 2025	m6A-load-guided net	20261010	1.735

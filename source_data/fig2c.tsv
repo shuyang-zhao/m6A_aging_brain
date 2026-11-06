@@ -1,9 +1,17 @@
-target	region	n_genes	effect	null_low	null_high	p
-Mouse protein	All sites	8052	-0.2535	-0.01781	0.01427	0.009901
-Mouse protein	5' UTR	8052	-0.0064	-0.0013	0.002295	0.009901
-Mouse protein	CDS	8052	-0.08213	-0.009813	0.006985	0.009901
-Mouse protein	3' UTR	8052	-0.1042	-0.009188	0.00659	0.009901
-Human protein	All sites	5522	-0.03687	-0.007044	0.01901	0.009901
-Human protein	5' UTR	5522	-0.0005228	-0.0003588	0.0008693	0.1386
-Human protein	CDS	5522	-0.01269	-0.003079	0.008445	0.0198
-Human protein	3' UTR	5522	-0.02226	-0.003619	0.008526	0.009901
+target	block	delta_r2	null_low	null_high	p
+Mouse protein	m6A sites and binding	0.002659	-0.0005128	0.0003367	0.009901
+Mouse protein	m6A sites	0.002196			
+Mouse protein	m6A reader binding	0.0009555			
+Mouse protein	Transcript structure	0.0007664			
+Mouse protein	Expression and turnover	0.04265			
+Mouse protein	Cell-type origin	0.1224			
+Mouse protein	Functional program	0.0066			
+Mouse protein	Sequence representation	0.02539			
+Human protein	m6A sites and binding	0.0001625	-0.0007057	0.0004128	0.08911
+Human protein	m6A sites	0.0005413			
+Human protein	m6A reader binding	-0.0007293			
+Human protein	Transcript structure	0.001869			
+Human protein	Expression and turnover	0.0208			
+Human protein	Cell-type origin	0.02304			
+Human protein	Functional program	0.006187			
+Human protein	Sequence representation	0.0287			

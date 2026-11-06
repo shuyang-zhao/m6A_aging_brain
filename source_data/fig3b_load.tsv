@@ -1,0 +1,29 @@
+panel	cohort	kind	effect	ci_low	ci_high	z	p	i2
+Mouse discovery	Keele 2025	cohort	-0.9428	-1.232	-0.6529	-6.354		
+Mouse discovery	Lu 2025	cohort	-2.307	-2.894	-1.717	-7.599		
+Mouse discovery	Marino 2025	cohort	-2.09	-2.537	-1.642	-9.057		
+Mouse discovery	Takasugi 2024	cohort	-1.16	-1.493	-0.8258	-6.775		
+Mouse discovery	Tsumagari 2023	cohort	-1.342	-1.728	-0.9542	-6.753		
+Mouse discovery	Wang 2025	cohort	-2.999	-3.675	-2.318	-8.53		
+Mouse discovery	Random effects	pooled	-1.757	-2.296	-1.214	-6.308	2.827e-10	90.13
+Mouse external	Chen 2025	cohort	-0.5749	-0.7994	-0.35	-5		
+Mouse external	Vignane 2026	cohort	-0.8701	-2.342	0.6236	-1.145		
+Mouse external	Gebru 2024	cohort	-1.067	-1.344	-0.7896	-7.503		
+Mouse external	Huang 2024	cohort	-1.251	-1.587	-0.914	-7.238		
+Mouse external	Jha 2026	cohort	-0.9353	-1.366	-0.5031	-4.231		
+Mouse external	Keele 2023	cohort	-1.15	-1.601	-0.6976	-4.963		
+Mouse external	Marchionini 2025	cohort	-0.6992	-1.427	0.03373	-1.87		
+Mouse external	Mohallem 2024	cohort	-2.574	-3.661	-1.474	-4.554		
+Mouse external	Scifo 2025	cohort	-1.37	-2.035	-0.7008	-3.998		
+Mouse external	Yarbro 2025	cohort	-0.9166	-1.121	-0.7115	-8.727		
+Mouse external	Yu 2020	cohort	0.1595	-0.2215	0.542	0.8195		
+Mouse external	Random effects	pooled	-0.9314	-1.215	-0.6468	-6.392	1.632e-10	81.76
+Human protein	Blumenreich 2024	cohort	-0.1706	-0.4867	0.1465	-1.055		
+Human protein	Eggers 2025	cohort	-0.07943	-0.296	0.1376	-0.718		
+Human protein	Koopmans 2026	cohort	-0.1993	-0.3282	-0.07034	-3.028		
+Human protein	Lee 2023	cohort	-0.02765	-0.3823	0.3283	-0.1525		
+Human protein	Luo 2024	cohort	-0.114	-0.1644	-0.06367	-4.436		
+Human protein	Merrihew 2023	cohort	-1.024	-2.275	0.2433	-1.586		
+Human protein	Ping 2020	cohort	-0.2242	-0.3602	-0.08796	-3.224		
+Human protein	Teng 2023	cohort	0.02204	-0.08076	0.1249	0.42		
+Human protein	Random effects	pooled	-0.1174	-0.1923	-0.04238	-3.067	0.002162	47.51

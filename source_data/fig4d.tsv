@@ -1,0 +1,116 @@
+unit	species	regulator	est	se	p
+Takasugi 2024	mouse	FMR1	0.3673	0.257	0.1907
+Takasugi 2024	mouse	FMRP family	0.6959	0.5328	0.2278
+Takasugi 2024	mouse	YTHDF module	-0.1673	0.3955	0.6834
+Takasugi 2024	mouse	YTHDF3	-0.1343	0.2043	0.5292
+Lu 2025 brainstem	mouse	FMR1	-0.5196	0.1891	0.01321
+Lu 2025 brainstem	mouse	FMRP family	-0.4996	0.2943	0.1068
+Lu 2025 brainstem	mouse	YTHDF module	-0.3523	0.3348	0.3066
+Lu 2025 brainstem	mouse	YTHDF3	-0.1641	0.237	0.4975
+Lu 2025 cerebellum	mouse	FMR1	0.691	0.2589	0.01516
+Lu 2025 cerebellum	mouse	FMRP family	0.6047	0.4538	0.1985
+Lu 2025 cerebellum	mouse	YTHDF module	0.5325	0.2784	0.07099
+Lu 2025 cerebellum	mouse	YTHDF3	0.672	0.2074	0.004314
+Lu 2025 hippocampus	mouse	FMR1	0.3454	0.2007	0.1024
+Lu 2025 hippocampus	mouse	FMRP family	0.3294	0.2485	0.2017
+Lu 2025 hippocampus	mouse	YTHDF module	0.3573	0.206	0.09992
+Lu 2025 hippocampus	mouse	YTHDF3	0.2439	0.1923	0.2208
+Lu 2025 olfactory bulb	mouse	FMR1	1.164	0.2303	8.22e-05
+Lu 2025 olfactory bulb	mouse	FMRP family	0.7999	0.3894	0.05474
+Lu 2025 olfactory bulb	mouse	YTHDF module	0.4101	0.2983	0.1861
+Lu 2025 olfactory bulb	mouse	YTHDF3	0.2453	0.2164	0.2719
+Tsumagari 2023 cortex	mouse	FMR1	0.5201	0.1936	0.01868
+Tsumagari 2023 cortex	mouse	FMRP family	0.6457	0.2558	0.02543
+Tsumagari 2023 cortex	mouse	YTHDF module	0.7092	0.2414	0.01153
+Tsumagari 2023 cortex	mouse	YTHDF3	0.5575	0.1657	0.005067
+Tsumagari 2023 hippocampus	mouse	FMR1	0.7596	0.2165	0.003846
+Tsumagari 2023 hippocampus	mouse	FMRP family	0.9277	0.1853	0.0002399
+Tsumagari 2023 hippocampus	mouse	YTHDF module	0.654	0.3927	0.1198
+Tsumagari 2023 hippocampus	mouse	YTHDF3	0.8716	0.2281	0.002121
+Wang 2025 brain	mouse	FMR1	0.6914	0.09828	4.029e-08
+Wang 2025 brain	mouse	FMRP family	0.6598	0.309	0.04001
+Wang 2025 brain	mouse	YTHDF module	0.5764	0.2088	0.009226
+Wang 2025 brain	mouse	YTHDF3	0.5098	0.1534	0.002132
+Keele 2025 cortex	mouse	FMR1	0.1681	0.2374	0.4914
+Keele 2025 cortex	mouse	FMRP family	0.06023	0.2232	0.7915
+Keele 2025 cortex	mouse	YTHDF module	0.6043	0.3533	0.1109
+Keele 2025 cortex	mouse	YTHDF3	0.4047	0.3446	0.2613
+Keele 2025 hippocampus	mouse	FMR1	0.1383	0.2738	0.6219
+Keele 2025 hippocampus	mouse	FMRP family	0.7449	0.3743	0.06806
+Keele 2025 hippocampus	mouse	YTHDF module	0.2917	0.3338	0.398
+Keele 2025 hippocampus	mouse	YTHDF3	0.1773	0.2392	0.4716
+Keele 2025 striatum	mouse	FMR1	0.1065	0.2171	0.6317
+Keele 2025 striatum	mouse	FMRP family	-0.05398	0.2836	0.852
+Keele 2025 striatum	mouse	YTHDF module	-0.08839	0.3	0.7729
+Keele 2025 striatum	mouse	YTHDF3	0.02073	0.1925	0.9159
+Marino 2025 whole brain	mouse	FMR1	0.2461	0.1147	0.069
+Marino 2025 whole brain	mouse	FMRP family	0.4476	0.167	0.03152
+Marino 2025 whole brain	mouse	YTHDF module	0.5508	0.1752	0.01628
+Marino 2025 whole brain	mouse	YTHDF3	0.269	0.1599	0.1364
+Luo 2024	human	FMR1	0.1503	0.07793	0.05556
+Luo 2024	human	FMRP family	-0.442	0.1155	0.0001869
+Luo 2024	human	YTHDF module	0.5618	0.08146	1.251e-10
+Luo 2024	human	YTHDF3	0.5293	0.07737	1.685e-10
+Koopmans 2026 DPFC L1-3	human	FMR1	-0.4739	0.1273	0.0009197
+Koopmans 2026 DPFC L1-3	human	FMRP family	-0.3594	0.2658	0.1875
+Koopmans 2026 DPFC L1-3	human	YTHDF module	0.09904	0.2322	0.6731
+Koopmans 2026 DPFC L1-3	human	YTHDF3	-0.03114	0.1619	0.8489
+Koopmans 2026 DPFC L4-6	human	FMR1	-0.6599	0.1143	3.83e-06
+Koopmans 2026 DPFC L4-6	human	FMRP family	-0.1345	0.2835	0.6391
+Koopmans 2026 DPFC L4-6	human	YTHDF module	0.05143	0.2601	0.8448
+Koopmans 2026 DPFC L4-6	human	YTHDF3	-0.3074	0.1844	0.1072
+Eggers 2025 substantia nigra	human	FMR1	-0.3995	0.1877	0.04381
+Eggers 2025 substantia nigra	human	FMRP family	-0.3031	0.2934	0.3118
+Eggers 2025 substantia nigra	human	YTHDF module	-0.415	0.236	0.09149
+Eggers 2025 substantia nigra	human	YTHDF3	-0.349	0.1836	0.06937
+Lee 2023 hippocampus CA1	human	FMRP family	0.007774	0.1136	0.9456
+Ping 2020 DLPFC	human	FMR1	0.4762	0.5492	0.4348
+Ping 2020 DLPFC	human	FMRP family	-0.07052	0.8332	0.9366
+Ping 2020 DLPFC	human	YTHDF module	-0.3002	1.276	0.8256
+Ping 2020 DLPFC	human	YTHDF3	0.1703	0.9236	0.8627
+Teng 2023 amygdala	human	FMR1	0.02263	0.2581	0.9323
+Teng 2023 amygdala	human	FMRP family	-0.08015	0.2808	0.7826
+Teng 2023 hippocampus	human	FMR1	-0.4619	0.2971	0.164
+Teng 2023 hippocampus	human	FMRP family	-0.6803	0.5169	0.2296
+Teng 2023 hippocampus	human	YTHDF module	-0.6631	0.4641	0.1962
+Teng 2023 hippocampus	human	YTHDF3	-0.8674	0.2654	0.01371
+Teng 2023 hypothalamus	human	FMR1	-0.4256	0.2121	0.08478
+Teng 2023 hypothalamus	human	FMRP family	-0.703	0.6855	0.3392
+Teng 2023 hypothalamus	human	YTHDF module	-0.5523	0.3509	0.1595
+Teng 2023 hypothalamus	human	YTHDF3	-0.5725	0.1505	0.006688
+Teng 2023 nucleus accumbens	human	FMR1	-0.03781	0.3744	0.922
+Teng 2023 nucleus accumbens	human	FMRP family	0.3526	0.5236	0.5196
+Teng 2023 nucleus accumbens	human	YTHDF module	-0.5784	0.4394	0.2245
+Teng 2023 prefrontal cortex	human	FMR1	-0.4408	0.4022	0.3093
+Teng 2023 prefrontal cortex	human	FMRP family	1.06	1.188	0.4019
+Teng 2023 prefrontal cortex	human	YTHDF module	-0.5947	0.4541	0.2317
+Teng 2023 ventral tegmental area	human	FMR1	-0.2748	0.4005	0.5147
+Teng 2023 ventral tegmental area	human	FMRP family	0.02816	0.6052	0.9642
+Teng 2023 ventral tegmental area	human	YTHDF module	-0.7373	0.3219	0.05574
+Merrihew 2023 SMTG	human	FMR1	0.258	0.3579	0.5108
+Merrihew 2023 SMTG	human	FMRP family	0.3	0.3964	0.4914
+Merrihew 2023 SMTG	human	YTHDF module	0.1682	0.3271	0.6342
+Merrihew 2023 SMTG	human	YTHDF3	0.1936	0.3319	0.591
+Merrihew 2023 hippocampus	human	FMR1	-0.2302	0.4839	0.6544
+Merrihew 2023 hippocampus	human	FMRP family	0.04463	0.4245	0.9203
+Merrihew 2023 caudate	human	FMR1	0.03233	0.252	0.9029
+Merrihew 2023 caudate	human	FMRP family	-0.7341	0.3117	0.06515
+Merrihew 2023 caudate	human	YTHDF module	-0.2506	0.2303	0.3262
+Merrihew 2023 caudate	human	YTHDF3	-0.3044	0.2192	0.2236
+Merrihew 2023 IPL	human	FMR1	0.1062	0.4093	0.808
+Merrihew 2023 IPL	human	FMRP family	-0.1569	0.5367	0.7845
+Merrihew 2023 IPL	human	YTHDF module	0.09639	0.5527	0.87
+Merrihew 2023 IPL	human	YTHDF3	0.1455	0.4645	0.7697
+Blumenreich 2024 striatum	human	FMRP family	-0.4286	0.3825	0.2916
+Blumenreich 2024 striatum	human	YTHDF module	0.1836	0.1758	0.3235
+Blumenreich 2024 substantia nigra	human	FMRP family	-0.6032	0.2666	0.04995
+Blumenreich 2024 substantia nigra	human	YTHDF module	-0.5544	0.1471	0.004424
+Blumenreich 2024 cingulate gyrus	human	FMR1	-0.6501	0.7495	0.4347
+Blumenreich 2024 cingulate gyrus	human	FMRP family	-2.035	1.7	0.2974
+Blumenreich 2024 cingulate gyrus	human	YTHDF module	-0.4418	0.5345	0.4549
+Blumenreich 2024 cingulate gyrus	human	YTHDF3	-0.02377	0.3862	0.9539
+Blumenreich 2024 middle temporal gyrus	human	FMRP family	0.1573	0.3025	0.6134
+Blumenreich 2024 middle temporal gyrus	human	YTHDF module	-0.3547	0.2643	0.2066
+Blumenreich 2024 middle temporal gyrus	human	YTHDF3	-0.3213	0.2826	0.2797
+Blumenreich 2024 occipital cortex	human	FMR1	-0.4759	0.2518	0.08542
+Blumenreich 2024 occipital cortex	human	FMRP family	-0.8734	0.2692	0.007815

@@ -1,29 +1,41 @@
-set	species	cohort	kind	n	r	ci_low	ci_high	p	i2	k
-held-out	mouse	Keele 2025	cohort	18	0.9769	0.9378	0.9916	3.754e-12		
-held-out	mouse	Lu 2025	cohort	27	0.9639	0.9214	0.9836	6.989e-16		
-held-out	mouse	Marino 2025	cohort	10	0.9927	0.9681	0.9983	1.265e-08		
-held-out	mouse	Takasugi 2024	cohort	16	0.9843	0.9543	0.9947	5.928e-12		
-held-out	mouse	Tsumagari 2023	cohort	18	0.971	0.9222	0.9894	2.297e-11		
-held-out	mouse	Wang 2025	cohort	40	0.9513	0.9092	0.9741	5.109e-21		
-held-out	human	Blumenreich 2024	cohort	21	0.8637	0.6889	0.9436	4.561e-07		
-held-out	human	Eggers 2025	cohort	34	0.7905	0.6174	0.8906	2.668e-08		
-held-out	human	Koopmans 2026	cohort	46	0.888	0.8053	0.9368	1.903e-16		
-held-out	human	Lee 2023	cohort	74	0.5008	0.3074	0.6544	5.523e-06		
-held-out	human	Luo 2024	cohort	193	0.6767	0.592	0.7466	3.421e-27		
-held-out	human	Merrihew 2023	cohort	11	0.726	0.2235	0.9236	0.01141		
-held-out	human	Ping 2020	cohort	10	0.7805	0.2966	0.9455	0.00772		
-held-out	human	Teng 2023	cohort	16	0.9121	0.7601	0.9695	8.563e-07		
-external	mouse	Chen 2025	cohort	188	0.7265	0.6511	0.7877	3.959e-32		
-external	mouse	Vignane 2026	cohort	12	0.9353	0.7801	0.9821	8.017e-06		
-external	mouse	Gebru 2024	cohort	23	0.9834	0.9606	0.9931	4.774e-17		
-external	mouse	Huang 2024	cohort	10	0.9951	0.9784	0.9989	2.605e-09		
-external	mouse	Jha 2026	cohort	9	0.9369	0.7219	0.9869	0.0001956		
-external	mouse	Keele 2023	cohort	20	0.9254	0.8178	0.9705	5.164e-09		
-external	mouse	Marchionini 2025	cohort	40	0.9076	0.831	0.9504	6.712e-16		
-external	mouse	Mohallem 2024	cohort	13	0.9724	0.9078	0.9919	2.689e-08		
-external	mouse	Scifo 2025	cohort	45	0.8113	0.6796	0.8923	1.394e-11		
-external	mouse	Yarbro 2025	cohort	39	0.8655	0.7566	0.9277	1.163e-12		
-external	mouse	Yu 2020	cohort	10	0.9888	0.9516	0.9974	6.793e-08		
-held-out	mouse	Pooled	pooled		0.9726	0.9562	0.983	1.483e-68	34.75	6
-held-out	human	Pooled	pooled		0.7836	0.6643	0.864	4.13e-16	77.01	8
-external	mouse	Pooled	pooled		0.9428	0.884	0.9722	7.439e-21	89.61	11
+species	label	decile	genes	chosen
+mouse	m6Brain clock	1	1060	0
+mouse	m6Brain clock	2	1061	1
+mouse	m6Brain clock	3	1060	1
+mouse	m6Brain clock	4	1061	5
+mouse	m6Brain clock	5	1061	5
+mouse	m6Brain clock	6	1060	14
+mouse	m6Brain clock	7	1061	26
+mouse	m6Brain clock	8	1060	44
+mouse	m6Brain clock	9	1061	75
+mouse	m6Brain clock	10	1061	108
+mouse	Unguided elastic net	1	1060	17
+mouse	Unguided elastic net	2	1061	20
+mouse	Unguided elastic net	3	1060	32
+mouse	Unguided elastic net	4	1061	26
+mouse	Unguided elastic net	5	1061	29
+mouse	Unguided elastic net	6	1060	32
+mouse	Unguided elastic net	7	1061	31
+mouse	Unguided elastic net	8	1060	32
+mouse	Unguided elastic net	9	1061	36
+mouse	Unguided elastic net	10	1061	57
+human	m6Brain clock	1	999	2
+human	m6Brain clock	2	999	4
+human	m6Brain clock	3	999	0
+human	m6Brain clock	4	999	8
+human	m6Brain clock	5	999	11
+human	m6Brain clock	6	999	30
+human	m6Brain clock	7	999	43
+human	m6Brain clock	8	999	56
+human	m6Brain clock	9	999	94
+human	m6Brain clock	10	999	173
+human	Unguided elastic net	1	999	25
+human	Unguided elastic net	2	999	43
+human	Unguided elastic net	3	999	41
+human	Unguided elastic net	4	999	48
+human	Unguided elastic net	5	999	36
+human	Unguided elastic net	6	999	42
+human	Unguided elastic net	7	999	51
+human	Unguided elastic net	8	999	41
+human	Unguided elastic net	9	999	55
+human	Unguided elastic net	10	999	84

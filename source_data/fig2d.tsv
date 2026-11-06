@@ -1,5 +1,9 @@
-target	model	n	rho	rho_ci_low	rho_ci_high	p
-Human protein	Mouse protein model	8301	0.258	0.2373	0.2802	2.588e-126
-Human protein	Shuffled target	8301	-0.0342	-0.05516	-0.01139	0.001832
-Human mRNA	Mouse protein model	9996	0.1911	0.1731	0.21	7.909e-83
-Human mRNA	Shuffled target	9996	-0.03835	-0.0575	-0.01772	0.0001257
+target	region	n_genes	effect	null_low	null_high	p
+Mouse protein	All sites	8052	-0.2535	-0.01781	0.01427	0.009901
+Mouse protein	5' UTR	8052	-0.0064	-0.0013	0.002295	0.009901
+Mouse protein	CDS	8052	-0.08213	-0.009813	0.006985	0.009901
+Mouse protein	3' UTR	8052	-0.1042	-0.009188	0.00659	0.009901
+Human protein	All sites	5522	-0.03687	-0.007044	0.01901	0.009901
+Human protein	5' UTR	5522	-0.0005228	-0.0003588	0.0008693	0.1386
+Human protein	CDS	5522	-0.01269	-0.003079	0.008445	0.0198
+Human protein	3' UTR	5522	-0.02226	-0.003619	0.008526	0.009901

@@ -1,72 +1,78 @@
-# Additional file 1 Fig. S7: YTHDF3 and the YTHDF readers
-# reads source_data/sfig7a, sfig7b, sfig7b_controls and sfig7c; writes output/figures/sfig7.png and .pdf
+# Fig. S7: YTHDF3 and the YTHDF readers
+# reads source_data/sfig7a, sfig7b, sfig7b_controls and sfig7c; writes output/figures/sfig7
 source("figures/style.R")
 
-stars <- function(q) as.character(cut(q, c(-Inf, 0.001, 0.01, 0.05, Inf), c("***", "**", "*", "")))
-
-# a: YTHDF3 age effect; mouse protein per cohort (late versus early age group) and combined (random effects over
-# cohorts), human mRNA combined per context (per decade); bars, estimate; whiskers, 95% CI; * q < 0.05
-HUMAN <- c(striatum = "Striatum", cortex = "Cortex", hippocampus = "Hippocampus", cerebellum = "Cerebellum",
-           neurons = "Neurons")
+# a: YTHDF3 age effect (95% CI): mouse protein per cohort (late versus early age group) and combined (random effects
+# over cohorts), human mRNA per context (per decade); bars sorted by effect, combined estimates in the colour of the
+# species
+CONTEXTS <- c(striatum = "Striatum", cortex = "Cortex", hippocampus = "Hippocampus", cerebellum = "Cerebellum",
+              neurons = "Neurons")
 d <- read_panel("sfig7a")
-d[, `:=`(combined = label == "Combined" | panel == "Human mRNA",
-         label = fifelse(panel == "Human mRNA", HUMAN[label], label))]
-d[, `:=`(panel = factor(panel, c("Mouse protein", "Human mRNA")), label = factor(label, unique(label)),
-         inside = fcase(!combined, GREY, panel == "Mouse protein", FOCAL, default = RED))]
-bars <- function(dd, xlab) {
-  ggplot(dd, aes(effect, label, fill = I(inside))) +
-    ZERO_X +
-    geom_col(width = 0.68, colour = EDGE, linewidth = 0.5) +
-    geom_linerange(aes(xmin = ci_low, xmax = ci_high), linewidth = 0.6, colour = EDGE) +
-    geom_text(data = dd[q < 0.05], aes(x = pmin(ci_low, 0), label = stars(q)), hjust = 1.2, vjust = 0.75, size = PT,
-              colour = INK) +
-    facet_wrap(~panel) +
-    scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.12, 0.05))) +
-    scale_y_discrete(limits = rev) +
-    labs(x = xlab, y = NULL) +
-    theme_rows() +
-    BOXED
-}
-a <- (bars(d[panel == "Mouse protein"], "YTHDF3 age effect (%, late versus early)") /
-        bars(d[panel == "Human mRNA"], "YTHDF3 age effect (% per decade)") +
-        plot_layout(heights = d[, .N, by = panel]$N + 1)) + FLUSH
+d[, `:=`(combined = label == "Combined" | panel == "Human mRNA", label = fifelse(panel == "Human mRNA", CONTEXTS[label], label))]
+d[, fill := fcase(!combined, GREY, panel == "Mouse protein", MOUSE, default = HUMAN)]
+d[, panel := factor(panel, c("Mouse protein", "Human mRNA"), c("Mouse protein,\nlate versus early", "Human mRNA,\nper decade"))]
+d <- d[order(panel, label == "Combined", effect)]
+d[, row := factor(paste(panel, label), rev(paste(panel, label)))]
+a <- ggplot(d, aes(effect, row)) +
+  geom_vline(xintercept = 0, linewidth = lw(0.5)) +
+  geom_col(aes(fill = I(fill)), width = 0.68) +
+  geom_linerange(aes(xmin = ci_low, xmax = ci_high), linewidth = lw(0.5), colour = EDGE) +
+  geom_text(data = d[!is.na(q)], aes(x = pmin(ci_low, 0), label = fmt_p(q, prefix = "italic(q)")), parse = TRUE,
+            hjust = 1.08, size = pt_size(6)) +
+  ggh4x::facet_grid2(panel ~ ., scales = "free", space = "free_y", independent = "x") +
+  scale_x_continuous(labels = MINUS_LABELS, expand = expansion(mult = c(0.4, 0.04))) +
+  scale_y_discrete(labels = setNames(d$label, d$row)) +
+  labs(x = "YTHDF3 age effect (%)", y = NULL) +
+  theme_box() +
+  theme(strip.text.y = element_text(angle = -90, size = 6))
 
-# b: pooled load edge of the YTHDF module and YTHDF3 against the control RBPs (density of one pooled edge per RBP;
-# random effects over units); numbers in the strip, percentile of the pooled edge among the controls
+# b: load coupling of the YTHDF module and of YTHDF3 (ticks) against the density of the same coupling of the control
+# proteins, in units of the 95th percentile of their absolute coupling in each unit; right, percentile of the module
+# and of YTHDF3 among the controls
 ctrl <- read_panel("sfig7b_controls")
-ctrl[, panel := layer_rows(species, layer)]
 hit <- read_panel("sfig7b")
-hit[, `:=`(panel = layer_rows(species, layer), who = c(YTHDF = "Module", YTHDF3 = "YTHDF3")[regulator])]
-hit[, label := paste0(who, " ", ordinal(pctile_signed))]
-strips <- hit[order(who), .(strip = paste0(panel[1], "\n", paste(label, collapse = ", "))), by = panel][order(panel)]
-strip_of <- function(p) factor(strips$strip[match(p, strips$panel)], strips$strip)
-ctrl[, panel := strip_of(panel)]
-hit[, panel := strip_of(panel)]
-b <- ggplot(ctrl, aes(edge)) +
-  ZERO_X +
-  geom_density(fill = LIGHT, colour = GREY, linewidth = 0.5, adjust = 0.8) +
-  geom_vline(data = hit, aes(xintercept = estimate, colour = who), linewidth = 1.2) +
-  facet_wrap(~panel, nrow = 2, scales = "free") +
-  scale_colour_manual(values = c(Module = CONTRAST, YTHDF3 = FOCAL),
-                      labels = c(Module = "YTHDF module", YTHDF3 = "YTHDF3"), name = NULL) +
-  scale_x_continuous(labels = MINUS_LABELS, breaks = scales::breaks_pretty(3), expand = expansion(mult = c(0.1, 0.1))) +
-  scale_y_continuous(expand = expansion(mult = c(0, 0.05))) +
-  labs(x = "YTHDF load edge (b)", y = "Density of control RBPs") +
-  theme_fig() +
-  BOXED +
-  theme(axis.text.y = element_blank(), axis.ticks.y = element_blank(), legend.position = "inside",
-        legend.position.inside = c(0.85, 0.2), legend.key.width = unit(6, "mm"), panel.spacing = unit(5, "mm"),
-        strip.text = element_text(lineheight = 0.95))
+ctrl[, row := layer_rows(species, layer)]
+hit[, row := factor(paste(SPECIES_NAME[species], layer), levels(ctrl$row))]
+ctrl[, unit := quantile(abs(edge), 0.95), by = row]
+hit[ctrl[, .(unit = unit[1]), by = row], unit := i.unit, on = "row"]
+PEAK <- 1.2
+curves <- ctrl[, {
+  k <- density(edge / unit[1], adjust = 0.8)
+  .(x = k$x, h = PEAK * k$y / max(k$y))
+}, by = row]
+curves[, base := nlevels(row) - as.integer(row)]
+hit[, `:=`(base = nlevels(row) - as.integer(row), x = estimate / unit, tick = c(YTHDF = 1.1, YTHDF3 = 0.6)[regulator],
+           colour = SPECIES[SPECIES_NAME[species]])]
+hit[regulator == "YTHDF3", colour := shade(colour, 0.4)]
+setorder(hit, regulator)
+percentile <- hit[, .(text = paste(ordinal(pctile_signed[regulator == "YTHDF"]), ordinal(pctile_signed[regulator == "YTHDF3"]),
+                                   sep = ", "), base = base[1]), by = row]
+ridge <- function(r) {
+  geom_ribbon(data = curves[row == r], aes(x, ymin = base, ymax = base + h), fill = LIGHT, colour = GREY,
+              linewidth = lw(0.5), outline.type = "upper")
+}
+XR <- range(curves$x)
+KEY <- nlevels(ctrl$row) - 1 + PEAK + 0.3 # key row above the top ridge, ticks at half their length
+b <- ggplot() +
+  ref_line(xintercept = 0) +
+  lapply(levels(curves$row), ridge) +
+  geom_segment(data = hit, aes(x = x, xend = x, y = base, yend = base + tick, colour = I(colour)), linewidth = lw(1.4)) +
+  geom_text(data = percentile, aes(x = XR[2] + 0.04 * diff(XR), y = base + 0.45, label = text), hjust = 0, size = pt_size(6)) +
+  annotate("segment", x = XR[1] + c(0.05, 1.3), xend = XR[1] + c(0.05, 1.3), y = KEY, yend = KEY + c(0.55, 0.3),
+           linewidth = lw(1.4)) +
+  note(XR[1] + c(0.2, 1.45), KEY + 0.25, c("Module", "YTHDF3"), hjust = 0) +
+  note(XR[2] + 0.04 * diff(XR), KEY + c(0.45, 0.05), c("Percentile:", "module, YTHDF3"), hjust = 0) +
+  scale_x_continuous(labels = MINUS_LABELS, expand = c(0, 0)) +
+  scale_y_continuous(breaks = nlevels(ctrl$row) - seq_len(nlevels(ctrl$row)), labels = levels(ctrl$row),
+                     expand = expansion(add = c(0.1, 0))) +
+  coord_cartesian(clip = "off", xlim = XR, ylim = c(0, KEY + 0.7)) +
+  labs(x = "YTHDF load coupling / control 95th percentile", y = NULL) +
+  theme_pub() +
+  theme(plot.margin = margin(1.5, 17, 1.5, 1.5, "mm"))
 
-# c: change of the target score after loss of a YTHDF reader (m6A-marked targets of the preferred binding source, against
-# bound transcripts without m6A or unbound m6A genes); filled, the direction predicted from the reader's known function
-# (loss lowers the translation efficiency of YTHDF1/3 targets, raises the mRNA of YTHDF2 targets); open, the opposite
-# direction; the triple knockout has a row for each reader whose targets are scored; intervals beyond CUT are cut and
-# end in an arrow
-CUT <- 120
-x <- read_panel("sfig7c")
-x[, panel := factor(fifelse(readout == "RNA", "YTHDF2 loss: target mRNA", "YTHDF1/3 loss: translation efficiency"),
-                    c("YTHDF1/3 loss: translation efficiency", "YTHDF2 loss: target mRNA"))]
+# c: change of the target score after loss of a YTHDF reader (%; m6A-marked targets of the preferred binding source
+# against bound transcripts without m6A or unbound m6A genes); bold, the change agrees with the reader's known function
+# (loss lowers the translation efficiency of YTHDF1/3 targets, raises the mRNA of YTHDF2 targets)
 LABELS <- c(
   gse266096_nsc_Ythdf2_cKO = "Zhang 2025, neural stem cells, Ythdf2 cKO",
   heck2020_iPSC_siYTHDF2 = "Heck 2020, iPSC-derived cells, siYTHDF2",
@@ -84,32 +90,30 @@ LABELS <- c(
   zou2023_neuron_ko_YTHDF1inh = "Zou 2023, neurons, YTHDF1 inhibitor (KO background)",
   zou2023_neuron_wt_YTHDF1inh = "Zou 2023, neurons, YTHDF1 inhibitor (wild type)"
 )
-SERIES <- c("Bound without m6A" = BLUE, "Unbound m6A genes" = CONTRAST)
-x[, `:=`(label = LABELS[dataset],
-         comparison = factor(c(bound_unmarked = "Bound without m6A", unbound_m6A = "Unbound m6A genes")[comparison],
-                             names(SERIES)))]
+BLOCKS <- c("YTHDF1/3 loss:\ntranslation efficiency", "YTHDF2 loss:\ntarget mRNA")
+x <- read_panel("sfig7c")
+x[, `:=`(panel = factor(fifelse(readout == "RNA", BLOCKS[2], BLOCKS[1]), BLOCKS),
+         comparison = factor(c(bound_unmarked = "Bound, no m6A", unbound_m6A = "Unbound, m6A")[comparison],
+                             c("Bound, no m6A", "Unbound, m6A")),
+         label = LABELS[dataset])]
 x[reader != target_reader, label := paste0(label, " (", target_reader, " targets)")]
-x[, label := factor(label, unique(label[order(panel, -effect_pct)]))]
-x[, `:=`(inside = fifelse(sign_matches, SERIES[as.character(comparison)], "white"),
-         edge = fifelse(sign_matches, EDGE, GREY))]
-# rows numbered over both facets (each free y scale keeps its own labels), the two comparisons side by side in a row
-x[, y := -as.integer(label) + fifelse(comparison == "Unbound m6A genes", 0.15, -0.15)]
-cc <- ggplot(x, aes(effect_pct, y, shape = comparison, fill = I(inside), colour = I(edge))) +
-  ZERO_X +
-  geom_segment(aes(x = ci_low_pct, xend = pmin(ci_high_pct, CUT), yend = y), linewidth = 0.6, colour = CI) +
-  geom_segment(data = x[ci_high_pct > CUT], aes(x = CUT - 10, xend = CUT, yend = y), colour = CI, linewidth = 0.6,
-               arrow = arrow(length = unit(1.8, "mm"), type = "closed")) +
-  geom_point(size = 2.8, stroke = 0.5) +
-  facet_wrap(~panel, scales = "free") +
-  scale_shape_manual(values = c("Bound without m6A" = 21, "Unbound m6A genes" = 24), name = "Marked targets against",
-                     guide = guide_legend(override.aes = list(fill = SERIES, colour = EDGE))) +
-  scale_x_continuous(labels = MINUS_LABELS) +
-  scale_y_continuous(breaks = -seq_len(nlevels(x$label)), labels = scales::label_wrap(36)(levels(x$label)),
-                     expand = expansion(add = 0.5)) +
-  labs(x = "Change of target score after YTHDF loss (%)", y = NULL) +
-  theme_rows() +
-  BOXED +
+x[, `:=`(label = factor(label, unique(label[order(panel, -effect_pct)])), text = number(effect_pct, 1))]
+block <- function(name) {
+  d <- x[panel == name][, label := droplevels(label)]
+  ggplot(d, aes(comparison, label, fill = effect_pct)) +
+    geom_tile(colour = "white", linewidth = lw(0.6)) +
+    geom_text(aes(label = text, fontface = fifelse(sign_matches, "bold", "plain")), size = pt_size(6)) +
+    facet_wrap(~panel) +
+    scale_fill_signed(20, "Change of the target score (%)", light = TRUE) +
+    scale_x_discrete(position = "top", expand = c(0, 0), drop = FALSE) +
+    scale_y_discrete(limits = rev, labels = scales::label_wrap(30), expand = c(0, 0)) +
+    theme_tile() +
+    theme(strip.placement = "outside", strip.text = element_text(size = 6),
+          axis.text.x.top = element_text(vjust = 0, margin = margin(t = 1.5, b = 0.5, unit = "mm")))
+}
+rows <- x[, uniqueN(label), keyby = panel]$V1
+cc <- block(BLOCKS[1]) / block(BLOCKS[2]) + plot_layout(heights = rows, guides = "collect") &
   theme(legend.position = "bottom")
 
-fig <- panel_grid(list(a = a, b = b, c = cc), design = "AB\nCC", widths = c(70, 113), heights = c(75, 70))
-save_fig(fig, "sfig7", 290)
+fig <- fig_compose(a, b, cc, design = "AC\nBC", widths = c(88, 95), heights = c(1, 1))
+save_fig(fig, "sfig7", 142)

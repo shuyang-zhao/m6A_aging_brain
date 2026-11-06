@@ -1,0 +1,11 @@
+study	disease	donors	n	r	p
+Blumenreich 2024	PD	all	63	0.2067	0.1041
+Blumenreich 2024	PD	cases	42	0.2657	0.08903
+Langfelder 2016	HD	all	71	-0.2851	0.01596
+Langfelder 2016	HD	cases	52	-0.25	0.07383
+Merrihew 2023	AD	all	31	-0.7204	4.884e-06
+Merrihew 2023	AD	cases	20	-0.662	0.001475
+Ping 2020	AD	all	19	-0.7254	0.0004405
+Ping 2020	AD	cases	9	-0.7337	0.02446
+Umoh 2018	ALS	all	27	-0.08462	0.6747
+Umoh 2018	ALS	cases	19	0.03686	0.8809

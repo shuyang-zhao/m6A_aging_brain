@@ -1,11 +1,51 @@
-study	disease	contrast	unit	n	est	se	ci_low	ci_high	p
-Ping 2020	AD	disease vs control	years	19	11.89	2.848	5.74	18.04	0.001087
-Merrihew 2023	AD	disease vs control	years	31	9.125	2.295	4.337	13.91	0.0007455
-Blumenreich 2024	PD	disease vs control	years	63	3.828	1.646	0.5299	7.126	0.02373
-Langfelder 2016	HD	per 100 CAG repeats	months	71	2.446	0.4932	1.461	3.431	5.37e-06
-Umoh 2018	ALS	disease vs control	years	27	2.55	1.907	-1.394	6.495	0.1942
-AD combined	AD	disease vs control	years	50	10.21	1.787	6.712	13.72	1.092e-08
-Ping 2020	AD	per Braak stage	years	19	2.435	0.6013	1.136	3.735	0.001376
-Ping 2020	AD	per CERAD score	years	19	3.964	0.9492	1.913	6.015	0.001087
-Merrihew 2023	AD	per Braak stage	years	31	5.726	1.505	2.587	8.864	0.001108
-Merrihew 2023	AD	per CERAD score	years	31	3.164	0.8343	1.424	4.904	0.001142
+study	disease	braak	cerad	acceleration
+Ping 2020	1	5	3	17.77
+Ping 2020	1	6	3	4.595
+Ping 2020	0	1	0	-1.642
+Ping 2020	0	1	0	-1.829
+Ping 2020	1	6	3	11.15
+Ping 2020	0	0	0	-11.8
+Ping 2020	1	6	3	13.85
+Ping 2020	0	0	0	-1.656
+Ping 2020	1	6	3	8.464
+Ping 2020	0	1	0	9.629
+Ping 2020	0	1	0	3.937
+Ping 2020	1	6	3	15.83
+Ping 2020	0	2	0	10.62
+Ping 2020	0	2	0	-5.356
+Ping 2020	1	6	3	11.5
+Ping 2020	1	6	3	5.59
+Ping 2020	0	1	0	0.9593
+Ping 2020	0	2	0	-2.859
+Ping 2020	1	6	3	18.37
+Merrihew 2023	1	3	3	13.68
+Merrihew 2023	1	3	3	11.96
+Merrihew 2023	1	3	3	11.1
+Merrihew 2023	1	3	3	21.64
+Merrihew 2023	1	3	3	19.69
+Merrihew 2023	0	1	0	0.3744
+Merrihew 2023	1	3	3	10.08
+Merrihew 2023	1	3	3	11.07
+Merrihew 2023	1	3	2	-0.3719
+Merrihew 2023	0	0	0	-1.524
+Merrihew 2023	0	1	0	-3.523
+Merrihew 2023	0	1	0	6.062
+Merrihew 2023	1	3	2	11.37
+Merrihew 2023	1	3	3	12.01
+Merrihew 2023	1	3	3	8.748
+Merrihew 2023	0	2	0	3.349
+Merrihew 2023	1	3	3	19.02
+Merrihew 2023	0	1	0	-1.995
+Merrihew 2023	0	2	0	3.118
+Merrihew 2023	1	3	3	17.57
+Merrihew 2023	1	3	2	12.51
+Merrihew 2023	0	1	0	-4.775
+Merrihew 2023	1	3	3	-1.109
+Merrihew 2023	1	3	3	15
+Merrihew 2023	0	2	0	1.029
+Merrihew 2023	1	3	2	8.671
+Merrihew 2023	1	3	3	9.889
+Merrihew 2023	0	2	0	-6.101
+Merrihew 2023	1	3	3	5.022
+Merrihew 2023	0	2	0	3.987
+Merrihew 2023	1	3	3	2.735

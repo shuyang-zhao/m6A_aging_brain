@@ -1,7 +1,212 @@
-study	disease	contrast	unit	n	est	se	ci_low	ci_high	p
-Ping 2020	AD	disease vs control	SD	19	-0.8788	0.3468	-1.628	-0.1295	0.02495
-Merrihew 2023	AD	disease vs control	SD	31	-0.6985	0.2212	-1.16	-0.2371	0.004951
-Blumenreich 2024	PD	disease vs control	SD	63	-0.2653	0.1456	-0.5571	0.02637	0.07375
-Langfelder 2016	HD	per 100 CAG repeats	SD	71	-0.7476	0.1838	-1.115	-0.3805	0.0001308
-Umoh 2018	ALS	disease vs control	SD	27	-1.175	0.4978	-2.205	-0.1452	0.02711
-AD combined	AD	disease vs control	SD	50	-0.7506	0.1865	-1.116	-0.3851	5.704e-05
+study	disease_name	group	m6a_index	acceleration
+Ping 2020	AD	Case	-0.7429	17.77
+Ping 2020	AD	Case	0.2537	4.595
+Ping 2020	AD	Control	0.4135	-1.642
+Ping 2020	AD	Control	0.03114	-1.829
+Ping 2020	AD	Case	-0.3161	11.15
+Ping 2020	AD	Control	1.934	-11.8
+Ping 2020	AD	Case	-2.016	13.85
+Ping 2020	AD	Control	0.9611	-1.656
+Ping 2020	AD	Case	-0.285	8.464
+Ping 2020	AD	Control	0.5651	9.629
+Ping 2020	AD	Control	-0.8347	3.937
+Ping 2020	AD	Case	-0.259	15.83
+Ping 2020	AD	Control	0.1188	10.62
+Ping 2020	AD	Control	-0.1081	-5.356
+Ping 2020	AD	Case	-0.6937	11.5
+Ping 2020	AD	Case	1.071	5.59
+Ping 2020	AD	Control	0.1382	0.9593
+Ping 2020	AD	Control	1.545	-2.859
+Ping 2020	AD	Case	-1.776	18.37
+Merrihew 2023	AD	Case	-1.182	13.68
+Merrihew 2023	AD	Case	-0.7566	11.96
+Merrihew 2023	AD	Case	-0.5136	11.1
+Merrihew 2023	AD	Case	-1.328	21.64
+Merrihew 2023	AD	Case	-0.8392	19.69
+Merrihew 2023	AD	Control	0.4421	0.3744
+Merrihew 2023	AD	Case	-0.5453	10.08
+Merrihew 2023	AD	Case	-0.1283	11.07
+Merrihew 2023	AD	Case	0.5537	-0.3719
+Merrihew 2023	AD	Control	0.9321	-1.524
+Merrihew 2023	AD	Control	1.174	-3.523
+Merrihew 2023	AD	Control	0.8799	6.062
+Merrihew 2023	AD	Case	-0.05176	11.37
+Merrihew 2023	AD	Case	-0.3949	12.01
+Merrihew 2023	AD	Case	0.4776	8.748
+Merrihew 2023	AD	Control	0.8511	3.349
+Merrihew 2023	AD	Case	-1.073	19.02
+Merrihew 2023	AD	Control	0.7134	-1.995
+Merrihew 2023	AD	Control	0.7397	3.118
+Merrihew 2023	AD	Case	-0.3979	17.57
+Merrihew 2023	AD	Case	0.48	12.51
+Merrihew 2023	AD	Control	0.5074	-4.775
+Merrihew 2023	AD	Case	0.5118	-1.109
+Merrihew 2023	AD	Case	0.004777	15
+Merrihew 2023	AD	Control	-0.2718	1.029
+Merrihew 2023	AD	Case	0.1287	8.671
+Merrihew 2023	AD	Case	0.1025	9.889
+Merrihew 2023	AD	Control	0.08151	-6.101
+Merrihew 2023	AD	Case	-0.8445	5.022
+Merrihew 2023	AD	Control	0.7801	3.987
+Merrihew 2023	AD	Case	0.1374	2.735
+Blumenreich 2024	PD	Control	-0.3033	-3.513
+Blumenreich 2024	PD	Control	-0.01086	-0.3374
+Blumenreich 2024	PD	Control	0.309	-8.316
+Blumenreich 2024	PD	Control	0.6919	7.987
+Blumenreich 2024	PD	Control	-0.201	-9.56
+Blumenreich 2024	PD	Control	-0.3885	4.349
+Blumenreich 2024	PD	Control	0.1388	7.536
+Blumenreich 2024	PD	Control	0.5268	1.247
+Blumenreich 2024	PD	Control	-0.7299	1.91
+Blumenreich 2024	PD	Control	-0.3068	-4.921
+Blumenreich 2024	PD	Control	-0.3273	2.326
+Blumenreich 2024	PD	Control	-0.655	-2.902
+Blumenreich 2024	PD	Control	0.4746	-2.989
+Blumenreich 2024	PD	Control	0.08431	5.141
+Blumenreich 2024	PD	Control	0.5563	0.3191
+Blumenreich 2024	PD	Control	0.5264	-7.837
+Blumenreich 2024	PD	Control	0.5781	12.86
+Blumenreich 2024	PD	Control	0.5467	-4.693
+Blumenreich 2024	PD	Control	-0.1509	-1.117
+Blumenreich 2024	PD	Control	0.5611	6.551
+Blumenreich 2024	PD	Control	-0.3232	-4.04
+Blumenreich 2024	PD	Case	0.2126	3.794
+Blumenreich 2024	PD	Case	-0.2787	8.29
+Blumenreich 2024	PD	Case	0.384	14.9
+Blumenreich 2024	PD	Case	-0.07607	5.55
+Blumenreich 2024	PD	Case	-0.1353	7.947
+Blumenreich 2024	PD	Case	0.1343	8.483
+Blumenreich 2024	PD	Case	0.9912	1.538
+Blumenreich 2024	PD	Case	-1.011	-7.5
+Blumenreich 2024	PD	Case	-0.9291	0.4513
+Blumenreich 2024	PD	Case	0.6861	2.428
+Blumenreich 2024	PD	Case	0.04636	5.011
+Blumenreich 2024	PD	Case	-0.1831	2.289
+Blumenreich 2024	PD	Case	0.5622	0.6882
+Blumenreich 2024	PD	Case	0.1439	2.6
+Blumenreich 2024	PD	Case	0.4625	6.336
+Blumenreich 2024	PD	Case	0.6926	13.89
+Blumenreich 2024	PD	Case	0.6032	-3.371
+Blumenreich 2024	PD	Case	1.098	-4.026
+Blumenreich 2024	PD	Case	-0.5508	3.422
+Blumenreich 2024	PD	Case	0.5914	2.349
+Blumenreich 2024	PD	Case	-0.8425	10.91
+Blumenreich 2024	PD	Case	0.2946	10.71
+Blumenreich 2024	PD	Case	0.05347	8.955
+Blumenreich 2024	PD	Case	-0.5974	3.628
+Blumenreich 2024	PD	Case	-0.5421	-2.358
+Blumenreich 2024	PD	Case	0.2635	4.048
+Blumenreich 2024	PD	Case	-0.7484	3.624
+Blumenreich 2024	PD	Case	-0.3198	2.433
+Blumenreich 2024	PD	Case	0.194	0.1421
+Blumenreich 2024	PD	Case	-0.4349	3.686
+Blumenreich 2024	PD	Case	-0.005781	4.739
+Blumenreich 2024	PD	Case	-0.2883	12.42
+Blumenreich 2024	PD	Case	0.2555	13.6
+Blumenreich 2024	PD	Case	0.2272	10.53
+Blumenreich 2024	PD	Case	-0.6154	4.3
+Blumenreich 2024	PD	Case	-1.114	-8.77
+Blumenreich 2024	PD	Case	-0.8005	-5.533
+Blumenreich 2024	PD	Case	-0.718	0.2851
+Blumenreich 2024	PD	Case	0.6054	6.087
+Blumenreich 2024	PD	Case	0.3927	0.3747
+Blumenreich 2024	PD	Case	0.2898	16.5
+Blumenreich 2024	PD	Case	-0.1764	8.494
+Langfelder 2016	HD	Expanded CAG	-1.343	0.5606
+Langfelder 2016	HD	Expanded CAG	0.2195	-0.864
+Langfelder 2016	HD	Expanded CAG	-0.1685	2.389
+Langfelder 2016	HD	Expanded CAG	-0.04443	-0.4635
+Langfelder 2016	HD	Expanded CAG	-1.256	-3.645
+Langfelder 2016	HD	Expanded CAG	-1.14	-1.69
+Langfelder 2016	HD	Expanded CAG	-0.4379	-0.9703
+Langfelder 2016	HD	Expanded CAG	-0.9355	1.96
+Langfelder 2016	HD	Expanded CAG	-0.2377	-3.701
+Langfelder 2016	HD	Expanded CAG	-1.022	2.875
+Langfelder 2016	HD	Expanded CAG	-0.8928	2.977
+Langfelder 2016	HD	Expanded CAG	-0.9762	-1.283
+Langfelder 2016	HD	Expanded CAG	-0.5358	1.406
+Langfelder 2016	HD	Expanded CAG	-0.05708	2.318
+Langfelder 2016	HD	Expanded CAG	-0.6794	0.4147
+Langfelder 2016	HD	Expanded CAG	0.0319	0.1186
+Langfelder 2016	HD	Expanded CAG	-0.2494	2.737
+Langfelder 2016	HD	Expanded CAG	-2.112	2.179
+Langfelder 2016	HD	Expanded CAG	-0.946	3.664
+Langfelder 2016	HD	Expanded CAG	-1.608	8.968
+Langfelder 2016	HD	Expanded CAG	-1.192	4.311
+Langfelder 2016	HD	Expanded CAG	-0.8772	5.275
+Langfelder 2016	HD	Expanded CAG	-0.6678	4.951
+Langfelder 2016	HD	Expanded CAG	-2.459	0.9572
+Langfelder 2016	HD	Expanded CAG	-0.04606	-4.115
+Langfelder 2016	HD	Expanded CAG	0.975	7.173
+Langfelder 2016	HD	Expanded CAG	0.8047	0.3424
+Langfelder 2016	HD	Expanded CAG	0.1749	2.512
+Langfelder 2016	HD	Control	1.992	0.6343
+Langfelder 2016	HD	Control	-0.06109	0.4321
+Langfelder 2016	HD	Control	1.12	0.3864
+Langfelder 2016	HD	Control	-0.01511	1.262
+Langfelder 2016	HD	Control	-0.2853	1.509
+Langfelder 2016	HD	Control	0.9077	-2.063
+Langfelder 2016	HD	Control	0.7591	2.653
+Langfelder 2016	HD	Control	2.184	-1.599
+Langfelder 2016	HD	Control	-0.4724	0.08282
+Langfelder 2016	HD	Control	1.839	-4.978
+Langfelder 2016	HD	Control	-0.5138	-1.493
+Langfelder 2016	HD	Control	1.313	1.125
+Langfelder 2016	HD	Control	0.841	-3.134
+Langfelder 2016	HD	Control	0.02706	-0.1114
+Langfelder 2016	HD	Control	-0.3568	-1.233
+Langfelder 2016	HD	Control	0.8578	1.13
+Langfelder 2016	HD	Control	-1.432	2.977
+Langfelder 2016	HD	Control	2.949	-1.249
+Langfelder 2016	HD	Control	0.8514	-8.847
+Langfelder 2016	HD	Expanded CAG	-0.2018	-2.027
+Langfelder 2016	HD	Expanded CAG	-0.6037	-3.993
+Langfelder 2016	HD	Expanded CAG	-0.3434	-3.767
+Langfelder 2016	HD	Expanded CAG	0.6649	-3.721
+Langfelder 2016	HD	Expanded CAG	1.445	-0.8219
+Langfelder 2016	HD	Expanded CAG	-0.07405	-5.45
+Langfelder 2016	HD	Expanded CAG	-0.5233	-4.512
+Langfelder 2016	HD	Expanded CAG	0.3864	-1.3
+Langfelder 2016	HD	Expanded CAG	-0.02545	-0.381
+Langfelder 2016	HD	Expanded CAG	0.3202	1.342
+Langfelder 2016	HD	Expanded CAG	1.141	-0.3131
+Langfelder 2016	HD	Expanded CAG	0.4427	-0.7752
+Langfelder 2016	HD	Expanded CAG	0.9764	-0.7809
+Langfelder 2016	HD	Expanded CAG	-0.4548	-2.152
+Langfelder 2016	HD	Expanded CAG	0.9455	-1.791
+Langfelder 2016	HD	Expanded CAG	0.02363	-5.208
+Langfelder 2016	HD	Expanded CAG	-0.6442	2.67
+Langfelder 2016	HD	Expanded CAG	0.4317	-1.147
+Langfelder 2016	HD	Expanded CAG	-0.5776	3.619
+Langfelder 2016	HD	Expanded CAG	0.6956	-1.869
+Langfelder 2016	HD	Expanded CAG	0.2103	-3.621
+Langfelder 2016	HD	Expanded CAG	0.8128	2.853
+Langfelder 2016	HD	Expanded CAG	1.26	-2.005
+Langfelder 2016	HD	Expanded CAG	-1.134	-1.602
+Umoh 2018	ALS	Case	-1.069	0.5908
+Umoh 2018	ALS	Case	-1.465	2.934
+Umoh 2018	ALS	Control	0.5969	3.417
+Umoh 2018	ALS	Control	0.892	-1.248
+Umoh 2018	ALS	Case	0.7654	-7.23
+Umoh 2018	ALS	Case	-0.02955	0.6279
+Umoh 2018	ALS	Case	-1.384	-5.921
+Umoh 2018	ALS	Case	-0.5791	1.697
+Umoh 2018	ALS	Case	-0.1148	2.099
+Umoh 2018	ALS	Case	-0.2037	3.329
+Umoh 2018	ALS	Case	-0.3745	-3.116
+Umoh 2018	ALS	Case	-2.022	1.192
+Umoh 2018	ALS	Case	-1.168	3.939
+Umoh 2018	ALS	Control	0.1551	4.311
+Umoh 2018	ALS	Control	-1.45	1.174
+Umoh 2018	ALS	Case	0.08501	4.8
+Umoh 2018	ALS	Case	0.7555	-1.64
+Umoh 2018	ALS	Control	2.008	-3.229
+Umoh 2018	ALS	Case	1.169	7.587
+Umoh 2018	ALS	Case	-0.1252	-2.402
+Umoh 2018	ALS	Control	0.5257	0.6553
+Umoh 2018	ALS	Case	0.1296	4.979
+Umoh 2018	ALS	Control	0.2021	-4.72
+Umoh 2018	ALS	Control	1.452	-0.3616
+Umoh 2018	ALS	Case	-0.5201	-2.38
+Umoh 2018	ALS	Case	1.464	0.02338
+Umoh 2018	ALS	Case	0.3062	-0.8972
